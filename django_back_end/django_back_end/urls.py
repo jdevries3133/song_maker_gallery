@@ -19,6 +19,9 @@ from django.urls import path
 
 from rest_framework import routers, serializers, viewsets
 
+from provider.views import main
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', main)
 ]

@@ -5,6 +5,8 @@ import DefaultDescription from './defaultDescription';
 
 const header = props  => {
 
+    // CONDITIONALLY RENDER DEFAULT DESCRIPTION
+
   return (
     <div>
       <h1>{props.title}</h1>
