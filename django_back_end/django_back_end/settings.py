@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'jack']
 
 
 # Application definition
@@ -38,8 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_mysql',
+    'rest_framework',
+
     'provider',
-    'teacher'
+    'teacher',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +56,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'django_back_end.urls'
+
+# installed but maybe won't use; seems too heavy duty
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 TEMPLATES = [
     {
@@ -85,8 +95,13 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': 3306,
         'OPTIONS': {
+            'charset': 'utf8mb4',
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         },
+        'TEST': {
+            'CHARSET': 'utf8mb4',
+            'COLLATION': 'utf8mb4_unicode_ci',
+        }
     }
 }
 
@@ -128,3 +143,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
