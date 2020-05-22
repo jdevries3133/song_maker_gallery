@@ -21,7 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w5&!zhip7r3cgwu!+o0s&d$idaxo95c3=#v@04(7+p8+hm%26*'
+SECRET_KEY = os.getenv('DJANGO_SECRET')
+'w5&!zhip7r3cgwu!+o0s&d$idaxo95c3=#v@04(7+p8+hm%26*' ## comprimised; change for production
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -90,8 +91,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'smf2',
-        'USER': 'jack',
-        'PASSWORD': os.getenv('MYSQL_JACK_PASS'),
+        'USER': os.getenv('MYSQL_USER'),
+        'PASSWORD': os.getenv('MYSQL_USER_PASS'),
         'HOST': 'localhost',
         'PORT': 3306,
         'OPTIONS': {
