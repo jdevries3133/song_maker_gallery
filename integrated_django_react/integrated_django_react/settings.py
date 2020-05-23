@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_mysql',
+    'rest_framework',
 
+    'frontend',
     'public_provider',
     'teacher_admin',
 

@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
+import styles from './tilegrid.module.css';
 
 const tile = props => {
 
-  const colors = [
+  // todo make all the colors load on initial page load, so they don't lag behind.
+  // or, transition from background-image to background-color if possible
+
+  const colors= [
     'http://song-maker-gallery.s3.amazonaws.com/manually_added/blue.jpg',
     'http://song-maker-gallery.s3.amazonaws.com/manually_added/green.jpg',
     'http://song-maker-gallery.s3.amazonaws.com/manually_added/orange.jpg',
@@ -27,7 +31,6 @@ const tile = props => {
       border-radius: 20%;
     }
   `
-
 
   const anim_out = keyframes
 
@@ -56,7 +59,7 @@ const tile = props => {
 
 
   return (
-    <li className='lit'>
+    <li className={styles.lit}>
     <a href={props.st_arr[1]} target='_blank' rel='noopener noreferrer'>
       <Button>{props.st_arr[0]}</Button>
       </a>
