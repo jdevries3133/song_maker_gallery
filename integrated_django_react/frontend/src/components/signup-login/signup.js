@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import UsernamePassword from "./username_password";
 import styles from "./signup.module.css";
@@ -14,8 +15,9 @@ const signup = (props) => {
   return (
     <div>
       <h1>sign up!</h1>
-      <br />
-      <button>Already have an account? Sign in here!</button>
+      <Link to="/login">
+        <button>Already have an account? Sign in here!</button>
+      </Link>
       <br />
       <div className="description">
         <UsernamePassword

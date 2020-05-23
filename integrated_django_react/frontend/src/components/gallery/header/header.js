@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-
+import styles from "./header.module.css";
 import FormattedDescription from "./formatted_description";
 
 const header = (props) => {
@@ -7,7 +7,7 @@ const header = (props) => {
 
   return (
     <Fragment>
-      <div id="gallery_top">
+      <div className={styles.gallery_top} id="gallery_top">
         <h1>{props.title}</h1>
         <div className="description">
           <FormattedDescription desc_str={props.description} />

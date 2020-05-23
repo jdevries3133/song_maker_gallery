@@ -16,8 +16,8 @@ const formatted_description = (props) => {
           they are none the less as human and as meaningful as always.
         </p>
         <p>
-          Please enjoy this showcase of Sparta's upper elementary music lab
-          compositions. Our students' creativity truly knows no bounds
+          Please enjoy this showcase of our school's music lab compositions. Our
+          students' creativity truly knows no bounds
         </p>
       </Fragment>
     );

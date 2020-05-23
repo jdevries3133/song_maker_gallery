@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-:local button {
+.signup_button {
   height: 30px;
   margin-bottom: 50px;
   font-size: 1rem;

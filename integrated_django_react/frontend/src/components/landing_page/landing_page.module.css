@@ -21,3 +21,12 @@ h2 {
   padding: 30px;
   border-radius: 20px;
 }
+
+.button {
+  height: 4rem;
+}
+
+.space {
+  display: inline-block;
+  height: 2rem;
+}

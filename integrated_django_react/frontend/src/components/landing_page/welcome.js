@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import styles from "./landing_page.module.css";
 
@@ -53,10 +54,13 @@ const welcome = (props) => {
             <td>
               <h2>Below is a sample gallery.</h2>
               <br />
-              <button className={styles.button}>
-                <p>Click here to make</p>
-                <p>your own for free.</p>
-              </button>
+              <Link to="/signup">
+                <button>
+                  <span>Click here to make</span>
+                  <br />
+                  <span>your own for free.</span>
+                </button>
+              </Link>
             </td>
           </tr>
         </tbody>
