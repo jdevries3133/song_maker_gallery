@@ -22,12 +22,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('DJANGO_SECRET')
-'w5&!zhip7r3cgwu!+o0s&d$idaxo95c3=#v@04(7+p8+hm%26*' ## comprimised; change for production
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', 'jack', 'playlistr.us.to']
 
 
 # Application definition

@@ -1,17 +1,16 @@
-import React from "react";
+import React, { Fragment } from "react";
 
-import DefaultDescription from "./defaultDescription";
+import FormattedDescription from "./formatted_description";
 
 const header = (props) => {
   // CONDITIONALLY RENDER DEFAULT DESCRIPTION
 
   return (
-    (<div name="gallery_top" />),
-    (
-      <div>
+    <Fragment>
+      <div id="gallery_top">
         <h1>{props.title}</h1>
         <div className="description">
-          <DefaultDescription />
+          <FormattedDescription desc_str={props.description} />
           <p>
             <b>
               Hover over the picture of a students' work to see their name, and
@@ -20,7 +19,7 @@ const header = (props) => {
           </p>
         </div>
       </div>
-    )
+    </Fragment>
   );
 };
 

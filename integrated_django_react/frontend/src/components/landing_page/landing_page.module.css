@@ -1,0 +1,23 @@
+.div {
+  margin-bottom: 11rem;
+}
+
+.head {
+  font-size: 3rem;
+}
+
+.space_botm {
+  height: 20rem;
+}
+
+.table {
+  display: inline-block;
+  position: center;
+}
+
+h2 {
+  background-color: #94c732;
+  font-weight: 400;
+  padding: 30px;
+  border-radius: 20px;
+}

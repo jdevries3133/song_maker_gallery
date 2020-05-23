@@ -1,10 +1,11 @@
 .description {
   text-align: center;
   display: inline-block;
-  padding: 20px;
   max-width: 50rem;
+  min-width: 35rem;
   background: white;
-  box-shadow: 0px 3px 8px rgb(100,100,100); padding: 7px;
+  box-shadow: 0px 3px 8px rgb(100, 100, 100);
+  padding: 7px;
   border-radius: 20px;
 }
 
@@ -17,10 +18,21 @@ h1 {
   font-weight: 30px;
 }
 
-h2 {
+p {
+  text-align: justify;
+  padding: 0 20px 0 20px;
+}
+
+button {
   display: inline-block;
-  font-size: 50px;
-  background: white;
+  font-size: 1rem;
+  font-weight: bold;
   border-radius: 20px;
-  box-shadow: 0px 3px 8px rgb(100,100,100); padding: 7px;
+  height: 7rem;
+  background-color: #f7943e;
+  border-color: black;
+}
+
+button:hover {
+  background-color: white;
 }
