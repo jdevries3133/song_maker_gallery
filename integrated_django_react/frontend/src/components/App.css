@@ -18,6 +18,14 @@ h1 {
   font-weight: 30px;
 }
 
+h2 {
+  display: inline-block;
+  background-color: #94c732;
+  font-weight: 400;
+  padding: 30px;
+  border-radius: 20px;
+}
+
 p {
   text-align: justify;
   padding: 0 20px 0 20px;
@@ -35,4 +43,14 @@ button {
 
 button:hover {
   background-color: white;
+}
+
+input {
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.blanket {
+  /* a blanket to cover the page for the verification approval, and also for the donation thing */
 }

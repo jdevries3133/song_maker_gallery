@@ -1,0 +1,42 @@
+.par_just {
+  text-align: justify;
+  display: inline-block;
+}
+
+.upload {
+  display: inline-block;
+  font-size: 16px;
+  padding: 0 0 0 0;
+}
+
+.up_btn {
+  background-color: limegreen;
+}
+
+.restart_btn {
+  background-color: salmon;
+}
+
+.h1 {
+  font-size: 3rem;
+}
+
+.wide_input {
+  width: 50%;
+}
+
+.warning {
+  display: inline-block;
+  margin: auto;
+  color: #f44336;
+  max-width: 19rem;
+  border-color: #f44336;
+  border-width: 3px;
+  border-radius: 20px;
+  padding: 10px 60px 10px 60px;
+}
+
+.admin_tile {
+  max-width: 50%;
+  display: inline-block;
+}

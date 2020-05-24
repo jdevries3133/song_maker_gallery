@@ -37,10 +37,6 @@ class gallery extends Component {
   }
 }
 
-// const mapStateToProps = (state) => ({
-//   gallery: state.galleries[0],
-// });
-
 function mapStateToProps(state) {
   console.log("get from ", state.galleries.galleries[0]);
   const gallery = state.galleries.galleries[0];

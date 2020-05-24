@@ -14,6 +14,7 @@ import LandingPage from "./landing_page/landing_page";
 import SignUp from "./signup-login/signup";
 import Login from "./signup-login/login";
 import Gallery from "./gallery/gallery";
+import Teacher from "./teacher/teacher";
 
 class App extends Component {
   render() {
@@ -32,6 +33,9 @@ class App extends Component {
             </Route>
             <Route path="/gallery">
               <Gallery />
+            </Route>
+            <Route path="/teacher">
+              <Teacher />
             </Route>
           </Switch>
         </Router>

@@ -37,7 +37,7 @@ const welcome = (props) => {
                 <p>
                   <strong>This website</strong> is a simple way to share your
                   students' work with your whole community. I know that I have
-                  been taken aback by the creativity of many of the music lab
+                  been awestruck by the creativity of many of the music lab
                   compositions that my students have shared with me, and I am
                   sure that you feel the same.
                 </p>
@@ -58,7 +58,7 @@ const welcome = (props) => {
                 <button>
                   <span>Click here to make</span>
                   <br />
-                  <span>your own for free.</span>
+                  <span>your own free gallery.</span>
                 </button>
               </Link>
             </td>
