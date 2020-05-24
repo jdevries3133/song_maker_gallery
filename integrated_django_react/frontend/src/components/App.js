@@ -13,6 +13,7 @@ import store from "../store";
 import LandingPage from "./landing_page/landing_page";
 import SignUp from "./signup-login/signup";
 import Login from "./signup-login/login";
+import Gallery from "./gallery/gallery";
 
 class App extends Component {
   render() {
