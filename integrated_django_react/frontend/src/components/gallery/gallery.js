@@ -1,45 +1,24 @@
 import React, { Fragment, Component } from "react";
 
-import Header from "./header/header";
-import TileGrid from "./tilegrid/tilegrid";
+import GalleryBody from "./gal_body";
 
-import PropTypes from "prop-types";
 import { getGallery } from "../../actions/galleries";
 import { connect } from "react-redux";
 
-class Gallery extends Component {
+class gallery extends Component {
   state = {
-    title: "",
-    description: "",
-    data: [],
-    gallery: {},
+    url_ext: window.location.pathname.split("/")[2],
+    gallery: null,
   };
+
   componentDidMount() {
-    const url_ext = window.location.pathname.split("/")[2];
-    this.props.getGallery(url_ext);
+    console.log("ran");
+    this.props.getGallery(this.state.url_ext);
   }
-  handle(e) {
-    console.log(e);
-    this.setState({
-      s: e.target.value,
-    });
-  }
-  galleryBody() {
-    <Header title={this.state.title} description={this.state.description} />;
-    {
-      this.state.data.map((group) => (
-        <TileGrid data={group} key={group.slice(-1)[0]} />
-      ));
-    }
-  }
+
   render() {
-    console.log(this.state.gallery);
-    return (
-      <div>
-        {this.state.gallery === {} ? <h1>t</h1> : <h1>f</h1>}
-        <input onChange={(e) => this.handle(e)} />
-      </div>
-    );
+    console.log(this);
+    return <div>{this.state.gallery ? <h1>Loading</h1> : <p>none</p>}</div>;
   }
 }
 
@@ -47,4 +26,4 @@ const mapStateToProps = (state) => ({
   gallery: state.galleries[0],
 });
 
-export default connect(mapStateToProps, { getGallery })(Gallery);
+export default connect(mapStateToProps, { getGallery })(gallery);

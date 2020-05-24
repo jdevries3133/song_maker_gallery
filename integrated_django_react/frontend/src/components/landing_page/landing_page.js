@@ -10,11 +10,11 @@ const landing_page = (props) => {
     <div>
       <Welcome />
       <div className={styles.space} />
-      <Gallery
+      {/* <Gallery
         title={sample.default.title}
         description={sample.default.description}
         data={sample.default.data}
-      />
+      /> */}
     </div>
   );
 };
