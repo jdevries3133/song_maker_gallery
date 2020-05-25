@@ -1,0 +1,68 @@
+.par_just {
+  text-align: justify;
+  display: inline-block;
+  margin: 10px 0 10px 0;
+}
+
+.upload {
+  display: inline-block;
+  font-size: 16px;
+  padding: 0 0 0 0;
+}
+
+.up_btn {
+  background-color: limegreen;
+}
+
+.restart_btn {
+  background-color: salmon;
+}
+
+.wide_input {
+  width: 50%;
+}
+
+.warning {
+  display: inline-block;
+  margin: auto;
+  color: #f44336;
+  max-width: 19rem;
+  border-color: #f44336;
+  border-width: 3px;
+  border-radius: 20px;
+  padding: 10px 60px 10px 60px;
+}
+
+.admin_tile {
+  max-width: 50%;
+  display: inline-block;
+}
+
+.par_strong {
+  display: inline-block;
+  font-weight: bold;
+  color: darkmagenta;
+}
+
+.scroll_blanket {
+  border-radius: 20px 0 0 20px;
+}
+
+.blanket_table {
+  text-align: center;
+  margin: auto;
+}
+
+.doesThisLookGood {
+  background-color: #3432c761;
+}
+
+.large_button {
+  padding: 50px;
+  background-color: #ffc107;
+  border: 3px solid black;
+}
+
+.large_button:hover {
+  background-color: lightcoral;
+}

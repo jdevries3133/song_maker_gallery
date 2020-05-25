@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./teacher.module.css";
+import styles from "./add_gallery.module.css";
 
 const Verify = (props) => {
   var nameIndex = props.nameIndex;
@@ -21,7 +21,6 @@ const Verify = (props) => {
   if (typeof nameIndex === "number" && typeof linkIndex === "number") {
     filtered = props.csv.data.filter((row) => [row[nameIndex], row[linkIndex]]);
   } else {
-    // if (typeof nameIndex === "number" || typeof linkIndex === "number") {
     if (nameIndex == undefined) {
       return (
         <div className={`description blanket ${styles.scroll_blanket}`}>
@@ -35,7 +34,6 @@ const Verify = (props) => {
               <button
                 key={index}
                 onClick={() => {
-                  console.log(props);
                   props.indexHandler(index, "name");
                 }}
               >
@@ -71,47 +69,16 @@ const Verify = (props) => {
             onClick={(e) => props.restart(e)}
             className={`button ${styles.restart_btn}`}
           >
-            Restart
+            Discard and Start Over
           </button>
         </div>
       );
     }
   }
-  // else if (nameIndex === undefined && linkIndex === undefined) {
-  //   return (
-  //     <div className={`description blanket ${styles.scroll_blanket}`}>
-  //       <h2>Whoops!</h2>
-  //       <p>
-  //         Make sure your spreadsheet has header rows of "name," and "link," like
-  //         the example below!
-  //       </p>
-  //       <button
-  //         onClick={(e) => props.restart(e)}
-  //         className={`button ${styles.restart_btn}`}
-  //       >
-  //         Restart
-  //       </button>
-  //     </div>
-  //   );
-  // }
-  // if (typeof filtered == undefined) {
-  //   filtered = props.csv.data.filter((row) => {
-  //     return [row[nameIndex], row[linkIndex]];
-  //   });
-  // }
-  // if (
-  //   typeof filtered == undefined &&
-  //   typeof nameIndex == undefined &&
-  //   typeof linkIndex == undefined
-  // ) {
-  //   throw new Error(
-  //     "verify.js name and link index should be definied at this time, but they are not"
-  //   );
-  // }
   if (typeof filtered != undefined) {
     return (
       <div className={`description blanket ${styles.scroll_blanket}`}>
-        <h2>Does this look good?</h2>
+        <h2 className={styles.doesThisLookGood}>Does this look good?</h2>
         <h3>Group Name to Display:</h3>
         <input
           className={`${styles.input} ${styles.wide_input}`}
@@ -168,7 +135,7 @@ const Verify = (props) => {
           onClick={(e) => props.restart(e)}
           className={`button ${styles.restart_btn}`}
         >
-          Restart
+          Discard and Start Over
         </button>
       </div>
     );

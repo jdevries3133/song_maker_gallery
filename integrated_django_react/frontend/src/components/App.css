@@ -53,13 +53,13 @@ input {
 
 .blanket {
   position: fixed;
-  width: 1000px;
   height: 600px;
+  width: 1000px;
   top: 50%;
   left: 50%;
   margin-top: -300px;
-  margin-left: -500px;
-  background-color: lightgray;
+  margin-left: -402px;
+  background-color: #d9e6e8;
   border-radius: 20px;
   overflow-y: scroll;
   overflow-x: hidden;

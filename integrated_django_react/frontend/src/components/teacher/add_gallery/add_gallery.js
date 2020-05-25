@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import styles from "./teacher.module.css";
+import styles from "./add_gallery.module.css";
 
 const Add = (props) => {
   return (

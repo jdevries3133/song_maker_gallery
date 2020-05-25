@@ -1,14 +1,18 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { previewGallery } from "../../actions/previewGallery";
 import Papa from "papaparse";
 import styles from "./teacher.module.css";
-import Add from "./add_gallery";
+import Add from "./add_gallery/add_gallery";
+import Verify from "./add_gallery/verify";
+import Staged from "./add_gallery/staged";
 import Delete from "./delete_gallery";
-import Verify from "./verify";
-import Staged from "./staged";
 
 class Teacher extends Component {
   state = {
     file: "",
+    titleValue: "",
+    stagedGroups: [...this.props.stagedGroups],
   };
 
   fileSelectHandler = (event) => {
@@ -102,13 +106,16 @@ class Teacher extends Component {
 
   unStageGroupHandler = (group_to_delete) => {
     const groups = [...this.state.stagedGroups];
-    let updated_groups;
-    for (let i = 0; i < groups; i++) {
-      const groupname = groups[i].pop();
-      if (groupname === group_to_delete) {
-        updated_groups = groups.slice(i);
-      }
+    if (groups.length <= 1) {
+      this.setState({ stagedGroups: [] });
+      return;
     }
+    const updated_groups = groups.filter((group) => {
+      if (group.slice(-1) != group_to_delete) {
+        return group;
+      }
+    });
+    console.log(updated_groups);
     this.setState({
       stagedGroups: updated_groups,
     });
@@ -126,8 +133,16 @@ class Teacher extends Component {
     }
   };
 
+  titleInputHandler = (e) => {
+    this.setState({ titleValue: e.target.value });
+  };
+
   inputConfirmation = () => {
-    // fire axios request
+    this.props.previewGallery(
+      this.state.titleValue,
+      "",
+      this.state.stagedGroups
+    );
   };
 
   render() {
@@ -148,11 +163,14 @@ class Teacher extends Component {
         />
       );
     }
-    if (this.state.stagedGroups) {
+    if (this.state.stagedGroups.length > 0) {
       var staged = (
         <Staged
           unStageGroupHandler={this.unStageGroupHandler}
           groups={this.state.stagedGroups}
+          previewGallery={this.inputConfirmation}
+          titleInput={this.titleInputHandler}
+          titleValue={this.state.titleValue}
         />
       );
     } else {
@@ -166,7 +184,7 @@ class Teacher extends Component {
         {blanket}
         <table className={styles.table}>
           <tbody>
-            <tr>
+            <tr style={{ display: "inline" }}>
               <td valign="top" className={`description ${styles.narrow_desc}`}>
                 <Add
                   file_selected={this.fileSelectHandler}
@@ -193,4 +211,8 @@ class Teacher extends Component {
   }
 }
 
-export default Teacher;
+const mapStateToProps = (state) => {
+  return { stagedGroups: state.preview.array };
+};
+
+export default connect(mapStateToProps, { previewGallery })(Teacher);
