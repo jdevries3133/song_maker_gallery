@@ -1,0 +1,25 @@
+:local p {
+  text-align: center;
+}
+
+.signup_button {
+  height: 30px;
+  margin-bottom: 50px;
+  font-size: 1rem;
+}
+
+.sign_up {
+  font-size: 24px;
+  height: auto;
+  line-height: 40px;
+  padding: 10px 5px 10px 5px;
+  background-color: lightseagreen;
+}
+
+.met {
+  color: green;
+}
+
+.loginButtonSpace {
+  margin-top: 20px;
+}

@@ -22,7 +22,7 @@ class Gallery(models.Model):
         blank=True,
         primary_key=True,
     )
-    description = models.TextField(blank=True)
+    description = models.TextField()
     api_obj = JSONField(default=list)
 
     def save(self, *args, **kwargs):

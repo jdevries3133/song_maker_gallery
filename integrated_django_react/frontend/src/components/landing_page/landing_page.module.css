@@ -1,0 +1,25 @@
+.div {
+  margin-bottom: 11rem;
+}
+
+.head {
+  font-size: 3rem;
+}
+
+.space_botm {
+  height: 20rem;
+}
+
+.table {
+  display: inline-block;
+  position: center;
+}
+
+.button {
+  height: 4rem;
+}
+
+.space {
+  display: inline-block;
+  height: 2rem;
+}

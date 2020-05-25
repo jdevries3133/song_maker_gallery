@@ -21,12 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w5&!zhip7r3cgwu!+o0s&d$idaxo95c3=#v@04(7+p8+hm%26*'
+SECRET_KEY = os.getenv('DJANGO_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', 'jack', 'playlistr.us.to', 'jack.fios-router.home:1100']
 
 
 # Application definition
@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_mysql',
+    'rest_framework',
 
+    'frontend',
     'public_provider',
     'teacher_admin',
 
@@ -90,8 +92,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'smf2',
-        'USER': 'jack',
-        'PASSWORD': os.getenv('MYSQL_JACK_PASS'),
+        'USER': os.getenv('MYSQL_USER'),
+        'PASSWORD': os.getenv('MYSQL_USER_PASS'),
         'HOST': 'localhost',
         'PORT': 3306,
         'OPTIONS': {
