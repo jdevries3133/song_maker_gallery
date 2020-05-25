@@ -8,6 +8,7 @@ import Verify from "./verify";
 class Teacher extends Component {
   state = {
     file: "",
+    stagedGroups: [],
   };
 
   fileSelectHandler = (event) => {
@@ -72,6 +73,19 @@ class Teacher extends Component {
     });
   };
 
+  groupValidatedHandler = (verifiedArray) => {
+    console.log(verifiedArray);
+    let group_arr = verifiedArray.slice(1);
+    const group_name = this.state.groupname;
+    const stage = group_arr.push(group_name);
+    this.clearFileHandler();
+    this.setState((prevState, props) => {
+      return {
+        stagedGroups: [prevState.stagedGroups, stage],
+      };
+    });
+  };
+
   inputConfirmation = () => {
     // fire axios request
   };
@@ -82,15 +96,17 @@ class Teacher extends Component {
 
   render() {
     if (this.state.verifyUpload) {
-      //TODO: ADD ERROR BOUNDARY FOR BAD FILES
+      //TODO: ADD ERROR BOUNDARY FOR BAD FILE TYPES
       var blanket = (
-        <div className="blanket">
-          <Verify
-            csv={this.state.uploadedContent}
-            onConfirm={this.inputConfirmation}
-            onRedact={this.redactVerification}
-          />
-        </div>
+        <Verify
+          csv={this.state.uploadedContent}
+          onConfirm={this.inputConfirmation}
+          onRedact={this.redactVerification}
+          restart={this.clearFileHandler}
+          groupname={this.state.groupname}
+          groupNameChange={this.groupNameHandler}
+          validatedHandler={this.groupValidatedHandler}
+        />
       );
     }
     return (
@@ -99,10 +115,10 @@ class Teacher extends Component {
           <h1 className={styles.h1}>Gallery Management Console</h1>
         </div>
         {blanket}
-        <table>
+        <table className={styles.table}>
           <tbody>
             <tr>
-              <td valign="top" className="description">
+              <td valign="top" className={`description ${styles.narrow_desc}`}>
                 <Add
                   file_selected={this.fileSelectHandler}
                   file={this.state.file}
@@ -116,7 +132,7 @@ class Teacher extends Component {
                 />
               </td>
               <td width="20"></td>
-              <td valign="top" className="description">
+              <td valign="top" className={`description ${styles.narrow_desc}`}>
                 <Delete />
               </td>
             </tr>

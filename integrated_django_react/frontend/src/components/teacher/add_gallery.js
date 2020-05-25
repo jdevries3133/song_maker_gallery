@@ -27,7 +27,22 @@ const Add = (props) => {
         monolith page to scroll through. Add groups by uploading CSV files of
         names and links one at a time!
       </p>
-      <p className={styles.par_just}>Upload your spreadsheet</p>
+      {props.file ? (
+        <Fragment>
+          <p className={styles.par_strong}>
+            Customize the name of this group as you would like it to be
+            displayed in the gallery.
+          </p>
+          <input
+            className={`${styles.input} ${styles.wide_input}`}
+            value={props.groupname}
+            onChange={(e) => props.groupNameChangeHandler(e)}
+          />
+        </Fragment>
+      ) : null}
+      <br />
+      <p className={styles.par_just}>Upload one spreadsheet per group.</p>
+      <br />
       <input
         className={styles.upload}
         type="file"
@@ -63,20 +78,6 @@ const Add = (props) => {
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-        </Fragment>
-      ) : null}
-      {props.file ? (
-        <Fragment>
-          <p>
-            You can customize the name of each group, but we'll use the filename
-            as the default groupname. If you're happy with the groupname below,
-            leave it; otherwise, change it to whatever you like!
-          </p>
-          <input
-            className={`${styles.input} ${styles.wide_input}`}
-            value={props.groupname}
-            onChange={(e) => props.groupNameChangeHandler(e)}
-          />
         </Fragment>
       ) : null}
     </div>

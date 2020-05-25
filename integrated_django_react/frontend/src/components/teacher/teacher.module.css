@@ -1,6 +1,7 @@
 .par_just {
   text-align: justify;
   display: inline-block;
+  margin: 10px 0 10px 0;
 }
 
 .upload {
@@ -18,7 +19,7 @@
 }
 
 .h1 {
-  font-size: 3rem;
+  font-size: 2.6rem;
 }
 
 .wide_input {
@@ -39,4 +40,27 @@
 .admin_tile {
   max-width: 50%;
   display: inline-block;
+}
+
+.par_strong {
+  display: inline-block;
+  font-weight: bold;
+  color: darkmagenta;
+}
+
+.table {
+  width: 100%;
+}
+
+.narrow_desc {
+  min-width: 25rem;
+}
+
+/* .scroll_blanket {
+  border-radius: 20px 0 0 20px;
+} */
+
+.blanket_table {
+  text-align: center;
+  margin: auto;
 }

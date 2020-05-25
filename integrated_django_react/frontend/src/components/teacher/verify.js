@@ -6,7 +6,6 @@ const Verify = (props) => {
     filteredData: [],
     nameIndex: undefined,
     linkIndex: undefined,
-    firstCycle: true,
   });
   useEffect(() => {
     for (let i = 0; i < props.csv.data[0].length; i++) {
@@ -29,13 +28,9 @@ const Verify = (props) => {
       filteredData: filtered,
       nameIndex: nameIndex,
       linkIndex: linkIndex,
-      firstCycle: false,
     });
   }, [props.csv]);
 
-  if (state.firstCycle) {
-    return <h1>Loading</h1>;
-  }
   if (state.nameIndex == undefined) {
     return (
       <Fragment>
@@ -71,25 +66,67 @@ const Verify = (props) => {
       </Fragment>
     );
   }
-
   return (
-    <div className="blanket">
+    <div className={`description blanket ${styles.scroll_blanket}`}>
       <h2>Does this look good?</h2>
-      <table>
-        <tbody>
+      <h3>Group Name to Display:</h3>
+      <input
+        className={`${styles.input} ${styles.wide_input}`}
+        value={props.groupname}
+        onChange={(e) => props.groupNameChange(e)}
+      />
+      <br />
+      <table className={styles.blanket_table}>
+        <thead>
           <tr>
             <td>Name</td>
             <td>Link</td>
           </tr>
-          {state.filteredData.map((row) => (
-            <tr>
-              <td>{row[state.nameIndex]}</td>
-              <td>{row[state.linkIndex]}</td>
-            </tr>
-          ))}
+        </thead>
+        <tbody>
+          {
+            // mmmmm spaghetti
+            state.filteredData.slice(1).map((row, index) => {
+              var name_arr = row[state.nameIndex].split(" ");
+
+              // try for last initial
+              if (name_arr.length > 1) {
+                const last_initial = name_arr[name_arr.length - 1][0];
+                // uh oh didn't think of trailing whitespace
+                if (
+                  last_initial != undefined ||
+                  last_initial === "" ||
+                  last_initial === " "
+                ) {
+                  var display = name_arr[0] + " " + last_initial + ".";
+                } else {
+                  var display = name_arr[0];
+                }
+              } else {
+                var display = name_arr[0];
+              }
+              return (
+                <tr key={index}>
+                  <td align="left">{display}</td>
+                  <td align="left">{row[state.linkIndex].slice(0, 30)}...</td>
+                </tr>
+              );
+            })
           }
         </tbody>
       </table>
+      <button
+        //onClick={props.validatedHandler(...state.filteredData)}
+        className={`button ${styles.up_btn}`}
+      >
+        Add Group
+      </button>
+      <button
+        onClick={(e) => props.restart(e)}
+        className={`button ${styles.restart_btn}`}
+      >
+        Restart
+      </button>
     </div>
   );
 };
