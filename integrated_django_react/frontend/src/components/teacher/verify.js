@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
+import React, { useState } from "react";
 import styles from "./teacher.module.css";
 
 const Verify = (props) => {
-  var nameIndex;
-  var linkIndex;
+  var nameIndex = props.nameIndex;
+  var linkIndex = props.linkIndex;
   var filtered;
   for (let i = 0; i < props.csv.data[0].length; i++) {
     if (
@@ -20,7 +20,8 @@ const Verify = (props) => {
   }
   if (typeof nameIndex === "number" && typeof linkIndex === "number") {
     filtered = props.csv.data.filter((row) => [row[nameIndex], row[linkIndex]]);
-  } else if (typeof nameIndex === "number" || typeof linkIndex === "number") {
+  } else {
+    // if (typeof nameIndex === "number" || typeof linkIndex === "number") {
     if (nameIndex == undefined) {
       return (
         <div className={`description blanket ${styles.scroll_blanket}`}>
@@ -30,20 +31,24 @@ const Verify = (props) => {
             you select the column that contains <b>names?</b>
           </p>
           {props.csv.data[0].map((row, index) => {
-            <button
-              onClick={() => {
-                nameIndex = index;
-              }}
-            >
-              {row}
-            </button>;
-            <button
-              onClick={(e) => props.restart(e)}
-              className={`button ${styles.restart_btn}`}
-            >
-              Restart
-            </button>;
+            return (
+              <button
+                key={index}
+                onClick={() => {
+                  console.log(props);
+                  props.indexHandler(index, "name");
+                }}
+              >
+                {row}
+              </button>
+            );
           })}
+          <button
+            onClick={(e) => props.restart(e)}
+            className={`button ${styles.restart_btn}`}
+          >
+            Restart
+          </button>
         </div>
       );
     } else if (linkIndex == undefined) {
@@ -54,9 +59,14 @@ const Verify = (props) => {
             It looks like your spreadsheet didn't have a header of "link," can
             you select the column that contains <b>links?</b>
           </p>
-          {props.csv.data[0].map((row, index) => {
-            <button onClick={() => (linkIndex = index)}>{row}</button>;
-          })}
+          {props.csv.data[0].map((row, index) => (
+            <button
+              key={index}
+              onClick={() => props.indexHandler(index, "link")}
+            >
+              {row}
+            </button>
+          ))}
           <button
             onClick={(e) => props.restart(e)}
             className={`button ${styles.restart_btn}`}
@@ -66,37 +76,38 @@ const Verify = (props) => {
         </div>
       );
     }
-  } else if (nameIndex === undefined && linkIndex === undefined) {
-    return (
-      <div className={`description blanket ${styles.scroll_blanket}`}>
-        <h2>Whoops!</h2>
-        <p>
-          Make sure your spreadsheet has header rows of "name," and "link," like
-          the example below!
-        </p>
-        <button
-          onClick={(e) => props.restart(e)}
-          className={`button ${styles.restart_btn}`}
-        >
-          Restart
-        </button>
-      </div>
-    );
   }
-  if (typeof filtered == undefined) {
-    filtered = props.csv.data.filter((row) => {
-      return [row[nameIndex], row[linkIndex]];
-    });
-  }
-  if (
-    typeof filtered == undefined &&
-    typeof nameIndex == undefined &&
-    typeof linkIndex == undefined
-  ) {
-    throw new Error(
-      "verify.js name and link index should be definied at this time, but they are not"
-    );
-  }
+  // else if (nameIndex === undefined && linkIndex === undefined) {
+  //   return (
+  //     <div className={`description blanket ${styles.scroll_blanket}`}>
+  //       <h2>Whoops!</h2>
+  //       <p>
+  //         Make sure your spreadsheet has header rows of "name," and "link," like
+  //         the example below!
+  //       </p>
+  //       <button
+  //         onClick={(e) => props.restart(e)}
+  //         className={`button ${styles.restart_btn}`}
+  //       >
+  //         Restart
+  //       </button>
+  //     </div>
+  //   );
+  // }
+  // if (typeof filtered == undefined) {
+  //   filtered = props.csv.data.filter((row) => {
+  //     return [row[nameIndex], row[linkIndex]];
+  //   });
+  // }
+  // if (
+  //   typeof filtered == undefined &&
+  //   typeof nameIndex == undefined &&
+  //   typeof linkIndex == undefined
+  // ) {
+  //   throw new Error(
+  //     "verify.js name and link index should be definied at this time, but they are not"
+  //   );
+  // }
   if (typeof filtered != undefined) {
     return (
       <div className={`description blanket ${styles.scroll_blanket}`}>

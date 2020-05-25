@@ -12,12 +12,13 @@ const staged = (props) => {
         <table>
           <thead>
             <tr>
-              <td>Staged Groups</td>
+              <td align="center">Staged Groups</td>
             </tr>
           </thead>
           <tbody>
             {props.groups.map((group) => (
               <StagedGroup
+                key={group.join("").slice(0, 20)}
                 unStageGroupHandler={props.unStageGroupHandler}
                 group={group}
               />

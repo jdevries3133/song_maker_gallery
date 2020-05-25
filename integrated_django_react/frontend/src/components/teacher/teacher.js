@@ -74,13 +74,13 @@ class Teacher extends Component {
   };
 
   groupValidatedHandler = (verifiedArray) => {
-    const group_arr = verifiedArray.slice(1);
-    const group_name = this.state.groupname; // some kinda weird pointer error here
+    const group_arr = [...verifiedArray.slice(1)];
+    const group_name = this.state.groupname;
     const stage = [...group_arr, group_name];
     this.setState((prevState) => {
       if (prevState.stagedGroups) {
         return {
-          stagedGroups: [prevState.stagedGroups, stage],
+          stagedGroups: [...prevState.stagedGroups, stage],
           file: "",
           warn: undefined,
           data: undefined,
@@ -102,23 +102,32 @@ class Teacher extends Component {
 
   unStageGroupHandler = (group_to_delete) => {
     const groups = [...this.state.stagedGroups];
+    let updated_groups;
     for (let i = 0; i < groups; i++) {
       const groupname = groups[i].pop();
       if (groupname === group_to_delete) {
-        groups.slice(i);
+        updated_groups = groups.slice(i);
       }
     }
     this.setState({
-      stagedGroups: groups,
+      stagedGroups: updated_groups,
     });
+  };
+
+  handleVerificationIndicies = (value, flag) => {
+    if (flag === "name") {
+      this.setState({
+        nameIndex: value,
+      });
+    } else if (flag === "link") {
+      this.setState({ linkIndex: value });
+    } else {
+      console.warn("invalid index flag");
+    }
   };
 
   inputConfirmation = () => {
     // fire axios request
-  };
-
-  redactVerification = () => {
-    // modify state to back tf up
   };
 
   render() {
@@ -133,6 +142,9 @@ class Teacher extends Component {
           groupname={this.state.groupname}
           groupNameChange={this.groupNameHandler}
           validatedHandler={this.groupValidatedHandler}
+          nameIndex={this.state.nameIndex}
+          linkIndex={this.state.linkIndex}
+          indexHandler={this.handleVerificationIndicies}
         />
       );
     }
