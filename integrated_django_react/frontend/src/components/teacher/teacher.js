@@ -4,11 +4,11 @@ import styles from "./teacher.module.css";
 import Add from "./add_gallery";
 import Delete from "./delete_gallery";
 import Verify from "./verify";
+import Staged from "./staged";
 
 class Teacher extends Component {
   state = {
     file: "",
-    stagedGroups: [],
   };
 
   fileSelectHandler = (event) => {
@@ -74,15 +74,42 @@ class Teacher extends Component {
   };
 
   groupValidatedHandler = (verifiedArray) => {
-    console.log(verifiedArray);
-    let group_arr = verifiedArray.slice(1);
-    const group_name = this.state.groupname;
-    const stage = group_arr.push(group_name);
-    this.clearFileHandler();
-    this.setState((prevState, props) => {
-      return {
-        stagedGroups: [prevState.stagedGroups, stage],
-      };
+    const group_arr = verifiedArray.slice(1);
+    const group_name = this.state.groupname; // some kinda weird pointer error here
+    const stage = [...group_arr, group_name];
+    this.setState((prevState) => {
+      if (prevState.stagedGroups) {
+        return {
+          stagedGroups: [prevState.stagedGroups, stage],
+          file: "",
+          warn: undefined,
+          data: undefined,
+          groupname: undefined,
+          verifyUpload: false,
+        };
+      } else {
+        return {
+          stagedGroups: [stage],
+          file: "",
+          warn: undefined,
+          data: undefined,
+          groupname: undefined,
+          verifyUpload: false,
+        };
+      }
+    });
+  };
+
+  unStageGroupHandler = (group_to_delete) => {
+    const groups = [...this.state.stagedGroups];
+    for (let i = 0; i < groups; i++) {
+      const groupname = groups[i].pop();
+      if (groupname === group_to_delete) {
+        groups.slice(i);
+      }
+    }
+    this.setState({
+      stagedGroups: groups,
     });
   };
 
@@ -108,6 +135,16 @@ class Teacher extends Component {
           validatedHandler={this.groupValidatedHandler}
         />
       );
+    }
+    if (this.state.stagedGroups) {
+      var staged = (
+        <Staged
+          unStageGroupHandler={this.unStageGroupHandler}
+          groups={this.state.stagedGroups}
+        />
+      );
+    } else {
+      var staged;
     }
     return (
       <div>
@@ -138,6 +175,7 @@ class Teacher extends Component {
             </tr>
           </tbody>
         </table>
+        {staged}
       </div>
     );
   }

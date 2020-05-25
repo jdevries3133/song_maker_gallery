@@ -54,13 +54,13 @@ const Add = (props) => {
         onClick={() => props.uploadRequest()}
         className={`button ${styles.up_btn}`}
       >
-        Upload
+        Next
       </button>
       <button
         onClick={(e) => props.clearFileHandler(e)}
         className={`button ${styles.restart_btn}`}
       >
-        Restart
+        Clear File
       </button>
       {props.warn ? (
         <Fragment>
