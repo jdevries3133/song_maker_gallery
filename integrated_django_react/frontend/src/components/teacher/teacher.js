@@ -62,6 +62,7 @@ class Teacher extends Component {
       warn: undefined,
       data: undefined,
       groupname: undefined,
+      verifyUpload: false,
     });
   };
 
