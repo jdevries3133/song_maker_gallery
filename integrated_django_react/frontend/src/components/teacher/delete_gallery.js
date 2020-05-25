@@ -5,11 +5,11 @@ const Delete = (props) => {
   return (
     <Fragment>
       <h3>Delete a Gallery</h3>
-      <span>Your Galleries</span>
+      <p>Your Galleries</p>
       <table>
         <tbody>
           <tr>
-            <p>Galleries will go here some day</p>
+            <td>Galleries will go here some day</td>
           </tr>
         </tbody>
       </table>

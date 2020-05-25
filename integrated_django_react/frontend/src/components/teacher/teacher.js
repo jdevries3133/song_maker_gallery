@@ -80,20 +80,24 @@ class Teacher extends Component {
   };
 
   render() {
-    let verifyBlanket = this.props.verifyUpload ? (
-      <div className="blanket">
-        <Verify
-          csv={this.state.uploadedContent}
-          onConfirm={this.inputConfirmation}
-          onRedact={this.redactVerification}
-        />
-      </div>
-    ) : null;
+    if (this.state.verifyUpload) {
+      //TODO: ADD ERROR BOUNDARY FOR BAD FILES
+      var blanket = (
+        <div className="blanket">
+          <Verify
+            csv={this.state.uploadedContent}
+            onConfirm={this.inputConfirmation}
+            onRedact={this.redactVerification}
+          />
+        </div>
+      );
+    }
     return (
       <div>
         <div>
           <h1 className={styles.h1}>Gallery Management Console</h1>
         </div>
+        {blanket}
         <table>
           <tbody>
             <tr>

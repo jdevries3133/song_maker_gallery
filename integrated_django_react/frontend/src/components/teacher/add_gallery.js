@@ -49,6 +49,7 @@ const Add = (props) => {
       </button>
       {props.warn ? (
         <Fragment>
+          <br />
           <p className={styles.warning}>
             You may only upload a csv file. At this time, we do not accept Excel
             files, or any other file format. I have some videos below that might

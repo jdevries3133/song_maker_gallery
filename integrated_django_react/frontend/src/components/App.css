@@ -52,5 +52,7 @@ input {
 }
 
 .blanket {
-  /* a blanket to cover the page for the verification approval, and also for the donation thing */
+  position: fixed;
+  top: 40px;
+  margin: auto;
 }
