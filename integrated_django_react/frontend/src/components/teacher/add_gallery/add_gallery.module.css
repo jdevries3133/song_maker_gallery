@@ -22,6 +22,14 @@
   width: 50%;
 }
 
+.desc_input {
+  font-size: 19px;
+  line-height: 1.5;
+  box-shadow: 1px 1px 1px #999;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 .warning {
   display: inline-block;
   margin: auto;

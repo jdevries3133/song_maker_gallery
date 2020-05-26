@@ -5,7 +5,7 @@ const formatted_description = (props) => {
   // Otherwise, render the default description.
 
   if (props.desc_str) {
-    const arr = props.desc_str.split("\n");
+    const arr = props.desc_str.split("\\n");
     return arr.map((par, index) => <p key={index}>{par}</p>);
   } else {
     return (

@@ -24,6 +24,7 @@ class Gallery(models.Model):
     )
     description = models.TextField()
     api_obj = JSONField(default=list)
+    needs_screenshot = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         self.url_extension = self.title.lower().replace(' ', '-')

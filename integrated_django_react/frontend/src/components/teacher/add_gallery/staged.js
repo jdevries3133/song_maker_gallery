@@ -16,10 +16,22 @@ const staged = (props) => {
           value={props.titleValue}
           onChange={(e) => props.titleInput(e)}
         />
-        <table>
+        <h3>Gallery Name:</h3>
+        <p>
+          You may use this default description, or change it to whatever you
+          prefer.
+        </p>
+        <textarea
+          className={styles.desc_input}
+          cols="80"
+          rows="15"
+          value={props.descriptionValue}
+          onChange={(e) => props.descriptionInput(e)}
+        />
+        <table style={{ marginTop: "15px" }}>
           <thead>
             <tr>
-              <td align="center">Staged Groups</td>
+              <td colSpan="3">Staged Groups</td>
             </tr>
           </thead>
           <tbody>
@@ -34,15 +46,13 @@ const staged = (props) => {
         </table>
       </div>
       <br />
-      <Link to={{ pathname: "/gallery-preview" }}>
-        <button
-          className={styles.large_button}
-          onClick={() => props.previewGallery()}
-        >
-          <p>Preview Gallery</p>
-          <p>(Once all your groups are staged)</p>
-        </button>
-      </Link>
+      <button
+        className={styles.large_button}
+        onClick={() => props.previewGallery()}
+      >
+        <p>Create Gallery</p>
+        <p>(Once all of your groups are staged)</p>
+      </button>
     </div>
   );
 };

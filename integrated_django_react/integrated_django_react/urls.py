@@ -18,6 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('api/galleries/get/', include('public_provider.urls')),
+    path('api/galleries/post/', include('teacher_admin.urls')),
     path('admin/', admin.site.urls),
     path('gallery/', include('frontend.urls')),
     path('', include('frontend.urls')),

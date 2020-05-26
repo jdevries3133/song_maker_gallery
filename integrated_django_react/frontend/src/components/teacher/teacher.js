@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { previewGallery, apiGallery } from "../../actions/previewGallery";
+import { postGallery } from "../../actions/user";
 import Papa from "papaparse";
 import styles from "./teacher.module.css";
 import Add from "./add_gallery/add_gallery";
@@ -12,7 +12,9 @@ class Teacher extends Component {
   state = {
     file: "",
     titleValue: "",
-    stagedGroups: this.props.stagedGroups,
+    stagedGroups: [],
+    descriptionValue:
+      "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds",
   };
 
   fileSelectHandler = (event) => {
@@ -137,45 +139,17 @@ class Teacher extends Component {
     this.setState({ titleValue: e.target.value });
   };
 
-  inputConfirmation = () => {
-    this.props.apiGallery({ api_obj: this.state.stagedGroups });
-    console.log(this.state.stagedGroups);
-    var presentationalGroups = [];
-    const newArr = this.state.stagedGroups.map((item) => {
-      console.log("indic");
-      const groupBody = item.slice(0, -1);
-      console.log("body", groupBody);
-      const newGr = groupBody.map((row) => {
-        var name_arr = row[0].split(" ");
-        // try for last initial
-        if (name_arr.length > 1) {
-          const last_initial = name_arr[name_arr.length - 1][0];
-          // uh oh didn't think of trailing whitespace
-          if (
-            last_initial != undefined ||
-            last_initial === "" ||
-            last_initial === " "
-          ) {
-            var display = name_arr[0] + " " + last_initial + ".";
-          } else {
-            var display = name_arr[0];
-          }
-        } else {
-          var display = name_arr[0];
-        }
-        return [
-          display,
-          row[1],
-          "https://song-maker-gallery.s3.amazonaws.com/manually_added/Placeholder.png",
-        ];
-      });
-      return newGr;
+  descriptionInputHandler = (e) => {
+    this.setState({
+      descriptionValue: e.target.value,
     });
-    console.log("newarr", newArr);
-    this.props.previewGallery({
+  };
+
+  inputConfirmation = () => {
+    this.props.postGallery({
       title: this.state.titleValue,
-      description: "",
-      array: newArr,
+      description: this.state.descriptionValue,
+      api_obj: this.state.stagedGroups,
     });
   };
 
@@ -205,6 +179,8 @@ class Teacher extends Component {
           previewGallery={this.inputConfirmation}
           titleInput={this.titleInputHandler}
           titleValue={this.state.titleValue}
+          descriptionInput={this.descriptionInputHandler}
+          descriptionValue={this.state.descriptionValue}
         />
       );
     } else {
@@ -245,10 +221,4 @@ class Teacher extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { stagedGroups: state.apiGallery };
-};
-
-export default connect(mapStateToProps, { apiGallery, previewGallery })(
-  Teacher
-);
+export default connect(null, { postGallery })(Teacher);

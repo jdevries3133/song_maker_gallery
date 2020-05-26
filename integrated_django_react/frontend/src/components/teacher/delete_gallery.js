@@ -4,12 +4,11 @@ import styles from "./teacher.module.css";
 const Delete = (props) => {
   return (
     <Fragment>
-      <h3>Delete a Gallery</h3>
-      <p>Your Galleries</p>
-      <table>
+      <h3>Your Galleries</h3>
+      <table style={{ margin: "auto", paddingBottom: "20px" }}>
         <tbody>
           <tr>
-            <td>Galleries will go here some day</td>
+            <td>Your galleries will go here some day</td>
           </tr>
         </tbody>
       </table>

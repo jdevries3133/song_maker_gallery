@@ -38,9 +38,6 @@ class App extends Component {
             <Route path="/teacher">
               <Teacher />
             </Route>
-            <Route path="/gallery-preview">
-              <Preview />
-            </Route>
           </Switch>
         </Router>
       </Provider>
