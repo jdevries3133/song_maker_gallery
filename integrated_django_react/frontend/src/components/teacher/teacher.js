@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { previewGallery } from "../../actions/previewGallery";
+import { previewGallery, apiGallery } from "../../actions/previewGallery";
 import Papa from "papaparse";
 import styles from "./teacher.module.css";
 import Add from "./add_gallery/add_gallery";
@@ -12,7 +12,7 @@ class Teacher extends Component {
   state = {
     file: "",
     titleValue: "",
-    stagedGroups: [...this.props.stagedGroups],
+    stagedGroups: this.props.stagedGroups,
   };
 
   fileSelectHandler = (event) => {
@@ -138,11 +138,45 @@ class Teacher extends Component {
   };
 
   inputConfirmation = () => {
-    this.props.previewGallery(
-      this.state.titleValue,
-      "",
-      this.state.stagedGroups
-    );
+    this.props.apiGallery({ api_obj: this.state.stagedGroups });
+    console.log(this.state.stagedGroups);
+    var presentationalGroups = [];
+    const newArr = this.state.stagedGroups.map((item) => {
+      console.log("indic");
+      const groupBody = item.slice(0, -1);
+      console.log("body", groupBody);
+      const newGr = groupBody.map((row) => {
+        var name_arr = row[0].split(" ");
+        // try for last initial
+        if (name_arr.length > 1) {
+          const last_initial = name_arr[name_arr.length - 1][0];
+          // uh oh didn't think of trailing whitespace
+          if (
+            last_initial != undefined ||
+            last_initial === "" ||
+            last_initial === " "
+          ) {
+            var display = name_arr[0] + " " + last_initial + ".";
+          } else {
+            var display = name_arr[0];
+          }
+        } else {
+          var display = name_arr[0];
+        }
+        return [
+          display,
+          row[1],
+          "https://song-maker-gallery.s3.amazonaws.com/manually_added/Placeholder.png",
+        ];
+      });
+      return newGr;
+    });
+    console.log("newarr", newArr);
+    this.props.previewGallery({
+      title: this.state.titleValue,
+      description: "",
+      array: newArr,
+    });
   };
 
   render() {
@@ -212,7 +246,9 @@ class Teacher extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { stagedGroups: state.preview.array };
+  return { stagedGroups: state.apiGallery };
 };
 
-export default connect(mapStateToProps, { previewGallery })(Teacher);
+export default connect(mapStateToProps, { apiGallery, previewGallery })(
+  Teacher
+);
