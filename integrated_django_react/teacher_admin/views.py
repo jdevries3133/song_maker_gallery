@@ -13,7 +13,6 @@ def post(request):
         description=request.data['description'],
         api_obj=request.data['api_obj'],
     )
-    print(dir(new_obj))
     serializer = GalleryPostSerializer(new_obj, many=False)
 
     return Response(serializer.data, status=status.HTTP_201_CREATED)

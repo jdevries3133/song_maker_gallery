@@ -63,7 +63,7 @@ class Teacher extends Component {
     });
   };
 
-  clearFileHandler = () => {
+  resetFormHandler = () => {
     this.setState({
       file: "",
       warn: undefined,
@@ -161,7 +161,7 @@ class Teacher extends Component {
           csv={this.state.uploadedContent}
           onConfirm={this.inputConfirmation}
           onRedact={this.redactVerification}
-          restart={this.clearFileHandler}
+          restart={this.resetFormHandler}
           groupname={this.state.groupname}
           groupNameChange={this.groupNameHandler}
           validatedHandler={this.groupValidatedHandler}
@@ -195,21 +195,21 @@ class Teacher extends Component {
         <table className={styles.table}>
           <tbody>
             <tr style={{ display: "inline" }}>
-              <td valign="top" className={`description ${styles.narrow_desc}`}>
+              <td width="60%" valign="top" className={styles.narrow_desc}>
                 <Add
                   file_selected={this.fileSelectHandler}
                   file={this.state.file}
                   clearFileHandler={this.clearFileHandler}
                   groupname={this.state.groupname}
                   groupNameChangeHandler={this.groupNameHandler}
-                  uploadRequest={this.csvHandler}
+                  uploadRequest={this.csvHandlerrr}
                   warn={this.state.warn}
                   verifyContent={this.state.verifyContent}
                   uploadedContent={this.state.uploadedContent}
                 />
               </td>
-              <td width="20"></td>
-              <td valign="top" className={`description ${styles.narrow_desc}`}>
+              <td width="30"></td>
+              <td valign="top" className={styles.narrow_desc}>
                 <Delete />
               </td>
             </tr>

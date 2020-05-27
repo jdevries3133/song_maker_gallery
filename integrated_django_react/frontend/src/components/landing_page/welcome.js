@@ -27,7 +27,7 @@ const welcome = (props) => {
                   teacher, a big part of my COVID curriculum has been the{" "}
                   <a href="https://musiclab.chromeexperiments.com/">
                     Chrome Music Lab.
-                  </a>
+                  </a>{" "}
                   Students love making creations with it; it's fun and easy to
                   use, and it provides an amazing platform for us to discuss the
                   topics of the music curriculum. Without the ability to do so

@@ -23,7 +23,7 @@ const staged = (props) => {
         </p>
         <textarea
           className={styles.desc_input}
-          cols="80"
+          cols="67"
           rows="15"
           value={props.descriptionValue}
           onChange={(e) => props.descriptionInput(e)}

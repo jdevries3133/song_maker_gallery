@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  useRouteMatch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import store from "../store";
@@ -15,7 +10,6 @@ import SignUp from "./signup-login/signup";
 import Login from "./signup-login/login";
 import Gallery from "./gallery/gallery";
 import Teacher from "./teacher/teacher";
-import Preview from "./teacher/galleryPreview/preview";
 
 class App extends Component {
   render() {

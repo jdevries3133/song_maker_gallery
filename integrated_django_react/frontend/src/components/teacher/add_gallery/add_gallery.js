@@ -3,7 +3,7 @@ import styles from "./add_gallery.module.css";
 
 const Add = (props) => {
   return (
-    <div>
+    <Fragment>
       <h3>Add a Gallery</h3>
       <p className={styles.par_just}>
         To add a group to your gallery, upload a spreadsheet of students' names,
@@ -80,7 +80,7 @@ const Add = (props) => {
           ></iframe>
         </Fragment>
       ) : null}
-    </div>
+    </Fragment>
   );
 };
 
