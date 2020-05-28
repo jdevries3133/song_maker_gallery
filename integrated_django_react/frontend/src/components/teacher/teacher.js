@@ -24,7 +24,6 @@ class Teacher extends Component {
     };
   }
   static getDerivedStateFromProps(props, state) {
-    console.log(props, state);
     // issue: if the post request fails, even if the second attempt passes, it will
     // tell the user that it failed. This isn't a huge deal, because the user can
     // just try again, but it's annoying, and then the user will have to delete the
@@ -178,10 +177,21 @@ class Teacher extends Component {
   };
   // after "ok" press in <ServerError />
   recoveryRestageHandler = () => {
-    console.log("ran");
     this.setState({
       recover: false,
       requestMade: false,
+    });
+  };
+
+  successHandler = () => {
+    this.setState({
+      recover: false,
+      requestMade: false,
+      file: "",
+      titleValue: "",
+      stagedGroups: [],
+      descriptionValue:
+        "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds",
     });
   };
 
@@ -243,7 +253,7 @@ class Teacher extends Component {
       blanket = (
         <GalPostSuccess
           url={this.props.galleries.slice(-1)}
-          onOk={this.recoveryRestageHandler}
+          onOk={this.successHandler}
         />
       );
     } else {
