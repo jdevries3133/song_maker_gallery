@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 
 import { Provider } from "react-redux";
 import store from "../store";
@@ -26,6 +31,9 @@ class App extends Component {
             <Route path="/login">
               <Login />
             </Route>
+            {/* <Redirect from="/gallery/" to="/">  figure out how to do this properly
+              <LandingPage />
+            </Redirect> */}
             <Route path="/gallery/*">
               <Gallery />
             </Route>

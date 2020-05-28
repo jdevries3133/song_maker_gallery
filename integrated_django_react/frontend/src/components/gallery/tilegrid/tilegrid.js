@@ -17,7 +17,7 @@ const tileGrid = (props) => {
         <span className={styles.back_finger}>☟</span>
       </a>
       <ul className={styles.tgrid}>
-        {props.data.map((student, index) => (
+        {props.data.slice(0, -1).map((student, index) => (
           <Tile
             group={group_name}
             st_arr={student}

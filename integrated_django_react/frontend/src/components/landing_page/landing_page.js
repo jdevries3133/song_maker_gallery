@@ -3,31 +3,45 @@ import React from "react";
 import GalleryBody from "../gallery/gal_body";
 import Welcome from "./welcome";
 import { connect } from "react-redux";
-import { getGallery } from "../../actions/galleries";
+import { getGallery } from "../../actions/gallery";
 import styles from "./landing_page.module.css";
-import * as sample from "./sample_gallery.json";
 
 const landing_page = (props) => {
   props.getGallery("sample-gallery"); // warning: make sure you take sample-gallery with you into new databases
-  if (props.gallery == undefined) {
-    return <div></div>;
-  } else {
+  if (props.status == undefined) {
     return (
       <div>
         <Welcome />
         <div className={styles.space} />
-        <GalleryBody
-          title={sample.default.title}
-          description={sample.default.description}
-          data={sample.default.data}
-        />
+        <h1>Loading</h1>
       </div>
     );
+  } else {
+    if (props.status != 200) {
+      props.getGallery("sample-gallery");
+      return (
+        <div>
+          <h1>Internal Server Error</h1>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Welcome />
+          <div className={styles.space} />
+          <GalleryBody
+            title={props.gallery.title}
+            description={props.gallery.description}
+            data={props.gallery.api_obj}
+          />
+        </div>
+      );
+    }
   }
 };
 
 const mapStateToProps = (state) => {
-  return { gallery: state.galleries.galleries[0] };
+  return { gallery: state.gallery.gallery, status: state.gallery.status };
 };
 
 export default connect(mapStateToProps, { getGallery })(landing_page);

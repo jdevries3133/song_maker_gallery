@@ -2,7 +2,7 @@ import React, { Fragment, Component } from "react";
 
 import GalleryBody from "./gal_body";
 
-import { getGallery } from "../../actions/galleries";
+import { getGallery } from "../../actions/gallery";
 import { connect } from "react-redux";
 
 class gallery extends Component {
@@ -12,35 +12,49 @@ class gallery extends Component {
   };
 
   componentDidMount() {
-    console.log("ran");
     this.props.getGallery(this.state.url_ext);
   }
 
   render() {
-    if (this.props.gallery === undefined) {
-      console.log("yes");
+    // return <h1>temp</h1>;
+    if (this.props.status === undefined) {
+      return <h1>Loading</h1>;
+    } else if (this.state.url_ext === "") {
+      return (
+        <div>
+          <h1>Invalid Gallery URL!</h1>
+        </div>
+      );
+    } else {
+      if (this.props.status != 200) {
+        return (
+          <div>
+            <h1>Gallery Does Not Exist</h1>
+            <h2>
+              There is no gallery named {this.state.url_ext.replace("-", " ")}
+            </h2>
+          </div>
+        );
+      } else {
+        return (
+          <div>
+            <GalleryBody
+              title={this.props.gallery.title}
+              description={this.props.gallery.description}
+              data={this.props.gallery.api_obj}
+            />
+            )}
+          </div>
+        );
+      }
     }
-    console.log("this", this.props);
-    return (
-      <div>
-        {this.props.gallery === undefined ? (
-          <h1>Loading</h1>
-        ) : (
-          <GalleryBody
-            title={this.props.gallery.title}
-            description={this.props.gallery.description}
-            data={this.props.gallery.api_obj}
-          />
-        )}
-      </div>
-    );
   }
 }
 
 function mapStateToProps(state) {
-  const gallery = state.galleries.galleries[0]; // TODO change store state so that there is only one gallery within the gallery sub-state at a time
   return {
-    gallery: gallery,
+    gallery: state.gallery.gallery,
+    status: state.gallery.status,
   };
 }
 

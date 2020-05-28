@@ -1,7 +1,8 @@
 import { GET_GALLERY } from "../actions/types.js";
 
 const initialState = {
-  galleries: [],
+  gallery: { status: undefined },
+  status: undefined,
 };
 
 export default function (state = initialState, action) {
@@ -9,7 +10,8 @@ export default function (state = initialState, action) {
     case GET_GALLERY:
       return {
         ...state,
-        galleries: [...state.galleries, action.payload],
+        gallery: action.payload.gallery,
+        status: action.payload.status,
       };
     default:
       return state;

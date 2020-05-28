@@ -35,7 +35,9 @@ const signup = (props) => {
             </p>
           )}
           <br />
-          <button className={styles.sign_up}>Sign Up</button>
+          <Link to="/teacher">
+            <button className={styles.sign_up}>Sign Up</button>
+          </Link>
         </div>
       </div>
     </div>
