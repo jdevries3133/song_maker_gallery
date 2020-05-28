@@ -26,7 +26,7 @@ class App extends Component {
             <Route path="/login">
               <Login />
             </Route>
-            <Route path="/gallery">
+            <Route path="/gallery/*">
               <Gallery />
             </Route>
             <Route path="/teacher">

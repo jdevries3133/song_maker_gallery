@@ -38,9 +38,7 @@ class gallery extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("get from ", state.galleries.galleries[0]);
-  const gallery = state.galleries.galleries[0];
-  console.log("gallery", gallery);
+  const gallery = state.galleries.galleries[0]; // TODO change store state so that there is only one gallery within the gallery sub-state at a time
   return {
     gallery: gallery,
   };

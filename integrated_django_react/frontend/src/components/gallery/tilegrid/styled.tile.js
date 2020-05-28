@@ -116,6 +116,8 @@ const Button = styled.button`
   animation-direction: forwards;
   animation-fill-mode: forwards;
   animation-duration: 0.3s;
+  border-width: 0;
+  border-radius: 0;
 
   :hover {
     animation-name: ${(props) => {

@@ -4,11 +4,15 @@ from rest_framework.response import Response
 from teacher_admin.models import Gallery
 from .serializers import GalleryPostSerializer
 
+# temp
+from django.contrib.auth.models import User
+
 @api_view(['POST'])
 @permission_classes((permissions.AllowAny,))
 def post(request):
+    print('event')
     new_obj = Gallery.objects.create(
-        owner=request.user,
+        owner=User.objects.get(),
         title=request.data['title'].strip(),
         description=request.data['description'],
         api_obj=request.data['api_obj'],

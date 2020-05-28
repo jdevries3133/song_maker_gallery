@@ -2,21 +2,51 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { postGallery } from "../../actions/user";
 import Papa from "papaparse";
-import styles from "./teacher.module.css";
+
 import Add from "./add_gallery/add_gallery";
-import Verify from "./add_gallery/verify";
-import Staged from "./add_gallery/staged";
 import Delete from "./delete_gallery";
+import GalPostSuccess from "./add_gallery/gal_post_success";
+import ServerError from "../generics/server_error";
+import Staged from "./add_gallery/staged";
+import Verify from "./add_gallery/verify";
+
+import styles from "./teacher.module.css";
 
 class Teacher extends Component {
-  state = {
-    file: "",
-    titleValue: "",
-    stagedGroups: [],
-    descriptionValue:
-      "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds",
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      file: "",
+      titleValue: "",
+      stagedGroups: [],
+      descriptionValue:
+        "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds",
+    };
+  }
+  static getDerivedStateFromProps(props, state) {
+    console.log(props, state);
+    // issue: if the post request fails, even if the second attempt passes, it will
+    // tell the user that it failed. This isn't a huge deal, because the user can
+    // just try again, but it's annoying, and then the user will have to delete the
+    // duplicate post.
+    if (props.formRecover && state.button_pressed) {
+      return {
+        titleValue: props.formRecover.title,
+        stagedGroups: props.formRecover.api_obj,
+        descriptionValue: props.formRecover.description,
+        recover: true,
+        button_pressed: false,
+      };
+    } else if (props.requestMade && state.button_pressed) {
+      return {
+        requestMade: props.requestMade,
+        button_pressed: false,
+      };
+    } else {
+      return null;
+    }
+  }
+  // see <Add />
   fileSelectHandler = (event) => {
     const file = event.target.value;
     const arr = file.split("\\");
@@ -42,27 +72,19 @@ class Teacher extends Component {
       });
     }
   };
-
+  // see <Add />
   csvHandler = () => {
     const config = {
-      complete: this.verifyCsv,
+      complete: (results, file) => {
+        this.setState({
+          verifyUpload: true,
+          uploadedContent: results,
+        });
+      },
     };
     Papa.parse(this.state.data, config);
   };
-
-  verifyCsv = (results, file) => {
-    this.setState({
-      verifyUpload: true,
-      uploadedContent: results,
-    });
-  };
-
-  goupNameChangeHandler = (e) => {
-    this.setState({
-      groupname: e.target.value,
-    });
-  };
-
+  // see <Add /> and <Verify />
   resetFormHandler = () => {
     this.setState({
       file: "",
@@ -72,13 +94,13 @@ class Teacher extends Component {
       verifyUpload: false,
     });
   };
-
+  // see <Add /> and <Verify />
   groupNameHandler = (e) => {
     this.setState({
       groupname: e.target.value,
     });
   };
-
+  // see <Verify />
   groupValidatedHandler = (verifiedArray) => {
     const group_arr = [...verifiedArray.slice(1)];
     const group_name = this.state.groupname;
@@ -105,7 +127,7 @@ class Teacher extends Component {
       }
     });
   };
-
+  // see <Staged />
   unStageGroupHandler = (group_to_delete) => {
     const groups = [...this.state.stagedGroups];
     if (groups.length <= 1) {
@@ -117,12 +139,11 @@ class Teacher extends Component {
         return group;
       }
     });
-    console.log(updated_groups);
     this.setState({
       stagedGroups: updated_groups,
     });
   };
-
+  // see <Verify />
   handleVerificationIndicies = (value, flag) => {
     if (flag === "name") {
       this.setState({
@@ -135,31 +156,43 @@ class Teacher extends Component {
     }
   };
 
+  // see <Staged />
   titleInputHandler = (e) => {
     this.setState({ titleValue: e.target.value });
   };
-
+  // see <Staged />
   descriptionInputHandler = (e) => {
     this.setState({
       descriptionValue: e.target.value,
     });
   };
 
+  // fire POST_GALLERY action upon button press in <Staged />
   inputConfirmation = () => {
     this.props.postGallery({
       title: this.state.titleValue,
       description: this.state.descriptionValue,
       api_obj: this.state.stagedGroups,
     });
+    this.setState({ button_pressed: true });
+  };
+  // after "ok" press in <ServerError />
+  recoveryRestageHandler = () => {
+    console.log("ran");
+    this.setState({
+      recover: false,
+      requestMade: false,
+    });
   };
 
   render() {
+    let blanket;
+    let staged;
+    // Verify component allows user to validate csv data after upload.
     if (this.state.verifyUpload) {
-      //TODO: ADD ERROR BOUNDARY FOR BAD FILE TYPES
-      var blanket = (
+      blanket = (
         <Verify
           csv={this.state.uploadedContent}
-          onConfirm={this.inputConfirmation}
           onRedact={this.redactVerification}
           restart={this.resetFormHandler}
           groupname={this.state.groupname}
@@ -171,8 +204,10 @@ class Teacher extends Component {
         />
       );
     }
+    // As the user uploads additional groups, the staged groups are held in a
+    // list at the bottom of the page
     if (this.state.stagedGroups.length > 0) {
-      var staged = (
+      staged = (
         <Staged
           unStageGroupHandler={this.unStageGroupHandler}
           groups={this.state.stagedGroups}
@@ -181,11 +216,40 @@ class Teacher extends Component {
           titleValue={this.state.titleValue}
           descriptionInput={this.descriptionInputHandler}
           descriptionValue={this.state.descriptionValue}
+          onConfirm={this.inputConfirmation}
+          peskyButton={this.props.requestMade}
+        />
+      );
+    }
+
+    // {blanket} is one of these things, else: nothing
+    if (this.state.verifyUpload) {
+      blanket = (
+        <Verify
+          csv={this.state.uploadedContent}
+          onRedact={this.redactVerification}
+          restart={this.resetFormHandler}
+          groupname={this.state.groupname}
+          groupNameChange={this.groupNameHandler}
+          validatedHandler={this.groupValidatedHandler}
+          nameIndex={this.state.nameIndex}
+          linkIndex={this.state.linkIndex}
+          indexHandler={this.handleVerificationIndicies}
+        />
+      );
+    } else if (this.state.recover) {
+      blanket = <ServerError onOk={this.recoveryRestageHandler} />;
+    } else if (this.state.requestMade) {
+      blanket = (
+        <GalPostSuccess
+          url={this.props.galleries.slice(-1)}
+          onOk={this.recoveryRestageHandler}
         />
       );
     } else {
-      var staged;
+      blanket = null;
     }
+
     return (
       <div>
         <div>
@@ -199,10 +263,10 @@ class Teacher extends Component {
                 <Add
                   file_selected={this.fileSelectHandler}
                   file={this.state.file}
-                  clearFileHandler={this.clearFileHandler}
+                  clearFileHandler={this.resetFormHandler}
                   groupname={this.state.groupname}
                   groupNameChangeHandler={this.groupNameHandler}
-                  uploadRequest={this.csvHandlerrr}
+                  uploadRequest={this.csvHandler}
                   warn={this.state.warn}
                   verifyContent={this.state.verifyContent}
                   uploadedContent={this.state.uploadedContent}
@@ -221,4 +285,13 @@ class Teacher extends Component {
   }
 }
 
-export default connect(null, { postGallery })(Teacher);
+const mapStateToProps = (state) => {
+  return {
+    postStatus: state.user.galleryPostStatus,
+    formRecover: state.user.formPassthrough,
+    galleries: state.user.galleries,
+    requestMade: state.user.postRequestMade,
+  };
+};
+
+export default connect(mapStateToProps, { postGallery })(Teacher);

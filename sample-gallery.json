@@ -1,7 +1,8 @@
 {
+  "note to self": "This MUST be in the database for the landing page to work",
   "title": "Sample Gallery",
-  "description": "This is an example of what one of our galleries look like. All that you need to do is upload a spreadsheet of students' names and links to their song maker creations, and the site does the rest. You can spin up a gallery just like this for your students in only a few minutes!\nNotice that the thumbnail images are not generic. Each student's actual composition is displayed on the website so that everyone in your school community can get a bird's eye view of the astounding creativity of our students.\nWe, these childrens' music teachers, have had the pleasure of experiencing the boundless creativity that students have expressed through these difficult times through tools like the Song Maker; let's share that with our communities and celebrate the end of an unusual school year.",
-  "data": [
+  "description": "This is an example of what one of our galleries look like. All that you need to do is upload a spreadsheet of students' names and links to their song maker creations, and the site does the rest. You can spin up a gallery just like this for your students in only a few minutes!\\nNotice that the thumbnail images are not generic. Each student's actual composition is displayed on the website so that everyone in your school community can get a bird's eye view of the astounding creativity of our students.\\nWe, these childrens' music teachers, have had the pleasure of experiencing the boundless creativity that students have expressed through these difficult times through tools like the Song Maker; let's share that with our communities and celebrate the end of an unusual school year.",
+  "api_obj": [
     [
       [
         "Arthur",

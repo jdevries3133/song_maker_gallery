@@ -4,7 +4,7 @@ import Tile from "./tile";
 import styles from "./tilegrid.module.css";
 
 const tileGrid = (props) => {
-  const group_name = props.data.pop(0);
+  const group_name = props.data.slice(-1);
 
   return (
     <div>

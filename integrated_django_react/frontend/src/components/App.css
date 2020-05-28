@@ -61,7 +61,7 @@ input {
   margin-left: -402px;
   background-color: #d9e6e8;
   border-radius: 20px;
-  overflow-y: scroll;
   overflow-x: hidden;
   opacity: 95%;
+  z-index: 100;
 }

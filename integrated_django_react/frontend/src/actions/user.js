@@ -1,5 +1,6 @@
 import axios from "axios";
 import { POST_GALLERY } from "./types";
+
 // POST GALLERY
 export const postGallery = (form) => (dispatch) => {
   axios.defaults.xsrfCookieName = "csrftoken";
@@ -11,14 +12,23 @@ export const postGallery = (form) => (dispatch) => {
       api_obj: form.api_obj,
     })
     .then((res) => {
-      console.log(res);
       dispatch({
         type: POST_GALLERY,
         payload: {
-          response: res,
-          formPassthrough: form,
+          status: res.status,
+          formPassthrough: null,
+          gallery: res.data.url_extension,
         },
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      dispatch({
+        type: POST_GALLERY,
+        payload: {
+          status: 1,
+          formPassthrough: form,
+          gallery: null,
+        },
+      });
+    });
 };

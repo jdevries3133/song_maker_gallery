@@ -1,23 +1,39 @@
-import { POST_GALLERY } from "../actions/types";
+import { POST_GALLERY, DELETE_GALLERY } from "../actions/types";
 
 const initialState = {
   authenticated: false,
-}
+  galleries: [],
+  galleryPostStatus: null,
+  formPassthrough: null,
+};
 
-export default function (state=initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case POST_GALLERY:
+      let newState;
+      if (action.payload.gallery) {
+        newState = {
+          ...state,
+          galleryPostStatus: action.payload.status,
+          galleries: [...state.galleries, action.payload.gallery],
+          postRequestMade: true,
+          formPassthrough: null,
+        };
+      } else {
+        newState = {
+          ...state,
+          galleryPostStatus: action.payload.status,
+          formPassthrough: action.payload.formPassthrough,
+        };
+      }
+
+      return newState;
+
+    case DELETE_GALLERY:
       return {
         ...state,
-        response: action.payload.response,
-        formPassthrough: action.payload.formPassthrough
-        // galleries: [...state.galleries, action.payload]
-      }
-    case DELETE_GALLERY {
-      return {
-        ...state,
-        galleries: action.galleries
-      }
-    }
+      };
+    default:
+      return state;
   }
 }

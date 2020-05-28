@@ -21,7 +21,7 @@ npm install
 npm run build
 
 cd ..
-bash runserver &
 sleep 2
-open http://localhost:3000
+open http://127.0.0.1:8000
+python manage.py runserver
 exit 0

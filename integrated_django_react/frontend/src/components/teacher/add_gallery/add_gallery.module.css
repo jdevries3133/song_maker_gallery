@@ -23,6 +23,7 @@
 }
 
 .desc_input {
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 19px;
   line-height: 1.5;
   box-shadow: 1px 1px 1px #999;
@@ -54,6 +55,7 @@
 
 .scroll_blanket {
   border-radius: 20px 0 0 20px;
+  overflow-y: scroll;
 }
 
 .blanket_table {
