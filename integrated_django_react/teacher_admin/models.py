@@ -9,6 +9,7 @@ class Gallery(models.Model):
         User,
         related_name='gallery',
         on_delete=models.CASCADE,
+        null=True,
     )
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(

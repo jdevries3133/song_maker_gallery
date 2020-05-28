@@ -4,7 +4,7 @@ import { postGallery } from "../../actions/user";
 import Papa from "papaparse";
 
 import Add from "./add_gallery/add_gallery";
-import Delete from "./delete_gallery";
+import Delete from "./delete_gallery/delete_gallery";
 import GalPostSuccess from "./add_gallery/gal_post_success";
 import ServerError from "../generics/server_error";
 import Staged from "./add_gallery/staged";
@@ -19,6 +19,7 @@ class Teacher extends Component {
       file: "",
       titleValue: "",
       stagedGroups: [],
+      blankTitleError: false,
       descriptionValue:
         "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds",
     };
@@ -168,6 +169,12 @@ class Teacher extends Component {
 
   // fire POST_GALLERY action upon button press in <Staged />
   inputConfirmation = () => {
+    if (this.state.titleValue === "") {
+      this.setState({
+        blankTitleError: true,
+      });
+      return;
+    }
     this.props.postGallery({
       title: this.state.titleValue,
       description: this.state.descriptionValue,
@@ -193,6 +200,13 @@ class Teacher extends Component {
       descriptionValue:
         "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds",
     });
+  };
+
+  dismissTitleBlank = () => {
+    if (this.state.titleValue != "") {
+      this.inputConfirmation();
+      this.setState({ blankTitleError: false });
+    }
   };
 
   render() {
@@ -255,6 +269,18 @@ class Teacher extends Component {
           url={this.props.galleries.slice(-1)}
           onOk={this.successHandler}
         />
+      );
+    } else if (this.state.blankTitleError) {
+      return (
+        <div className="description blanket">
+          <h2>Please enter a title for your gallery.</h2>
+          <br />
+          <input onChange={(e) => this.titleInputHandler(e)} />
+          <br />
+          {this.state.titleValue ? (
+            <button onClick={() => this.dismissTitleBlank()}>Ok</button>
+          ) : null}
+        </div>
       );
     } else {
       blanket = null;

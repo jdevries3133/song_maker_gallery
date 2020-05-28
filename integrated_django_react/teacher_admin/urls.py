@@ -1,6 +1,6 @@
-from django.urls import path
-from . import views
+from teacher_admin.views import TeacherViewSet
+from rest_framework.routers import DefaultRouter
 
-urlpatterns = [
-    path('', views.post)
-]
+router = DefaultRouter()
+router.register(r'', TeacherViewSet, basename='Teacher')
+urlpatterns = router.urls

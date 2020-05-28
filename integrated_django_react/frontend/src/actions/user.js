@@ -6,7 +6,7 @@ export const postGallery = (form) => (dispatch) => {
   axios.defaults.xsrfCookieName = "csrftoken";
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios
-    .post("/api/galleries/post/", {
+    .post("/api/auth/", {
       title: form.title,
       description: form.description,
       api_obj: form.api_obj,

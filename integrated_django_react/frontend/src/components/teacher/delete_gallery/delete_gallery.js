@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import styles from "./teacher.module.css";
+import styles from "../teacher.module.css";
 
 const Delete = (props) => {
   return (

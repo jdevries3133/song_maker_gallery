@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'integrated_django_react.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'smf2',
+        'NAME': 'song_maker_feature',
         'USER': os.getenv('MYSQL_USER'),
         'PASSWORD': os.getenv('MYSQL_USER_PASS'),
         'HOST': 'localhost',
