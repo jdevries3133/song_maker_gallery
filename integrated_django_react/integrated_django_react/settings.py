@@ -40,8 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_mysql',
+    'knox',
     'rest_framework',
 
+    'accounts',
     'frontend',
     'public_provider',
     'teacher_admin',
@@ -61,9 +63,10 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'integrated_django_react.urls'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'knox.auth.TokenAuthentication',
+    )
 }
 
 TEMPLATES = [

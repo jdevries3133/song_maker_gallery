@@ -1,6 +1,8 @@
 from django.urls import path
+from django.shortcuts import render
 
-from .views import index
+def index(request, *args, **kwargs):
+    return render(request, 'frontend/index.html')
 
 urlpatterns = [
     path('', index),

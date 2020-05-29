@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import GalleryBody from "../gallery/gal_body";
 import Welcome from "./welcome";
@@ -7,7 +7,9 @@ import { getGallery } from "../../actions/gallery";
 import styles from "./landing_page.module.css";
 
 const landing_page = (props) => {
-  props.getGallery("sample-gallery"); // warning: make sure you take sample-gallery with you into new databases
+  useEffect(() => {
+    props.getGallery("sample-gallery"); // warning: make sure you take sample-gallery with you into new databases
+  }, []);
   if (props.status == undefined) {
     return (
       <div>
