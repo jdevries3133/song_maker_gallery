@@ -6,11 +6,11 @@ import { LOGIN, LOGOUT, REGISTER } from "./types";
 export const login = (data) => (dispatch) => {
   console.log(data);
   axios
-    .post("api/auth/register/", data)
+    .post("api/auth/login/", data)
     .then((res) => {
       if (res.status === 200) {
         dispatch({
-          type: REGISTER,
+          type: LOGIN,
           payload: {
             isAuthenticated: true,
             authError: false,
@@ -20,7 +20,7 @@ export const login = (data) => (dispatch) => {
         });
       } else {
         dispatch({
-          type: REGISTER,
+          type: LOGIN,
           isAuthenticated: false,
           authError: true,
           token: null,
