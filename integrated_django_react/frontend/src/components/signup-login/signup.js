@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { register } from "../../actions/auth.action";
 import UsernamePassword from "./username_password";
+import CustomError from "../generics/custom_error";
 import styles from "./signup.module.css";
 
 const signup = (props) => {
@@ -62,4 +63,11 @@ const signup = (props) => {
   );
 };
 
-export default connect(null, { register })(signup);
+const mapStateToProps = (state) => {
+  return {
+    badCredentials: state.auth.authError,
+    serverError: null, // implement global server error handling later
+  };
+};
+
+export default connect(mapStateToProps, { register })(signup);
