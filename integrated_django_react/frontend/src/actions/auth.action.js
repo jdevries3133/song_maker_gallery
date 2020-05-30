@@ -51,6 +51,10 @@ export const login = (data) => (dispatch) => {
     });
 };
 
+export const clearError = data => dispatch {
+
+}
+
 // data must be {username: str, password: str}
 export const register = (data) => (dispatch) => {
   // props.history.push teacher page

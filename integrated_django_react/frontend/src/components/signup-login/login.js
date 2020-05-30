@@ -11,13 +11,19 @@ const login = (props) => {
   const [password, updatePassword] = useState("");
   const [badCredentials, acceptBadCredentials] = useState(props.badCredentials);
 
+  const onBadCredOk = () => {
+    acceptBadCredentials(!badCredentials);
+  };
+
   return (
     <div>
-      {props.badCredentials ? (
+      {badCredentials ? (
         <CustomError
           header="Bad Credentials"
-          message="Please check that you are using the correct username and password."
-          onOk={acceptBadCredentials(!badCredentials)}
+          message={[
+            "Please check that you are using the correct username and password.",
+          ]}
+          onOk={onBadCredOk}
         />
       ) : null}
       <h1>login!</h1>
