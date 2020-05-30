@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+h1 {
+  padding-top: 0;
+  font-size: 60px;
+}
+
 .signup_button {
   height: 30px;
   margin-bottom: 50px;

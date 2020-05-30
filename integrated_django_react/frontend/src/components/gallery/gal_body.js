@@ -3,7 +3,6 @@ import Header from "./header/header";
 import TileGrid from "./tilegrid/tilegrid";
 
 const galBody = (props) => {
-  console.log(props);
   return (
     <Fragment>
       <Header title={props.title} description={props.description} />
