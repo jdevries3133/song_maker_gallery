@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { LOGIN, LOGOUT, REGISTER } from "./types";
+import { LOGIN, LOGOUT, REGISTER, CLEAR_ERROR } from "./types";
 
 // LOGIN
 // data must be {username: str, password: str}
@@ -51,8 +51,13 @@ export const login = (data) => (dispatch) => {
     });
 };
 
-export const clearError = data => dispatch {
-
+export const clearError = data => dispatch => {
+  dispatch({
+    type: CLEAR_ERROR,
+    payload: {
+      authError: false,
+    }
+  })
 }
 
 // data must be {username: str, password: str}

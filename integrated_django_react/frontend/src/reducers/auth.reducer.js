@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, REGISTER } from "../actions/types";
+import { LOGIN, LOGOUT, REGISTER, CLEAR_ERROR } from "../actions/types";
 
 const initialState = {
   token: "",
@@ -27,6 +27,11 @@ export default function (state = initialState, action) {
         token: action.payload.token,
         user: action.payload.user,
       };
+      case CLEAR_ERROR:
+        return {
+          ...state,
+          authError: action.payload.authError,
+        }
     default:
       return { ...state };
   }
