@@ -1,12 +1,14 @@
 import axios from "axios";
 
-import { LOGIN, LOGOUT, REGISTER } from "./types";
+import { LOGIN, LOGOUT, REGISTER, CLEAR_ERROR } from "./types";
 
 // LOGIN
+// data must be {username: str, password: str}
 export const login = (data) => (dispatch) => {
-  console.log(data);
+  axios.defaults.xsrfCookieName = "csrftoken";
+  axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios
-    .post("api/auth/login/", data)
+    .post("/api/auth/login/", data)
     .then((res) => {
       if (res.status === 200) {
         dispatch({
@@ -21,20 +23,49 @@ export const login = (data) => (dispatch) => {
       } else {
         dispatch({
           type: LOGIN,
-          isAuthenticated: false,
-          authError: true,
-          token: null,
-          user: null,
+          payload: {
+            isAuthenticated: false,
+            authError: true,
+            token: null,
+            user: null,
+          },
         });
       }
     })
-    .catch((e) => console.log(e.data));
+    .catch((e) => {
+      if (e.response.status === 400) {
+        // wrong username or password
+        dispatch({
+          type: LOGIN,
+          payload: {
+            isAuthenticated: false,
+            authError: true,
+            token: null,
+            user: null,
+          },
+        });
+      } else {
+        // server error
+      }
+    });
 };
 
+export const clearError = (data) => (dispatch) => {
+  dispatch({
+    type: CLEAR_ERROR,
+    payload: {
+      authError: false,
+    },
+  });
+};
+
+// data must be {username: str, password: str}
 export const register = (data) => (dispatch) => {
   // props.history.push teacher page
+  axios.defaults.xsrfCookieName = "csrftoken";
+  axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios
-    .post("api/auth/register/", data)
+    .post("/api/auth/register/", data)
     .then((res) => {
       if (res.status === 200) {
         dispatch({
@@ -58,7 +89,17 @@ export const register = (data) => (dispatch) => {
         });
       }
     })
-    .catch((e) => console.log(e));
+    .catch((e) => {
+      dispatch({
+        type: REGISTER,
+        payload: {
+          isAuthenticated: false,
+          authError: true,
+          token: null,
+          user: null,
+        },
+      });
+    });
 };
 
 // LOGOUT

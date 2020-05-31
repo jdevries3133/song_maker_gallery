@@ -1,25 +1,36 @@
-import { LOGIN, LOGOUT, REGISTER } from "../actions/types";
+import { LOGIN, LOGOUT, REGISTER, CLEAR_ERROR } from "../actions/types";
 
 const initialState = {
   token: "",
   isAuthenticated: false,
+  authErrr: false,
   userData: {},
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case LOGIN:
-      return { ...state };
-    case LOGOUT:
-      return { ...state };
-    case REGISTER:
-      console.log("ran", action);
       return {
         ...state,
         isAuthenticated: action.payload.isAuthenticated,
         authError: action.payload.authError,
         token: action.payload.token,
         user: action.payload.user,
+      };
+    case LOGOUT:
+      return { ...state };
+    case REGISTER:
+      return {
+        ...state,
+        isAuthenticated: action.payload.isAuthenticated,
+        authError: action.payload.authError,
+        token: action.payload.token,
+        user: action.payload.user,
+      };
+    case CLEAR_ERROR:
+      return {
+        ...state,
+        authError: action.payload.authError,
       };
     default:
       return { ...state };

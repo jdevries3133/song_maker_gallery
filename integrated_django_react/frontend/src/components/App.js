@@ -11,10 +11,12 @@ import { Provider } from "react-redux";
 import store from "../store";
 
 import LandingPage from "./landing_page/landing_page";
+import PrivateRoute from "./generics/private_route";
 import SignUp from "./signup-login/signup";
 import Login from "./signup-login/login";
 import Gallery from "./gallery/gallery";
 import Teacher from "./teacher/teacher";
+import Reset from "./signup-login/reset";
 
 class App extends Component {
   render() {
@@ -31,15 +33,15 @@ class App extends Component {
             <Route path="/login">
               <Login />
             </Route>
-            {/* <Redirect from="/gallery/" to="/">  figure out how to do this properly
-              <LandingPage />
-            </Redirect> */}
+            <Route path="/reset">
+              <Reset />
+            </Route>
             <Route path="/gallery/*">
               <Gallery />
             </Route>
-            <Route path="/teacher">
+            <PrivateRoute path="/teacher">
               <Teacher />
-            </Route>
+            </PrivateRoute>
           </Switch>
         </Router>
       </Provider>

@@ -28,3 +28,13 @@ h1 {
 .loginButtonSpace {
   margin-top: 20px;
 }
+
+.col_1 {
+  background-color: #94c732;
+  min-width: 14rem;
+}
+
+.col_2 {
+  background-color: #00bcd1;
+  min-width: 14rem;
+}
