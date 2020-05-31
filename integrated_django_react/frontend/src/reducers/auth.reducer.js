@@ -3,7 +3,7 @@ import { LOGIN, LOGOUT, REGISTER, CLEAR_ERROR } from "../actions/types";
 const initialState = {
   token: "",
   isAuthenticated: false,
-  badCredentials: false,
+  authErrr: false,
   userData: {},
 };
 
@@ -27,11 +27,11 @@ export default function (state = initialState, action) {
         token: action.payload.token,
         user: action.payload.user,
       };
-      case CLEAR_ERROR:
-        return {
-          ...state,
-          authError: action.payload.authError,
-        }
+    case CLEAR_ERROR:
+      return {
+        ...state,
+        authError: action.payload.authError,
+      };
     default:
       return { ...state };
   }

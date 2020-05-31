@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { login as loginAction } from "../../actions/auth.action";
-import { register, clearError } from "../../actions/auth.action";
+import { clearError } from "../../actions/auth.action";
+import { Link, Redirect } from "react-router-dom";
 import CustomError from "../generics/custom_error";
 import UsernamePassword from "./username_password";
 import styles from "./signup.module.css";
@@ -9,6 +10,14 @@ import styles from "./signup.module.css";
 const login = (props) => {
   const [username, updateUsername] = useState("");
   const [password, updatePassword] = useState("");
+
+  if (props.isAuthenticated) {
+    return <Redirect to="/teacher" />;
+  }
+
+  const submit = () => {
+    props.loginAction({ username: username, password: password });
+  };
 
   return (
     <div>
@@ -26,17 +35,19 @@ const login = (props) => {
         <UsernamePassword
           username={(u) => updateUsername(u)}
           password={(p) => updatePassword(p)}
+          submit={submit}
         />
         <div className={styles.loginButtonSpace}>
-          <button
-            onClick={() =>
-              props.loginAction({ username: username, password: password })
-            }
-          >
-            Login
-          </button>
+          <button onClick={() => submit()}>Login</button>
         </div>
       </div>
+      <br />
+      <Link to="/signup">
+        <button className={styles.col_1}>Need an account?</button>
+      </Link>
+      <Link to="/reset">
+        <button className={styles.col_2}>Forgot your password?</button>
+      </Link>
     </div>
   );
 };
@@ -44,6 +55,7 @@ const login = (props) => {
 const mapStateToProps = (state) => {
   return {
     badCredentials: state.auth.authError,
+    isAuthenticated: state.auth.isAuthenticated,
     serverError: null, // implement global server error handling later
   };
 };

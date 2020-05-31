@@ -5,7 +5,9 @@ const custom_error = (props) => {
     <div className="description blanket">
       <h2>{props.header}</h2>
       {props.message.map((par) => (
-        <p key={par}>{par}</p>
+        <p style={{ textalign: "justify" }} key={par}>
+          {par}
+        </p>
       ))}
       <button onClick={() => props.onOk()}>Ok</button>
     </div>

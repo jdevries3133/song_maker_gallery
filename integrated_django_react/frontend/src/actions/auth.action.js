@@ -7,7 +7,6 @@ import { LOGIN, LOGOUT, REGISTER, CLEAR_ERROR } from "./types";
 export const login = (data) => (dispatch) => {
   axios.defaults.xsrfCookieName = "csrftoken";
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
-  axios.defaults.baseURL = "http://localhost:3000";
   axios
     .post("/api/auth/login/", data)
     .then((res) => {
@@ -51,14 +50,14 @@ export const login = (data) => (dispatch) => {
     });
 };
 
-export const clearError = data => dispatch => {
+export const clearError = (data) => (dispatch) => {
   dispatch({
     type: CLEAR_ERROR,
     payload: {
       authError: false,
-    }
-  })
-}
+    },
+  });
+};
 
 // data must be {username: str, password: str}
 export const register = (data) => (dispatch) => {
@@ -66,7 +65,7 @@ export const register = (data) => (dispatch) => {
   axios.defaults.xsrfCookieName = "csrftoken";
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios
-    .post("api/auth/register/", data)
+    .post("/api/auth/register/", data)
     .then((res) => {
       if (res.status === 200) {
         dispatch({
@@ -90,7 +89,17 @@ export const register = (data) => (dispatch) => {
         });
       }
     })
-    .catch((e) => console.log(e));
+    .catch((e) => {
+      dispatch({
+        type: REGISTER,
+        payload: {
+          isAuthenticated: false,
+          authError: true,
+          token: null,
+          user: null,
+        },
+      });
+    });
 };
 
 // LOGOUT
