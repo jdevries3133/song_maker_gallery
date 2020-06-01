@@ -10,7 +10,7 @@ const tileGrid = (props) => {
     <div>
       <div className={styles.tg_top_space} />
       <a href="#gallery_top">
-        <h2 className={styles.tg_title} name={group_name}>
+        <h2 className={styles.tg_title} id={group_name}>
           {group_name}
         </h2>
         <br />

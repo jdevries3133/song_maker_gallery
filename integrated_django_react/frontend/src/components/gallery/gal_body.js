@@ -5,7 +5,11 @@ import TileGrid from "./tilegrid/tilegrid";
 const galBody = (props) => {
   return (
     <Fragment>
-      <Header title={props.title} description={props.description} />
+      <Header
+        title={props.title}
+        description={props.description}
+        data={props.data}
+      />
       {props.data.map((group) => (
         <TileGrid data={group} key={group.slice(-1)[0]} />
       ))}

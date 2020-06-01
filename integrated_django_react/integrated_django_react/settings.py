@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'jack', 'playlistr.us.to', 'jack.fios-router.home:1100']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

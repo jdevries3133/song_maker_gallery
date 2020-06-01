@@ -1,13 +1,15 @@
 import React, { Fragment } from "react";
 import styles from "./header.module.css";
 import FormattedDescription from "./formatted_description";
+import NavBar from "./navBar";
 
 const header = (props) => {
   // CONDITIONALLY RENDER DEFAULT DESCRIPTION
 
   return (
     <Fragment>
-      <div className={styles.gallery_top} id="gallery_top">
+      <div id="gallery_top">
+        <NavBar data={props.data} />
         <h1>{props.title}</h1>
         <div className="description">
           <FormattedDescription desc_str={props.description} />

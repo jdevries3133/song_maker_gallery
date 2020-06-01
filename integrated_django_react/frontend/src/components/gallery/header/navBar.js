@@ -1,16 +1,40 @@
-import React from 'react';
+import React from "react";
+import styles from "./header.module.css";
+import styled, { ThemeProvider } from "styled-components";
 
-const navBar = props => {
+const Button = styled.button`
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+    background-color: ${(props) => props.theme.color};
+  }
 
-  const elements = props.data.map(group => {
+  :hover {
+    background-color: white;
+  }
+`;
 
-    const group_name = group.pop(0)
+Button.defaultProps = { theme: { color: "#f7943e" } };
+
+const navBar = (props) => {
+  const elements = props.data.map((group, index) => {
+    const group_name = group.slice(-1);
+    const themes = ["#94c732", "#ffe716", "#2be2f9", "#c77dd3"];
+
+    const theme = { color: themes[index % themes.length] };
     return (
-    <a className='a_nav' id={group_name} href={'#' + group_name}><li id={group_name}>{group_name}</li></a>
-    )
-  })
+      <a className="a_nav" key={group_name} href={"#" + group_name}>
+        <ThemeProvider theme={theme}>
+          <Button>{group_name}</Button>
+        </ThemeProvider>
+      </a>
+    );
+  });
 
-  return (<ol>{elements}</ol>)
-}
+  return <div className={styles.navbar}>{elements}</div>;
+};
 
-export default navBar
+export default navBar;
