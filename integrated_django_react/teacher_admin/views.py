@@ -9,8 +9,8 @@ class TeacherViewSet(ModelViewSet):
     ]
     serializer_class = GalleryAuthSerializer
 
-    def get_quereyset(self):
-        return self.request.user.galleries.all()
+    def get_queryset(self):
+        return self.request.user.gallery.all()
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

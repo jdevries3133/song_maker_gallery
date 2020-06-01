@@ -2,16 +2,22 @@ import axios from "axios";
 import { POST_GALLERY } from "./types";
 
 // POST GALLERY
-export const postGallery = (form) => (dispatch) => {
+export const postGallery = (form, token) => (dispatch) => {
   axios.defaults.xsrfCookieName = "csrftoken";
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios
-    .post("/api/user/", {
-      // this this might not work anymore. Test w/ postman
-      title: form.title,
-      description: form.description,
-      api_obj: form.api_obj,
-    })
+    .post(
+      "/api/user/",
+
+      {
+        title: form.title,
+        description: form.description,
+        api_obj: form.api_obj,
+      },
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    )
     .then((res) => {
       dispatch({
         type: POST_GALLERY,
@@ -31,5 +37,16 @@ export const postGallery = (form) => (dispatch) => {
           gallery: null,
         },
       });
+    });
+};
+
+export const getUserGalleries = (token) => (dispatch) => {
+  axios.defaults.xsrfCookieName = "csrftoken";
+  axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+  axios
+    .get("api/user", { headers: { Authorization: `Token ${token}` } })
+    .then((res) => console.log(res))
+    .catch((e) => {
+      console.log(e);
     });
 };

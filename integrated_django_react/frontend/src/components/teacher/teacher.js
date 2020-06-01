@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { postGallery } from "../../actions/user";
+import { postGallery, getUserGalleries } from "../../actions/user";
 import Papa from "papaparse";
 
 import Add from "./add_gallery/add_gallery";
@@ -23,6 +23,11 @@ class Teacher extends Component {
       descriptionValue:
         "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds",
     };
+  }
+
+  // get user's galleries, available for view or deletion
+  componentDidMount(prevProps, prevState) {
+    getUserGalleries(this.props.token);
   }
   static getDerivedStateFromProps(props, state) {
     // issue: if the post request fails, even if the second attempt passes, it will
@@ -193,6 +198,7 @@ class Teacher extends Component {
     });
   };
 
+  // reset "add gallery" form after all is good.
   successHandler = () => {
     this.setState({
       recover: false,
@@ -205,6 +211,7 @@ class Teacher extends Component {
     });
   };
 
+  // dismiss "add title" dialogue
   dismissTitleBlank = () => {
     if (this.state.titleValue != "") {
       this.inputConfirmation();
@@ -334,4 +341,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { postGallery })(Teacher);
+export default connect(mapStateToProps, { postGallery, getUserGalleries })(
+  Teacher
+);
