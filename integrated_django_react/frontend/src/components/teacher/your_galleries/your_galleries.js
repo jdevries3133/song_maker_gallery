@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import styles from "../teacher.module.css";
+import styles from "./your_galleries.modules.css";
 
-const Delete = (props) => {
+const YourGalleries = (props) => {
   return (
     <Fragment>
       <h3>Your Galleries</h3>
@@ -16,4 +16,4 @@ const Delete = (props) => {
   );
 };
 
-export default Delete;
+export default YourGalleries;

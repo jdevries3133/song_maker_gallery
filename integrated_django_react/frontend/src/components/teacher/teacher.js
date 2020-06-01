@@ -4,7 +4,7 @@ import { postGallery } from "../../actions/user";
 import Papa from "papaparse";
 
 import Add from "./add_gallery/add_gallery";
-import Delete from "./delete_gallery/delete_gallery";
+import YourGalleries from "./your_galleries/your_galleries";
 import GalPostSuccess from "./add_gallery/gal_post_success";
 import ServerError from "../generics/server_error";
 import Staged from "./add_gallery/staged";
@@ -175,11 +175,14 @@ class Teacher extends Component {
       });
       return;
     }
-    this.props.postGallery({
-      title: this.state.titleValue,
-      description: this.state.descriptionValue,
-      api_obj: this.state.stagedGroups,
-    });
+    this.props.postGallery(
+      {
+        title: this.state.titleValue,
+        description: this.state.descriptionValue,
+        api_obj: this.state.stagedGroups,
+      },
+      this.props.token
+    );
     this.setState({ button_pressed: true });
   };
   // after "ok" press in <ServerError />
@@ -310,7 +313,7 @@ class Teacher extends Component {
               </td>
               <td width="30"></td>
               <td valign="top" className={styles.narrow_desc}>
-                <Delete />
+                <YourGalleries />
               </td>
             </tr>
           </tbody>
@@ -327,6 +330,7 @@ const mapStateToProps = (state) => {
     formRecover: state.user.formPassthrough,
     galleries: state.user.galleries,
     requestMade: state.user.postRequestMade,
+    token: state.auth.token,
   };
 };
 
