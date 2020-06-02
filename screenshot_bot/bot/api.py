@@ -3,7 +3,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import IsAdminUser
 from .authentication import ScreenshotBotAuthentication
-from .tasks import screenshots
+from .take_screenshots import ScreenshotTaker
 
 
 class ResponseAndLaunch(HttpResponse):
@@ -13,7 +13,9 @@ class ResponseAndLaunch(HttpResponse):
 
     def close(self):
         super(ResponseAndLaunch, self).close()
-        # run screenshot bot here
+        screenshotter = ScreenshotTaker(self.launch_gallery)
+        screenshotter.launch_gallery()
+        
 
 
 @api_view(['POST'])

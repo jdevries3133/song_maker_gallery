@@ -16,9 +16,16 @@ from selenium.webdriver.chrome.options import Options
 
 class ScreenshotTaker:
     def __init__(self, galleries):
+        POST_URL = 'localhost:3000/???'
+        POST_AUTH_TOKEN = os.getenv('CUSTOM_AUTH_TOKEN')
         self.galleries = galleries
 
-    def multithread_cron(self):
+    def make_post(self):
+        """
+        Send post request to whatever server needs to recieve the screenshots.
+        """
+
+    def launch_gallery(self):
         print('sleeping')
         sleep(10)
         print('asleep')
