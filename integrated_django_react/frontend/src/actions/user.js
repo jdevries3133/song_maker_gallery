@@ -23,7 +23,7 @@ export const postGallery = (form, token) => (dispatch) => {
         payload: {
           status: res.status,
           formPassthrough: null,
-          gallery: res.data.url_extension,
+          gallery: res.data,
         },
       });
     })

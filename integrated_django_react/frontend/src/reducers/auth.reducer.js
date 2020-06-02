@@ -4,7 +4,6 @@ const initialState = {
   token: "",
   isAuthenticated: false,
   authErrr: false,
-  userData: {},
 };
 
 export default function (state = initialState, action) {
@@ -36,5 +35,3 @@ export default function (state = initialState, action) {
       return { ...state };
   }
 }
-
-// return { ...state, isAuthenticated: action.payload.isAuthenticated };

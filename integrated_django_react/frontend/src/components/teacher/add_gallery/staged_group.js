@@ -18,7 +18,7 @@ const staged_group = (props) => {
             </StyledDropdownButton>
           </ThemeProvider>
         </td>
-        <td>{groupname}</td>
+        <td style={{ fontSize: "24px" }}>{groupname}</td>
         <td>
           <button
             className={styles.restart_btn}

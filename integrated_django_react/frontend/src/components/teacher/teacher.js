@@ -281,7 +281,7 @@ class Teacher extends Component {
     } else if (this.state.requestMade) {
       blanket = (
         <GalPostSuccess
-          url={this.props.galleries.slice(-1)}
+          url={this.props.galleries.slice(-1)[0].url_extension}
           onOk={this.successHandler}
         />
       );
@@ -322,6 +322,7 @@ class Teacher extends Component {
                   verifyContent={this.state.verifyContent}
                   uploadedContent={this.state.uploadedContent}
                 />
+                {staged}
               </td>
               <td width="30"></td>
               <td valign="top" className={styles.narrow_desc}>
@@ -330,7 +331,6 @@ class Teacher extends Component {
             </tr>
           </tbody>
         </table>
-        {staged}
       </div>
     );
   }

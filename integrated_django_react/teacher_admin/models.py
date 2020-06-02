@@ -28,6 +28,8 @@ class Gallery(models.Model):
     needs_screenshot = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
+
+        # make unique url extension from tile
         self.url_extension = self.title.lower().replace(' ', '-')
         outstr = ''
         for i in self.url_extension:
@@ -44,6 +46,20 @@ class Gallery(models.Model):
                 else:
                     self.url_extension = new_url
                     break
+
+        # convert names to first name, last initial with proper case
+        print('indic')
+        print(self.api_obj)
+        for group in self.api_obj:
+            for index, row in enumerate(group[:-1]):
+                full_name = row[0]
+                name_arr = full_name.split(' ')
+                if len(name_arr) > 1:
+                    name= name_arr[0].title() + ' ' + name_arr[1][0].upper() + '.'
+                else:
+                    name = name_arr[0]
+                print(name)
+                group[index][0] = name
 
         super().save(*args, **kwargs)
 

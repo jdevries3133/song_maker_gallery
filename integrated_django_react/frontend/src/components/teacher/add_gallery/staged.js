@@ -6,9 +6,9 @@ import styles from "./add_gallery.module.css";
 const staged = (props) => {
   return (
     <div>
-      <h2>Your Staged Groups</h2>
+      <h2>Your Staged Gallery</h2>
       <br />
-      <div className="description">
+      <div>
         <h3>Gallery Name:</h3>
         <input
           className={styles.wide_input}
@@ -28,12 +28,8 @@ const staged = (props) => {
           value={props.descriptionValue}
           onChange={(e) => props.descriptionInput(e)}
         />
+        <h3>Staged Goups</h3>
         <table style={{ marginTop: "15px" }}>
-          <thead>
-            <tr>
-              <td colSpan="3">Staged Groups</td>
-            </tr>
-          </thead>
           <tbody>
             {props.groups.map((group) => (
               <StagedGroup

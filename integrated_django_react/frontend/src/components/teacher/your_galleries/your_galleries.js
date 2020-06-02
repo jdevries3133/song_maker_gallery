@@ -39,26 +39,28 @@ const YourGalleries = (props) => {
           <h2>Success</h2>
           <p>Your gallery "{props.deleteLoopback.title}" has been deleted.</p>
           <button onClick={() => onOk()}>Ok</button>
-          <button onClick={() => undo(props.deleteLoopback)}>Undo</button>
+          {/* <button onClick={() => undo(props.deleteLoopback)}>Undo</button> */}
+          {/* will be a nice thing to implement later */}
         </div>
       );
     } else if (props.deleteStatus === "error") {
       setBlanket(<ServerError onOk={onOk} />);
     }
-  }, [props.deleteStatus]);
+  }, [props.deleteLoopback]);
 
   const deleteConfirmed = (url_extension) => {
     props.deleteGallery(url_extension, props.token);
   };
-
-  // note: if delete is successful, call getusergalleries again
 
   if (props.galleries) {
     user_gals = props.galleries.map((gallery, index) => {
       const url = window.location.href.slice(0, -7) + "gallery/" + gallery[1];
       return (
         <tr key={index}>
-          <td>{gallery[0]}</td>
+          <td>
+            {gallery[0].slice(0, 14)}
+            {gallery[0].length < 14 ? null : <span>...</span>}
+          </td>
           <td>
             <Link to={"/gallery/" + gallery[1]}>
               <button className={styles.view}>View</button>
@@ -83,8 +85,6 @@ const YourGalleries = (props) => {
     });
   }
 
-  // render success message and "undo" option if gall has been deleted
-  console.log(user_gals);
   return (
     <Fragment>
       {confirmDelete}
@@ -96,7 +96,7 @@ const YourGalleries = (props) => {
             user_gals
           ) : (
             <tr>
-              <td>Your galleries will go here some day</td>
+              <td colSpan="2">Your galleries will go here some day</td>
             </tr>
           )}
         </tbody>

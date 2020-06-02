@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { login as loginAction } from "../../actions/auth.action";
-import { clearError } from "../../actions/auth.action";
+import {
+  login as loginAction,
+  clearError,
+  useToken,
+} from "../../actions/auth.action";
+import { getUserGalleries } from "../../actions/user";
 import { Link, Redirect } from "react-router-dom";
 import CustomError from "../generics/custom_error";
 import UsernamePassword from "./username_password";
@@ -10,6 +14,18 @@ import styles from "./signup.module.css";
 const login = (props) => {
   const [username, updateUsername] = useState("");
   const [password, updatePassword] = useState("");
+
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (token) {
+      props.getUserGalleries(token);
+    }
+  }, []);
+
+  if (props.galleries.length > 0) {
+    props.useToken(token);
+  }
 
   if (props.isAuthenticated) {
     return <Redirect to="/teacher" />;
@@ -57,7 +73,13 @@ const mapStateToProps = (state) => {
     badCredentials: state.auth.authError,
     isAuthenticated: state.auth.isAuthenticated,
     serverError: null, // implement global server error handling later
+    galleries: state.user.galleries,
   };
 };
 
-export default connect(mapStateToProps, { loginAction, clearError })(login);
+export default connect(mapStateToProps, {
+  loginAction,
+  clearError,
+  getUserGalleries,
+  useToken,
+})(login);

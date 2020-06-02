@@ -1,7 +1,7 @@
 import { POST_GALLERY, DELETE_GALLERY, GET_GALLERIES } from "../actions/types";
 
 const initialState = {
-  authenticated: false,
+  // authenticated: false,
   galleries: [],
   galleryPostStatus: null,
   formPassthrough: null,

@@ -15,3 +15,7 @@
 .delete {
   background-color: #fa8071;
 }
+
+.gal_title {
+  overflow: hidden;
+}
