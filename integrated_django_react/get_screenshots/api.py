@@ -10,16 +10,26 @@ from .authentication import ScreenshotBotAuthentication
 from .serializers import GallerySerializer
 
 class ScreenshotCron(CronJobBase):
-    RUN_EVERY_MINS = .01
+    RUN_EVERY_MINS = 1
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
     code = 'get_screenshots.cron'
     def do(self):
-        print('done')
-        post(
-            'http://localhost:8000/incoming',
+        res = post(
+            'http://localhost:8000/incoming/',
             headers={'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}'}, 
             data={'todo': Gallery.objects.all().filter(needs_screenshot=True).order_by('created')[:30]}
         )
+        print('done', res.__dict__)
+
+        try:
+            if res.json()['message'] == 'recieved':
+                return 0
+            else:
+                logging.warning('Cron job failed')
+                return 1
+        except:
+            logging.warning('Cron job failed')
+            return 1
 
 class ScreenshotReturn(ModelViewSet):
     permission_classes = [permissions.IsAdminUser]
