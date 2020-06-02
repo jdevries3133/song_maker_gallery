@@ -1,7 +1,7 @@
+import re
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
-
 from django_mysql.models import JSONField
 
 class Gallery(models.Model):
@@ -29,6 +29,11 @@ class Gallery(models.Model):
 
     def save(self, *args, **kwargs):
         self.url_extension = self.title.lower().replace(' ', '-')
+        outstr = ''
+        for i in self.url_extension:
+            if re.search(r'[a-zA-Z0-9\-]', i):
+                outstr += i
+        self.url_extension = outstr
         conflicting_urls = [i.url_extension for i in Gallery.objects.filter(url_extension__contains=self.url_extension)]
         if conflicting_urls:
             append_int = 1

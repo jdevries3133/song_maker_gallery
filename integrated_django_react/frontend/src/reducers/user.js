@@ -1,4 +1,4 @@
-import { POST_GALLERY, DELETE_GALLERY } from "../actions/types";
+import { POST_GALLERY, DELETE_GALLERY, GET_GALLERIES } from "../actions/types";
 
 const initialState = {
   authenticated: false,
@@ -26,13 +26,27 @@ export default function (state = initialState, action) {
           formPassthrough: action.payload.formPassthrough,
         };
       }
-
       return newState;
 
-    case DELETE_GALLERY:
+    case GET_GALLERIES:
       return {
         ...state,
+        galleries: action.payload.galleries,
       };
+
+    case DELETE_GALLERY:
+      if (action.payload.status === "deleted") {
+        return {
+          ...state,
+          loopback: action.payload.loopback,
+          deleteStatus: "deleted",
+        };
+      } else
+        return {
+          ...state,
+          loopback: null,
+          deleteStatus: "error",
+        };
     default:
       return state;
   }

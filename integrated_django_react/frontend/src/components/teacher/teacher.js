@@ -26,8 +26,12 @@ class Teacher extends Component {
   }
 
   // get user's galleries, available for view or deletion
-  componentDidMount(prevProps, prevState) {
-    getUserGalleries(this.props.token);
+  componentDidMount() {
+    if (this.props) {
+      if (this.props.token != "") {
+        this.props.getUserGalleries(this.props.token);
+      }
+    }
   }
   static getDerivedStateFromProps(props, state) {
     // issue: if the post request fails, even if the second attempt passes, it will
@@ -35,6 +39,7 @@ class Teacher extends Component {
     // just try again, but it's annoying, and then the user will have to delete the
     // duplicate post.
     if (props.formRecover && state.button_pressed) {
+      props.getUserGalleries(props.token);
       return {
         titleValue: props.formRecover.title,
         stagedGroups: props.formRecover.api_obj,

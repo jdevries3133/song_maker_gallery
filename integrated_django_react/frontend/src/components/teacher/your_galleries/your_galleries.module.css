@@ -1,0 +1,17 @@
+.outerTable {
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.delete_confirm {
+  background-color: maroon;
+  color: white;
+}
+
+.view {
+  background-color: #00c4ff;
+}
+
+.delete {
+  background-color: #fa8071;
+}
