@@ -20,6 +20,7 @@ urlpatterns = [
     path('api/auth/', include('accounts.urls')),
     path('api/galleries/get/', include('public_provider.urls')),
     path('api/user/', include('teacher_admin.urls')),
+    path('api/screenshot/', include('get_screenshots.urls')),
     path('admin/', admin.site.urls),
     path('gallery/', include('frontend.urls')),
     path('', include('frontend.urls')),

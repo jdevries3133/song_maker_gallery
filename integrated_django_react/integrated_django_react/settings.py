@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_cron',
     'django_mysql',
     'knox',
     'rest_framework',
 
     'accounts',
+    'get_screenshots',
     'frontend',
     'public_provider',
     'teacher_admin',
