@@ -1,15 +1,5 @@
-import React from "react";
+// import React from "react";
 import styled, { keyframes } from "styled-components";
-
-const colors = [
-  "http://song-maker-gallery.s3.amazonaws.com/manually_added/blue.jpg",
-  "http://song-maker-gallery.s3.amazonaws.com/manually_added/green.jpg",
-  "http://song-maker-gallery.s3.amazonaws.com/manually_added/orange.jpg",
-  "http://song-maker-gallery.s3.amazonaws.com/manually_added/pink.jpg",
-  "http://song-maker-gallery.s3.amazonaws.com/manually_added/red.jpg",
-  "http://song-maker-gallery.s3.amazonaws.com/manually_added/violet.jpg",
-  "http://song-maker-gallery.s3.amazonaws.com/manually_added/yellow.jpg",
-];
 
 const anim_in1 = keyframes`
   from {
@@ -105,7 +95,7 @@ const anim_out = keyframes; // finish
 const Button = styled.button`
   display: inline-block;
   background: url(${(props) => props.theme.background});
-  background-size: contain;
+  background-size: 100% 100%;
   font-family: "Indie Flower";
   font-size: 2.6rem;
   color: RGBA(0, 0, 0, 0);

@@ -17,15 +17,15 @@ const login = (props) => {
 
   const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    if (token) {
-      props.getUserGalleries(token);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (token) {
+  //     props.getUserGalleries(token);
+  //   }
+  // }, []);
 
-  if (props.galleries.length > 0) {
-    props.useToken(token);
-  }
+  // if (props.galleries.length > 0) {
+  //   props.useToken(token);
+  // }
 
   if (props.isAuthenticated) {
     return <Redirect to="/teacher" />;

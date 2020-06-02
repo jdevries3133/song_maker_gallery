@@ -48,10 +48,13 @@ class Gallery(models.Model):
                     break
 
         # convert names to first name, last initial with proper case
+        # also, insert placeholder image
         print('indic')
         print(self.api_obj)
         for group in self.api_obj:
             for index, row in enumerate(group[:-1]):
+
+                # fixing names
                 full_name = row[0]
                 name_arr = full_name.split(' ')
                 if len(name_arr) > 1:
@@ -60,6 +63,10 @@ class Gallery(models.Model):
                     name = name_arr[0]
                 print(name)
                 group[index][0] = name
+
+                # insert placeholder image
+                row.append('https://song-maker-gallery.s3.amazonaws.com/manually_added/Placeholder.png')
+
 
         super().save(*args, **kwargs)
 

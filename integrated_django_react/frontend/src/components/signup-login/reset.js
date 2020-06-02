@@ -10,7 +10,7 @@ export const reset = (props) => {
           kidding. Password reset functionality is complicated and hard, and I
           really wanted to get this site out by June. If you've forgotten your
           password, just make a new account. You will have to use a different
-          email address, but use a fake email for all I care.
+          email address.
         </p>
         <p>
           If, for whatever reason, you absolutely must delete your account or
