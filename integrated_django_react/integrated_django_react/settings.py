@@ -70,6 +70,10 @@ REST_FRAMEWORK = {
     )
 }
 
+CRON_CLASSES = [
+    'get_screenshots.api.ScreenshotCron',
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

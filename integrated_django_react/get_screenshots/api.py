@@ -4,32 +4,29 @@ from django_cron import CronJobBase, Schedule
 from django.contrib.auth.models import User
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
+from rest_framework.renderers import JSONRenderer
 from teacher_admin.models import Gallery
 from requests import post
 from .authentication import ScreenshotBotAuthentication
 from .serializers import GallerySerializer
 
 class ScreenshotCron(CronJobBase):
-    RUN_EVERY_MINS = 1
+    """
+    Don't forget to start the chron on the system in the terminal.
+    """
+    RUN_EVERY_MINS = 60
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
     code = 'get_screenshots.cron'
+
     def do(self):
+        galleries_todo = Gallery.objects.all().filter(needs_screenshot=True).order_by('created')
+        serializers = [GallerySerializer(g) for g in galleries_todo]
         res = post(
             'http://localhost:8000/incoming/',
-            headers={'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}'}, 
-            data={'todo': Gallery.objects.all().filter(needs_screenshot=True).order_by('created')[:30]}
+            headers={'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}', 'User-Agent': 'backend'}, 
+            data={'todo': [JSONRenderer().render(serializer.data) for serializer in serializers]}
         )
-        print('done', res.__dict__)
-
-        try:
-            if res.json()['message'] == 'recieved':
-                return 0
-            else:
-                logging.warning('Cron job failed')
-                return 1
-        except:
-            logging.warning('Cron job failed')
-            return 1
+        print('Chron successful', res.status, res.data)
 
 class ScreenshotReturn(ModelViewSet):
     permission_classes = [permissions.IsAdminUser]
