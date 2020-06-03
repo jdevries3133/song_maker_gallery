@@ -1,4 +1,5 @@
 import os
+import json
 from rest_framework import permissions
 from django_cron import CronJobBase, Schedule
 from django.contrib.auth.models import User
@@ -20,13 +21,12 @@ class ScreenshotCron(CronJobBase):
 
     def do(self):
         galleries_todo = Gallery.objects.all().filter(needs_screenshot=True).order_by('created')
-        serializers = [GallerySerializer(g) for g in galleries_todo]
+        serializer = GallerySerializer(galleries_todo, many=True)
         res = post(
             'http://localhost:8000/incoming/',
             headers={'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}', 'User-Agent': 'backend'}, 
-            data={'todo': [JSONRenderer().render(serializer.data) for serializer in serializers]}
+            data={'todo': JSONRenderer().render(serializer.data)}
         )
-        print('Chron successful', res.status, res.data)
 
 class ScreenshotReturn(ModelViewSet):
     permission_classes = [permissions.IsAdminUser]

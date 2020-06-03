@@ -19,26 +19,26 @@ from selenium.webdriver.chrome.options import Options
 from .models import ToDo, Done
 
 
-POST_URL = 'localhost:3000/???'
-POST_AUTH_TOKEN = os.getenv('CUSTOM_AUTH_TOKEN')
-CHROME_DRIVER_PATH = '/Users/JohnDeVries/repos/song_maker_gallery/screenshot_bot/bot/chromedriver'
-
-def take_screenshots(self, array):
+CHROME_DRIVER_PATH = '/Users/JohnDeVries/repos/song_maker_gallery/screenshot_bot/bot/chromedriver' 
+ 
+def take_screenshots(todo):
     """
     Launch webdriver, then iterate through array and take a screenshot for
     every songmaker link. Replace placeholder with public url. Make sure
     that the image is a heavily compressed jpeg.
     """
+    array = todo.api_obj
+    breakpoint()
     chrome_options = Options()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--window-size=1440x789')
-    driver = webdriver.Chrome(options=chrome_options, executable_path=self.chrome_driver)
+    driver = webdriver.Chrome(options=chrome_options, executable_path=CHROME_DRIVER_PATH)
     for group in array:
         for st_row in group[:-1]:
 
             # define constants
             url = st_row[1]
-            filename = 'screenshot_cache/' + str(hash(url)) + '.png'
+            filename = '/Users/JohnDeVries/repos/song_maker_gallery/screenshot_bot/bot/screenshot_cache/' + str(hash(url)) + '.png'
 
             # try to get a good screenshot by waiting for...
             # try three times with 10sec timeout
@@ -71,3 +71,4 @@ def take_screenshots(self, array):
 
 
 if __name__ == "__main__":
+    pass

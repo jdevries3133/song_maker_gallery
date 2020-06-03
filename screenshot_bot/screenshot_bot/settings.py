@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_mysql',
+    'django_cron',
     'storages',
     'rest_framework',
     'rest_framework.authtoken',
@@ -82,6 +83,11 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAdminUser'
     ]
 }
+
+# django-cron
+CRON_CLASSES = [
+    'bot.process_cron.ScreenshotterCron',
+]
 
 # Amazon S3
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

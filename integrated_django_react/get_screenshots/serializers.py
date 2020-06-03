@@ -4,6 +4,6 @@ from teacher_admin.models import Gallery
 class GallerySerializer(ModelSerializer):
     class Meta:
         model = Gallery
-        fields = ('api_obj',)
+        fields = ('url_extension', 'api_obj')
 
     
