@@ -1,9 +1,5 @@
-:local p {
-  text-align: center;
-}
-
-h1 {
-  margin: 2rem;
+.signup {
+  margin: 0rem;
   font-size: 60px;
 }
 
@@ -23,6 +19,11 @@ h1 {
 
 .met {
   color: green;
+  text-align: center;
+}
+
+.not_met {
+  text-align: center;
 }
 
 .loginButtonSpace {
@@ -42,4 +43,23 @@ h1 {
 .signup_module {
   display: inline-block;
   padding: 3rem;
+}
+
+a {
+  color: blue;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+}
+
+span {
+  vertical-align: center;
 }

@@ -2,10 +2,9 @@ import React from "react";
 import styles from "./errors.module.css";
 
 const custom_error = (props) => {
-  const style = props.justify ? styles.container : null;
   return (
     <div className="description blanket">
-      <div className={style}>
+      <div className={styles.container}>
         <h2>{props.header}</h2>
         {props.message.map((par) => (
           <p key={par}>{par}</p>

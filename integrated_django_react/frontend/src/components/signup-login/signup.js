@@ -3,9 +3,23 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { register, clearError } from "../../actions/auth.action";
-import UsernamePassword from "./username_password";
 import CustomError from "../generics/custom_error";
 import styles from "./signup.module.css";
+
+const TermsOfService = (props) => (
+  <CustomError
+    header="Terms of service"
+    message={[
+      "Legal:",
+      'THE WEBSITE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE WEBSITE OR THE USE OR OTHER DEALINGS IN THE WEBSITE.',
+      "Non-Legal:",
+      "This website was made by me, a music teacher, by myself, as a hobby. There is no customer service department, there are no guarantees. I would not have made or shared this site with you if I didn't believe that it would be awesome for you and your students.",
+      "That being said, I am a music teacher; not a software engineer. I offer not guarantee that this site will continue to function; I offer no guarantees that the cost will not exceed the revenue such that it forces me to shut it down.",
+      "I can only guarantee that at the moment you are reading this, this website is a fantastic way for you to present your students' music lab compositions.",
+    ]}
+    onOk={() => props.onOk()}
+  />
+);
 
 const signup = (props) => {
   const [emailInput, updateEmail] = useState("");
@@ -14,6 +28,7 @@ const signup = (props) => {
   const [passwordConfirm, updateConfirm] = useState("");
   const [noSpace, setNoSpace] = useState(false);
   const [blanket, setBlanket] = useState(null);
+  const [TOS, setTOS] = useState(false);
 
   if (usernameInput.includes(" ") && !noSpace) {
     setNoSpace(true);
@@ -31,7 +46,7 @@ const signup = (props) => {
       setBlanket(
         <CustomError
           header="Passwords do not match"
-          message={["test"]}
+          message={[""]}
           onOk={() => setBlanket(null)}
         />
       );
@@ -44,7 +59,7 @@ const signup = (props) => {
       setBlanket(
         <CustomError
           header="Blank Fields"
-          message={["Required fields are blank"]}
+          message={["Required fields are blank", "All fields are required."]}
           onOk={() => setBlanket(null)}
         />
       );
@@ -80,7 +95,7 @@ const signup = (props) => {
   return (
     <div>
       {blanket}
-      <h1 className={styles.h1_short}>sign up!</h1>
+      <h1 className={styles.signup}>sign up!</h1>
       <br />
       <div className="description">
         <div className={styles.signup_module}>
@@ -107,7 +122,6 @@ const signup = (props) => {
             }}
           />
         </div>
-
         <div className={styles.signup_module}>
           <h3>Password</h3>
           <input
@@ -134,7 +148,9 @@ const signup = (props) => {
           />
         </div>
         {noSpace ? (
-          <p style={{ color: "red" }}>Username may not contain spaces.</p>
+          <p style={{ textAlign: "center", color: "red" }}>
+            Username may not contain spaces.
+          </p>
         ) : null}
         {pass_bool ? (
           <p className={styles.met}>
@@ -145,6 +161,21 @@ const signup = (props) => {
             Your password must be at least eight characters long
           </p>
         )}
+        {/* <label for="tos"> */}
+        <span style={{ position: "relative", bottom: "8px" }}>
+          I agree to the{" "}
+          <a
+            onClick={() =>
+              setBlanket(<TermsOfService onOk={() => setBlanket(null)} />)
+            }
+          >
+            terms of service
+          </a>
+          {"     "}
+        </span>
+        <input type="checkbox" id="tos" onClick={() => setTOS(!TOS)}></input>
+        {/* </label>{" "} */}
+        <br />
         <button onClick={() => submit()} className={styles.sign_up}>
           Sign Up
         </button>
