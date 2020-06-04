@@ -1,6 +1,7 @@
 import os
 import json
 from rest_framework import permissions
+from rest_framework import status
 from django_cron import CronJobBase, Schedule
 from django.contrib.auth.models import User
 from rest_framework.viewsets import ModelViewSet
@@ -24,7 +25,7 @@ class ScreenshotCron(CronJobBase):
         serializer = GallerySerializer(galleries_todo, many=True)
         res = post(
             'http://localhost:8000/incoming/',
-            headers={'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}', 'User-Agent': 'backend'}, 
+            headers={'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}'},
             data={'todo': JSONRenderer().render(serializer.data)}
         )
 
@@ -34,12 +35,9 @@ class ScreenshotReturn(ModelViewSet):
     authentication_classes = (ScreenshotBotAuthentication,)
     queryset = Gallery.objects.all()
 
-    def update(self, request):
-        # write this when the screenshot bot is actually doing something
-        print(request.data)
-        return Response({
-            'message': 'Updated'
-        })
-
-    def get_queryset(self):
-        return self.queryset.all().filter(needs_screenshot=True).order_by('created')[:30]
+    def partial_update(self, request, pk='url_extension', *args, **kwargs):
+        instance = self.queryset.get(url_extension=request.data.get('pk'))
+        serializer = GallerySerializer(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(custom_overwrite=True)  # jankiness to the extreme :(
+        return Response(data=serializer.data)

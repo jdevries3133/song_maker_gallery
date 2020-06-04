@@ -28,44 +28,51 @@ class Gallery(models.Model):
     needs_screenshot = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
-
         # make unique url extension from tile
         self.url_extension = self.title.lower().replace(' ', '-')
         outstr = ''
-        for i in self.url_extension:
-            if re.search(r'[a-zA-Z0-9\-]', i):
-                outstr += i
-        self.url_extension = outstr
-        conflicting_urls = [i.url_extension for i in Gallery.objects.filter(url_extension__contains=self.url_extension)]
-        if conflicting_urls:
-            append_int = 1
-            while True:
-                new_url = self.url_extension + str(append_int)
-                if new_url in conflicting_urls:
-                    append_int += 1
-                else:
-                    self.url_extension = new_url
-                    break
 
-        # convert names to first name, last initial with proper case
-        # also, insert placeholder image
-        print('indic')
-        print(self.api_obj)
-        for group in self.api_obj:
-            for index, row in enumerate(group[:-1]):
+        # this save method is tragically flawed
+        # I should just not mess with the default primary_key
+        # On the public side, I should just filter .all() by the url_extension,
+        # and call it a day.
 
-                # fixing names
-                full_name = row[0]
-                name_arr = full_name.split(' ')
-                if len(name_arr) > 1:
-                    name= name_arr[0].title() + ' ' + name_arr[1][0].upper() + '.'
-                else:
-                    name = name_arr[0]
-                print(name)
-                group[index][0] = name
+        # anytime you try to update the model, it becomes duplicated with a new
+        # url extension, and the old one just hangs around. Plus, I think the
+        # api serializer.data ends up being wrong because of this, too.
+        self.__dict__.setdefault('custom_overwrite', False)
+        if not self.custom_overwrite:
+            for i in self.url_extension:
+                if re.search(r'[a-zA-Z0-9\-]', i):
+                    outstr += i
+            self.url_extension = outstr
+            conflicting_urls = [i.url_extension for i in Gallery.objects.filter(url_extension__contains=self.url_extension)]
+            if conflicting_urls:
+                append_int = 1
+                while True:
+                    new_url = self.url_extension + str(append_int)
+                    if new_url in conflicting_urls:
+                        append_int += 1
+                    else:
+                        self.url_extension = new_url
+                        break
 
-                # insert placeholder image
-                row.append('https://song-maker-gallery.s3.amazonaws.com/manually_added/Placeholder.png')
+            # convert names to first name, last initial with proper case
+            # also, insert placeholder image
+            for group in self.api_obj:
+                for index, row in enumerate(group[:-1]):
+
+                    # fixing names
+                    full_name = row[0]
+                    name_arr = full_name.split(' ')
+                    if len(name_arr) > 1:
+                        name= name_arr[0].title() + ' ' + name_arr[1][0].upper() + '.'
+                    else:
+                        name = name_arr[0]
+                    group[index][0] = name
+
+                    # insert placeholder image
+                    row.append('https://song-maker-gallery.s3.amazonaws.com/manually_added/Placeholder.png')
 
 
         super().save(*args, **kwargs)

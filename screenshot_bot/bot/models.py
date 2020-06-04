@@ -6,6 +6,6 @@ class ToDo(models.Model):
     url_extension = models.CharField(max_length=100)
     api_obj = JSONField(default=list)
 
-class Done(models.Model):
-    url_extension = models.CharField(max_length=100)
-    api_obj = JSONField(default=list)
+# class Done(models.Model):
+#     url_extension = models.CharField(max_length=100)
+#     api_obj = JSONField(default=list)

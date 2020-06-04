@@ -1,0 +1,3 @@
+*/5 * * * * source ~/.zshenv && source ~/repos/song_maker_gallery/venv/bin/activate && python ~/repos/song_maker_gallery/integrated_django_react/manage.py runcrons --force > ~/repos/song_maker_gallery/backend_cronlog.log
+*/1 * * * * source ~/.zshenv && source ~/repos/song_maker_gallery/venv/bin/activate && python ~/repos/song_maker_gallery/screenshot_bot/manage.py runcrons --force > ~/repos/song_maker_gallery/scBot_cronlog.log
+

@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view, permission_classes, authenticati
 from rest_framework.permissions import IsAdminUser
 from rest_framework.parsers import JSONParser
 from .authentication import ScreenshotBotAuthentication
-from .models import ToDo, Done
+from .models import ToDo
 
 @api_view(['POST'])
 @authentication_classes((ScreenshotBotAuthentication,))

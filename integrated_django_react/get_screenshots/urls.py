@@ -6,5 +6,5 @@ router = DefaultRouter()
 router.register(r'', ScreenshotReturn, basename="return")
 
 urlpatterns = [
-    path('viewset/', include(router.urls))
+    path('', include(router.urls))
 ]
