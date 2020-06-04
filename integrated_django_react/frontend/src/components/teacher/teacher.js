@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { postGallery, getUserGalleries } from "../../actions/user";
+import { logout } from "../../actions/auth.action";
 import Papa from "papaparse";
 
 import Add from "./add_gallery/add_gallery";
@@ -27,12 +29,14 @@ class Teacher extends Component {
 
   // get user's galleries, available for view or deletion
   componentDidMount() {
+    // initial fetch of user's galleries
     if (this.props) {
-      if (this.props.token != "") {
+      if (this.props.token) {
         this.props.getUserGalleries(this.props.token);
       }
     }
   }
+
   static getDerivedStateFromProps(props, state) {
     // issue: if the post request fails, even if the second attempt passes, it will
     // tell the user that it failed. This isn't a huge deal, because the user can
@@ -56,6 +60,7 @@ class Teacher extends Component {
       return null;
     }
   }
+
   // see <Add />
   fileSelectHandler = (event) => {
     const file = event.target.value;
@@ -82,6 +87,7 @@ class Teacher extends Component {
       });
     }
   };
+
   // see <Add />
   csvHandler = () => {
     const config = {
@@ -94,6 +100,7 @@ class Teacher extends Component {
     };
     Papa.parse(this.state.data, config);
   };
+
   // see <Add /> and <Verify />
   resetFormHandler = () => {
     this.setState({
@@ -170,6 +177,7 @@ class Teacher extends Component {
   titleInputHandler = (e) => {
     this.setState({ titleValue: e.target.value });
   };
+
   // see <Staged />
   descriptionInputHandler = (e) => {
     this.setState({
@@ -225,6 +233,11 @@ class Teacher extends Component {
   };
 
   render() {
+    // will occur after logout
+    if (!this.props.isAuthenticated) {
+      return <Redirect to="/login" />;
+    }
+
     let blanket;
     let staged;
     // Verify component allows user to validate csv data after upload.
@@ -243,6 +256,7 @@ class Teacher extends Component {
         />
       );
     }
+
     // As the user uploads additional groups, the staged groups are held in a
     // list at the bottom of the page
     if (this.state.stagedGroups.length > 0) {
@@ -303,9 +317,15 @@ class Teacher extends Component {
 
     return (
       <div>
-        <div>
-          <h1 className={styles.h1}>Gallery Management Console</h1>
-        </div>
+        <h1 className={styles.h1}>Gallery Management Console</h1>
+        <button
+          className={styles.logout}
+          onClick={() => {
+            this.props.logout(this.props.token);
+          }}
+        >
+          Log Out
+        </button>
         {blanket}
         <table className={styles.table}>
           <tbody>
@@ -343,9 +363,12 @@ const mapStateToProps = (state) => {
     galleries: state.user.galleries,
     requestMade: state.user.postRequestMade,
     token: state.auth.token,
+    isAuthenticated: state.auth.isAuthenticated,
   };
 };
 
-export default connect(mapStateToProps, { postGallery, getUserGalleries })(
-  Teacher
-);
+export default connect(mapStateToProps, {
+  postGallery,
+  getUserGalleries,
+  logout,
+})(Teacher);

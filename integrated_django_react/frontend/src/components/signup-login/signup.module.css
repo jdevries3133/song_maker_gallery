@@ -3,7 +3,7 @@
 }
 
 h1 {
-  padding-top: 0;
+  margin: 2rem;
   font-size: 60px;
 }
 
@@ -37,4 +37,9 @@ h1 {
 .col_2 {
   background-color: #00bcd1;
   min-width: 14rem;
+}
+
+.signup_module {
+  display: inline-block;
+  padding: 3rem;
 }

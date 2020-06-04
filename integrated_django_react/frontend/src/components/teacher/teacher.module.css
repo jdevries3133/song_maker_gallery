@@ -14,3 +14,9 @@
   padding: 7px;
   border-radius: 20px;
 }
+
+.logout {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}

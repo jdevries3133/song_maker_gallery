@@ -20,7 +20,6 @@ const landing_page = (props) => {
     );
   } else {
     if (props.status != 200) {
-      props.getGallery("sample-gallery");
       return (
         <div>
           <h1>Internal Server Error</h1>

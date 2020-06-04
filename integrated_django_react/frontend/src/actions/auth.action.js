@@ -1,16 +1,24 @@
 import axios from "axios";
 
-import { LOGIN, REGISTER, CLEAR_ERROR } from "./types";
+import { LOGIN, REGISTER, CLEAR_ERROR, LOGOUT } from "./types";
 
-export const useToken = (token) => (dispatch) => {
-  dispatch({
-    type: LOGIN,
-    payload: {
-      isAuthenticated: true,
-      authError: false,
-      token: token,
-    },
-  });
+export const tryToken = (token) => (dispatch) => {
+  axios.defaults.xsrfCookieName = "csrftoken";
+  axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+  axios
+    .get("/api/user", { headers: { Authorization: `Token ${token}` } })
+    .then((res) => {
+      console.log("ind");
+      dispatch({
+        type: LOGIN,
+        payload: {
+          isAuthenticated: true,
+          authError: false,
+          token: token,
+        },
+      });
+    })
+    .catch((e) => console.log(e));
 };
 
 // LOGIN
@@ -111,3 +119,17 @@ export const register = (data) => (dispatch) => {
 };
 
 // LOGOUT
+export const logout = (token) => (dispatch) => {
+  axios.defaults.xsrfCookieName = "csrftoken";
+  axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+  axios
+    .post("/api/auth/logout/", null, {
+      headers: { Authorization: `Token ${token}` },
+    })
+    .then(() => {
+      dispatch({
+        type: LOGOUT,
+      });
+    })
+    .catch((e) => console.log(e));
+};

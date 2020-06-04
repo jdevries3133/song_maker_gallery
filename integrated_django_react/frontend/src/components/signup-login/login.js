@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {
   login as loginAction,
   clearError,
-  useToken,
+  tryToken,
 } from "../../actions/auth.action";
 import { getUserGalleries } from "../../actions/user";
 import { Link, Redirect } from "react-router-dom";
@@ -17,21 +17,20 @@ const login = (props) => {
 
   const token = localStorage.getItem("token");
 
-  // useEffect(() => {
-  //   if (token) {
-  //     props.getUserGalleries(token);
-  //   }
-  // }, []);
-
-  // if (props.galleries.length > 0) {
-  //   props.useToken(token);
-  // }
+  useEffect(() => {
+    // console.log(token);
+    if (token) {
+      props.tryToken(token);
+    }
+  }, []);
 
   if (props.isAuthenticated) {
+    console.log("redirect to teacher");
     return <Redirect to="/teacher" />;
   }
 
   const submit = () => {
+    console.log("master submit");
     props.loginAction({ username: username, password: password });
   };
 
@@ -81,5 +80,5 @@ export default connect(mapStateToProps, {
   loginAction,
   clearError,
   getUserGalleries,
-  useToken,
+  tryToken,
 })(login);

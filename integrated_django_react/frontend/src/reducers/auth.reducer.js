@@ -16,8 +16,6 @@ export default function (state = initialState, action) {
         token: action.payload.token,
         user: action.payload.user,
       };
-    case LOGOUT:
-      return { ...state };
     case REGISTER:
       return {
         ...state,
@@ -30,6 +28,13 @@ export default function (state = initialState, action) {
       return {
         ...state,
         authError: action.payload.authError,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        token: "",
+        isAuthenticated: false,
+        authErr: false,
       };
     default:
       return { ...state };
