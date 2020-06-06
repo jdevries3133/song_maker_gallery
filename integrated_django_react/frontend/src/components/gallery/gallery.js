@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 
 import GalleryBody from "./gal_body";
 
@@ -43,7 +43,6 @@ class gallery extends Component {
               description={this.props.gallery.description}
               data={this.props.gallery.api_obj}
             />
-            )}
           </div>
         );
       }

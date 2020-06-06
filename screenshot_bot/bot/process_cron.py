@@ -19,8 +19,6 @@ class ScreenshotterCron(CronJobBase):
         for gallery in todo:
             data = take_screenshots(gallery)
             jsn = json.dumps(data)
-            print(jsn)
-            breakpoint()
             res = requests.patch(
                 BACKEND_POST_URL,
                 headers={
@@ -32,6 +30,7 @@ class ScreenshotterCron(CronJobBase):
         # delete all ToDo objects in "data" queryset
             if res.status_code == 200:
                 print(f'Success for {data["url_extension"]}')
+                todo.delete()
             else:
                 print(f'Failure for {data["url_extension"]}')
 

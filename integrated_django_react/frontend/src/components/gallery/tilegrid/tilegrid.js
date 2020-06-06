@@ -6,6 +6,8 @@ import styles from "./tilegrid.module.css";
 const tileGrid = (props) => {
   const group_name = props.data.slice(-1);
 
+  console.log(window.scrollY);
+
   return (
     <div>
       <div className={styles.tg_top_space} />

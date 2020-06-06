@@ -1,3 +1,41 @@
+.donate_button {
+  font-family: "Roboto", sans-serif;
+  font-weight: lighter;
+  font-size: 5rem;
+  background-color: rgba(104, 253, 75, 0.719);
+  width: 140px;
+  border-radius: 69px;
+  left: 100%;
+  position: sticky;
+  top: 21px;
+}
+
+.donation_blanket {
+  overflow-y: hidden;
+  height: 656px;
+  margin-top: -328px;
+}
+
+.donation_header {
+  background-color: rgba(217, 157, 255, 0.81);
+}
+
+.donation_close {
+  position: absolute;
+  bottom: -19px;
+  right: -18px;
+  background-color: lightcoral;
+}
+
+.par_container {
+  width: 70%;
+  margin: auto;
+}
+
+.par {
+  text-align: justify;
+}
+
 .tg_top_space {
   margin-top: 8rem;
 }

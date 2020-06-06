@@ -125,6 +125,7 @@ const Button = styled.button`
     animation-direction: forwards;
     animation-fill-mode: forwards;
     animation-duration: 0.3s;
+    cursor: pointer;
   }
 `;
 
