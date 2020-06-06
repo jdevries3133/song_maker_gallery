@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_cron',
     'django_mysql',
     'knox',
+    'storages',
     'rest_framework',
 
     'accounts',
@@ -80,7 +81,15 @@ EMAIL_HOST_USER = os.getenv('SMG_GMAIL')
 EMAIL_HOST_PASSWORD = os.getenv('SMG_GMAIL_PASSWORD')
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Amazon S3
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE =  'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'song-maker-frontend'
+AWS_DEFAULT_ACL = 'public-read'
+AWS_S3_FILE_OVERWRITE = True
 
 TEMPLATES = [
     {
