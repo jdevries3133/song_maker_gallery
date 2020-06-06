@@ -16,7 +16,12 @@ const gal_post_success = (props) => {
         Right now, it has placeholder images, but our screenshot bot is working
         hard to prepare thumbnails of your students' work as we speak!
       </p>
-      <p>We'll send you an email when your gallery is ready.</p>
+      <p>
+        We'll send you an email when your gallery is ready. You should keep an
+        eye on your spam folder, the email will come from
+        "songmakergallery@gmail.com." Depending on site demand, you should
+        expect to hear back in less than 24 hours!
+      </p>
       <button onClick={() => props.onOk()}>Ok</button>
     </div>
   );

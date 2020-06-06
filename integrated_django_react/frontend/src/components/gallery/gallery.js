@@ -5,18 +5,18 @@ import GalleryBody from "./gal_body";
 import { getGallery } from "../../actions/gallery";
 import { connect } from "react-redux";
 
+import styles from "./tilegrid/tilegrid.module.css";
+
 class gallery extends Component {
   state = {
     url_ext: window.location.pathname.split("/")[2],
     gallery: null,
   };
-
   componentDidMount() {
     this.props.getGallery(this.state.url_ext);
   }
 
   render() {
-    // return <h1>temp</h1>;
     if (this.props.status === undefined) {
       return <h1>Loading</h1>;
     } else if (this.state.url_ext === "") {
@@ -42,6 +42,7 @@ class gallery extends Component {
               title={this.props.gallery.title}
               description={this.props.gallery.description}
               data={this.props.gallery.api_obj}
+              button={this.state.button}
             />
           </div>
         );

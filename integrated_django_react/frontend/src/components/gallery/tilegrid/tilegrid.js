@@ -6,12 +6,10 @@ import styles from "./tilegrid.module.css";
 const tileGrid = (props) => {
   const group_name = props.data.slice(-1);
 
-  console.log(window.scrollY);
-
   return (
     <div>
       <div className={styles.tg_top_space} />
-      <a href="#gallery_top">
+      <a href="#gallery_top" name="gallery">
         <h2 className={styles.tg_title} id={group_name}>
           {group_name}
         </h2>
@@ -23,7 +21,7 @@ const tileGrid = (props) => {
           <Tile
             group={group_name}
             st_arr={student}
-            key={group_name + student}
+            key={group_name + student + Math.random().toString()}
             index={index}
           />
         ))}

@@ -5,3 +5,8 @@
 .sample {
   color: #94c732 #ffc107 #00bcd4 #c77dd3;
 }
+
+.cta {
+  font-size: 1.5rem;
+  padding: 28px;
+}

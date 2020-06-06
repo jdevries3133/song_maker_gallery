@@ -110,6 +110,7 @@ const galBody = (props) => {
             $
           </button>
         )}
+
         {props.data.map((group) => (
           <TileGrid data={group} key={group.slice(-1)[0]} />
         ))}

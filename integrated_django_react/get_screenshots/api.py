@@ -41,12 +41,27 @@ class ScreenshotReturn(ModelViewSet):
 
     def partial_update(self, request, pk='url_extension', *args, **kwargs):
         instance = self.queryset.get(url_extension=request.data.get('pk'))
-        subject = 'Your song maker gallery is ready to view!'
-        message = f'Your gallery at {BACKEND_ROOT_URL + "/gallery/" + instance.url_extension} is ready to display student work!'
-        from_email = 'songmakergallery@gmail.com'
-        recipient = instance.user.email
         
         serializer = GallerySerializer(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save(custom_overwrite=True)  # jankiness to the extreme :(
+
+        # email confirmation that screenshots are ready
+        subject = 'Your song maker gallery is ready to view!'
+        message = (
+            f'Hello {instance.owner.username}!\n\nYour gallery at https://{BACKEND_ROOT_URL}gallery/{instance.url_extension}/ is ready '
+            'and currently displaying student work!\n\nUnsubscribe? https://forms.gle/mqCcbxmQn3JfeNp76'
+        )
+        from_email = 'songmakergallery@gmail.com'
+        recipient_list = [instance.owner.email]
+        try:
+            send_mail(
+                subject,
+                message,
+                from_email,
+                recipient_list
+            )
+        except Exception as e:
+            return Response(status=500)
+
         return Response(data=serializer.data)

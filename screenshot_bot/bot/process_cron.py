@@ -1,3 +1,4 @@
+import logging
 import json
 import os
 from rest_framework.renderers import JSONRenderer
@@ -29,8 +30,8 @@ class ScreenshotterCron(CronJobBase):
             )
         # delete all ToDo objects in "data" queryset
             if res.status_code == 200:
-                print(f'Success for {data["url_extension"]}')
+                logging.info(f'Success for {data["pk"]}')
                 todo.delete()
             else:
-                print(f'Failure for {data["url_extension"]}')
+                logging.error(f'Failure for {data["pk"]}')
 

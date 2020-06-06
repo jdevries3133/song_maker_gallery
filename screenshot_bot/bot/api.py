@@ -10,7 +10,6 @@ from .models import ToDo
 @api_view(['POST'])
 @authentication_classes((ScreenshotBotAuthentication,))
 def incoming(request, *args, **kwargs):
-    # arr = json.loads(request.data['todo'])
     stream = io.BytesIO(request.data['todo'].encode('utf-8'))
     data = JSONParser().parse(stream)
     for gallery in data:

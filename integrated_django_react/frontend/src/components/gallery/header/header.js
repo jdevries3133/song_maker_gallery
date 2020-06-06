@@ -18,6 +18,9 @@ const header = (props) => {
             click to open their composition in a new tab
           </b>
         </p>
+        <a href="#gallery">
+            <button className={styles.cta}>View Gallery</button>
+          </a>
       </div>
     </div>
   );

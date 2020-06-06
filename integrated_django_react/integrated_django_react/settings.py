@@ -74,6 +74,14 @@ CRON_CLASSES = [
     'get_screenshots.api.ScreenshotCron',
 ]
 
+# email
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.getenv('SMG_GMAIL')
+EMAIL_HOST_PASSWORD = os.getenv('SMG_GMAIL_PASSWORD')
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
