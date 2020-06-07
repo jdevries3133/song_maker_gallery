@@ -24,6 +24,7 @@ mysqlclient==1.4.6
 Pillow==7.1.2
 pyasn1==0.4.8
 pycparser==2.20
+PyMySQL==0.9.3
 python-dateutil==2.8.1
 pytz==2020.1
 requests==2.23.0
