@@ -14,7 +14,8 @@ from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'integrated_django_react.settings')
 # My env variables
-with open('/Users/JohnDeVries/repos/song_maker_gallery/integrated_django_react/integrated_django_react/config.json', 'r') as jsn:
+CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
+with open(CONFIG_PATH, 'r') as jsn:
     env = json.load(jsn)
 
     for k, v in env.items():
