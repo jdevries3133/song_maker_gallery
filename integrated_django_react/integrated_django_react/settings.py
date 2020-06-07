@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['songmakergallery.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -123,7 +123,7 @@ DATABASES = {
         'PORT': 3306,
         'OPTIONS': {
             'charset': 'utf8mb4',
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+  #          'init_command': "SET sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER'"
         },
         'TEST': {
             'CHARSET': 'utf8mb4',
@@ -172,35 +172,23 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
+"""
 # Logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-	    'applogfile': {
+	    'file_logger': {
 		'level':'DEBUG',
-		'class':'logging.handlers.RotatingFileHandler',
+		'class':'logging.FileHandler',
 		'filename': os.path.join(BASE_DIR, 'main.log'),
-		'maxBytes': 1024*1024*15, # 15MB
-		'backupCount': 10,
 	    },
     },
     'loggers': {
         'main': {
-            'handlers': ['applogfile',],
+            'handlers': ['file_logger'],
             'level': 'DEBUG',
         },
-#        'get_screenshots': {
-#            'handlers': ['applogfile',],
-#            'level': 'DEBUG',
-#        },
-#        'public_provider': {
-#            'handlers': ['applogfile',],
-#            'level': 'DEBUG',
-#        },
-#        'teacher_admin': {
-#            'handlers': ['applogfile',],
-#            'level': 'DEBUG',
-#        },
     }
 }
+"""
