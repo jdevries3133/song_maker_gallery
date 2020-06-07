@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['songmakergallery.com']
 
 
 # Application definition
@@ -171,3 +171,36 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+
+# Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+	    'applogfile': {
+		'level':'DEBUG',
+		'class':'logging.handlers.RotatingFileHandler',
+		'filename': os.path.join(BASE_DIR, 'main.log'),
+		'maxBytes': 1024*1024*15, # 15MB
+		'backupCount': 10,
+	    },
+    },
+    'loggers': {
+        'main': {
+            'handlers': ['applogfile',],
+            'level': 'DEBUG',
+        },
+#        'get_screenshots': {
+#            'handlers': ['applogfile',],
+#            'level': 'DEBUG',
+#        },
+#        'public_provider': {
+#            'handlers': ['applogfile',],
+#            'level': 'DEBUG',
+#        },
+#        'teacher_admin': {
+#            'handlers': ['applogfile',],
+#            'level': 'DEBUG',
+#        },
+    }
+}
