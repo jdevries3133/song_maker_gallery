@@ -24,12 +24,6 @@ class RegisterSerializer(ModelSerializer):
         )
         return user
 
-    def validate(self, data):
-        if User.objects.filter(email=data['email']).exists():
-            raise ValidationError("Email exists")
-        return data
-
-
 # Login Serializer
 class LoginSerializer(Serializer):
     username = CharField()
