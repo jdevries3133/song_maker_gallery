@@ -1,0 +1,11 @@
+{
+	"AWS_ACCESS_KEY_ID": "AKIAUZV4VEWPUCKHJ3OS",
+	"AWS_SECRET_ACCESS_KEY": "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",
+	"AWS_STORAGE_BUCKET_NAME": "song-maker-gallery",
+	"MYSQL_USER": "jack",
+	"MYSQL_USER_PASS": "ygu8935qaioJ4EITJ39IY043Wjjgio3raej3io",
+	"DJANGO_SECRET": ")+p-$-497zc^1l19^5di0xacugyt6ac-ai2+wf#t\$q*@jo^e*",
+	"CUSTOM_AUTH_TOKEN": "jregalu8t03ioaginoajhi3raJHIO5RAJIHORA",
+	"SMG_GMAIL": "songmakergallery@gmail.com",
+	"SMG_GMAIL_PASSWORD": "dsqioflhgjztfosr"
+}
