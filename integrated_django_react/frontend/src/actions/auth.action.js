@@ -6,7 +6,7 @@ export const tryToken = (token) => (dispatch) => {
   axios.defaults.xsrfCookieName = "csrftoken";
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios
-    .get("/api/user", { headers: { Authorization: `Token ${token}` } })
+    .get("/api/user/", { headers: { Authorization: `Token ${token}` } })
     .then((res) => {
       console.log("ind");
       dispatch({

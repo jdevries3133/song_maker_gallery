@@ -44,7 +44,7 @@ export const getUserGalleries = (token) => (dispatch) => {
   axios.defaults.xsrfCookieName = "csrftoken";
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios
-    .get("/api/user", { headers: { Authorization: `Token ${token}` } })
+    .get("/api/user/", { headers: { Authorization: `Token ${token}` } })
     .then((res) =>
       dispatch({
         type: GET_GALLERIES,
