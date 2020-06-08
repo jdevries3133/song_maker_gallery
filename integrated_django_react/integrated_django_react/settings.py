@@ -176,11 +176,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+    },
     'handlers': {
 	    'file_logger': {
 		'level': 0,
 		'class':'logging.FileHandler',
 		'filename': os.path.join(BASE_DIR, 'main.log'),
+        'formatter': 'verbose',
 	    },
     },
     'root': {
@@ -196,3 +203,4 @@ LOGGING = {
         },
     }
 }
+
