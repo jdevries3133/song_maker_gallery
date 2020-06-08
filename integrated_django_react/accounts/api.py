@@ -24,7 +24,7 @@ class RegisterAPI(GenericAPIView):
         user = serializer.save()
 
         userData = UserSerializer(user, context=self.get_serializer_context()).data
-        token = AuthToken.objects.create(user)[0].pk
+        token = AuthToken.objects.create(user)[1]
 
         logging.debug(userData)
         logging.debug(token)
