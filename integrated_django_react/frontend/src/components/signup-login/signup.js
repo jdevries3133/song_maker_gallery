@@ -50,6 +50,14 @@ const signup = (props) => {
           onOk={() => setBlanket(null)}
         />
       );
+    } else if (!TOS) {
+      setBlanket(
+        <CustomError
+          header="Terms of Service"
+          message={["You must accept the terms of service to make an account"]}
+          onOk={() => setBlanket(null)}
+        />
+      );
     } else if (
       emailInput === "" ||
       usernameInput === "" ||
@@ -81,11 +89,8 @@ const signup = (props) => {
       <CustomError
         header="Registration Invalid"
         message={[
-          "Your registration details were not valid. This may be because",
-          "(1) That username has already been taken",
-          "(2) That email has already been taken",
-          "(3) You supplied an invalid email address.",
-          "If there were more hours in the day, I could tell you which it was, but you've got to figure this one out yourself, my friend.",
+          "Email is not valid, username has already been taken",
+          "Also, your username may not include special characters; only A-Z and 0-9",
         ]}
         onOk={onOk}
         justify={true}
@@ -174,7 +179,6 @@ const signup = (props) => {
           {"     "}
         </span>
         <input type="checkbox" id="tos" onClick={() => setTOS(!TOS)}></input>
-        {/* </label>{" "} */}
         <br />
         <button onClick={() => submit()} className={styles.sign_up}>
           Sign Up
