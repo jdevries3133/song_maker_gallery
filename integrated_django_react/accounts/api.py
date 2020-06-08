@@ -12,6 +12,10 @@ import logging
 
 logger = logging.getLogger('file')
 
+
+        
+
+
 # Register API
 class RegisterAPI(GenericAPIView):
     permission_classes = [permissions.AllowAny]
