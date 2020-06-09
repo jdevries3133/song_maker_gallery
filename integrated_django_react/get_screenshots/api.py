@@ -15,6 +15,7 @@ from .authentication import ScreenshotBotAuthentication
 from .serializers import GallerySerializer
 
 SCREENSHOT_BOT_ROOT_URL = 'http://li129-209.members.linode.com/'
+logger = logging.getLogger('file')
 
 class ScreenshotCron(CronJobBase):
     """
@@ -41,6 +42,9 @@ class ScreenshotReturn(ModelViewSet):
     queryset = Gallery.objects.all()
 
     def partial_update(self, request, pk='url_extension', *args, **kwargs):
+        logger.debug('request info')
+        logger.debug(request.META)
+        logger.debug(request.data)
         instance = self.queryset.get(url_extension=request.data.get('pk'))
         serializer = GallerySerializer(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
