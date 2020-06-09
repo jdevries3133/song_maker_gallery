@@ -21,7 +21,6 @@ idna==2.9
 jmespath==0.10.0
 kombu==4.6.9
 mod-wsgi==4.7.1
-mysqlclient==1.4.6
 Pillow==7.1.2
 pyasn1==0.4.8
 pycparser==2.20

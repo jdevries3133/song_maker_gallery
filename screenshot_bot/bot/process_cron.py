@@ -8,7 +8,7 @@ import requests
 from .models import ToDo
 from .take_screenshots import take_screenshots
 
-BACKEND_POST_URL = 'http://localhost:3000/api/screenshot/partial-update/'  # double check with postman
+BACKEND_POST_URL = 'https://songmakergallery.com/api/screenshot/partial-update/'
 
 class ScreenshotterCron(CronJobBase):
     RUN_EVERY_MINS = 5
@@ -28,10 +28,10 @@ class ScreenshotterCron(CronJobBase):
                 },
                 data=jsn,
             )
-        # delete all ToDo objects in "data" queryset
             if res.status_code == 200:
                 logging.info(f'Success for {data["pk"]}')
                 todo.delete()
             else:
+                breakpoint()
                 logging.error(f'Failure for {data["pk"]}')
 
