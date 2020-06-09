@@ -1,5 +1,6 @@
 import os
 import json
+import logging
 from django.core.mail import send_mail
 from rest_framework import permissions
 from rest_framework import status
@@ -13,8 +14,7 @@ from requests import post
 from .authentication import ScreenshotBotAuthentication
 from .serializers import GallerySerializer
 
-BACKEND_ROOT_URL = 'localhost:3000/'
-SCREENSHOT_BOT_ROOT_URL = 'localhost:8000/'
+SCREENSHOT_BOT_ROOT_URL = 'http://li129-209.members.linode.com/'
 
 class ScreenshotCron(CronJobBase):
     """
@@ -27,8 +27,9 @@ class ScreenshotCron(CronJobBase):
     def do(self):
         galleries_todo = Gallery.objects.all().filter(needs_screenshot=True).order_by('created')
         serializer = GallerySerializer(galleries_todo, many=True)
+        post_url = SCREENSHOT_BOT_ROOT_URL + 'incoming/'
         res = post(
-            'http://localhost:8000/incoming/',
+            post_url,
             headers={'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}'},
             data={'todo': JSONRenderer().render(serializer.data)}
         )
@@ -41,7 +42,6 @@ class ScreenshotReturn(ModelViewSet):
 
     def partial_update(self, request, pk='url_extension', *args, **kwargs):
         instance = self.queryset.get(url_extension=request.data.get('pk'))
-        
         serializer = GallerySerializer(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save(custom_overwrite=True)  # jankiness to the extreme :(
@@ -49,7 +49,7 @@ class ScreenshotReturn(ModelViewSet):
         # email confirmation that screenshots are ready
         subject = 'Your song maker gallery is ready to view!'
         message = (
-            f'Hello {instance.owner.username}!\n\nYour gallery at https://{BACKEND_ROOT_URL}gallery/{instance.url_extension}/ is ready '
+            f'Hello {instance.owner.username}!\n\nYour gallery at https://songmakergallery.com/gallery/{instance.url_extension}/ is ready '
             'and currently displaying student work!\n\nUnsubscribe? https://forms.gle/mqCcbxmQn3JfeNp76'
         )
         from_email = 'songmakergallery@gmail.com'
