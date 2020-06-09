@@ -1,3 +1,4 @@
+chromedriver
 config.json
 .DS_STORE
 node_modules
@@ -162,4 +163,3 @@ dmypy.json
 # End of https://www.gitignore.io/api/django
 
 venv
-work

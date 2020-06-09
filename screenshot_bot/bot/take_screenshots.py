@@ -48,7 +48,6 @@ def take_screenshots(todo):
 
             # define constants
             url = st_row[1]
-            filename = '/Users/JohnDeVries/repos/song_maker_gallery/screenshot_bot/bot/screenshot_cache/' + str(hash(url)) + '.png'
 
             # try to get a good screenshot by waiting for...
             # try three times with 10sec timeout

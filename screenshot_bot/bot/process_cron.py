@@ -11,7 +11,7 @@ from .take_screenshots import take_screenshots
 BACKEND_POST_URL = 'https://songmakergallery.com/api/screenshot/partial-update/'
 
 class ScreenshotterCron(CronJobBase):
-    RUN_EVERY_MINS = 5
+    RUN_EVERY_MINS = 60
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
     code = 'bot.cron'
 
