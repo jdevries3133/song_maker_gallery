@@ -22,7 +22,7 @@ from selenium.webdriver.chrome.options import Options
 from .models import ToDo
 from django.core.files.storage import default_storage
 
-CHROME_DRIVER_PATH = '/Users/JohnDeVries/repos/song_maker_gallery/screenshot_bot/bot/chromedriver' 
+CHROME_DRIVER_PATH = '/home/jack/main/screenshot_bot/bot/chromedriver' 
 FAILURE_PLACEHOLDER_URL = 'https://song-maker-gallery.s3.amazonaws.com/manually_added/4115654398734306300.jpg'
 URL_VALIDATION_REGEX = re.compile(r'http(s)?://musiclab.chromeexperiments.com/Song-Maker/song/(\d){16}')
  
@@ -64,7 +64,7 @@ def take_screenshots(todo):
                 # sleep(1)
                 screenshot = driver.get_screenshot_as_png()
                 image = Image.open(io.BytesIO(screenshot))
-                image = image.crop((0, 155, 2850, 1370)).convert('RGB')
+                image = image.crop((0, 80, 1440, 680)).convert('RGB')
 
                 s3_path = (
                     'screenshots/'
