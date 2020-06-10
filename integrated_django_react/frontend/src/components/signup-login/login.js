@@ -18,19 +18,16 @@ const login = (props) => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    // console.log(token);
     if (token) {
       props.tryToken(token);
     }
   }, []);
 
   if (props.isAuthenticated) {
-    console.log("redirect to teacher");
     return <Redirect to="/teacher" />;
   }
 
   const submit = () => {
-    console.log("master submit");
     props.loginAction({ username: username, password: password });
   };
 
