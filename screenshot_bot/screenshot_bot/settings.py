@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['li129-209.members.linode.com']
 
 
 # Application definition
@@ -160,3 +160,37 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+
+
+# Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+	    'file_logger': {
+		'level': 0,
+		'class':'logging.FileHandler',
+		'filename': os.path.join(BASE_DIR, 'main.log'),
+        'formatter': 'verbose',
+	    },
+    },
+    'root': {
+        'handlers': ['file_logger'],
+        'level': 'DEBUG',
+        'propagate': True,
+    },
+    'loggers': {
+        'file': {
+            'handlers': ['file_logger'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    }
+}
+
