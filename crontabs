@@ -1,3 +1,2 @@
-*/5 * * * * source ~/.zshenv && source ~/repos/song_maker_gallery/venv/bin/activate && python ~/repos/song_maker_gallery/integrated_django_react/manage.py runcrons --force > ~/repos/song_maker_gallery/backend_cronlog.log
-*/1 * * * * source ~/.zshenv && source ~/repos/song_maker_gallery/venv/bin/activate && python ~/repos/song_maker_gallery/screenshot_bot/manage.py runcrons --force > ~/repos/song_maker_gallery/scBot_cronlog.log
-
+*/5 * * * * source ~/.bashrc && source /home/ubuntu/main/venv/bin/activate && python /home/ubuntu/main/integrated_django_react/manage.py runcrons > /var/log/cron/main.log
+*/5 * * * * source ~/.bashrc && source /home/jack/main/venv/bin/activate && python /home/jack/main/screenshot_bot/manage.py runcrons > /var/log/cron/main.log

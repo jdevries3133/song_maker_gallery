@@ -1,5 +1,5 @@
 chromedriver
-config.json
+*/config.json
 .DS_STORE
 node_modules
 scripts/flow/*/.flowconfig

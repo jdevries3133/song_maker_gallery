@@ -9,6 +9,7 @@ from .models import ToDo
 from .take_screenshots import take_screenshots
 
 BACKEND_POST_URL = 'https://songmakergallery.com/api/screenshot/partial-update/'
+logger = logging.getLogger('file')
 
 class ScreenshotterCron(CronJobBase):
     RUN_EVERY_MINS = 60
@@ -29,9 +30,8 @@ class ScreenshotterCron(CronJobBase):
                 data=jsn,
             )
             if res.status_code == 200:
-                logging.info(f'Success for {data["pk"]}')
+                logger.info(f'Success for {data["pk"]}')
                 todo.delete()
             else:
-                breakpoint()
-                logging.error(f'Failure for {data["pk"]}')
+                logger.error(f'Failure for {data["pk"]}')
 
