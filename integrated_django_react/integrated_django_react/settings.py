@@ -198,7 +198,7 @@ LOGGING = {
     'loggers': {
         'file': {
             'handlers': ['file_logger'],
-            'level': 'DEBUG',
+            'level': 'INFO',
             'propagate': True,
         },
     }
