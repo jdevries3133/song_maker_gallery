@@ -9,7 +9,7 @@ const anim_in1 = keyframes`
   }
   to {
     color: white;
-    background: url(http://song-maker-gallery.s3.amazonaws.com/manually_added/blue.jpg);
+    background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/blue.jpg);
     border-radius: 20%;
   }
 `;
@@ -22,7 +22,7 @@ const anim_in2 = keyframes`
   }
   to {
     color: white;
-    background: url(http://song-maker-gallery.s3.amazonaws.com/manually_added/green.jpg);
+    background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/green.jpg);
     border-radius: 20%;
   }
 `;
@@ -35,7 +35,7 @@ const anim_in3 = keyframes`
   }
   to {
     color: white;
-    background: url(http://song-maker-gallery.s3.amazonaws.com/manually_added/pink.jpg);
+    background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/pink.jpg);
     border-radius: 20%;
   }
 `;
@@ -48,7 +48,7 @@ const anim_in4 = keyframes`
   }
   to {
     color: white;
-    background: url(http://song-maker-gallery.s3.amazonaws.com/manually_added/red.jpg);
+    background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/red.jpg);
     border-radius: 20%;
   }
 `;
@@ -61,7 +61,7 @@ const anim_in5 = keyframes`
   }
   to {
     color: white;
-    background: url(http://song-maker-gallery.s3.amazonaws.com/manually_added/violet.jpg);
+    background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/violet.jpg);
     border-radius: 20%;
   }
 `;
@@ -73,7 +73,7 @@ const anim_in6 = keyframes`
   }
   to {
     color: white;
-    background: url(http://song-maker-gallery.s3.amazonaws.com/manually_added/yellow.jpg);
+    background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/yellow.jpg);
     border-radius: 20%;
   }
 `;
@@ -85,7 +85,7 @@ const anim_in7 = keyframes`
   }
   to {
     color: white;
-    background: url(http://song-maker-gallery.s3.amazonaws.com/manually_added/orange.jpg);
+    background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/orange.jpg);
     border-radius: 20%;
   }
 `;

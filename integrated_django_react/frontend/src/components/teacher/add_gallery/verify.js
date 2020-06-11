@@ -19,7 +19,14 @@ const Verify = (props) => {
     }
   }
   if (typeof nameIndex === "number" && typeof linkIndex === "number") {
-    filtered = props.csv.data.filter((row) => [row[nameIndex], row[linkIndex]]);
+    filtered = props.csv.data.filter((row) => {
+      // handle csvs with blankline at the end of the file
+      if (row.length < 2) {
+        return null;
+      }
+      return [row[nameIndex], row[linkIndex]];
+    });
+    console.log(filtered);
   } else {
     if (nameIndex == undefined) {
       return (
