@@ -28,10 +28,6 @@ class Gallery(models.Model):
     needs_screenshot = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
-        # make unique url extension from tile
-        self.url_extension = self.title.lower().replace(' ', '-')
-        outstr = ''
-
         # this save method is tragically flawed
         # I should just not mess with the default primary_key
         # On the public side, I should just filter .all() by the url_extension,
@@ -42,6 +38,8 @@ class Gallery(models.Model):
         # api serializer.data ends up being wrong because of this, too.
         self.__dict__.setdefault('custom_overwrite', False)
         if not self.custom_overwrite:
+            self.url_extension = self.title.lower().replace(' ', '-')
+            outstr = ''
             for i in self.url_extension:
                 if re.search(r'[a-zA-Z0-9\-]', i):
                     outstr += i
@@ -73,7 +71,6 @@ class Gallery(models.Model):
 
                     # insert placeholder image
                     row.append('https://song-maker-gallery.s3.amazonaws.com/manually_added/Placeholder.png')
-
 
         super().save(*args, **kwargs)
 
