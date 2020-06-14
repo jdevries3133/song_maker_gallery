@@ -1,7 +1,9 @@
 chromedriver
-*/config.json
+config.json
 .DS_STORE
 node_modules
+backendcron.sh
+botcron.sh
 scripts/flow/*/.flowconfig
 .flowconfig
 *~

@@ -1,4 +1,4 @@
 #!/bin/zsh
 
 source ../venv/bin/activate
-exec ./manage.py runserver 0.0.0.0:3000 --settings integrated_django_react.development_settings
+exec ./manage.py runserver 0.0.0.0:3000 

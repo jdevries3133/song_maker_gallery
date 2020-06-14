@@ -2,6 +2,8 @@ import os
 import json
 import logging
 from django.core.mail import send_mail
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 from rest_framework import permissions
 from rest_framework import status
 from django_cron import CronJobBase, Schedule
@@ -14,7 +16,7 @@ from requests import post
 from .authentication import ScreenshotBotAuthentication
 from .serializers import GallerySerializer
 
-SCREENSHOT_BOT_ROOT_URL = 'http://li129-209.members.linode.com/'
+SCREENSHOT_BOT_ROOT_URL = os.getenv('SCREENSHOT_BOT_URL')
 logger = logging.getLogger('file')
 
 class ScreenshotCron(CronJobBase):

@@ -2,13 +2,12 @@ import logging
 import json
 import os
 from rest_framework.renderers import JSONRenderer
-from concurrent.futures import ThreadPoolExecutor
 from django_cron import CronJobBase, Schedule
 import requests
 from .models import ToDo
 from .take_screenshots import take_screenshots
 
-BACKEND_POST_URL = 'https://songmakergallery.com/api/screenshot/partial-update/'
+BACKEND_POST_URL = os.getenv('BACKEND_URL') + 'api/screenshot/partial-update/'
 logger = logging.getLogger('file')
 
 class ScreenshotterCron(CronJobBase):
@@ -30,8 +29,8 @@ class ScreenshotterCron(CronJobBase):
                 data=jsn,
             )
             if res.status_code == 200:
-                logger.info(f'Success for {data["pk"]}')
+                logger.info(f'Job posted to SC Bot: {data["pk"]}')
                 todo.delete()
             else:
-                logger.error(f'Failure for {data["pk"]}')
+                logger.info(f'SC Bot is busy for  {data["pk"]}')
 

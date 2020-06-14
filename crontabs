@@ -1,2 +1,0 @@
-*/5 * * * * source ~/.bashrc && source /home/ubuntu/main/venv/bin/activate && python /home/ubuntu/main/integrated_django_react/manage.py runcrons > /var/log/cron/main.log
-*/5 * * * * source ~/.bashrc && source /home/jack/main/venv/bin/activate && python /home/jack/main/screenshot_bot/manage.py runcrons > /var/log/cron/main.log
