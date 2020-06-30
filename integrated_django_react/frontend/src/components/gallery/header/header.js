@@ -7,7 +7,7 @@ import useWidth from "../../generics/useWidth";
 const header = (props) => {
   const { width } = useWidth();
   return (
-    <div className={styles.gallery_top} id="gallery_top">
+    <div className={styles.gallery_top}>
       {width > 1000 ? <NavBar data={props.data} /> : null}
       <h1>{props.title}</h1>
       <div className="description">

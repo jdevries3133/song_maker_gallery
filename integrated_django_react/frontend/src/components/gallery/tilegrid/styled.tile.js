@@ -127,11 +127,6 @@ const Button = styled.button`
     animation-duration: 0.3s;
     cursor: pointer;
   }
-
-  @media (max-width: 475px) {
-    border-width: 1px;
-    border-color: black;
-  }
 `;
 
 export default Button;

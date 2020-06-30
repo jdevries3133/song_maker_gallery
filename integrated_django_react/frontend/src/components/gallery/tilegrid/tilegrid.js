@@ -35,14 +35,10 @@ const tileGrid = (props) => {
       </h2>
       <br />
       <a href="#gallery_top" name="gallery">
-        <button
-          style={{
-            fontSize: "4rem",
-            padding: "0",
-            transform: "rotate(180deg)",
-          }}
-        >
-          ☟
+        <button>
+          <span className={styles.finger}>☟</span>
+          <br />
+          <span>Top</span>
         </button>
       </a>
       <ul className={styles.tgrid}>

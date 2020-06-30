@@ -34,7 +34,11 @@ const navBar = (props) => {
     );
   });
 
-  return <div className={styles.navbar}>{elements}</div>;
+  return (
+    <div className={styles.navbar} id="gallery_top">
+      {elements}
+    </div>
+  );
 };
 
 export default navBar;

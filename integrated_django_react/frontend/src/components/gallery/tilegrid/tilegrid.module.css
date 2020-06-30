@@ -132,3 +132,11 @@
     transform: rotate(180deg);
   }
 }
+
+.finger {
+  display: inline-block;
+  font-size: 4rem;
+  padding: 0;
+  transform: rotate(180deg);
+  font-family: "Noto Sans JP", sans-serif;
+}
