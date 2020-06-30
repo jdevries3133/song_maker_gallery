@@ -9,6 +9,14 @@
   border-radius: 20px;
 }
 
+@media (max-width: 600px) {
+  .description {
+    min-width: 0;
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}
+
 div {
   text-align: center;
 }
@@ -20,7 +28,7 @@ h1 {
 
 h2 {
   display: inline-block;
-  background-color: #94c732;
+  background-color: #88ff00;
   font-weight: 400;
   padding: 30px;
   border-radius: 20px;
@@ -65,4 +73,14 @@ input {
   overflow-x: hidden;
   opacity: 95%;
   z-index: 100;
+}
+
+@media (max-width: 475px) {
+  .blanket {
+    height: 500px;
+    width: 400px;
+    margin-top: -250px;
+    margin-left: -200px;
+    border-radius: 20px 20px 20px 20px;
+  }
 }

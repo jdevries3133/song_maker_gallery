@@ -1,6 +1,14 @@
 .outerTable {
   margin: auto;
   padding-bottom: 20px;
+  border-spacing: 0px;
+  width: 100%;
+}
+
+@media (max-width: 500px) {
+  .outerTable {
+    width: 100%;
+  }
 }
 
 .delete_confirm {
@@ -8,14 +16,12 @@
   color: white;
 }
 
-.view {
-  background-color: #00c4ff;
-}
+@media (max-width: 1170px) {
+  .shaded_tr:nth-child(even) {
+    background-color: rgb(238, 238, 238);
+  }
 
-.delete {
-  background-color: #fa8071;
-}
-
-.gal_title {
-  overflow: hidden;
+  .shaded_tr > td {
+    font-size: 14px;
+  }
 }

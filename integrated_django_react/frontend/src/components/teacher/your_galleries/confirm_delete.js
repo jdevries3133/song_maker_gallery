@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./your_galleries.module.css";
+import Button from "../../generics/button";
+import { ThemeProvider } from "styled-components";
 
 const confirm_delete = (props) => {
   return (
@@ -12,12 +14,14 @@ const confirm_delete = (props) => {
         <br />
         <a href={props.url}>{props.url}</a>
       </p>
-      <button
-        className={styles.delete_confirm}
-        onClick={() => props.confirmation(props.extension)}
-      >
-        I am sure
-      </button>
+      <ThemeProvider theme={{ backgroundColor: "maroon", color: "white" }}>
+        <Button
+          className={styles.delete_confirm}
+          onClick={() => props.confirmation(props.extension)}
+        >
+          I am sure
+        </Button>
+      </ThemeProvider>
     </div>
   );
 };

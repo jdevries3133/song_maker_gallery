@@ -70,14 +70,27 @@ const Add = (props) => {
             files, or any other file format. I have some videos below that might
             help you if you are using Excel or google sheets, though!
           </p>
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/ScMzIvxBSi4"
-            frameBorder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+          {window.innerWidth < 500 ? (
+            // Mobile sized embedded video
+            <iframe
+              width="300"
+              height="415"
+              src="https://www.youtube.com/embed/ScMzIvxBSi4"
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          ) : (
+            // Regular sized embedded video
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/ScMzIvxBSi4"
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          )}
         </Fragment>
       ) : null}
     </Fragment>

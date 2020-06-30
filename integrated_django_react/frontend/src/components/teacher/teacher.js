@@ -8,6 +8,7 @@ import Papa from "papaparse";
 import Add from "./add_gallery/add_gallery";
 import YourGalleries from "./your_galleries/your_galleries";
 import GalPostSuccess from "./add_gallery/gal_post_success";
+import MobileOptimizedView from "./mobile_optimized";
 import ServerError from "../generics/server_error";
 import Staged from "./add_gallery/staged";
 import Verify from "./add_gallery/verify";
@@ -327,30 +328,45 @@ class Teacher extends Component {
           Log Out
         </button>
         {blanket}
-        <table className={styles.table}>
-          <tbody>
-            <tr style={{ display: "inline" }}>
-              <td width="60%" valign="top" className={styles.narrow_desc}>
-                <Add
-                  file_selected={this.fileSelectHandler}
-                  file={this.state.file}
-                  clearFileHandler={this.resetFormHandler}
-                  groupname={this.state.groupname}
-                  groupNameChangeHandler={this.groupNameHandler}
-                  uploadRequest={this.csvHandler}
-                  warn={this.state.warn}
-                  verifyContent={this.state.verifyContent}
-                  uploadedContent={this.state.uploadedContent}
-                />
-                {staged}
-              </td>
-              <td width="30"></td>
-              <td valign="top" className={styles.narrow_desc}>
-                <YourGalleries />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        {window.innerWidth < 621 ? (
+          <MobileOptimizedView
+            file_selected={this.fileSelectHandler}
+            file={this.state.file}
+            clearFileHandler={this.resetFormHandler}
+            groupname={this.state.groupname}
+            groupNameChangeHandler={this.groupNameHandler}
+            uploadRequest={this.csvHandler}
+            warn={this.state.warn}
+            verifyContent={this.state.verifyContent}
+            uploadedContent={this.state.uploadedContent}
+            staged={staged}
+          />
+        ) : (
+          <table className={styles.table}>
+            <tbody>
+              <tr style={{ display: "inline" }}>
+                <td width="55%" valign="top" className={styles.narrow_desc}>
+                  <Add
+                    file_selected={this.fileSelectHandler}
+                    file={this.state.file}
+                    clearFileHandler={this.resetFormHandler}
+                    groupname={this.state.groupname}
+                    groupNameChangeHandler={this.groupNameHandler}
+                    uploadRequest={this.csvHandler}
+                    warn={this.state.warn}
+                    verifyContent={this.state.verifyContent}
+                    uploadedContent={this.state.uploadedContent}
+                  />
+                  {staged}
+                </td>
+                <td width="13%"></td>
+                <td width="35%" valign="top" className={styles.narrow_desc}>
+                  <YourGalleries />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        )}
       </div>
     );
   }

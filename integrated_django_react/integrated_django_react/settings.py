@@ -3,7 +3,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('DJANGO_SECRET')
 DEBUG = True
-ALLOWED_HOSTS = ['songmakergallery.com', 'localhost']
+ALLOWED_HOSTS = ['songmakergallery.com', 'localhost', 'jack']
 
 INSTALLED_APPS = [
     'django.contrib.admin',

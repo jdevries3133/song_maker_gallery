@@ -26,7 +26,6 @@ const Verify = (props) => {
       }
       return [row[nameIndex], row[linkIndex]];
     });
-    console.log(filtered);
   } else {
     if (nameIndex == undefined) {
       return (

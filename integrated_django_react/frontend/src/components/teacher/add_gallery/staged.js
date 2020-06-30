@@ -23,23 +23,17 @@ const staged = (props) => {
         </p>
         <textarea
           className={styles.desc_input}
-          cols="67"
-          rows="15"
           value={props.descriptionValue}
           onChange={(e) => props.descriptionInput(e)}
         />
         <h3>Staged Goups</h3>
-        <table style={{ marginTop: "15px" }}>
-          <tbody>
-            {props.groups.map((group) => (
-              <StagedGroup
-                key={group.join("") + Math.random().toString()}
-                unStageGroupHandler={props.unStageGroupHandler}
-                group={group}
-              />
-            ))}
-          </tbody>
-        </table>
+        {props.groups.map((group) => (
+          <StagedGroup
+            key={group.join("") + Math.random().toString()}
+            unStageGroupHandler={props.unStageGroupHandler}
+            group={group}
+          />
+        ))}
       </div>
       <br />
       <button

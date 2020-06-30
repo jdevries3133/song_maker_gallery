@@ -8,7 +8,6 @@ export const tryToken = (token) => (dispatch) => {
   axios
     .get("/api/user/", { headers: { Authorization: `Token ${token}` } })
     .then((res) => {
-      console.log("ind");
       dispatch({
         type: LOGIN,
         payload: {

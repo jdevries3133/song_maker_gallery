@@ -3,7 +3,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('DJANGO_SECRET')
 DEBUG = True
-ALLOWED_HOSTS = ['li129-209.members.linode.com', 'localhost']
+ALLOWED_HOSTS = ['li129-209.members.linode.com', 'localhost', 'jack']
 
 INSTALLED_APPS = [
     'django.contrib.admin',

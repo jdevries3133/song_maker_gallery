@@ -1,6 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { ThemeProvider } from "styled-components";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import styles from "./your_galleries.module.css";
+import Button from "../../generics/button";
 import ConfirmDelete from "./confirm_delete";
 import ServerError from "../../generics/server_error";
 import {
@@ -8,7 +11,6 @@ import {
   deleteGallery,
   getUserGalleries,
 } from "../../../actions/user";
-import { Link } from "react-router-dom";
 
 const YourGalleries = (props) => {
   const [confirmDelete, setConfirmDelete] = useState(null);
@@ -56,31 +58,46 @@ const YourGalleries = (props) => {
     user_gals = props.galleries.map((gallery, index) => {
       const url = window.location.href.slice(0, -7) + "gallery/" + gallery[1];
       return (
-        <tr key={index}>
-          <td>
-            {gallery[0].slice(0, 14)}
-            {gallery[0].length < 14 ? null : <span>...</span>}
-          </td>
-          <td>
-            <Link to={"/gallery/" + gallery[1]}>
-              <button className={styles.view}>View</button>
-            </Link>
-            <button
-              onClick={() =>
-                setConfirmDelete(
-                  <ConfirmDelete
-                    url={url}
-                    extension={gallery[1]}
-                    confirmation={deleteConfirmed}
-                  />
-                )
-              }
-              className={styles.delete}
-            >
-              Delete
-            </button>
-          </td>
-        </tr>
+        <ThemeProvider
+          theme={{
+            color: "black",
+            resizeThreshold: "1170px",
+          }}
+          key={index}
+        >
+          <tr className={styles.shaded_tr}>
+            <td width="30%">
+              {gallery[0].slice(0, 14)}
+              {gallery[0].length < 14 ? null : <span>...</span>}
+            </td>
+            <td width="70%">
+              <Link to={"/gallery/" + gallery[1]}>
+                <ThemeProvider
+                  theme={(theme) => {
+                    return { backgroundColor: "#00c4ff", ...theme };
+                  }}
+                >
+                  <Button>View</Button>
+                </ThemeProvider>
+              </Link>
+              <ThemeProvider theme={{ backgroundColor: "#fa8071" }}>
+                <Button
+                  onClick={() =>
+                    setConfirmDelete(
+                      <ConfirmDelete
+                        url={url}
+                        extension={gallery[1]}
+                        confirmation={deleteConfirmed}
+                      />
+                    )
+                  }
+                >
+                  Delete
+                </Button>
+              </ThemeProvider>
+            </td>
+          </tr>
+        </ThemeProvider>
       );
     });
   }
@@ -96,7 +113,11 @@ const YourGalleries = (props) => {
             user_gals
           ) : (
             <tr>
-              <td colSpan="2">Your galleries will go here some day</td>
+              <td>
+                <h3 style={{ fontWeight: 400 }}>
+                  Your galleries will go here some day.
+                </h3>
+              </td>
             </tr>
           )}
         </tbody>

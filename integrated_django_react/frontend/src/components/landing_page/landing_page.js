@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 import GalleryBody from "../gallery/gal_body";
 import Welcome from "./welcome";
+import Loading from "../generics/loading";
 import { connect } from "react-redux";
 import { getGallery } from "../../actions/gallery";
 import styles from "./landing_page.module.css";
@@ -15,7 +16,7 @@ const landing_page = (props) => {
       <div>
         <Welcome />
         <div className={styles.space} />
-        <h1>Loading</h1>
+        <Loading />
       </div>
     );
   } else {

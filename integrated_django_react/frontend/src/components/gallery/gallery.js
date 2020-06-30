@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 
+import Loading from "../generics/loading";
 import GalleryBody from "./gal_body";
 
 import { getGallery } from "../../actions/gallery";
 import { connect } from "react-redux";
-
-import styles from "./tilegrid/tilegrid.module.css";
 
 class gallery extends Component {
   state = {
@@ -18,7 +17,7 @@ class gallery extends Component {
 
   render() {
     if (this.props.status === undefined) {
-      return <h1>Loading</h1>;
+      return <Loading />;
     } else if (this.state.url_ext === "") {
       return (
         <div>

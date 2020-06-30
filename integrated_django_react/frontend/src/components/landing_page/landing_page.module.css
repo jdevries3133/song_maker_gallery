@@ -23,3 +23,15 @@
   display: inline-block;
   height: 2rem;
 }
+
+.welc_buttons {
+  width: 80%;
+}
+
+.green {
+  background-color: lightgreen;
+}
+
+.green:hover {
+  background-color: white;
+}
