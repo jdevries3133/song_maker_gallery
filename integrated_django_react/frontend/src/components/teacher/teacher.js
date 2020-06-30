@@ -25,7 +25,14 @@ class Teacher extends Component {
       blankTitleError: false,
       descriptionValue:
         "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds",
+      width: window.innerWidth,
     };
+    this.setWidth = this.setWidth.bind(this);
+  }
+
+  // resize event listener callback function
+  setWidth() {
+    this.setState({ width: window.innerWidth });
   }
 
   // get user's galleries, available for view or deletion
@@ -36,6 +43,13 @@ class Teacher extends Component {
         this.props.getUserGalleries(this.props.token);
       }
     }
+    // resize listener for responsive styling
+    window.addEventListener("resize", this.setWidth);
+  }
+
+  // remove event listener
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.setWidth);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -328,7 +342,7 @@ class Teacher extends Component {
           Log Out
         </button>
         {blanket}
-        {window.innerWidth < 621 ? (
+        {this.state.width < 621 ? (
           <MobileOptimizedView
             file_selected={this.fileSelectHandler}
             file={this.state.file}

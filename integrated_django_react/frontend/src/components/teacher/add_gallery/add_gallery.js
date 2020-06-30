@@ -1,7 +1,10 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment } from "react";
 import styles from "./add_gallery.module.css";
 
+import useWidth from "../../generics/useWidth";
+
 const Add = (props) => {
+  const { width } = useWidth();
   return (
     <Fragment>
       <h3>Add a Gallery</h3>
@@ -70,7 +73,7 @@ const Add = (props) => {
             files, or any other file format. I have some videos below that might
             help you if you are using Excel or google sheets, though!
           </p>
-          {window.innerWidth < 500 ? (
+          {width < 1046 ? (
             // Mobile sized embedded video
             <iframe
               width="300"

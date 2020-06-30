@@ -1,12 +1,15 @@
 .navbar {
   padding-top: 4rem;
 }
-
-.sample {
-  color: #94c732 #ffc107 #00bcd4 #c77dd3;
-}
-
-.cta {
+.call_to_action {
   font-size: 1.5rem;
   padding: 28px;
+}
+.gallery_top {
+  margin-bottom: 10rem;
+}
+@media (max-width: 475px) {
+  .gallery_top {
+    margin-bottom: auto;
+  }
 }

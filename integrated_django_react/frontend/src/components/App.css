@@ -75,7 +75,7 @@ input {
   z-index: 100;
 }
 
-@media (max-width: 475px) {
+@media (max-width: 830px) {
   .blanket {
     height: 500px;
     width: 400px;
@@ -83,4 +83,8 @@ input {
     margin-left: -200px;
     border-radius: 20px 20px 20px 20px;
   }
+}
+
+ul {
+  padding-inline-start: 0px;
 }

@@ -10,7 +10,7 @@ const anim_in1 = keyframes`
   to {
     color: white;
     background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/blue.jpg);
-    border-radius: 20%;
+    border-radius: 20px;
   }
 `;
 
@@ -23,7 +23,7 @@ const anim_in2 = keyframes`
   to {
     color: white;
     background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/green.jpg);
-    border-radius: 20%;
+    border-radius: 20px;
   }
 `;
 
@@ -36,7 +36,7 @@ const anim_in3 = keyframes`
   to {
     color: white;
     background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/pink.jpg);
-    border-radius: 20%;
+    border-radius: 20px;
   }
 `;
 
@@ -49,7 +49,7 @@ const anim_in4 = keyframes`
   to {
     color: white;
     background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/red.jpg);
-    border-radius: 20%;
+    border-radius: 20px;
   }
 `;
 
@@ -62,7 +62,7 @@ const anim_in5 = keyframes`
   to {
     color: white;
     background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/violet.jpg);
-    border-radius: 20%;
+    border-radius: 20px;
   }
 `;
 const anim_in6 = keyframes`
@@ -74,7 +74,7 @@ const anim_in6 = keyframes`
   to {
     color: white;
     background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/yellow.jpg);
-    border-radius: 20%;
+    border-radius: 20px;
   }
 `;
 const anim_in7 = keyframes`
@@ -86,7 +86,7 @@ const anim_in7 = keyframes`
   to {
     color: white;
     background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/orange.jpg);
-    border-radius: 20%;
+    border-radius: 20px;
   }
 `;
 
@@ -126,6 +126,11 @@ const Button = styled.button`
     animation-fill-mode: forwards;
     animation-duration: 0.3s;
     cursor: pointer;
+  }
+
+  @media (max-width: 475px) {
+    border-width: 1px;
+    border-color: black;
   }
 `;
 
