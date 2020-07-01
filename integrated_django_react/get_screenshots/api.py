@@ -29,13 +29,17 @@ class ScreenshotCron(CronJobBase):
 
     def do(self):
         galleries_todo = Gallery.objects.all().filter(needs_screenshot=True).order_by('created')
-        serializer = GallerySerializer(galleries_todo, many=True)
-        post_url = SCREENSHOT_BOT_ROOT_URL + 'incoming/'
-        res = post(
-            post_url,
-            headers={'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}'},
-            data={'todo': JSONRenderer().render(serializer.data)}
-        )
+        if galleries_todo:
+            logger.debug(f'Requesting screenshots for the following galleries: {galleries_todo}')
+            serializer = GallerySerializer(galleries_todo, many=True)
+            post_url = SCREENSHOT_BOT_ROOT_URL + 'incoming/'
+            res = post(
+                post_url,
+                headers={'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}'},
+                data={'todo': JSONRenderer().render(serializer.data)}
+            )
+        else:
+            logger.debug('No screenshots needed')
 
 class ScreenshotReturn(ModelViewSet):
     permission_classes = [permissions.IsAdminUser]

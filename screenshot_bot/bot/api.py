@@ -17,7 +17,7 @@ logger = logging.getLogger('file')
 @authentication_classes((ScreenshotBotAuthentication,))
 def incoming(request, *args, **kwargs):
     logger.debug('OBJECTS PRESENT UPON REQUEST')
-    logger.debug(not ToDo.objects.all())
+    logger.debug(ToDo.objects.all())
     if ToDo.objects.all():
         return Response(
             {'message': 'currently processing screenshots'},

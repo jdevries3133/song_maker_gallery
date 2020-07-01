@@ -82,7 +82,7 @@ def take_screenshots(todo):
                         image.save(bio, format="JPEG", quality=60, optimize=True)
                         s3.write(bio.getvalue())
                 # put url into array
-                st_row[2] = 'https://song-maker-gallery.s3.amazonaws.com/' + s3_path
+                st_row[2] = 'https://smg-dev-bucket.s3.amazonaws.com/' + s3_path
 
             except TimeoutException:
                 logging.warning('Timeout exception on screenshot wait')

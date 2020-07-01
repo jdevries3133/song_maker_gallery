@@ -32,5 +32,5 @@ class ScreenshotterCron(CronJobBase):
                 logger.info(f'Job posted to SC Bot: {data["pk"]}')
                 todo.delete()
             else:
-                logger.info(f'SC Bot is busy for  {data["pk"]}')
+                logger.error(f'Backend failed to recieve {data}')
 
