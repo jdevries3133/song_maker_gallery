@@ -7,9 +7,9 @@ const tileGrid = (props) => {
   const group_name = props.data.slice(-1);
   const { width } = useWidth();
   return width > 475 ? (
-    <div>
+    <div id="gallery">
       <div className={styles.tg_top_space} />
-      <a href="#gallery_top" name="gallery">
+      <a href="#gallery_top">
         <h2 className={styles.tg_title} id={group_name}>
           {group_name}
         </h2>
@@ -29,12 +29,12 @@ const tileGrid = (props) => {
     </div>
   ) : (
     <div>
-      <div className={styles.tg_top_space} />
+      <div className={styles.tg_top_space} id="gallery" />
       <h2 className={styles.tg_title_mobile} id={group_name}>
         {group_name}
       </h2>
       <br />
-      <a href="#gallery_top" name="gallery">
+      <a href="#gallery_top">
         <button>
           <span className={styles.finger}>☟</span>
           <br />

@@ -28,19 +28,19 @@ class App extends Component {
               <LandingPage />
             </Route>
             <Route path="/signup">
-              <SignUp />
+              <SignUp title="Sign Up" />
             </Route>
             <Route path="/login">
-              <Login />
+              <Login title="Login" />
             </Route>
             <Route path="/reset">
-              <Reset />
+              <Reset title="Password Reset" />
             </Route>
             <Route path="/gallery/*">
               <Gallery />
             </Route>
             <PrivateRoute path="/teacher">
-              <Teacher />
+              <Teacher title="Gallery Management Console" />
             </PrivateRoute>
           </Switch>
         </Router>

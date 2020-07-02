@@ -18,6 +18,7 @@ const login = (props) => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
+    document.title = props.title;
     if (token) {
       props.tryToken(token);
     }

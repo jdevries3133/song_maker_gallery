@@ -1,11 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import styles from "../landing_page.module.css";
 
-import styles from "./landing_page.module.css";
-
-const welcome = (props) => {
+const desktop = () => {
   return (
-    <div className={styles.div}>
+    <Fragment>
       <h1 className={styles.head}>
         Welcome to the Music Lab Song Maker Gallery!
       </h1>
@@ -71,8 +70,8 @@ const welcome = (props) => {
           </tr>
         </tbody>
       </table>
-    </div>
+    </Fragment>
   );
 };
 
-export default welcome;
+export default desktop;

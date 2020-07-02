@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import robots, sitemap
 
 urlpatterns = [
     path('api/auth/', include('accounts.urls')),
@@ -22,6 +23,7 @@ urlpatterns = [
     path('api/user/', include('teacher_admin.urls')),
     path('api/screenshot/', include('get_screenshots.urls')),
     path('admin/', admin.site.urls),
-    path('gallery/', include('frontend.urls')),
+    path('robots.txt', robots),
+    path('sitemap.xml', sitemap),
     path('', include('frontend.urls')),
 ]

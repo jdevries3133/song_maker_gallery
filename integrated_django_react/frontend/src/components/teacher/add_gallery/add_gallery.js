@@ -10,9 +10,11 @@ const Add = (props) => {
       <h3>Add a Gallery</h3>
       <p className={styles.par_just}>
         To add a group to your gallery, upload a spreadsheet of students' names,
-        and their music lab links. You may use students' first names only. If
-        you do upload students' full names, their first name and last initial is
-        all that will be displayed.
+        and their music lab links. You may use students' first names only, or
+        first name and last initial. If you do upload a student's full name,
+        only their first name and last initial will be publically displayed; and
+        only their first name and last initial will be stored in our database
+        for COPPA compliance.
       </p>
       <p className={styles.par_just}>
         The spreadsheet must be in the form of a .csv file, which you can easily

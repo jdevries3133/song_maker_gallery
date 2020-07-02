@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export const reset = (props) => {
+  useEffect(() => {
+    document.title = props.title;
+  }, []);
   return (
     <div>
       <h1>Uh oh!</h1>

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import GalleryBody from "../gallery/gal_body";
-import Welcome from "./welcome";
+import Welcome from "./welcome/welcome";
 import Loading from "../generics/loading";
 import { connect } from "react-redux";
 import { getGallery } from "../../actions/gallery";

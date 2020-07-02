@@ -12,12 +12,22 @@ const header = (props) => {
       <h1>{props.title}</h1>
       <div className="description">
         <FormattedDescription desc_str={props.description} />
-        <p>
-          <b>
-            Hover over the picture of a students' work to see their name, and
-            click to open their composition in a new tab
-          </b>
-        </p>
+        {width > 475 ? (
+          <p>
+            <b>
+              Hover over the picture of a students' work to see their name, and
+              click to open their composition in a new tab
+            </b>
+          </p>
+        ) : (
+          <p>
+            <b>
+              Scroll down to view the gallery! Each tile shows a student's
+              composition, and that student's name will be displayed when their
+              tile reaches the top of your phone screen!
+            </b>
+          </p>
+        )}
         <a href="#gallery">
           <button className={styles.call_to_action}>View Gallery</button>
         </a>
