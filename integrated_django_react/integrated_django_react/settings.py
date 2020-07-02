@@ -2,7 +2,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('DJANGO_SECRET')
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['songmakergallery.com', 'localhost', 'jack']
 
 INSTALLED_APPS = [
@@ -57,13 +57,13 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = os.getenv('SMTP_HOST')
 
 # Amazon S3
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# STATICFILES_STORAGE =  'storages.backends.s3boto3.S3Boto3Storage'
-# AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-# AWS_STORAGE_BUCKET_NAME = 'song-maker-frontend'
-# AWS_DEFAULT_ACL = 'public-read'
-# AWS_S3_FILE_OVERWRITE = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE =  'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'song-maker-frontend'
+AWS_DEFAULT_ACL = 'public-read'
+AWS_S3_FILE_OVERWRITE = True
 
 TEMPLATES = [
     {
@@ -147,13 +147,13 @@ LOGGING = {
     },
     'root': {
         'handlers': ['file_logger'],
-        'level': 'DEBUG',
+        'level': 'ERROR',
         'propagate': True,
     },
     'loggers': {
         'file': {
             'handlers': ['file_logger'],
-            'level': 'INFO',
+            'level': 'ERROR',
             'propagate': True,
         },
     }
