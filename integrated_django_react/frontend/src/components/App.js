@@ -16,7 +16,6 @@ import SignUp from "./signup-login/signup";
 import Login from "./signup-login/login";
 import Gallery from "./gallery/gallery";
 import Teacher from "./teacher/teacher";
-import Reset from "./signup-login/reset";
 
 class App extends Component {
   render() {
@@ -32,9 +31,6 @@ class App extends Component {
             </Route>
             <Route path="/login">
               <Login title="Login" />
-            </Route>
-            <Route path="/reset">
-              <Reset title="Password Reset" />
             </Route>
             <Route path="/gallery/*">
               <Gallery />

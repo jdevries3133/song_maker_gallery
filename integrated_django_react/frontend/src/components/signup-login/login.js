@@ -58,9 +58,9 @@ const login = (props) => {
       <Link to="/signup">
         <button className={styles.col_1}>Need an account?</button>
       </Link>
-      <Link to="/reset">
+      <a href="http://songmakergallery.com/accounts/password_reset/">
         <button className={styles.col_2}>Forgot your password?</button>
-      </Link>
+      </a>
     </div>
   );
 };
