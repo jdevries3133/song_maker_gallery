@@ -1,6 +1,7 @@
 import logging
 import json
 import os
+from time import sleep
 from rest_framework.renderers import JSONRenderer
 from django_cron import CronJobBase, Schedule
 import requests
@@ -34,3 +35,26 @@ class ScreenshotterCron(CronJobBase):
             else:
                 logger.error(f'Backend failed to recieve {data}')
 
+def service():
+    while True:
+        todo = ToDo.objects.all()
+        if todo:
+            for gallery in todo:
+                data = take_screenshots(gallery)
+                jsn = json.dumps(data)
+                res = requests.patch(
+                    BACKEND_POST_URL,
+                    headers={
+                        'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}',
+                        'Content-Type': 'application/json',
+                    },
+                    data=jsn,
+                )
+                if res.status_code == 200:
+                    logger.info(f'Job posted to SC Bot: {data["pk"]}')
+                    todo.delete()
+                else:
+                    logger.error(f'Backend failed to recieve {data}')
+
+        else:
+            sleep(10)
