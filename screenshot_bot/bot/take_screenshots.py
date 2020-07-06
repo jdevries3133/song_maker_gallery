@@ -1,15 +1,8 @@
-import shelve
-
-
 # built-ins
-from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 import os
 import io
-from uuid import uuid4
-from pathlib import Path
 import re
-from time import sleep
 import logging
 
 # take_screenshots
@@ -63,7 +56,6 @@ def take_screenshots(todo):
                 driver.execute_script(loading_remover)
 
                 # just need to let the transition animation pass
-                # sleep(1)
                 screenshot = driver.get_screenshot_as_png()
                 image = Image.open(io.BytesIO(screenshot))
                 image = image.crop((0, 80, 1440, 680)).convert('RGB')
@@ -82,7 +74,7 @@ def take_screenshots(todo):
                         image.save(bio, format="JPEG", quality=60, optimize=True)
                         s3.write(bio.getvalue())
                 # put url into array
-                st_row[2] = 'https://smg-dev-bucket.s3.amazonaws.com/' + s3_path
+                st_row[2] = f'https://{os.getenv('AWS_STORAGE_BUCKET_NAME')}.s3.amazonaws.com/' + s3_path
 
             except TimeoutException:
                 logging.warning('Timeout exception on screenshot wait')

@@ -3,7 +3,12 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('DJANGO_SECRET')
 DEBUG = False
-ALLOWED_HOSTS = ['ec2-3-21-27-63.us-east-2.compute.amazonaws.com', 'localhost', 'jack']
+ALLOWED_HOSTS = [
+    'ec2-3-16-255-188.us-east-2.compute.amazonaws.com',
+    'ip-172-31-24-244.us-east-2.compute.internal',
+    'localhost',
+    'jack'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
