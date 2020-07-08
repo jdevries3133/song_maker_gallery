@@ -18,7 +18,6 @@ BASE_DIR = (
         )
     )
 )
-
 # My env variables
 CONFIG_PATH = os.path.join(BASE_DIR, 'screenshot_bot', 'config.json')
 with open(CONFIG_PATH, 'r') as jsn:
@@ -63,5 +62,6 @@ class ScreenshotterDaemon:
                 sleep(10)
 
 if __name__ == '__main__':
-    do = ScreenshotterDaemon()
-    do.run()
+    program = ScreenshotterDaemon()
+    with daemon.DaemonContext():
+        program.run()

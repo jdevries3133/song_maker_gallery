@@ -74,7 +74,7 @@ def take_screenshots(todo):
                         image.save(bio, format="JPEG", quality=60, optimize=True)
                         s3.write(bio.getvalue())
                 # put url into array
-                st_row[2] = f'https://{os.getenv('AWS_STORAGE_BUCKET_NAME')}.s3.amazonaws.com/' + s3_path
+                st_row[2] = f'https://{os.getenv("AWS_STORAGE_BUCKET_NAME")}.s3.amazonaws.com/' + s3_path
 
             except TimeoutException:
                 logging.warning('Timeout exception on screenshot wait')
