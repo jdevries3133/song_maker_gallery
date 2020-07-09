@@ -75,7 +75,10 @@ CRON_CLASSES = [
 ]
 
 # Email
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.getenv('SMG_GMAIL')
 EMAIL_HOST_PASSWORD = os.getenv('SMG_GMAIL_PASSWORD')
@@ -153,13 +156,13 @@ LOGGING = {
     },
     'root': {
         'handlers': ['file_logger'],
-        'level': 'ERROR',
+        'level': 'DEBUG',
         'propagate': True,
     },
     'loggers': {
         'file': {
             'handlers': ['file_logger'],
-            'level': 'ERROR',
+            'level': 'DEBUG',
             'propagate': True,
         },
     }

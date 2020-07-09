@@ -1,4 +1,4 @@
-#!/Users/JohnDeVries/repos/song_maker_gallery/venv/bin/python3.8
+#!/home/ubuntu/main/venv/bin/python3.8
 
 from datetime import datetime
 import daemon
@@ -11,12 +11,10 @@ import django
 
 # Same BASE_DIR as in settings.py. Django is not yet setup in daemon env.
 BASE_DIR = (
-    os.path.abspath(
-        os.path.join(
-            os.path.dirname(
-                os.path.dirname(
-                    __file__
-                )
+    os.path.dirname(
+        os.path.dirname(
+            os.path.abspath(
+                __file__
             )
         )
     )
@@ -67,6 +65,7 @@ def main():
             )
             start_time = datetime.now()
             for index, gallery in enumerate(todo):
+                logger.debug('test of daemon logging')
                 # check that current running time is > 4hrs
                 # if running time > 4hrs, set off critical error; bot is
                 # overwhelmed
@@ -92,18 +91,22 @@ def main():
                     )
                 data = take_screenshots(gallery)
                 jsn = json.dumps(data)
-                res = requests.patch(
-                    BACKEND_POST_URL,
-                    headers={
-                        'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}',
-                        'Content-Type': 'application/json',
-                    },
-                    data=jsn,
-                )
+                try:
+                    res = requests.patch(
+                        BACKEND_POST_URL,
+                        headers={
+                            'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}',
+                            'Content-Type': 'application/json',
+                        },
+                        data=jsn,
+                    )
+                except Exception as e:
+                    breakpoint()
                 if res.status_code == 200:
                     logger.info(f'Job posted to SC Bot: {data["pk"]}')
                     todo.delete()
                 else:
+                    breakpoint()
                     logger.error(f'Backend failed to recieve {data}')
             end_time = datetime.now()
             delta = end_time - start_time
@@ -119,5 +122,6 @@ def main():
             sleep(10)
 
 if __name__ == '__main__':
-    with daemon.DaemonContext():
-        main()
+    main()
+    # with daemon.DaemonContext():
+    #     main()
