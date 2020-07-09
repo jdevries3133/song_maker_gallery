@@ -21,7 +21,7 @@ logger = logging.getLogger('file')
 
 class ScreenshotCron(CronJobBase):
     """
-    Don't forget to start the chron on the system in the terminal.
+    Depricated
     """
     RUN_EVERY_MINS = 60
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)

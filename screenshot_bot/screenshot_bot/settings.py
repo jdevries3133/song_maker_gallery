@@ -1,6 +1,11 @@
 import os
+import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+with open(os.path.join(BASE_DIR, 'screenshot_bot', 'config.json'), 'r') as jsn:
+    env = json.load(jsn)
+    for k, v in env.items():
+        os.environ.setdefault(k, v)
 SECRET_KEY = os.getenv('DJANGO_SECRET')
 DEBUG = False
 ALLOWED_HOSTS = [
@@ -69,12 +74,20 @@ CRON_CLASSES = [
     'bot.process_cron.ScreenshotterCron',
 ]
 
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.getenv('SMG_GMAIL')
+EMAIL_HOST_PASSWORD = os.getenv('SMG_GMAIL_PASSWORD')
+EMAIL_USE_TLS = True
+EMAIL_HOST = os.getenv('SMTP_HOST')
+
 # Amazon S3
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE =  'storages.backends.s3boto3.S3Boto3Storage'
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = 'song-maker-gallery'
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
 AWS_DEFAULT_ACL = 'public-read'
 AWS_S3_FILE_OVERWRITE = False
 
