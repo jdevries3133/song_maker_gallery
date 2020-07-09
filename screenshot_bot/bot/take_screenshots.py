@@ -19,7 +19,7 @@ from .models import ToDo
 from django.core.files.storage import default_storage
 
 CHROME_DRIVER_PATH = os.path.join(os.path.dirname(__file__), 'chromedriver')
-FAILURE_PLACEHOLDER_URL = 'https://song-maker-gallery.s3.amazonaws.com/manually_added/4115654398734306300.jpg'
+FAILURE_PLACEHOLDER_URL = 'https://song-maker-gallery.s3.amazonaws.com/screenshots/month-7-week-0/-1792009803650056698.jpg'
 URL_VALIDATION_REGEX = re.compile(r'http(s)?://musiclab.chromeexperiments.com/Song-Maker/song/(\d){16}')
  
 def take_screenshots(todo):

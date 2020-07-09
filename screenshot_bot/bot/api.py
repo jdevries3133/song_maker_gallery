@@ -16,19 +16,10 @@ logger = logging.getLogger('file')
 @api_view(['POST'])
 @authentication_classes((ScreenshotBotAuthentication,))
 def incoming(request, *args, **kwargs):
-    logger.debug('OBJECTS PRESENT UPON REQUEST')
-    logger.debug(ToDo.objects.all())
-    if ToDo.objects.all():
-        return Response(
-            {'message': 'currently processing screenshots'},
-            status=HTTP_429_TOO_MANY_REQUESTS,
-        )
     stream = io.BytesIO(request.data['todo'].encode('utf-8'))
-    data = JSONParser().parse(stream)
-    for gallery in data:
-        ToDo.objects.create(url_extension=gallery['url_extension'], api_obj=gallery['api_obj'])
-
-    # serializer
+    gallery = JSONParser().parse(stream)
+    ToDo.objects.create(url_extension=gallery['url_extension'], api_obj=gallery['api_obj'])
+    logger.debug(f'Recieved todo object {gallery}')
     return HttpResponse(
         request.data,
-        {'message': 'recieved'})
+    )

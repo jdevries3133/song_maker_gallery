@@ -1,4 +1,4 @@
 #!/bin/zsh
 
-source ../venv/bin/activate
-exec ./manage.py runserver 0.0.0.0:8000
+source ~/repos/song_maker_gallery/venv/bin/activate
+exec ~/repos/song_maker_gallery/screenshot_bot/manage.py runserver 0.0.0.0:8000 --noreload

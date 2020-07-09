@@ -18,4 +18,4 @@ def sitemap(request, *args, **kwargs):
 
 @require_GET
 def loginRedirect(request, *args, **kwargs):
-    return redirect('https://songmakergallery.com/login', *args, **kwargs)
+    return redirect('/login', *args, **kwargs)

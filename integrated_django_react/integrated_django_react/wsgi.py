@@ -15,10 +15,12 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'integrated_django_react.settings')
 
 # My env variables
-CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
-with open(CONFIG_PATH, 'r') as jsn:
-    env = json.load(jsn)
-    for k, v in env.items():
-        os.environ.setdefault(k, v)
+# Hopefully will achieve successfully in settings.py now, so the dev server uses
+# the same config file
+# CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
+# with open(CONFIG_PATH, 'r') as jsn:
+#     env = json.load(jsn)
+#     for k, v in env.items():
+#         os.environ.setdefault(k, v)
 
 application = get_wsgi_application()
