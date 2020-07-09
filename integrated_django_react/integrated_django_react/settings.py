@@ -9,8 +9,8 @@ with open(os.path.join(BASE_DIR, 'integrated_django_react', 'config.json'), 'r')
 SECRET_KEY = os.getenv('DJANGO_SECRET')
 DEBUG = False
 ALLOWED_HOSTS = [
-    'ec2-18-220-82-134.us-east-2.compute.amazonaws.com'
     'songmakergallery.com',
+    'ec2-18-220-82-134.us-east-2.compute.amazonaws.com'
     'localhost',
     'jack',
 ]
