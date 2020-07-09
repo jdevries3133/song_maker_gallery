@@ -72,6 +72,7 @@ class ScreenshotReturn(ModelViewSet):
                 recipient_list
             )
         except Exception as e:
+            logger.error(f'Post screenshot notification email failed due to {e}')
             return Response(status=500)
 
         return Response(data=serializer.data)

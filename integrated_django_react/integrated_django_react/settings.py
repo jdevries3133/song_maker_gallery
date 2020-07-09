@@ -59,12 +59,15 @@ CRON_CLASSES = [
 ]
 
 # Email
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.getenv('SMG_GMAIL')
 EMAIL_HOST_PASSWORD = os.getenv('SMG_GMAIL_PASSWORD')
 EMAIL_USE_TLS = True
 EMAIL_HOST = os.getenv('SMTP_HOST')
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Amazon S3
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
