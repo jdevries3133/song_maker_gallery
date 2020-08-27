@@ -2,12 +2,20 @@ import os
 import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-with open(os.path.join(BASE_DIR, 'screenshot_bot', 'config.json'), 'r') as jsn:
-    env = json.load(jsn)
-    for k, v in env.items():
-        os.environ.setdefault(k, v)
-SECRET_KEY = os.getenv('DJANGO_SECRET')
 DEBUG = False
+if DEBUG:
+    # load dev config
+    with open(os.path.join(BASE_DIR, 'screenshot_bot', 'dev_config.json'), 'r') as jsn:
+        env = json.load(jsn)
+        for k, v in env.items():
+            os.environ.setdefault(k, v)
+else:
+    # load production config
+    with open(os.path.join(BASE_DIR, 'screenshot_bot', 'config.json'), 'r') as jsn:
+        env = json.load(jsn)
+        for k, v in env.items():
+            os.environ.setdefault(k, v)
+SECRET_KEY = os.getenv('DJANGO_SECRET')
 ALLOWED_HOSTS = [
     'ec2-3-16-255-188.us-east-2.compute.amazonaws.com',
     'ip-172-31-24-244.us-east-2.compute.internal',

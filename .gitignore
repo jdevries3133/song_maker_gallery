@@ -1,5 +1,6 @@
+notes.txt
 chromedriver
-config.json
+*config.json
 .DS_STORE
 node_modules
 backendcron.sh
