@@ -9,13 +9,17 @@ const tile = (props) => {
   const { width } = useWidth();
   const [y, setY] = useState(undefined);
   const tile_el = useRef(null);
+  // background is none until tile is about to scroll into view
+  const background = "url(" + props.st_arr[2] + ")";
   const theme = {
-    index: props.index % 6,
-    background: props.st_arr[2],
+    index: props.index,
+    background: background,
   };
   const handleScroll = () => {
-    if (tile_el && tile_el.current) {
+    console.log("ind");
+    if (tile_el) {
       const newY = tile_el.current.getBoundingClientRect().y;
+      console.log(newY);
       setY(newY);
     }
   };

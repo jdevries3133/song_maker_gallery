@@ -2,12 +2,18 @@ import os
 import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-with open(os.path.join(BASE_DIR, 'integrated_django_react', 'config.json'), 'r') as jsn:
-    env = json.load(jsn)
-    for k, v in env.items():
-        os.environ.setdefault(k, v)
+DEBUG = True
+if DEBUG:
+    with open(os.path.join(BASE_DIR, 'integrated_django_react', 'dev_config.json'), 'r') as jsn:
+        env = json.load(jsn)
+        for k, v in env.items():
+            os.environ.setdefault(k, v)
+else:
+    with open(os.path.join(BASE_DIR, 'integrated_django_react', 'config.json'), 'r') as jsn:
+        env = json.load(jsn)
+        for k, v in env.items():
+            os.environ.setdefault(k, v)
 SECRET_KEY = os.getenv('DJANGO_SECRET')
-DEBUG = False
 ALLOWED_HOSTS = [
     'songmakergallery.com',
     'ec2-18-220-82-134.us-east-2.compute.amazonaws.com',
@@ -70,13 +76,14 @@ else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Amazon S3
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE =  'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = 'song-maker-frontend'
-AWS_DEFAULT_ACL = 'public-read'
-AWS_S3_FILE_OVERWRITE = True
+if not DEBUG:
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATICFILES_STORAGE =  'storages.backends.s3boto3.S3Boto3Storage'
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = 'song-maker-frontend'
+    AWS_DEFAULT_ACL = 'public-read'
+    AWS_S3_FILE_OVERWRITE = True
 
 TEMPLATES = [
     {
