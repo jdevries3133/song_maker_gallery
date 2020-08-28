@@ -1,4 +1,6 @@
 chromedriver
+notes.txt
+dev_config.json
 config.json
 .DS_STORE
 node_modules
