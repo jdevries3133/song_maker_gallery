@@ -7,11 +7,17 @@ if DEBUG:
     with open(os.path.join(BASE_DIR, 'integrated_django_react', 'dev_config.json'), 'r') as jsn:
         env = json.load(jsn)
         for k, v in env.items():
+            if k == 'SCREENSHOT_BOT_URLS':
+                SCREENSHOT_BOT_URLS = v
+                continue
             os.environ.setdefault(k, v)
 else:
     with open(os.path.join(BASE_DIR, 'integrated_django_react', 'config.json'), 'r') as jsn:
         env = json.load(jsn)
         for k, v in env.items():
+            if k == 'SCREENSHOT_BOT_URLS':
+                SCREENSHOT_BOT_URLS = v
+                continue
             os.environ.setdefault(k, v)
 SECRET_KEY = os.getenv('DJANGO_SECRET')
 ALLOWED_HOSTS = [

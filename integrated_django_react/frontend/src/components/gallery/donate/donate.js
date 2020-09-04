@@ -6,7 +6,11 @@ const donation = (props) => {
   const width = useWidth();
   return (
     <div className={`description blanket ${styles.donation_blanket}`}>
-      <h2 className={styles.donation_header}>Donate!</h2>
+      <div
+        style={{ display: "inline-block", textAlign: "center", width: "100%" }}
+      >
+        <h2 className={styles.donation_header}>Donate!</h2>
+      </div>
       <div className={styles.par_container}>
         <p className={styles.par}>
           This website was built by me, a music teacher from New Jersey, as a
@@ -24,18 +28,14 @@ const donation = (props) => {
         <p className={styles.par}>
           Although this site is free to use, it is not free to operate; and{" "}
           <strong>
-            unless you and other viewers of this website click that donation
-            button below, I will lose a lot of money.
+            without generous donors, that money is coming from my own pocket.
           </strong>{" "}
-          I know that there are people who will read this, and have the
-          capacity, even in these terrible times, to chip in a few dollars to
-          feed the Jeff Bezos / Amazon Web Services machine. If you can, please
-          do.
+          If you are fortunate enough to be able to chip in and support this
+          project, please do!
         </p>
         <p className={styles.par}>
           Any proceeds in excess of the cost of running this website will be
-          passed along to organizations that are supporting the many groups of
-          people who are suffering in these trying times.
+          used to support music education directly.
         </p>
       </div>
       <div className={styles.footer}>
@@ -46,8 +46,12 @@ const donation = (props) => {
           style={{ display: "inline-block" }}
         >
           <input type="hidden" name="cmd" value="_donations" />
-          <input type="hidden" name="business" value="jdevries3133@gmail.com" />
-          <input type="hidden" name="item_name" value="Song Maker Gallery" />
+          <input
+            type="hidden"
+            name="business"
+            value="songmakergallery@gmail.com"
+          />
+          <input type="hidden" name="item_name" value="Support Our Website" />
           <input type="hidden" name="currency_code" value="USD" />
           <input
             type="image"
@@ -68,7 +72,7 @@ const donation = (props) => {
 
         <div className={styles.signature}>
           <p style={{ textAlign: "right", margin: "0" }}>Thanks,</p>
-          <p style={{ textAlign: "right", margin: "0" }}>Jack DeVries</p>
+          <p style={{ textAlign: "right", margin: "0" }}>The SMG Team</p>
         </div>
         <button
           className={styles.donation_close}

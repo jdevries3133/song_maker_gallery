@@ -1,4 +1,6 @@
 .donation_blanket {
+  max-width: 700px;
+  text-align: justify;
   overflow-y: hidden;
   height: 656px;
   margin-top: -328px;
