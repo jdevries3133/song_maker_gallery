@@ -20,20 +20,11 @@ const galBody = (props) => {
           <TileGrid data={group} key={group.slice(-1)[0]} />
         ))}
       </div>
-
-      {/* donation whitelist */}
-      {props.title === "Sample Gallery" ||
-      props.title === "Sparta Fifth Grade Gallery" ||
-      props.title === "Sparta Fourth Grade Gallery" ||
-      props.title === "Sparta Third Grade Gallery" ? null : (
-        <DonateButton
-          onClick={() =>
-            setBlanket(<Donate onClose={() => setBlanket(null)} />)
-          }
-        >
-          $
-        </DonateButton>
-      )}
+      <DonateButton
+        onClick={() => setBlanket(<Donate onClose={() => setBlanket(null)} />)}
+      >
+        $
+      </DonateButton>
     </Fragment>
   );
 };

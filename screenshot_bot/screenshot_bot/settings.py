@@ -2,12 +2,20 @@ import os
 import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-with open(os.path.join(BASE_DIR, 'screenshot_bot', 'config.json'), 'r') as jsn:
-    env = json.load(jsn)
-    for k, v in env.items():
-        os.environ.setdefault(k, v)
+DEBUG = True
+if DEBUG:
+    # load dev config
+    with open(os.path.join(BASE_DIR, 'screenshot_bot', 'dev_config.json'), 'r') as jsn:
+        env = json.load(jsn)
+        for k, v in env.items():
+            os.environ.setdefault(k, v)
+else:
+    # load production config
+    with open(os.path.join(BASE_DIR, 'screenshot_bot', 'config.json'), 'r') as jsn:
+        env = json.load(jsn)
+        for k, v in env.items():
+            os.environ.setdefault(k, v)
 SECRET_KEY = os.getenv('DJANGO_SECRET')
-DEBUG = False
 ALLOWED_HOSTS = [
     'ec2-3-16-255-188.us-east-2.compute.amazonaws.com',
     'ip-172-31-24-244.us-east-2.compute.internal',
@@ -86,13 +94,14 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = os.getenv('SMTP_HOST')
 
 # Amazon S3
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE =  'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
-AWS_DEFAULT_ACL = 'public-read'
-AWS_S3_FILE_OVERWRITE = False
+if not DEBUG:
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATICFILES_STORAGE =  'storages.backends.s3boto3.S3Boto3Storage'
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_DEFAULT_ACL = 'public-read'
+    AWS_S3_FILE_OVERWRITE = False
 
 DATABASES = {
     'default': {

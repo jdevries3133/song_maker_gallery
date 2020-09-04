@@ -22,7 +22,7 @@ const tileGrid = (props) => {
             group={group_name}
             st_arr={student}
             key={group_name + student + Math.random().toString()}
-            index={index}
+            index={index % 6}
           />
         ))}
       </ul>

@@ -1,5 +1,6 @@
 import os
 import logging
+from random import randint
 from requests import post
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import permissions
@@ -23,10 +24,10 @@ class TeacherViewSet(ModelViewSet):
     def perform_create(self, serializer):
         logger.debug(f'Requesting screenshots for the following galleries: {dir(serializer)}')
         gallery = serializer.save(owner=self.request.user)
-        post_url = os.getenv('SCREENSHOT_BOT_URL') + 'incoming/'
+        post_urls = [i + 'incoming/' for i in os.getenv('SCREENSHOT_BOT_URLS')]
         res = post(
             (
-                os.getenv('SCREENSHOT_BOT_URL') + 'incoming/'
+                post_urls[randint(0, (len(post_urls) - 1))]  # send request to random handling server
             ),
             headers={'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}'},
             data={'todo': JSONRenderer().render(self.get_serializer(gallery).data)}

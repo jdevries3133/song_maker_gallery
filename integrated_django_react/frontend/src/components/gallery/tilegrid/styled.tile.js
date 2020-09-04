@@ -94,7 +94,7 @@ const anim_out = keyframes; // finish
 
 const Button = styled.button`
   display: inline-block;
-  background: url(${(props) => props.theme.background});
+  background: ${(props) => props.theme.background};
   background-size: 100% 100%;
   font-family: "Indie Flower";
   font-size: 2.6rem;
