@@ -150,6 +150,7 @@ disable=print-statement,
         raise-missing-from,
         not-an-iterable,  # project-specific
         signature-differs # project-specific
+        import-error  # project-specific
                
 
 # Enable the message, report, category or checker with the given id(s). You can

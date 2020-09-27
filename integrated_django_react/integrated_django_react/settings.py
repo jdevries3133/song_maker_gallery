@@ -24,7 +24,6 @@ ALLOWED_HOSTS = [
     'songmakergallery.com',
     'ec2-18-220-82-134.us-east-2.compute.amazonaws.com',
     'localhost',
-    'jack',
 ]
 
 INSTALLED_APPS = [
@@ -84,7 +83,7 @@ else:
 # Amazon S3
 if not DEBUG:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    STATICFILES_STORAGE =  'storages.backends.s3boto3.S3Boto3Storage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = 'song-maker-frontend'
@@ -164,12 +163,12 @@ LOGGING = {
         },
     },
     'handlers': {
-	    'file_logger': {
-		'level': 0,
-		'class':'logging.FileHandler',
-		'filename': os.path.join(BASE_DIR, 'main.log'),
-        'formatter': 'verbose',
-	    },
+        'file_logger': {
+            'level': 0,
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'main.log'),
+            'formatter': 'verbose',
+        },
     },
     'root': {
         'handlers': ['file_logger'],
@@ -184,4 +183,3 @@ LOGGING = {
         },
     }
 }
-

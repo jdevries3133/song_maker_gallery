@@ -20,7 +20,6 @@ ALLOWED_HOSTS = [
     'ec2-3-16-255-188.us-east-2.compute.amazonaws.com',
     'ip-172-31-24-244.us-east-2.compute.internal',
     'localhost',
-    'jack'
 ]
 
 INSTALLED_APPS = [
@@ -96,7 +95,7 @@ EMAIL_HOST = os.getenv('SMTP_HOST')
 # Amazon S3
 if not DEBUG:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    STATICFILES_STORAGE =  'storages.backends.s3boto3.S3Boto3Storage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
@@ -121,6 +120,7 @@ DATABASES = {
         }
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -156,12 +156,12 @@ LOGGING = {
         },
     },
     'handlers': {
-	    'file_logger': {
-		'level': 0,
-		'class':'logging.FileHandler',
-		'filename': os.path.join(BASE_DIR, 'main.log'),
-        'formatter': 'verbose',
-	    },
+        'file_logger': {
+            'level': 0,
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'main.log'),
+            'formatter': 'verbose',
+        },
     },
     'root': {
         'handlers': ['file_logger'],
@@ -176,4 +176,3 @@ LOGGING = {
         },
     }
 }
-
