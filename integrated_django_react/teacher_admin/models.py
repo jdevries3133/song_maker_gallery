@@ -27,6 +27,7 @@ class Gallery(models.Model):
     description = models.TextField()
     api_obj = JSONField(default=list)
     needs_screenshot = models.BooleanField(default=True)
+    work_in_progress = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         # this save method is tragically flawed
@@ -74,6 +75,7 @@ class Gallery(models.Model):
                 try:
                     group[index][0] = name
                 except (AttributeError, TypeError):
+                    breakpoint()
                     raise Exception(
                         'Save method was run on an object that was already'
                         'created. This means that the if not self.url_extension'

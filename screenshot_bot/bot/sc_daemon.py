@@ -1,13 +1,16 @@
 #!/home/ubuntu/main/venv/bin/python3.8
 
 from datetime import datetime
-import daemon
 import logging
 import json
 import os
 from time import sleep
 import sys
+import requests
+from django.core.mail import send_mail
 import django
+from bot.take_screenshots import take_screenshots
+from bot.models import ToDo
 
 # Same BASE_DIR as in settings.py. Django is not yet setup in daemon env.
 BASE_DIR = (
@@ -30,38 +33,30 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'screenshot_bot.settings')
 django.setup()
 
 # imports that need django setup first
-from django.core.mail import send_mail
-from rest_framework.renderers import JSONRenderer
-import requests
-from bot.models import ToDo
-from bot.take_screenshots import take_screenshots
 
 BACKEND_POST_URL = os.getenv('BACKEND_URL') + 'api/screenshot/partial-update/'
 logger = logging.getLogger('file_logger')
+
 
 def email(subject, message):
     # email confirmation that screenshots are ready
     from_email = 'songmakergallery@gmail.com'
     recipient_list = ['jdevries3133@gmail.com']
-    if st[:8] == 'CRITICAL':
-        recipient_list.append('nac542@gmail.com')
-    try:
-        send_mail(
-            subject,
-            message,
-            from_email,
-            recipient_list
-        )
-    except Exception as e:
-        logger.error(f'Email failed to send due to exception:\n{e}')
+    send_mail(
+        subject,
+        message,
+        from_email,
+        recipient_list
+    )
+
 
 def main():
     while True:
         todo = ToDo.objects.all()
         if todo:
-            nl = '\n'
             logger.info(
-                f'Beginning to process galleries:{nl}{nl}{[i.url_extension + nl for i in todo]}'
+                'Beginning to process galleries:\n\n'
+                + str([i.url_extension + '\n' for i in todo])
             )
             start_time = datetime.now()
             for index, gallery in enumerate(todo):
@@ -83,25 +78,21 @@ def main():
                         f'Galleries completed:\t\t{index}'
                         f'Galleries remaining:\t\t{len(todo) - index}'
                     )
-                if delta.seconds > 28800:
                     logger.critical(
-                        f'Screenshot bot has been running for 1 hour continuously '
+                        'Screenshot bot has been running for 1 hour continuously '
                         'and is still running. This represents a severe '
                         'overload of jobs. Work to scale up!'
                     )
                 data = take_screenshots(gallery)
                 jsn = json.dumps(data)
-                try:
-                    res = requests.patch(
-                        BACKEND_POST_URL,
-                        headers={
-                            'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}',
-                            'Content-Type': 'application/json',
-                        },
-                        data=jsn,
-                    )
-                except Exception as e:
-                    breakpoint()
+                res = requests.patch(
+                    BACKEND_POST_URL,
+                    headers={
+                        'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}',
+                        'Content-Type': 'application/json',
+                    },
+                    data=jsn,
+                )
                 if res.status_code == 200:
                     logger.info(f'Job posted to SC Bot: {data["pk"]}')
                     todo.delete()
@@ -121,7 +112,6 @@ def main():
             logger.debug('Daemon waiting for gallery...')
             sleep(10)
 
+
 if __name__ == '__main__':
     main()
-    # with daemon.DaemonContext():
-    #     main()

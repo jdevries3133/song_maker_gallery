@@ -2,24 +2,17 @@ import os
 import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEBUG = True
+DEBUG = False
+
+# load secrets and frequently changed values from config.json
 if DEBUG:
     with open(os.path.join(BASE_DIR, 'integrated_django_react', 'dev_config.json'), 'r') as jsn:
-        env = json.load(jsn)
-        for k, v in env.items():
-            if k == 'SCREENSHOT_BOT_URLS':
-                SCREENSHOT_BOT_URLS = v
-                continue
-            os.environ.setdefault(k, v)
+        config = json.load(jsn)
 else:
     with open(os.path.join(BASE_DIR, 'integrated_django_react', 'config.json'), 'r') as jsn:
-        env = json.load(jsn)
-        for k, v in env.items():
-            if k == 'SCREENSHOT_BOT_URLS':
-                SCREENSHOT_BOT_URLS = v
-                continue
-            os.environ.setdefault(k, v)
-SECRET_KEY = os.getenv('DJANGO_SECRET')
+        config = json.load(jsn)
+
+SECRET_KEY = config['DJANGO_SECRET']
 ALLOWED_HOSTS = [
     'songmakergallery.com',
     'ec2-18-220-82-134.us-east-2.compute.amazonaws.com',
@@ -70,10 +63,10 @@ CRON_CLASSES = [
 
 # Email
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.getenv('SMG_GMAIL')
-EMAIL_HOST_PASSWORD = os.getenv('SMG_GMAIL_PASSWORD')
+EMAIL_HOST_USER = config['SMG_GMAIL']
+EMAIL_HOST_PASSWORD = config['SMG_GMAIL_PASSWORD']
 EMAIL_USE_TLS = True
-EMAIL_HOST = os.getenv('SMTP_HOST')
+EMAIL_HOST = config['SMTP_HOST']
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
@@ -83,11 +76,14 @@ else:
 if not DEBUG:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = 'song-maker-frontend'
+    AWS_ACCESS_KEY_ID = config['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = config['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
     AWS_DEFAULT_ACL = 'public-read'
     AWS_S3_FILE_OVERWRITE = True
+# default file storage config
+else:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 TEMPLATES = [
     {
@@ -113,8 +109,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'song_maker_feature',
-        'USER': os.getenv('MYSQL_USER'),
-        'PASSWORD': os.getenv('MYSQL_USER_PASS'),
+        'USER': config['MYSQL_USER'],
+        'PASSWORD': config['MYSQL_USER_PASS'],
         'HOST': 'localhost',
         'PORT': 3306,
         'OPTIONS': {
@@ -171,13 +167,13 @@ LOGGING = {
     },
     'root': {
         'handlers': ['file_logger'],
-        'level': 'ERROR',
+        'level': 'DEBUG',
         'propagate': True,
     },
     'loggers': {
         'file': {
             'handlers': ['file_logger'],
-            'level': 'ERROR',
+            'level': 'DEBUG',
             'propagate': True,
         },
     }

@@ -148,7 +148,10 @@ disable=print-statement,
         unused-argument,
         imported-auth-user,
         raise-missing-from,
-        broad-except 
+        broad-except,
+        logging-not-lazy,
+        redifined-outer-name,
+        invalid-name,
         not-an-iterable,  # project-specific
         signature-differs # project-specific
         import-error  # project-specific

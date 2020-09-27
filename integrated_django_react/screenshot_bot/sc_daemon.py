@@ -1,16 +1,15 @@
 #!/home/ubuntu/main/venv/bin/python3.8
 
 from datetime import datetime
-import logging
 import json
+import logging
 import os
 from time import sleep
 import sys
-import requests
 from django.core.mail import send_mail
 import django
-from bot.take_screenshots import take_screenshots
-from bot.models import ToDo
+from teacher_admin.models import Gallery
+from .take_screenshots import take_screenshots
 
 # Same BASE_DIR as in settings.py. Django is not yet setup in daemon env.
 BASE_DIR = (
@@ -23,22 +22,24 @@ BASE_DIR = (
     )
 )
 # setup django and set project env variables from ../screenshot_bot/config.json
-CONFIG_PATH = os.path.join(BASE_DIR, 'screenshot_bot', 'config.json')
+CONFIG_PATH = os.path.join(BASE_DIR, 'integrated_django_react', 'config.json')
 with open(CONFIG_PATH, 'r') as jsn:
     env = json.load(jsn)
     for k, v in env.items():
         os.environ.setdefault(k, v)
 sys.path.append(BASE_DIR)
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'screenshot_bot.settings')
+os.environ.setdefault(
+    'DJANGO_SETTINGS_MODULE',
+    'integrated_django_react.settings'
+)
 django.setup()
 
 # imports that need django setup first
 
-BACKEND_POST_URL = os.getenv('BACKEND_URL') + 'api/screenshot/partial-update/'
 logger = logging.getLogger('file_logger')
 
 
-def email(subject, message):
+def email_me(subject, message):
     # email confirmation that screenshots are ready
     from_email = 'songmakergallery@gmail.com'
     recipient_list = ['jdevries3133@gmail.com']
@@ -50,30 +51,33 @@ def email(subject, message):
     )
 
 
+def mutate_gallery(gallery):
+    data = take_screenshots(gallery.api_obj)
+    gallery.api_obj = data
+    gallery.needs_screenshot = False
+    gallery.work_in_progress = False
+    gallery.save()
+
+
 def main():
     while True:
-        todo = ToDo.objects.all()
+        todo = Gallery.objects.filter(
+            needs_screenshot=True
+        ).update(
+            work_in_progress=True
+        )
         if todo:
             logger.info(
                 'Beginning to process galleries:\n\n'
                 + str([i.url_extension + '\n' for i in todo])
             )
-            start_time = datetime.now()
             for index, gallery in enumerate(todo):
-                logger.debug('test of daemon logging')
-                # check that current running time is > 4hrs
-                # if running time > 4hrs, set off critical error; bot is
-                # overwhelmed
-                delta = datetime.now() - start_time
-                if delta.seconds > 28800:
-                    email(
-                        'CRITICAL: Screenshot Bot has been running nostop for 4 hours; may be overloaded!',
-                        'The screenshot bot has been taking screenshots '
-                        'nonstop for four hours. This may mean that there '
-                        'is a critical overflow of galleries to do; customers '
-                        'at the end of the queue have been waiting for at least '
-                        'four hours. Provision additional screenshot bots '
-                        'immediately.\n\n\n '
+                delta = datetime.now().timestamp() - todo.created.timestamp()
+                if delta > 14400:
+                    email_me(
+                        'CRITICAL: Screenshot Bot has just completed a gallery '
+                        f'that was created {delta // 60} hours ago. '
+                        'The screenshot bot may be overloaded!',
                         f'Galleries todo at start of loop:\t{len(todo)}\n\n'
                         f'Galleries completed:\t\t{index}'
                         f'Galleries remaining:\t\t{len(todo) - index}'
@@ -83,31 +87,7 @@ def main():
                         'and is still running. This represents a severe '
                         'overload of jobs. Work to scale up!'
                     )
-                data = take_screenshots(gallery)
-                jsn = json.dumps(data)
-                res = requests.patch(
-                    BACKEND_POST_URL,
-                    headers={
-                        'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}',
-                        'Content-Type': 'application/json',
-                    },
-                    data=jsn,
-                )
-                if res.status_code == 200:
-                    logger.info(f'Job posted to SC Bot: {data["pk"]}')
-                    todo.delete()
-                else:
-                    breakpoint()
-                    logger.error(f'Backend failed to recieve {data}')
-            end_time = datetime.now()
-            delta = end_time - start_time
-            if delta.seconds > 3600:
-                email(
-                    'WARN: Screenshot Bot Cycle Finished > 1 Hour',
-                    'WARN: Screenshot Bot just finished a run cycle that took '
-                    'greater than one hour.\n\nConsider provisioning more '
-                    'screenshot bot instances.'
-                )
+                mutate_gallery(gallery)
         else:
             logger.debug('Daemon waiting for gallery...')
             sleep(10)
