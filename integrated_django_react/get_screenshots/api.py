@@ -1,45 +1,14 @@
-import os
-import json
 import logging
 from django.core.mail import send_mail
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
 from rest_framework import permissions
-from rest_framework import status
-from django_cron import CronJobBase, Schedule
-from django.contrib.auth.models import User
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
-from rest_framework.renderers import JSONRenderer
 from teacher_admin.models import Gallery
-from requests import post
 from .authentication import ScreenshotBotAuthentication
 from .serializers import GallerySerializer
 
-SCREENSHOT_BOT_ROOT_URL = os.getenv('SCREENSHOT_BOT_URL')
 logger = logging.getLogger('file')
 
-class ScreenshotCron(CronJobBase):
-    """
-    Depricated
-    """
-    RUN_EVERY_MINS = 60
-    schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
-    code = 'get_screenshots.cron'
-
-    def do(self):
-        galleries_todo = Gallery.objects.all().filter(needs_screenshot=True).order_by('created')
-        if galleries_todo:
-            logger.debug(f'Requesting screenshots for the following galleries: {galleries_todo}')
-            serializer = GallerySerializer(galleries_todo, many=True)
-            post_url = SCREENSHOT_BOT_ROOT_URL + 'incoming/'
-            res = post(
-                post_url,
-                headers={'Authorization': f'Token {os.getenv("CUSTOM_AUTH_TOKEN")}'},
-                data={'todo': JSONRenderer().render(serializer.data)}
-            )
-        else:
-            logger.debug('No screenshots needed')
 
 class ScreenshotReturn(ModelViewSet):
     permission_classes = [permissions.IsAdminUser]
@@ -47,14 +16,15 @@ class ScreenshotReturn(ModelViewSet):
     authentication_classes = (ScreenshotBotAuthentication,)
     queryset = Gallery.objects.all()
 
-    def partial_update(self, request, pk='url_extension', *args, **kwargs):
+    def partial_update(self, request, *args, pk='url_extension', **kwargs):
         logger.debug('request info')
         logger.debug(request.META)
         logger.debug(request.data)
         instance = self.queryset.get(url_extension=request.data.get('pk'))
-        serializer = GallerySerializer(instance, data=request.data, partial=True)
+        serializer = GallerySerializer(
+            instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
-        serializer.save(custom_overwrite=True)  # jankiness to the extreme :(
+        serializer.save()
 
         # email confirmation that screenshots are ready
         subject = 'Your song maker gallery is ready to view!'
@@ -71,8 +41,10 @@ class ScreenshotReturn(ModelViewSet):
                 from_email,
                 recipient_list
             )
-        except Exception as e:
-            logger.error(f'Post screenshot notification email failed due to {e}')
+        except Exception as err:
+            logger.error(
+                f'Post screenshot notification email failed due to {err}'
+            )
             return Response(status=500)
 
         return Response(data=serializer.data)

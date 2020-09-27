@@ -148,6 +148,7 @@ disable=print-statement,
         unused-argument,
         imported-auth-user,
         raise-missing-from,
+        broad-except 
         not-an-iterable,  # project-specific
         signature-differs # project-specific
         import-error  # project-specific
