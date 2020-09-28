@@ -6,10 +6,10 @@ DEBUG = False
 
 # load secrets and frequently changed values from config.json
 if DEBUG:
-    with open(os.path.join(BASE_DIR, 'integrated_django_react', 'dev_config.json'), 'r') as jsn:
+    with open(os.path.join(BASE_DIR, 'django_smg', 'dev_config.json'), 'r') as jsn:
         config = json.load(jsn)
 else:
-    with open(os.path.join(BASE_DIR, 'integrated_django_react', 'config.json'), 'r') as jsn:
+    with open(os.path.join(BASE_DIR, 'django_smg', 'config.json'), 'r') as jsn:
         config = json.load(jsn)
 
 SECRET_KEY = config['DJANGO_SECRET']
@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'integrated_django_react.urls'
+ROOT_URLCONF = 'django_smg.urls'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -89,7 +89,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'integrated_django_react', 'templates')
+            os.path.join(BASE_DIR, 'django_smg', 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -103,7 +103,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'integrated_django_react.wsgi.application'
+WSGI_APPLICATION = 'django_smg.wsgi.application'
 
 DATABASES = {
     'default': {

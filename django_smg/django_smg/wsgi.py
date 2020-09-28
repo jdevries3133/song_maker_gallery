@@ -1,5 +1,5 @@
 """
-WSGI config for integrated_django_react project.
+WSGI config for django_smg project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -12,7 +12,7 @@ import json
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'integrated_django_react.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_smg.settings')
 
 # My env variables
 # Hopefully will achieve successfully in settings.py now, so the dev server uses

@@ -22,7 +22,7 @@ BASE_DIR = (
     )
 )
 # setup django and set project env variables from ../screenshot_bot/config.json
-CONFIG_PATH = os.path.join(BASE_DIR, 'integrated_django_react', 'config.json')
+CONFIG_PATH = os.path.join(BASE_DIR, 'django_smg', 'config.json')
 with open(CONFIG_PATH, 'r') as jsn:
     env = json.load(jsn)
     for k, v in env.items():
@@ -30,7 +30,7 @@ with open(CONFIG_PATH, 'r') as jsn:
 sys.path.append(BASE_DIR)
 os.environ.setdefault(
     'DJANGO_SETTINGS_MODULE',
-    'integrated_django_react.settings'
+    'django_smg.settings'
 )
 django.setup()
 
