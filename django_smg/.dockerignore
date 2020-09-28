@@ -1,6 +1,8 @@
-notes.txt
+venv
 main.js
 main.js.gz
+__pycache__
+notes.txt
 chromedriver
 *config.json
 .DS_STORE

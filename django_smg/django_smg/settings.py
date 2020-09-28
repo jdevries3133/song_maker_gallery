@@ -108,10 +108,10 @@ WSGI_APPLICATION = 'django_smg.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'song_maker_feature',
+        'NAME': 'songmaker',
         'USER': config['MYSQL_USER'],
         'PASSWORD': config['MYSQL_USER_PASS'],
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': 3306,
         'OPTIONS': {
             'charset': 'utf8mb4',
