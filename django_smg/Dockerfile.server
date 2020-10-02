@@ -1,0 +1,21 @@
+FROM python:3.7-stretch
+ENV PYTHONBUFFERED 1
+RUN apt-get update -y && apt-get install -y \
+    apt-utils \
+    apache2 \
+    apache2-dev \
+    apache2-utils \
+    libapache2-mod-wsgi-py3 \
+    sudo
+EXPOSE 8000
+COPY ./requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+# for production settings, remove root permissions.
+RUN useradd -rm -d /home/ubuntu -s /bin/bash \
+    -g root -G sudo \
+    -u 1001 ubuntu \
+    && echo "ubuntu:default" | chpasswd
+USER ubuntu
+WORKDIR /home/ubuntu
+COPY . .
+CMD ["python", "/home/ubuntu/manage.py", "runserver", "0.0.0.0:8000"]

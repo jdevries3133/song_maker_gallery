@@ -1,5 +1,6 @@
 ui_testing_data
 notes.txt
+*.env
 main.js
 main.js.gz
 chromedriver
