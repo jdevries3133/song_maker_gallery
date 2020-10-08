@@ -1,0 +1,51 @@
+version: "3.8"
+
+################################################################################
+#                                                                              #
+#           THESE CONTAINERS BUILD IMAGES WITH SECRETS IN THEM.                #
+#                 DO NOT PUSH TO PUBLIC CONTAINER REGISTRY                     #
+#                                                                              #
+################################################################################
+
+services:
+  db:
+    image: mysql:8.0.21
+    environment:
+      ################################################################## secrets (should not be env variable; they will be in the public container registry)
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_DATABASE=songmaker
+      - MYSQL_USER=jack
+      - MYSQL_PASSWORD
+  web:
+    build:
+      context: ./django_smg/
+      dockerfile: Dockerfiles/Dockerfile.web.development
+    image: django_smg
+    volumes:
+      - ./django_smg:/django_smg
+    container_name: django_smg
+    environment:
+      - MYSQL_PASSWORD
+      - DJANGO_SECRET
+      - DJANGO_SUPERUSER_USERNAME
+      - DJANGO_SUPERUSER_EMAIL
+      - DJANGO_SUPERUSER_PASSWORD
+      - DEBUG=true # note: this makes it into the STRING "true", not a boolean...
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  # # DJANGO migration and superuser creation
+  # init_django:
+  #   image: django_smg
+  #   # command: python init_django.py & # kinda cursed but it works
+  #   command: ls
+  #   environment:
+  #     - MYSQL_PASSWORD
+  #     - DJANGO_SUPERUSER_USERNAME="jack"
+  #     - DJANGO_SUPERUSER_EMAIL="jdevries3133@gmail.com"
+  #     - DJANGO_SUPERUSER_PASSWORD="admin"
+  #   volumes:
+  #     - ./django_smg:/django_smg
+  #   depends_on:
+  #     - db

@@ -16,8 +16,7 @@ RUN useradd -rm -d /home/ubuntu -s /bin/bash \
     -u 1001 ubuntu \
     && echo "ubuntu:default" | chpasswd
 USER ubuntu
+# TODO ###################### Remove hardcoded secrets #########################
 WORKDIR /home/ubuntu
 COPY . .
-RUN python manage.py makemigrations --noinput && \
-    python manage.py migrate -- noinput
-CMD ["python", "/home/ubuntu/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runmodwsgi"]

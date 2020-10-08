@@ -2,7 +2,7 @@ import os
 import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEBUG = False
+DEBUG = True if os.getenv('DEBUG') == 'true' else False
 
 # load secrets and frequently changed values from config.json
 if DEBUG:
@@ -29,6 +29,7 @@ INSTALLED_APPS = [
 
     'django_mysql',
     'knox',
+    'mod_wsgi.server',
     'storages',
     'rest_framework',
 
@@ -109,8 +110,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'songmaker',
-        'USER': config['MYSQL_USER'],
-        'PASSWORD': config['MYSQL_USER_PASS'],
+        'USER': 'jack',
+        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
         'HOST': 'db',
         'PORT': 3306,
         'OPTIONS': {

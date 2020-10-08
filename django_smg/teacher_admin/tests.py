@@ -11,7 +11,7 @@ class GalleryConflictResolve(TestCase):
         user = User.objects.create_user(
             'jack', 'jack@jack.com', 'jackpassword')
         for _ in range(100):
-            with open('teacher_admin/test_data.json', 'r') as jsn:
+            with open('teacher_admin/sample_gallery.json', 'r') as jsn:
                 obj = json.load(jsn)
             Gallery.objects.create(
                 owner=user,

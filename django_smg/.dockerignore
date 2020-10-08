@@ -1,4 +1,6 @@
 venv
+Dockerfiles/*
+.dockerignore
 main.js
 main.js.gz
 __pycache__
