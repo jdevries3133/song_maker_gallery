@@ -75,7 +75,6 @@ class Gallery(models.Model):
                 try:
                     group[index][0] = name
                 except (AttributeError, TypeError):
-                    breakpoint()
                     raise Exception(
                         'Save method was run on an object that was already'
                         'created. This means that the if not self.url_extension'

@@ -10,6 +10,7 @@ version: "3.8"
 services:
   db:
     image: mysql:8.0.21
+    container_name: db_smg
     environment:
       ################################################################## secrets (should not be env variable; they will be in the public container registry)
       - MYSQL_ROOT_PASSWORD=pass

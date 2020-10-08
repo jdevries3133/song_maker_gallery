@@ -30,7 +30,7 @@ class GalleryConflictResolve(TestCase):
         for obj in self.get_queryset():
             # check that the url does not change on update
             original_url = obj.url_extension
-            obj.api_obj = ['this']
+            obj.api_obj = [[['this']]]
             obj.save()
             obj.refresh_from_db()
             new_url = obj.url_extension
