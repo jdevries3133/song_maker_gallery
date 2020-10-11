@@ -1,96 +1,18 @@
-// import React from "react";
-import styled, { keyframes } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 
-const anim_in1 = keyframes`
-  from {
-    color: rgba(0, 0, 0, 0);
-    background: inherit;
-    border-radius: 0;
-  }
-  to {
-    color: white;
-    background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/blue.jpg);
-    border-radius: 20px;
-  }
-`;
-
-const anim_in2 = keyframes`
-  from {
-    color: rgba(0, 0, 0, 0);
-    background: inherit;
-    border-radius: 0;
-  }
-  to {
-    color: white;
-    background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/green.jpg);
-    border-radius: 20px;
-  }
-`;
-
-const anim_in3 = keyframes`
-  from {
-    color: rgba(0, 0, 0, 0);
-    background: inherit;
-    border-radius: 0;
-  }
-  to {
-    color: white;
-    background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/pink.jpg);
-    border-radius: 20px;
-  }
-`;
-
-const anim_in4 = keyframes`
-  from {
-    color: rgba(0, 0, 0, 0);
-    background: inherit;
-    border-radius: 0;
-  }
-  to {
-    color: white;
-    background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/red.jpg);
-    border-radius: 20px;
-  }
-`;
-
-const anim_in5 = keyframes`
-  from {
-    color: rgba(0, 0, 0, 0);
-    background: inherit;
-    border-radius: 0;
-  }
-  to {
-    color: white;
-    background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/violet.jpg);
-    border-radius: 20px;
-  }
-`;
-const anim_in6 = keyframes`
-  from {
-    color: rgba(0, 0, 0, 0);
-    background: inherit;
-    border-radius: 0;
-  }
-  to {
-    color: white;
-    background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/yellow.jpg);
-    border-radius: 20px;
-  }
-`;
-const anim_in7 = keyframes`
-  from {
-    color: rgba(0, 0, 0, 0);
-    background: inherit;
-    border-radius: 0;
-  }
-  to {
-    color: white;
-    background: url(https://song-maker-gallery.s3.amazonaws.com/manually_added/orange.jpg);
-    border-radius: 20px;
-  }
-`;
-
-const anim_out = keyframes; // finish
+const color = (index) => {
+  const colors = [
+    "https://song-maker-gallery.s3.amazonaws.com/manually_added/blue.jpg",
+    "https://song-maker-gallery.s3.amazonaws.com/manually_added/green.jpg",
+    "https://song-maker-gallery.s3.amazonaws.com/manually_added/pink.jpg",
+    "https://song-maker-gallery.s3.amazonaws.com/manually_added/red.jpg",
+    "https://song-maker-gallery.s3.amazonaws.com/manually_added/violet.jpg",
+    "https://song-maker-gallery.s3.amazonaws.com/manually_added/yellow.jpg",
+    "https://song-maker-gallery.s3.amazonaws.com/manually_added/orange.jpg",
+  ];
+  return `url(${colors[index % colors.length]})`;
+};
 
 const Button = styled.button`
   display: inline-block;
@@ -102,30 +24,32 @@ const Button = styled.button`
   width: 17rem;
   height: 6rem;
   margin: 2rem;
-  animation-name: ${anim_out};
-  animation-direction: forwards;
-  animation-fill-mode: forwards;
-  animation-duration: 0.3s;
-  border-width: 0;
   border-radius: 0;
+  border-width: 1px;
+  border-color: black;
+  transition: all 0.3s ease-out;
 
+  @media (min-width: 475px) {
+    border: none;
+    box-shadow: 1px 0px 7px #888888;
+  }
+
+  :focus {
+    color: white;
+    background: ${(props) => color(props.theme.index)};
+    background-size: 100% 100%;
+    border-radius: 20px;
+    outline-radius: 20px;
+    outline: 0;
+  }
   :hover {
-    animation-name: ${(props) => {
-      const animations = [
-        anim_in1,
-        anim_in2,
-        anim_in3,
-        anim_in4,
-        anim_in5,
-        anim_in6,
-        anim_in7,
-      ];
-      return animations[props.theme.index % 7];
-    }};
-    animation-direction: forwards;
-    animation-fill-mode: forwards;
-    animation-duration: 0.3s;
-    cursor: pointer;
+    /* same as focus */
+    color: white;
+    background: ${(props) => color(props.theme.index)};
+    background-size: 100% 100%;
+    border-radius: 20px;
+    outline-radius: 20px;
+    outline: 0;
   }
 `;
 
