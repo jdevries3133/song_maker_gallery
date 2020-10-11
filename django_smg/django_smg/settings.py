@@ -2,7 +2,7 @@ import os
 import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEBUG = True if os.getenv('DEBUG') == 'true' else False
+DEBUG = True if os.getenv('DEBUG') == '1' else False
 
 # load secrets and frequently changed values from config.json
 if DEBUG:

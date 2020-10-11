@@ -31,22 +31,8 @@ services:
       - DJANGO_SUPERUSER_USERNAME
       - DJANGO_SUPERUSER_EMAIL
       - DJANGO_SUPERUSER_PASSWORD
-      - DEBUG=true # note: this makes it into the STRING "true", not a boolean...
+      - DEBUG=1 # note: this makes it into the STRING "true", not a boolean
     ports:
       - "8000:8000"
     depends_on:
       - db
-  # # DJANGO migration and superuser creation
-  # init_django:
-  #   image: django_smg
-  #   # command: python init_django.py & # kinda cursed but it works
-  #   command: ls
-  #   environment:
-  #     - MYSQL_PASSWORD
-  #     - DJANGO_SUPERUSER_USERNAME="jack"
-  #     - DJANGO_SUPERUSER_EMAIL="jdevries3133@gmail.com"
-  #     - DJANGO_SUPERUSER_PASSWORD="admin"
-  #   volumes:
-  #     - ./django_smg:/django_smg
-  #   depends_on:
-  #     - db
