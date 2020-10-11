@@ -10,9 +10,15 @@ class GalleryConflictResolve(TestCase):
     def setUp(self):
         user = User.objects.create_user(
             'jack', 'jack@jack.com', 'jackpassword')
-        for _ in range(100):
+        for _ in range(20):
             with open('teacher_admin/sample_gallery.json', 'r') as jsn:
                 obj = json.load(jsn)
+                # remove screenshots from sample_gallery to simulate a new
+                # gallery just sent from the frontend
+                for gr in obj:
+                    for i in gr[:-1]:
+                        if len(i) >= 3:
+                            del i[2]
             Gallery.objects.create(
                 owner=user,
                 title='Test gallery Name',
@@ -35,3 +41,13 @@ class GalleryConflictResolve(TestCase):
             obj.refresh_from_db()
             new_url = obj.url_extension
             self.assertEqual(original_url, new_url)
+
+    def test_placeholder_screenshots_were_assgined(self):
+        PLACEHOLDER = (
+            'https://song-maker-gallery.s3.amazonaws.com/manually_added'
+            '/placeholder.png'
+        )
+        for gallery in self.get_queryset():
+            for group in gallery.api_obj:
+                for row in group[:-1]:
+                    self.assertEqual(row[2], PLACEHOLDER)

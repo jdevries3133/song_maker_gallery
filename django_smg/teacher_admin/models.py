@@ -84,7 +84,7 @@ class Gallery(models.Model):
                 # insert placeholder image
                 row.append(
                     'https://song-maker-gallery.s3.amazonaws.com/manually_added'
-                    '/Placeholder.png'
+                    '/placeholder.png'
                 )
 
         super().save(args, kwargs)
