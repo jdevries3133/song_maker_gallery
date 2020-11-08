@@ -9,12 +9,20 @@ class SongSerializer(ModelSerializer):
         model = Song
         fields = ('songId', 'galleries')
 
+class SongGroupSerializer(ModelSerializer):
+    class Meta:
+        model = SongGroup
+        fields = ('group_name',)
+
 
 class GallerySerializer(ModelSerializer):
-    songs = SongSerializer(many=True)
     class Meta:
         model = Gallery
-        fields = ('title', 'description', 'songs')
+        fields = (
+            'title',
+            'description',
+            'url_extension',
+        )
 
 
 class GalleryDatasetSerializer(Serializer):
@@ -39,7 +47,7 @@ class GalleryDatasetSerializer(Serializer):
             url_extension=Gallery.generate_url_extension(validated_data['title'])
         )
         self.parse_song_data(validated_data['songData'])
-        return Gallery
+        return self._gallery
 
     def parse_song_data(self, song_data):
         """
@@ -122,9 +130,9 @@ class GalleryDatasetSerializer(Serializer):
             # check shape of data structure: a list of lists of two strings.
             assert isinstance(song_data, list)
             for group in song_data:
-                assert isinstance(group.pop(), str)  # pop out the group name
+                assert isinstance(group[-1], str)  # pop out the group name
                 assert isinstance(group, list)
-                for row in group:
+                for row in group[:-1]:
                     assert isinstance(row, list)
                     assert len(row) == 2
                     assert re.match(

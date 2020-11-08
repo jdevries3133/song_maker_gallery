@@ -47,16 +47,19 @@ class Gallery(models.Model):
             )
         ]
         if conflicting_urls:
-            append_int = 1
+            append_int = 0
             url_extension += str(append_int)
             while url_extension in conflicting_urls:
-                url_extension = url_extension[:-1] + str(append_int)
                 append_int += 1
+                url_extension = (
+                    url_extension[:-len(str(append_int - 1))]
+                    + str(append_int)
+                    )
         return url_extension
 
 
     def __str__(self):
-        return self.title.__str__()
+        return str(self.title)
 
     class Meta:
         verbose_name = _('Gallery')
@@ -69,6 +72,9 @@ class SongGroup(models.Model):
     """
     group_name = models.CharField(_("Group Name"), max_length=100)
     gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.group_name)
 
 
 class Song(models.Model):
@@ -90,3 +96,6 @@ class Song(models.Model):
     # data that comes from the cache
     json = JSONField()
     midi = models.BinaryField()
+
+    def __str__(self):
+        return f'{self.student_name}; {self.songId}'
