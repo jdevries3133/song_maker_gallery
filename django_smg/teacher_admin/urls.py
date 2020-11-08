@@ -1,6 +1,7 @@
-from teacher_admin.api import TeacherViewSet
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 
-router = DefaultRouter()
-router.register(r'', TeacherViewSet, basename='teacher')
-urlpatterns = router.urls
+from .api import GalleryViewSet
+
+urlpatterns = [
+    path('gallery/', GalleryViewSet.as_view(), name="gallery")
+]

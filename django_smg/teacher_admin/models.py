@@ -25,23 +25,18 @@ class Gallery(models.Model):
         primary_key=True,
     )
     description = models.TextField()
-    api_obj = JSONField(default=list)
-    needs_screenshot = models.BooleanField(default=True)
-    work_in_progress = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
-        # this save method is tragically flawed
-        # I should just not mess with the default primary_key
-        # On the public side, I should just filter .all() by the url_extension,
-        # and call it a day.
-
-        # anytime you try to update the model, it becomes duplicated with a new
-        # url extension, and the old one just hangs around. Plus, I think the
-        # api serializer.data ends up being wrong because of this, too.
+        """
+        Save with the url extension as the primary key for easy lookups. If
+        the url is taken, append a number to the url until there are no more
+        naming conflicts.
+        """
+        # pylint: disable=no-member,signature-differs,pointless-string-statement
         if self.url_extension != 'unassigned':
-            super().save(args, kwargs)
+            super().save(*args, **kwargs)
             return
-        self.url_extension = self.title.lower().replace(' ', '-')
+        self.url_extension = self.title.__str__().lower().replace(' ', '-')
         outstr = ''
         for i in self.url_extension:
             if re.search(r'[a-zA-Z0-9\-]', i):
@@ -51,47 +46,54 @@ class Gallery(models.Model):
             url_extension__contains=self.url_extension)]
         if conflicting_urls:
             append_int = 1
-            while True:
-                new_url = self.url_extension + str(append_int)
-                if new_url in conflicting_urls:
-                    append_int += 1
-                else:
-                    self.url_extension = new_url
-                    break
+            self.url_extension += str(append_int)
+            while self.url_extension in conflicting_urls:
+                # will this cause an inifnite loop?? I don't know yet...
+                self.url_extension = self.url_extension[:-1] + str(append_int)
+                append_int += 1
 
         # convert names to first name, last initial with proper case
         # also, insert placeholder image
-        for group in self.api_obj:
-            for index, row in enumerate(group[:-1]):
 
-                # fixing names
-                full_name = row[0]
-                name_arr = full_name.split(' ')
-                if len(name_arr) > 1:
-                    name = name_arr[0].title() + ' ' + \
-                        name_arr[1][0].upper() + '.'
-                else:
-                    name = name_arr[0]
-                try:
-                    group[index][0] = name
-                except (AttributeError, TypeError):
-                    raise Exception(
-                        'Save method was run on an object that was already'
-                        'created. This means that the if not self.url_extension'
-                        'check at the beginning of Gallery.save() failed.'
-                    )
+        # TODO: this will be used differently; possibly lifted into the viewset
 
-                # insert placeholder image
-                row.append(
-                    'https://song-maker-gallery.s3.amazonaws.com/manually_added'
-                    '/placeholder.png'
-                )
+        """
+                """
 
-        super().save(args, kwargs)
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.title
+        return self.title.__str__()
 
     class Meta:
         verbose_name = _('Gallery')
         verbose_name_plural = _('Galleries')
+
+
+class SongGroup(models.Model):
+    """
+    Songs in the gallery are visually grouped. This model defines the grouping.
+    """
+    group_name = models.CharField(_("Group Name"), max_length=100)
+    gallery = models.OneToOneField(Gallery, on_delete=models.CASCADE)
+
+
+class Song(models.Model):
+    """
+    A single song that is part of a gallery. Contains cached midi files and
+    json objects from the Chrome Music Lab site.
+    """
+    songId = models.CharField(_("Song ID"), max_length=50, primary_key=True)
+
+    # relationships
+    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE)
+    group = models.ForeignKey(SongGroup, on_delete=models.CASCADE)
+
+    student_name = models.CharField(_("Student Name"), max_length=100)
+
+    # worker will respond to this field and update it when pulling down data
+    # into cache.
+    isCached = models.BooleanField(default=False)
+    # data that comes from the cache
+    json = JSONField()
+    midi = models.BinaryField()
