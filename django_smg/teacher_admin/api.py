@@ -31,8 +31,11 @@ class GalleryViewSet(APIView):
         # catch depricated name "api_obj" renamed to songData
         if 'api_obj' in request.data:
             raise Exception('Use of depricated "api_obj"')
-        serializer = GalleryDatasetSerializer(data=request.data)
+        serializer = GalleryDatasetSerializer(data=request.data, context={
+            'user': request.user
+        })
         serializer.is_valid(raise_exception=True)
+        serializer.save()
 
         return Response('hello world')
 

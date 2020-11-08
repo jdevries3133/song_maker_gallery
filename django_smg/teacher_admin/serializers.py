@@ -1,4 +1,5 @@
 import re
+
 from rest_framework.serializers import Serializer, ModelSerializer, ValidationError
 from .models import Gallery, Song, SongGroup
 
@@ -30,25 +31,30 @@ class GalleryDatasetSerializer(Serializer):
     for each song on the frontend.
     """
     def create(self, validated_data):
-        gallery = Gallery.objects.create(
+        # create new gallery, to which everything else will relationally linked.
+        self._gallery = Gallery.objects.create(
             owner=self.get_user() ,
-            title=validated_data.data['title'],
-            description=validated_data.data['description']
+            title=validated_data['title'],
+            description=validated_data['description'],
+            url_extension=Gallery.generate_url_extension(validated_data['title'])
         )
-        for group in validated_data['songData']:
+        self.parse_song_data(validated_data['songData'])
+        return Gallery
+
+    def parse_song_data(self, song_data):
+        """
+        Parse nested list of groups and songs. Create SongGroups and Songs.
+        """
+        for group in song_data:
             group_name = group.pop()
             song_group = SongGroup.objects.create(
                 group_name=group_name,
-                gallery=gallery
+                gallery=self._gallery
             )
             for row in group:
-                # TODO: move this code to a beter place, such as within a
-                # create or update method where it will be checked every time.
-
                 # change names to first name, last initial
                 full_name = row[0]
-                print(row)
-                print(full_name)
+                songId = row[1][-16:]
                 name_arr = full_name.split(' ')
                 if len(name_arr) > 1:
                     name = (
@@ -58,20 +64,26 @@ class GalleryDatasetSerializer(Serializer):
                     )
                 else:
                     name = name_arr[0]
+                try:
+                    existing_song = Song.objects.get(pk=songId)
+                    if not self._gallery in existing_song.galleries.all():
+                        existing_song.galleries.add(self._gallery)
+                    if not song_group in existing_song.groups.all():
+                        existing_song.groups.add(song_group)
+                except Song.DoesNotExist:
+                    song = Song.objects.create(
+                        songId=songId,
+                        student_name=name,
+                    )
+                    song.galleries.add(self._gallery)
+                    song.groups.add(song_group)
 
-                songId = row[1][-16:]
-                new_song = Song.objects.create(
-                    songId=songId,
-                    student_name=name,
-                    gallery=gallery,
-                    group=song_group
-                )
 
     def get_user(self):
         """
         Safely get the user or raise a descriptive exception.
         """
-        user = self.context.get('request').get('user')
+        user = self.context.get('user')
         if not user:
             raise Exception('Current request context has no user')
         return user
