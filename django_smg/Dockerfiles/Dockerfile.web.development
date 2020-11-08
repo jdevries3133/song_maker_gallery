@@ -19,6 +19,5 @@ RUN useradd -rm -d /home/ubuntu -s /bin/bash \
 USER ubuntu
 COPY ./entry.sh entry.sh
 COPY ./init_django.py init_django.py
-# ENTRYPOINT ["/bin/bash" "/django_smg/entry.sh"]
-# CMD ["bash", "-c", "while :; do sleep 1; done;"]
-CMD [ "bash", "entry.sh" ]
+CMD ["bash", "-c", "while :; do sleep 1; done;"]
+# CMD [ "bash", "entry.sh" ]

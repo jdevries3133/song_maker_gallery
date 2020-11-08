@@ -2,9 +2,9 @@ import os
 import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEBUG = True if os.getenv('DEBUG') == '1' else False
+DEBUG = True if os.getenv('DJANGO_DEBUG') == '1' else False
 
-# load secrets and frequently changed values from config.json
+# load secrets from config.json
 if DEBUG:
     with open(os.path.join(BASE_DIR, 'django_smg', 'dev_config.json'), 'r') as jsn:
         config = json.load(jsn)
@@ -15,7 +15,6 @@ else:
 SECRET_KEY = config['DJANGO_SECRET']
 ALLOWED_HOSTS = [
     'songmakergallery.com',
-    'ec2-18-220-82-134.us-east-2.compute.amazonaws.com',
     'localhost',
 ]
 
@@ -34,7 +33,6 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'accounts',
-    'get_screenshots',
     'frontend',
     'public_provider',
     'teacher_admin',
@@ -57,10 +55,6 @@ REST_FRAMEWORK = {
         'knox.auth.TokenAuthentication',
     )
 }
-
-CRON_CLASSES = [
-    'get_screenshots.api.ScreenshotCron',
-]
 
 # Email
 EMAIL_PORT = 587

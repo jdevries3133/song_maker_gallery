@@ -1,15 +1,14 @@
-from rest_framework.serializers import ModelSerializer, Serializer, CharField
+from rest_framework.serializers import ModelSerializer, Serializer, CharField, ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from django.core.exceptions import ValidationError
 
-# User Serializer
+
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email')
 
-# Register Serializer
+
 class RegisterSerializer(ModelSerializer):
     class Meta:
         model = User
@@ -19,12 +18,20 @@ class RegisterSerializer(ModelSerializer):
     def create(self, validated_data):
         user = User.objects.create_user(
             validated_data['username'],
-            validated_data['email'], 
+            validated_data['email'],
             validated_data['password'],
         )
         return user
 
-# Login Serializer
+    def validate(self, data):
+        """
+        Require email
+        """
+        if not self.initial_data.get('email'):
+            raise ValidationError({'message': 'Email is required.'})
+        return data
+
+
 class LoginSerializer(Serializer):
     username = CharField()
     password = CharField()
@@ -34,4 +41,3 @@ class LoginSerializer(Serializer):
         if user and user.is_active:
             return user
         raise ValidationError('Incorrect Credentials')
-

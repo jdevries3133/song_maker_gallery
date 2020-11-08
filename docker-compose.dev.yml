@@ -31,8 +31,8 @@ services:
       - DJANGO_SUPERUSER_USERNAME
       - DJANGO_SUPERUSER_EMAIL
       - DJANGO_SUPERUSER_PASSWORD
-      - DEBUG=1 # note: this makes it into the STRING "true", not a boolean
+      - DJANGO_DEBUG=1 # note: this makes it into the STRING "true", not a boolean
     ports:
-      - "8000:8000"
+      - 8000:8000
     depends_on:
       - db

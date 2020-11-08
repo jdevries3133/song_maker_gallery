@@ -17,6 +17,8 @@ RUN useradd -rm -d /home/ubuntu -s /bin/bash \
     && echo "ubuntu:default" | chpasswd
 USER ubuntu
 # TODO ###################### Remove hardcoded secrets #########################
+# TODO configure staticfile server. Remember robots.txt and sitemap.xml
+# remember, sitemap.xml is in ./templates/sitemap.xml
 WORKDIR /home/ubuntu
 COPY . .
 CMD ["python", "manage.py", "runmodwsgi"]

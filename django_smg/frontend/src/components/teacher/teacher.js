@@ -213,7 +213,7 @@ class Teacher extends Component {
       {
         title: this.state.titleValue,
         description: this.state.descriptionValue,
-        api_obj: this.state.stagedGroups,
+        galleryData: this.state.stagedGroups,
       },
       this.props.token
     );

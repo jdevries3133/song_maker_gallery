@@ -1,3 +1,5 @@
+import logging
+
 from django.contrib.auth.models import User
 from django.contrib.auth import login
 from rest_framework.generics import GenericAPIView, RetrieveAPIView
@@ -6,13 +8,13 @@ from rest_framework.response import Response
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 from knox.models import AuthToken
-from knox.auth import TokenAuthentication
 from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
-import logging
 
 logger = logging.getLogger('file')
 
 # Register API
+
+
 class RegisterAPI(GenericAPIView):
     permission_classes = [permissions.AllowAny]
     serializer_class = RegisterSerializer
@@ -23,7 +25,8 @@ class RegisterAPI(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
 
-        userData = UserSerializer(user, context=self.get_serializer_context()).data
+        userData = UserSerializer(
+            user, context=self.get_serializer_context()).data
         token = AuthToken.objects.create(user)[1]
 
         logging.debug(userData)
@@ -35,9 +38,8 @@ class RegisterAPI(GenericAPIView):
         })
 
 
-# Login API
 class LoginAPI(KnoxLoginView):
-    permission_classes = [permissions.AllowAny,]
+    permission_classes = (permissions.AllowAny,)
     serializer_class = LoginSerializer
     queryset = User.objects.all()
 
@@ -49,11 +51,11 @@ class LoginAPI(KnoxLoginView):
         login(request, user)
         return super(LoginAPI, self).post(request, format=None)
 
-# Get User API
+
 class UserAPI(RetrieveAPIView):
-    permission_classes = [
-        permissions.IsAuthenticated
-    ]
+    permission_classes = (
+        permissions.IsAuthenticated,
+    )
     serializer_class = UserSerializer
 
     def get_object(self):
