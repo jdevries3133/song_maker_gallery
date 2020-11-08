@@ -20,9 +20,6 @@ class GalleryViewSet(APIView):
         permissions.IsAuthenticated
     ]
 
-    def get_queryset(self):
-        return self.request.user.gallery.all()
-
     def post(self, request, *args, **kwargs):
         """
         Decompose the batch of data sent from the frontend and create a
@@ -42,4 +39,9 @@ class GalleryViewSet(APIView):
         )
 
     def get(self, request):
-        return Response(self.get_queryset().filter(owner=request.user))
+        """
+        Endpoint to get a single
+        """
+        return Response(
+            GalleryDatasetSerializer().render(request.query_params.get('pk'))
+        )

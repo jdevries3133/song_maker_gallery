@@ -38,6 +38,29 @@ class GalleryDatasetSerializer(Serializer):
     the actual json and midi data for each individual song, which is requested
     for each song on the frontend.
     """
+    def render(self, gallery_pk):
+        """
+        Give the frontend the whole structured blob necessary for it to render
+        a gallery at once.
+        """
+        gallery = Gallery.objects.get(pk=gallery_pk)
+        groups = SongGroup.objects.filter(gallery=gallery)
+        output = {
+            'title': gallery.title,
+            'description': gallery.description,
+        }
+        rendered_groups = []
+        for group in groups:
+            group_songs = [
+                (s.student_name, s.songId)
+                for s in Song.objects.filter(groups=group)
+            ]
+            group_songs.append(group.group_name)
+            rendered_groups.append(group_songs)
+        output['songData'] = rendered_groups
+        return output
+
+
     def create(self, validated_data):
         # create new gallery, to which everything else will relationally linked.
         self._gallery = Gallery.objects.create(
@@ -126,19 +149,16 @@ class GalleryDatasetSerializer(Serializer):
         pass
 
     def validate_song_data(self, song_data):
-        try:
-            # check shape of data structure: a list of lists of two strings.
-            assert isinstance(song_data, list)
-            for group in song_data:
-                assert isinstance(group[-1], str)  # pop out the group name
-                assert isinstance(group, list)
-                for row in group[:-1]:
-                    assert isinstance(row, list)
-                    assert len(row) == 2
-                    assert re.match(
-                        r'http(s)?://musiclab.chromeexperiments.com/Song-Maker/song/'
-                        '(\d){16}',
-                        row[1]
-                    )
-        except AssertionError:
-            breakpoint()
+        # check shape of data structure: a list of lists of two strings.
+        assert isinstance(song_data, list)
+        for group in song_data:
+            assert isinstance(group[-1], str)  # pop out the group name
+            assert isinstance(group, list)
+            for row in group[:-1]:
+                assert isinstance(row, list)
+                assert len(row) == 2
+                assert re.match(
+                    r'http(s)?://musiclab.chromeexperiments.com/Song-Maker/song/'
+                    r'(\d){16}',
+                    row[1]
+                )

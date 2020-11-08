@@ -54,9 +54,8 @@ class Gallery(models.Model):
                 url_extension = (
                     url_extension[:-len(str(append_int - 1))]
                     + str(append_int)
-                    )
+                )
         return url_extension
-
 
     def __str__(self):
         return str(self.title)
