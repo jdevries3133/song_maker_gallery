@@ -44,7 +44,10 @@ export const getUserGalleries = (token) => (dispatch) => {
   axios.defaults.xsrfCookieName = "csrftoken";
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios
-    .get("/api/user/", { headers: { Authorization: `Token ${token}` } })
+    .get("/api/user/galleries", {
+      // this endpoint no longer exists and I think I'd like to depricate it in favor of more focused requests.
+      headers: { Authorization: `Token ${token}` },
+    })
     .then((res) =>
       dispatch({
         type: GET_GALLERIES,

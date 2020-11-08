@@ -34,8 +34,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'frontend',
-    'public_provider',
-    'teacher_admin',
+    'gallery',
 ]
 
 MIDDLEWARE = [

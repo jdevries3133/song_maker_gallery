@@ -5,10 +5,8 @@ from .views import loginRedirect
 urlpatterns = [
     # accounts
     path('api/auth/', include('accounts.urls')),
-    # public api
-    path('api/galleries/get/', include('public_provider.urls')),
-    # teacher / user
-    path('api/user/', include('teacher_admin.urls')),
+    # galleries
+    path('api/gallery/', include('gallery.urls')),
     # admin
     path('admin/', admin.site.urls),
     # password reest & redirect back to frontend

@@ -3,9 +3,9 @@ import axios from "axios";
 import { GET_GALLERY } from "./types";
 
 // GET Gallery
-export const getGallery = (url_ext) => (dispatch) => {
+export const getGallery = (gallery_pk) => (dispatch) => {
   axios
-    .get(`/api/galleries/get/${url_ext}/`)
+    .get(`/api/gallery?pk=${gallery_pk}/`)
     .then((res) => {
       dispatch({
         type: GET_GALLERY,

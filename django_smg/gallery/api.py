@@ -1,6 +1,7 @@
 import logging
 
 from django.db.utils import IntegrityError
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework import permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -38,10 +39,12 @@ class GalleryViewSet(APIView):
             status=status.HTTP_201_CREATED
         )
 
-    def get(self, request):
+    def get(self, request, *a, **kw):
         """
-        Endpoint to get a single
+        Endpoint to get a single gallery. Open to any permission class.
         """
+        # TODO: since this is an authenticated view, this should be where
+        # the user's paginated galleries come from.
         return Response(
             GalleryDatasetSerializer().render(request.query_params.get('pk'))
         )
