@@ -29,11 +29,16 @@ class Gallery(models.Model):
     def generate_url_extension(title):
         """
         Generates a unique url extension given a title, avoiding url extensions
-        currently in the database. WARNING: In a distributed environment with
-        many parallelized django workers, this solution may create integrity
-        issues due to the time difference between when a "unique" url extension
-        is identified, and when it is inserted into the database; but let's
-        cross that bridge if we come to it.
+        currently in the database.
+
+        THE URL_EXTENSION RETURNED BY THIS FUNCTION MAY BE CONCURRENCY UNSAFE,
+
+        A portion of the codebase that assigns a model's url extension
+        with this function should be prepared that a separate worker is
+        doing the same thing at the same time. A simultaneous database write
+        with the same url_extension is unlikely but possible, so integrity
+        and operational errors should be caught and a new unique url_extension
+        should be fetched and tried again.
         """
         url_extension = title.__str__().lower().replace(' ', '-')
         outstr = ''
@@ -47,8 +52,8 @@ class Gallery(models.Model):
             )
         ]
         if conflicting_urls:
-            append_int = 0
-            url_extension += str(append_int)
+            append_int = 1
+            url_extension += '-' + str(append_int)
             while url_extension in conflicting_urls:
                 append_int += 1
                 url_extension = (

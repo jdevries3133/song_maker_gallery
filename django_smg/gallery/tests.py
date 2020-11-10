@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 from django.test import TestCase
 from django.contrib.auth.models import User
@@ -6,23 +7,22 @@ from django.contrib.auth.models import User
 from .models import Gallery
 
 
-class GalleryConflictResolve(TestCase):
+class TestGalleryModel(TestCase):
+    """
+    Most importantly, the Gallery.generate_url_extension method should return
+    a unique string that can be used as the url_extension of the gallery. This
+    mechanism had been fraught with hacky workarounds, but the current
+    implementation is concurrency unsafe.
+    """
     def setUp(self):
         user = User.objects.create_user(
-            'jack', 'jack@jack.com', 'jackpassword')
+            'jack', 'jack@jack.com', 'jackpassword'
+        )
         for _ in range(20):
-            with open('teacher_admin/sample_gallery.json', 'r') as jsn:
-                obj = json.load(jsn)
-                # remove screenshots from sample_gallery to simulate a new
-                # gallery just sent from the frontend
-                for gr in obj:
-                    for i in gr[:-1]:
-                        if len(i) >= 3:
-                            del i[2]
             Gallery.objects.create(
                 owner=user,
-                title='Test gallery Name',
-                api_obj=obj,
+                title='Test Gallery Name',
+                url_extension=Gallery.generate_url_extension('Test Gallery Name')
             )
 
     def get_queryset(self):
@@ -36,18 +36,30 @@ class GalleryConflictResolve(TestCase):
         for obj in self.get_queryset():
             # check that the url does not change on update
             original_url = obj.url_extension
-            obj.api_obj = [[['this']]]
+            obj.description = 'new description'
             obj.save()
             obj.refresh_from_db()
             new_url = obj.url_extension
             self.assertEqual(original_url, new_url)
 
-    def test_placeholder_screenshots_were_assgined(self):
-        PLACEHOLDER = (
-            'https://song-maker-gallery.s3.amazonaws.com/manually_added'
-            '/placeholder.png'
-        )
-        for gallery in self.get_queryset():
-            for group in gallery.api_obj:
-                for row in group[:-1]:
-                    self.assertEqual(row[2], PLACEHOLDER)
+    def test_conflicting_names_sequenced_correctly(self):
+        """
+        Galleries with overlapping names should append a number to the end
+        of the gallery url_extension sequenetially.
+
+        For example:
+
+        - test-gallery-name
+        - test-gallery-name1
+        - test-gallery-name2
+        etc...
+        """
+        sorted = self.get_queryset().order_by('created')
+        for i, gallery in enumerate(sorted):
+            continue
+            if not i:  # no appended int yet
+                self.assertEqual(gallery.url_extension, 'test-gallery-name')
+                continue
+            i = '-' + str(i)
+            # convert i to str expected at end of url_extension
+            self.assertEqual(gallery.url_extension[17:], str(i))
