@@ -1,6 +1,7 @@
 {
   "note to self": "This MUST be in the database for the landing page to work",
   "title": "Sample Gallery",
+  "description": "Sample gallery description.",
   "songData": [
     [
       [

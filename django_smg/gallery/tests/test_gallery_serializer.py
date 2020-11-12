@@ -1,5 +1,12 @@
+from copy import deepcopy
+from pathlib import Path
+import json
+
 from django.contrib.auth.models import User
 from django import test
+from django.test.utils import tag, CaptureQueriesContext
+from django.db import connection
+from django.conf import settings
 
 from gallery.serializers import GalleryDatasetSerializer
 from gallery.models import Gallery, SongGroup, Song, StudentName
@@ -11,8 +18,12 @@ class TestGallerySerializer(test.TestCase):
     and rendering gallery views from the database.
     """
 
-    def setUp(self):
-        self.mock_api_data =  {
+    def mock_api_data(self):
+        """
+        Always need to deep copy because the serializer pops group names out,
+        mutating the nested list.
+        """
+        return deepcopy({
             'title': 'Test Title',
             'description': 'This is the test description.',
             'songData': [
@@ -64,17 +75,46 @@ class TestGallerySerializer(test.TestCase):
                     'A Group of Lillys'
                 ]
             ]
-        }
-        user = User.objects.create_user(
+        })
+
+    def setUp(self):
+        self.user = User.objects.create_user(
             username='jack',
             email='jack@jack.com',
             password='ghjlesdfr;aghruiao;'
         )
-        serializer = GalleryDatasetSerializer(data=self.mock_api_data, context={
-            'user': user,
+        serializer = GalleryDatasetSerializer(data=self.mock_api_data(), context={
+            'user': self.user,
         })
-        serializer.is_valid(raise_exception=True)
+        serializer.is_valid()
         serializer.save()
+
+    @tag('skip_setup')
+    def test_num_queries_on_create_sm(self):
+        """
+        For a small gallery.
+        """
+        with CaptureQueriesContext(connection) as query_count:
+            serializer = GalleryDatasetSerializer(data=self.mock_api_data(), context={
+                'user': self.user,
+            })
+            self.assertTrue(serializer.is_valid())
+            serializer.save()
+        self.assertLess(query_count.final_queries, 5)
+
+    def test_num_queries_on_create_lg(self):
+        """
+        For a large gallery.
+        """
+        with open(Path(settings.BASE_DIR, 'gallery', 'sample-gallery.json'), 'r') as jsn:
+            data = json.load(jsn)
+        serializer = GalleryDatasetSerializer(data=data, context={
+            'user': self.user,
+        })
+        self.assertTrue(serializer.is_valid())
+        with CaptureQueriesContext(connection) as query_count:
+            serializer.save()
+        self.assertLess(query_count.final_queries, 5)
 
     def test_gallery_single_gallery_exists(self):
         gallery_set = Gallery.objects.filter(slug='test-title')

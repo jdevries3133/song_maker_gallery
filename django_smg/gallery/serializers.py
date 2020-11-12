@@ -68,6 +68,7 @@ class GalleryDatasetSerializer(Serializer):
         Create new gallery, to which everything else will relationally linked.
         """
         # TODO: THIS IS VERY INEFFICIENT it does not simply hit the database; it batters it.
+        # TODO: Optimize such that new tests pass. Limit to 5 queries.
         self._gallery = Gallery.objects.create(
             owner=self.get_user() ,
             title=validated_data['title'],
@@ -82,6 +83,7 @@ class GalleryDatasetSerializer(Serializer):
         Parse nested list of groups and songs. Create SongGroups and Songs.
         """
         # TODO: THIS IS VERY INEFFICIENT it does not simply hit the database; it batters it.
+        # TODO: Optimize such that new tests pass. Limit to 5 queries.
         for group in song_data:
             group_name = group.pop()
             song_group = SongGroup.objects.create(
@@ -164,7 +166,9 @@ class GalleryDatasetSerializer(Serializer):
         pass
 
     def validate_song_data(self, song_data):
-        # check shape of data structure: a list of lists of two strings.
+        """
+        Check shape of data structure: a list of lists of two strings.
+        """
         assert isinstance(song_data, list)
         for group in song_data:
             assert isinstance(group[-1], str)  # pop out the group name
