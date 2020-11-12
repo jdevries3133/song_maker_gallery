@@ -1,16 +1,17 @@
 import json
 from pathlib import Path
 
-from django.test import TestCase
+from django import test
 from django.contrib.auth.models import User
 
-from .models import Gallery
+from gallery.models import Gallery
+from gallery.serializers import GalleryDatasetSerializer
 
 
-class TestGalleryModel(TestCase):
+class TestGalleryModel(test.TestCase):
     """
-    Most importantly, the Gallery.generate_url_extension method should return
-    a unique string that can be used as the url_extension of the gallery. This
+    Most importantly, the Gallery.generate_slug method should return
+    a unique string that can be used as the slug of the gallery. This
     mechanism had been fraught with hacky workarounds, but the current
     implementation is concurrency unsafe.
     """
@@ -22,7 +23,7 @@ class TestGalleryModel(TestCase):
             Gallery.objects.create(
                 owner=user,
                 title='Test Gallery Name',
-                url_extension=Gallery.generate_url_extension('Test Gallery Name')
+                slug=Gallery.generate_slug('Test Gallery Name')
             )
 
     def get_queryset(self):
@@ -30,22 +31,22 @@ class TestGalleryModel(TestCase):
 
     def test_url_naming_conflict_avoidance(self):
         for obj in self.get_queryset():
-            self.assertEqual(obj.url_extension[:17], 'test-gallery-name')
+            self.assertEqual(obj.slug[:17], 'test-gallery-name')
 
     def test_url_does_not_mutate_on_update(self):
         for obj in self.get_queryset():
             # check that the url does not change on update
-            original_url = obj.url_extension
+            original_url = obj.slug
             obj.description = 'new description'
             obj.save()
             obj.refresh_from_db()
-            new_url = obj.url_extension
+            new_url = obj.slug
             self.assertEqual(original_url, new_url)
 
     def test_conflicting_names_sequenced_correctly(self):
         """
         Galleries with overlapping names should append a number to the end
-        of the gallery url_extension sequenetially.
+        of the gallery slug sequenetially.
 
         For example:
 
@@ -58,8 +59,9 @@ class TestGalleryModel(TestCase):
         for i, gallery in enumerate(sorted):
             continue
             if not i:  # no appended int yet
-                self.assertEqual(gallery.url_extension, 'test-gallery-name')
+                self.assertEqual(gallery.slug, 'test-gallery-name')
                 continue
             i = '-' + str(i)
-            # convert i to str expected at end of url_extension
-            self.assertEqual(gallery.url_extension[17:], str(i))
+            # convert i to str expected at end of slug
+            self.assertEqual(gallery.slug[17:], str(i))
+

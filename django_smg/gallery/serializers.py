@@ -1,7 +1,7 @@
 import re
 
 from rest_framework.serializers import Serializer, ModelSerializer, ValidationError
-from .models import Gallery, Song, SongGroup
+from .models import Gallery, Song, SongGroup, StudentName
 
 
 class SongSerializer(ModelSerializer):
@@ -21,29 +21,29 @@ class GallerySerializer(ModelSerializer):
         fields = (
             'title',
             'description',
-            'url_extension',
+            'slug',
         )
 
 
 class GalleryDatasetSerializer(Serializer):
     """
-    This is the entire API response with all gallery information, bringing
-    together information from the following models:
+    Brings together information from the following models to create or render
+    galleries in a single request:
 
     - Gallery
     - Song
     - SongGroup
-
-    This provides all the information necessary to render a gallery, except
-    the actual json and midi data for each individual song, which is requested
-    for each song on the frontend.
     """
-    def render(self, gallery_pk):
+    def get_queryset(self, slug, max_galleries=10):
+        return Song.objects.filter(slug=slug).filter(created__isnull=False).latest()
+
+    def render(self, slug):
         """
         Give the frontend the whole structured blob necessary for it to render
         a gallery at once.
         """
-        gallery = Gallery.objects.get(pk=gallery_pk)
+        queryset = self.get_queryset(slug)
+        gallery = Gallery.objects.get(pk=slug)
         groups = SongGroup.objects.filter(gallery=gallery)
         output = {
             'title': gallery.title,
@@ -67,7 +67,7 @@ class GalleryDatasetSerializer(Serializer):
             owner=self.get_user() ,
             title=validated_data['title'],
             description=validated_data['description'],
-            url_extension=Gallery.generate_url_extension(validated_data['title'])
+            slug=Gallery.generate_slug(validated_data['title'])
         )
         self.parse_song_data(validated_data['songData'])
         return self._gallery
@@ -101,13 +101,20 @@ class GalleryDatasetSerializer(Serializer):
                         existing_song.galleries.add(self._gallery)
                     if not song_group in existing_song.groups.all():
                         existing_song.groups.add(song_group)
+                    StudentName.objects.create(
+                        name=name,
+                        song=existing_song
+                    )
                 except Song.DoesNotExist:
                     song = Song.objects.create(
                         songId=songId,
-                        student_name=name,
                     )
                     song.galleries.add(self._gallery)
                     song.groups.add(song_group)
+                    StudentName.objects.create(
+                        name=name,
+                        song=song
+                    )
 
 
     def get_user(self):

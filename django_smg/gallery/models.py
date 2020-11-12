@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.db.utils import IntegrityError
+from django.utils.text import slugify
 from django_mysql.models import JSONField
 
 
@@ -19,14 +20,14 @@ class Gallery(models.Model):
         null=False,
         blank=False,
     )
-    url_extension = models.CharField(
-        max_length=100,
-        primary_key=True,
+    slug = models.SlugField(
+        max_length=50,
+        unique=True
     )
     description = models.TextField()
 
     @staticmethod
-    def generate_url_extension(title):
+    def generate_slug(title):
         """
         Generates a unique url extension given a title, avoiding url extensions
         currently in the database.
@@ -36,31 +37,31 @@ class Gallery(models.Model):
         A portion of the codebase that assigns a model's url extension
         with this function should be prepared that a separate worker is
         doing the same thing at the same time. A simultaneous database write
-        with the same url_extension is unlikely but possible, so integrity
-        and operational errors should be caught and a new unique url_extension
+        with the same slug is unlikely but possible, so integrity
+        and operational errors should be caught and a new unique slug
         should be fetched and tried again.
         """
-        url_extension = title.__str__().lower().replace(' ', '-')
+        slug = slugify(title)
         outstr = ''
-        for i in url_extension:
+        for i in slug:
             if re.search(r'[a-zA-Z0-9\-]', i):
                 outstr += i
-        url_extension = outstr
+        slug = outstr
         conflicting_urls = [
-            i.url_extension for i in Gallery.objects.filter(
-                url_extension__contains=url_extension
+            i.slug for i in Gallery.objects.filter(
+                slug__contains=slug
             )
         ]
         if conflicting_urls:
             append_int = 1
-            url_extension += '-' + str(append_int)
-            while url_extension in conflicting_urls:
+            slug += '-' + str(append_int)
+            while slug in conflicting_urls:
                 append_int += 1
-                url_extension = (
-                    url_extension[:-len(str(append_int - 1))]
+                slug = (
+                    slug[:-len(str(append_int - 1))]
                     + str(append_int)
                 )
-        return url_extension
+        return slug
 
     def __str__(self):
         return str(self.title)
@@ -92,8 +93,6 @@ class Song(models.Model):
     galleries = models.ManyToManyField(Gallery)
     groups = models.ManyToManyField(SongGroup)
 
-    student_name = models.CharField(_("Student Name"), max_length=100)
-
     # worker will respond to this field and update it when pulling down data
     # into cache.
     isCached = models.BooleanField(default=False)
@@ -103,3 +102,13 @@ class Song(models.Model):
 
     def __str__(self):
         return f'{self.student_name}; {self.songId}'
+
+
+class StudentName(models.Model):
+    """
+    Student names cannot be in the Song model because duplicate songs are
+    impossible, but it is possible for one song to be linked to more than
+    one student.
+    """
+    name = models.CharField(_("Student name"), max_length=100)
+    song = models.ForeignKey(Song, on_delete=models.CASCADE)

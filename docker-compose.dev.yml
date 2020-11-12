@@ -17,6 +17,8 @@ services:
       - MYSQL_DATABASE=songmaker
       - MYSQL_USER=jack
       - MYSQL_PASSWORD
+    volumes:
+      - ./init_db:/docker-entrypoint-initdb.d
   web:
     build:
       context: ./django_smg/
