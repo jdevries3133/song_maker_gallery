@@ -111,4 +111,5 @@ class StudentName(models.Model):
     one student.
     """
     name = models.CharField(_("Student name"), max_length=100)
+    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE)
     song = models.ForeignKey(Song, on_delete=models.CASCADE)

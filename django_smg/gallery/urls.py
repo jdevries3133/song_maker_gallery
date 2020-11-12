@@ -1,7 +1,7 @@
 from django.urls import path
 
-from .api import GalleryViewSet
+from .api import AuthGalleryViewset, PublicGalleryViewset
 
 urlpatterns = [
-    path('<slug:slug>/', GalleryViewSet.as_view(), name="gallery"),
+    path('<slug:slug>/', AuthGalleryViewset.as_view(), name="gallery"),
 ]

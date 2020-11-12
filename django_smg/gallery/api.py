@@ -12,7 +12,7 @@ from .serializers import GallerySerializer, GalleryDatasetSerializer
 logger = logging.getLogger('file')
 
 
-class GalleryViewSet(APIView):
+class AuthGalleryViewset(APIView):
     """
     Viewset accessed by the teacher management page, for performing CRUD
     operations on galeries.
@@ -48,3 +48,9 @@ class GalleryViewSet(APIView):
         return Response(
             GalleryDatasetSerializer().render(request.query_params.get('pk'))
         )
+
+class PublicGalleryViewset(APIView):
+    """
+    Public viewset for rendering a single gallery
+    """
+    pass

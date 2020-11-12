@@ -1,5 +1,6 @@
 import re
 
+from django.db.models import Q
 from rest_framework.serializers import Serializer, ModelSerializer, ValidationError
 from .models import Gallery, Song, SongGroup, StudentName
 
@@ -35,15 +36,16 @@ class GalleryDatasetSerializer(Serializer):
     - SongGroup
     """
     def get_queryset(self, slug, max_galleries=10):
-        return Song.objects.filter(slug=slug).filter(created__isnull=False).latest()
+        return Gallery.objects.filter(slug=slug).prefetch_related('Song').prefetch_related('StudentName').prefetch_related('SongGroup')
 
     def render(self, slug):
         """
         Give the frontend the whole structured blob necessary for it to render
         a gallery at once.
         """
+        # TODO: THIS IS VERY INEFFICIENT it does not simply hit the database; it batters it.
         queryset = self.get_queryset(slug)
-        gallery = Gallery.objects.get(pk=slug)
+        gallery = Gallery.objects.get(slug=slug)
         groups = SongGroup.objects.filter(gallery=gallery)
         output = {
             'title': gallery.title,
@@ -51,18 +53,21 @@ class GalleryDatasetSerializer(Serializer):
         }
         rendered_groups = []
         for group in groups:
-            group_songs = [
-                (s.student_name, s.songId)
-                for s in Song.objects.filter(groups=group)
-            ]
-            group_songs.append(group.group_name)
+            group_songs = []
+            for song in Song.objects.filter(groups=group):
+                id = song.songId
+                st_name = StudentName.objects.filter(song=song).filter(gallery=gallery)[0]
+                group_songs.append((st_name.name, id))
             rendered_groups.append(group_songs)
         output['songData'] = rendered_groups
         return output
 
 
     def create(self, validated_data):
-        # create new gallery, to which everything else will relationally linked.
+        """
+        Create new gallery, to which everything else will relationally linked.
+        """
+        # TODO: THIS IS VERY INEFFICIENT it does not simply hit the database; it batters it.
         self._gallery = Gallery.objects.create(
             owner=self.get_user() ,
             title=validated_data['title'],
@@ -76,6 +81,7 @@ class GalleryDatasetSerializer(Serializer):
         """
         Parse nested list of groups and songs. Create SongGroups and Songs.
         """
+        # TODO: THIS IS VERY INEFFICIENT it does not simply hit the database; it batters it.
         for group in song_data:
             group_name = group.pop()
             song_group = SongGroup.objects.create(
@@ -103,7 +109,8 @@ class GalleryDatasetSerializer(Serializer):
                         existing_song.groups.add(song_group)
                     StudentName.objects.create(
                         name=name,
-                        song=existing_song
+                        song=existing_song,
+                        gallery=self._gallery
                     )
                 except Song.DoesNotExist:
                     song = Song.objects.create(
@@ -113,7 +120,8 @@ class GalleryDatasetSerializer(Serializer):
                     song.groups.add(song_group)
                     StudentName.objects.create(
                         name=name,
-                        song=song
+                        song=song,
+                        gallery=self._gallery
                     )
 
 

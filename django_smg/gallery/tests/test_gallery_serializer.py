@@ -129,10 +129,30 @@ class TestGallerySerializer(test.TestCase):
                 ]
             )
 
-    def songmaker_urls_have_been_validated(self):
+    def test_songmaker_urls_have_been_validated(self):
         """
         All urls should be valid according to the following regex.
         """
+        contains_good_urls = GalleryDatasetSerializer(data={
+            'title': 'title',
+            'description': 'description',
+            'songData': [
+                [
+                    [
+                        'Insecure Bryan',
+                        'http://musiclab.chromeexperiments.com/Song-Maker/'
+                        'song/4618045650632704',
+                    ],
+                    [
+                        'Suzy Goodlink',
+                        'https://musiclab.chromeexperiments.com/Song-Maker/'
+                        'song/4618345650632704',
+                    ],
+                    'Good Link Group'
+                ]
+            ]
+        })
+
         contains_invalid_url = GalleryDatasetSerializer(data={
             'title': 'title',
             'description': 'description',
@@ -147,23 +167,55 @@ class TestGallerySerializer(test.TestCase):
             ]
         })
 
-        contains_good_urls = GalleryDatasetSerializer(data={
+        wrong_data_structure = GalleryDatasetSerializer(data={
             'title': 'title',
             'description': 'description',
             'songData': [
+                'wrong',
                 [
-                    'Insecure Bryan',
-                    'http://musiclab.chromeexperiments.com/Song-Maker/'
-                    'song/4618045650632704',
+                    'something',
+                    'else',
                 ],
                 [
-                    'Suzy Goodlink',
-                    'https://musiclab.chromeexperiments.com/Song-Maker/'
-                    'song/4618345650632704',
-                ],
-                'Good Link Group'
+                    [
+                        'Student Name',
+                        'https://musiclab.chromeexperiments.com/Song-Maker/'
+                        'song/4618345650632704'
+                    ],
+                    [
+                        'Student Name',
+                        'https://musiclab.chromeexperiments.com/Song-Maker/'
+                        'song/4618345650632704'
+                    ]
+                ]
             ]
         })
 
-        self.assertFalse(contains_invalid_url.is_valid())
         self.assertTrue(contains_good_urls.is_valid())
+        self.assertFalse(contains_invalid_url.is_valid())
+        self.assertFalse(wrong_data_structure.is_valid())
+
+    def test_gallery_serializer_render_method(self):
+        """
+        Render method makes a complex query and renders the data for the
+        frontend to render a single gallery.
+        """
+        correct_output = {
+            'title': 'Test Title',
+            'description': 'This is the test description.',
+            'songData': [
+                [
+                    ('Mark J.', '4618345650632704'),
+                   ('Mark J.', '4613455650632704'),
+                   ('Mark J.', '1238045650632704'),
+                   ('Mark J.', '4618045634532704')],
+                [
+                    ('Lilly G.', '4618045123632704'),
+                    ('Lilly G.', '4618041220632704'),
+                    ('Lilly G.', '4618045650632704')
+                ]
+            ]
+        }
+        rendered = GalleryDatasetSerializer().render('test-title')
+        self.assertEqual(rendered, correct_output)
+
