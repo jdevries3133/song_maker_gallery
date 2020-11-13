@@ -2,7 +2,7 @@ import re
 
 from django.db.models import Q
 from rest_framework.serializers import Serializer, ModelSerializer, ValidationError
-from .models import Gallery, Song, SongGroup, StudentName
+from .models import Gallery, Song, SongGroup
 
 
 class SongSerializer(ModelSerializer):
@@ -36,17 +36,29 @@ class GalleryDatasetSerializer(Serializer):
     - SongGroup
     """
     def get_queryset(self, slug, max_galleries=10):
-        return Gallery.objects.filter(slug=slug).prefetch_related('Song').prefetch_related('StudentName').prefetch_related('SongGroup')
+        """
+        **CAREFUL! This returns a dict of querysets and model instances; not
+        a regular queryset.
+        """
+        gallery = Gallery.objects.get(slug=slug)
+        songs = Song.objects.select_related(
+            'gallery',
+            'group').filter(gallery=gallery)
+        groups = SongGroup.objects.filter(gallery=gallery)
+        return {
+            'gallery': gallery,
+            'songs': songs,
+            'groups': groups
+        }
 
     def render(self, slug):
         """
         Give the frontend the whole structured blob necessary for it to render
         a gallery at once.
         """
-        # TODO: THIS IS VERY INEFFICIENT it does not simply hit the database; it batters it.
-        queryset = self.get_queryset(slug)
-        gallery = Gallery.objects.get(slug=slug)
-        groups = SongGroup.objects.filter(gallery=gallery)
+        data = self.get_queryset(slug)
+        gallery = data['gallery']
+        groups = data['groups']
         output = {
             'title': gallery.title,
             'description': gallery.description,
@@ -54,10 +66,8 @@ class GalleryDatasetSerializer(Serializer):
         rendered_groups = []
         for group in groups:
             group_songs = []
-            for song in Song.objects.filter(groups=group):
-                id = song.songId
-                st_name = StudentName.objects.filter(song=song).filter(gallery=gallery)[0]
-                group_songs.append((st_name.name, id))
+            for song in data['songs'].filter(group=group):
+                group_songs.append((song.student_name, song.songId))
             rendered_groups.append(group_songs)
         output['songData'] = rendered_groups
         return output
@@ -67,8 +77,6 @@ class GalleryDatasetSerializer(Serializer):
         """
         Create new gallery, to which everything else will relationally linked.
         """
-        # TODO: THIS IS VERY INEFFICIENT it does not simply hit the database; it batters it.
-        # TODO: Optimize such that new tests pass. Limit to 5 queries.
         self._gallery = Gallery.objects.create(
             owner=self.get_user() ,
             title=validated_data['title'],
@@ -82,15 +90,23 @@ class GalleryDatasetSerializer(Serializer):
         """
         Parse nested list of groups and songs. Create SongGroups and Songs.
         """
-        # TODO: THIS IS VERY INEFFICIENT it does not simply hit the database; it batters it.
-        # TODO: Optimize such that new tests pass. Limit to 5 queries.
+        # bulk create SongGroups
+        song_groups = []
         for group in song_data:
-            group_name = group.pop()
-            song_group = SongGroup.objects.create(
-                group_name=group_name,
+            song_groups.append(SongGroup(
+                group_name=group[-1],
                 gallery=self._gallery
-            )
-            for row in group:
+            ))
+
+        SongGroup.objects.bulk_create(song_groups)
+        # need to re-fetch ForeignKeys for later
+        song_groups = SongGroup.objects.filter(gallery=self._gallery)
+
+        # bulk create Songs
+        songs = []
+        for group in song_data:
+            group_obj = song_groups.get(group_name=group[-1])
+            for row in group[:-1]:
                 # change names to first name, last initial
                 full_name = row[0]
                 songId = row[1][-16:]
@@ -103,29 +119,13 @@ class GalleryDatasetSerializer(Serializer):
                     )
                 else:
                     name = name_arr[0]
-                try:
-                    existing_song = Song.objects.get(pk=songId)
-                    if not self._gallery in existing_song.galleries.all():
-                        existing_song.galleries.add(self._gallery)
-                    if not song_group in existing_song.groups.all():
-                        existing_song.groups.add(song_group)
-                    StudentName.objects.create(
-                        name=name,
-                        song=existing_song,
-                        gallery=self._gallery
-                    )
-                except Song.DoesNotExist:
-                    song = Song.objects.create(
-                        songId=songId,
-                    )
-                    song.galleries.add(self._gallery)
-                    song.groups.add(song_group)
-                    StudentName.objects.create(
-                        name=name,
-                        song=song,
-                        gallery=self._gallery
-                    )
-
+                songs.append(Song(
+                    songId=songId,
+                    student_name=name,
+                    gallery=self._gallery,
+                    group=group_obj
+                ))
+        songs = Song.objects.bulk_create(songs)
 
     def get_user(self):
         """
@@ -171,13 +171,14 @@ class GalleryDatasetSerializer(Serializer):
         """
         assert isinstance(song_data, list)
         for group in song_data:
-            assert isinstance(group[-1], str)  # pop out the group name
+            assert isinstance(group[-1], str)
             assert isinstance(group, list)
             for row in group[:-1]:
                 assert isinstance(row, list)
                 assert len(row) == 2
                 assert re.match(
-                    r'http(s)?://musiclab.chromeexperiments.com/Song-Maker/song/'
-                    r'(\d){16}',
+                    r'http(s)?://musiclab.chromeexperiments.com/Song-Maker/'
+                    'song/(\d){16}',
                     row[1]
                 )
+

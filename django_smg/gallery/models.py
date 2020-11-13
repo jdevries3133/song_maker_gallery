@@ -76,7 +76,7 @@ class SongGroup(models.Model):
     Songs in the gallery are visually grouped. This model defines the grouping.
     """
     group_name = models.CharField(_("Group Name"), max_length=100)
-    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE)
+    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE, related_name='song_groups')
 
     def __str__(self):
         return str(self.group_name)
@@ -87,11 +87,12 @@ class Song(models.Model):
     A single song that is part of a gallery. Contains cached midi files and
     json objects from the Chrome Music Lab site.
     """
-    songId = models.CharField(_("Song ID"), max_length=50, primary_key=True)
+    songId = models.CharField(_("Song ID"), max_length=20)
+    student_name =  models.CharField(_("Student Name"), max_length=100)
 
     # relationships
-    galleries = models.ManyToManyField(Gallery)
-    groups = models.ManyToManyField(SongGroup)
+    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE, related_name='galleries')
+    group = models.ForeignKey(SongGroup, on_delete=models.CASCADE, related_name='song_groups')
 
     # worker will respond to this field and update it when pulling down data
     # into cache.
@@ -101,15 +102,4 @@ class Song(models.Model):
     midi = models.BinaryField()
 
     def __str__(self):
-        return f'{self.student_name}; {self.songId}'
-
-
-class StudentName(models.Model):
-    """
-    Student names cannot be in the Song model because duplicate songs are
-    impossible, but it is possible for one song to be linked to more than
-    one student.
-    """
-    name = models.CharField(_("Student name"), max_length=100)
-    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE)
-    song = models.ForeignKey(Song, on_delete=models.CASCADE)
+        return f'{self.student_name} ({self.songId})'
