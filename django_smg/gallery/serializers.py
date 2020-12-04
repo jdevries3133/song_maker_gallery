@@ -51,6 +51,13 @@ class GalleryDatasetSerializer(Serializer):
             'groups': groups
         }
 
+    def render_many(self):
+        pass
+        # return [
+        #     self.render(g.slug).select_related(  # todo left off here
+        #     for g in Gallery.objects.filter(owner=self.context.get('user'))
+        # ]
+
     def render(self, slug):
         """
         Give the frontend the whole structured blob necessary for it to render

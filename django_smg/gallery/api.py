@@ -41,7 +41,7 @@ class AuthGalleryViewset(APIView):
 
     def get(self, request, *a, **kw):
         """
-        Endpoint to get a single gallery. Open to any permission class.
+        Return all the galleries of an authenticated user.
         """
         # TODO: since this is an authenticated view, this should be where
         # the user's paginated galleries come from.

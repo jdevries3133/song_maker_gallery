@@ -250,6 +250,23 @@ class TestGallerySerializer(test.TestCase):
         except:
             raise Exception("songData is not correct")
 
+    def test_render_many(self):
+        # create a second gallery
+        second_gal_data = self.mock_api_data()
+        second_gal_data['title'] = 'Test 2 Title'
+        serializer = GalleryDatasetSerializer(data=second_gal_data, context={
+            'user': self.user
+        })
+        self.assertTrue(serializer.is_valid())
+        serializer.save()
+
+        rendered = GalleryDatasetSerializer(context={
+            'user': self.user
+        }).render_many()
+        breakpoint()
+
+
+
     def test_render_method_num_queries(self):
         with self.assertNumQueries(4):
             GalleryDatasetSerializer().render('test-title')

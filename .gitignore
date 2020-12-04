@@ -1,3 +1,4 @@
+venv
 Session.vim
 tags
 ui_testing_data
@@ -170,4 +171,3 @@ dmypy.json
 
 # End of https://www.gitignore.io/api/django
 
-venv
