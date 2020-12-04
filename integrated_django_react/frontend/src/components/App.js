@@ -12,7 +12,7 @@ import store from "../store";
 
 import LandingPage from "./landing_page/landing_page";
 import PrivateRoute from "./generics/private_route";
-import SignUp from "./signup-login/signup";
+import SignUp, {SignupDisabledPlaceholder} from "./signup-login/signup";
 import Login from "./signup-login/login";
 import Gallery from "./gallery/gallery";
 import Teacher from "./teacher/teacher";
@@ -27,7 +27,8 @@ class App extends Component {
               <LandingPage />
             </Route>
             <Route path="/signup">
-              <SignUp title="Sign Up" />
+              {/*<SignUp title="Sign Up" /> */}
+              <SignupDisabledPlaceholder />
             </Route>
             <Route path="/login">
               <Login title="Login" />

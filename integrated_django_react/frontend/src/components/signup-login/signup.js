@@ -207,3 +207,26 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { register, clearError })(signup);
+
+
+
+
+
+
+
+
+
+
+
+
+export const SignupDisabledPlaceholder = props => {
+  return (
+    <div className='description'>
+      <h1>Signup Currently Disabled</h1>
+      <p>
+        This site is under active development, and you may not make a new
+        account at this time.
+      </p>
+    </div>
+  )
+}
