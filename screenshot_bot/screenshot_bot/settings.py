@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_mysql',
-    'django_cron',
     'storages',
     'rest_framework',
     'rest_framework.authtoken',
@@ -98,14 +97,14 @@ if not DEBUG:
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_STORAGE_BUCKET_NAME = 'song-maker-gallery'
     AWS_DEFAULT_ACL = 'public-read'
     AWS_S3_FILE_OVERWRITE = False
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'screenshot_bot_queue',
+        'NAME': 'screenshotbot',
         'USER': os.getenv('MYSQL_USER'),
         'PASSWORD': os.getenv('MYSQL_USER_PASS'),
         'HOST': 'localhost',

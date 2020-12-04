@@ -27,6 +27,7 @@ class Gallery(models.Model):
     description = models.TextField()
     api_obj = JSONField(default=list)
     needs_screenshot = models.BooleanField(default=True)
+    is_new = models.BooleanField(default=True)  # monkey patch for url extension maker
 
     def save(self, *args, **kwargs):
         # this save method is tragically flawed
@@ -37,7 +38,7 @@ class Gallery(models.Model):
         # anytime you try to update the model, it becomes duplicated with a new
         # url extension, and the old one just hangs around. Plus, I think the
         # api serializer.data ends up being wrong because of this, too.
-        if self.url_extension != 'unassigned':
+        if not self.is_new:
             super().save(args, kwargs)
             return
         self.url_extension = self.title.lower().replace(' ', '-')
@@ -67,24 +68,19 @@ class Gallery(models.Model):
                 full_name = row[0]
                 name_arr = full_name.split(' ')
                 if len(name_arr) > 1:
+                    # Changes names longer than one words to first name last initial.
                     name = name_arr[0].title() + ' ' + \
-                        name_arr[1][0].upper() + '.'
+                        name_arr[-1][0].upper() + '.'
                 else:
+                    # do not change names that are only one word.
                     name = name_arr[0]
-                try:
                     group[index][0] = name
-                except (AttributeError, TypeError):
-                    raise Exception(
-                        'Save method was run on an object that was already'
-                        'created. This means that the if not self.url_extension'
-                        'check at the beginning of Gallery.save() failed.'
-                    )
-
-                # insert placeholder image
                 row.append(
                     'https://song-maker-gallery.s3.amazonaws.com/manually_added'
                     '/Placeholder.png'
                 )
+
+        self.is_new = False
 
         super().save(args, kwargs)
 

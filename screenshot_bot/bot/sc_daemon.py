@@ -1,7 +1,7 @@
 #!/home/ubuntu/main/venv/bin/python3.8
 
+# pylint disable=wrong-import-order
 from datetime import datetime
-import daemon
 import logging
 import json
 import os
@@ -20,7 +20,7 @@ BASE_DIR = (
     )
 )
 # setup django and set project env variables from ../screenshot_bot/config.json
-CONFIG_PATH = os.path.join(BASE_DIR, 'screenshot_bot', 'config.json')
+CONFIG_PATH = os.path.join(BASE_DIR, 'screenshot_bot', 'dev_config.json')
 with open(CONFIG_PATH, 'r') as jsn:
     env = json.load(jsn)
     for k, v in env.items():
@@ -30,6 +30,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'screenshot_bot.settings')
 django.setup()
 
 # imports that need django setup first
+# pylint disable=wrong-import-order
 from django.core.mail import send_mail
 from rest_framework.renderers import JSONRenderer
 import requests
@@ -40,11 +41,9 @@ BACKEND_POST_URL = os.getenv('BACKEND_URL') + 'api/screenshot/partial-update/'
 logger = logging.getLogger('file_logger')
 
 def email(subject, message):
-    # email confirmation that screenshots are ready
+    # email warning that screenshots took too long
     from_email = 'songmakergallery@gmail.com'
     recipient_list = ['jdevries3133@gmail.com']
-    if st[:8] == 'CRITICAL':
-        recipient_list.append('nac542@gmail.com')
     try:
         send_mail(
             subject,
@@ -123,5 +122,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    # with daemon.DaemonContext():
-    #     main()

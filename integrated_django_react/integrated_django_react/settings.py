@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'django_cron',
     'django_mysql',
     'knox',
     'storages',
@@ -86,9 +85,9 @@ if not DEBUG:
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = 'song-maker-frontend'
+    AWS_STORAGE_BUCKET_NAME = 'song-maker-gallery'
     AWS_DEFAULT_ACL = 'public-read'
-    AWS_S3_FILE_OVERWRITE = True
+    AWS_S3_FILE_OVERWRITE = False
 
 TEMPLATES = [
     {
@@ -113,7 +112,7 @@ WSGI_APPLICATION = 'integrated_django_react.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'song_maker_feature',
+        'NAME': 'songmaker',
         'USER': os.getenv('MYSQL_USER'),
         'PASSWORD': os.getenv('MYSQL_USER_PASS'),
         'HOST': 'localhost',
