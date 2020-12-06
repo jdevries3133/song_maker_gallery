@@ -1,8 +1,9 @@
+import logging
 import os
 import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEBUG = True
+DEBUG = False
 if DEBUG:
     with open(os.path.join(BASE_DIR, 'integrated_django_react', 'dev_config.json'), 'r') as jsn:
         env = json.load(jsn)
@@ -21,9 +22,7 @@ else:
             os.environ.setdefault(k, v)
 SECRET_KEY = os.getenv('DJANGO_SECRET')
 ALLOWED_HOSTS = [
-    'songmakergallery.com',
-    'ec2-18-220-82-134.us-east-2.compute.amazonaws.com',
-    'localhost',
+    'django'
 ]
 
 INSTALLED_APPS = [
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'get_screenshots',
+    'dynamic_ip_check',
     'frontend',
     'public_provider',
     'teacher_admin',
@@ -112,10 +112,10 @@ WSGI_APPLICATION = 'integrated_django_react.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'songmaker',
+        'NAME': os.getenv('MYSQL_DATABASE'),
         'USER': os.getenv('MYSQL_USER'),
-        'PASSWORD': os.getenv('MYSQL_USER_PASS'),
-        'HOST': 'localhost',
+        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
+        'HOST': 'db',
         'PORT': 3306,
         'OPTIONS': {
             'charset': 'utf8mb4',
@@ -150,19 +150,24 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+STATIC_ROOT = '/static/'
 
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
+            'format': (
+                '%(filepath)s::%(module)s\n\t%(levelname)s -> %(message)s'
+            ),
         },
     },
     'handlers': {
-        'file_logger': {
+        'stream': {
+            'level': logging.DEBUG,
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
             'level': 0,
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'main.log'),
@@ -170,13 +175,13 @@ LOGGING = {
         },
     },
     'root': {
-        'handlers': ['file_logger'],
+        'handlers': ['stream'],
         'level': 'ERROR',
         'propagate': True,
     },
     'loggers': {
         'file': {
-            'handlers': ['file_logger'],
+            'handlers': ['stream'],
             'level': 'ERROR',
             'propagate': True,
         },

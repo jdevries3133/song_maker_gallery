@@ -26,7 +26,6 @@ lazy-object-proxy==1.4.3
 lockfile==0.12.2
 mccabe==0.6.1
 mod-wsgi==4.7.1
-Pillow==7.1.2
 pyasn1==0.4.8
 pycodestyle==2.6.0
 pycparser==2.20
@@ -39,7 +38,6 @@ pytz==2020.1
 requests==2.23.0
 rsa==4.0
 s3transfer==0.3.3
-selenium==3.141.0
 six==1.14.0
 sqlparse==0.3.1
 toml==0.10.1

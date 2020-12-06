@@ -10,7 +10,7 @@ from knox.auth import TokenAuthentication
 from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
 import logging
 
-logger = logging.getLogger('file')
+logger = logging.getLogger(__name__)
 
 # Register API
 class RegisterAPI(GenericAPIView):
@@ -26,8 +26,8 @@ class RegisterAPI(GenericAPIView):
         userData = UserSerializer(user, context=self.get_serializer_context()).data
         token = AuthToken.objects.create(user)[1]
 
-        logging.debug(userData)
-        logging.debug(token)
+        logger.debug(userData)
+        logger.debug(token)
 
         return Response({
             'user': userData,

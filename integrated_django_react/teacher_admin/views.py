@@ -10,7 +10,7 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from .serializers import GallerySerializer
 
-logger = logging.getLogger('file')
+logger = logging.getLogger(__name__)
 
 
 class TeacherViewSet(ModelViewSet):

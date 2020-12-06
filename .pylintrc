@@ -148,11 +148,19 @@ disable=print-statement,
         unused-argument,
         imported-auth-user,
         raise-missing-from,
-        broad-except 
-        not-an-iterable,  # project-specific
-        signature-differs # project-specific
-        import-error  # project-specific
-               
+        broad-except,
+        logging-not-lazy,
+        redifined-outer-name,
+        invalid-name,
+        too-few-public-methods,
+        no-else-return,
+
+        # project-specific
+        not-an-iterable,
+        signature-differs,
+        import-error,
+        too-many-ancestors,
+        no-member
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option

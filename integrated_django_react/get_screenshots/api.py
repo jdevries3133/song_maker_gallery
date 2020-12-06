@@ -7,7 +7,7 @@ from teacher_admin.models import Gallery
 from .authentication import ScreenshotBotAuthentication
 from .serializers import GallerySerializer
 
-logger = logging.getLogger('file')
+logger = logging.getLogger(__name__)
 
 
 class ScreenshotReturn(ModelViewSet):
