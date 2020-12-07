@@ -26,21 +26,28 @@ django.setup()
 
 # pylint disable=wrong-import-position
 from django.db import connection
+from django.contrib.auth.models import User
+from teacher_admin.models import Gallery
 
-def wait_for_db():
-    i = 0
-    while True:
-        try:
-            connection.ensure_connection()
-            break
-        except django.db.utils.DatabaseError:
-            logger.info(
-                f'Database not yet available after {i} attempt(s). Waiting 5 '
-                'seconds to try again.'
-            )
-            sleep(5)
-            i += 1
+def main():
+    # delete the existing superuser if they exist
+    User.objects.filter(username=os.getenv('DJANGO_SUPERUSER_USERNAME')).delete()
+    # create superuser passed from env vars, or skip if it already exists.
+    usr = User.objects.create_superuser(
+        os.getenv('DJANGO_SUPERUSER_USERNAME'),
+        os.getenv('DJANGO_SUPERUSER_EMAIL'),
+        os.getenv('DJANGO_SUPERUSER_PASSWORD'),
+    )
 
+    # create default gallery and assign to the superuser, or skip if it already exists
+    with open('/sample_gallery/sample_gallery.json', 'r') as sgal:
+        data = json.load(sgal)
+        Gallery.objects.create(
+            owner=usr,
+            title=data['title'],
+            description=data['description'],
+            api_obj=data['api_obj'],
+        )
 
 if __name__ == '__main__':
-    wait_for_db()
+    main()

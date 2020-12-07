@@ -2,18 +2,20 @@ version: '3.7'
 
 services:
   django_gunicorn:
+    image: jdevries3133/smg_gunicorn
+    build:
+      context: .
     volumes:
       - static:/static
     env_file:
       - .env.django
       - ./db/.env.db
-    build:
-      context: .
     ports:
       - "8000:8000"
     depends_on:
       - db
   nginx:
+    image: jdevries3133/smg_nginx
     build: ./nginx
     volumes:
       - static:/static
@@ -22,6 +24,7 @@ services:
     depends_on:
       - django_gunicorn
   db:
+    image: jdevries3133/smg_db
     build: ./db
     restart: always
     env_file:
