@@ -69,8 +69,14 @@ class Gallery(models.Model):
                 name_arr = full_name.split(' ')
                 if len(name_arr) > 1:
                     # Changes names longer than one words to first name last initial.
-                    name = name_arr[0].title() + ' ' + \
-                        name_arr[-1][0].upper() + '.'
+                    logger.error('*************')  # TODO there is a bug here
+                    logger.error(name_arr)
+                    name = (
+                        name_arr[0].title()
+                        + ' '
+                        + name_arr[-1][0].upper()
+                        + '.'
+                    )
                 else:
                     # do not change names that are only one word.
                     name = name_arr[0]

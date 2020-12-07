@@ -164,25 +164,24 @@ LOGGING = {
     },
     'handlers': {
         'stream': {
-            'level': logging.DEBUG,
+            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
         },
         'file': {
-            'level': 0,
+            'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'main.log'),
-            'formatter': 'verbose',
         },
     },
     'root': {
-        'handlers': ['stream'],
+        'handlers': ['stream', 'file'],
         'level': 'ERROR',
         'propagate': True,
     },
     'loggers': {
         'file': {
-            'handlers': ['stream'],
-            'level': 'ERROR',
+            'handlers': ['stream', 'file'],
+            'level': 'DEBUG',
             'propagate': True,
         },
     }

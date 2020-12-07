@@ -12,4 +12,4 @@ COPY ./integrated_django_react /app
 WORKDIR /app
 
 COPY ./entrypoint.sh /
-ENTRYPOINT ["sh", "/entrypoint.sh"]
+CMD ["sh", "/entrypoint.sh"]

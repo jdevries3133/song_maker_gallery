@@ -229,6 +229,7 @@ export const SignupDisabledPlaceholder = props => {
           account at this time.
         </p>
       </div>
+      <br />
       <Link to="/login">
         <button>Already have an account? Login here!</button>
       </Link>
