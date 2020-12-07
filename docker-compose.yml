@@ -6,7 +6,7 @@ services:
       - static:/static
     env_file:
       - .env.django
-      - .env.db
+      - ./db/.env.db
     build:
       context: .
     ports:
@@ -22,10 +22,10 @@ services:
     depends_on:
       - django_gunicorn
   db:
-    image: mysql:8.0.22
+    build: ./db
     restart: always
     env_file:
-      - .env.db
+      - ./db/.env.db
 
 
 volumes:
