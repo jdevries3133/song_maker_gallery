@@ -3,7 +3,7 @@ import os
 import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEBUG = False
+DEBUG = True
 if DEBUG:
     with open(os.path.join(BASE_DIR, 'integrated_django_react', 'dev_config.json'), 'r') as jsn:
         env = json.load(jsn)
@@ -11,7 +11,7 @@ if DEBUG:
             if k == 'SCREENSHOT_BOT_URLS':
                 SCREENSHOT_BOT_URLS = v
                 continue
-            os.environ.setdefault(k, v)
+            os.environ[k] = v
 else:
     with open(os.path.join(BASE_DIR, 'integrated_django_react', 'config.json'), 'r') as jsn:
         env = json.load(jsn)
@@ -19,7 +19,8 @@ else:
             if k == 'SCREENSHOT_BOT_URLS':
                 SCREENSHOT_BOT_URLS = v
                 continue
-            os.environ.setdefault(k, v)
+            os.environ[k] = v
+
 SECRET_KEY = os.getenv('DJANGO_SECRET')
 ALLOWED_HOSTS = [
     'django',
