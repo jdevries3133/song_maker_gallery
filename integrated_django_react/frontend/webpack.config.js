@@ -1,4 +1,4 @@
-const CompressionPlugin = require('compression-webpack-plugin')
+// const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
     module: {
@@ -35,9 +35,11 @@ module.exports = {
             }
         ]
     },
+/*
   plugins: [
     new CompressionPlugin({
       deleteOriginalAssets: true,
     })
   ]
+*/
 }
