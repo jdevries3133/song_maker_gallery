@@ -25,7 +25,6 @@ kombu==4.6.9
 lazy-object-proxy==1.4.3
 lockfile==0.12.2
 mccabe==0.6.1
-mod-wsgi==4.7.1
 pyasn1==0.4.8
 pycodestyle==2.6.0
 pycparser==2.20
