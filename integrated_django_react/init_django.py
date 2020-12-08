@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 BASE_DIR = (os.path.dirname(os.path.abspath( __file__)))
 
 # setup django and set project env variables from ./integrated_django_react/dev_config.json
-CONFIG_PATH = os.path.join(BASE_DIR, 'integrated_django_react', 'dev_config.json')
+CONFIG_PATH = os.path.join(BASE_DIR, 'integrated_django_react', 'config.json')
 with open(CONFIG_PATH, 'r') as jsn:
     env = json.load(jsn)
     for k, v in env.items():
@@ -40,7 +40,7 @@ def main():
     )
 
     # create default gallery and assign to the superuser, or skip if it already exists
-    with open('/sample_gallery/sample_gallery.json', 'r') as sgal:
+    with open(os.path.join(BASE_DIR, 'sample_gallery.json'), 'r') as sgal:
         data = json.load(sgal)
         Gallery.objects.create(
             owner=usr,

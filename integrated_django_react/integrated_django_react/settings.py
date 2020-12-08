@@ -22,7 +22,9 @@ else:
             os.environ.setdefault(k, v)
 SECRET_KEY = os.getenv('DJANGO_SECRET')
 ALLOWED_HOSTS = [
-    'django'
+    'django',
+    'songmakergallery.com',
+    'localhost'
 ]
 
 INSTALLED_APPS = [
@@ -80,6 +82,7 @@ else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Amazon S3
+"""
 if not DEBUG:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -88,6 +91,7 @@ if not DEBUG:
     AWS_STORAGE_BUCKET_NAME = 'song-maker-gallery'
     AWS_DEFAULT_ACL = 'public-read'
     AWS_S3_FILE_OVERWRITE = False
+"""
 
 TEMPLATES = [
     {
@@ -150,7 +154,7 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGGING = {
     'version': 1,

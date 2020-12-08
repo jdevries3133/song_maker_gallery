@@ -3,6 +3,7 @@ Session.vim
 tags
 integrated_django_react/frontend/static/frontend/main.js.gz
 .env*
+static
 
 
 
