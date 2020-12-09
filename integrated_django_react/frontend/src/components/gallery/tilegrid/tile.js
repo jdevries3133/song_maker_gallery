@@ -16,10 +16,8 @@ const tile = (props) => {
     background: background,
   };
   const handleScroll = () => {
-    console.log("ind");
     if (tile_el) {
       const newY = tile_el.current.getBoundingClientRect().y;
-      console.log(newY);
       setY(newY);
     }
   };
@@ -28,7 +26,7 @@ const tile = (props) => {
     return () => window.removeEventListener("scroll", handleScroll);
   });
   useEffect(() => {
-    if (tile_el && tile_el.current && y < 150 && y > 0) {
+    if (tile_el && tile_el.current && y < 400 && y > 0) {
       tile_el.current.focus();
     }
   });

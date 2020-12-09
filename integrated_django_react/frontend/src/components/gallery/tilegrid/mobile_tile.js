@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const color = (index) => {
@@ -11,12 +10,12 @@ const color = (index) => {
     "https://song-maker-gallery.s3.amazonaws.com/manually_added/yellow.jpg",
     "https://song-maker-gallery.s3.amazonaws.com/manually_added/orange.jpg",
   ];
-  return colors[index];
+  return colors[index % 7];
 };
 
 const Button = styled.button`
   display: inline-block;
-  background: url(${(props) => props.theme.background});
+  background: ${(props) => props.theme.background};
   background-size: 100% 100%;
   font-family: "Indie Flower";
   font-size: 2.6rem;

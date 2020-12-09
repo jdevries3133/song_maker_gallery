@@ -4,6 +4,8 @@ import TileGrid from "./tilegrid/tilegrid";
 import Donate from "./donate/donate";
 import DonateButton from "./donate/donate_button";
 
+const DONATE_SWITCH = false;
+
 const galBody = (props) => {
   const [blanket, setBlanket] = useState(null);
   return (
@@ -20,11 +22,16 @@ const galBody = (props) => {
           <TileGrid data={group} key={group.slice(-1)[0]} />
         ))}
       </div>
-      <DonateButton
-        onClick={() => setBlanket(<Donate onClose={() => setBlanket(null)} />)}
-      >
-        $
-      </DonateButton>
+
+      {DONATE_SWITCH ? (
+        <DonateButton
+          onClick={() =>
+            setBlanket(<Donate onClose={() => setBlanket(null)} />)
+          }
+        >
+          $
+        </DonateButton>
+      ) : null}
     </Fragment>
   );
 };
