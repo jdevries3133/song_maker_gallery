@@ -2,24 +2,18 @@ import os
 import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEBUG = True
-if DEBUG:
-    # load dev config
-    with open(os.path.join(BASE_DIR, 'screenshot_bot', 'dev_config.json'), 'r') as jsn:
-        env = json.load(jsn)
-        for k, v in env.items():
-            os.environ.setdefault(k, v)
-else:
-    # load production config
-    with open(os.path.join(BASE_DIR, 'screenshot_bot', 'config.json'), 'r') as jsn:
-        env = json.load(jsn)
-        for k, v in env.items():
-            os.environ.setdefault(k, v)
+DEBUG = False
+
+# load config file
+with open(os.path.join(BASE_DIR, 'screenshot_bot', 'config.json'), 'r') as jsn:
+    env = json.load(jsn)
+    for k, v in env.items():
+        os.environ[k] = v
+
 SECRET_KEY = os.getenv('DJANGO_SECRET')
+
 ALLOWED_HOSTS = [
-    'ec2-3-16-255-188.us-east-2.compute.amazonaws.com',
-    'ip-172-31-24-244.us-east-2.compute.internal',
-    'localhost',
+    'localhost'
 ]
 
 INSTALLED_APPS = [
@@ -42,10 +36,8 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'screenshot_bot.urls'
@@ -97,16 +89,16 @@ if not DEBUG:
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = 'song-maker-gallery'
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
     AWS_DEFAULT_ACL = 'public-read'
     AWS_S3_FILE_OVERWRITE = False
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'screenshotbot',
+        'NAME': os.getenv('MYSQL_DATABASE'),
         'USER': os.getenv('MYSQL_USER'),
-        'PASSWORD': os.getenv('MYSQL_USER_PASS'),
+        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
         'HOST': 'localhost',
         'PORT': 3306,
         'OPTIONS': {
@@ -143,7 +135,6 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 LOGGING = {
     'version': 1,

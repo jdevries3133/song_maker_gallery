@@ -154,6 +154,7 @@ disable=print-statement,
         invalid-name,
         too-few-public-methods,
         no-else-return,
+        redefined-outer-name,
 
         # project-specific
         not-an-iterable,
