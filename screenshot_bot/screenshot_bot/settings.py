@@ -2,7 +2,7 @@ import os
 import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEBUG = False
+DEBUG = True
 
 # load config file
 with open(os.path.join(BASE_DIR, 'screenshot_bot', 'config.json'), 'r') as jsn:
