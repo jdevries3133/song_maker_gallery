@@ -9,20 +9,21 @@ const Add = (props) => {
     <Fragment>
       <h3>Add a Gallery</h3>
       <p className={styles.par_just}>
-        To add a group to your gallery, upload a spreadsheet of students' names,
-        and their music lab links. You may use students' first names only, or
-        first name and last initial. If you do upload a student's full name,
-        only their first name and last initial will be publically displayed; and
-        only their first name and last initial will be stored in our database
-        for COPPA compliance.
+        To add a group to your gallery, upload a spreadsheet of students&apos;
+        names, and their music lab links. You may use students&apos; first names
+        only, or first name and last initial. If you do upload a student&apos;s
+        full name, only their first name and last initial will be publically
+        displayed; and only their first name and last initial will be stored in
+        our database for COPPA compliance.
       </p>
       <p className={styles.par_just}>
         The spreadsheet must be in the form of a .csv file, which you can easily
         output from Excel or google sheets. As long as there is a column labeled
-        "names," and "links," in the spreadsheet, we will pick up on the rest.{" "}
+        &quot;names,&quot; and &quot;links,&quot; in the spreadsheet, we will
+        pick up on the rest.{" "}
         <a href="https://placeholder.com/">
-          Click here if you'd like me to walk you through it, I promise it's a
-          piece of cake!
+          Click here if you&apos;d like me to walk you through it, I promise
+          it&apos;s a piece of cake!
         </a>
       </p>
       <p className={styles.par_just}>

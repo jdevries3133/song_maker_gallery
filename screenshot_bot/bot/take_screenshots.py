@@ -18,7 +18,6 @@ from selenium.webdriver.chrome.options import Options
 from .models import ToDo
 from django.core.files.storage import default_storage
 
-CHROME_DRIVER_PATH = os.path.join(os.path.dirname(__file__), 'chromedriver')
 FAILURE_PLACEHOLDER_URL = 'https://song-maker-gallery.s3.amazonaws.com/screenshots/month-7-week-0/-1792009803650056698.jpg'
 URL_VALIDATION_REGEX = re.compile(r'http(s)?://musiclab.chromeexperiments.com/Song-Maker/song/(\d){16}')
  
@@ -32,7 +31,7 @@ def take_screenshots(todo):
     chrome_options = Options()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--window-size=1440x789')
-    driver = webdriver.Chrome(options=chrome_options, executable_path=CHROME_DRIVER_PATH)
+    driver = webdriver.Chrome(options=chrome_options)
 
     for group in array:
         removals = []

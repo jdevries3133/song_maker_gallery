@@ -1,9 +1,11 @@
+import logging
 import re
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django_mysql.models import JSONField
 
+logger = logging.getLogger(__name__)
 
 class Gallery(models.Model):
     owner = models.ForeignKey(
@@ -66,11 +68,10 @@ class Gallery(models.Model):
 
                 # fixing names
                 full_name = row[0]
-                name_arr = full_name.split(' ')
+                name_arr = full_name.strip().split(' ')
                 if len(name_arr) > 1:
-                    # Changes names longer than one words to first name last initial.
-                    logger.error('*************')  # TODO there is a bug here
-                    logger.error(name_arr)
+                    # Changes names longer than one words to first name last
+                    # initial.
                     name = (
                         name_arr[0].title()
                         + ' '
@@ -81,6 +82,7 @@ class Gallery(models.Model):
                     # do not change names that are only one word.
                     name = name_arr[0]
                     group[index][0] = name
+                raise Exception('The placeholder image needs to be replaced.')
                 row.append(
                     'https://song-maker-gallery.s3.amazonaws.com/manually_added'
                     '/Placeholder.png'

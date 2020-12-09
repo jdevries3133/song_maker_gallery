@@ -13,7 +13,7 @@ with open(os.path.join(BASE_DIR, 'screenshot_bot', 'config.json'), 'r') as jsn:
 SECRET_KEY = os.getenv('DJANGO_SECRET')
 
 ALLOWED_HOSTS = [
-    'localhost'
+    '192.168.1.3'
 ]
 
 INSTALLED_APPS = [

@@ -25,8 +25,24 @@ class Teacher extends Component {
       blankTitleError: false,
       descriptionValue:
         "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds!",
+      verifyUpload: false,
       width: window.innerWidth,
     };
+    this.setWidth = this.setWidth.bind(this);
+    this.fileSelectHandler = this.fileSelectHandler.bind(this);
+    this.csvHandler = this.csvHandler.bind(this);
+    this.resetFormHandler = this.resetFormHandler.bind(this);
+    this.groupNameHandler = this.groupNameHandler.bind(this);
+    this.groupValidatedHandler = this.groupValidatedHandler.bind(this);
+    this.unStageGroupHandler = this.unStageGroupHandler.bind(this);
+    this.handleVerificationIndices = this.handleVerificationIndices.bind(this);
+    this.titleInputHandler = this.titleInputHandler.bind(this);
+    this.descriptionInputHandler = this.descriptionInputHandler.bind(this);
+    this.inputConfirmation = this.inputConfirmation.bind(this);
+    this.recoveryRestageHandler = this.recoveryRestageHandler.bind(this);
+    this.successHandler = this.successHandler.bind(this);
+    this.dismissTitleBlank = this.dismissTitleBlank.bind(this);
+    this.setWidth = this.setWidth.bind(this);
     this.setWidth = this.setWidth.bind(this);
   }
 
@@ -78,7 +94,7 @@ class Teacher extends Component {
   }
 
   // see <Add />
-  fileSelectHandler = (event) => {
+  fileSelectHandler(event) {
     const file = event.target.value;
     const arr = file.split("\\");
     const full_name = arr[arr.length - 1];
@@ -102,12 +118,15 @@ class Teacher extends Component {
         warn: false,
       });
     }
-  };
+  }
 
   // see <Add />
-  csvHandler = () => {
+  csvHandler() {
+    if (!this.state.data) {
+      return;
+    }
     const config = {
-      complete: (results, file) => {
+      complete: (results) => {
         this.setState({
           verifyUpload: true,
           uploadedContent: results,
@@ -115,26 +134,31 @@ class Teacher extends Component {
       },
     };
     Papa.parse(this.state.data, config);
-  };
+  }
 
   // see <Add /> and <Verify />
-  resetFormHandler = () => {
+  resetFormHandler() {
     this.setState({
       file: "",
+      titleValue: "",
+      stagedGroups: [],
+      blankTitleError: false,
+      descriptionValue:
+        "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds!",
       warn: undefined,
       data: undefined,
       groupname: undefined,
       verifyUpload: false,
     });
-  };
+  }
   // see <Add /> and <Verify />
-  groupNameHandler = (e) => {
+  groupNameHandler(e) {
     this.setState({
       groupname: e.target.value,
     });
-  };
+  }
   // see <Verify />
-  groupValidatedHandler = (verifiedArray) => {
+  groupValidatedHandler(verifiedArray) {
     const group_arr = [...verifiedArray.slice(1)];
     const group_name = this.state.groupname;
     const stage = [...group_arr, group_name];
@@ -159,9 +183,9 @@ class Teacher extends Component {
         };
       }
     });
-  };
+  }
   // see <Staged />
-  unStageGroupHandler = (group_to_delete) => {
+  unStageGroupHandler(group_to_delete) {
     const groups = [...this.state.stagedGroups];
     if (groups.length <= 1) {
       this.setState({ stagedGroups: [] });
@@ -175,9 +199,9 @@ class Teacher extends Component {
     this.setState({
       stagedGroups: updated_groups,
     });
-  };
+  }
   // see <Verify />
-  handleVerificationIndicies = (value, flag) => {
+  handleVerificationIndices(value, flag) {
     if (flag === "name") {
       this.setState({
         nameIndex: value,
@@ -187,22 +211,22 @@ class Teacher extends Component {
     } else {
       console.warn("invalid index flag");
     }
-  };
+  }
 
   // see <Staged />
-  titleInputHandler = (e) => {
+  titleInputHandler(e) {
     this.setState({ titleValue: e.target.value });
-  };
+  }
 
   // see <Staged />
-  descriptionInputHandler = (e) => {
+  descriptionInputHandler(e) {
     this.setState({
       descriptionValue: e.target.value,
     });
-  };
+  }
 
   // fire POST_GALLERY action upon button press in <Staged />
-  inputConfirmation = () => {
+  inputConfirmation() {
     if (this.state.titleValue === "") {
       this.setState({
         blankTitleError: true,
@@ -218,17 +242,17 @@ class Teacher extends Component {
       this.props.token
     );
     this.setState({ button_pressed: true });
-  };
+  }
   // after "ok" press in <ServerError />
-  recoveryRestageHandler = () => {
+  recoveryRestageHandler() {
     this.setState({
       recover: false,
       requestMade: false,
     });
-  };
+  }
 
   // reset "add gallery" form after all is good.
-  successHandler = () => {
+  successHandler() {
     this.setState({
       recover: false,
       requestMade: false,
@@ -238,15 +262,15 @@ class Teacher extends Component {
       descriptionValue:
         "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds",
     });
-  };
+  }
 
   // dismiss "add title" dialogue
-  dismissTitleBlank = () => {
+  dismissTitleBlank() {
     if (this.state.titleValue != "") {
       this.inputConfirmation();
       this.setState({ blankTitleError: false });
     }
-  };
+  }
 
   render() {
     // will occur after logout
@@ -268,7 +292,7 @@ class Teacher extends Component {
           validatedHandler={this.groupValidatedHandler}
           nameIndex={this.state.nameIndex}
           linkIndex={this.state.linkIndex}
-          indexHandler={this.handleVerificationIndicies}
+          indexHandler={this.handleVerificationIndices}
         />
       );
     }
@@ -303,7 +327,7 @@ class Teacher extends Component {
           validatedHandler={this.groupValidatedHandler}
           nameIndex={this.state.nameIndex}
           linkIndex={this.state.linkIndex}
-          indexHandler={this.handleVerificationIndicies}
+          indexHandler={this.handleVerificationIndices}
         />
       );
     } else if (this.state.recover) {
