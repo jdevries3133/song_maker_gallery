@@ -28,12 +28,12 @@
     "react-dom": "^16.13.1",
     "redux-devtools-extension": "^2.13.8",
     "style-loader": "^1.2.1",
-    "webpack": "^4.43.0",
+    "webpack": "^4.44.2",
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "compression-webpack-plugin": "^6.0.2",
+    "compression-webpack-plugin": "^6.1.1",
     "lodash.clonedeep": "^4.5.0",
     "papaparse": "^5.2.0",
     "react-redux": "^7.2.0",

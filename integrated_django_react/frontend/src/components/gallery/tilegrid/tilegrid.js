@@ -4,7 +4,7 @@ import useWidth from "../../generics/useWidth";
 import styles from "./tilegrid.module.css";
 
 const tileGrid = (props) => {
-  const group_name = props.data.slice(-1);
+  const group_name = props.data.slice(-1)[0];
   const { width } = useWidth();
   return width > 475 ? (
     <div id="gallery">
