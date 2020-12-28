@@ -1,8 +1,8 @@
 venv
+secret_settings.py
 Session.vim
 tags
 ui_testing_data
-*.env
 main.js
 main.js.gz
 chromedriver
