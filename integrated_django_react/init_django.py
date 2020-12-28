@@ -24,8 +24,7 @@ sys.path.append(BASE_DIR)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'integrated_django_react.settings')
 django.setup()
 
-# pylint disable=wrong-import-position
-from django.db import connection
+# pylint: disable=wrong-import-position
 from django.contrib.auth.models import User
 from teacher_admin.models import Gallery
 

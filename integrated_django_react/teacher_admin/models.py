@@ -82,10 +82,9 @@ class Gallery(models.Model):
                     # do not change names that are only one word.
                     name = name_arr[0]
                     group[index][0] = name
-                raise Exception('The placeholder image needs to be replaced.')
                 row.append(
-                    'https://song-maker-gallery.s3.amazonaws.com/manually_added'
-                    '/Placeholder.png'
+                    'https://song-maker-gallery.s3.amazonaws.com/'
+                    'manually_uploaded/placeholder.jpg'
                 )
 
         self.is_new = False

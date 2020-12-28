@@ -107,7 +107,11 @@ class Teacher extends Component {
       this.setState({
         warn: true,
       });
-      this.addBottom.scrollIntoView();
+      try {
+        this.addBottom.scrollIntoView();
+      } catch (e) {
+        console.log(e);
+      }
     } else {
       this.setState({
         data: event.target.files[0],

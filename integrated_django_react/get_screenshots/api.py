@@ -17,9 +17,6 @@ class ScreenshotReturn(ModelViewSet):
     queryset = Gallery.objects.all()
 
     def partial_update(self, request, *args, pk='url_extension', **kwargs):
-        logger.debug('request info')
-        logger.debug(request.META)
-        logger.debug(request.data)
         instance = self.queryset.get(url_extension=request.data.get('pk'))
         serializer = GallerySerializer(
             instance, data=request.data, partial=True)

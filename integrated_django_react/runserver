@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-source ~/repos/song_maker_gallery/venv/bin/activate
-exec ~/repos/song_maker_gallery/integrated_django_react/manage.py runserver 0.0.0.0:3000 --noreload
