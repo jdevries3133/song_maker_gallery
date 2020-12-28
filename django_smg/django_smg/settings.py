@@ -1,18 +1,23 @@
 import os
 import json
 
+from .secrets_settings import *
+"""
+Should contain the following:
+
+- SECRET_KEY: str
+- EMAIL_HOST_PASSWORD: str
+- AWS_ACCESS_KEY_ID: str
+- AWS_SECRET_ACCESS_KEY: str
+"""
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True if os.getenv('DJANGO_DEBUG') == '1' else False
-
-# load secrets from config.json
 if DEBUG:
-    with open(os.path.join(BASE_DIR, 'django_smg', 'dev_config.json'), 'r') as jsn:
-        config = json.load(jsn)
+    from .production_settings import *
 else:
-    with open(os.path.join(BASE_DIR, 'django_smg', 'config.json'), 'r') as jsn:
-        config = json.load(jsn)
+    from .development_settings import *
 
-SECRET_KEY = config['DJANGO_SECRET']
 ALLOWED_HOSTS = [
     'songmakergallery.com',
     'localhost',
@@ -26,9 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'django_mysql',
     'knox',
-    'mod_wsgi.server',
     'storages',
     'rest_framework',
 
@@ -55,30 +58,6 @@ REST_FRAMEWORK = {
     )
 }
 
-# Email
-EMAIL_PORT = 587
-EMAIL_HOST_USER = config['SMG_GMAIL']
-EMAIL_HOST_PASSWORD = config['SMG_GMAIL_PASSWORD']
-EMAIL_USE_TLS = True
-EMAIL_HOST = config['SMTP_HOST']
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-else:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-# Amazon S3
-if not DEBUG:
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    AWS_ACCESS_KEY_ID = config['AWS_ACCESS_KEY_ID']
-    AWS_SECRET_ACCESS_KEY = config['AWS_SECRET_ACCESS_KEY']
-    AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
-    AWS_DEFAULT_ACL = 'public-read'
-    AWS_S3_FILE_OVERWRITE = True
-# default file storage config
-else:
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -98,25 +77,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'django_smg.wsgi.application'
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'songmaker',
-        'USER': 'jack',
-        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': 3306,
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-            'init_command': "SET sql_mode=\"STRICT_TRANS_TABLES,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO\""
-        },
-        'TEST': {
-            'CHARSET': 'utf8mb4',
-            'COLLATION': 'utf8mb4_unicode_ci',
-        }
-    }
-}
 
 AUTH_PASSWORD_VALIDATORS = [
     {

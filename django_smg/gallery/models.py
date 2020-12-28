@@ -2,9 +2,7 @@ import re
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
-from django.db.utils import IntegrityError
 from django.utils.text import slugify
-from django_mysql.models import JSONField
 
 
 class Gallery(models.Model):
@@ -97,9 +95,22 @@ class Song(models.Model):
     # worker will respond to this field and update it when pulling down data
     # into cache.
     isCached = models.BooleanField(default=False)
-    # data that comes from the cache
-    json = JSONField()
-    midi = models.BinaryField()
+
+    # data that will be cached
+    bars = models.IntegerField(null=True)
+    beats = models.IntegerField(null=True)
+    instrument = models.CharField(max_length=50, null=True)
+    octaves = models.IntegerField(null=True)
+    percussion = models.CharField(max_length=50, null=True)
+    percussionNotes = models.IntegerField(null=True)
+    rootNote = models.IntegerField(null=True)
+    rootOctave = models.IntegerField(null=True)
+    rootPitch = models.IntegerField(null=True)
+    scale = models.CharField(max_length=50, null=True)
+    subdivision = models.IntegerField(null=True)
+    tempo = models.IntegerField(null=True)
+
+    midi = models.BinaryField(null=True)
 
     def __str__(self):
         return f'{self.student_name} ({self.songId})'
