@@ -4,7 +4,7 @@ server {
     location /favicon.ico {
         access_log off;
         log_not_found off;
-        try_files /home/jack/song_maker_gallery/integreated_django_react/static/frontend/favicon.ico $uri;
+        alias /home/jack/song_maker_gallery/integreated_django_react/static/frontend/favicon.ico;
     }
     location ^~ /static/ {
         alias /home/jack/song_maker_gallery/integrated_django_react/static/;

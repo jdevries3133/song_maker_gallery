@@ -3,7 +3,7 @@ import os
 import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEBUG = True
+DEBUG = False
 if DEBUG:
     with open(os.path.join(BASE_DIR, 'integrated_django_react', 'dev_config.json'), 'r') as jsn:
         env = json.load(jsn)
