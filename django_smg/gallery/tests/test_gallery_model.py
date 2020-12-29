@@ -4,8 +4,7 @@ from pathlib import Path
 from django import test
 from django.contrib.auth.models import User
 
-from gallery.models import Gallery
-from gallery.serializers import GalleryDatasetSerializer
+from ..models import Gallery
 
 
 class TestGalleryModel(test.TestCase):
@@ -55,9 +54,8 @@ class TestGalleryModel(test.TestCase):
         - test-gallery-name2
         etc...
         """
-        sorted = self.get_queryset().order_by('created')
-        for i, gallery in enumerate(sorted):
-            continue
+        sorted_ = self.get_queryset().order_by('created')
+        for i, gallery in enumerate(sorted_):
             if not i:  # no appended int yet
                 self.assertEqual(gallery.slug, 'test-gallery-name')
                 continue

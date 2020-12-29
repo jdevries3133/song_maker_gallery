@@ -21,7 +21,7 @@ class AuthGalleryViewset(APIView):
         permissions.IsAuthenticated
     ]
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, *a, **kw):
         """
         Decompose the batch of data sent from the frontend and create a
         gallery with songs.
@@ -45,9 +45,9 @@ class AuthGalleryViewset(APIView):
         """
         # TODO: since this is an authenticated view, this should be where
         # the user's paginated galleries come from.
-        return Response(
-            GalleryDatasetSerializer().render(request.query_params.get('pk'))
-        )
+        return Response(GalleryDatasetSerializer(
+            context={'user': request.user}
+        ).render_many())
 
 class PublicGalleryViewset(APIView):
     """

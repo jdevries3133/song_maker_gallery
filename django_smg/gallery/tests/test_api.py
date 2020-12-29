@@ -1,10 +1,13 @@
-from django import test
+import json
+
+from django.urls import reverse
 from django.contrib.auth.models import User
+from django.test import TestCase, Client
 
-from gallery.serializers import GalleryDatasetSerializer
+from ..serializers import GalleryDatasetSerializer
 
 
-class TestPublicGallerySerializer(test.TestCase):
+class TestAuthGalleryViewset(TestCase):
     def setUp(self):
         self.mock_api_data =  {
             'title': 'Test Title',
@@ -59,13 +62,42 @@ class TestPublicGallerySerializer(test.TestCase):
                 ]
             ]
         }
-        user = User.objects.create_user(
+        self.user = User.objects.create_user(
             username='jack',
             email='jack@jack.com',
             password='ghjlesdfr;aghruiao;'
         )
         serializer = GalleryDatasetSerializer(data=self.mock_api_data, context={
-            'user': user,
+            'user': self.user,
         })
         serializer.is_valid(raise_exception=True)
-        serializer.save()
+        self.gallery = serializer.save()
+        self.client = Client()
+        self.token = json.loads(
+            self.client.post(
+                '/api/auth/login/',
+                data={
+                    'username': 'jack',
+                    'password': 'ghjlesdfr;aghruiao;',
+                },
+                content_type='application/json'
+            ).rendered_content  # type: ignore
+        )['token']
+        url = reverse('gallery')
+        self.response = self.client.get(
+            url,
+            HTTP_AUTHORIZATION=f'Token {self.token}',
+        )
+
+    def test_response_status(self):
+        self.assertIn(self.response.status_code, range(200, 300)) # type: ignore
+
+    def test_response_content(self):
+        self.assertEqual(
+            self.response.json()[0]['title'],  # type: ignore
+            self.mock_api_data['title']
+        )
+        self.assertEqual(
+            self.response.json()[0]['description'],  # type: ignore
+            self.mock_api_data['description']
+        )

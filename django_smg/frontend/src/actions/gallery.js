@@ -5,7 +5,7 @@ import { GET_GALLERY } from "./types";
 // GET Gallery
 export const getGallery = (gallery_pk) => (dispatch) => {
   axios
-    .get(`/api/gallery?pk=${gallery_pk}/`)
+    .get(`/api/gallery/?pk=${gallery_pk}/`)
     .then((res) => {
       dispatch({
         type: GET_GALLERY,

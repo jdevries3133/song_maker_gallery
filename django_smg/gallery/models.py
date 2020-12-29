@@ -9,6 +9,7 @@ class Gallery(models.Model):
     owner = models.ForeignKey(
         User,
         related_name='gallery',
+        related_query_name='galleries',
         on_delete=models.CASCADE,
         null=True,
     )
@@ -74,7 +75,11 @@ class SongGroup(models.Model):
     Songs in the gallery are visually grouped. This model defines the grouping.
     """
     group_name = models.CharField(_("Group Name"), max_length=100)
-    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE, related_name='song_groups')
+    gallery = models.ForeignKey(
+        Gallery,
+        on_delete=models.CASCADE,
+        related_name='song_groups',
+    )
 
     def __str__(self):
         return str(self.group_name)
@@ -89,8 +94,17 @@ class Song(models.Model):
     student_name =  models.CharField(_("Student Name"), max_length=100)
 
     # relationships
-    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE, related_name='galleries')
-    group = models.ForeignKey(SongGroup, on_delete=models.CASCADE, related_name='song_groups')
+    gallery = models.ForeignKey(
+        Gallery,
+        on_delete=models.CASCADE,
+        related_name='songs',
+    )
+    group = models.ForeignKey(
+        SongGroup,
+        on_delete=models.CASCADE,
+        related_name='song',
+        related_query_name='songs'
+    )
 
     # worker will respond to this field and update it when pulling down data
     # into cache.

@@ -4,12 +4,13 @@ import json
 
 from django.contrib.auth.models import User
 from django import test
-from django.test.utils import tag, CaptureQueriesContext
+from django.test.utils import CaptureQueriesContext
 from django.db import connection
 from django.conf import settings
 
-from gallery.serializers import GalleryDatasetSerializer
-from gallery.models import Gallery, SongGroup, Song
+from ..serializers import GalleryDatasetSerializer
+from ..models import Gallery, SongGroup, Song
+from .util import are_rendered_groups_same
 
 
 class TestGallerySerializer(test.TestCase):
@@ -80,7 +81,7 @@ class TestGallerySerializer(test.TestCase):
         })
 
     def setUp(self):
-        self.user = User.objects.create_user(
+        self.user = User.objects.create_user(  # type: ignore
             username='jack',
             email='jack@jack.com',
             password='ghjlesdfr;aghruiao;'
@@ -100,11 +101,11 @@ class TestGallerySerializer(test.TestCase):
 
 
     def test_gallery_single_gallery_exists(self):
-        gallery_set = Gallery.objects.filter(slug='test-title')
+        gallery_set = Gallery.objects.filter(slug='test-title')  # type: ignore
         self.assertEqual(len(gallery_set), 1)
 
     def test_gallery_title_and_description(self):
-        gallery = Gallery.objects.get(slug='test-title')
+        gallery = Gallery.objects.get(slug='test-title')  # type: ignore
         self.assertEqual(gallery.title, 'Test Title')
         self.assertEqual(
             gallery.description,
@@ -116,7 +117,7 @@ class TestGallerySerializer(test.TestCase):
         """
         One Song created for each link in the group.
         """
-        songs = Song.objects.all()
+        songs = Song.objects.all()  # type: ignore
         self.assertEqual(
             len(songs),
             8
@@ -127,7 +128,7 @@ class TestGallerySerializer(test.TestCase):
         Bulk create action perfoemed in self.setUp should create SongGroup
         objects to store each of the groupings of songs.
         """
-        song_groups = SongGroup.objects.all()
+        song_groups = SongGroup.objects.all()  # type: ignore
         self.assertEqual(
             len(song_groups),
             2
@@ -139,7 +140,7 @@ class TestGallerySerializer(test.TestCase):
         and all student names in the second group shouldbe coerced into
         "Lilly G."
         """
-        for song in Song.objects.all():
+        for song in Song.objects.all():  # type: ignore
             self.assertIn(
                 song.student_name,
                 [
@@ -241,7 +242,7 @@ class TestGallerySerializer(test.TestCase):
         try:
             # check that the full songData nested lists are right.
             for correct, rendered in zip(
-                correct_output['songData'], 
+                correct_output['songData'],
                 rendered['songData']
             ):
                 self.assertEqual(correct, rendered)
@@ -253,19 +254,21 @@ class TestGallerySerializer(test.TestCase):
     def test_render_many(self):
         # create a second gallery
         second_gal_data = self.mock_api_data()
-        second_gal_data['title'] = 'Test 2 Title'
         serializer = GalleryDatasetSerializer(data=second_gal_data, context={
             'user': self.user
         })
         self.assertTrue(serializer.is_valid())
         serializer.save()
-
-        rendered = GalleryDatasetSerializer(context={
-            'user': self.user
-        }).render_many()
-        breakpoint()
-
-
+        result = GalleryDatasetSerializer(
+            context={
+                'user': self.user,
+            }).render_many()
+        self.assertTrue(
+            are_rendered_groups_same(
+                result[0],
+                result[1],
+            )
+        )
 
     def test_render_method_num_queries(self):
         with self.assertNumQueries(4):
@@ -274,7 +277,7 @@ class TestGallerySerializer(test.TestCase):
 class TestQueryCountLargeGallery(test.TestCase):
 
     def setUp(self):
-        self.user = User.objects.create_user(
+        self.user = User.objects.create_user(  # type: ignore
             username='jack',
             email='jack@jack.com',
             password='ghjlesdfr;aghruiao;'

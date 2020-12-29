@@ -13,7 +13,7 @@ Should contain the following:
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True if os.getenv('DJANGO_DEBUG') == '1' else False
-if DEBUG:
+if not DEBUG:
     from .production_settings import *
 else:
     from .development_settings import *
@@ -118,15 +118,20 @@ LOGGING = {
             'filename': os.path.join(BASE_DIR, 'main.log'),
             'formatter': 'verbose',
         },
+        'console_logger': {
+            'level': 0,
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
     },
     'root': {
-        'handlers': ['file_logger'],
+        'handlers': ['console_logger'],
         'level': 'DEBUG',
         'propagate': True,
     },
     'loggers': {
         'file': {
-            'handlers': ['file_logger'],
+            'handlers': ['console_logger'],
             'level': 'DEBUG',
             'propagate': True,
         },

@@ -35,16 +35,19 @@ class GalleryDatasetSerializer(Serializer):
     - Song
     - SongGroup
     """
-    def get_queryset(self, slug, max_galleries=10):
+    def get_queryset(self, slug=None, max_galleries=10, gallery=None):
         """
         **CAREFUL! This returns a dict of querysets and model instances; not
         a regular queryset.
         """
-        gallery = Gallery.objects.get(slug=slug)
-        songs = Song.objects.select_related(
+        if not gallery and not slug:
+            raise Exception('Must pass gallery object or gallery slug')
+        if not gallery:
+            gallery = Gallery.objects.get(slug=slug)  # type: ignore
+        songs = Song.objects.select_related(  # type: ignore
             'gallery',
             'group').filter(gallery=gallery)
-        groups = SongGroup.objects.filter(gallery=gallery)
+        groups = SongGroup.objects.filter(gallery=gallery)  # type: ignore
         return {
             'gallery': gallery,
             'songs': songs,
@@ -52,18 +55,29 @@ class GalleryDatasetSerializer(Serializer):
         }
 
     def render_many(self):
-        pass
-        # return [
-        #     self.render(g.slug).select_related(  # todo left off here
-        #     for g in Gallery.objects.filter(owner=self.context.get('user'))
-        # ]
+        """
+        Render all of the user's galleries in a list.
+        """
+        return [
+            self.render(gallery=g)
+            for g in
+            Gallery.objects.filter(owner=self.context.get('user')).prefetch_related(  # type: ignore
+                'songs',
+                'song_groups',
+            )
+        ]
 
-    def render(self, slug):
+    def render(self, slug=None, gallery=None):
         """
         Give the frontend the whole structured blob necessary for it to render
         a gallery at once.
         """
-        data = self.get_queryset(slug)
+        if not slug and not gallery:
+            raise Exception('Must pass gallery object or gallery slug')
+        if gallery:
+            data = self.get_queryset(gallery=gallery)
+        else:
+            data = self.get_queryset(slug=slug)
         gallery = data['gallery']
         groups = data['groups']
         output = {
@@ -84,7 +98,7 @@ class GalleryDatasetSerializer(Serializer):
         """
         Create new gallery, to which everything else will relationally linked.
         """
-        self._gallery = Gallery.objects.create(
+        self._gallery = Gallery.objects.create(  # type: ignore
             owner=self.get_user() ,
             title=validated_data['title'],
             description=validated_data['description'],
@@ -105,9 +119,9 @@ class GalleryDatasetSerializer(Serializer):
                 gallery=self._gallery
             ))
 
-        SongGroup.objects.bulk_create(song_groups)
+        SongGroup.objects.bulk_create(song_groups)  # type: ignore
         # need to re-fetch ForeignKeys for later
-        song_groups = SongGroup.objects.filter(gallery=self._gallery)
+        song_groups = SongGroup.objects.filter(gallery=self._gallery)  # type: ignore
 
         # bulk create Songs
         songs = []
@@ -132,7 +146,7 @@ class GalleryDatasetSerializer(Serializer):
                     gallery=self._gallery,
                     group=group_obj
                 ))
-        songs = Song.objects.bulk_create(songs)
+        songs = Song.objects.bulk_create(songs)  # type: ignore
 
     def get_user(self):
         """
@@ -170,7 +184,7 @@ class GalleryDatasetSerializer(Serializer):
         assert len(title) < 100
 
     def validate_description(self, description):
-        pass
+        assert len(description) < 100
 
     def validate_song_data(self, song_data):
         """
