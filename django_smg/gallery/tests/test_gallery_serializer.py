@@ -97,9 +97,6 @@ class TestGallerySerializer(test.TestCase):
         else:
             raise Exception('Serializer in setUp method was not valid')
 
-
-
-
     def test_gallery_single_gallery_exists(self):
         gallery_set = Gallery.objects.filter(slug='test-title')  # type: ignore
         self.assertEqual(len(gallery_set), 1)
@@ -111,7 +108,6 @@ class TestGallerySerializer(test.TestCase):
             gallery.description,
             'This is the test description.'
         )
-
 
     def test_correct_number_of_Song_objects_are_created(self):
         """
@@ -273,6 +269,32 @@ class TestGallerySerializer(test.TestCase):
     def test_render_method_num_queries(self):
         with self.assertNumQueries(4):
             GalleryDatasetSerializer().render('test-title')
+
+    def test_rendered_gallery_matches_source_data(self):
+        self.assertTrue(
+            are_rendered_groups_same(
+                GalleryDatasetSerializer().render('test-title'),
+                {
+                    'title': 'Test Title',
+                    'description': 'This is the test description.',
+                    'songData': [
+                        [
+                            ('Mark J.', '4618345650632704'),
+                            ('Mark J.', '4613455650632704'),
+                            ('Mark J.', '1238045650632704'),
+                            ('Mark J.', '4618045634532704')
+                        ],
+                        [
+                            ('Lilly G.', '4618045123632704'),
+                            ('Lilly G.', '4618041220632704'),
+                            ('Lilly G.', '4618045650632704'),
+                            ('Lilly G.', '4618045650632704')
+                        ]
+                    ]
+                }
+            )
+        )
+
 
 class TestQueryCountLargeGallery(test.TestCase):
 

@@ -53,4 +53,6 @@ class PublicGalleryViewset(APIView):
     """
     Public viewset for rendering a single gallery
     """
-    pass
+
+    def get(self, request, slug):
+        return Response(GalleryDatasetSerializer().render(slug=slug))

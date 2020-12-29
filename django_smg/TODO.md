@@ -1,3 +1,3 @@
 [x] Create GalleryDatasetSerializer.render_many method
-[ ] Create user galleries list view
-[ ] Create rendered gallery view
+[x] Create user galleries list view
+[x] Create public rendered gallery view
