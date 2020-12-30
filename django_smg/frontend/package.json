@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development --watch ./src/index.js --output ./static/frontend/main.js",
-    "build": "webpack --mode production ./src/index.js --output ./static/frontend/main.js"
+    "dev": "webpack --mode development --watch ./src/index.jsx --output ./static/frontend/main.js",
+    "build": "webpack --mode production ./src/index.jsx --output ./static/frontend/main.js"
   },
   "keywords": [],
   "author": "",

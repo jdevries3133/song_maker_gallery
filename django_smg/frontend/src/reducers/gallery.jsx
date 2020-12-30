@@ -1,4 +1,4 @@
-import { GET_GALLERY } from "../actions/types.js";
+import { GET_GALLERY } from "../actions/types";
 
 const initialState = {
   gallery: { status: undefined },
