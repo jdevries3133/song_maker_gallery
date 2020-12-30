@@ -50,13 +50,16 @@ const YourGalleries = (props) => {
     }
   }, [props.deleteLoopback]);
 
-  const deleteConfirmed = (url_extension) => {
-    props.deleteGallery(url_extension, props.token);
+  const deleteConfirmed = (pk) => {
+    props.deleteGallery(pk, props.token);
   };
 
   if (props.galleries) {
     user_gals = props.galleries.map((gallery, index) => {
-      const url = window.location.href.slice(0, -7) + "gallery/" + gallery[1];
+      const url =
+        window.location.href.slice(0, -7) +
+        "gallery/" +
+        gallery["url_extension"];
       return (
         <ThemeProvider
           theme={{
@@ -67,11 +70,11 @@ const YourGalleries = (props) => {
         >
           <tr className={styles.shaded_tr}>
             <td width="30%">
-              {gallery[0].slice(0, 14)}
-              {gallery[0].length < 14 ? null : <span>...</span>}
+              {gallery["title"].slice(0, 14)}
+              {gallery["title"].length < 14 ? null : <span>...</span>}
             </td>
             <td width="70%">
-              <Link to={"/gallery/" + gallery[1]}>
+              <Link to={"/gallery/" + gallery["url_extension"]}>
                 <ThemeProvider
                   theme={(theme) => {
                     return { backgroundColor: "#00c4ff", ...theme };
@@ -86,7 +89,7 @@ const YourGalleries = (props) => {
                     setConfirmDelete(
                       <ConfirmDelete
                         url={url}
-                        extension={gallery[1]}
+                        pk={gallery["pk"]}
                         confirmation={deleteConfirmed}
                       />
                     )
@@ -128,10 +131,13 @@ const YourGalleries = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    galleries: state.user.galleries.map((gallery) => [
-      gallery["title"],
-      gallery["url_extension"],
-    ]),
+    galleries: state.user.galleries.map((gallery) => {
+      return {
+        title: gallery["title"],
+        url_extension: gallery["url_extension"],
+        pk: gallery["pk"],
+      };
+    }),
     token: state.auth.token,
     deleteLoopback: state.user.loopback,
     deleteStatus: state.user.deleteStatus,

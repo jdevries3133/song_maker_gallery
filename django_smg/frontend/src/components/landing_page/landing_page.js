@@ -9,7 +9,7 @@ import styles from "./landing_page.module.css";
 
 const landing_page = (props) => {
   useEffect(() => {
-    props.getGallery("sample-gallery"); // warning: make sure you take sample-gallery with you into new databases
+    props.getGallery("1"); // warning: make sure you take sample-gallery with you into new databases
   }, []);
   if (props.status == undefined) {
     return (

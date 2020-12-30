@@ -91,7 +91,9 @@ class Teacher extends Component {
       this.setState({
         warn: true,
       });
-      this.addBottom.scrollIntoView();
+      if (this.addBottom) {
+        this.addBottom.scrollIntoView();
+      }
     } else {
       this.setState({
         data: event.target.files[0],
@@ -213,7 +215,7 @@ class Teacher extends Component {
       {
         title: this.state.titleValue,
         description: this.state.descriptionValue,
-        galleryData: this.state.stagedGroups,
+        songData: this.state.stagedGroups,
       },
       this.props.token
     );
@@ -275,7 +277,7 @@ class Teacher extends Component {
 
     // As the user uploads additional groups, the staged groups are held in a
     // list at the bottom of the page
-    if (this.state.stagedGroups.length > 0) {
+    if (this.state.stagedGroups && this.state.stagedGroups.length > 0) {
       staged = (
         <Staged
           unStageGroupHandler={this.unStageGroupHandler}

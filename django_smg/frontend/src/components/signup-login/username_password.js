@@ -23,7 +23,6 @@ const username_password = (props) => {
         onChange={(event) => props.password(event.target.value)}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            console.log("submitting");
             props.submit();
           }
         }}

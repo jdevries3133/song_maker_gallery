@@ -6,8 +6,10 @@ export const tryToken = (token) => (dispatch) => {
   axios.defaults.xsrfCookieName = "csrftoken";
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios
-    .get("/api/user/", { headers: { Authorization: `Token ${token}` } })
-    .then((res) => {
+    .get("/api/auth/ping-auth/", {
+      headers: { Authorization: `Token ${token}` },
+    })
+    .then(() => {
       dispatch({
         type: LOGIN,
         payload: {

@@ -11,7 +11,7 @@ export const postGallery = (form, token) => (dispatch) => {
       {
         title: form.title,
         description: form.description,
-        songData: form.api_obj,
+        songData: form.songData,
       },
       {
         headers: { Authorization: `Token ${token}` },
@@ -62,11 +62,11 @@ export const getUserGalleries = (token) => (dispatch) => {
 };
 
 // DELETE_GALLERY
-export const deleteGallery = (url_extension, token) => (dispatch) => {
+export const deleteGallery = (pk, token) => (dispatch) => {
   axios.defaults.xsrfCookieName = "csrftoken";
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios
-    .delete("/api/user/gallery/", {
+    .delete(`/api/gallery/?pk=${pk}`, {
       headers: {
         Authorization: `Token ${token}`,
       },

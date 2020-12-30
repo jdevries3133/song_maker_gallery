@@ -17,7 +17,7 @@ const confirm_delete = (props) => {
       <ThemeProvider theme={{ backgroundColor: "maroon", color: "white" }}>
         <Button
           className={styles.delete_confirm}
-          onClick={() => props.confirmation(props.extension)}
+          onClick={() => props.confirmation(props.pk)}
         >
           I am sure
         </Button>
