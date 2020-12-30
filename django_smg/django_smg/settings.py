@@ -126,13 +126,13 @@ LOGGING = {
     },
     'root': {
         'handlers': ['console_logger'],
-        'level': 'DEBUG',
+        'level': 'INFO',
         'propagate': True,
     },
     'loggers': {
         'file': {
             'handlers': ['console_logger'],
-            'level': 'DEBUG',
+            'level': 'INFO',
             'propagate': True,
         },
     }

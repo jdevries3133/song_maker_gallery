@@ -108,7 +108,7 @@ class Song(models.Model):
 
     # worker will respond to this field and update it when pulling down data
     # into cache.
-    isCached = models.BooleanField(default=False)
+    is_cached = models.BooleanField(default=False)
 
     # data that will be cached
     bars = models.IntegerField(null=True)

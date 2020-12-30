@@ -1,3 +1,5 @@
-[x] Create GalleryDatasetSerializer.render_many method
-[x] Create user galleries list view
-[x] Create public rendered gallery view
+- [x] Create GalleryDatasetSerializer.render_many method
+- [x] Create user galleries list view
+- [x] Create public rendered gallery view
+- [ ] Update frontend actions to use new api views
+- [x] Fetching and caching service
