@@ -185,7 +185,7 @@ class GalleryDatasetSerializer(Serializer):
         assert len(title) < 100
 
     def validate_description(self, description):
-        assert len(description) < 100
+        pass
 
     def validate_song_data(self, song_data):
         """

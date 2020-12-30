@@ -19,6 +19,9 @@ class TestGallerySerializer(test.TestCase):
     and rendering gallery views from the database.
     """
 
+    GALLERY_TITLE = 'Test Title'
+    GALLERY_DESCRIPTION = 'This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.'
+
     maxDiff = None
 
     def mock_api_data(self):
@@ -27,8 +30,8 @@ class TestGallerySerializer(test.TestCase):
         mutating the nested list.
         """
         return deepcopy({
-            'title': 'Test Title',
-            'description': 'This is the test description.',
+            'title': self.GALLERY_TITLE,
+            'description': self.GALLERY_DESCRIPTION,
             'songData': [
                 [
                     [
@@ -106,7 +109,7 @@ class TestGallerySerializer(test.TestCase):
         self.assertEqual(gallery.title, 'Test Title')
         self.assertEqual(
             gallery.description,
-            'This is the test description.'
+            self.GALLERY_DESCRIPTION
         )
 
     def test_correct_number_of_Song_objects_are_created(self):
@@ -217,8 +220,8 @@ class TestGallerySerializer(test.TestCase):
         """
         correct_output = {
             'pk': 1,
-            'title': 'Test Title',
-            'description': 'This is the test description.',
+            'title': self.GALLERY_TITLE,
+            'description': self.GALLERY_DESCRIPTION,
             'songData': [
                 [
                     ('Mark J.', '4618345650632704'),
@@ -276,8 +279,8 @@ class TestGallerySerializer(test.TestCase):
             are_rendered_groups_same(
                 GalleryDatasetSerializer().render('test-title'),
                 {
-                    'title': 'Test Title',
-                    'description': 'This is the test description.',
+                    'title': self.GALLERY_TITLE,
+                    'description': self.GALLERY_DESCRIPTION,
                     'songData': [
                         [
                             ('Mark J.', '4618345650632704'),
