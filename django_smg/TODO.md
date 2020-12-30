@@ -2,4 +2,6 @@
 - [x] Create user galleries list view
 - [x] Create public rendered gallery view
 - [ ] Update frontend actions to use new api views
+- [ ] Update frontend state management to expect songData
+- [x] Make backend gallery delete endpoint
 - [x] Fetching and caching service

@@ -216,6 +216,7 @@ class TestGallerySerializer(test.TestCase):
         frontend to render a single gallery.
         """
         correct_output = {
+            'pk': 1,
             'title': 'Test Title',
             'description': 'This is the test description.',
             'songData': [

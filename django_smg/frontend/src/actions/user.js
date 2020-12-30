@@ -7,11 +7,11 @@ export const postGallery = (form, token) => (dispatch) => {
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios
     .post(
-      "/api/user/",
+      "/api/gallery/",
       {
         title: form.title,
         description: form.description,
-        songs: form.api_obj,
+        songData: form.api_obj,
       },
       {
         headers: { Authorization: `Token ${token}` },
@@ -44,7 +44,7 @@ export const getUserGalleries = (token) => (dispatch) => {
   axios.defaults.xsrfCookieName = "csrftoken";
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios
-    .get("/api/user/galleries", {
+    .get("/api/gallery/", {
       // this endpoint no longer exists and I think I'd like to depricate it in favor of more focused requests.
       headers: { Authorization: `Token ${token}` },
     })

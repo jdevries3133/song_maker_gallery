@@ -112,12 +112,12 @@ LOGGING = {
         },
     },
     'handlers': {
-        'file_logger': {
-            'level': 0,
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'main.log'),
-            'formatter': 'verbose',
-        },
+        # 'file_logger': {
+        #     'level': 0,
+        #     'class': 'logging.FileHandler',
+        #     'filename': os.path.join(BASE_DIR, 'main.log'),
+        #     'formatter': 'verbose',
+        # },
         'console_logger': {
             'level': 0,
             'class': 'logging.StreamHandler',

@@ -21,7 +21,7 @@ class AuthGalleryViewset(APIView):
         permissions.IsAuthenticated
     ]
 
-    def post(self, request, *a, **kw):
+    def post(self, request):
         """
         Decompose the batch of data sent from the frontend and create a
         gallery with songs.
@@ -39,7 +39,7 @@ class AuthGalleryViewset(APIView):
             status=status.HTTP_201_CREATED
         )
 
-    def get(self, request, *a, **kw):
+    def get(self, request):
         """
         Return all the galleries of an authenticated user.
         """
@@ -48,6 +48,19 @@ class AuthGalleryViewset(APIView):
         return Response(GalleryDatasetSerializer(
             context={'user': request.user}
         ).render_many())
+
+    def delete(self, request):
+        if not (slug_arg := request.query_params.get('pk')):
+            return Response(
+                {'message': 'Must include "slug" as a url paramater'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        for gallery_pk in slug_arg.split(','):
+            Gallery.objects.filter(  # type: ignore
+                id=gallery_pk,
+                owner=request.user
+            ).delete()
+        return Response({'message': 'deleted'})
 
 class PublicGalleryViewset(APIView):
     """

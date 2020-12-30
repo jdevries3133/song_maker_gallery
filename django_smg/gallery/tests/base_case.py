@@ -4,6 +4,7 @@ from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from django.test import TestCase, Client
 
+from ..models import Gallery
 from ..serializers import GalleryDatasetSerializer
 
 
@@ -55,6 +56,7 @@ class GalleryTestCase(TestCase):
             ]
         }
         self.expected_rendered_data = {
+            'pk': 1,
             'title': 'Test Title',
             'description': 'This is the test description.',
             'songData': [
@@ -76,12 +78,10 @@ class GalleryTestCase(TestCase):
             email='jack@jack.com',
             password='ghjlesdfr;aghruiao;'
         )
-        serializer = GalleryDatasetSerializer(data=self.mock_api_data, context={
-            'user': self.user,
-        })
-        serializer.is_valid(raise_exception=True)
-        self.gallery = serializer.save()
         self.client = Client()
+
+        # create an initial gallery
+        self.gallery = self._add_gallery()
 
     def _login_client(self):
         """
@@ -102,3 +102,14 @@ class GalleryTestCase(TestCase):
                 content_type='application/json'
             ).rendered_content  # type: ignore
         )['token']
+
+    def _add_gallery(self) -> Gallery:
+        """
+        Add a gallery to the database – all clones of the first.
+        """
+        serializer = GalleryDatasetSerializer(data=self.mock_api_data, context={
+            'user': self.user,
+        })
+        serializer.is_valid(raise_exception=True)
+        return serializer.save()
+

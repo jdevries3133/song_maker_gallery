@@ -81,6 +81,7 @@ class GalleryDatasetSerializer(Serializer):
         gallery = data['gallery']
         groups = data['groups']
         output = {
+            'pk': gallery.pk,
             'title': gallery.title,
             'description': gallery.description,
         }
