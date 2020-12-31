@@ -22,6 +22,7 @@ const tile = (props) => {
   const tile_el = useRef(null);
   // background is none until tile is about to scroll into view
   const background = "url(" + props.st_arr[2] + ")";
+  const song_link = `https://musiclab.chromeexperiments.com/Song-Maker/song/${props.st_arr[1]}`;
   const theme = {
     index: props.index,
     background: background,
@@ -46,7 +47,7 @@ const tile = (props) => {
   });
   return (
     <li className={styles.lit}>
-      <a href={props.st_arr[1]} target="_blank" rel="noopener noreferrer">
+      <a href={song_link} target="_blank" rel="noopener noreferrer">
         <ThemeProvider theme={theme}>
           <StyledTile ref={tile_el}>{props.st_arr[0]}</StyledTile>
         </ThemeProvider>

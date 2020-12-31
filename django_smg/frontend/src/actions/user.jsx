@@ -71,11 +71,12 @@ export const deleteGallery = (pk, token) => (dispatch) => {
         Authorization: `Token ${token}`,
       },
       data: {
-        url_extension: url_extension,
+        pk: pk,
       },
     })
     .then((response) => {
-      if (response.data.title) {
+      console.log(response);
+      if (response.status === 200) {
         dispatch({
           type: DELETE_GALLERY,
           payload: { loopback: response.data, status: "deleted" },

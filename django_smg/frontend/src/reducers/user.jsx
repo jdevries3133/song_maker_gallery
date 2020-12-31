@@ -35,18 +35,11 @@ export default function (state = initialState, action) {
       };
 
     case DELETE_GALLERY:
-      if (action.payload.status === "deleted") {
-        return {
-          ...state,
-          loopback: action.payload.loopback,
-          deleteStatus: "deleted",
-        };
-      } else
-        return {
-          ...state,
-          loopback: null,
-          deleteStatus: "error",
-        };
+      return {
+        ...state,
+        loopback: action.payload.loopback,
+        deleteStatus: action.payload.status,
+      };
     default:
       return state;
   }

@@ -7,7 +7,6 @@ const staged_group = (props) => {
   const [show, setShow] = useState(false);
   const groupname = [...props.group].pop();
   const group = [...props.group].slice(0, -1);
-  // console.log(group);
   return (
     <Fragment>
       <table style={{ margin: "auto", marginTop: "15px" }}>

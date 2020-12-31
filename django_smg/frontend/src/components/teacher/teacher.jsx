@@ -19,13 +19,14 @@ class Teacher extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      file: "",
       titleValue: "",
+      fileInputRef: React.createRef(),
       stagedGroups: [],
       blankTitleError: false,
       descriptionValue:
         "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds!",
       width: window.innerWidth,
+      groupname: "",
     };
     this.setWidth = this.setWidth.bind(this);
   }
@@ -78,53 +79,38 @@ class Teacher extends Component {
   }
 
   // see <Add />
-  fileSelectHandler = (event) => {
-    const file = event.target.value;
-    const arr = file.split("\\");
-    const full_name = arr[arr.length - 1];
-    const filename = full_name.slice(0, full_name.length - 4);
-    const file_extension = full_name.slice(
-      full_name.length - 4,
-      full_name.length
-    );
-    if (file_extension != ".csv") {
+  csvHandler = () => {
+    let file_name;
+    try {
+      file_name = this.state.fileInputRef.current.files[0].name;
+    } catch (e) {
+      // no file has been selected
+      return;
+    }
+    const ext = file_name.slice(file_name.length - 4);
+    if (ext != ".csv") {
+      this.state.fileInputRef.current.value = "";
       this.setState({
         warn: true,
       });
-      if (this.addBottom) {
-        this.addBottom.scrollIntoView();
-      }
-    } else {
-      this.setState({
-        data: event.target.files[0],
-        file: file,
-        filename: filename,
-        file_extension: file_extension,
-        groupname: filename,
-        warn: false,
-      });
+      return;
     }
-  };
-
-  // see <Add />
-  csvHandler = () => {
     const config = {
-      complete: (results, file) => {
+      complete: (results) => {
         this.setState({
           verifyUpload: true,
           uploadedContent: results,
         });
       },
     };
-    Papa.parse(this.state.data, config);
+    Papa.parse(this.state.fileInputRef.current.files[0], config);
   };
 
   // see <Add /> and <Verify />
   resetFormHandler = () => {
+    this.state.fileInputRef.current.value = "";
     this.setState({
-      file: "",
       warn: undefined,
-      data: undefined,
       groupname: undefined,
       verifyUpload: false,
     });
@@ -135,6 +121,7 @@ class Teacher extends Component {
       groupname: e.target.value,
     });
   };
+
   // see <Verify />
   groupValidatedHandler = (verifiedArray) => {
     const group_arr = [...verifiedArray.slice(1)];
@@ -144,18 +131,14 @@ class Teacher extends Component {
       if (prevState.stagedGroups) {
         return {
           stagedGroups: [...prevState.stagedGroups, stage],
-          file: "",
           warn: undefined,
-          data: undefined,
           groupname: undefined,
           verifyUpload: false,
         };
       } else {
         return {
           stagedGroups: [stage],
-          file: "",
           warn: undefined,
-          data: undefined,
           groupname: undefined,
           verifyUpload: false,
         };
@@ -221,6 +204,7 @@ class Teacher extends Component {
     );
     this.setState({ button_pressed: true });
   };
+
   // after "ok" press in <ServerError />
   recoveryRestageHandler = () => {
     this.setState({
@@ -234,7 +218,6 @@ class Teacher extends Component {
     this.setState({
       recover: false,
       requestMade: false,
-      file: "",
       titleValue: "",
       stagedGroups: [],
       descriptionValue:
@@ -258,22 +241,6 @@ class Teacher extends Component {
 
     let blanket;
     let staged;
-    // Verify component allows user to validate csv data after upload.
-    if (this.state.verifyUpload) {
-      blanket = (
-        <Verify
-          csv={this.state.uploadedContent}
-          onRedact={this.redactVerification}
-          restart={this.resetFormHandler}
-          groupname={this.state.groupname}
-          groupNameChange={this.groupNameHandler}
-          validatedHandler={this.groupValidatedHandler}
-          nameIndex={this.state.nameIndex}
-          linkIndex={this.state.linkIndex}
-          indexHandler={this.handleVerificationIndicies}
-        />
-      );
-    }
 
     // As the user uploads additional groups, the staged groups are held in a
     // list at the bottom of the page
@@ -282,13 +249,11 @@ class Teacher extends Component {
         <Staged
           unStageGroupHandler={this.unStageGroupHandler}
           groups={this.state.stagedGroups}
-          previewGallery={this.inputConfirmation}
+          confirmCreate={this.inputConfirmation}
           titleInput={this.titleInputHandler}
           titleValue={this.state.titleValue}
           descriptionInput={this.descriptionInputHandler}
           descriptionValue={this.state.descriptionValue}
-          onConfirm={this.inputConfirmation}
-          peskyButton={this.props.requestMade}
         />
       );
     }
@@ -297,6 +262,7 @@ class Teacher extends Component {
     if (this.state.verifyUpload) {
       blanket = (
         <Verify
+          fileInputRef={this.state.fileInputRef}
           csv={this.state.uploadedContent}
           onRedact={this.redactVerification}
           restart={this.resetFormHandler}
@@ -313,7 +279,7 @@ class Teacher extends Component {
     } else if (this.state.requestMade) {
       blanket = (
         <GalPostSuccess
-          url={this.props.galleries.slice(-1)[0].url_extension}
+          slug={this.props.galleries.slice(-1)[0].slug}
           onOk={this.successHandler}
         />
       );
@@ -345,45 +311,45 @@ class Teacher extends Component {
           Log Out
         </button>
         {blanket}
+        {/*
         {this.state.width < 621 ? (
+          // TODO: this is gonna be all out of whack
           <MobileOptimizedView
-            file_selected={this.fileSelectHandler}
-            file={this.state.file}
+            isFileMounted={!!this.state.filename}
+            fileInputRefSetter={this.fileInputRefSetter}
             clearFileHandler={this.resetFormHandler}
             groupname={this.state.groupname}
             groupNameChangeHandler={this.groupNameHandler}
             uploadRequest={this.csvHandler}
             warn={this.state.warn}
-            verifyContent={this.state.verifyContent}
             uploadedContent={this.state.uploadedContent}
             staged={staged}
           />
         ) : (
-          <table className={styles.table}>
-            <tbody>
-              <tr style={{ display: "inline" }}>
-                <td width="55%" valign="top" className={styles.narrow_desc}>
-                  <Add
-                    file_selected={this.fileSelectHandler}
-                    file={this.state.file}
-                    clearFileHandler={this.resetFormHandler}
-                    groupname={this.state.groupname}
-                    groupNameChangeHandler={this.groupNameHandler}
-                    uploadRequest={this.csvHandler}
-                    warn={this.state.warn}
-                    verifyContent={this.state.verifyContent}
-                    uploadedContent={this.state.uploadedContent}
-                  />
-                  {staged}
-                </td>
-                <td width="13%"></td>
-                <td width="35%" valign="top" className={styles.narrow_desc}>
-                  <YourGalleries />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        )}
+        */}
+        <table className={styles.table}>
+          <tbody>
+            <tr style={{ display: "inline" }}>
+              <td width="55%" valign="top" className={styles.narrow_desc}>
+                <Add
+                  fileInputRef={this.state.fileInputRef}
+                  clearFileHandler={this.resetFormHandler}
+                  groupname={this.state.groupname}
+                  groupNameChangeHandler={this.groupNameHandler}
+                  uploadRequest={this.csvHandler}
+                  warn={this.state.warn}
+                  uploadedContent={this.state.uploadedContent}
+                />
+                {staged}
+              </td>
+              <td width="13%"></td>
+              <td width="35%" valign="top" className={styles.narrow_desc}>
+                <YourGalleries />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {/* )} */}
       </div>
     );
   }

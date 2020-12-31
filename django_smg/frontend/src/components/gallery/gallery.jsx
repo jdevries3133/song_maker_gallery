@@ -12,6 +12,7 @@ class gallery extends Component {
     gallery: null,
   };
   componentDidMount() {
+    console.log(this.state.url_ext);
     this.props.getGallery(this.state.url_ext);
   }
 
@@ -40,7 +41,7 @@ class gallery extends Component {
             <GalleryBody
               title={this.props.gallery.title}
               description={this.props.gallery.description}
-              data={this.props.gallery.api_obj}
+              data={this.props.gallery.songData}
               button={this.state.button}
             />
           </div>

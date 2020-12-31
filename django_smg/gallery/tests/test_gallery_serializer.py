@@ -220,6 +220,7 @@ class TestGallerySerializer(test.TestCase):
         """
         correct_output = {
             'pk': 1,
+            'slug': 'test-title',
             'title': self.GALLERY_TITLE,
             'description': self.GALLERY_DESCRIPTION,
             'songData': [

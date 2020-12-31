@@ -1,7 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./add_gallery.module.css";
 
 const Verify = (props) => {
+  let groupname;
+  let canUseFileName = false;
+
+  try {
+    props.fileInputRef.current.files[0].name;
+    canUseFileName = true;
+  } catch (e) {}
+
+  // groupname initial value to the file name if one isn't being sent down
+  // from props
+  if (canUseFileName && !props.groupname) {
+    groupname = props.fileInputRef.current.files[0].name;
+    props.groupNameChange({ target: { value: groupname } });
+  } else if (props.groupname) {
+    groupname = props.groupname;
+  } else {
+    groupname = "";
+  }
+
+  // songData construction logic
   var nameIndex = props.nameIndex;
   var linkIndex = props.linkIndex;
   var filtered;
@@ -88,7 +108,7 @@ const Verify = (props) => {
         <h3>Group Name to Display:</h3>
         <input
           className={`${styles.input} ${styles.wide_input}`}
-          value={props.groupname}
+          value={groupname}
           onChange={(e) => props.groupNameChange(e)}
         />
         <br />

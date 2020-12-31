@@ -38,7 +38,7 @@ const staged = (props) => {
       <br />
       <button
         className={styles.large_button}
-        onClick={() => props.previewGallery()}
+        onClick={() => props.confirmCreate()}
       >
         <p>Create Gallery</p>
         <p>(Once all of your groups are staged)</p>

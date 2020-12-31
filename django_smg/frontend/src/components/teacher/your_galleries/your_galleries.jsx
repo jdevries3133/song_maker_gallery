@@ -13,24 +13,14 @@ import {
 } from "../../../actions/user";
 
 const YourGalleries = (props) => {
+  // TODO: after deleting a gallery, this will infinitely re-render. Fix!
   const [confirmDelete, setConfirmDelete] = useState(null);
   const [blanket, setBlanket] = useState(null);
-  let user_gals;
 
+  let user_gals;
   const onOk = () => {
     setBlanket(null);
     setConfirmDelete(null);
-  };
-
-  const undo = (loopback) => {
-    postGallery(
-      {
-        title: loopback.title,
-        description: loopback.description,
-        api_obj: loopback.api_obj,
-      },
-      props.token
-    );
   };
 
   useEffect(() => {
@@ -39,10 +29,8 @@ const YourGalleries = (props) => {
       setBlanket(
         <div className="description blanket">
           <h2>Success</h2>
-          <p>Your gallery "{props.deleteLoopback.title}" has been deleted.</p>
+          <p>Your gallery has been deleted.</p>
           <button onClick={() => onOk()}>Ok</button>
-          {/* <button onClick={() => undo(props.deleteLoopback)}>Undo</button> */}
-          {/* will be a nice thing to implement later */}
         </div>
       );
     } else if (props.deleteStatus === "error") {
@@ -56,10 +44,9 @@ const YourGalleries = (props) => {
 
   if (props.galleries) {
     user_gals = props.galleries.map((gallery, index) => {
-      const url =
-        window.location.href.slice(0, -7) +
-        "gallery/" +
-        gallery["url_extension"];
+      const url = `${window.location.href.slice(0, -7)}gallery/${
+        gallery["slug"]
+      }/`;
       return (
         <ThemeProvider
           theme={{
@@ -74,7 +61,7 @@ const YourGalleries = (props) => {
               {gallery["title"].length < 14 ? null : <span>...</span>}
             </td>
             <td width="70%">
-              <Link to={"/gallery/" + gallery["url_extension"]}>
+              <Link to={`/gallery/${gallery["slug"]}/`}>
                 <ThemeProvider
                   theme={(theme) => {
                     return { backgroundColor: "#00c4ff", ...theme };
@@ -134,7 +121,7 @@ const mapStateToProps = (state) => {
     galleries: state.user.galleries.map((gallery) => {
       return {
         title: gallery["title"],
-        url_extension: gallery["url_extension"],
+        slug: gallery["slug"],
         pk: gallery["pk"],
       };
     }),

@@ -5,6 +5,7 @@ import useWidth from "../../generics/useWidth";
 
 const Add = (props) => {
   const { width } = useWidth();
+
   return (
     <Fragment>
       <h3>Add a Gallery</h3>
@@ -19,11 +20,7 @@ const Add = (props) => {
       <p className={styles.par_just}>
         The spreadsheet must be in the form of a .csv file, which you can easily
         output from Excel or google sheets. As long as there is a column labeled
-        "names," and "links," in the spreadsheet, we will pick up on the rest.{" "}
-        <a href="https://placeholder.com/">
-          Click here if you'd like me to walk you through it, I promise it's a
-          piece of cake!
-        </a>
+        "names," and "links," in the spreadsheet, we will pick up on the rest.
       </p>
       <p className={styles.par_just}>
         A gallery can have up to five groups in it, and you can make as many
@@ -32,28 +29,10 @@ const Add = (props) => {
         monolith page to scroll through. Add groups by uploading CSV files of
         names and links one at a time!
       </p>
-      {props.file ? (
-        <Fragment>
-          <p className={styles.par_strong}>
-            Customize the name of this group as you would like it to be
-            displayed in the gallery.
-          </p>
-          <input
-            className={`${styles.input} ${styles.wide_input}`}
-            value={props.groupname}
-            onChange={(e) => props.groupNameChangeHandler(e)}
-          />
-        </Fragment>
-      ) : null}
       <br />
       <p className={styles.par_just}>Upload one spreadsheet per group.</p>
       <br />
-      <input
-        className={styles.upload}
-        type="file"
-        onChange={(e) => props.file_selected(e)}
-        value={props.file}
-      />
+      <input className={styles.upload} type="file" ref={props.fileInputRef} />
       <br />
       <button
         onClick={() => props.uploadRequest()}
