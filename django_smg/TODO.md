@@ -7,8 +7,7 @@
 - [x] Fetching and caching service
 - [ ] ~~Hook sample gallery into django migration~~
 - [x] Include hard coded sample gallery in the frontend
-- [ ] Make endpoint at `/api/login/ping-auth/` for the frontend to try out an
-      old token
+- [x] `/api/auth/login` rotates token upon authenticated GET request.
 - [x] Fix `/api/gallery/undefined` bug.
 - [x] Fix post-delete gallery dialogue box is not dismissed
 - [ ] Update "mobile optimized view" for Teacher component

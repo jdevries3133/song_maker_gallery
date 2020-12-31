@@ -6,6 +6,7 @@ from rest_framework.generics import GenericAPIView, RetrieveAPIView
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.authtoken.serializers import AuthTokenSerializer
+from rest_framework import status
 from knox.views import LoginView as KnoxLoginView
 from knox.models import AuthToken
 from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
@@ -49,7 +50,20 @@ class LoginAPI(KnoxLoginView):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
         login(request, user)
-        return super(LoginAPI, self).post(request, format=None)
+        return super().post(request, format=None)
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            return super().post(request, format=None)
+        return Response(
+            {
+            'message': (
+                'Must provide token for rotation or authenticate with '
+                'credentials via POST request to this endpoint'
+            )
+            },
+            status=status.HTTP_403_FORBIDDEN,
+        )
 
 
 class UserAPI(RetrieveAPIView):
