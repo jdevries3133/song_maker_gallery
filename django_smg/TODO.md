@@ -5,7 +5,7 @@
 - [x] Update frontend state management to expect songData
 - [x] Make backend gallery delete endpoint
 - [x] Fetching and caching service
-- [ ] ~~Hook sample gallery into django migration~~
+- [ ] ~~Hook sample gallery into django migration~~ _did below instead_
 - [x] Include hard coded sample gallery in the frontend
 - [x] `/api/auth/login` rotates token upon authenticated GET request.
 - [x] Fix `/api/gallery/undefined` bug.

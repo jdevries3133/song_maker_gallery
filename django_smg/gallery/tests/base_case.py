@@ -13,47 +13,50 @@ class GalleryTestCase(TestCase):
         self.mock_api_data =  {
             'title': 'Test Title',
             'description': 'This is the test description.',
-            'songData': [
+            'songData':  # JSON string
+            """
                 [
+                  [
                     [
-                        'Mark Johnson',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912'
+                      "Mark Johnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
                     [
-                        'Mark J.',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912'
+                      "Mark J.",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
                     [
-                        'Mark  Johnson',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912'
+                      "Mark  Johnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
 
                     [
-                        'Mark   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Johnson',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912'
+                      "Mark   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Johnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
-                    'A Group of Marks',
-                ],
-                [
+                    "A Group of Marks"
+                  ],
+                  [
                     [
-                        'Lilly Gohnson',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912'
-                    ],
-                    [
-                        'Lilly G.',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912'
+                      "Lilly Gohnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
                     [
-                        'lilly  Gohnson',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912'
+                      "Lilly G.",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
                     [
-                        'Lilly   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Gohnson',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912'
+                      "lilly  Gohnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
-                    'A Group of Lillys'
+                    [
+                      "Lilly   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Gohnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+                    ],
+                    "A Group of Lillys"
+                  ]
                 ]
-            ]
+                """
         }
         self.expected_rendered_data = {
             'pk': 1,

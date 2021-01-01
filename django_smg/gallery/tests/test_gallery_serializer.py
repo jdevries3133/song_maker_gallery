@@ -24,63 +24,59 @@ class TestGallerySerializer(test.TestCase):
 
     maxDiff = None
 
-    def mock_api_data(self):
+    @ staticmethod
+    def mock_api_data():
         """
         Always need to deep copy because the serializer pops group names out,
         mutating the nested list.
         """
         return deepcopy({
-            'title': self.GALLERY_TITLE,
-            'description': self.GALLERY_DESCRIPTION,
-            'songData': [
+            'title': 'Test Title',
+            'description': 'This is the test description.',
+            'songData':  # JSON string
+            """
                 [
+                  [
                     [
-                        'Mark Johnson',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/4618345650632704',
+                      "Mark Johnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
                     [
-                        'Mark J.',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/4613455650632704',
+                      "Mark J.",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
                     [
-                        'Mark  Johnson',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/1238045650632704',
+                      "Mark  Johnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
 
                     [
-                        'Mark   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Johnson',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/4618045634532704',
+                      "Mark   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Johnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
-                    'A Group of Marks',
-                ],
-                [
+                    "A Group of Marks"
+                  ],
+                  [
                     [
-                        'Lilly Gohnson',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/4618045123632704',
+                      "Lilly Gohnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
                     [
-                        'Lilly G.',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/4618041220632704',
+                      "Lilly G.",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
                     [
-                        'lilly  Gohnson',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/4618045650632704',
+                      "lilly  Gohnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
                     [
-                        'Lilly   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Gohnson',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/4618045650632704',
+                      "Lilly   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Gohnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
-                    'A Group of Lillys'
+                    "A Group of Lillys"
+                  ]
                 ]
-            ]
+                """
         })
 
     def setUp(self):
@@ -89,8 +85,16 @@ class TestGallerySerializer(test.TestCase):
             email='jack@jack.com',
             password='ghjlesdfr;aghruiao;'
         )
+        self._make_gallery()
+
+
+    def _make_gallery(self):
         serializer = GalleryDatasetSerializer(
-            data=self.mock_api_data(),
+            data={
+                'title': self.GALLERY_TITLE,
+                'description': self.GALLERY_DESCRIPTION,
+                'songData': self.mock_api_data(),
+            },
             context={
                 'user': self.user,
             }
@@ -98,7 +102,11 @@ class TestGallerySerializer(test.TestCase):
         if serializer.is_valid():
             serializer.save()
         else:
-            raise Exception('Serializer in setUp method was not valid')
+            raise Exception(
+                'Serializer in setUp method was not valid due to '
+                f'errors: {serializer.errors}'
+
+            )
 
     def test_gallery_single_gallery_exists(self):
         gallery_set = Gallery.objects.filter(slug='test-title')  # type: ignore
@@ -160,12 +168,12 @@ class TestGallerySerializer(test.TestCase):
                     [
                         'Insecure Bryan',
                         'http://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/4618045650632704',
+                        'song/5676759593254912',
                     ],
                     [
                         'Suzy Goodlink',
                         'https://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/4618345650632704',
+                        'song/5676759593254912',
                     ],
                     'Good Link Group'
                 ]
@@ -201,12 +209,12 @@ class TestGallerySerializer(test.TestCase):
                     [
                         'Student Name',
                         'https://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/4618345650632704'
+                        'song/5676759593254912'
                     ],
                     [
                         'Student Name',
                         'https://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/4618345650632704'
+                        'song/5676759593254912'
                     ]
                 ]
             ]
@@ -225,16 +233,16 @@ class TestGallerySerializer(test.TestCase):
             'description': self.GALLERY_DESCRIPTION,
             'songData': [
                 [
-                    ('Mark J.', '4618345650632704'),
-                    ('Mark J.', '4613455650632704'),
-                    ('Mark J.', '1238045650632704'),
-                    ('Mark J.', '4618045634532704')
+                    ('Mark J.', '5676759593254912'),
+                    ('Mark J.', '5676759593254912'),
+                    ('Mark J.', '5676759593254912'),
+                    ('Mark J.', '5676759593254912')
                 ],
                 [
-                    ('Lilly G.', '4618045123632704'),
-                    ('Lilly G.', '4618041220632704'),
-                    ('Lilly G.', '4618045650632704'),
-                    ('Lilly G.', '4618045650632704')
+                    ('Lilly G.', '5676759593254912'),
+                    ('Lilly G.', '5676759593254912'),
+                    ('Lilly G.', '5676759593254912'),
+                    ('Lilly G.', '5676759593254912')
                 ]
             ]
         }
@@ -253,13 +261,7 @@ class TestGallerySerializer(test.TestCase):
             raise Exception("songData is not correct")
 
     def test_render_many(self):
-        # create a second gallery
-        second_gal_data = self.mock_api_data()
-        serializer = GalleryDatasetSerializer(data=second_gal_data, context={
-            'user': self.user
-        })
-        self.assertTrue(serializer.is_valid())
-        serializer.save()
+        self._make_gallery()
         result = GalleryDatasetSerializer(
             context={
                 'user': self.user,
@@ -284,16 +286,16 @@ class TestGallerySerializer(test.TestCase):
                     'description': self.GALLERY_DESCRIPTION,
                     'songData': [
                         [
-                            ('Mark J.', '4618345650632704'),
-                            ('Mark J.', '4613455650632704'),
-                            ('Mark J.', '1238045650632704'),
-                            ('Mark J.', '4618045634532704')
+                            ('Mark J.', '5676759593254912'),
+                            ('Mark J.', '5676759593254912'),
+                            ('Mark J.', '5676759593254912'),
+                            ('Mark J.', '5676759593254912')
                         ],
                         [
-                            ('Lilly G.', '4618045123632704'),
-                            ('Lilly G.', '4618041220632704'),
-                            ('Lilly G.', '4618045650632704'),
-                            ('Lilly G.', '4618045650632704')
+                            ('Lilly G.', '5676759593254912'),
+                            ('Lilly G.', '5676759593254912'),
+                            ('Lilly G.', '5676759593254912'),
+                            ('Lilly G.', '5676759593254912')
                         ]
                     ]
                 }

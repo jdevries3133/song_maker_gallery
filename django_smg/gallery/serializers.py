@@ -1,32 +1,33 @@
+import json
 import re
 
-from django.db.models import Q
-from rest_framework.serializers import Serializer, ModelSerializer, ValidationError
+from rest_framework import serializers
 from .models import Gallery, Song, SongGroup
 
 
-class SongSerializer(ModelSerializer):
+class SongSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
         fields = ('songId', 'galleries')
 
-class SongGroupSerializer(ModelSerializer):
+class SongGroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = SongGroup
         fields = ('group_name',)
 
 
-class GallerySerializer(ModelSerializer):
+class GallerySerializer(serializers.ModelSerializer):
     class Meta:
         model = Gallery
         fields = (
             'title',
             'description',
             'slug',
+            'pk',
         )
 
 
-class GalleryDatasetSerializer(Serializer):
+class GalleryDatasetSerializer(serializers.Serializer):
     """
     Brings together information from the following models to create or render
     galleries in a single request:
@@ -35,7 +36,12 @@ class GalleryDatasetSerializer(Serializer):
     - Song
     - SongGroup
     """
-    def get_queryset(self, slug=None, max_galleries=10, gallery=None):
+    title = serializers.CharField(max_length=100, allow_blank=False)
+    description = serializers.CharField(max_length=1e10, allow_blank=False)
+    songData = serializers.JSONField()
+
+    @ staticmethod
+    def get_queryset(slug=None, max_galleries=10, gallery=None):
         """
         **CAREFUL! This returns a dict of querysets and model instances; not
         a regular queryset.
@@ -44,9 +50,15 @@ class GalleryDatasetSerializer(Serializer):
             raise Exception('Must pass gallery object or gallery slug')
         if not gallery:
             gallery = Gallery.objects.get(slug=slug)  # type: ignore
-        songs = Song.objects.select_related(  # type: ignore
+        songs = Song.objects.select_related(
             'gallery',
-            'group').filter(gallery=gallery)
+            'group'
+                ).filter(
+                    gallery=gallery
+                        ).order_by(
+                            'created'
+                        )[:max_galleries]
+
         groups = SongGroup.objects.filter(gallery=gallery)  # type: ignore
         return {
             'gallery': gallery,
@@ -61,10 +73,12 @@ class GalleryDatasetSerializer(Serializer):
         return [
             self.render(gallery=g)
             for g in
-            Gallery.objects.filter(owner=self.context.get('user')).prefetch_related(  # type: ignore
-                'songs',
-                'song_groups',
-            )
+            Gallery.objects.filter(
+                owner=self.context.get('user')
+                ).prefetch_related(  # type: ignore
+                    'songs',
+                    'song_groups',
+                )
         ]
 
     def render(self, slug=None, gallery=None):
@@ -89,7 +103,7 @@ class GalleryDatasetSerializer(Serializer):
         rendered_groups = []
         for group in groups:
             group_songs = []
-            for song in data['songs'].filter(group=group):
+            for song in Song.objects.filter(id__in=data['songs'], group=group):  # type: ignore
                 group_songs.append((song.student_name, song.songId))
             rendered_groups.append(group_songs)
         output['songData'] = rendered_groups
@@ -159,49 +173,30 @@ class GalleryDatasetSerializer(Serializer):
             raise Exception('Current request context has no user')
         return user
 
-    def validate(self, data):
-        data = self.initial_data  # no idea why data variable is empty
-        for key in ['title', 'description', 'songData']:
-            if not key in data:
-                raise ValidationError({
-                    'message': f'{key} not provided in request data'
-                })
-            validate = self._get_validator(key)
-            try:
-                validate(data[key])
-            except AssertionError:
-                raise ValidationError({
-                    'message': f'{key} is not valid.'
-                })
-        return data
-
-    def _get_validator(self, key):
-        return {
-            'title': self.validate_title,
-            'description': self.validate_description,
-            'songData': self.validate_song_data
-        }.get(key)
-
-    def validate_title(self, title):
-        assert len(title) < 100
-
-    def validate_description(self, description):
-        pass
-
-    def validate_song_data(self, song_data):
+    @ staticmethod
+    def validate_songData(song_data):
         """
         Check shape of data structure: a list of lists of two strings.
         """
-        assert isinstance(song_data, list)
-        for group in song_data:
-            assert isinstance(group[-1], str)
-            assert isinstance(group, list)
-            for row in group[:-1]:
-                assert isinstance(row, list)
-                assert len(row) == 2
-                assert re.match(
-                    r'http(s)?://musiclab.chromeexperiments.com/Song-Maker/'
-                    'song/(\d){16}',
-                    row[1]
-                )
-
+        if isinstance(song_data, str):
+            song_data = json.loads(song_data)
+        elif isinstance(song_data, dict):
+            song_data = json.loads(song_data.get('songData'))
+        try:
+            assert isinstance(song_data, list)
+            for group in song_data:
+                assert isinstance(group[-1], str)
+                assert isinstance(group, list)
+                for row in group[:-1]:
+                    assert isinstance(row, list)
+                    assert len(row) == 2
+                    assert re.match(
+                        r'http(s)?://musiclab.chromeexperiments.com/Song-Maker/'
+                        r'song/(\d){16}',
+                        row[1]
+                    )
+        except AssertionError:
+            raise serializers.ValidationError({
+                'message': 'songData is not valid'
+            })
+        return song_data

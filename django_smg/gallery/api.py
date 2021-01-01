@@ -1,12 +1,10 @@
 import logging
 
-from django.db.utils import IntegrityError
-from rest_framework.decorators import api_view, permission_classes
 from rest_framework import permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import Gallery, Song, SongGroup
+from .models import Gallery
 from .serializers import GallerySerializer, GalleryDatasetSerializer
 
 logger = logging.getLogger('file')
@@ -33,9 +31,8 @@ class AuthGalleryViewset(APIView):
             'user': request.user
         })
         serializer.is_valid(raise_exception=True)
-        new_gallery = serializer.save()
         return Response(
-            GallerySerializer(new_gallery).data,
+            serializer.render(serializer.save().slug),
             status=status.HTTP_201_CREATED
         )
 

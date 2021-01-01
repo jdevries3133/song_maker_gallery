@@ -34,6 +34,17 @@ class TestAuthGalleryViewset(GalleryTestCase):
             self.mock_api_data['description']
         )
 
+    def test_post_request_returns_expected_information(self):
+        res = self.client.post(
+            '/api/gallery/',
+            data=self.mock_api_data,
+            HTTP_AUTHORIZATION=f'Token {self.token}'
+        )
+        self.assertTrue(are_rendered_groups_same(
+            res.json(),  # type: ignore
+            self.expected_rendered_data,
+        ))
+
     def test_delete_gallery_without_pk_returns_400(self):
         res = self.client.delete(
             '/api/gallery/?invalid=this',

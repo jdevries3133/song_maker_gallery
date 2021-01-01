@@ -74,6 +74,7 @@ class SongGroup(models.Model):
     """
     Songs in the gallery are visually grouped. This model defines the grouping.
     """
+    created = models.DateTimeField(auto_now_add=True)
     group_name = models.CharField(_("Group Name"), max_length=100)
     gallery = models.ForeignKey(
         Gallery,
@@ -90,6 +91,7 @@ class Song(models.Model):
     A single song that is part of a gallery. Contains cached midi files and
     json objects from the Chrome Music Lab site.
     """
+    created = models.DateTimeField(auto_now_add=True)
     songId = models.CharField(_("Song ID"), max_length=20)
     student_name =  models.CharField(_("Student Name"), max_length=100)
 
