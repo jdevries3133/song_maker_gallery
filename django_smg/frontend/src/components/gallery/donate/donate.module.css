@@ -25,6 +25,10 @@
   display: inline-block;
 }
 
+.par {
+  text-align: justify;
+}
+
 @media (max-width: 830px) {
   .donation_blanket {
     height: 500px;

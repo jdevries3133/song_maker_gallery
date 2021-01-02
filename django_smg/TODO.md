@@ -10,9 +10,16 @@
 - [x] `/api/auth/login` rotates token upon authenticated GET request.
 - [x] Fix `/api/gallery/undefined` bug.
 - [x] Fix post-delete gallery dialogue box is not dismissed
-- [ ] Update "mobile optimized view" for Teacher component
-- [ ] Fix group name not set properly by frontend
+- [x] Update "mobile optimized view" for Teacher component
+- [x] Fix group name not set properly by frontend
   - Should be the last row in the group.
+- [ ] Integrate dynamic tile
+- [ ] Make text beneath "add a gallery" clearer.
+- [ ] Provide a template spreadsheet
+- [ ] Fix bug where it is impossible to scroll to bottom of gallery in mobile.
+
+### Low-Priority
+
 - [ ] Make it so the donation button automatically doesn't appear for the
       galleries of privileged users.
-- [ ] Change Tile css to use `background-color`
+- [ ] Allow login via username _or_ email
