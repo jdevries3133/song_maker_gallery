@@ -14,6 +14,9 @@
 - [x] Fix group name not set properly by frontend
   - Should be the last row in the group.
 - [ ] Integrate dynamic tile
+  - See `frontend/src/components/gallery/tilegrid/tile.jsx` for a detailed
+    TODO list on dynamic tile integration.
+- [ ] Create API service to provide songData to frontend
 - [ ] Make text beneath "add a gallery" clearer.
 - [ ] Provide a template spreadsheet
 - [ ] Fix bug where it is impossible to scroll to bottom of gallery in mobile.

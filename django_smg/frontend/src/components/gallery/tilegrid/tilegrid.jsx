@@ -1,5 +1,21 @@
+/**
+ * Dynamic Tile Integration To-Do List
+ *
+ * - [x] Component-level implementation
+ * - [ ] Implement backend service to make component work
+ * - [ ] Implement redux action and state to hold song data.
+ *
+ * ### Name Display
+ *
+ * The dynamic tile does not display the student's name or take it as a prop,
+ * yet I want to maintain the animation as it has been already. Will it be
+ * best to try to maintain a mostly-css animation as I have done, or do respond
+ * to make a javascript animation by unmounting the dynamic tile component,
+ * and transitioning to a name display component?
+ */
+
 import React from "react";
-import Tile from "./tile";
+import { DynamicTile } from "./DynamicTile";
 import useWidth from "../../generics/useWidth";
 import styles from "./tilegrid.module.css";
 
@@ -17,13 +33,8 @@ const tileGrid = (props) => {
         <span className={styles.back_finger}>☟</span>
       </a>
       <ul className={styles.tgrid}>
-        {props.data.slice(0, -1).map((student, index) => (
-          <Tile
-            group={group_name}
-            st_arr={student}
-            key={group_name + student + Math.random().toString()}
-            index={index % 6}
-          />
+        {props.data.slice(0, -1).map((student) => (
+          <DynamicTile songId={student[1]} />
         ))}
       </ul>
     </div>
@@ -42,13 +53,8 @@ const tileGrid = (props) => {
         </button>
       </a>
       <ul className={styles.tgrid}>
-        {props.data.slice(0, -1).map((student, index) => (
-          <Tile
-            group={group_name}
-            st_arr={student}
-            key={group_name + student + Math.random().toString()}
-            index={index}
-          />
+        {props.data.slice(0, -1).map((student) => (
+          <DynamicTile songId={student[1]} />
         ))}
       </ul>
     </div>

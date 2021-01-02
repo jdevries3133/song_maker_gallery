@@ -1,15 +1,3 @@
-/* 
-This part of the project is in flux now. There is no great way to capture
-screenshots efficiently. I might try Phantom JS, but it's depricated. Splash
-was promising but the lack of an AudioContext API is causing it to fail to
-render the page.
-
-In response, I'm experimenting with embedding the screenshots for now, but I
-will leave the old code in this file in case I find an efficient way to capture
-screenshots, because I think this look with the hover animations is what
-I'm ultimately after.
-*/
-
 import React, { useState, useEffect, useRef } from "react";
 import { ThemeProvider } from "styled-components";
 import styles from "./tilegrid.module.css";

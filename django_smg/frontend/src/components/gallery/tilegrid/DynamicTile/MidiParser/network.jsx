@@ -13,13 +13,13 @@ async function fetchMidi(songId) {
     .get(endpoint, {
       responseType: "arraybuffer",
     })
-    .catch((e) => console.error(`Midi data for songId ${songId} not found`));
+    .catch(() => console.error(`Midi data for songId ${songId} not found`));
 }
 
 async function fetchJson(songId) {
   return axios
     .get(JSON_ENDPOINT + songId)
-    .catch((e) => console.error(`Json object for songId ${songId} not found`));
+    .catch(() => console.error(`Json object for songId ${songId} not found`));
 }
 
 export async function getSongData(songId) {
@@ -36,7 +36,7 @@ export async function getSongData(songId) {
         json: json.data,
       };
     })
-    .catch((e) => {
+    .catch(() => {
       console.warn(
         "<DynamicTile>: Network error fetching song data. Is the backend properly configured?"
       );

@@ -1,10 +1,3 @@
-/*
- * TODO
- *
- * 1. Generate grid
- * 2. Wrap component in pretty fallback / error boundary
- */
-
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Song } from "./MidiParser/Parser";
@@ -87,7 +80,8 @@ export const DynamicTile = (props) => {
     >
       <svg
         // Prettier formats this very stupidly
-        // I'm just chopping "px" off the end of the width and height strings
+        // What is happening here is that "px" is being chopped off the end
+        // of the width and height strings.
         viewBox={`0 0 ${tileSize.width.slice(0, -2)} ${tileSize.height.slice(
           0,
           -2
