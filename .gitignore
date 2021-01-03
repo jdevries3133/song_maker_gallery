@@ -2,17 +2,10 @@ venv
 secret_settings.py
 Session.vim
 tags
-ui_testing_data
 main.js
 main.js.gz
-chromedriver
-*config.json
 .DS_STORE
 node_modules
-backendcron.sh
-botcron.sh
-scripts/flow/*/.flowconfig
-.flowconfig
 *~
 *.pyc
 .grunt
