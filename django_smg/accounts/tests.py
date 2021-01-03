@@ -27,6 +27,10 @@ class TestLoginApi(GalleryTestCase):
         self.email_client = test.Client()
 
     def test_user_can_login_with_email(self):
+        """
+        TODO: make this test pass. Note: this test is expected to fail as
+        email login is not currently supported.
+        """
         res = self.email_client.post(
             '/api/auth/login/',
             data={
