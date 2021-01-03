@@ -227,24 +227,178 @@ class TestGallerySerializer(test.TestCase):
         frontend to render a single gallery.
         """
         correct_output = {
+            'description': 'This is the test description.This is the test '
+                'description.This is the test description.This is the test '
+                'description.This is the test description.This is the test '
+                'description.This is the test description.This is the test '
+                'description.This is the test description.This is the test '
+                'description.This is the test description.This is the test '
+                'description.This is the test description.This is the test '
+                'description.This is the test description.This is the test '
+                'description.This is the test description.This is the test '
+                'description.This is the test description.This is the test '
+                'description.This is the test description.This is the test '
+                'description.This is the test description.This is the test '
+                'description.This is the test description.This is the test '
+                'description.This is the test description.This is the test '
+                'description.',
             'pk': 1,
             'slug': 'test-title',
-            'title': self.GALLERY_TITLE,
-            'description': self.GALLERY_DESCRIPTION,
-            'songData': [
-                [
-                    ('Mark J.', '5676759593254912'),
-                    ('Mark J.', '5676759593254912'),
-                    ('Mark J.', '5676759593254912'),
-                    ('Mark J.', '5676759593254912')
-                ],
-                [
-                    ('Lilly G.', '5676759593254912'),
-                    ('Lilly G.', '5676759593254912'),
-                    ('Lilly G.', '5676759593254912'),
-                    ('Lilly G.', '5676759593254912')
-                ]
-            ]
+            'songData': [[{'metadata': {'bars': 4,
+                                     'beats': 4,
+                                     'instrument': 'marimba',
+                                     'octaves': 2,
+                                     'percussion': 'electronic',
+                                     'percussionNotes': 2,
+                                     'rootNote': 48,
+                                     'rootOctave': 4,
+                                     'rootPitch': 0,
+                                     'scale': 'major',
+                                     'subdivision': 2,
+                                     'tempo': 120},
+                        'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                     b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                     b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                     b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                     b'NwAAgTkAsGD/LwA=',
+                        'name': 'Mark J.',
+                        'songId': '5676759593254912'},
+                       {'metadata': {'bars': 4,
+                                     'beats': 4,
+                                     'instrument': 'marimba',
+                                     'octaves': 2,
+                                     'percussion': 'electronic',
+                                     'percussionNotes': 2,
+                                     'rootNote': 48,
+                                     'rootOctave': 4,
+                                     'rootPitch': 0,
+                                     'scale': 'major',
+                                     'subdivision': 2,
+                                     'tempo': 120},
+                        'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                     b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                     b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                     b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                     b'NwAAgTkAsGD/LwA=',
+                        'name': 'Mark J.',
+                        'songId': '5676759593254912'},
+                       {'metadata': {'bars': 4,
+                                     'beats': 4,
+                                     'instrument': 'marimba',
+                                     'octaves': 2,
+                                     'percussion': 'electronic',
+                                     'percussionNotes': 2,
+                                     'rootNote': 48,
+                                     'rootOctave': 4,
+                                     'rootPitch': 0,
+                                     'scale': 'major',
+                                     'subdivision': 2,
+                                     'tempo': 120},
+                        'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                     b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                     b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                     b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                     b'NwAAgTkAsGD/LwA=',
+                        'name': 'Mark J.',
+                        'songId': '5676759593254912'},
+                       {'metadata': {'bars': 4,
+                                     'beats': 4,
+                                     'instrument': 'marimba',
+                                     'octaves': 2,
+                                     'percussion': 'electronic',
+                                     'percussionNotes': 2,
+                                     'rootNote': 48,
+                                     'rootOctave': 4,
+                                     'rootPitch': 0,
+                                     'scale': 'major',
+                                     'subdivision': 2,
+                                     'tempo': 120},
+                        'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                     b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                     b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                     b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                     b'NwAAgTkAsGD/LwA=',
+                        'name': 'Mark J.',
+                        'songId': '5676759593254912'},
+                       'A Group of Marks'],
+                      [{'metadata': {'bars': 4,
+                                     'beats': 4,
+                                     'instrument': 'marimba',
+                                     'octaves': 2,
+                                     'percussion': 'electronic',
+                                     'percussionNotes': 2,
+                                     'rootNote': 48,
+                                     'rootOctave': 4,
+                                     'rootPitch': 0,
+                                     'scale': 'major',
+                                     'subdivision': 2,
+                                     'tempo': 120},
+                        'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                     b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                     b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                     b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                     b'NwAAgTkAsGD/LwA=',
+                        'name': 'Lilly G.',
+                        'songId': '5676759593254912'},
+                       {'metadata': {'bars': 4,
+                                     'beats': 4,
+                                     'instrument': 'marimba',
+                                     'octaves': 2,
+                                     'percussion': 'electronic',
+                                     'percussionNotes': 2,
+                                     'rootNote': 48,
+                                     'rootOctave': 4,
+                                     'rootPitch': 0,
+                                     'scale': 'major',
+                                     'subdivision': 2,
+                                     'tempo': 120},
+                        'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                     b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                     b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                     b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                     b'NwAAgTkAsGD/LwA=',
+                        'name': 'Lilly G.',
+                        'songId': '5676759593254912'},
+                       {'metadata': {'bars': 4,
+                                     'beats': 4,
+                                     'instrument': 'marimba',
+                                     'octaves': 2,
+                                     'percussion': 'electronic',
+                                     'percussionNotes': 2,
+                                     'rootNote': 48,
+                                     'rootOctave': 4,
+                                     'rootPitch': 0,
+                                     'scale': 'major',
+                                     'subdivision': 2,
+                                     'tempo': 120},
+                        'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                     b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                     b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                     b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                     b'NwAAgTkAsGD/LwA=',
+                        'name': 'Lilly G.',
+                        'songId': '5676759593254912'},
+                       {'metadata': {'bars': 4,
+                                     'beats': 4,
+                                     'instrument': 'marimba',
+                                     'octaves': 2,
+                                     'percussion': 'electronic',
+                                     'percussionNotes': 2,
+                                     'rootNote': 48,
+                                     'rootOctave': 4,
+                                     'rootPitch': 0,
+                                     'scale': 'major',
+                                     'subdivision': 2,
+                                     'tempo': 120},
+                        'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                     b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                     b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                     b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                     b'NwAAgTkAsGD/LwA=',
+                        'name': 'Lilly G.',
+                        'songId': '5676759593254912'},
+                       'A Group of Lillys']],
+            'title': 'Test Title'
         }
         rendered = GalleryDatasetSerializer().render('test-title')
         self.assertEqual(rendered, correct_output)
@@ -274,6 +428,7 @@ class TestGallerySerializer(test.TestCase):
         )
 
     def test_render_method_num_queries(self):
+        GalleryDatasetSerializer().render('test-title')
         with self.assertNumQueries(4):
             GalleryDatasetSerializer().render('test-title')
 
@@ -281,24 +436,178 @@ class TestGallerySerializer(test.TestCase):
         self.assertTrue(
             are_rendered_groups_same(
                 GalleryDatasetSerializer().render('test-title'),
-                {
-                    'title': self.GALLERY_TITLE,
-                    'description': self.GALLERY_DESCRIPTION,
-                    'songData': [
-                        [
-                            ('Mark J.', '5676759593254912'),
-                            ('Mark J.', '5676759593254912'),
-                            ('Mark J.', '5676759593254912'),
-                            ('Mark J.', '5676759593254912')
-                        ],
-                        [
-                            ('Lilly G.', '5676759593254912'),
-                            ('Lilly G.', '5676759593254912'),
-                            ('Lilly G.', '5676759593254912'),
-                            ('Lilly G.', '5676759593254912')
-                        ]
-                    ]
-                }
+                {'description': 'This is the test description.This is the test '
+                                'description.This is the test description.This is the test '
+                                'description.This is the test description.This is the test '
+                                'description.This is the test description.This is the test '
+                                'description.This is the test description.This is the test '
+                                'description.This is the test description.This is the test '
+                                'description.This is the test description.This is the test '
+                                'description.This is the test description.This is the test '
+                                'description.This is the test description.This is the test '
+                                'description.This is the test description.This is the test '
+                                'description.This is the test description.This is the test '
+                                'description.This is the test description.This is the test '
+                                'description.This is the test description.This is the test '
+                                'description.This is the test description.This is the test '
+                                'description.',
+                 'pk': 1,
+                 'slug': 'test-title',
+                 'songData': [[{'metadata': {'bars': 4,
+                                             'beats': 4,
+                                             'instrument': 'marimba',
+                                             'octaves': 2,
+                                             'percussion': 'electronic',
+                                             'percussionNotes': 2,
+                                             'rootNote': 48,
+                                             'rootOctave': 4,
+                                             'rootPitch': 0,
+                                             'scale': 'major',
+                                             'subdivision': 2,
+                                             'tempo': 120},
+                                'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                             b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                             b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                             b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                             b'NwAAgTkAsGD/LwA=',
+                                'name': 'Mark J.',
+                                'songId': '5676759593254912'},
+                               {'metadata': {'bars': 4,
+                                             'beats': 4,
+                                             'instrument': 'marimba',
+                                             'octaves': 2,
+                                             'percussion': 'electronic',
+                                             'percussionNotes': 2,
+                                             'rootNote': 48,
+                                             'rootOctave': 4,
+                                             'rootPitch': 0,
+                                             'scale': 'major',
+                                             'subdivision': 2,
+                                             'tempo': 120},
+                                'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                             b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                             b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                             b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                             b'NwAAgTkAsGD/LwA=',
+                                'name': 'Mark J.',
+                                'songId': '5676759593254912'},
+                               {'metadata': {'bars': 4,
+                                             'beats': 4,
+                                             'instrument': 'marimba',
+                                             'octaves': 2,
+                                             'percussion': 'electronic',
+                                             'percussionNotes': 2,
+                                             'rootNote': 48,
+                                             'rootOctave': 4,
+                                             'rootPitch': 0,
+                                             'scale': 'major',
+                                             'subdivision': 2,
+                                             'tempo': 120},
+                                'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                             b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                             b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                             b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                             b'NwAAgTkAsGD/LwA=',
+                                'name': 'Mark J.',
+                                'songId': '5676759593254912'},
+                               {'metadata': {'bars': 4,
+                                             'beats': 4,
+                                             'instrument': 'marimba',
+                                             'octaves': 2,
+                                             'percussion': 'electronic',
+                                             'percussionNotes': 2,
+                                             'rootNote': 48,
+                                             'rootOctave': 4,
+                                             'rootPitch': 0,
+                                             'scale': 'major',
+                                             'subdivision': 2,
+                                             'tempo': 120},
+                                'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                             b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                             b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                             b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                             b'NwAAgTkAsGD/LwA=',
+                                'name': 'Mark J.',
+                                'songId': '5676759593254912'},
+                               'A Group of Marks'],
+                              [{'metadata': {'bars': 4,
+                                             'beats': 4,
+                                             'instrument': 'marimba',
+                                             'octaves': 2,
+                                             'percussion': 'electronic',
+                                             'percussionNotes': 2,
+                                             'rootNote': 48,
+                                             'rootOctave': 4,
+                                             'rootPitch': 0,
+                                             'scale': 'major',
+                                             'subdivision': 2,
+                                             'tempo': 120},
+                                'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                             b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                             b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                             b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                             b'NwAAgTkAsGD/LwA=',
+                                'name': 'Lilly G.',
+                                'songId': '5676759593254912'},
+                               {'metadata': {'bars': 4,
+                                             'beats': 4,
+                                             'instrument': 'marimba',
+                                             'octaves': 2,
+                                             'percussion': 'electronic',
+                                             'percussionNotes': 2,
+                                             'rootNote': 48,
+                                             'rootOctave': 4,
+                                             'rootPitch': 0,
+                                             'scale': 'major',
+                                             'subdivision': 2,
+                                             'tempo': 120},
+                                'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                             b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                             b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                             b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                             b'NwAAgTkAsGD/LwA=',
+                                'name': 'Lilly G.',
+                                'songId': '5676759593254912'},
+                               {'metadata': {'bars': 4,
+                                             'beats': 4,
+                                             'instrument': 'marimba',
+                                             'octaves': 2,
+                                             'percussion': 'electronic',
+                                             'percussionNotes': 2,
+                                             'rootNote': 48,
+                                             'rootOctave': 4,
+                                             'rootPitch': 0,
+                                             'scale': 'major',
+                                             'subdivision': 2,
+                                             'tempo': 120},
+                                'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                             b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                             b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                             b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                             b'NwAAgTkAsGD/LwA=',
+                                'name': 'Lilly G.',
+                                'songId': '5676759593254912'},
+                               {'metadata': {'bars': 4,
+                                             'beats': 4,
+                                             'instrument': 'marimba',
+                                             'octaves': 2,
+                                             'percussion': 'electronic',
+                                             'percussionNotes': 2,
+                                             'rootNote': 48,
+                                             'rootOctave': 4,
+                                             'rootPitch': 0,
+                                             'scale': 'major',
+                                             'subdivision': 2,
+                                             'tempo': 120},
+                                'midiBytes': b'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRy'
+                                             b'awAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/'
+                                             b'AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4A'
+                                             b'AJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CB'
+                                             b'NwAAgTkAsGD/LwA=',
+                                'name': 'Lilly G.',
+                                'songId': '5676759593254912'},
+                               'A Group of Lillys']],
+                 'title': 'Test Title'}
             )
         )
 
@@ -333,3 +642,25 @@ class TestQueryCountLargeGallery(test.TestCase):
         self.serializer.save()
         with self.assertNumQueries(1):
             GalleryDatasetSerializer().get_queryset(slug='sample-gallery')
+
+    def test_num_queries_on_initial_render(self):
+        """
+        Initial render call will trigger cachine, and therefore make an
+        insertion on every song.
+        """
+        self.serializer.save()
+        self.serializer.render(slug='sample-gallery')
+        with CaptureQueriesContext(connection) as query_count:
+            self.serializer.render(slug='sample-gallery')
+        self.assertLess(query_count.final_queries, 30)
+
+    def test_num_queries_on_cached_render(self):
+        """
+        After caching has occuried, the .render() method will be less
+        costly.
+        """
+        self.serializer.save()
+        self.serializer.render(slug='sample-gallery')
+        with CaptureQueriesContext(connection) as query_count:
+            self.serializer.render(slug='sample-gallery')
+        self.assertLess(query_count.final_queries, 10)

@@ -112,6 +112,8 @@ LOGGING = {
         },
     },
     'handlers': {
+        # commented out because this will generate a blank file by being
+        # defined, which is annoying. Uncomment to use the file logger
         # 'file_logger': {
         #     'level': 0,
         #     'class': 'logging.FileHandler',

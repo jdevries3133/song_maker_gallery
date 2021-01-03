@@ -1,5 +1,6 @@
 from django.urls import reverse
 from rest_framework import status
+from copy import deepcopy
 
 from ..models import Gallery
 from .util import are_rendered_groups_same
@@ -35,6 +36,9 @@ class TestAuthGalleryViewset(GalleryTestCase):
         )
 
     def test_post_request_returns_expected_information(self):
+        expected_data = deepcopy(self.expected_rendered_data)
+        expected_data['pk'] = 2
+        expected_data['slug'] = 'test-title-1'
         res = self.client.post(
             '/api/gallery/',
             data=self.mock_api_data,
@@ -42,7 +46,7 @@ class TestAuthGalleryViewset(GalleryTestCase):
         )
         self.assertTrue(are_rendered_groups_same(
             res.json(),  # type: ignore
-            self.expected_rendered_data,
+            expected_data
         ))
 
     def test_delete_gallery_without_pk_returns_400(self):

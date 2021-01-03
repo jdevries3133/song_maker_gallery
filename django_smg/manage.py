@@ -14,6 +14,9 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+    if 'test' in sys.argv:
+        sys.argv.append('--settings=django_smg.test_settings')
+        print('Running tests with django_smg.test_settings to supress log output')
     execute_from_command_line(sys.argv)
 
 

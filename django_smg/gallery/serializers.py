@@ -1,8 +1,10 @@
+import base64
 import json
 import re
 
 from rest_framework import serializers
 from .models import Gallery, Song, SongGroup
+from .services import fetch_and_cache
 
 
 class SongSerializer(serializers.ModelSerializer):
@@ -50,7 +52,7 @@ class GalleryDatasetSerializer(serializers.Serializer):
             raise Exception('Must pass gallery object or gallery slug')
         if not gallery:
             gallery = Gallery.objects.get(slug=slug)  # type: ignore
-        songs = Song.objects.select_related(
+        songs = Song.objects.select_related(  # type: ignore
             'gallery',
             'group'
                 ).filter(
@@ -73,9 +75,9 @@ class GalleryDatasetSerializer(serializers.Serializer):
         return [
             self.render(gallery=g)
             for g in
-            Gallery.objects.filter(
+            Gallery.objects.filter(  # type: ignore
                 owner=self.context.get('user')
-                ).prefetch_related(  # type: ignore
+                ).prefetch_related(
                     'songs',
                     'song_groups',
                 )
@@ -104,7 +106,31 @@ class GalleryDatasetSerializer(serializers.Serializer):
         for group in groups:
             group_songs = []
             for song in Song.objects.filter(id__in=data['songs'], group=group):  # type: ignore
-                group_songs.append((song.student_name, song.songId))
+                if not song.is_cached:
+                    fetch_and_cache(song=song)
+                    song.refresh_from_db()
+                # this should really be defined as some sort of serializer in
+                # its own rite.
+                group_songs.append({
+                    "name": song.student_name,
+                    "songId": song.songId,
+                    "midiBytes": base64.b64encode(song.midi),
+                    "metadata": {
+                        "bars": song.bars,
+                        "beats": song.beats,
+                        "instrument": song.instrument,
+                        "octaves": song.octaves,
+                        "percussion": song.percussion,
+                        "percussionNotes": song.percussionNotes,
+                        "rootNote": song.rootNote,
+                        "rootOctave": song.rootOctave,
+                        "rootPitch": song.rootPitch,
+                        "scale": song.scale,
+                        "subdivision": song.subdivision,
+                        "tempo": song.tempo,
+                    }
+                })
+            group_songs.append(group.group_name)
             rendered_groups.append(group_songs)
         output['songData'] = rendered_groups
         return output
@@ -181,7 +207,7 @@ class GalleryDatasetSerializer(serializers.Serializer):
         if isinstance(song_data, str):
             song_data = json.loads(song_data)
         elif isinstance(song_data, dict):
-            song_data = json.loads(song_data.get('songData'))
+            song_data = json.loads(song_data.get('songData'))  # type: ignore
         try:
             assert isinstance(song_data, list)
             for group in song_data:
