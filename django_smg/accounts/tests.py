@@ -1,8 +1,9 @@
+from django.contrib.auth.models import User
+from django import test
 from rest_framework import status
 
 from gallery.tests.base_case import GalleryTestCase
 
-# Create your tests here.
 
 class TestLoginApi(GalleryTestCase):
     """
@@ -12,6 +13,30 @@ class TestLoginApi(GalleryTestCase):
     and sending a new token back to the user.
     """
 
+    def setUp(self):
+        super().setUp()
+        # define an email_client who will login via email
+        self.email_client_username = "testusername"
+        self.email_client_email = "test@test.com"
+        self.email_client_password = "testuserpassword"
+        self.email_client = User.objects.create_user(
+            username=self.email_client_username,
+            email=self.email_client_email,
+            password=self.email_client_password,
+        )
+        self.email_client = test.Client()
+
+    def test_user_can_login_with_email(self):
+        res = self.email_client.post(
+            '/api/auth/login/',
+            data={
+                'email': self.email_client_email,
+                'password': self.email_client_password,
+            },
+            content_type='application/json'
+        )
+        self.assertTrue(status.is_success(res.status_code))
+        self.assertIn('token', res.data)
 
     def test_login_view_accepts_authenticated_get_request(self):
         self._login_client()

@@ -3,6 +3,9 @@
 import os
 import sys
 
+def _supress_logging_for_testing():
+    sys.argv.append('--settings=django_smg.test_settings')
+    print('Running tests with django_smg.test_settings to supress log output')
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_smg.settings')
@@ -15,8 +18,7 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     if 'test' in sys.argv:
-        sys.argv.append('--settings=django_smg.test_settings')
-        print('Running tests with django_smg.test_settings to supress log output')
+        _supress_logging_for_testing()
     execute_from_command_line(sys.argv)
 
 

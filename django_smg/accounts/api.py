@@ -45,7 +45,6 @@ class LoginAPI(KnoxLoginView):
     queryset = User.objects.all()
 
     def post(self, request, *args, **kwargs):
-
         serializer = AuthTokenSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
