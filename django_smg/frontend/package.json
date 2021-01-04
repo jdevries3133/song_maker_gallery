@@ -30,6 +30,7 @@
     "@babel/runtime": "^7.12.5",
     "axios": "^0.19.2",
     "compression-webpack-plugin": "^6.0.2",
+    "eslint": "^7.17.0",
     "lodash.clonedeep": "^4.5.0",
     "midi-parser-js": "^4.0.4",
     "papaparse": "^5.2.0",
