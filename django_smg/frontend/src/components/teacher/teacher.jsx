@@ -80,7 +80,6 @@ class Teacher extends Component {
 
   // see <Add />
   csvHandler = () => {
-    console.log("1");
     let file_name;
     try {
       file_name = this.state.fileInputRef.current.files[0].name;
@@ -312,7 +311,6 @@ class Teacher extends Component {
         </button>
         {blanket}
         {this.state.width < 621 ? (
-          // TODO: this is gonna be all out of whack
           <MobileOptimizedAdd
             fileInputRef={this.state.fileInputRef}
             clearFileHandler={this.resetFormHandler}
