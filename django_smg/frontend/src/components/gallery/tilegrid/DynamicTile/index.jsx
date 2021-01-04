@@ -1,38 +1,20 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Song } from "./MidiParser/Parser";
+import { Song } from "./MidiParser/Parser.js";
 import { RectGenerator, GridGenerator } from "./svgGenerators";
 import { validateWidthHeight } from "./customPropTypes";
 import { ASPECT_RATIO } from "./constants";
 
 export const DynamicTile = (props) => {
-  /*
-   * DynamicTile component takes only one required prop: "songId".
-   * This prop should be the sixteen digit ID associated with a song
-   * from the Music Lab Song Maker, and it's type should be a string. Height
-   * or width (integers) are optional props which will cause the component
-   * to render at that dimension in pixels. Height and width are mutually
-   * exclusive; the component renders at a fixed aspect ratio so do not
-   * pass them together.
-   *
-   * Due to google's CORS policy, this component cannot work in isolation.
-   * It is impossible to request the MIDI file and JSON data from Google
-   * directly from the client browser. Instead, it is necessary for a
-   * backend to exist where you have cached the MIDI and JSON data from
-   * the song maker. Endpoints where this component searches for that
-   * information are listed in src/constants.js.
-   */
-
   // State variables become parsed Song object instance. Using useState because
   // we need to trigger a re-render once the song is fetched and parsed.
   const [song, setSong] = useState(null);
   useEffect(() => {
     // fetch and parse Song object
-    const songObj = new Song(props.songId);
-    songObj.parse().then(() => {
-      setSong(songObj);
-    });
-  }, [props.songId]);
+    const songObj = new Song(props.song);
+    songObj.parse();
+    setSong(songObj);
+  }, [props.song]);
   // width or height are undefined. ensure that they are both defined
   let pixelWidth;
   let pixelHeight;
@@ -96,7 +78,7 @@ export const DynamicTile = (props) => {
 };
 
 DynamicTile.propTypes = {
-  songId: PropTypes.string.isRequired,
+  song: PropTypes.object,
   pixelWidth: validateWidthHeight,
   pixelHeight: validateWidthHeight,
 };
