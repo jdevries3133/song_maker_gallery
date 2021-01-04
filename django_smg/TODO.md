@@ -32,6 +32,8 @@
   - All group names are bunched in single lists at the very end
   - It is most likely a significant mistake in the serializer not adequately
     covered by test cases
+- [x] Tiles don't appear to be resizing in response to `pixelWidth` or
+      `pixelHeight` props
 
 ### Low-Priority
 

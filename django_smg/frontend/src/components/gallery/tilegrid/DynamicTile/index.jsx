@@ -18,14 +18,13 @@ export const DynamicTile = (props) => {
   // width or height are undefined. ensure that they are both defined
   let pixelWidth;
   let pixelHeight;
-  if (props.totalWidthPixels) {
-    pixelWidth = props.totalWidthPixels;
+  if (props.pixelWidth) {
+    pixelWidth = props.pixelWidth;
     pixelHeight = Math.floor(pixelWidth / ASPECT_RATIO);
-  } else if (props.totalHeightPixels) {
-    pixelHeight = props.totalHeightPixels;
+  } else if (props.pixelHeight) {
+    pixelHeight = props.pixelHeight;
     pixelWidth = Math.floor(pixelHeight * ASPECT_RATIO);
   }
-
   // generate rects once midi has been parsed
   let rectGenerator;
   let gridGenerator;
