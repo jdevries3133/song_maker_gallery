@@ -606,6 +606,14 @@ class TestGallerySerializer(test.TestCase):
                 )
             )
 
+    def test_render_many_max_galleries(self):
+        for _ in range(5):
+            self._make_gallery()
+        rendered = GalleryDatasetSerializer(context={
+            'user': self.user
+        }).render_many(max_galleries=3)
+        self.assertEqual(len(rendered), 3)
+
 
 class TestQueryCountLargeGallery(test.TestCase):
 
