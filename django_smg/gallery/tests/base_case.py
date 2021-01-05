@@ -194,9 +194,6 @@ class GalleryTestCase(TestCase):
         )
         self.client = Client()
 
-        # create an initial gallery
-        self.gallery = self._add_gallery()
-
     def _login_client(self):
         """
         Not called by default, but can be called to test with an authenticated
@@ -225,4 +222,5 @@ class GalleryTestCase(TestCase):
             'user': self.user,
         })
         serializer.is_valid(raise_exception=True)
-        return serializer.save()
+        self.gallery = serializer.save()
+        return self.gallery
