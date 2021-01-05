@@ -19,6 +19,17 @@
 - [x] galleries with multiple groups not rendering as expected.
 - [x] Tiles don't appear to be resizing in response to `pixelWidth` or
       `pixelHeight` props
-- [ ] Make text beneath "add a gallery" clearer.
-- [ ] Provide a template spreadsheet
+- [x] Make text beneath "add a gallery" clearer.
+- [x] Provide a template spreadsheet
+- [ ] Restore hover and scroll animations to tile component
+- [ ] Style tile component
+- [ ] Remove depricated tile component code from old integration
+- [ ] Fix slow loading time after galley creation
+  - After gallery creation, the gallery is rendered and returned. This is
+    slow because forcing a render makes the backend reach out to the google API
+    unnecessarily.
+  - Either:
+    - Do not force a render after gallery creation
+    - Give the user a loading spinner showing that the backend is working
+      and everything will be ok
 - [ ] Allow login via username _or_ email
