@@ -28,7 +28,7 @@ const tileGrid = (props) => {
       </a>
       <ul className={styles.tgrid}>
         {props.data.slice(0, -1).map((song, index) => (
-          <DynamicTile song={song} pixelWidth={150} key={song.songId + index} />
+          <DynamicTile song={song} pixelWidth={300} key={song.songId + index} />
         ))}
       </ul>
     </div>
@@ -48,7 +48,7 @@ const tileGrid = (props) => {
       </a>
       <ul className={styles.tgrid}>
         {props.data.slice(0, -1).map((song, index) => (
-          <DynamicTile song={song} pixelWidth={150} key={song.songId + index} />
+          <DynamicTile song={song} pixelWidth={220} key={song.songId + index} />
         ))}
       </ul>
     </div>
