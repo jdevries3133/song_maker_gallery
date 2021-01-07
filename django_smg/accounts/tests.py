@@ -34,7 +34,7 @@ class TestLoginApi(GalleryTestCase):
         res = self.email_client.post(
             '/api/auth/login/',
             data={
-                'email': self.email_client_email,
+                'username': self.email_client_email,
                 'password': self.email_client_password,
             },
             content_type='application/json'

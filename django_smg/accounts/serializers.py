@@ -1,4 +1,5 @@
-from rest_framework.serializers import ModelSerializer, Serializer, CharField, ValidationError
+from rest_framework.serializers import ModelSerializer, Serializer, CharField, EmailField, ValidationError
+from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
@@ -10,6 +11,9 @@ class UserSerializer(ModelSerializer):
 
 
 class RegisterSerializer(ModelSerializer):
+    # uses UniqueValidator to check if the email that is trying to create a user is already registered for a previous user. If it is, throws an error
+    email = EmailField(validators=[UniqueValidator(queryset=User.objects.all())])
+
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'password')
