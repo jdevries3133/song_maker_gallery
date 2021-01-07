@@ -1,4 +1,6 @@
 {
+  "slug": "sample-gallery-1",
+  "pk": 2,
   "title": "Sample Gallery",
   "description": "This is an example of what one of our galleries look like. All that you need to do is upload a spreadsheet of students' names and links to their song maker creations, and the site does the rest. You can spin up a gallery just like this for your students in only a few minutes!\nNotice that the thumbnail images are not generic. Each student's actual composition is displayed on the website so that everyone in your school community can get a bird's eye view of the astounding creativity of our students.\nWe, these childrens' music teachers, have had the pleasure of experiencing the boundless creativity that students have expressed through these difficult times through tools like the Song Maker; let's share that with our communities and celebrate the end of an unusual school year.",
   "songData": [
@@ -6,7 +8,7 @@
       {
         "name": "Arthur",
         "songId": "4618045650632704",
-        "midiBytes": "TVRoZAAAAAYAAQADA8BNVHJrAAAACwD/UQF+9wA/y8ATVRyawAAATwAwQEAkTl/AJFHfwCRNH+DYIE5AACBRwAAgTQAh0CRO3+DYIE7AIsgkTl/AJE0f4NggTkAAIE0AACRR3+DYIFHAINgkUd/AJE3f4NggUcAAIE3AACRRX+DYJFDfwCBRQAAkTd/g2CBQwAAgTcAg2CRN3+DYJE+fwCBNwCDYJE8fwCBPgAAkTl/g2CBPAAAgTkAAJE7f4NggTsAAJE5f4NgkTd/AIE5AINggTcAAJE1f4NggTUAAJE0f4NgkTl/AIE0AACRR3+DYJE0fwCBOQAAgUcAg2CBNAAAkTV/g2CRN38AgTUAg2CROX8AgTcAg2CBOQAAkTt/g2CRPH8AgTsAAJE0f4NggTwAAIE0AACRPn8AkTR/g2CBPgAAgTQAAJE0f4NgkUd/AIE0AACRNH+DYIFHAACBNAAA/y8ATVRyawAAASQAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CJJwAAmSN/g2CJIwAA/y8A",
+        "midiBytes": "TVRoZAAAAAYAAQADA8BNVHJrAAAACwD/UQMF+9wA/y8ATVRyawAAATwAwQEAkTl/AJFHfwCRNH+DYIE5AACBRwAAgTQAh0CRO3+DYIE7AIsgkTl/AJE0f4NggTkAAIE0AACRR3+DYIFHAINgkUd/AJE3f4NggUcAAIE3AACRRX+DYJFDfwCBRQAAkTd/g2CBQwAAgTcAg2CRN3+DYJE+fwCBNwCDYJE8fwCBPgAAkTl/g2CBPAAAgTkAAJE7f4NggTsAAJE5f4NgkTd/AIE5AINggTcAAJE1f4NggTUAAJE0f4NgkTl/AIE0AACRR3+DYJE0fwCBOQAAgUcAg2CBNAAAkTV/g2CRN38AgTUAg2CROX8AgTcAg2CBOQAAkTt/g2CRPH8AgTsAAJE0f4NggTwAAIE0AACRPn8AkTR/g2CBPgAAgTQAAJE0f4NgkUd/AIE0AACRNH+DYIFHAACBNAAA/y8ATVRyawAAASQAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CZI38AiScAg2CJIwAAmSd/g2CJJwAAmSN/g2CJIwAA/y8A",
         "metadata": {
           "bars": 4,
           "beats": 4,

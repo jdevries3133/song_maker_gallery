@@ -8,18 +8,17 @@ import { connect } from "react-redux";
 
 class gallery extends Component {
   state = {
-    url_ext: window.location.pathname.split("/")[2],
+    slug: window.location.pathname.split("/")[2],
     gallery: null,
   };
   componentDidMount() {
-    console.log(this.state.url_ext);
-    this.props.getGallery(this.state.url_ext);
+    this.props.getGallery(this.state.slug);
   }
 
   render() {
     if (this.props.status === undefined) {
       return <Loading />;
-    } else if (this.state.url_ext === "") {
+    } else if (this.state.slug === "") {
       return (
         <div>
           <h1>Invalid Gallery URL!</h1>
@@ -31,7 +30,7 @@ class gallery extends Component {
           <div>
             <h1>Gallery Does Not Exist</h1>
             <h2>
-              There is no gallery named {this.state.url_ext.replace("-", " ")}
+              There is no gallery named {this.state.slug.replace("-", " ")}
             </h2>
           </div>
         );

@@ -3,7 +3,7 @@ import json
 
 from .secrets_settings import *
 """
-Should contain the following:
+secrets_settings should contain the following:
 
 - SECRET_KEY: str
 - EMAIL_HOST_PASSWORD: str
@@ -17,6 +17,8 @@ if not DEBUG:
     from .production_settings import *
 else:
     from .development_settings import *
+
+SKIP_FETCH_AND_CACHE = False  # speeds up unit tests significantly
 
 ALLOWED_HOSTS = [
     'songmakergallery.com',

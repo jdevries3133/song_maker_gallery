@@ -21,29 +21,16 @@ class TestAuthGalleryViewset(GalleryTestCase):
         )
         self.assertTrue(status.is_success(response.status_code)) # type: ignore
 
-    def test_response_content(self):
-        response = self.client.get(
-            reverse('auth_gallery'),
-            HTTP_AUTHORIZATION=f'Token {self.token}',
-        )
-        self.assertEqual(
-            response.json()[0]['title'],  # type: ignore
-            self.mock_api_data['title']
-        )
-        self.assertEqual(
-            response.json()[0]['description'],  # type: ignore
-            self.mock_api_data['description']
-        )
-
     def test_post_request_returns_expected_information(self):
         expected_data = deepcopy(self.expected_rendered_data)
         expected_data['pk'] = 2
         expected_data['slug'] = 'test-title-1'
-        res = self.client.post(
-            '/api/gallery/',
-            data=self.mock_api_data,
-            HTTP_AUTHORIZATION=f'Token {self.token}'
-        )
+        with self.settings(SKIP_FETCH_AND_CACHE=False):
+            res = self.client.post(
+                '/api/gallery/',
+                data=self.mock_api_data,
+                HTTP_AUTHORIZATION=f'Token {self.token}'
+            )
         self.assertTrue(are_rendered_groups_same(
             res.json(),  # type: ignore
             expected_data
@@ -60,6 +47,7 @@ class TestAuthGalleryViewset(GalleryTestCase):
         )
 
     def test_delete_single_gallery(self):
+        self._add_gallery()
         self.client.delete(
             '/api/gallery/?pk=1',
             HTTP_AUTHORIZATION=f'Token {self.token}'
@@ -83,12 +71,14 @@ class TestAuthGalleryViewset(GalleryTestCase):
 class TestPublicGalleryViewset(GalleryTestCase):
 
     def test_get_request(self):
-        url = reverse('public_gallery', kwargs={
-            'slug': 'test-title'
-        })
-        response = self.client.get(url)
-        self.assertTrue(are_rendered_groups_same(
-            response.json(),  # type: ignore
-            self.expected_rendered_data,
-        ))
+        with self.settings(SKIP_FETCH_AND_CACHE=False):
+            self._add_gallery()
+            url = reverse('public_gallery', kwargs={
+                'slug': 'test-title'
+            })
+            response = self.client.get(url)
+            self.assertTrue(are_rendered_groups_same(
+                response.json(),  # type: ignore
+                self.expected_rendered_data,
+            ))
 

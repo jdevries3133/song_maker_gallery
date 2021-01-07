@@ -10,8 +10,10 @@ class Test(GalleryTestCase):
 
     def setUp(self):
         super().setUp()
+        self._add_gallery()
         self.processed = Song.objects.all().first()  # type: ignore
-        fetch_and_cache(song=self.processed)
+        with self.settings(SKIP_FETCH_AND_CACHE=False):
+            fetch_and_cache(song=self.processed)
         self.processed.refresh_from_db()
 
     def test_song_is_cached(self):

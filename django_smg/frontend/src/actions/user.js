@@ -75,7 +75,6 @@ export const deleteGallery = (pk, token) => (dispatch) => {
       },
     })
     .then((response) => {
-      console.log(response);
       if (response.status === 200) {
         dispatch({
           type: DELETE_GALLERY,
@@ -95,4 +94,12 @@ export const deleteGallery = (pk, token) => (dispatch) => {
         payload: { status: "error" },
       });
     });
+};
+
+/* Must remove "deleted" status from redux state after user acknowledgement */
+export const acknowledgeDelete = () => (dispatch) => {
+  dispatch({
+    type: DELETE_GALLERY,
+    payload: { status: "delete_acknowledged" },
+  });
 };

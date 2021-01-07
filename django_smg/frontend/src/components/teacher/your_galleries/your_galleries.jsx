@@ -9,6 +9,7 @@ import ServerError from "../../generics/server_error";
 import {
   postGallery,
   deleteGallery,
+  acknowledgeDelete,
   getUserGalleries,
 } from "../../../actions/user";
 
@@ -21,6 +22,7 @@ const YourGalleries = (props) => {
   const onOk = () => {
     setBlanket(null);
     setConfirmDelete(null);
+    props.acknowledgeDelete();
   };
 
   useEffect(() => {
@@ -135,4 +137,5 @@ export default connect(mapStateToProps, {
   deleteGallery,
   getUserGalleries,
   postGallery,
+  acknowledgeDelete,
 })(YourGalleries);

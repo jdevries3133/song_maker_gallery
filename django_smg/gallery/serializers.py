@@ -2,7 +2,9 @@ import base64
 import json
 import re
 
+from django.http import Http404
 from rest_framework import serializers
+
 from .models import Gallery, Song, SongGroup
 from .services import fetch_and_cache
 
@@ -28,7 +30,6 @@ class GallerySerializer(serializers.ModelSerializer):
             'pk',
         )
 
-
 class GalleryDatasetSerializer(serializers.Serializer):
     """
     Brings together information from the following models to create or render
@@ -43,7 +44,7 @@ class GalleryDatasetSerializer(serializers.Serializer):
     songData = serializers.JSONField()
 
     @ staticmethod
-    def get_queryset(slug=None, max_galleries=10, gallery=None):
+    def get_queryset(slug=None, gallery=None):
         """
         **CAREFUL! This returns a dict of querysets and model instances; not
         a regular queryset.
@@ -51,7 +52,10 @@ class GalleryDatasetSerializer(serializers.Serializer):
         if not gallery and not slug:
             raise Exception('Must pass gallery object or gallery slug')
         if not gallery:
-            gallery = Gallery.objects.get(slug=slug)  # type: ignore
+            try:
+                gallery = Gallery.objects.get(slug=slug)  # type: ignore
+            except Gallery.DoesNotExist:  # type: ignore
+                raise Http404
         songs = Song.objects.select_related(  # type: ignore
             'gallery',
             'group'
@@ -59,7 +63,7 @@ class GalleryDatasetSerializer(serializers.Serializer):
                     gallery=gallery
                         ).order_by(
                             'created'
-                        )[:max_galleries]
+                        )
 
         groups = SongGroup.objects.filter(gallery=gallery)  # type: ignore
         return {
@@ -68,22 +72,25 @@ class GalleryDatasetSerializer(serializers.Serializer):
             'groups': groups
         }
 
-    def render_many(self):
+    def render_many(self, *, max_galleries=None) -> list:
         """
-        Render all of the user's galleries in a list.
+        Render all the user's galleries, or a certain amount sorted
+        by date created.
         """
-        return [
-            self.render(gallery=g)
-            for g in
-            Gallery.objects.filter(  # type: ignore
+        queryset = [
+            self.render(gallery=g) for g in
+            Gallery.objects.filter(
                 owner=self.context.get('user')
-                ).prefetch_related(
-                    'songs',
-                    'song_groups',
-                )
+            ).order_by(
+                'created'
+            ).prefetch_related(
+                'songs',
+                'song_groups'
+            )
         ]
+        return queryset if not max_galleries else queryset[:max_galleries]
 
-    def render(self, slug=None, gallery=None):
+    def render(self, slug=None, gallery=None) -> dict:
         """
         Give the frontend the whole structured blob necessary for it to render
         a gallery at once.

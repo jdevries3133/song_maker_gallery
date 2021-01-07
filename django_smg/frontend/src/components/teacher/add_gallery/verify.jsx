@@ -13,7 +13,7 @@ const Verify = (props) => {
   // groupname initial value to the file name if one isn't being sent down
   // from props
   if (canUseFileName && !props.groupname) {
-    groupname = props.fileInputRef.current.files[0].name;
+    groupname = props.fileInputRef.current.files[0].name.slice(0, -4);
     props.groupNameChange({ target: { value: groupname } });
   } else if (props.groupname) {
     groupname = props.groupname;

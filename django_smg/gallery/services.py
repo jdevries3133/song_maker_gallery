@@ -1,5 +1,7 @@
 import requests
 
+from django.conf import settings
+
 from .models import Song
 
 
@@ -7,6 +9,10 @@ def fetch_and_cache(*, song: Song) -> Song:
     """
     Fetch and cache data for a currently uncached song.
     """
+    if settings.SKIP_FETCH_AND_CACHE:
+        song.midi = b''
+        song.is_cached = True
+        return song.save()
     SONG_JSON_DATA = lambda song_id : (
         f'https://musiclab.chromeexperiments.com/Song-Maker/data/{song_id}'
     )

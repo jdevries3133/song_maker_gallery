@@ -5,24 +5,31 @@
 - [x] Update frontend state management to expect songData
 - [x] Make backend gallery delete endpoint
 - [x] Fetching and caching service
-- [ ] ~~Hook sample gallery into django migration~~ _did below instead_
 - [x] Include hard coded sample gallery in the frontend
 - [x] `/api/auth/login` rotates token upon authenticated GET request.
 - [x] Fix `/api/gallery/undefined` bug.
 - [x] Fix post-delete gallery dialogue box is not dismissed
 - [x] Update "mobile optimized view" for Teacher component
 - [x] Fix group name not set properly by frontend
-  - Should be the last row in the group.
-- [ ] Integrate dynamic tile
-  - See `frontend/src/components/gallery/tilegrid/tile.jsx` for a detailed
-    TODO list on dynamic tile integration.
-- [ ] Create API service to provide songData to frontend
-- [ ] Make text beneath "add a gallery" clearer.
-- [ ] Provide a template spreadsheet
-- [ ] Fix bug where it is impossible to scroll to bottom of gallery in mobile.
-
-### Low-Priority
-
-- [ ] Make it so the donation button automatically doesn't appear for the
-      galleries of privileged users.
+- [x] Integrate dynamic tile
+- [x] Create API service to provide songData to frontend
+- [x] Fix phantom "gallery deleted" dialogue bug in teacher component.
+- [x] Fix bug where it is impossible to scroll to bottom of gallery in mobile.
+- [x] After csv upload, remove ".csv" from initial group name assignment
+- [x] galleries with multiple groups not rendering as expected.
+- [x] Tiles don't appear to be resizing in response to `pixelWidth` or
+      `pixelHeight` props
+- [x] Make text beneath "add a gallery" clearer.
+- [x] Provide a template spreadsheet
+- [ ] Restore hover and scroll animations to tile component
+- [ ] Style tile component
+- [ ] Remove depricated tile component code from old integration
+- [ ] Fix slow loading time after galley creation
+  - After gallery creation, the gallery is rendered and returned. This is
+    slow because forcing a render makes the backend reach out to the google API
+    unnecessarily.
+  - Either:
+    - Do not force a render after gallery creation
+    - Give the user a loading spinner showing that the backend is working
+      and everything will be ok
 - [ ] Allow login via username _or_ email

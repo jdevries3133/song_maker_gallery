@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import styles from "./add_gallery.module.css";
 
 import useWidth from "../../generics/useWidth";
+import { Donate } from "../../gallery/donate/";
 
 const Add = (props) => {
   const { width } = useWidth();
@@ -9,26 +10,31 @@ const Add = (props) => {
   return (
     <Fragment>
       <h3>Add a Gallery</h3>
+      <h4 className={styles.par_just}>One Spreadsheet (.csv file) Per Group</h4>
       <p className={styles.par_just}>
-        To add a group to your gallery, upload a spreadsheet of students' names,
-        and their music lab links. You may use students' first names only, or
-        first name and last initial. If you do upload a student's full name,
-        only their first name and last initial will be publically displayed; and
-        only their first name and last initial will be stored in our database
-        for COPPA compliance.
+        Galleries are separated into "groups." That may mean different things
+        for different teachers. For me, I create one group per general music
+        homeroom, then one gallery for each grade level I teach. You have the
+        freedom to organize your gallery however you would like.
       </p>
       <p className={styles.par_just}>
-        The spreadsheet must be in the form of a .csv file, which you can easily
-        output from Excel or google sheets. As long as there is a column labeled
-        "names," and "links," in the spreadsheet, we will pick up on the rest.
+        <b>The spreadsheet must be in the form of a .csv file</b>, which you can
+        easily output from Excel or google sheets. To make sure your spreadsheet
+        is formatted properly, use this template:
+      </p>
+      <a href="static/frontend/songmakergallery_upload_template.csv" download>
+        <button className="button">Download Template</button>
+      </a>
+      <p className={styles.par_just}>
+        You may make as many galleries as you would like, each containing as
+        many groups as you would like, each containing as many students you
+        would like.
       </p>
       <p className={styles.par_just}>
-        A gallery can have up to five groups in it, and you can make as many
-        galleries as you would like. Limiting it to five groups per gallery
-        ensures a consistent design, and prevents viewers being presented with a
-        monolith page to scroll through. Add groups by uploading CSV files of
-        names and links one at a time!
+        Please do share this tool with your colleagues, and consider chipping in
+        a few dollars to keep this site alive. We depend on your donations!
       </p>
+      <Donate />
       <br />
       <p className={styles.par_just}>Upload one spreadsheet per group.</p>
       <br />

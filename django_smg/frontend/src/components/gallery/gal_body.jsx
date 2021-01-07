@@ -15,7 +15,6 @@ const galBody = (props) => {
       />
       <div>
         {blanket}
-
         {props.data.map((group) => (
           <TileGrid data={group} key={group.slice(-1)[0]} />
         ))}

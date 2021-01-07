@@ -1,10 +1,4 @@
 /**
- * Dynamic Tile Integration To-Do List
- *
- * - [x] Component-level implementation
- * - [ ] Implement backend service to make component work
- * - [ ] Implement redux action and state to hold song data.
- *
  * ### Name Display
  *
  * The dynamic tile does not display the student's name or take it as a prop,
@@ -33,8 +27,8 @@ const tileGrid = (props) => {
         <span className={styles.back_finger}>☟</span>
       </a>
       <ul className={styles.tgrid}>
-        {props.data.slice(0, -1).map((student) => (
-          <DynamicTile songId={student[1]} />
+        {props.data.slice(0, -1).map((song, index) => (
+          <DynamicTile song={song} pixelWidth={300} key={song.songId + index} />
         ))}
       </ul>
     </div>
@@ -53,8 +47,8 @@ const tileGrid = (props) => {
         </button>
       </a>
       <ul className={styles.tgrid}>
-        {props.data.slice(0, -1).map((student) => (
-          <DynamicTile songId={student[1]} />
+        {props.data.slice(0, -1).map((song, index) => (
+          <DynamicTile song={song} pixelWidth={220} key={song.songId + index} />
         ))}
       </ul>
     </div>
