@@ -10,16 +10,21 @@
 1. Create the file `django_smg/django_smg/secrets_settings.py`.
 2. Define the `SECRET_KEY` variable in this file. Set it to any string your
    heart desires
-3. "cd" into the django_smg folder (`cd django_smg`)
-4. Create a virtual environment `python3 -m venv venv`
-5. Activate the environment (`source venv/bin/activate` for unix/linux)
-6. Install dependencies: `pip install -r requirements.txt`
-7. Perform database migrations. dbsqlite is used for development: `python manage.py migrate`
-8. Use manage.py to see if everything is ok: `python manage.py check`
-9. Run tests, make sure they all pass: `python manage.py test`
-   - log output will be automatically supressed during testing by using the
-     settings file at `django_smg/django_smg/test_settings.py`. Comment out
-     lines 20 and 21 in `django_smg/manage.py` to change that behavior.
+3. Set the environment variable `DJANGO_DEBUG` to any non-zero value
+   - Set to any truthy value: `true`, `1`, etc...
+   - This causes django `DEBUG` to be set to `True` and causes project to use
+     sqlite.
+4. "cd" into the django_smg folder (`cd django_smg`)
+5. Create a virtual environment `python3 -m venv venv`
+6. Activate the environment (`source venv/bin/activate` for unix/linux)
+7. Install dependencies: `pip install -r requirements.txt`
+8. Perform database migrations. dbsqlite is used for development:
+   `python manage.py migrate`
+9. Use manage.py to see if everything is ok: `python manage.py check`
+10. Run tests, make sure they all pass: `python manage.py test`
+    - log output will be automatically supressed during testing by using the
+      settings file at `django_smg/django_smg/test_settings.py`. Comment out
+      lines 20 and 21 in `django_smg/manage.py` to change that behavior.
 
 ### React / Frontend
 
