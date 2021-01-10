@@ -25,6 +25,9 @@ ALLOWED_HOSTS = [
     'localhost',
 ]
 
+if DEBUG:
+    ALLOWED_HOSTS.append('*')
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
