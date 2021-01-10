@@ -1,13 +1,17 @@
-.div {
+.welcome_container {
   margin-bottom: 11rem;
 }
 
-.head {
-  font-size: 3rem;
+.h1 {
+  padding-bottom: 0;
+  margin: 1rem;
+  font-size: 5rem;
 }
 
-.space_botm {
-  height: 20rem;
+@media (max-width: 600px) {
+  .h1 {
+    font-size: 3rem;
+  }
 }
 
 .table {

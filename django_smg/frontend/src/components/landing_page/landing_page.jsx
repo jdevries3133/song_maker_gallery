@@ -10,7 +10,6 @@ const landing_page = (props) => {
   return (
     <div>
       <Welcome />
-      <div className={styles.space} />
       <GalleryBody
         title={sampleGallery.title}
         description={sampleGallery.description}
