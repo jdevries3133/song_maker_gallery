@@ -11,8 +11,10 @@ class UserSerializer(ModelSerializer):
 
 
 class RegisterSerializer(ModelSerializer):
-    # uses UniqueValidator to check if the email that is trying to create a user is already registered for a previous user. If it is, throws an error
-    email = EmailField(validators=[UniqueValidator(queryset=User.objects.all())])
+    # no duplicate emails
+    email = EmailField(
+        validators=[UniqueValidator(queryset=User.objects.all())]
+    )
 
     class Meta:
         model = User

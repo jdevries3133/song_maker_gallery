@@ -39,7 +39,8 @@
 - [ ] Make site-wide footer with terms of use and privacy policy except on
   - gallery page
 - [ ] Add note in teacher console about not storing student's full names
-- [ ] Allow login via username _or_ email
+- [x] Allow login via username _or_ email; thanks João!
+- [ ] Frontend must provide descriptive response to user for duplicate email
 
 # Low Priority
 

@@ -45,13 +45,11 @@ class LoginAPI(KnoxLoginView):
     queryset = User.objects.all()
 
     def post(self, request, *args, **kwargs):
-        
+        # allow user to authenticate with email
         if User.objects.filter(email=request.data['username']):
-            get_username = User.objects.filter(email=request.data['username'])[0].username
-            
-            request.data['username'] = get_username
-
-
+            request.data['username'] = (
+                User.objects.filter(email=request.data['username'])[0].username
+            )
         serializer = AuthTokenSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
