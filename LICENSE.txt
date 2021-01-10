@@ -25,3 +25,5 @@ the placement of an "x" between the square brackets below:
 
 [x] John DeVries
 [ ] João Felipe
+
+**commits by GitHub user "Naseus" were authored by John DeVries
