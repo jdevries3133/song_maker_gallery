@@ -57,30 +57,16 @@ const Add = (props) => {
           <br />
           <p className={styles.warning}>
             You may only upload a csv file. At this time, we do not accept Excel
-            files, or any other file format. I have some videos below that might
-            help you if you are using Excel or google sheets, though!
+            files, or any other file format. Fear not, though! A CSV file can
+            easily be exported from google sheets.
+            <a
+              href="https://www.solveyourtech.com/save-csv-google-sheets/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Here is an article showing you how.
+            </a>
           </p>
-          {width < 1046 ? (
-            // Mobile sized embedded video
-            <iframe
-              width="300"
-              height="415"
-              src="https://www.youtube.com/embed/ScMzIvxBSi4"
-              frameBorder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          ) : (
-            // Regular sized embedded video
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/ScMzIvxBSi4"
-              frameBorder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          )}
         </Fragment>
       ) : null}
     </Fragment>
