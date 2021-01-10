@@ -1,20 +1,14 @@
-ui_testing_data
+# my start script; not portable
+django_smg/start
+
+venv
+secret_settings.py
 Session.vim
 tags
-integrated_django_react/frontend/static/frontend/main.js.gz
-.env*
-
-
-
-notes.txt
-chromedriver
-*config.json
+main.js
+main.js.gz
 .DS_STORE
 node_modules
-backendcron.sh
-botcron.sh
-scripts/flow/*/.flowconfig
-.flowconfig
 *~
 *.pyc
 .grunt
@@ -173,4 +167,3 @@ dmypy.json
 
 # End of https://www.gitignore.io/api/django
 
-venv
