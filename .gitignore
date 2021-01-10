@@ -1,3 +1,6 @@
+# my start script; not portable
+django_smg/start
+
 venv
 secret_settings.py
 Session.vim
