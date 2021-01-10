@@ -20,7 +20,7 @@
   display: inline-block;
   font-size: 50px;
   max-height: 7rem;
-  min-width: 12rem;
+  /* min-width: 12rem; */
   position: relative;
   top: 5.9rem;
   z-index: 10;

@@ -1,13 +1,3 @@
-/**
- * ### Name Display
- *
- * The dynamic tile does not display the student's name or take it as a prop,
- * yet I want to maintain the animation as it has been already. Will it be
- * best to try to maintain a mostly-css animation as I have done, or do respond
- * to make a javascript animation by unmounting the dynamic tile component,
- * and transitioning to a name display component?
- */
-
 import React from "react";
 import { DynamicTile } from "./DynamicTile";
 import useWidth from "../../generics/useWidth";
@@ -16,7 +6,9 @@ import styles from "./tilegrid.module.css";
 const tileGrid = (props) => {
   const group_name = props.data.slice(-1);
   const { width } = useWidth();
-  return width > 475 ? (
+  // TODO: only re-render if width crosses the breakpoint. Otherwise, take
+  // a shortcut
+  return width > 600 ? (
     <div id="gallery">
       <div className={styles.tg_top_space} />
       <a href="#gallery_top">
@@ -46,11 +38,18 @@ const tileGrid = (props) => {
           <span>Top</span>
         </button>
       </a>
-      <ul className={styles.tgrid}>
-        {props.data.slice(0, -1).map((song, index) => (
-          <DynamicTile song={song} pixelWidth={220} key={song.songId + index} />
-        ))}
-      </ul>
+      <div style={{ textAlign: "center" }}>
+        <ul className={styles.tgrid}>
+          {props.data.slice(0, -1).map((song, index) => (
+            <DynamicTile
+              mobile={true}
+              song={song}
+              pixelWidth={300}
+              key={song.songId + index}
+            />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

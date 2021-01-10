@@ -1,0 +1,92 @@
+/* TILE CONTAINER */
+.tile_inner_container {
+  display: inline-block;
+  background-color: white;
+  box-shadow: 5px 5px 8px #ddd;
+  margin: 10px;
+}
+
+.tile_outer_container {
+  display: inline-block;
+  text-align: left;
+}
+
+/* TEXT */
+.svg__text {
+  font: bold 40px "Indie Flower";
+  fill: white;
+  transition: 100ms;
+  opacity: 0;
+}
+
+.tile__svg:hover > .svg__text {
+  opacity: 100;
+}
+
+/* MOBILE-ONLY STATIC STUDENT NAME LABEL */
+.mobile_student_name {
+  margin: 1.5rem 0 0 0;
+  display: inline-block;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px lightgray;
+  padding: 0.8rem;
+  font-size: 24px;
+}
+
+/* SVG */
+.tile__svg {
+  border-radius: 10px;
+  transition: 100ms;
+}
+
+/* RECT */
+.tile__svg:hover > rect {
+  opacity: 0;
+  box-sizing: border-box;
+  stroke: var(--purple);
+  stroke-width: 8px;
+  transition: 100ms;
+}
+
+/**
+ * COLORS
+ * Begin seven classes to define the transition to each of seven colors
+ */
+.tile_inner_container {
+  --red: #e33059;
+  --orange: #f7943e;
+  --yellow: #ecd92a;
+  --green: #95c632;
+  --forest: #12826d;
+  --purple: #5b38cc;
+  --pink: #ea57b2;
+}
+
+.tile_outer_container:nth-child(7n + 0):hover > * > * > .tile__svg {
+  background-color: var(--red);
+}
+
+.tile_outer_container:nth-child(7n + 1):hover > * > * > .tile__svg {
+  background-color: var(--orange);
+}
+
+.tile_outer_container:nth-child(7n + 2):hover > * > * > .tile__svg {
+  background-color: var(--yellow);
+}
+
+.tile_outer_container:nth-child(7n + 3):hover > * > * > .tile__svg {
+  background-color: var(--green);
+}
+
+.tile_outer_container:nth-child(7n + 4):hover > * > * > .tile__svg {
+  background-color: var(--forest);
+}
+
+.tile_outer_container:nth-child(7n + 5):hover > * > * > .tile__svg {
+  background-color: var(--purple);
+}
+
+.tile_outer_container:nth-child(7n + 6):hover > * > * > .tile__svg {
+  background-color: var(--pink);
+}

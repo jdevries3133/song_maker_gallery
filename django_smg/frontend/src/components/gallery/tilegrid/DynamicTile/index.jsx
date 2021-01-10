@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Song } from "./MidiParser/Parser.js";
 import { RectGenerator, GridGenerator } from "./svgGenerators";
-import { validateWidthHeight } from "./customPropTypes";
 import { ASPECT_RATIO } from "./constants";
+import styles from "./DynamicTile.module.css";
 
 export const DynamicTile = (props) => {
   // State variables become parsed Song object instance. Using useState because
@@ -16,15 +16,8 @@ export const DynamicTile = (props) => {
     setSong(songObj);
   }, [props.song]);
   // width or height are undefined. ensure that they are both defined
-  let pixelWidth;
-  let pixelHeight;
-  if (props.pixelWidth) {
-    pixelWidth = props.pixelWidth;
-    pixelHeight = Math.floor(pixelWidth / ASPECT_RATIO);
-  } else if (props.pixelHeight) {
-    pixelHeight = props.pixelHeight;
-    pixelWidth = Math.floor(pixelHeight * ASPECT_RATIO);
-  }
+  const pixelWidth = props.pixelWidth;
+  let pixelHeight = Math.floor(pixelWidth / ASPECT_RATIO);
   // generate rects once midi has been parsed
   let rectGenerator;
   let gridGenerator;
@@ -50,38 +43,59 @@ export const DynamicTile = (props) => {
     height: pixelHeight + "px",
   };
   return (
-    <div
-      style={{
-        display: "inline-block",
-        width: tileSize.width,
-        height: tileSize.height,
-        backgroundColor: "white",
-        boxShadow: "5px 10px 10px #888888",
-      }}
-    >
-      <svg
-        // Prettier formats this very stupidly
-        // What is happening here is that "px" is being chopped off the end
-        // of the width and height strings.
-        viewBox={`0 0 ${tileSize.width.slice(0, -2)} ${tileSize.height.slice(
-          0,
-          -2
-        )}`}
-        xmlns="https://www.w3.org/2000/svg"
+    <div className={styles.tile_outer_container}>
+      {props.mobile ? (
+        <div style={{ textAlign: "left" }}>
+          <h4 className={styles.mobile_student_name}>{props.song.name}</h4>
+        </div>
+      ) : null}
+      <div
+        className={styles.tile_inner_container}
+        style={{
+          width: tileSize.width,
+          height: tileSize.height,
+        }}
       >
-        {rectGenerator ? rectGenerator.rects : null}
-        {gridGenerator ? gridGenerator.grid : null}
-      </svg>
+        <a
+          className={styles.a__svg}
+          href={`https://musiclab.chromeexperiments.com/Song-Maker/song/${props.song.songId}`}
+          target="_blank"
+          rel="noopner noreferrer"
+        >
+          <svg
+            // Prettier formats this very stupidly
+            // What is happening here is that "px" is being chopped off the end
+            // of the width and height strings.
+            viewBox={`0 0 ${tileSize.width.slice(
+              0,
+              -2
+            )} ${tileSize.height.slice(0, -2)}`}
+            xmlns="https://www.w3.org/2000/svg"
+            className={styles.tile__svg}
+          >
+            <text
+              dominantBaseline="middle"
+              textAnchor="middle"
+              x="50%"
+              y="50%"
+              className={styles.svg__text}
+            >
+              {props.mobile ? "View Song" : props.song.name}
+            </text>
+            {rectGenerator ? rectGenerator.rects : null}
+            {gridGenerator ? gridGenerator.grid : null}
+          </svg>
+        </a>
+      </div>
     </div>
   );
 };
 
 DynamicTile.propTypes = {
-  song: PropTypes.object,
-  pixelWidth: validateWidthHeight,
-  pixelHeight: validateWidthHeight,
+  song: PropTypes.object.isRequired,
+  pixelWidth: PropTypes.number,
 };
 
 DynamicTile.defaultProps = {
-  totalWidthPixels: 600,
+  pixelWidth: 600,
 };

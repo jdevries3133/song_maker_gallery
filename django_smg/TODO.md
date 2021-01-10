@@ -21,9 +21,9 @@
       `pixelHeight` props
 - [x] Make text beneath "add a gallery" clearer.
 - [x] Provide a template spreadsheet
-- [ ] Restore hover and scroll animations to tile component
-- [ ] Style tile component
-- [ ] Remove depricated tile component code from old integration
+- [x] Style tile component
+  - [x] Restore **hover** animations to tile component
+- [x] Remove depricated tile component code from old integration
 - [ ] Fix slow loading time after galley creation
   - After gallery creation, the gallery is rendered and returned. This is
     slow because forcing a render makes the backend reach out to the google API
@@ -32,4 +32,18 @@
     - Do not force a render after gallery creation
     - Give the user a loading spinner showing that the backend is working
       and everything will be ok
+- [ ] Optimize extremely slow re-rendering in gallery on screen size change
+      by only re-rendering the component if the width crosses the threshold.
+- [ ] Create student link submission view as a premium feature.
+- [ ] update terms of use and privacy policy
+- [ ] Make site-wide footer with terms of use and privacy policy except on
+  - gallery page
+- [ ] Add note in teacher console about not storing student's full names
 - [ ] Allow login via username _or_ email
+
+# Low Priority
+
+- [ ] Restore **scroll** animations to tile component
+  - Mobile does have "tap/drag" hover animation already
+  - If anything, putting the name above the tile is probably a more elegant
+    solution
