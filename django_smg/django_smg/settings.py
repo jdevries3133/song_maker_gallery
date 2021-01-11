@@ -1,20 +1,20 @@
 import os
 import json
 
-from .secrets_settings import *
-"""
-secrets_settings should contain the following:
-
-- SECRET_KEY: str
-- EMAIL_HOST_PASSWORD: str
-- AWS_ACCESS_KEY_ID: str
-- AWS_SECRET_ACCESS_KEY: str
-"""
+from .secret_settings import (
+    SECRET_KEY,
+    MYSQL_PASSWORD,
+    MYSQL_USER,
+    MYSQL_NAME
+)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True if os.getenv('DJANGO_DEBUG') == '1' else False
 if not DEBUG:
     from .production_settings import *
+    DATABASES['default']['PASSWORD'] = MYSQL_PASSWORD
+    DATABASES['default']['USER'] = MYSQL_USER
+    DATABASES['default']['NAME'] = MYSQL_NAME
 else:
     from .development_settings import *
 

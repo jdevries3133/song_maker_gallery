@@ -20,7 +20,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'songmaker',
         'USER': 'songmaker',
-        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
         'HOST': 'localhost',
         'PORT': 3306,
         'OPTIONS': {
