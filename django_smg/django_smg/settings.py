@@ -105,42 +105,4 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        },
-    },
-    'handlers': {
-        # commented out because this will generate a blank file by being
-        # defined, which is annoying. Uncomment to use the file logger
-        # 'file_logger': {
-        #     'level': 0,
-        #     'class': 'logging.FileHandler',
-        #     'filename': os.path.join(BASE_DIR, 'main.log'),
-        #     'formatter': 'verbose',
-        # },
-        'console_logger': {
-            'level': 0,
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
-        },
-    },
-    'root': {
-        'handlers': ['console_logger'],
-        'level': 'INFO',
-        'propagate': True,
-    },
-    'loggers': {
-        'file': {
-            'handlers': ['console_logger'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-    }
-}
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

@@ -1,18 +1,11 @@
 import os
 
 # Email
-EMAIL_PORT = 587
+# EMAIL_PORT = 587
 # EMAIL_HOST_USER = config['SMG_GMAIL']
-EMAIL_USE_TLS = True
+# EMAIL_USE_TLS = True
 # EMAIL_HOST = config['SMTP_HOST']
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-# Amazon S3
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
-AWS_DEFAULT_ACL = 'public-read'
-AWS_S3_FILE_OVERWRITE = True
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Database
 DATABASES = {
@@ -30,5 +23,37 @@ DATABASES = {
             'CHARSET': 'utf8mb4',
             'COLLATION': 'utf8mb4_unicode_ci',
         }
+    }
+}
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file_logger': {
+            'level': 0,
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'main.log'),
+            'formatter': 'verbose',
+        },
+    },
+    'root': {
+        'handlers': ['file_logger'],
+        'level': 'ERROR',
+        'propagate': True,
+    },
+    'loggers': {
+        'file': {
+            'handlers': ['file_logger'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
     }
 }
