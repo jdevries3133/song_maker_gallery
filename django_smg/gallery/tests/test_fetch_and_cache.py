@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from ..models import Song
-from ..services import fetch_and_cache
+from ..services import iter_fetch_and_cache
 from .base_case import GalleryTestCase
 
 class Test(GalleryTestCase):
@@ -13,7 +13,8 @@ class Test(GalleryTestCase):
         self._add_gallery()
         self.processed = Song.objects.all().first()  # type: ignore
         with self.settings(SKIP_FETCH_AND_CACHE=False):
-            fetch_and_cache(song=self.processed)
+            for _ in iter_fetch_and_cache(songs=Song.objects.all()):  # type: ignore
+                pass
         self.processed.refresh_from_db()
 
     def test_song_is_cached(self):

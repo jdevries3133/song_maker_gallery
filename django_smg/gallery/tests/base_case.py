@@ -57,6 +57,7 @@ class GalleryTestCase(TestCase):
             ]
             """
     }
+
     expected_rendered_data = {
         'description': 'This is the test description.',
          'pk': 2,

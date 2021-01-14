@@ -6,7 +6,7 @@ from django.http import Http404
 from rest_framework import serializers
 
 from .models import Gallery, Song, SongGroup
-from .services import fetch_and_cache
+from .services import iter_fetch_and_cache
 
 
 class SongSerializer(serializers.ModelSerializer):
@@ -79,7 +79,7 @@ class GalleryDatasetSerializer(serializers.Serializer):
         """
         queryset = [
             self.render(gallery=g) for g in
-            Gallery.objects.filter(
+            Gallery.objects.filter(  # type: ignore
                 owner=self.context.get('user')
             ).order_by(
                 'created'
@@ -112,10 +112,9 @@ class GalleryDatasetSerializer(serializers.Serializer):
         rendered_groups = []
         for group in groups:
             group_songs = []
-            for song in Song.objects.filter(id__in=data['songs'], group=group):  # type: ignore
-                if not song.is_cached:
-                    fetch_and_cache(song=song)
-                    song.refresh_from_db()
+            for song in iter_fetch_and_cache(
+                songs=Song.objects.filter(id__in=data['songs'], group=group)   #type: ignore
+            ):
                 # this should really be defined as some sort of serializer in
                 # its own rite.
                 group_songs.append({

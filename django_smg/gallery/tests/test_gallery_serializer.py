@@ -421,9 +421,10 @@ class TestGallerySerializer(test.TestCase):
         )
 
     def test_render_method_num_queries(self):
-        GalleryDatasetSerializer().render('test-title')
-        with self.assertNumQueries(4):
+        with self.settings(SKIP_FETCH_AND_CACHE=False):
             GalleryDatasetSerializer().render('test-title')
+            with self.assertNumQueries(4):
+                GalleryDatasetSerializer().render('test-title')
 
     def test_rendered_gallery_matches_source_data(self):
 
@@ -647,14 +648,12 @@ class TestQueryCountLargeGallery(test.TestCase):
 
     def test_num_queries_on_initial_render(self):
         """
-        Initial render call will trigger cachine, and therefore make an
-        insertion on every song.
+        num_queries = num_songs + 2
         """
         self.serializer.save()
-        self.serializer.render(slug='sample-gallery')
         with CaptureQueriesContext(connection) as query_count:
             self.serializer.render(slug='sample-gallery')
-        self.assertLess(query_count.final_queries, 30)
+        self.assertEqual(query_count.final_queries, 130)
 
     def test_num_queries_on_cached_render(self):
         """
