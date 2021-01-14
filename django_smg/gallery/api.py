@@ -32,21 +32,20 @@ class AuthGalleryViewset(APIView):
             'user': request.user
         })
         serializer.is_valid(raise_exception=True)
-        return Response(
-            serializer.render(serializer.save().slug),  # type: ignore
-            status=status.HTTP_201_CREATED
-        )
+        # serializer.save() method returns Gallery model instance
+        return Response(GallerySerializer(serializer.save()).data)
 
     @ staticmethod
     def get(request):
         """
         Return all the galleries of an authenticated user.
         """
-        # TODO: since this is an authenticated view, this should be where
-        # the user's paginated galleries come from.
-        return Response(GalleryDatasetSerializer(
-            context={'user': request.user}
-        ).render_many())
+        return Response(
+            GallerySerializer(
+                request.user.gallery.all(),
+                many=True
+            ).data
+        )
 
     @ staticmethod
     def delete(request):
