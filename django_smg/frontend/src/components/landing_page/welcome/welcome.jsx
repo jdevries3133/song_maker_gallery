@@ -4,8 +4,8 @@ import Desktop from "./desktop";
 import Mobile from "./mobile";
 import styles from "../landing_page.module.css";
 
-const welcome = (props) => {
-  const { width } = useWidth();
+const welcome = () => {
+  const { width } = useWidth(475);
   return (
     <div className={styles.welcome_container}>
       {width > 475 ? <Desktop /> : <Mobile />}

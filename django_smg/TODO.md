@@ -24,7 +24,7 @@
 - [x] Style tile component
   - [x] Restore **hover** animations to tile component
 - [x] Remove depricated tile component code from old integration
-- [ ] Fix slow loading time after galley creation
+- [x] Fix slow loading time after galley creation
   - After gallery creation, the gallery is rendered and returned. This is
     slow because forcing a render makes the backend reach out to the google API
     unnecessarily.
@@ -32,19 +32,11 @@
     - Do not force a render after gallery creation
     - Give the user a loading spinner showing that the backend is working
       and everything will be ok
-- [ ] Optimize extremely slow re-rendering in gallery on screen size change
+- [x] Optimize extremely slow re-rendering in gallery on screen size change
       by only re-rendering the component if the width crosses the threshold.
 - [ ] Create student link submission view as a premium feature.
-- [ ] update terms of use and privacy policy
-- [ ] Make site-wide footer with terms of use and privacy policy except on
+- [x] update terms of use and privacy policy
+- [x] Make site-wide footer with terms of use and privacy policy except on
   - gallery page
-- [ ] Add note in teacher console about not storing student's full names
 - [x] Allow login via username _or_ email; thanks João!
 - [ ] Frontend must provide descriptive response to user for duplicate email
-
-# Low Priority
-
-- [ ] Restore **scroll** animations to tile component
-  - Mobile does have "tap/drag" hover animation already
-  - If anything, putting the name above the tile is probably a more elegant
-    solution

@@ -5,7 +5,7 @@ import NavBar from "./navBar";
 import useWidth from "../../generics/useWidth";
 
 const header = (props) => {
-  const { width } = useWidth();
+  const { width } = useWidth(1000);
   return (
     <div className={styles.gallery_top}>
       {width > 1000 ? <NavBar data={props.data} /> : null}

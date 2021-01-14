@@ -1,0 +1,20 @@
+.container > * {
+  text-align: justify;
+}
+
+.container > * {
+  margin-bottom: 1rem;
+}
+.container > * > * {
+  margin-bottom: 1rem;
+}
+
+.container {
+  margin-bottom: 5rem;
+}
+
+@media (max-width: 750px) {
+  .container > h1 {
+    font-size: 36px;
+  }
+}

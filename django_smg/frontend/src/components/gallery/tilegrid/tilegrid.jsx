@@ -5,7 +5,7 @@ import styles from "./tilegrid.module.css";
 
 const tileGrid = (props) => {
   const group_name = props.data.slice(-1);
-  const { width } = useWidth();
+  const { width } = useWidth(600);
   // TODO: only re-render if width crosses the breakpoint. Otherwise, take
   // a shortcut
   return width > 600 ? (

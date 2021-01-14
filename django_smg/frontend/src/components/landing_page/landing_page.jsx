@@ -2,7 +2,6 @@ import React from "react";
 
 import GalleryBody from "../gallery/gal_body";
 import Welcome from "./welcome/welcome";
-import styles from "./landing_page.module.css";
 
 import sampleGallery from "./sample-gallery.json";
 

@@ -4,25 +4,8 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { register, clearError } from "../../actions/auth.action";
 import CustomError from "../generics/custom_error";
+import { Tos } from "../legal";
 import styles from "./signup.module.css";
-
-const TermsOfService = (props) => (
-  <CustomError
-    header="Terms of service"
-    message={[
-      "Legal:",
-      'THE WEBSITE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE WEBSITE OR THE USE OR OTHER DEALINGS IN THE WEBSITE.',
-      "All names uploaded to this website is made immediately publically available on the internet. The user is responsible for only uploading names to this website which are allowed to be publically available. If the user of this website is uploading names of individuals under eighteen years of age for display in a gallery, it is the responsibility of the user to ensure that they adhere to any media disclosure or privacy policies that govern the sharing private information of minors on the internet.",
-      "By accepting this agreement, you acknowledge that you are greater than 18 years old.",
-      "Non-Legal:",
-      "This website was made by me, a music teacher, by myself, as a hobby. There is no customer service department, there are no guarantees. I would not have made or shared this site with you if I didn't believe that it would be awesome for you and your students.",
-      "That being said, I am a music teacher; not a software engineer. I offer no guarantee that this site will continue to function; I offer no guarantees that the cost will not exceed the revenue such that it forces me to shut it down.",
-      "I can only guarantee that at the moment you are reading this, this website is a fantastic way for you to present your students' music lab compositions.",
-      "The author of this website designed it to only ever store the first name and last initial of anyone whose names are uploaded for display in a gallery. Therefore, this site, theoretically, is COPPA compliant. However, the author of this website makes NO GUARANTEE WHATSOEVER that this feature will work as intended, because THE AUTHOR OF THE WEBSITE IS NOT A SOFTWARE ENGINEER. YOU SHOULD NEVER UPLOAD THE FULL NAME OF ANY PERSON UNDER THIRTEEN YEARS OF AGE TO THIS WEBSITE.",
-    ]}
-    onOk={() => props.onOk()}
-  />
-);
 
 const signup = (props) => {
   const [emailInput, updateEmail] = useState("");
@@ -175,15 +158,7 @@ const signup = (props) => {
         )}
         {/* <label for="tos"> */}
         <span style={{ position: "relative", bottom: "8px" }}>
-          I agree to the{" "}
-          <a
-            onClick={() =>
-              setBlanket(<TermsOfService onOk={() => setBlanket(null)} />)
-            }
-          >
-            terms of service
-          </a>
-          {"     "}
+          I agree to the <Tos />
         </span>
         <input type="checkbox" id="tos" onClick={() => setTOS(!TOS)}></input>
         <br />
@@ -207,32 +182,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { register, clearError })(signup);
-
-
-
-
-
-
-
-
-
-
-
-
-export const SignupDisabledPlaceholder = props => {
-  return (
-    <div>
-      <div className='description'>
-        <h1>Signup Currently Disabled</h1>
-        <p>
-          This site is under active development, and you may not make a new
-          account at this time.
-        </p>
-      </div>
-      <br />
-      <Link to="/login">
-        <button>Already have an account? Login here!</button>
-      </Link>
-    </div>
-  )
-}

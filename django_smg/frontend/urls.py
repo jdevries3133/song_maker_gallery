@@ -11,4 +11,6 @@ urlpatterns = [
     path('login/', index),
     path('teacher/', index),
     path('gallery-preview', index),
+    path('privacy/', index),
+    path('tos/', index),
 ]
