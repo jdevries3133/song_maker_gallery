@@ -1,9 +1,34 @@
-# Version 1.0 pre-release
+# Progress Towards Version 2
 
-This is a restoration of a previous version of the site before I implemented
-docker and started to integrate the dynamic midi rendering tile. I am going
-to develop this up into a "version 1.0" release to get ready for another
-presentation soon for the Christmas holiday seasion.
+The second version of this site is almost ready for release! This version
+of the website uses the new
+[DynamicTile](django_smg/frontend/src/components/gallery/tilegrid/DynamicTile/index.jsx)
+component. This component dynamically renders an SVG element by parsing
+the MIDI data from the Song Maker composition. This new design is much
+better than the prior design that scraped screenshots of students' work
+using Selenium Web Driver. Now, large galleries can be produced very
+efficiently, and client-side rendered SVG provides great user experience
+plus the opportunity to create very nice CSS animations.
+
+# Roadmap
+
+The roadmap for this project is to finish the remaining odds and ends
+on the [todo list](django_smg/TODO.md), and then to deploy and publicize
+the site! Later, I would like to implement several premium features.
+
+## Submission Links
+
+One of the pain points of using this site is that the teacher has to gather
+many links. I would like to make a submission link available to the teacher
+that they can share with their students. Students can submit their song
+links themselves, saving the teacher the work of gathering their students'
+work.
+
+## Student Response
+
+"Responding," is a key tenent of music curricula. I would like to create an
+environment where students can respond to and critique each other's work
+while also being monitored by the teacher.
 
 # Welcome to the Music Lab Song Maker Gallery!
 
@@ -25,11 +50,10 @@ community. I know that I have been awestruck by the creativity of many of the
 music lab compositions that my students have shared with me, and I am sure
 that you feel the same.
 
-## We need a beautiful, simple, and easy way to share these compositions with as many people as possible!
-
 # How it Works
 
 The teacher posts links from
 [this website](http://musiclab.chromeexperiments.com/Song-Maker/).
-The site takes screenshots of student work, and displays them as thumbnails
-in a public gallery, displaying student work in a beautiful visual format.
+The site captures student work by fetching midi data and json from google's
+api. The frontend then uses that data to display beautiful, dynamically
+rendered thumbnails of students' work.
