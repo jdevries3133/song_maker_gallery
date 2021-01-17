@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { register, clearError } from "../../actions/auth.action";
 import CustomError from "../generics/custom_error";
 import { Tos } from "../legal";
+import { BackendRegistrationError } from "./backend_registration_error";
 import styles from "./signup.module.css";
 
 const signup = (props) => {
@@ -76,14 +77,12 @@ const signup = (props) => {
     return <Redirect to="/teacher" />;
   } else if (props.authError && !blanket) {
     setBlanket(
-      <CustomError
-        header="Registration Invalid"
-        message={[
-          "Email is not valid, username has already been taken",
-          "Also, your username may not include special characters; only A-Z and 0-9",
-        ]}
-        onOk={onOk}
-        justify={true}
+      <BackendRegistrationError
+        onClose={() => {
+          props.clearError();
+          setBlanket(null);
+        }}
+        errors={props.authError}
       />
     );
   }

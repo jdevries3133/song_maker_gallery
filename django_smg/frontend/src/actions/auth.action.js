@@ -58,7 +58,7 @@ export const login = (data) => (dispatch) => {
           type: LOGIN,
           payload: {
             isAuthenticated: false,
-            authError: true,
+            authError: e.response.data,
             token: null,
           },
         });
@@ -111,7 +111,7 @@ export const register = (data) => (dispatch) => {
         type: REGISTER,
         payload: {
           isAuthenticated: false,
-          authError: true,
+          authError: e.response.data,
           token: null,
           user: null,
         },
