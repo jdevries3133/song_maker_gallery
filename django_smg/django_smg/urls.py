@@ -1,8 +1,14 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import loginRedirect
+from .views import (
+    loginRedirect,
+    robots,
+    sitemap
+)
 
 urlpatterns = [
+    path('robots.txt', robots),
+    path('sitemap.xml', sitemap),
     path('api/auth/', include('accounts.urls')),
     path('api/gallery/', include('gallery.urls')),
     path('admin/', admin.site.urls),

@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.views.decorators.http import require_GET
 
 
@@ -9,3 +9,11 @@ def loginRedirect(request, *args, **kwargs):
     the react app after they've reset their password.
     """
     return redirect('/login', *args, **kwargs)
+
+@ require_GET
+def robots(request):
+    return render(request, 'robots.txt', content_type='text/plain')
+
+@ require_GET
+def sitemap(request):
+    return render(request, 'sitemap.xml', content_type='application/xml')

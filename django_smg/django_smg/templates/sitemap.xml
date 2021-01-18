@@ -2,10 +2,15 @@
 <urlset xmlns="https://songmakergallery.com/sitemap.xml">
     <url>
         <loc>https://songmakergallery.com/</loc>
-        <lastmod>2020-07-01</lastmod>
+        <lastmod>2021-01-18</lastmod>
         <priority>1</priority>
     </url>
     <url>
-        <loc>https://songmakergallery.com/signup</loc>
+        <loc>https://songmakergallery.com/signup/</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://songmakergallery.com/login/</loc>
+        <priority>0.7</priority>
     </url>
 </urlset>

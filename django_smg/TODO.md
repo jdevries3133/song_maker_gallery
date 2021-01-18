@@ -34,9 +34,10 @@
       and everything will be ok
 - [x] Optimize extremely slow re-rendering in gallery on screen size change
       by only re-rendering the component if the width crosses the threshold.
-- [ ] Create student link submission view as a premium feature.
 - [x] update terms of use and privacy policy
 - [x] Make site-wide footer with terms of use and privacy policy except on
   - gallery page
 - [x] Allow login via username _or_ email; thanks João!
-- [ ] Frontend must provide descriptive response to user for duplicate email
+- [x] Frontend must provide descriptive response to user for duplicate email
+- [ ] Create student link submission view as a premium feature.
+- [x] Add sitemap.xml and robots.txt
