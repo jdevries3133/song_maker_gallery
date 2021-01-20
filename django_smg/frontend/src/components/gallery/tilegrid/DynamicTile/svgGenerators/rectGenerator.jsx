@@ -158,7 +158,7 @@ export class RectGenerator {
      *  Calculate y position of the rectangle.
      *
      *  This function uses a couple magic numbers that aren't significant
-     *  enough to move to the constants file
+     *  enough to move to the constants file:
      *
      *  48
      *  No matter the setting, the lowest note in the song maker is C3 or above.
@@ -186,12 +186,12 @@ export class RectGenerator {
 
     // now that we know tilesFromBottom, the return value is a simple
     // function:
-    const xVal =
+    return (
       this.gridContext.pixelHeight -
       tilesFromBottom *
         (this.gridContext.pixelHeight /
-          (this.tilesPerOctave * this.song.octaves));
-    return xVal + "px";
+          (this.tilesPerOctave * this.song.octaves))
+    );
   }
   calcColor() {
     return PITCH_COLORS[this.noteNumber % 12];
@@ -214,8 +214,8 @@ export class RectGenerator {
         key={this.currentTime + Math.random().toString()}
         width={this.calcWidth()}
         height={this.calcHeight()}
-        x={this.calcX()}
-        y={this.calcY()}
+        x={this.calcX() + "px"}
+        y={this.calcY() + "px"}
         style={{ fill: this.calcColor() }}
       />
     );
