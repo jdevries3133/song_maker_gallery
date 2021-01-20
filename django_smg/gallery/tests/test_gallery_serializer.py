@@ -653,7 +653,7 @@ class TestQueryCountLargeGallery(test.TestCase):
         self.serializer.save()
         with CaptureQueriesContext(connection) as query_count:
             self.serializer.render(slug='sample-gallery')
-        self.assertEqual(query_count.final_queries, 130)
+        self.assertEqual(query_count.final_queries, 8)
 
     def test_num_queries_on_cached_render(self):
         """

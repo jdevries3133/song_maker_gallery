@@ -3,11 +3,14 @@ import requests
 from django.conf import settings
 from django.db.models.query import QuerySet
 
+from .models import Song
+
 
 def iter_fetch_and_cache(*, songs: QuerySet):
     """
     Fetch and cache data for a currently uncached song.
     """
+    needs_update = False
     session1 = requests.Session()
     session2 = requests.Session()
     for song in songs:
@@ -17,9 +20,9 @@ def iter_fetch_and_cache(*, songs: QuerySet):
         if settings.SKIP_FETCH_AND_CACHE:
             song.midi = b''  # type: ignore
             song.is_cached = True  # type: ignore
-            song.save()
             yield song
             continue
+        needs_update = True
         SONG_JSON_DATA = lambda song_id : (
             f'https://musiclab.chromeexperiments.com/Song-Maker/data/{song_id}'
         )
@@ -32,5 +35,21 @@ def iter_fetch_and_cache(*, songs: QuerySet):
             setattr(song, k, v)
         song.midi = midi_bytes  # type: ignore 
         song.is_cached = True  # type: ignore
-        song.save()
         yield song
+    if needs_update:
+        Song.objects.bulk_update(songs, [  # type: ignore
+            'midi',
+            'is_cached',
+            'beats',
+            'bars',
+            'instrument',
+            'octaves',
+            'percussion',
+            'percussionNotes',
+            'rootNote',
+            'rootOctave',
+            'rootPitch',
+            'scale',
+            'subdivision',
+            'tempo',
+        ])
