@@ -20,16 +20,13 @@ export const DynamicTile = (props) => {
   let pixelHeight = Math.floor(pixelWidth / ASPECT_RATIO);
   // generate rects once midi has been parsed
   let rectGenerator;
-  let gridGenerator;
   if (song && song.isParsed) {
     const gridSize = {
       pixelHeight,
       pixelWidth,
     };
     rectGenerator = new RectGenerator(song, gridSize);
-    gridGenerator = new GridGenerator(song, gridSize);
     // generate grid outside try/catch because it should not throw errors.
-    gridGenerator.generateGrid();
     try {
       // will throw error if unexpected midi event type occurs
       rectGenerator.generateRects();
@@ -83,7 +80,6 @@ export const DynamicTile = (props) => {
               {props.mobile ? "View Song" : props.song.name}
             </text>
             {rectGenerator ? rectGenerator.rects : null}
-            {gridGenerator ? gridGenerator.grid : null}
           </svg>
         </a>
       </div>

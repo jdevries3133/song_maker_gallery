@@ -37,9 +37,10 @@ export class RectGenerator {
     }
     this.tilesPerOctave = tilesPerOctave;
   }
-  generateRects = (song, gridContext) => {
+
+  generateRects() {
     this.generatePitchedTrackRects();
-  };
+  }
 
   generatePitchedTrackRects() {
     const pitchedTrack = this.song.midiParsed.track[1];
