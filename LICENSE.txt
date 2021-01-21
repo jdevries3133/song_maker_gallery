@@ -24,6 +24,6 @@ present, and future, to this project. Signatures will be demonstrated by
 the placement of an "x" between the square brackets below:
 
 [x] John DeVries
-[ ] João Felipe
+[x] João Felipe
 
 **commits by GitHub user "Naseus" were authored by John DeVries
