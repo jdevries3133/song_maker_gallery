@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import store from "../store";
@@ -24,12 +19,6 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          {/* adsense
-          <script
-            data-ad-client="ca-pub-2027864288539638"
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          ></script> */}
           <Switch>
             <Route exact path="/">
               <LandingPage />

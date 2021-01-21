@@ -20,10 +20,10 @@ const donation = (props) => {
         <p className={styles.par}>
           I've worked very hard to make it possible for anyone to make an
           account and create a gallery for their students completely free of
-          charge. This involved creating an entire backend infrastructure beind
+          charge. This involved creating an entire backend infrastructure behind
           this website, including account management, and a custom solution for
-          automatically capturing the thumbnails of student work that you see on
-          this website.
+          automatically generating the thumbnails of student work that you see
+          on this website.
         </p>
         <p className={styles.par}>
           Although this site is free to use, it is not free to operate; and{" "}

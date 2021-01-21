@@ -20,7 +20,7 @@ const PrivacyContent = (props) => (
         <a href="https://github.com/jdevries3133/song_maker_gallery">
           pull request
         </a>{" "}
-        to help me handle cookies properly
+        to help me handle cookies properly!
       </li>
       <li>
         Do not upload any personallly identifying information (as defined in the
@@ -31,6 +31,14 @@ const PrivacyContent = (props) => (
         Do not upload the personally identifying information of any individual
         under eighteen years of age without authorization to do so from that
         individual's parent or guardian.
+      </li>
+      <li>
+        This website is monetized with Google Adsense ("Google" and "Google
+        Adsense" are trademarks of Alphabet and not affiliated with this
+        website). That means that Google will automatically serve advertisements
+        on this website. This practice includes the utilization of "third party
+        cookies," or "tracking cookies," which support the functionality of
+        Google's Ad platform.
       </li>
     </ol>
     {props.okButton ? props.okButton : null}

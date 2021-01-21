@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { register, clearError } from "../../actions/auth.action";
 import CustomError from "../generics/custom_error";
-import { Tos } from "../legal";
+import { Tos, Privacy } from "../legal";
 import { BackendRegistrationError } from "./backend_registration_error";
 import styles from "./signup.module.css";
 
@@ -157,7 +157,7 @@ const signup = (props) => {
         )}
         {/* <label for="tos"> */}
         <span style={{ position: "relative", bottom: "8px" }}>
-          I agree to the <Tos />
+          I agree to the <Tos /> and <Privacy />
         </span>
         <input type="checkbox" id="tos" onClick={() => setTOS(!TOS)}></input>
         <br />
