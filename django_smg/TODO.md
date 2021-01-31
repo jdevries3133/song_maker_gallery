@@ -39,5 +39,8 @@
   - gallery page
 - [x] Allow login via username _or_ email; thanks João!
 - [x] Frontend must provide descriptive response to user for duplicate email
-- [ ] Create student link submission view as a premium feature.
 - [x] Add sitemap.xml and robots.txt
+- [x] fix bug for pentatonic scale
+- [ ] Create student link submission view as a premium feature.
+- [ ] fix but where real galleries throw errors continuously until the API
+      response comes back. Probably a problem in the `tile.jsx` component.
