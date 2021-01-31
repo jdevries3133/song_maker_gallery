@@ -14,7 +14,6 @@ import {
 } from "../../../actions/user";
 
 const YourGalleries = (props) => {
-  // TODO: after deleting a gallery, this will infinitely re-render. Fix!
   const [confirmDelete, setConfirmDelete] = useState(null);
   const [blanket, setBlanket] = useState(null);
 

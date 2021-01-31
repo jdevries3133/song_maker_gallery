@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./m.teacher.module.css";
 import Add from "./add_gallery/add_gallery";
 import YourGalleries from "./your_galleries/your_galleries";
 
