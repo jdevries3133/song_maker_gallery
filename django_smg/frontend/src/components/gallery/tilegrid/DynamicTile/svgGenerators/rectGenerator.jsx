@@ -16,6 +16,12 @@ export class RectGenerator {
    */
   constructor(song, gridContext) {
     this.song = song;
+    // truncate longer songs so they don't look squished.
+    if (this.song.bars > 4) {
+      this.song.bars = 4;
+    } else if (this.song.subdivision === 3 && this.song.bars > 2) {
+      this.song.bars = 2;
+    }
     this.gridContext = gridContext;
     this.rects = [];
     this.currentTime = 0;
@@ -136,19 +142,6 @@ export class RectGenerator {
 
   calcX() {
     // calculate x position of the rectangle
-    if (this.song.bars > 4) {
-      /*
-       * I actually experimented by turning this on. It actually works
-       * like a charm! The only dilemma is that the song is condensed
-       * down to the width of the tile, so it will just be a matter
-       * of clipping the song off and showing only the beginning so
-       * it doesn't look too condensed.
-       */
-      throw new Error(`
-        Songs longer than 5 bars have a horizontal slider, which has not yet
-        been handled
-      `);
-    }
     return (
       (this.currentTime / this.song.midiParsed.timeDivision) *
       (this.gridContext.pixelWidth / (this.song.bars * this.song.beats))
