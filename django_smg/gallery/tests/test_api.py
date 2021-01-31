@@ -1,5 +1,4 @@
 import time
-from copy import deepcopy
 
 from django.urls import reverse
 from rest_framework import status
@@ -8,6 +7,8 @@ from ..models import Gallery
 from .util import are_rendered_groups_same
 from .base_case import GalleryTestCase
 
+# TODO: patch google api calls so that the test suite can run without the
+# network.
 
 
 class TestAuthGalleryViewset(GalleryTestCase):
@@ -24,10 +25,6 @@ class TestAuthGalleryViewset(GalleryTestCase):
         self.assertTrue(status.is_success(response.status_code)) # type: ignore
 
     def test_post_request_returns_expected_information(self):
-        # TODO: this fails now because the post request only returns
-        # data from the serializer.
-        # simply testing that the title / description are passed through is
-        # good enough
         with self.settings(SKIP_FETCH_AND_CACHE=False):
             res = self.client.post(
                 '/api/gallery/',
@@ -66,11 +63,11 @@ class TestAuthGalleryViewset(GalleryTestCase):
     def test_delete_single_gallery(self):
         self._add_gallery()
         self.client.delete(
-            '/api/gallery/?pk=1',
+            f'/api/gallery/?pk={self.gallery.pk}',  # type: ignore
             HTTP_AUTHORIZATION=f'Token {self.token}'
         )
         with self.assertRaises(Gallery.DoesNotExist):  # type: ignore
-            self.gallery.refresh_from_db()
+            self.gallery.refresh_from_db()  # type: ignore
 
     def test_delete_multiple_galleries(self):
         pks = [str(self._add_gallery().pk) for _ in range(5)]
