@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Song } from "./MidiParser/Parser.js";
-import { RectGenerator, GridGenerator } from "./svgGenerators";
+import { RectGenerator } from "./rectGenerator.js";
 import { ASPECT_RATIO } from "./constants";
 import styles from "./DynamicTile.module.css";
 

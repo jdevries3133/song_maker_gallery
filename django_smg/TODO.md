@@ -43,7 +43,7 @@
 - [x] fix bug for pentatonic scale
 - [x] fix but where real galleries throw errors continuously until the API
       response comes back. Probably a problem in the `tile.jsx` component.
-- [ ] fix bug with songId 5163680023969792 where rects are taller than tile.
+- [x] fix bug with songId 5163680023969792 where rects are taller than tile.
 
 # Feature Roadmap
 

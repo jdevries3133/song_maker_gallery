@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PITCH_COLORS } from "../constants";
+import { PITCH_COLORS } from "./constants";
 
 export class RectGenerator {
   /*
@@ -19,7 +19,7 @@ export class RectGenerator {
     // truncate longer songs so they don't look squished.
     if (this.song.bars > 4) {
       this.song.bars = 4;
-    } else if (this.song.subdivision === 3 && this.song.bars > 2) {
+    } else if (this.song.subdivision > 2 && this.song.bars > 2) {
       this.song.bars = 2;
     }
     this.gridContext = gridContext;
@@ -154,14 +154,10 @@ export class RectGenerator {
      *  This function uses a couple magic numbers that aren't significant
      *  enough to move to the constants file:
      *
-     *  48
-     *  No matter the setting, the lowest note in the song maker is C3 or above.
-     *  The midi number for C3 is 48. Therefore, octaveIndex is calculating
-     *  a 0-based index for which octave the note is in.
-     *
      *  12
      *  Number of semitones in an octave.
      */
+
     // figure out how many tiles up from the bottom the current note is
     const semitonesAboveRoot = Math.abs(
       (this.noteNumber - this.song.rootNote) % 12
@@ -170,7 +166,7 @@ export class RectGenerator {
       semitonesAboveRoot,
       this.song.scale
     );
-    const octaveIndex = Math.floor((this.noteNumber - 48) / 12);
+    const octaveIndex = Math.floor((this.noteNumber - this.song.rootNote) / 12);
     const tilesFromBottom = scaleDegree + octaveIndex * this.tilesPerOctave;
 
     // now that we know tilesFromBottom, the return value is a simple
