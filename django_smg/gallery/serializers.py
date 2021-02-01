@@ -216,7 +216,11 @@ class GalleryDatasetSerializer(serializers.Serializer):
             song_data = json.loads(song_data.get('songData'))  # type: ignore
         try:
             assert isinstance(song_data, list)
+            group_names = set()
             for group in song_data:
+                # Prevent duplicate group names
+                assert group[-1] not in group_names
+                group_names.update(group[-1])
                 assert isinstance(group[-1], str)
                 assert isinstance(group, list)
                 for row in group[:-1]:

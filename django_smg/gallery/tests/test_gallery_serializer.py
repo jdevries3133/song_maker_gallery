@@ -7,6 +7,7 @@ from django import test
 from django.test.utils import CaptureQueriesContext
 from django.db import connection
 from django.conf import settings
+from django.core.exceptions import ValidationError
 
 from ..serializers import GalleryDatasetSerializer
 from ..models import Gallery, SongGroup, Song
@@ -88,12 +89,14 @@ class TestGallerySerializer(test.TestCase):
         self._make_gallery()
 
 
-    def _make_gallery(self):
+    def _make_gallery(self, *, song_data=None) -> bool:
+        if not song_data:
+            song_data = self.mock_api_data()
         serializer = GalleryDatasetSerializer(
             data={
                 'title': self.GALLERY_TITLE,
                 'description': self.GALLERY_DESCRIPTION,
-                'songData': self.mock_api_data(),
+                'songData': song_data
             },
             context={
                 'user': self.user,
@@ -101,12 +104,8 @@ class TestGallerySerializer(test.TestCase):
         )
         if serializer.is_valid():
             serializer.save()
-        else:
-            raise Exception(
-                'Serializer in setUp method was not valid due to '
-                f'errors: {serializer.errors}'
-
-            )
+            return True
+        return False
 
     def test_gallery_single_gallery_exists(self):
         gallery_set = Gallery.objects.filter(slug='test-title')  # type: ignore
@@ -614,6 +613,24 @@ class TestGallerySerializer(test.TestCase):
             'user': self.user
         }).render_many(max_galleries=3)
         self.assertEqual(len(rendered), 3)
+
+    def test_duplicate_group_names_are_invalid(self):
+        # self._make_gallery returns false if the serializer is invalid.
+        self.assertFalse(
+            self._make_gallery(
+                song_data=[
+                    [
+                        'Mark J.',
+                        'https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912'
+                    ], 'group',
+                    [
+                        'Mark J.',
+                        'https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912'
+                    ], 'group',
+                ]
+            )
+        )
+
 
 
 class TestQueryCountLargeGallery(test.TestCase):
