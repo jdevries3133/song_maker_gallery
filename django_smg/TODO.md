@@ -41,6 +41,11 @@
 - [x] Frontend must provide descriptive response to user for duplicate email
 - [x] Add sitemap.xml and robots.txt
 - [x] fix bug for pentatonic scale
-- [ ] Create student link submission view as a premium feature.
-- [ ] fix but where real galleries throw errors continuously until the API
+- [x] fix but where real galleries throw errors continuously until the API
       response comes back. Probably a problem in the `tile.jsx` component.
+- [ ] fix bug with songId 5163680023969792 where rects are taller than tile.
+
+# Feature Roadmap
+
+- [ ] student link submission
+- [ ] Response platform with embedded songs

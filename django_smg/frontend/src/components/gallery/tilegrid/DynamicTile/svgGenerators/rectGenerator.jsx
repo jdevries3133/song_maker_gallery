@@ -67,7 +67,7 @@ export class RectGenerator {
          * higher up.
          */
         case 12:
-          // program change; comes at start of each track
+          // program change; comes at the start of each track
           break;
         case 8:
           // note off
@@ -78,13 +78,13 @@ export class RectGenerator {
           this.pushRect();
           break;
         case 255:
-          // meta event
+          // meta events
           switch (msg.metaType) {
             case 47:
               // end of track
               break;
             case 81:
-              // SMTPE Offset (starting point offset from start of track
+              // SMTPE Offset (starting point offset from start of track)
               break;
             default:
               throw new Error(`Unexpected meta event type ${msg.metaType}`);
@@ -129,7 +129,7 @@ export class RectGenerator {
           0: 1,
           2: 2,
           4: 3,
-          5: 4,
+          7: 4,
           9: 5,
         };
         return semitonesToScaleDegree[semitonesAboveRoot];
@@ -162,15 +162,10 @@ export class RectGenerator {
      *  12
      *  Number of semitones in an octave.
      */
-    if (this.song.scale === "chromatic" && this.song.octaves > 2) {
-      throw new Error(`
-        Three octave chromatic scale songs have a vertical slider, which has
-        not yet been handled.
-      `);
-    }
     // figure out how many tiles up from the bottom the current note is
-    const semitonesAboveRoot =
-      (this.noteNumber % 12) - (this.song.rootNote % 12);
+    const semitonesAboveRoot = Math.abs(
+      (this.noteNumber - this.song.rootNote) % 12
+    );
     const scaleDegree = this.evalScaleDegree(
       semitonesAboveRoot,
       this.song.scale
