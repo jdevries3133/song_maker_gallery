@@ -21,6 +21,8 @@ const Verify = (props) => {
     groupname = "";
   }
 
+  const duplicateGroupName = props.otherGroups.includes(groupname);
+
   // songData construction logic
   var nameIndex = props.nameIndex;
   var linkIndex = props.linkIndex;
@@ -106,6 +108,9 @@ const Verify = (props) => {
       <div className={`description blanket ${styles.scroll_blanket}`}>
         <h2 className={styles.doesThisLookGood}>Does this look good?</h2>
         <h3>Group Name to Display:</h3>
+        {duplicateGroupName ? (
+          <p style={{ color: "salmon" }}>Duplicate group name</p>
+        ) : null}
         <input
           className={`${styles.input} ${styles.wide_input}`}
           value={groupname}
@@ -151,12 +156,18 @@ const Verify = (props) => {
             }
           </tbody>
         </table>
-        <button
-          onClick={() => props.validatedHandler(filtered)}
-          className={`button ${styles.up_btn}`}
-        >
-          Add Group
-        </button>
+        {duplicateGroupName ? (
+          <h3 style={{ color: "red" }}>
+            Change group name to proceed. Current group name is a duplicate
+          </h3>
+        ) : (
+          <button
+            onClick={() => props.validatedHandler(filtered)}
+            className={`button ${styles.up_btn}`}
+          >
+            Add Group
+          </button>
+        )}
         <button
           onClick={(e) => props.restart(e)}
           className={`button ${styles.restart_btn}`}
@@ -170,14 +181,19 @@ const Verify = (props) => {
       <div className={`description blanket ${styles.scroll_blanket}`}>
         <h2>Oops!</h2>
         <p>
-          Something went wrong on our end. Make sure your spreadsheet looks like
-          the example below and give it another shot.
+          It looks like your spreadsheet does not follow our template, because
+          we were unable to parse the information you uploaded in order to
+          provide a preview.
+        </p>
+        <p>
+          Please download our template and make sure that your <code>.csv</code>{" "}
+          file looks the same!
         </p>
         <button
           onClick={(e) => props.restart(e)}
           className={`button ${styles.restart_btn}`}
         >
-          Restart
+          Try Again
         </button>
       </div>
     );

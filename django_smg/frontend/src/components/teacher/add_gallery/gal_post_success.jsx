@@ -14,17 +14,13 @@ const gal_post_success = (props) => {
       <Link to={relative_path}>
         <p>{full_url}</p>
       </Link>
-      <p>
-        Right now, it has placeholder images, but our screenshot bot is working
-        hard to prepare thumbnails of your students' work as we speak!
-      </p>
-      <p>
-        We'll send you an email when your gallery is ready. You should keep an
-        eye on your spam folder, the email will come from
-        "songmakergallery@gmail.com." Depending on site demand, you should
-        expect to hear back in less than 24 hours!
-      </p>
       <button onClick={() => props.onOk()}>Ok</button>
+      <p>
+        Beware that the gallery <b>will take up to 30 seconds</b> to load when
+        you open it for the first time because that will trigger the backend to
+        fetch and store your students' song data from Google. The gallery will
+        load normally thereafter.
+      </p>
     </div>
   );
 };

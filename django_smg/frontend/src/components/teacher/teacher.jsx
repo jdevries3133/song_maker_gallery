@@ -188,7 +188,7 @@ class Teacher extends Component {
 
   // fire POST_GALLERY action upon button press in <Staged />
   inputConfirmation = () => {
-    if (this.state.titleValue === "") {
+    if (this.state.titleValue.trim() === "") {
       this.setState({
         blankTitleError: true,
       });
@@ -233,6 +233,14 @@ class Teacher extends Component {
     }
   };
 
+  otherGroups = () => {
+    let groups = [];
+    for (let i = 0; i < this.state.stagedGroups.length; i++) {
+      groups.push(this.state.stagedGroups[i].slice(-1)[0]);
+    }
+    return groups;
+  };
+
   render() {
     // will occur after logout
     if (!this.props.isAuthenticated) {
@@ -267,6 +275,7 @@ class Teacher extends Component {
           restart={this.resetFormHandler}
           groupname={this.state.groupname}
           groupNameChange={this.groupNameHandler}
+          otherGroups={this.otherGroups()}
           validatedHandler={this.groupValidatedHandler}
           nameIndex={this.state.nameIndex}
           linkIndex={this.state.linkIndex}
@@ -289,7 +298,12 @@ class Teacher extends Component {
           <br />
           <input onChange={(e) => this.titleInputHandler(e)} />
           <br />
-          {this.state.titleValue ? (
+          {this.state.titleValue && !this.state.titleValue.trim() ? (
+            <p style={{ color: "salmon" }}>
+              Gallery title cannot be only empty characters.
+            </p>
+          ) : null}
+          {this.state.titleValue.trim() ? (
             <button onClick={() => this.dismissTitleBlank()}>Ok</button>
           ) : null}
         </div>

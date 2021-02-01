@@ -3,6 +3,7 @@ import styles from "./add_gallery.module.css";
 
 import useWidth from "../../generics/useWidth";
 import { Donate } from "../../gallery/donate/";
+import { TemplateHelp } from "./template_help";
 
 const Add = (props) => {
   const { width } = useWidth();
@@ -15,20 +16,26 @@ const Add = (props) => {
         Galleries are separated into "groups." That may mean different things
         for different teachers. For me, I create one group per general music
         homeroom, then one gallery for each grade level I teach. You have the
-        freedom to organize your gallery however you would like.
+        freedom to organize your galleries however you would like.
       </p>
       <p className={styles.par_just}>
         <b>The spreadsheet must be in the form of a .csv file</b>, which you can
-        easily output from Excel or google sheets. To make sure your spreadsheet
+        easily output from Excel or Google Sheets. To make sure your spreadsheet
         is formatted properly, use this template:
       </p>
       <a href="static/frontend/songmakergallery_upload_template.csv" download>
         <button className="button">Download Template</button>
       </a>
+      <p>
+        <TemplateHelp />
+      </p>
       <p className={styles.par_just}>
         You may make as many galleries as you would like, each containing as
         many groups as you would like, each containing as many students you
-        would like.
+        would like! Note that in the end, you will need to upload one
+        spreadsheet for <i>each</i> group. A gallery with five groups will
+        require five spreadsheets. Feel free to try the gallery creation process
+        out now with the template above!
       </p>
       <p className={styles.par_just}>
         Please do share this tool with your colleagues, and consider chipping in

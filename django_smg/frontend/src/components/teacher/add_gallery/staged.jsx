@@ -41,7 +41,9 @@ const staged = (props) => {
         onClick={() => props.confirmCreate()}
       >
         <p>Create Gallery</p>
-        <p>(Once all of your groups are staged)</p>
+        <p>
+          (Or, add another group by uploading another <code>.csv</code> file.)
+        </p>
       </button>
     </div>
   );

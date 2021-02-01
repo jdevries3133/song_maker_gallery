@@ -16,7 +16,7 @@ const FooterElem = styled.footer`
 
 export const Footer = (props) => (
   <FooterElem>
-    <div>
+    <div style={{ display: "inline-block" }}>
       <Tos displayText="terms of service" />
       <span>|</span>
       <Privacy displayText="privacy policy" />
