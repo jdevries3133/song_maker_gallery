@@ -1,6 +1,27 @@
 # Contribution guide for the Song Maker Gallery
 
+## Welcome!!
+
+Not only is this a free and open source project, I also strive to keep
+as much of the site itself free to users for as long as possible. Any revenue
+from the website will always directly support the site's long-term operation,
+or be donated to good causes within music education as I see fit.
+
+Best of all, this project is lead by a teacher and programming hobbyist! If
+you are interested in open source contributing, there couldn't be a better
+place to start!
+
+### Code of Conduct
+
+This project follows the
+[Contributor's Covenant](https://www.contributor-covenant.org/version/2/0/code_of_conduct/)
+and I wil approach every contribution, big or small with extrordinary
+gratitude and support.
+
 ## Development Setup
+
+> Run `bash dev_setup.sh` to do all these steps automatically. Beware that it
+> will append to your `~/.bashrc`.
 
 ### Django
 
@@ -12,7 +33,7 @@
    heart desires
 3. Set the environment variable `DJANGO_DEBUG` to any non-zero value
    - Set to any truthy value: `true`, `1`, etc...
-   - This causes django `DEBUG` to be set to `True` and causes project to use
+   - This `DEBUG` to be set to `True` inside Django and causes project to use
      sqlite.
 4. "cd" into the django_smg folder (`cd django_smg`)
 5. Create a virtual environment `python3 -m venv venv`
