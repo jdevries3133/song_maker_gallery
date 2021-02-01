@@ -1,34 +1,31 @@
-# Progress Towards Version 2
-
-The second version of this site is almost ready for release! This version
-of the website uses the new
-[DynamicTile](django_smg/frontend/src/components/gallery/tilegrid/DynamicTile/index.jsx)
-component. This component dynamically renders an SVG element by parsing
-the MIDI data from the Song Maker composition. This new design is much
-better than the prior design that scraped screenshots of students' work
-using Selenium Web Driver. Now, large galleries can be produced very
-efficiently, and client-side rendered SVG provides great user experience
-plus the opportunity to create very nice CSS animations.
-
 # Roadmap
 
 The roadmap for this project is to finish the remaining odds and ends
 on the [todo list](django_smg/TODO.md), and then to deploy and publicize
-the site! Later, I would like to implement several premium features.
+the site! Later, I would like to implement several premium features to support
+the long-term operation of the site.
 
 ## Submission Links
 
 One of the pain points of using this site is that the teacher has to gather
-many links. I would like to make a submission link available to the teacher
-that they can share with their students. Students can submit their song
-links themselves, saving the teacher the work of gathering their students'
-work.
+many links, and has to upload one spreadsheet for each group. I would like to
+make a submission link available to the teacher that they can share with their
+students. Students can submit their song links themselves, saving the teacher
+the work of gathering their students' work.
+
+See
+[#10](https://github.com/jdevries3133/song_maker_gallery/issues/10)
+if you are interested!
 
 ## Student Response
 
 "Responding," is a key tenent of music curricula. I would like to create an
 environment where students can respond to and critique each other's work
 while also being monitored by the teacher.
+
+See
+[#11](https://github.com/jdevries3133/song_maker_gallery/issues/11)
+if you are interested!
 
 # Welcome to the Music Lab Song Maker Gallery!
 
