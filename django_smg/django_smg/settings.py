@@ -20,14 +20,14 @@ else:
 
 SKIP_FETCH_AND_CACHE = False  # speeds up unit tests significantly
 
-# require https
-SECURE_HSTS_SECONDS = 3600  # increase to 1 yr later if all goes well
-SECURE_SSL_REDIRECT = True
-SECURE_HSTS_PRELOAD = True
-SESSION_COOKIE_SECURE = True
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-
-CSRF_COOKIE_SECURE  = True
+if not DEBUG:
+    # require https
+    SECURE_HSTS_SECONDS = 3600  # increase to 1 yr later if all goes well
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_PRELOAD = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    CSRF_COOKIE_SECURE  = True
 
 ALLOWED_HOSTS = [
     'songmakergallery.com',
