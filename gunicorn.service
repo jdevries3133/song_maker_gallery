@@ -3,10 +3,10 @@ Description=gunicorn daemon
 After=network.target
 
 [Service]
-User=jack
+User=ubuntu
 Group=www-data
-WorkingDirectory=/home/jack/song_maker_gallery/django_smg
-ExecStart=/home/jack/song_maker_gallery/django_smg/venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/jack/song_maker_gallery/django_smg/run/gunicorn.sock django_smg.wsgi:application
+WorkingDirectory=/home/ubuntu/song_maker_gallery/django_smg
+ExecStart=/home/ubuntu/song_maker_gallery/django_smg/venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/song_maker_gallery/django_smg/run/gunicorn.sock django_smg.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
