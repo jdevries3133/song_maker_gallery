@@ -11,7 +11,7 @@ urlpatterns = [
     path('sitemap.xml', sitemap),
     path('api/auth/', include('accounts.urls')),
     path('api/gallery/', include('gallery.urls')),
-    path('admin/', admin.site.urls),
+    path('smgadministrator/', admin.site.urls),
     path('accounts/login/', loginRedirect),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('frontend.urls')),
