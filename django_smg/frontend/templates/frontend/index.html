@@ -8,17 +8,16 @@
       name="description"
       content="A beatuiful and free way to feature students' musical creations."
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Merriweather+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@500&display=swap" rel="stylesheet">
     {% load static %}
     <link rel="shortcut icon" href="{% static "frontend/favicon.ico" %}" />
     <title>Song Maker Gallery</title>
+    <link rel='stylesheet' href="{% static "/frontend/global_styles.css" %}" />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <script src="{% static "/frontend/main.js" %}"></script>
+    <script src="{% static "/frontend/webpack_output/main.js" %}"></script>
   </body>
 </html>

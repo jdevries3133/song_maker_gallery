@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 const button = styled.button`
-  font-family: "Roboto", sans-serif;
+  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   font-weight: lighter;
   font-size: 5rem;
   background-color: rgba(104, 253, 75, 0.719);
