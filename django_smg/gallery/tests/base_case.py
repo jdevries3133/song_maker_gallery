@@ -211,7 +211,8 @@ class GalleryTestCase(TestCase):
                     'username': 'jack',
                     'password': 'ghjlesdfr;aghruiao;',
                 },
-                content_type='application/json'
+                content_type='application/json',
+                secure=True
             ).rendered_content  # type: ignore
         )['token']
 

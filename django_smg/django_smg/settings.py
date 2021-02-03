@@ -20,6 +20,11 @@ else:
 
 SKIP_FETCH_AND_CACHE = False  # speeds up unit tests significantly
 
+# require https
+SECURE_HSTS_SECONDS = 3600  # increase to 1 yr later if all goes well
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+
 ALLOWED_HOSTS = [
     'songmakergallery.com',
     'localhost',
@@ -52,7 +57,6 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'django_smg.urls'

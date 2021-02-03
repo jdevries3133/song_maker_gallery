@@ -21,6 +21,7 @@ class TestAuthGalleryViewset(GalleryTestCase):
         response = self.client.get(
             reverse('auth_gallery'),
             HTTP_AUTHORIZATION=f'Token {self.token}',
+            secure=True
         )
         self.assertTrue(status.is_success(response.status_code)) # type: ignore
 
@@ -29,7 +30,8 @@ class TestAuthGalleryViewset(GalleryTestCase):
             res = self.client.post(
                 '/api/gallery/',
                 data=self.mock_api_data,
-                HTTP_AUTHORIZATION=f'Token {self.token}'
+                HTTP_AUTHORIZATION=f'Token {self.token}',
+                secure=True
             )
         self.assertEqual(
             res.json()['title'],  # type: ignore
@@ -45,7 +47,8 @@ class TestAuthGalleryViewset(GalleryTestCase):
         self.client.post(
             '/api/gallery/',
             data=self.mock_api_data,
-            HTTP_AUTHORIZATION=f'Token {self.token}'
+            HTTP_AUTHORIZATION=f'Token {self.token}',
+            secure=True
         )
         stop = time.perf_counter()
         self.assertLess((start-stop), 0.3)
@@ -53,7 +56,8 @@ class TestAuthGalleryViewset(GalleryTestCase):
     def test_delete_gallery_without_pk_returns_400(self):
         res = self.client.delete(
             '/api/gallery/?invalid=this',
-            HTTP_AUTHORIZATION=f'Token {self.token}'
+            HTTP_AUTHORIZATION=f'Token {self.token}',
+            secure=True
         )
         self.assertEqual(
             res.status_code,  # type: ignore
@@ -64,7 +68,8 @@ class TestAuthGalleryViewset(GalleryTestCase):
         self._add_gallery()
         self.client.delete(
             f'/api/gallery/?pk={self.gallery.pk}',  # type: ignore
-            HTTP_AUTHORIZATION=f'Token {self.token}'
+            HTTP_AUTHORIZATION=f'Token {self.token}',
+            secure=True
         )
         with self.assertRaises(Gallery.DoesNotExist):  # type: ignore
             self.gallery.refresh_from_db()  # type: ignore
@@ -74,7 +79,8 @@ class TestAuthGalleryViewset(GalleryTestCase):
         qs = ','.join(pks)
         res = self.client.delete(
             f'/api/gallery/?pk={qs}',
-            HTTP_AUTHORIZATION=f'Token {self.token}'
+            HTTP_AUTHORIZATION=f'Token {self.token}',
+            secure=True
         )
         self.assertTrue(status.is_success(res.status_code))  # type: ignore
         with self.assertRaises(Gallery.DoesNotExist):  # type: ignore
@@ -90,7 +96,7 @@ class TestPublicGalleryViewset(GalleryTestCase):
             url = reverse('public_gallery', kwargs={
                 'slug': 'test-title'
             })
-            response = self.client.get(url)
+            response = self.client.get(url, secure=True)
             self.assertTrue(are_rendered_groups_same(
                 response.json(),  # type: ignore
                 self.expected_rendered_data,
