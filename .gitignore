@@ -1,5 +1,6 @@
 # my start script; not portable
 django_smg/start
+sqldumps
 
 venv
 secret_settings.py
