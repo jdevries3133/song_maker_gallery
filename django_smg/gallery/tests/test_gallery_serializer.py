@@ -47,12 +47,12 @@ class TestGallerySerializer(test.TestCase):
                       "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
                     [
-                      "Mark  Johnson",
+                      "Mark  Johnson  ",
                       "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
 
                     [
-                      "Mark   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Johnson",
+                      "  Mark   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Johnson",
                       "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
                     "A Group of Marks"

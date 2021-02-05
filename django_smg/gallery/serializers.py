@@ -177,9 +177,9 @@ class GalleryDatasetSerializer(serializers.Serializer):
             group_obj = song_groups.get(group_name=group[-1])
             for row in group[:-1]:
                 # change names to first name, last initial
-                full_name = row[0]
+                full_name = row[0].strip()  # thanks Wendy!
                 songId = row[1][-16:]
-                name_arr = full_name.split(' ')
+                name_arr = [i for i in full_name.split(' ') if i]
                 if len(name_arr) > 1:
                     name = (
                         name_arr[0].title()
