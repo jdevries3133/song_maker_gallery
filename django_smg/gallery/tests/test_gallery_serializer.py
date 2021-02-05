@@ -48,12 +48,12 @@ class TestGallerySerializer(test.TestCase):
                     ],
                     [
                       "Mark  Johnson  ",
-                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912  "
                     ],
 
                     [
                       "  Mark   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Johnson",
-                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+                      "  https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
                     ],
                     "A Group of Marks"
                   ],
@@ -154,6 +154,7 @@ class TestGallerySerializer(test.TestCase):
                     'Lilly G.'
                 ]
             )
+            self.assertEqual(song.songId, '5676759593254912')
 
     def test_songmaker_urls_have_been_validated(self):
         """

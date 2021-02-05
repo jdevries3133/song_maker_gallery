@@ -178,7 +178,7 @@ class GalleryDatasetSerializer(serializers.Serializer):
             for row in group[:-1]:
                 # change names to first name, last initial
                 full_name = row[0].strip()  # thanks Wendy!
-                songId = row[1][-16:]
+                songId = row[1].strip()[-16:]
                 name_arr = [i for i in full_name.split(' ') if i]
                 if len(name_arr) > 1:
                     name = (
@@ -229,7 +229,7 @@ class GalleryDatasetSerializer(serializers.Serializer):
                     assert re.match(
                         r'http(s)?://musiclab.chromeexperiments.com/Song-Maker/'
                         r'song/(\d){16}',
-                        row[1]
+                        row[1].strip()
                     )
         except AssertionError:
             raise serializers.ValidationError({
