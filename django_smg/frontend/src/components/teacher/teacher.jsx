@@ -12,6 +12,7 @@ import MobileOptimizedAdd from "./mobile_optimized";
 import ServerError from "../generics/server_error";
 import Staged from "./add_gallery/staged";
 import Verify from "./add_gallery/verify";
+import { NewSiteWarn } from "./new_site_warning";
 
 import styles from "./teacher.module.css";
 
@@ -315,6 +316,7 @@ class Teacher extends Component {
     return (
       <div>
         <h1 className={styles.h1}>Gallery Management Console</h1>
+        <NewSiteWarn />
         <button
           className={styles.logout}
           onClick={() => {
