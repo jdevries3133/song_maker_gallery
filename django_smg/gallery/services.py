@@ -1,3 +1,5 @@
+import logging
+
 import requests
 
 from django.conf import settings
@@ -5,6 +7,7 @@ from django.db.models.query import QuerySet
 
 from .models import Song
 
+logger = logging.getLogger(__name__)
 
 def iter_fetch_and_cache(*, songs: QuerySet):
     """
@@ -29,7 +32,12 @@ def iter_fetch_and_cache(*, songs: QuerySet):
         SONG_MIDI_FILE = lambda song_id : (
             f'https://storage.googleapis.com/song-maker-midifiles-prod/{song_id}.mid'
         )
-        json_data = session1.post(SONG_JSON_DATA(song.songId)).json()
+        try:
+            json_data = session1.post(SONG_JSON_DATA(song.songId)).json()
+        except JSONDecodeError:
+            logger.error(
+                f'Failed to get data for {song.student_name}\'s song with songId: {song.songId}'
+            )
         midi_bytes = session2.get(SONG_MIDI_FILE(song.songId)).content
         for k, v in json_data.items():
             setattr(song, k, v)
