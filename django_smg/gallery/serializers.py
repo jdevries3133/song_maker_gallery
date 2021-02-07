@@ -187,7 +187,10 @@ class GalleryDatasetSerializer(serializers.Serializer):
                         + name_arr[-1][0].upper() + '.'
                     )
                 else:
-                    name = name_arr[0]
+                    if name_arr:
+                        name = name_arr[0]
+                    else:
+                        name = ''
                 songs.append(Song(
                     songId=songId,
                     student_name=name,

@@ -1,6 +1,7 @@
 from copy import deepcopy
 from pathlib import Path
 import json
+from unittest.mock import patch
 
 from django.contrib.auth.models import User
 from django import test
@@ -12,6 +13,7 @@ from django.core.exceptions import ValidationError
 from ..serializers import GalleryDatasetSerializer
 from ..models import Gallery, SongGroup, Song
 from .util import are_rendered_groups_same
+from ..services import mock_data
 
 
 class TestGallerySerializer(test.TestCase):
@@ -632,7 +634,21 @@ class TestGallerySerializer(test.TestCase):
             )
         )
 
-
+    @ patch('gallery.services.requests.models.Response.json', side_effect=ValueError)
+    def test_bad_api_response_causes_mock_data_assignment(self, mock_json):
+        self._make_gallery()
+        with self.settings(SKIP_FETCH_AND_CACHE=False):
+            rendered = (
+                GalleryDatasetSerializer().render(
+                    slug=Gallery.objects.all().last().slug)  # type: ignore
+            )
+            for group in rendered['songData']:
+                for song in group[:-1]:
+                    for k, v in mock_data.items():
+                        self.assertEqual(
+                            v,
+                            song.get('metadata').get(k),
+                        )
 
 class TestQueryCountLargeGallery(test.TestCase):
 

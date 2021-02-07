@@ -1,11 +1,30 @@
 import logging
 
+
 import requests
 
 from django.conf import settings
 from django.db.models.query import QuerySet
 
 from .models import Song
+
+
+# sometimes, placeholder data has to be thrown in if we get a bad api response.
+mock_data = {
+    "bars": 1,
+    "beats": 4,
+    "instrument": "piano",
+    "octaves": 2,
+    "percussion": "electronic",
+    "percussionNotes": 2,
+    "rootNote": 48,
+    "rootOctave": 4,
+    "rootPitch": 0,
+    "scale": "major",
+    "subdivision": 2,
+    "tempo": 91,
+}
+
 
 logger = logging.getLogger(__name__)
 
@@ -34,10 +53,17 @@ def iter_fetch_and_cache(*, songs: QuerySet):
         )
         try:
             json_data = session1.post(SONG_JSON_DATA(song.songId)).json()
-        except JSONDecodeError:
+        except ValueError:
+            # Put placeholder data such that the song appears blank.
+            for k, v in mock_data.items():
+                setattr(song, k, v)
+            song.midi = b''
+            song.is_cached = True
             logger.error(
                 f'Failed to get data for {song.student_name}\'s song with songId: {song.songId}'
             )
+            yield song
+            continue
         midi_bytes = session2.get(SONG_MIDI_FILE(song.songId)).content
         for k, v in json_data.items():
             setattr(song, k, v)

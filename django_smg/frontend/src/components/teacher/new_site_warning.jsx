@@ -16,11 +16,8 @@ const Msg = (props) => (
         It is basically your responsibility to ensure that all the links you
         upload really exist.
       </span>{" "}
-      I believe that the behavior of the backend is such that when it encounters
-      a link that doesn't exist, it just drops that student from the gallery
-      silently. However, I don't recall having thoroughly tested the site's
-      behavior when it encounters invalid links, so it's possible that other
-      weird things will happen.
+      When the backend encounters a song that cannot be found in Google's
+      database, it silently drops that student from the Gallery.
     </p>
     <p className={styles.par_just}>
       In other news, there was a bug associated with whitespace (spaces or tabs)
@@ -52,7 +49,7 @@ const Msg = (props) => (
   </div>
 );
 
-export const NewSiteWarn = (props) => {
+export const NewSiteWarn = () => {
   const [blanket, setBlanket] = useState(null);
 
   return (
