@@ -1,36 +1,22 @@
 import React, { useState, Fragment } from "react";
 
+import styled from "styled-components";
+
 import styles from "./add_gallery/add_gallery.module.css";
+
+const H1 = styled.h1`
+  @media (max-width: 600px) {
+    font-size: 30px;
+  }
+`;
 
 const Msg = (props) => (
   <div className="description blanket">
-    <h1>Bug/Site Status!</h1>
+    <H1>Bug/Site Status!</H1>
     <p className={styles.par_just}>
       As advertised, this is a brand new site, and bug reports are rolling in,
-      which I'm trying to address. The #1 absolute most important thing you
-      should be aware of is that this site doesn't <i>really</i> vaidate the
-      links you upload.
-    </p>
-    <p className={styles.par_just}>
-      <span style={{ color: "red" }}>
-        It is basically your responsibility to ensure that all the links you
-        upload really exist.
-      </span>{" "}
-      When the backend encounters a song that cannot be found in Google's
-      database, it silently drops that student from the Gallery.
-    </p>
-    <p className={styles.par_just}>
-      In other news, there was a bug associated with whitespace (spaces or tabs)
-      before or after student names or links in uploaded spreadsheets, but that
-      has been fixed.
-    </p>
-
-    <p className={styles.par_just}>
-      Thanks for your patience as I sort out this site's launch, and I hope you
-      and your students are enjoying using it!
-    </p>
-    <p className={styles.par_just}>
-      If you notice an issue, please submit an issue on{" "}
+      which I'm trying to address. If you notice an issue, please submit an
+      issue on{" "}
       <a
         target="_blanket"
         rel="noopener noreferrer"
@@ -38,10 +24,30 @@ const Msg = (props) => (
       >
         GitHub
       </a>
-      . All the issues or future improvements currently on my radar are already
-      there, so you can also see the status of development of the site for
-      yourself.
+      . All the bugs or future improvements currently on my radar are already
+      there.
     </p>
+    <p style={{ textAlign: "left" }}>
+      The following bugs have been patched since the site's launch. Most improve
+      the way the site processes user-uploaded spreadsheets.
+    </p>
+    <ul
+      className={styles.par_just}
+      style={{ paddingLeft: "55px", paddingRight: "20px" }}
+    >
+      <li>
+        Leading or trailing whitespace in spreadsheet no longer causes an error.
+      </li>
+      <li>Empty names in spreadsheet do not cause an error.</li>
+      <li>
+        Although Song Maker links were always validated to follow the
+        appropriate pattern, the case of songs that follow the url pattern but
+        nonetheless do not exist was not considered. Now, an "error tile" will
+        appear in the gallery so that users can see not only that a link they
+        uploaded was invalid; but also <i>which student's link</i>
+        caused the issue.
+      </li>
+    </ul>
 
     <button onClick={() => props.close()} style={{ backgroundColor: "salmon" }}>
       Close
