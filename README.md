@@ -1,3 +1,31 @@
+# Post This on Social Media!
+
+> Help the site grow. Music teachers trust music teachers, and you're probably
+> here because you think this is an awesome project and want to know more!
+
+Hi all! I am really excited to share this awesome quarentine project / hopefully helpful
+website made by a music teacher!
+
+Here it is! [https://songmakergallery.com/](https://songmakergallery.com/)
+
+This website is an extension of the popular and much-beloved Google Chrome
+Music Lab. I personally love using the music lab in a wide variety of ways in
+my own lessons, but at the end of the day all you are left to show for
+students' creative output is a spreadsheet full of URLs. With the song
+maker gallery, you can upload the links to your students' work and the website
+will automatically create a beautiful, interactive, and ad-free online gallery
+where you can share your students compositions with their peers and your school
+community!
+
+Best of all, this project is 100% free to use and open source. Feel free to
+check it out on github if you are interested in contributing, or just want
+to suggest a new feature
+([https://github.com/jdevries3133/song_maker_gallery](https://github.com/jdevries3133/song_maker_gallery)).
+
+> Feel free to attach this image too!
+
+<img src="https://songmakergallery.com/static/frontend/media/site_screenshot.png" />
+
 # Welcome to the Music Lab Song Maker Gallery!
 
 ### Feature Request?
@@ -36,10 +64,7 @@ rendered thumbnails of students' work.
 
 ### Roadmap
 
-The roadmap for this project is to finish the remaining odds and ends
-on the [todo list](django_smg/TODO.md), and then to deploy and publicize
-the site! Later, I would like to implement several premium features to support
-the long-term operation of the site.
+These are some major new features I'm interested in implementing.
 
 **Submission Links**
 
@@ -62,3 +87,16 @@ while also being monitored by the teacher.
 See
 [#11](https://github.com/jdevries3133/song_maker_gallery/issues/11)
 if you are interested!
+
+**SEO**
+
+Making the homepage static and generally making the site look to search
+engines like the dynamic site it is will drastically improve search engine
+optimization.
+
+**Blog**
+
+A blog that helps explain specific ways to use the site would be useful
+to teachers. I'd be happy to maintain a blog if it existed, but first someone
+would need to implement a blog into the project. Probably easy to do with
+Django.
