@@ -39,7 +39,6 @@ export class DynamicTile extends Component {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      console.log(this.props);
       return (
         <Div>
           <P>Song Maker Link Invalid</P>
