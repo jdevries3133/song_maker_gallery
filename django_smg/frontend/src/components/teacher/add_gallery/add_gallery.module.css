@@ -4,6 +4,11 @@
   margin: 10px 0 10px 0;
 }
 
+.bad_form {
+  background-color: #ff00004a;
+  border-radius: 20px;
+}
+
 .upload {
   display: inline-block;
   font-size: 16px;

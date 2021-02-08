@@ -39,15 +39,10 @@ export const TemplateHelp = () => {
               <br />
               <h3>Seems a Bit Overwhelming?</h3>
               <p className={styles.par_just}>
-                I agree! The next item on this project's roadmap is to create
-                student submission links, which will allow students to do the
-                link submitting themselves after you provide them with a simple
-                link to do so. This feature will save teachers from having to
-                corall many student links.
-              </p>
-              <p className={styles.par_just}>
-                So, if this seems like too much, mark your calendars and check
-                back soon!!
+                I agree! I hope to make this process easier both by improving
+                this form, and creating new ways for teachers to create a
+                gallery. So, if this seems like too much, mark your calendars
+                and check back soon!!
               </p>
               <br />
               <button
