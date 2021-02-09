@@ -1,9 +1,7 @@
 import React from "react";
 import styles from "./donate.module.css";
-import useWidth from "../../generics/useWidth";
 
 const donation = (props) => {
-  const width = useWidth();
   return (
     <div className={`description blanket ${styles.donation_blanket}`}>
       <div

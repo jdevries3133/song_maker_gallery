@@ -1,16 +1,31 @@
+.form_start {
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #c1de8c;
+}
 .par_just {
   text-align: justify;
   display: inline-block;
   margin: 10px 0 10px 0;
 }
 
-.bad_form {
-  background-color: #ff00004a;
-  border-radius: 20px;
+.text_container {
+  text-align: justify;
+  font-size: 16px;
+}
+
+.text_container > ol > li {
+  margin-bottom: 0.8rem;
+}
+
+.text_container > ol > li > ul {
+  margin-left: 10%;
+  font-size: 12px;
 }
 
 .upload {
-  display: inline-block;
+  margin: auto;
+  display: block;
   font-size: 16px;
   padding: 0 0 0 0;
 }

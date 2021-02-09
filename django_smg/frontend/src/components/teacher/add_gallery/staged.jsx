@@ -16,7 +16,7 @@ const staged = (props) => {
           value={props.titleValue}
           onChange={(e) => props.titleInput(e)}
         />
-        <h3>Gallery Name:</h3>
+        <h3>Gallery Description:</h3>
         <p>
           You may use this default description, or change it to whatever you
           prefer.
