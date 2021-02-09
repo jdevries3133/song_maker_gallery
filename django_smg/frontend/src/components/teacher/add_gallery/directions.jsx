@@ -34,7 +34,7 @@ const DirectionsBlanket = (props) => (
       </li>
       <li>
         Upload group files one after another in the order you want them to
-        appear in the order you want them to appear in the gallery.
+        appear in the gallery.
       </li>
       <li>
         In the staging area at the bottom of the page, add a title and edit the
