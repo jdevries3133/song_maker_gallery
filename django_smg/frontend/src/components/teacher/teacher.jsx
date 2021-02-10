@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { postGallery, getUserGalleries } from "../../actions/user";
@@ -23,6 +23,7 @@ class Teacher extends Component {
       fileInputRef: React.createRef(),
       stagedGroups: [],
       blankTitleError: false,
+      blankDescriptionError: false,
       descriptionValue:
         "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds!",
       width: window.innerWidth,
@@ -188,9 +189,23 @@ class Teacher extends Component {
 
   // fire POST_GALLERY action upon button press in <Staged />
   inputConfirmation = () => {
-    if (this.state.titleValue.trim() === "") {
+    if (
+      this.state.titleValue.trim() === "" &&
+      this.state.descriptionValue.trim() === ""
+    ) {
       this.setState({
         blankTitleError: true,
+        blankDescriptionError: true,
+      });
+      return;
+    } else if (this.state.titleValue.trim() === "") {
+      this.setState({
+        blankTitleError: true,
+      });
+      return;
+    } else if (this.state.descriptionValue.trim() === "") {
+      this.setState({
+        blankDescriptionError: true,
       });
       return;
     }
@@ -229,7 +244,7 @@ class Teacher extends Component {
   dismissTitleBlank = () => {
     if (this.state.titleValue != "") {
       this.inputConfirmation();
-      this.setState({ blankTitleError: false });
+      this.setState({ blankTitleError: false, blankDescriptionError: false });
     }
   };
 
@@ -291,20 +306,39 @@ class Teacher extends Component {
           onOk={this.successHandler}
         />
       );
-    } else if (this.state.blankTitleError) {
+    } else if (this.state.blankTitleError || this.state.blankDescriptionError) {
       blanket = (
         <div className="description blanket">
-          <h2>Please enter a title for your gallery.</h2>
-          <br />
-          <input onChange={(e) => this.titleInputHandler(e)} />
-          <br />
-          {this.state.titleValue && !this.state.titleValue.trim() ? (
-            <p style={{ color: "salmon" }}>
-              Gallery title cannot be only empty characters.
-            </p>
+          {this.state.blankTitleError ? (
+            <Fragment>
+              <h2>Missing Fields</h2>
+              <Fragment>
+                <h3 style={{ display: "block" }}>
+                  Please enter a title for your gallery.
+                </h3>
+                <input onChange={(e) => this.titleInputHandler(e)} />
+              </Fragment>
+            </Fragment>
           ) : null}
-          {this.state.titleValue.trim() ? (
-            <button onClick={() => this.dismissTitleBlank()}>Ok</button>
+          {this.state.blankDescriptionError ? (
+            <Fragment>
+              <h3 style={{ display: "block" }}>
+                Please enter a description for your gallery
+              </h3>
+              <textarea
+                className={styles.desc_input}
+                value={this.state.descriptionValue}
+                onChange={(e) => this.descriptionInputHandler(e)}
+              />
+            </Fragment>
+          ) : null}
+
+          {this.state.titleValue.trim() &&
+          this.state.descriptionValue.trim() ? (
+            <Fragment>
+              <br />
+              <button onClick={() => this.dismissTitleBlank()}>Continue</button>
+            </Fragment>
           ) : null}
         </div>
       );

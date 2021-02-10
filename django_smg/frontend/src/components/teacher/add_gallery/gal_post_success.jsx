@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 
 const gal_post_success = (props) => {
   const relative_path = "/gallery/" + props.slug + "/";
-  const full_url = `${window.location.href.slice(0, -8)}/gallery/${
-    props.slug
-  }/`;
+  const full_url = `${window.origin}/gallery/${props.slug}/`;
   return (
     <div className="description blanket">
       <h2>Success!</h2>
