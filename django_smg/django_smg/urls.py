@@ -6,6 +6,8 @@ from .views import (
     sitemap
 )
 
+from accounts.views import pw_reset_placeholder
+
 urlpatterns = [
     path('robots.txt', robots),
     path('sitemap.xml', sitemap),
@@ -13,6 +15,7 @@ urlpatterns = [
     path('api/gallery/', include('gallery.urls')),
     path('smgadministrator/', admin.site.urls),
     path('accounts/login/', loginRedirect),
+    path('accounts/password_reset/', pw_reset_placeholder),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('frontend.urls')),
 ]
