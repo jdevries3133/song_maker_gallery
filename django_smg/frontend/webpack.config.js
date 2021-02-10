@@ -32,4 +32,7 @@ module.exports = {
       },
     ],
   },
+  output: {
+    filename: "main_v2.0.js",
+  },
 };
