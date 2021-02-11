@@ -235,7 +235,10 @@ class GalleryDatasetSerializer(serializers.Serializer):
                         row[1].strip()
                     )
         except AssertionError:
-            raise serializers.ValidationError({
-                'message': 'songData is not valid'
-            })
+            raise serializers.ValidationError([
+                'Spreadsheet data is not valid. Check that your spreadsheet '
+                'contains no empty rows, each student has a name, and each '
+                'link is valid. Valid links must end with exactly sixteen '
+                'digits.'
+            ])
         return song_data
