@@ -10,6 +10,7 @@ import YourGalleries from "./your_galleries/your_galleries";
 import GalPostSuccess from "./add_gallery/gal_post_success";
 import MobileOptimizedAdd from "./mobile_optimized";
 import ServerError from "../generics/server_error";
+import ValidationError from "../generics/validation_error";
 import Staged from "./add_gallery/staged";
 import Verify from "./add_gallery/verify";
 
