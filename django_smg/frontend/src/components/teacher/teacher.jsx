@@ -64,7 +64,9 @@ class Teacher extends Component {
       props.getUserGalleries(props.token);
       return {
         titleValue: props.formRecover.title,
-        stagedGroups: props.formRecover.api_obj,
+        stagedGroups: props.formRecover.api_obj
+          ? props.formRecover.api_obj
+          : [],
         descriptionValue: props.formRecover.description,
         recover: true,
         button_pressed: false,
