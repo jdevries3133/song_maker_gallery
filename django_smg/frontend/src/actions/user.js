@@ -34,6 +34,7 @@ export const postGallery = (form, token) => (dispatch) => {
           status: 1,
           formPassthrough: form,
           gallery: null,
+          serverErrorMessage: err.response.data,
         },
       });
     });

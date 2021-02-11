@@ -24,6 +24,7 @@ export default function (state = initialState, action) {
           ...state,
           galleryPostStatus: action.payload.status,
           formPassthrough: action.payload.formPassthrough,
+          serverErrorMessage: action.payload.serverErrorMessage,
         };
       }
       return newState;

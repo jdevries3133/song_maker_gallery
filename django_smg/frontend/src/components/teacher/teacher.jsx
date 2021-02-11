@@ -10,12 +10,19 @@ import YourGalleries from "./your_galleries/your_galleries";
 import GalPostSuccess from "./add_gallery/gal_post_success";
 import MobileOptimizedAdd from "./mobile_optimized";
 import ServerError from "../generics/server_error";
-import ValidationError from "../generics/validation_error";
+import { BadRequest } from "../generics/validation_error";
 import Staged from "./add_gallery/staged";
 import Verify from "./add_gallery/verify";
 
 import styles from "./teacher.module.css";
 
+/**
+ * Towards future improvement of this component, probably the most spaghetti
+ * code thing about it is the way that mobile styling is handled. A lot
+ * of the conditional rendering a lot about the way the <Staged> component
+ * is handled can be removed just by using CSS grid instead of ann html
+ * table.
+ */
 class Teacher extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +33,12 @@ class Teacher extends Component {
       blankTitleError: false,
       blankDescriptionError: false,
       descriptionValue:
-        "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds!",
+        "We will always find a way to share music. In lieu of the concert " +
+        "hall, our musical performances today are expressed in ones and " +
+        "zeroes, but they are none the less as human and as meaningful as " +
+        "always.\n\nPlease enjoy this showcase of our school's music lab " +
+        "compositions. Our students' creativity truly knows no bounds!",
+
       width: window.innerWidth,
       groupname: "",
     };
@@ -57,16 +69,12 @@ class Teacher extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    // issue: if the post request fails, even if the second attempt passes, it will
-    // tell the user that it failed. This isn't a huge deal, because the user can
-    // just try again, but it's annoying, and then the user will have to delete the
-    // duplicate post.
     if (props.formRecover && state.button_pressed) {
       props.getUserGalleries(props.token);
       return {
         titleValue: props.formRecover.title,
-        stagedGroups: props.formRecover.api_obj
-          ? props.formRecover.api_obj
+        stagedGroups: props.formRecover.songData
+          ? props.formRecover.songData
           : [],
         descriptionValue: props.formRecover.description,
         recover: true,
@@ -128,6 +136,8 @@ class Teacher extends Component {
 
   // see <Verify />
   groupValidatedHandler = (verifiedArray) => {
+    // Pull the default group name off and replace it with the user inputted
+    // one
     const group_arr = [...verifiedArray.slice(1)];
     const group_name = this.state.groupname;
     const stage = [...group_arr, group_name];
@@ -301,7 +311,16 @@ class Teacher extends Component {
         />
       );
     } else if (this.state.recover) {
-      blanket = <ServerError onOk={this.recoveryRestageHandler} />;
+      if (this.props.serverErrorMessage) {
+        blanket = (
+          <BadRequest
+            onOk={this.recoveryRestageHandler}
+            serverErrorMessage={this.props.serverErrorMessage}
+          />
+        );
+      } else {
+        blanket = <ServerError onOk={this.recoveryRestageHandler} />;
+      }
     } else if (this.state.requestMade) {
       blanket = (
         <GalPostSuccess
@@ -378,6 +397,7 @@ class Teacher extends Component {
               <tr style={{ display: "inline" }}>
                 <td width="55%" valign="top" className={styles.narrow_desc}>
                   <Add
+                    firstGroupUploaded={this.state.stagedGroups.length === 1}
                     fileInputRef={this.state.fileInputRef}
                     clearFileHandler={this.resetFormHandler}
                     groupname={this.state.groupname}
@@ -405,6 +425,7 @@ const mapStateToProps = (state) => {
   return {
     postStatus: state.user.galleryPostStatus,
     formRecover: state.user.formPassthrough,
+    serverErrorMessage: state.user.serverErrorMessage,
     galleries: state.user.galleries,
     requestMade: state.user.postRequestMade,
     token: state.auth.token,
