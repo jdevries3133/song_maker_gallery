@@ -662,7 +662,7 @@ class TestQueryCountLargeGallery(test.TestCase):
             password='ghjlesdfr;aghruiao;'
         )
         with open(
-            Path(Path(__file__).parent, 'gallery_post_request_data_example.json'), 'r'
+            Path(Path(__file__).parent, 'mock_data', 'gallery_post_request_data_example.json'), 'r'
         ) as jsn:
             data = json.load(jsn)
         self.serializer = GalleryDatasetSerializer(data=data, context={
