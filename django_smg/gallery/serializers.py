@@ -1,4 +1,5 @@
 import base64
+import logging
 import json
 import re
 
@@ -8,6 +9,7 @@ from rest_framework import serializers
 from .models import Gallery, Song, SongGroup
 from .services import iter_fetch_and_cache
 
+logger = logging.getLogger(__name__)
 
 class SongSerializer(serializers.ModelSerializer):
     class Meta:
@@ -222,23 +224,44 @@ class GalleryDatasetSerializer(serializers.Serializer):
             group_names = set()
             for group in song_data:
                 # Prevent duplicate group names
-                assert group[-1] not in group_names
+                if group[-1] in group_names:
+                    raise serializers.ValidationError([
+                        'Spreadsheet data is not valid',
+                        f'Two spreadsheets named {group[-1]} are not allowed.'
+                        'Group names must be unique.'
+                    ])
                 group_names.update(group[-1])
-                assert isinstance(group[-1], str)
-                assert isinstance(group, list)
                 for row in group[:-1]:
-                    assert isinstance(row, list)
-                    assert len(row) == 2
-                    assert re.match(
+                    row = [r for r in row if r]
+                    if not row:
+                        raise serializers.ValidationError([
+                            f'The spreadsheet for the group, "{group[-1]}," '
+                            'contains one or more empty rows'
+                        ])
+                    if len(row) != 2:
+                        raise serializers.ValidationError([
+                            'The following row of the spreadsheet for your '
+                            f'group, "{group[-1]}," does not contain two items.',
+                            f'Instead, it contains: {row}'
+                        ])
+                    if not re.match(
                         r'http(s)?://musiclab.chromeexperiments.com/Song-Maker/'
                         r'song/(\d){16}',
                         row[1].strip()
-                    )
+                    ):
+                        raise serializers.ValidationError([
+                            'An error occured while parsing the spreadsheet '
+                            f'for your group named, "{group[-1]}."',
+                            f'The Song Maker link for {row[0]} ({row[1]}) is '
+                            'not valid.'
+                        ])
         except AssertionError:
             raise serializers.ValidationError([
-                'Spreadsheet data is not valid. Check that your spreadsheet '
-                'contains no empty rows, each student has a name, and each '
-                'link is valid. Valid links must end with exactly sixteen '
-                'digits.'
+                'Spreadsheet data is not valid.'
             ])
+            logger.error(
+                f'For user {self.context.get("user")}, songData validator '
+                'failed to identify a specific cause '
+                f'for the invalidity of this data:\n{song_data}'
+            )
         return song_data

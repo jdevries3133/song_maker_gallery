@@ -1,6 +1,8 @@
 from copy import deepcopy
+import csv
 from pathlib import Path
 import json
+import unittest
 from unittest.mock import patch
 
 from django.contrib.auth.models import User
@@ -9,6 +11,7 @@ from django.test.utils import CaptureQueriesContext
 from django.db import connection
 from django.conf import settings
 from django.core.exceptions import ValidationError
+from rest_framework import serializers
 
 from ..serializers import GalleryDatasetSerializer
 from ..models import Gallery, SongGroup, Song
@@ -699,3 +702,89 @@ class TestQueryCountLargeGallery(test.TestCase):
         with CaptureQueriesContext(connection) as query_count:
             self.serializer.render(slug='sample-gallery')
         self.assertLess(query_count.final_queries, 10)
+
+class TestSongDataValidatorMessages(test.TestCase):
+
+    UI_TEST_DATA_DIR = Path(Path(__file__).parent, 'mock_data')
+
+    @ staticmethod
+    def _make_song_data(rows: list) -> list:
+        rows.append('Test Group')
+        return [rows]
+
+    def test_validator_message_for_empty_link(self):
+        with open(Path(self.UI_TEST_DATA_DIR, 'empty_link.csv'), 'r') as csvf:
+            rows = [r for r in csv.reader(csvf)][1:]
+        expect = (
+            'The following row of the spreadsheet for your group, '
+            '"Test Group," does not contain two items.'
+        )
+        with self.assertRaisesMessage(serializers.ValidationError, expect):
+            GalleryDatasetSerializer.validate_songData(
+                self._make_song_data(rows)
+            )
+        expect = (
+            'Instead, it contains: [\'Jamir\']'
+        )
+        with self.assertRaisesMessage(serializers.ValidationError, expect):
+            GalleryDatasetSerializer.validate_songData(
+                self._make_song_data(rows)
+            )
+
+    def test_validator_message_for_empty_name(self):
+        with open(Path(self.UI_TEST_DATA_DIR, 'empty_name.csv'), 'r') as csvf:
+            rows = [r for r in csv.reader(csvf)][1:]
+        expect = (
+            'The following row of the spreadsheet for your group, '
+            '"Test Group," does not contain two items.'
+        )
+        with self.assertRaisesMessage(serializers.ValidationError, expect):
+            GalleryDatasetSerializer.validate_songData(
+                self._make_song_data(rows)
+            )
+        expect = (
+            "Instead, it contains: [\'https://musiclab.chromeexperiments.com/"
+            "Song-Maker/song/4914262951591936\']"
+        )
+        with self.assertRaisesMessage(serializers.ValidationError, expect):
+            GalleryDatasetSerializer.validate_songData(
+                self._make_song_data(rows)
+            )
+
+    def test_validator_message_for_empty_row(self):
+        with open(Path(self.UI_TEST_DATA_DIR, 'empty_row.csv'), 'r') as csvf:
+            rows = [r for r in csv.reader(csvf)][1:]
+        expect = (
+            'The spreadsheet for the group, "Test Group," contains one or '
+            'more empty rows'
+        )
+        with self.assertRaisesMessage(serializers.ValidationError, expect):
+            GalleryDatasetSerializer.validate_songData(
+                self._make_song_data(rows)
+            )
+
+    def test_validator_message_for_invalid_link(self):
+        invalid_link_files = [
+            Path(self.UI_TEST_DATA_DIR, f'invalid_link_{n}.csv')
+            for n in range(1, 5)
+        ]
+        for p in invalid_link_files:
+            with open(p, 'r') as csvf:
+                rows = [r for r in csv.reader(csvf)][1:]
+            expect = (
+                'The Song Maker link for Jamir '
+                f'({rows[2][1]}) '
+                'is not valid.'
+            )
+            with self.assertRaisesMessage(
+                serializers.ValidationError,
+                expect
+            ):
+                GalleryDatasetSerializer.validate_songData(
+                    self._make_song_data(rows)
+                )
+
+    def test_complex_validator(self):
+        """
+        Validation case where multiple errors should be sent back.
+        """
