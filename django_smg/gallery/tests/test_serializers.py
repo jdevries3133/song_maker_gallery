@@ -715,18 +715,11 @@ class TestSongDataValidatorMessages(test.TestCase):
     def test_validator_message_for_empty_link(self):
         with open(Path(self.UI_TEST_DATA_DIR, 'empty_link.csv'), 'r') as csvf:
             rows = [r for r in csv.reader(csvf)][1:]
-        expect = (
-            'The following row of the spreadsheet for your group, '
-            '"Test Group," does not contain two items.'
-        )
-        with self.assertRaisesMessage(serializers.ValidationError, expect):
+        with self.assertRaisesMessage(serializers.ValidationError, 'Row #3'):
             GalleryDatasetSerializer.validate_songData(
                 self._make_song_data(rows)
             )
-        expect = (
-            'Instead, it contains: [\'Jamir\']'
-        )
-        with self.assertRaisesMessage(serializers.ValidationError, expect):
+        with self.assertRaisesMessage(serializers.ValidationError, 'Jamir'):
             GalleryDatasetSerializer.validate_songData(
                 self._make_song_data(rows)
             )
@@ -734,19 +727,15 @@ class TestSongDataValidatorMessages(test.TestCase):
     def test_validator_message_for_empty_name(self):
         with open(Path(self.UI_TEST_DATA_DIR, 'empty_name.csv'), 'r') as csvf:
             rows = [r for r in csv.reader(csvf)][1:]
-        expect = (
-            'The following row of the spreadsheet for your group, '
-            '"Test Group," does not contain two items.'
-        )
-        with self.assertRaisesMessage(serializers.ValidationError, expect):
+        with self.assertRaisesMessage(serializers.ValidationError, '"Test Group,"'):
             GalleryDatasetSerializer.validate_songData(
                 self._make_song_data(rows)
             )
-        expect = (
-            "Instead, it contains: [\'https://musiclab.chromeexperiments.com/"
-            "Song-Maker/song/4914262951591936\']"
-        )
-        with self.assertRaisesMessage(serializers.ValidationError, expect):
+        with self.assertRaisesMessage(
+                serializers.ValidationError,
+                'https://musiclab.chromeexperiments.com/Song-Maker/song/'
+                '4914262951591936'
+        ):
             GalleryDatasetSerializer.validate_songData(
                 self._make_song_data(rows)
             )
@@ -754,11 +743,10 @@ class TestSongDataValidatorMessages(test.TestCase):
     def test_validator_message_for_empty_row(self):
         with open(Path(self.UI_TEST_DATA_DIR, 'empty_row.csv'), 'r') as csvf:
             rows = [r for r in csv.reader(csvf)][1:]
-        expect = (
-            'The spreadsheet for the group, "Test Group," contains one or '
-            'more empty rows'
-        )
-        with self.assertRaisesMessage(serializers.ValidationError, expect):
+        with self.assertRaisesMessage(
+            serializers.ValidationError,
+            '"Test Group," row 3 is empty'
+        ):
             GalleryDatasetSerializer.validate_songData(
                 self._make_song_data(rows)
             )
@@ -772,19 +760,11 @@ class TestSongDataValidatorMessages(test.TestCase):
             with open(p, 'r') as csvf:
                 rows = [r for r in csv.reader(csvf)][1:]
             expect = (
-                'The Song Maker link for Jamir '
-                f'({rows[2][1]}) '
-                'is not valid.'
             )
             with self.assertRaisesMessage(
                 serializers.ValidationError,
-                expect
+                f'The Song Maker link for Jamir ({rows[2][1]}) is not valid.'
             ):
                 GalleryDatasetSerializer.validate_songData(
                     self._make_song_data(rows)
                 )
-
-    def test_complex_validator(self):
-        """
-        Validation case where multiple errors should be sent back.
-        """

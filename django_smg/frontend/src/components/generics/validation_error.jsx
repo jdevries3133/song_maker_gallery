@@ -8,7 +8,12 @@ export const CustomError = (props) => {
     <div className="description blanket">
       <div className={styles.container}>
         {props.children}
-        <button onClick={() => props.onOk()}>Ok</button>
+        <button
+          style={{ backgroundColor: "#4caf50" }}
+          onClick={() => props.onOk()}
+        >
+          Ok
+        </button>
       </div>
     </div>
   );
@@ -30,20 +35,21 @@ export const BadRequest = ({ serverErrorMessage, onOk }) => (
     {Object.keys(serverErrorMessage).map((k) => (
       <Fragment>
         <h3>{technicalToEnglish(k)}</h3>
-        {serverErrorMessage[k].map((i) => (
-          <p>{i}</p>
-        ))}
+        <p style={{ fontWeight: "bold", textDecoration: "underline" }}>
+          Errors:
+        </p>
+        <ul style={{ textAlign: "left" }}>
+          {serverErrorMessage[k].map((i) => (
+            <li>{i}</li>
+          ))}
+        </ul>
         {k === "songData" ? (
           <Fragment>
+            <h3>Quick Tips</h3>
             <p>
-              Make sure your spreadsheet follows our template! Also, make sure
-              that your spreadsheet does not have any:
+              Make sure your spreadsheet follows our template. Download it and
+              take a look!
             </p>
-            <ul>
-              <li>Empty rows</li>
-              <li>Missing names</li>
-              <li>Invalid or dead Song Maker links</li>
-            </ul>
             <DownloadTemplate />
           </Fragment>
         ) : null}

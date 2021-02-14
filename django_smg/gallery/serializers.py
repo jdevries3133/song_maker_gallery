@@ -219,49 +219,51 @@ class GalleryDatasetSerializer(serializers.Serializer):
             song_data = json.loads(song_data)
         elif isinstance(song_data, dict):
             song_data = json.loads(song_data.get('songData'))  # type: ignore
+        assert isinstance(song_data, list)
+
+        validation_errors = []
+
         try:
-            assert isinstance(song_data, list)
             group_names = set()
             for group in song_data:
-                # Prevent duplicate group names
                 if group[-1] in group_names:
-                    raise serializers.ValidationError([
+                    validation_errors += [
                         'Spreadsheet data is not valid',
                         f'Two spreadsheets named {group[-1]} are not allowed.'
                         'Group names must be unique.'
-                    ])
+                    ]
+                    continue
                 group_names.update(group[-1])
-                for row in group[:-1]:
+                for rownum, row in enumerate(group[:-1], start=1):
                     row = [r for r in row if r]
                     if not row:
-                        raise serializers.ValidationError([
+                        validation_errors.append(
                             f'The spreadsheet for the group, "{group[-1]}," '
-                            'contains one or more empty rows'
-                        ])
+                            f'row {rownum} is empty'
+                        )
+                        continue
                     if len(row) != 2:
-                        raise serializers.ValidationError([
-                            'The following row of the spreadsheet for your '
-                            f'group, "{group[-1]}," does not contain two items.',
-                            f'Instead, it contains: {row}'
-                        ])
+                        validation_errors += [
+                            f'Row #{rownum} of the spreadsheet for your '
+                            f'group, "{group[-1]}," does not contain two items. '
+                            f'Instead, it contains: "{", ".join(row)}".'
+                        ]
+                        continue
                     if not re.match(
                         r'http(s)?://musiclab.chromeexperiments.com/Song-Maker/'
                         r'song/(\d){16}',
                         row[1].strip()
                     ):
-                        raise serializers.ValidationError([
+                        validation_errors += [
                             'An error occured while parsing the spreadsheet '
-                            f'for your group named, "{group[-1]}."',
+                            f'for your group named, "{group[-1]}." '
                             f'The Song Maker link for {row[0]} ({row[1]}) is '
-                            'not valid.'
-                        ])
-        except AssertionError:
-            raise serializers.ValidationError([
-                'Spreadsheet data is not valid.'
-            ])
-            logger.error(
-                f'For user {self.context.get("user")}, songData validator '
-                'failed to identify a specific cause '
-                f'for the invalidity of this data:\n{song_data}'
-            )
+                            f'not valid. (row #{rownum})'
+                        ]
+        except Exception as e:
+            logger.error(f'Validation failed due to error: {e}')
+            logger.error(f'songData: {song_data}')
+            validation_errors.append('Invalid spreadsheet data.')
+        if validation_errors:
+            raise serializers.ValidationError(validation_errors)
         return song_data

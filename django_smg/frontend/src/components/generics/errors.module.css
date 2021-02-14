@@ -3,10 +3,18 @@
   margin: auto;
 }
 
+.bold {
+  font-weight: bold;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
 .container > p,
 ul,
 li {
-  text-align: justify;
+  text-align: left;
 }
 
 .container > ul {
