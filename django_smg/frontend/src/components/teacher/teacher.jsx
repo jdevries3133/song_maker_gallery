@@ -92,14 +92,14 @@ class Teacher extends Component {
 
   // see <Add />
   csvHandler = () => {
-    let file_name;
+    let fileName = "";
     try {
-      file_name = this.state.fileInputRef.current.files[0].name;
+      fileName = this.state.fileInputRef.current.files[0].name;
     } catch (e) {
       // no file has been selected
       return;
     }
-    const ext = file_name.slice(file_name.length - 4);
+    const ext = fileName.slice(fileName.length - 4);
     if (ext != ".csv") {
       this.state.fileInputRef.current.value = "";
       this.setState({
@@ -112,6 +112,7 @@ class Teacher extends Component {
         this.setState({
           verifyUpload: true,
           uploadedContent: results,
+          groupname: fileName.slice(0, -4),
         });
       },
     };
@@ -123,7 +124,7 @@ class Teacher extends Component {
     this.state.fileInputRef.current.value = "";
     this.setState({
       warn: undefined,
-      groupname: undefined,
+      groupname: "",
       verifyUpload: false,
     });
   };
