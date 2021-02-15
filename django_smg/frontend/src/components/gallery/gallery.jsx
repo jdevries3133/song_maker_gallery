@@ -16,7 +16,13 @@ class gallery extends Component {
   }
 
   render() {
-    if (this.props.status === undefined) {
+    if (
+      // no gallery has been loaded yet
+      this.props.status === undefined ||
+      // the gallery in the redux state is not the gallery currently being
+      // navigated to
+      (this.props.gallery && this.props.gallery.slug !== this.state.slug)
+    ) {
       return <Loading />;
     } else if (this.state.slug === "") {
       return (
