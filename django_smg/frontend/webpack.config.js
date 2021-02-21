@@ -33,6 +33,6 @@ module.exports = {
     ],
   },
   output: {
-    filename: "main_v2.0.js",
+    filename: "main_v2.1.js",
   },
 };
