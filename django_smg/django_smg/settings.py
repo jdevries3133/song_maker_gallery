@@ -5,7 +5,6 @@ from .secret_settings import SECRET_KEY
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True if os.getenv('DJANGO_DEBUG') == '1' else False
-print('DEBUG', DEBUG)
 if not DEBUG:
     from .production_settings import *
 else:
