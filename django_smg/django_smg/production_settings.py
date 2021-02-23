@@ -8,13 +8,20 @@ from .settings import BASE_DIR
 # EMAIL_HOST = config['SMTP_HOST']
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+from .secret_settings import (
+    MYSQL_PASSWORD,
+    MYSQL_USER,
+    MYSQL_NAME
+)
+
 # Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'songmaker',
-        'USER': 'songmaker',
-        'HOST': 'localhost',
+        'NAME': MYSQL_NAME,
+        'USER': MYSQL_USER,
+        'PASSWORD': MYSQL_PASSWORD,
+        'HOST': '127.0.0.1',
         'PORT': 3306,
         'OPTIONS': {
             'charset': 'utf8mb4',

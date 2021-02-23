@@ -5,16 +5,9 @@ from .secret_settings import SECRET_KEY
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True if os.getenv('DJANGO_DEBUG') == '1' else False
+print('DEBUG', DEBUG)
 if not DEBUG:
-    from .secret_settings import (
-        MYSQL_PASSWORD,
-        MYSQL_USER,
-        MYSQL_NAME
-    )
     from .production_settings import *
-    DATABASES['default']['PASSWORD'] = MYSQL_PASSWORD
-    DATABASES['default']['USER'] = MYSQL_USER
-    DATABASES['default']['NAME'] = MYSQL_NAME
 else:
     from .development_settings import *
 
