@@ -18,7 +18,7 @@ where you can share your students compositions with their peers and your school
 community!
 
 Best of all, this project is 100% free to use and open source. Feel free to
-check it out on github if you are interested in contributing, or just want
+check it out on GitHub if you are interested in contributing, or just want
 to suggest a new feature
 ([https://github.com/jdevries3133/song_maker_gallery](https://github.com/jdevries3133/song_maker_gallery)).
 
@@ -38,7 +38,7 @@ ideas on the roadmap.
 
 This website was created by me, a music teacher, in response to the simple
 need to find a way to feature our students' work in light of the COVID-19
-pandemic. Our students' concerts have been cancelled, their rehearsals ceased,
+pandemic. Our students' concerts have been canceled, their rehearsals ceased,
 and their opportunities to share music diminished to a whisper of what they
 once were.
 
@@ -80,7 +80,7 @@ if you are interested!
 
 **Student Response**
 
-"Responding," is a key tenent of music curricula. I would like to create an
+"Responding," is a key tenet of music curricula. I would like to create an
 environment where students can respond to and critique each other's work
 while also being monitored by the teacher.
 
