@@ -1,6 +1,7 @@
 import os
 
 from .settings import BASE_DIR
+
 # Email
 # EMAIL_PORT = 587
 # EMAIL_HOST_USER = config['SMG_GMAIL']
