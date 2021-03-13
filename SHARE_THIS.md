@@ -28,7 +28,7 @@ to suggest a new feature
 > _I_ use this post... you probably should not unless you feel like
 > impersonating me :)
 
-Hi all! I am really excited to share my quarentine project / hopefully helpful
+Hi all! I am really excited to share my quarantine project / hopefully helpful
 website with all of you that I have been working on for the past couple
 months
 

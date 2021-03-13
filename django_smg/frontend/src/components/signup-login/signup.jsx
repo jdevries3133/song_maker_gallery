@@ -148,7 +148,7 @@ const signup = (props) => {
         ) : null}
         {pass_bool ? (
           <p className={styles.met}>
-            Your password is at least eigth characters long
+            Your password is at least eight characters long
           </p>
         ) : (
           <p className={styles.not_met}>

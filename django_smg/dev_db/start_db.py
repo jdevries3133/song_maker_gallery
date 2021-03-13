@@ -17,6 +17,6 @@ subprocess.call([
     '-e', 'MYSQL_USER=songmaker',
     '-e', 'MYSQL_PASSWORD=passwd',
     '-e', 'MYSQL_DATABASE=songmaker',
-    '-v', f'{root_dir.resolve()}:/docker-entrypoint-initdb.d',
+    '-v', f'{Path(root_dir, "init").resolve()}:/docker-entrypoint-initdb.d',
     'mysql:8.0.23'
 ])
