@@ -1,8 +1,13 @@
 import React from "react";
 import styles from "./add_gallery.module.css";
 
+// CSS will scale for group names up to this length.
+const GROUP_NAME_LENGTH_LIMIT = 15;
+
 const Verify = (props) => {
   const duplicateGroupName = props.otherGroups.includes(props.groupname);
+  const groupNameTooBig = props.groupname.length > GROUP_NAME_LENGTH_LIMIT;
+  const isFormError = duplicateGroupName || groupNameTooBig;
 
   // songData construction logic
   var nameIndex = props.nameIndex;
@@ -90,13 +95,24 @@ const Verify = (props) => {
         <h2 className={styles.doesThisLookGood}>Does this look good?</h2>
         <h3>Group Name to Display:</h3>
         {duplicateGroupName ? (
-          <p style={{ color: "salmon" }}>Duplicate group name</p>
+          <p style={{ color: "red" }}>Duplicate group name.</p>
+        ) : null}
+        {groupNameTooBig ? (
+          <p style={{ color: "red" }}>Group name too long.</p>
         ) : null}
         <input
           className={`${styles.input} ${styles.wide_input}`}
           value={props.groupname}
           onChange={(e) => props.groupNameChange(e)}
         />
+        <span
+          style={{
+            paddingLeft: "10px",
+            ...(groupNameTooBig ? { color: "red" } : {}),
+          }}
+        >
+          {props.groupname.length}/{GROUP_NAME_LENGTH_LIMIT}
+        </span>
         <br />
         <table className={styles.blanket_table}>
           <thead>
@@ -139,16 +155,23 @@ const Verify = (props) => {
         </table>
         {duplicateGroupName ? (
           <h3 style={{ color: "red" }}>
-            Change group name to proceed. Current group name is a duplicate
+            Scroll up to change group name. Current group name is a duplicate.
           </h3>
-        ) : (
+        ) : null}
+        {groupNameTooBig ? (
+          <h3 style={{ color: "red" }}>
+            Scroll up to shorten group name. Group names must be less than{" "}
+            {GROUP_NAME_LENGTH_LIMIT} characters long.
+          </h3>
+        ) : null}
+        {!isFormError ? (
           <button
             onClick={() => props.validatedHandler(filtered)}
             className={`button ${styles.up_btn}`}
           >
             Add Group
           </button>
-        )}
+        ) : null}
         <button
           onClick={(e) => props.restart(e)}
           className={`button ${styles.restart_btn}`}
