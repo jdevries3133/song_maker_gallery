@@ -11,8 +11,12 @@ class gallery extends Component {
     slug: window.location.pathname.split("/")[2],
     gallery: null,
   };
+
   componentDidMount() {
     this.props.getGallery(this.state.slug);
+  }
+  componentDidUpdate() {
+    document.title = this.props.gallery.title || document.title;
   }
 
   render() {
