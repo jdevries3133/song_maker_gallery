@@ -12,22 +12,28 @@ fi
 
 # setup django secret_settings file
 echo "SECRET_KEY = 'randomstr'" > django_smg/django_smg/secret_settings.py
-echo "MYSQL_PASSWORD = 'pwd'" >> django_smg/django_smg/secret_settings.py
-echo "MYSQL_USER = 'usr'" >> django_smg/django_smg/secret_settings.py
-echo "MYSQL_NAME = 'db_name'" >> django_smg/django_smg/secret_settings.py
+echo "MYSQL_PASSWORD = 'passwd'" >> django_smg/django_smg/secret_settings.py
+echo "MYSQL_USER = 'songmaker'" >> django_smg/django_smg/secret_settings.py
+echo "MYSQL_NAME = 'songmaker'" >> django_smg/django_smg/secret_settings.py
 
-echo "# Config for Song Maker Gallery" >> ~/.bashrc
+
+echo "\n# Config for Song Maker Gallery" >> ~/.bashrc
 echo "DJANGO_DEBUG=\"true\"" >> ~/.bashrc
+
+# setup python environment
 cd django_smg
 echo "Creating virtual environment..."
 python3 -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
+
+# setup django project
 python manage.py migrate
 echo "Running python test suite"
 python manage.py test
 
+# setup frontend
 echo "Installing javascript dependencies"
 cd frontend
 npm install
