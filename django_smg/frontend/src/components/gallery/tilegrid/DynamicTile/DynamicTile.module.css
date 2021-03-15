@@ -6,6 +6,10 @@
   margin: 10px;
 }
 
+.tile_inner_container:hover {
+  border-radius: 20px;
+}
+
 .tile_outer_container {
   display: inline-block;
   text-align: left;
