@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   module: {
     rules: [
@@ -32,7 +34,9 @@ module.exports = {
       },
     ],
   },
+  entry: "./src/index.jsx",
   output: {
     filename: "main_v2.1.1.js",
+    path: path.resolve(__dirname, "static", "frontend", "webpack_output"),
   },
 };
