@@ -6,9 +6,9 @@ import GalleryBody from "./gal_body";
 import { getGallery } from "../../actions/gallery";
 import { connect } from "react-redux";
 
-class gallery extends Component {
+class Gallery extends Component {
   state = {
-    slug: window.location.pathname.split("/")[2],
+    slug: this.props.slug || window.location.pathname.split("/")[2],
     gallery: null,
   };
 
@@ -67,4 +67,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getGallery })(gallery);
+export default connect(mapStateToProps, { getGallery })(Gallery);
