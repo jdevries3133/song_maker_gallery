@@ -6,13 +6,9 @@
   "scripts": {
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production",
-    "test": "jest"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/file_mock.js",
-      "\\.(css|less)$": "<rootDir>/__mocks__/style_mock.js"
-    }
+    "test": "jest",
+    "watch": "jest --watch",
+    "debug": "node inspect node_modules/.bin/jest"
   },
   "keywords": [],
   "author": "",

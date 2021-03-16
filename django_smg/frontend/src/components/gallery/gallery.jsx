@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import Loading from "../generics/loading";
 import GalleryBody from "./gal_body";
 
+import { getPathName } from "./getPathName";
 import { getGallery } from "../../actions/gallery";
-import { connect } from "react-redux";
 
 class Gallery extends Component {
   state = {
-    slug: this.props.slug || window.location.pathname.split("/")[2],
+    slug: getPathName().split("/")[2] || "",
     gallery: null,
   };
 
@@ -16,7 +17,7 @@ class Gallery extends Component {
     this.props.getGallery(this.state.slug);
   }
   componentDidUpdate() {
-    document.title = this.props.gallery.title || document.title;
+    document.title = this.props?.gallery?.title || document.title;
   }
 
   render() {
@@ -46,7 +47,7 @@ class Gallery extends Component {
         );
       } else {
         return (
-          <div>
+          <div data-testid="mounted gallery body">
             <GalleryBody
               title={this.props.gallery.title}
               description={this.props.gallery.description}
