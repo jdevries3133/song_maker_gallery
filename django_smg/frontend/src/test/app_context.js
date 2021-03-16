@@ -1,12 +1,9 @@
 /**
  * All app components generally expect to be inside a router and a redux store
- * provider.
- *
- * This module provides a HOC for that purpose, plus functions to configure
- * the setup of that HOC
+ * provider. This module provides a HOC for that purpose
  */
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
