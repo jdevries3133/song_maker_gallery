@@ -3,24 +3,24 @@ import Gallery from "./gallery";
 
 import { render, cleanup } from "../../test/redux_wrap";
 import { mockGetGallery } from "../../test/__mocks__/actions";
-import { getPathName } from "./getPathName";
 import { getGallery } from "../../actions/gallery";
+import { windowLocation } from "../../util/window";
 
-jest.mock("./getPathName");
+jest.mock("../../util/window");
 jest.mock("../../actions/gallery");
 
 beforeEach(() => {
-  getPathName.mockImplementation(() => "/gallery/test-gallery");
+  windowLocation.mockImplementation(() => "/gallery/test-gallery");
 });
 
 afterEach(() => {
   cleanup();
-  getPathName.mockClear();
+  windowLocation.mockClear();
 });
 
 describe("Gallery", () => {
   it("redux state conflicts with window.location", () => {
-    getPathName.mockImplementation(() => "/gallery/wrongslug");
+    windowLocation.mockImplementation(() => "/gallery/wrongslug");
     getGallery.mockImplementation(mockGetGallery("FOUND"));
     const { getByTestId } = render(<Gallery />);
     expect(getByTestId("loading spinner")).toBeTruthy();

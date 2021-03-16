@@ -2,7 +2,7 @@
  * Mock redux actions which also conveniently avoid network calls
  */
 
-import { GET_GALLERY } from "../../actions/types";
+import { GET_GALLERY, LOGIN, LOGOUT } from "../../actions/types";
 
 const galleryFound = () => (dispatch) => {
   dispatch({
@@ -60,4 +60,30 @@ export const mockGetGallery = (result) => {
     default:
       throw new Error(`${result} is not a valid choice.`);
   }
+};
+
+/**
+ * Auth action
+ */
+
+export const loginAction = ({ token, is_success }) => (dispatch) => {
+  dispatch({
+    type: LOGIN,
+    payload: {
+      isAuthenticated: is_success,
+      authError: !is_success,
+      token: token,
+    },
+  });
+};
+
+export const logout = () => (dispatch) => {
+  dispatch({
+    type: LOGOUT,
+    payload: {
+      isAuthenticated: false,
+      authError: false,
+      token: "",
+    },
+  });
 };

@@ -3,7 +3,7 @@ import { LOGIN, LOGOUT, REGISTER, CLEAR_ERROR } from "../actions/types";
 const initialState = {
   token: "",
   isAuthenticated: false,
-  authErrr: false,
+  authError: false,
 };
 
 export default function (state = initialState, action) {
@@ -34,7 +34,7 @@ export default function (state = initialState, action) {
         ...state,
         token: "",
         isAuthenticated: false,
-        authErr: false,
+        authError: false,
       };
     default:
       return { ...state };

@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 import Loading from "../generics/loading";
 import GalleryBody from "./gal_body";
 
-import { getPathName } from "./getPathName";
 import { getGallery } from "../../actions/gallery";
+import { windowLocation } from "../../util/window";
 
 class Gallery extends Component {
   state = {
-    slug: getPathName().split("/")[2] || "",
+    slug: windowLocation("pathname").split("/")[2] || "",
     gallery: null,
   };
 

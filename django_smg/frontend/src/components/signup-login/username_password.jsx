@@ -7,6 +7,7 @@ const username_password = (props) => {
     <Fragment>
       <h3>Username</h3>
       <input
+        data-testid="usernameInput"
         className={styles.input}
         onChange={(event) => props.username(event.target.value)}
         onKeyDown={(e) => {
@@ -17,6 +18,7 @@ const username_password = (props) => {
       />
       <h3>Password</h3>
       <input
+        data-testid="passwordInput"
         type="password"
         className={styles.input}
         onChange={(event) => props.password(event.target.value)}
