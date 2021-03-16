@@ -2,7 +2,7 @@ import React from "react";
 import Gallery from "./gallery";
 
 import { render, cleanup } from "../../test/redux_wrap";
-import { mockGetGallery } from "../../test/fixtures";
+import { mockGetGallery } from "../../test/__mocks__/actions";
 import { getPathName } from "./getPathName";
 import { getGallery } from "../../actions/gallery";
 

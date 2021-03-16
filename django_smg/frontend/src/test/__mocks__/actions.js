@@ -2,7 +2,7 @@
  * Mock redux actions which also conveniently avoid network calls
  */
 
-import { GET_GALLERY } from "../actions/types";
+import { GET_GALLERY } from "../../actions/types";
 
 const galleryFound = () => (dispatch) => {
   dispatch({

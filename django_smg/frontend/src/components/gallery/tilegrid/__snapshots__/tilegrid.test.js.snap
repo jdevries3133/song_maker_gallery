@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  id="gallery"
+>
+  <div />
+  <a
+    href="#gallery_top"
+  >
+    <h2
+      id={
+        Array [
+          "A Group of Marks",
+        ]
+      }
+    >
+      A Group of Marks
+    </h2>
+    <br />
+    <span>
+      ☟
+    </span>
+  </a>
+  <ul>
+    <div>
+      <div
+        style={
+          Object {
+            "height": "103px",
+            "width": "300px",
+          }
+        }
+      >
+        <a
+          href="https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+          rel="noopner noreferrer"
+          target="_blank"
+        >
+          <svg
+            viewBox="0 0 300 103"
+            xmlns="https://www.w3.org/2000/svg"
+          >
+            <text
+              dominantBaseline="middle"
+              textAnchor="middle"
+              x="50%"
+              y="50%"
+            >
+              Mark J.
+            </text>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div
+        style={
+          Object {
+            "height": "103px",
+            "width": "300px",
+          }
+        }
+      >
+        <a
+          href="https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+          rel="noopner noreferrer"
+          target="_blank"
+        >
+          <svg
+            viewBox="0 0 300 103"
+            xmlns="https://www.w3.org/2000/svg"
+          >
+            <text
+              dominantBaseline="middle"
+              textAnchor="middle"
+              x="50%"
+              y="50%"
+            >
+              Mark J.
+            </text>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div
+        style={
+          Object {
+            "height": "103px",
+            "width": "300px",
+          }
+        }
+      >
+        <a
+          href="https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+          rel="noopner noreferrer"
+          target="_blank"
+        >
+          <svg
+            viewBox="0 0 300 103"
+            xmlns="https://www.w3.org/2000/svg"
+          >
+            <text
+              dominantBaseline="middle"
+              textAnchor="middle"
+              x="50%"
+              y="50%"
+            >
+              Mark J.
+            </text>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div
+        style={
+          Object {
+            "height": "103px",
+            "width": "300px",
+          }
+        }
+      >
+        <a
+          href="https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+          rel="noopner noreferrer"
+          target="_blank"
+        >
+          <svg
+            viewBox="0 0 300 103"
+            xmlns="https://www.w3.org/2000/svg"
+          >
+            <text
+              dominantBaseline="middle"
+              textAnchor="middle"
+              x="50%"
+              y="50%"
+            >
+              Mark J.
+            </text>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </ul>
+</div>
+`;
