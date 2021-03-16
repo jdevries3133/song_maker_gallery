@@ -20,20 +20,30 @@ echo "MYSQL_NAME = 'songmaker'" >> django_smg/django_smg/secret_settings.py
 echo "\n# Config for Song Maker Gallery" >> ~/.bashrc
 echo "DJANGO_DEBUG=\"true\"" >> ~/.bashrc
 
-# setup python environment
+echo "SMG SETUP: Creating virtual environment..."
 cd django_smg
-echo "Creating virtual environment..."
 python3 -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# setup django project
+echo "SMG SETUP: performing django database migration on new sqlite database"
 python manage.py migrate
-echo "Running python test suite"
+
+echo "SMG SETUP: Running python test suite"
 python manage.py test
 
-# setup frontend
-echo "Installing javascript dependencies"
+echo "SMG SETUP: Installing javascript dependencies"
 cd frontend
 npm install
+
+echo "SMG SETUP: Running frontend test suite"
+npm run test
+
+echo "SMG SETUP: Building frontend"
+npm run build
+
+echo "SMG SETUP: Starting server"
+cd ..
+python -c "import webbrowser; webbrowser.open('http://localhost:8000')"
+exec python manage.py runserver
