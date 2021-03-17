@@ -40,14 +40,14 @@ class Gallery(models.Model):
         and operational errors should be caught and a new unique slug
         should be fetched and tried again.
         """
-        slug = slugify(title)
+        slug = slugify(title[:40])
         outstr = ''
         for i in slug:
             if re.search(r'[a-zA-Z0-9\-]', i):
                 outstr += i
         slug = outstr
         conflicting_urls = [
-            i.slug for i in Gallery.objects.filter(
+            i.slug for i in Gallery.objects.filter(  # type: ignore
                 slug__contains=slug
             )
         ]

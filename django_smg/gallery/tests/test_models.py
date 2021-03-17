@@ -15,18 +15,18 @@ class TestGalleryModel(test.TestCase):
     implementation is concurrency unsafe.
     """
     def setUp(self):
-        user = User.objects.create_user(
+        self.user = User.objects.create_user(
             'jack', 'jack@jack.com', 'jackpassword'
         )
         for _ in range(20):
-            Gallery.objects.create(
-                owner=user,
+            Gallery.objects.create(  # type: ignore
+                owner=self.user,
                 title='Test Gallery Name',
                 slug=Gallery.generate_slug('Test Gallery Name')
             )
 
     def get_queryset(self):
-        return Gallery.objects.all()
+        return Gallery.objects.all()  # type: ignore
 
     def test_url_naming_conflict_avoidance(self):
         for obj in self.get_queryset():
@@ -63,3 +63,17 @@ class TestGalleryModel(test.TestCase):
             # convert i to str expected at end of slug
             self.assertEqual(gallery.slug[17:], str(i))
 
+    def test_slugify_long_title(self):
+        """
+        Slug strings can be any length. The slugify method should chop them
+        of after 40 characters.
+        """
+        gal = Gallery.objects.create(  # type: ignore
+            owner=self.user,
+            title=('Test Gallery Name' * 5),
+            slug=Gallery.generate_slug(('Test Gallery Name') * 5)
+        )
+        self.assertEqual(
+            gal.slug,
+            'test-gallery-nametest-gallery-nametest-g'
+        )
