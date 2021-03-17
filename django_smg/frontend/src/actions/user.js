@@ -34,7 +34,15 @@ export const postGallery = (form, token) => (dispatch) => {
           status: 1,
           formPassthrough: form,
           gallery: null,
-          serverErrorMessage: err.response.data,
+          serverErrorMessage:
+            err.response.status === 400
+              ? err.response.data
+              : {
+                  "Server Error": [
+                    `Error Message: ${err.response.statusText}`,
+                    `Status Code: ${err.response.status}`,
+                  ],
+                },
         },
       });
     });
