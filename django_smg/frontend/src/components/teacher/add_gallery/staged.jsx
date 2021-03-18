@@ -1,21 +1,55 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import StagedGroup from "./staged_group";
+import CustomError from "../../generics/custom_error";
 import styles from "./add_gallery.module.css";
 
+export const TITLE_LENGTH_LIMIT = 100;
+
 const staged = (props) => {
+  const [blanket, setBlanket] = useState(null);
+  const submitValidation = () => {
+    if (props.titleValue.length >= TITLE_LENGTH_LIMIT) {
+      setBlanket(
+        <CustomError
+          header="Title Too Long"
+          message={[
+            `Gallery title must be less than ${TITLE_LENGTH_LIMIT} characters ` +
+              `long. Your title is currently ${props.titleValue.length} ` +
+              `characters long.`,
+          ]}
+        />
+      );
+    }
+  };
   return (
     <div>
+      {blanket}
       <h2>Your Staged Gallery</h2>
       <br />
       <div>
         <h3>Gallery Name:</h3>
         <input
+          data-testid="titleInput"
           className={styles.wide_input}
           placeholder="Name of your gallery here"
           value={props.titleValue}
           onChange={(e) => props.titleInput(e)}
-        />
+        />{" "}
+        {props.titleValue.length >= 50 ? (
+          <span
+            style={
+              props.titleValue.length >= TITLE_LENGTH_LIMIT
+                ? { color: "red" }
+                : props.titleValue.length >= TITLE_LENGTH_LIMIT - 10
+                ? { color: "orange" }
+                : null
+            }
+            data-testid="titleLenLimit"
+          >
+            {props.titleValue.length}/{TITLE_LENGTH_LIMIT}
+          </span>
+        ) : null}
         <h3>Gallery Description:</h3>
         <p>
           You may use this default description, or change it to whatever you
@@ -37,8 +71,9 @@ const staged = (props) => {
       </div>
       <br />
       <button
+        data-testid="submit"
         className={styles.large_button}
-        onClick={() => props.confirmCreate()}
+        onClick={submitValidation}
       >
         <p>Create Gallery</p>
         <p>
@@ -47,6 +82,16 @@ const staged = (props) => {
       </button>
     </div>
   );
+};
+
+staged.propTypes = {
+  titleValue: PropTypes.string.isRequired,
+  titleInput: PropTypes.func.isRequired,
+  descriptionValue: PropTypes.string.isRequired,
+  descriptionInput: PropTypes.func.isRequired,
+  groups: PropTypes.array.isRequired,
+  unStageGroupHandler: PropTypes.func.isRequired,
+  confirmCreate: PropTypes.func.isRequired,
 };
 
 export default staged;

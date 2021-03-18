@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`stage matches snapshot 1`] = `
+<div>
+  <h2>
+    Your Staged Gallery
+  </h2>
+  <br />
+  <div>
+    <h3>
+      Gallery Name:
+    </h3>
+    <input
+      data-testid="titleInput"
+      onChange={[Function]}
+      placeholder="Name of your gallery here"
+      value=""
+    />
+     
+    <h3>
+      Gallery Description:
+    </h3>
+    <p>
+      You may use this default description, or change it to whatever you prefer.
+    </p>
+    <textarea
+      onChange={[Function]}
+      value=""
+    />
+    <h3>
+      Staged Goups
+    </h3>
+    <table
+      style={
+        Object {
+          "margin": "auto",
+          "marginTop": "15px",
+        }
+      }
+    >
+      <tbody>
+        <tr>
+          <td>
+            <button
+              className="sc-bdfBwQ gjKOhN"
+              onClick={[Function]}
+            >
+              ◀
+            </button>
+          </td>
+          <td
+            style={
+              Object {
+                "fontSize": "24px",
+              }
+            }
+          />
+          <td>
+            <button
+              onClick={[Function]}
+            >
+              Unstage Group
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <tbody />
+    </table>
+  </div>
+  <br />
+  <button
+    data-testid="submit"
+    onClick={[Function]}
+  >
+    <p>
+      Create Gallery
+    </p>
+    <p>
+      (Or, add another group by uploading another 
+      <code>
+        .csv
+      </code>
+       file.)
+    </p>
+  </button>
+</div>
+`;
