@@ -36,7 +36,7 @@ module.exports = {
   },
   entry: "./src/index.jsx",
   output: {
-    filename: "main_v2.1.1.js",
+    filename: "main_v2.1.2.js",
     path: path.resolve(__dirname, "static", "frontend", "webpack_output"),
   },
 };

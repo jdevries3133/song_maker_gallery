@@ -1,7 +1,7 @@
 {
   "name": "frontend",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.1.2",
+  "description": "songmakergallery.com's frontend application.",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development --watch",
