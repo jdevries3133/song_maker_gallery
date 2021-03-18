@@ -166,6 +166,7 @@ const Verify = (props) => {
         ) : null}
         {!isFormError ? (
           <button
+            data-testid="verifyGroupButton"
             onClick={() => props.validatedHandler(filtered)}
             className={`button ${styles.up_btn}`}
           >

@@ -1,7 +1,8 @@
 import React from "react";
 import Gallery from "./gallery";
 
-import { render, cleanup } from "../../test/redux_wrap";
+import { render, cleanup } from "@testing-library/react";
+import { Context as TestContext } from "../../test/app_context";
 import { mockGetGallery } from "../../test/__mocks__/actions";
 import { getGallery } from "../../actions/gallery";
 import { windowLocation } from "../../util/window";
@@ -22,19 +23,31 @@ describe("Gallery", () => {
   it("redux state conflicts with window.location", () => {
     windowLocation.mockImplementation(() => "/gallery/wrongslug");
     getGallery.mockImplementation(mockGetGallery("FOUND"));
-    const { getByTestId } = render(<Gallery />);
+    const { getByTestId } = render(
+      <TestContext>
+        <Gallery />
+      </TestContext>
+    );
     expect(getByTestId("loading spinner")).toBeTruthy();
   });
 
   it("exists", () => {
     getGallery.mockImplementation(mockGetGallery("FOUND"));
-    const { getByTestId } = render(<Gallery />);
+    const { getByTestId } = render(
+      <TestContext>
+        <Gallery />
+      </TestContext>
+    );
     expect(getByTestId("mounted gallery body")).toBeTruthy();
   });
 
   it("does not exist", () => {
     getGallery.mockImplementation(mockGetGallery("NOT_FOUND"));
-    const { getByText } = render(<Gallery />);
+    const { getByText } = render(
+      <TestContext>
+        <Gallery />
+      </TestContext>
+    );
     expect(getByText("There is no gallery named test gallery")).toBeTruthy();
   });
 });

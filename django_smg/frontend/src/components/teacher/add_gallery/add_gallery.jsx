@@ -21,16 +21,22 @@ const Add = (props) => {
         <h4>Upload One Spreadsheet (.csv file) Per Group</h4>
         {props.firstGroupUploaded ? (
           <Fragment>
-            <h3>🎉Nice!🎊</h3>
+            <h3 data-testid="firstFileUploadedMsg">🎉Nice!🎊</h3>
             <p>
               You uploaded your first spreadsheet! Scroll down to see our
               staging area, or upload another spreadsheet!
             </p>
           </Fragment>
         ) : null}
-        <input className={styles.upload} type="file" ref={props.fileInputRef} />
+        <input
+          data-testid="csvFileInput"
+          className={styles.upload}
+          type="file"
+          ref={props.fileInputRef}
+        />
         <div>
           <button
+            data-testid="addSpreadsheetButton"
             style={{
               display: "block",
               marginLeft: "auto",
@@ -42,6 +48,7 @@ const Add = (props) => {
             Add Spreadsheet
           </button>
           <button
+            data-testid="clearFileButton"
             style={{
               display: "block",
               marginLeft: "auto",
