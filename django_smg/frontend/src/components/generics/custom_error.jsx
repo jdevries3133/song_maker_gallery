@@ -19,6 +19,7 @@ const custom_error = (props) => {
 custom_error.propTypes = {
   header: PropTypes.string,
   message: PropTypes.array.isRequired,
+  onOk: PropTypes.func.isRequired,
 };
 
 custom_error.defaultProps = {

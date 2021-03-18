@@ -18,6 +18,7 @@ const staged = (props) => {
               `long. Your title is currently ${props.titleValue.length} ` +
               `characters long.`,
           ]}
+          onOk={() => setBlanket(null)}
         />
       );
     } else {
