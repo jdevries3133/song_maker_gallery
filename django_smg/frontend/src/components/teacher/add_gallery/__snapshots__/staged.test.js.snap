@@ -14,7 +14,7 @@ exports[`stage matches snapshot 1`] = `
       data-testid="titleInput"
       onChange={[Function]}
       placeholder="Name of your gallery here"
-      value=""
+      value="title"
     />
      
     <h3>
@@ -25,7 +25,7 @@ exports[`stage matches snapshot 1`] = `
     </p>
     <textarea
       onChange={[Function]}
-      value=""
+      value="description"
     />
     <h3>
       Staged Goups

@@ -6,9 +6,9 @@ import "@testing-library/jest-dom";
 import Stage, { TITLE_LENGTH_LIMIT } from "./staged";
 
 const MOCK_STAGED_INIT = {
-  titleValue: "",
+  titleValue: "title",
   titleInput: jest.fn(),
-  descriptionValue: "",
+  descriptionValue: "description",
   descriptionInput: jest.fn(),
   groups: [[]],
   unStageGroupHandler: jest.fn(),
@@ -78,5 +78,11 @@ describe("stage", () => {
         exact: false,
       })
     ).toBeTruthy();
+  });
+
+  it("calls confirmCreate for valid data", async () => {
+    const { getByTestId } = render(<Stage {...mockStaged} />);
+    await act(async () => fireEvent.click(getByTestId("submit")));
+    expect(mockStaged.confirmCreate).toHaveBeenCalledTimes(1);
   });
 });

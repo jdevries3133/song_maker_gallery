@@ -20,6 +20,8 @@ const staged = (props) => {
           ]}
         />
       );
+    } else {
+      props.confirmCreate();
     }
   };
   return (
