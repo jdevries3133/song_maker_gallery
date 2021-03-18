@@ -96,7 +96,7 @@ const TosContent = (props) => (
 );
 
 /* Free-standing page content */
-export const TosPage = (props) => (
+export const TosPage = () => (
   <div className={`description ${styles.container}`} style={{ margin: "3%" }}>
     <TosContent />
   </div>
