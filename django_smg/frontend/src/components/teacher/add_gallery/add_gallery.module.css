@@ -30,10 +30,6 @@
   padding: 0 0 0 0;
 }
 
-.up_btn {
-  background-color: limegreen;
-}
-
 .restart_btn {
   background-color: salmon;
 }
@@ -105,4 +101,12 @@
 
 .large_button:hover {
   background-color: lightcoral;
+}
+
+.add_ss {
+  background-color: limegreen;
+}
+
+.add_ss:hover {
+  background-color: white;
 }

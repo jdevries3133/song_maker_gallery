@@ -37,13 +37,8 @@ const Add = (props) => {
         <div>
           <button
             data-testid="addSpreadsheetButton"
-            style={{
-              display: "block",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
             onClick={() => props.uploadRequest()}
-            className="button"
+            className={`button ${styles.add_ss}`}
           >
             Add Spreadsheet
           </button>
