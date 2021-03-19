@@ -55,24 +55,33 @@ const setupVerify = async () => {
   await waitFor(() => screen.findByTestId("verifyModal"));
 };
 
+const setupAddFirstGroup = async () => {
+  await setupVerify();
+  act(() => {
+    fireEvent.click(screen.getByTestId("verifyGroupButton"));
+  });
+};
+
 describe("teacher", () => {
   it("mounts modal window to DOM for csv data verification", async (done) => {
     await setupVerify();
-    await waitFor(() => expect(screen.getByTestId("verifyModal")).toBeTruthy());
+    expect(screen.getByTestId("verifyModal")).toBeTruthy();
     done();
   });
 
   it("unmounts <Verify /> and mounts <Staged /> on first group added", async (done) => {
-    await setupVerify();
+    await setupAddFirstGroup();
     // Click "Add Group," which unmounts <Verify /> and mounts <Staged />
-    act(() => {
-      fireEvent.click(screen.getByTestId("verifyGroupButton"));
-    });
     expect(screen.getByTestId("firstFileUploadedMsg")).toHaveTextContent(
       "🎉Nice!🎊"
     );
     expect(screen.queryByTestId("verifyModal")).toBeFalsy();
     screen.getByText("Your Staged Gallery");
+    done();
+  });
+
+  it("creates a new gallery", async (done) => {
+    await setupAddFirstGroup();
 
     // Input title
     act(() => {
