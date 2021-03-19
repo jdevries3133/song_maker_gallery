@@ -34,28 +34,36 @@ const getTestCsv = (name) => {
     .toString();
 };
 
+/**
+ * Setup funcs for each stage of the creation process.
+ */
+
+const setupRender = () => {
+  render(
+    <TestContext initialState={{ auth: { isAuthenticated: true } }}>
+      <Teacher />
+    </TestContext>
+  );
+};
+
+const setupVerify = async () => {
+  setupRender();
+  act(() => {
+    mountFile(screen.getByTestId("csvFileInput"), getTestCsv("test_group.csv"));
+  });
+  fireEvent.click(screen.getByTestId("addSpreadsheetButton"));
+  await waitFor(() => screen.findByTestId("verifyModal"));
+};
+
 describe("teacher", () => {
-  // Integration test of the full gallery creation flow
-  it("is possible to make a gallery", async (done) => {
-    render(
-      <TestContext initialState={{ auth: { isAuthenticated: true } }}>
-        <Teacher />
-      </TestContext>
-    );
-    // Upload file
-    act(() => {
-      mountFile(
-        screen.getByTestId("csvFileInput"),
-        getTestCsv("test_group.csv")
-      );
-    });
-
-    // Trigger CSV Handler
-    fireEvent.click(screen.getByTestId("addSpreadsheetButton"));
-
-    // <Verify /> component is now mounted
+  it("mounts modal window to DOM for csv data verification", async (done) => {
+    await setupVerify();
     await waitFor(() => expect(screen.getByTestId("verifyModal")).toBeTruthy());
+    done();
+  });
 
+  it("unmounts <Verify /> and mounts <Staged /> on first group added", async (done) => {
+    await setupVerify();
     // Click "Add Group," which unmounts <Verify /> and mounts <Staged />
     act(() => {
       fireEvent.click(screen.getByTestId("verifyGroupButton"));
