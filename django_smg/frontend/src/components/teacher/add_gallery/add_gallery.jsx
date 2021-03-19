@@ -43,7 +43,7 @@ const Add = (props) => {
               marginRight: "auto",
             }}
             onClick={() => props.uploadRequest()}
-            className={`button ${styles.up_btn}`}
+            className="button"
           >
             Add Spreadsheet
           </button>
@@ -55,7 +55,7 @@ const Add = (props) => {
               marginRight: "auto",
             }}
             onClick={(e) => props.clearFileHandler(e)}
-            className={`button ${styles.restart_btn}`}
+            className="button"
           >
             Clear File
           </button>

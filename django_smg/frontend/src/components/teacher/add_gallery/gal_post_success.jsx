@@ -10,7 +10,7 @@ const gal_post_success = (props) => {
       <p>Your gallery is now publicly available at the link below:</p>
       <br />
       <Link to={relative_path}>
-        <p>{full_url}</p>
+        <p data-testid="newGalUrl">{full_url}</p>
       </Link>
       <button onClick={() => props.onOk()}>Ok</button>
       <p>

@@ -79,9 +79,6 @@ export const deleteGallery = (pk, token) => (dispatch) => {
       headers: {
         Authorization: `Token ${token}`,
       },
-      data: {
-        pk: pk,
-      },
     })
     .then((response) => {
       if (response.status === 200) {

@@ -91,7 +91,10 @@ const Verify = (props) => {
   }
   if (typeof filtered != undefined) {
     return (
-      <div className={`description blanket ${styles.scroll_blanket}`}>
+      <div
+        data-testid="verifyModal"
+        className={`description blanket ${styles.scroll_blanket}`}
+      >
         <h2 className={styles.doesThisLookGood}>Does this look good?</h2>
         <h3>Group Name to Display:</h3>
         {duplicateGroupName ? (
