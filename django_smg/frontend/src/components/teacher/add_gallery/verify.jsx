@@ -9,7 +9,7 @@ const Verify = (props) => {
   const groupNameTooBig = props.groupname.length > GROUP_NAME_LENGTH_LIMIT;
   const isFormError = duplicateGroupName || groupNameTooBig;
 
-  // songData construction logic
+  // check spreadsheet headers
   var nameIndex = props.nameIndex;
   var linkIndex = props.linkIndex;
   var filtered;
@@ -37,7 +37,10 @@ const Verify = (props) => {
   } else {
     if (nameIndex == undefined) {
       return (
-        <div className={`description blanket ${styles.scroll_blanket}`}>
+        <div
+          data-testid="verifyModalNoName"
+          className={`description blanket ${styles.scroll_blanket}`}
+        >
           <h2>Whoops!</h2>
           <p>
             It looks like your spreadsheet didn't have a header of "name," can
@@ -46,6 +49,7 @@ const Verify = (props) => {
           {props.csv.data[0].map((row, index) => {
             return (
               <button
+                data-testid="nameColChoice"
                 key={index}
                 onClick={() => {
                   props.indexHandler(index, "name");
@@ -65,7 +69,10 @@ const Verify = (props) => {
       );
     } else if (linkIndex == undefined) {
       return (
-        <div className={`description blanket ${styles.scroll_blanket}`}>
+        <div
+          data-testid="verifyModalNoLink"
+          className={`description blanket ${styles.scroll_blanket}`}
+        >
           <h2>Whoops!</h2>
           <p>
             It looks like your spreadsheet didn't have a header of "link," can
@@ -73,6 +80,7 @@ const Verify = (props) => {
           </p>
           {props.csv.data[0].map((row, index) => (
             <button
+              data-testid="linkColChoice"
               key={index}
               onClick={() => props.indexHandler(index, "link")}
             >
@@ -92,7 +100,7 @@ const Verify = (props) => {
   if (typeof filtered != undefined) {
     return (
       <div
-        data-testid="verifyModal"
+        data-testid="verifyModalNormal"
         className={`description blanket ${styles.scroll_blanket}`}
       >
         <h2 className={styles.doesThisLookGood}>Does this look good?</h2>
@@ -128,6 +136,9 @@ const Verify = (props) => {
             {
               // mmmmm spaghetti
               filtered.slice(1).map((row, index) => {
+                // name_arr ex. ['Johnny', 'Appleseed']
+                // we want to get 'Johnny A.' from that
+                // and also have it work for all names
                 var name_arr = row[nameIndex].split(" ");
 
                 // try for last initial
@@ -148,8 +159,12 @@ const Verify = (props) => {
                 }
                 return (
                   <tr key={index}>
-                    <td align="left">{display}</td>
-                    <td align="left">{row[linkIndex].slice(0, 30)}...</td>
+                    <td data-testid="studentDisplayName" align="left">
+                      {display}
+                    </td>
+                    <td data-testid="studentLinkPreview" align="left">
+                      {row[linkIndex].slice(0, 30)}...
+                    </td>
                   </tr>
                 );
               })
@@ -208,4 +223,15 @@ const Verify = (props) => {
   }
 };
 
-export default Verify;
+/**
+ * This is an unfortunate hack, but the extra wrapping div makes it possible
+ * to know if this component has been mounted *at all* regardless of the
+ * state it might be mounted in.
+ */
+const VerifyTestWrapper = (props) => (
+  <div data-testid="verifyModalPresent">
+    <Verify {...props} />
+  </div>
+);
+
+export default VerifyTestWrapper;

@@ -46,13 +46,13 @@ const setupRender = () => {
   );
 };
 
-const setupVerify = async () => {
+const setupVerify = async (spreadsheet = "test_group.csv") => {
   setupRender();
   act(() => {
-    mountFile(screen.getByTestId("csvFileInput"), getTestCsv("test_group.csv"));
+    mountFile(screen.getByTestId("csvFileInput"), getTestCsv(spreadsheet));
   });
   fireEvent.click(screen.getByTestId("addSpreadsheetButton"));
-  await waitFor(() => screen.findByTestId("verifyModal"));
+  await waitFor(() => screen.findAllByTestId("verifyModalPresent"));
 };
 
 const setupAddFirstGroup = async () => {
@@ -62,10 +62,10 @@ const setupAddFirstGroup = async () => {
   });
 };
 
-describe("teacher", () => {
+describe("gallery addition process via <Teacher />", () => {
   it("mounts modal window to DOM for csv data verification", async (done) => {
     await setupVerify();
-    expect(screen.getByTestId("verifyModal")).toBeTruthy();
+    expect(screen.getByTestId("verifyModalNormal")).toBeTruthy();
     done();
   });
 
@@ -75,7 +75,7 @@ describe("teacher", () => {
     expect(screen.getByTestId("firstFileUploadedMsg")).toHaveTextContent(
       "🎉Nice!🎊"
     );
-    expect(screen.queryByTestId("verifyModal")).toBeFalsy();
+    expect(screen.queryByTestId("verifyModalNormal")).toBeFalsy();
     screen.getByText("Your Staged Gallery");
     done();
   });
@@ -96,11 +96,77 @@ describe("teacher", () => {
     });
 
     await waitFor(async () => {
-      expect(screen.queryByText("Success!")).toBeTruthy();
+      expect(screen.queryByText("Success!")).toBeVisible();
       expect(screen.getByTestId("newGalUrl")).toHaveTextContent(
         "http://localhost/gallery/test-title"
       );
     });
+    done();
+  });
+});
+
+describe("spreadsheet validation via <Teacher />", () => {
+  it("asks for name column when it is ambiguous", async (done) => {
+    await setupVerify("bad_name.csv");
+    expect(screen.getByTestId("verifyModalNoName")).toBeVisible();
+    const namebtn = screen.getAllByTestId("nameColChoice")[0];
+    expect(namebtn).toHaveTextContent("nome");
+    act(() => {
+      fireEvent.click(namebtn);
+    });
+    await waitFor(() =>
+      expect(screen.getByTestId("verifyModalNormal")).toBeVisible()
+    );
+    done();
+  });
+  it("asks for link column when it is ambiguous", async (done) => {
+    await setupVerify("bad_link.csv");
+    expect(screen.getByTestId("verifyModalNoLink")).toBeVisible();
+    const linkbtn = screen.getAllByTestId("linkColChoice")[1];
+    expect(linkbtn).toHaveTextContent("lonk");
+    act(() => {
+      fireEvent.click(linkbtn);
+    });
+    await waitFor(() =>
+      expect(screen.getByTestId("verifyModalNormal")).toBeVisible()
+    );
+    done();
+  });
+  it("displays a table with student names and link previews", async (done) => {
+    await setupVerify("test_group_1.csv");
+    expect(screen.getByTestId("verifyModalNormal")).toBeVisible();
+    expect(screen.getAllByTestId("studentDisplayName").length).toEqual(21);
+    const expectNames = [
+      "Avery",
+      "Landon",
+      "Elizabeth",
+      "Gianna",
+      "Evianys",
+      "Maisey",
+      "Patrick",
+      "Abigail",
+      "Jack",
+      "Michael",
+      "Avery",
+      "Landon",
+      "Elizabeth",
+      "Gianna",
+      "Ryder",
+      "Evianys",
+      "Evianys",
+      "Maisey",
+      "Patrick",
+      "Abigail",
+      "Michael",
+    ];
+    screen.getAllByTestId("studentDisplayName").map((n, i) => {
+      expect(n).toHaveTextContent(expectNames[i]);
+    });
+    screen
+      .getAllByTestId("studentLinkPreview")
+      .map((l) =>
+        expect(l).toHaveTextContent("https://musiclab.chromeexperim...")
+      );
     done();
   });
 });
