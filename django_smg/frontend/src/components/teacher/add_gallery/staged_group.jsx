@@ -16,7 +16,10 @@ const staged_group = (props) => {
               <ThemeProvider
                 theme={show ? { rotation: 270 } : { rotation: 180 }}
               >
-                <StyledDropdownButton onClick={() => setShow(!show)}>
+                <StyledDropdownButton
+                  data-testid="sgToggleDropdown"
+                  onClick={() => setShow(!show)}
+                >
                   &#9664;
                 </StyledDropdownButton>
               </ThemeProvider>
@@ -57,9 +60,13 @@ const staged_group = (props) => {
                   var display = name_arr[0];
                 }
                 return (
-                  <tr key={index + student}>
-                    <td align="left">{display}</td>
-                    <td align="left">{student[1].slice(0, 20)}...</td>
+                  <tr data-testid="dropdownRow" key={index + student}>
+                    <td data-testid="sgName" align="left">
+                      {display}
+                    </td>
+                    <td data-testid="sgLink" align="left">
+                      {student[1].slice(0, 20)}...
+                    </td>
                   </tr>
                 );
               })

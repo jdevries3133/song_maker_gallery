@@ -43,6 +43,7 @@ exports[`stage matches snapshot 1`] = `
           <td>
             <button
               className="sc-bdfBwQ gjKOhN"
+              data-testid="sgToggleDropdown"
               onClick={[Function]}
             >
               ◀

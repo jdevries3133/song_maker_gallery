@@ -105,6 +105,9 @@ describe("gallery addition process via <Teacher />", () => {
   });
 });
 
+// TODO: migrate this to be the test suite for <Validate />
+// That cannot be done until the unnecessary entanglement between <Teacher />
+// and it's children is resovled by refactoring.
 describe("spreadsheet validation via <Teacher />", () => {
   it("asks for name column when it is ambiguous", async (done) => {
     await setupVerify("bad_name.csv");
