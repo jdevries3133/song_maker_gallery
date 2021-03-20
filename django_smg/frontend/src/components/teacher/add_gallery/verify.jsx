@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./add_gallery.module.css";
 
+import { StagedGroupBody } from "./staged_group";
+
 // CSS will scale for group names up to this length.
 const GROUP_NAME_LENGTH_LIMIT = 15;
 
@@ -133,6 +135,8 @@ const Verify = (props) => {
             </tr>
           </thead>
           <tbody>
+            <StagedGroupBody group={filtered.slice(1)} />
+            {/*
             {
               // mmmmm spaghetti
               filtered.slice(1).map((row, index) => {
@@ -169,6 +173,7 @@ const Verify = (props) => {
                 );
               })
             }
+            */}
           </tbody>
         </table>
         {duplicateGroupName ? (

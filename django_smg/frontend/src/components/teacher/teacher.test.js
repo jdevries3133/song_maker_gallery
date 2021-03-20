@@ -138,7 +138,7 @@ describe("spreadsheet validation via <Teacher />", () => {
   it("displays a table with student names and link previews", async (done) => {
     await setupVerify("test_group_1.csv");
     expect(screen.getByTestId("verifyModalNormal")).toBeVisible();
-    expect(screen.getAllByTestId("studentDisplayName").length).toEqual(21);
+    expect(screen.getAllByTestId("sgName").length).toEqual(20);
     const expectNames = [
       "Avery",
       "Landon",
@@ -162,11 +162,11 @@ describe("spreadsheet validation via <Teacher />", () => {
       "Abigail",
       "Michael",
     ];
-    screen.getAllByTestId("studentDisplayName").map((n, i) => {
+    screen.getAllByTestId("sgName").map((n, i) => {
       expect(n).toHaveTextContent(expectNames[i]);
     });
     screen
-      .getAllByTestId("studentLinkPreview")
+      .getAllByTestId("sgLink")
       .map((l) =>
         expect(l).toHaveTextContent("https://musiclab.chromeexperim...")
       );
