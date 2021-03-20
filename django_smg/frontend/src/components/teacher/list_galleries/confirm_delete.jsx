@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./your_galleries.module.css";
+import styles from "./styles.module.css";
 import Button from "../../generics/button";
 import { ThemeProvider } from "styled-components";
 

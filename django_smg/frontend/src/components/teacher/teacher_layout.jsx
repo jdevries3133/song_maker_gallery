@@ -1,8 +1,11 @@
 import React from "react";
 import Add from "./add_gallery/add_gallery";
-import YourGalleries from "./your_galleries/your_galleries";
+import YourGalleries from "./list_galleries";
 
-const mobile_optimized = ({ staged, ...rest }) => {
+/**
+ * Formerly "<MobileOptimizedAdd />"
+ */
+export const TeacherLayout = ({ staged, ...rest }) => {
   return (
     <div>
       <div className="description">
@@ -15,5 +18,3 @@ const mobile_optimized = ({ staged, ...rest }) => {
     </div>
   );
 };
-
-export default mobile_optimized;

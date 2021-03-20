@@ -5,10 +5,8 @@ import { postGallery, getUserGalleries } from "../../actions/user";
 import { logout } from "../../actions/auth.action";
 import Papa from "papaparse";
 
-import Add from "./add_gallery/add_gallery";
-import YourGalleries from "./your_galleries/your_galleries";
 import GalPostSuccess from "./add_gallery/gal_post_success";
-import MobileOptimizedAdd from "./mobile_optimized";
+import { TeacherLayout } from "./teacher_layout.jsx";
 import ServerError from "../generics/server_error";
 import { BadRequest } from "../generics/validation_error";
 import Staged from "./add_gallery/staged";
@@ -16,13 +14,6 @@ import Verify from "./add_gallery/verify";
 
 import styles from "./teacher.module.css";
 
-/**
- * Towards future improvement of this component, probably the most spaghetti
- * code thing about it is the way that mobile styling is handled. A lot
- * of the conditional rendering a lot about the way the <Staged> component
- * is handled can be removed just by using CSS grid instead of ann html
- * table.
- */
 class Teacher extends Component {
   constructor(props) {
     super(props);
@@ -38,16 +29,8 @@ class Teacher extends Component {
         "zeroes, but they are none the less as human and as meaningful as " +
         "always.\n\nPlease enjoy this showcase of our school's music lab " +
         "compositions. Our students' creativity truly knows no bounds!",
-
-      width: window.innerWidth,
       groupname: "",
     };
-    this.setWidth = this.setWidth.bind(this);
-  }
-
-  // resize event listener callback function
-  setWidth() {
-    this.setState({ width: window.innerWidth });
   }
 
   // get user's galleries, available for view or deletion
@@ -59,13 +42,6 @@ class Teacher extends Component {
         this.props.getUserGalleries(this.props.token);
       }
     }
-    // resize listener for responsive styling
-    window.addEventListener("resize", this.setWidth);
-  }
-
-  // remove event listener
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.setWidth);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -381,42 +357,17 @@ class Teacher extends Component {
           Log Out
         </button>
         {blanket}
-        {this.state.width < 621 ? (
-          <MobileOptimizedAdd
-            fileInputRef={this.state.fileInputRef}
-            clearFileHandler={this.resetFormHandler}
-            groupname={this.state.groupname}
-            groupNameChangeHandler={this.groupNameHandler}
-            uploadRequest={this.csvHandler}
-            warn={this.state.warn}
-            uploadedContent={this.state.uploadedContent}
-            staged={staged}
-          />
-        ) : (
-          <table className={styles.table}>
-            <tbody>
-              <tr style={{ display: "inline" }}>
-                <td width="55%" valign="top" className={styles.narrow_desc}>
-                  <Add
-                    firstGroupUploaded={this.state.stagedGroups.length === 1}
-                    fileInputRef={this.state.fileInputRef}
-                    clearFileHandler={this.resetFormHandler}
-                    groupname={this.state.groupname}
-                    groupNameChangeHandler={this.groupNameHandler}
-                    uploadRequest={this.csvHandler}
-                    warn={this.state.warn}
-                    uploadedContent={this.state.uploadedContent}
-                  />
-                  {staged}
-                </td>
-                <td width="13%"></td>
-                <td width="35%" valign="top" className={styles.narrow_desc}>
-                  <YourGalleries />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        )}
+        <TeacherLayout
+          firstGroupUploaded={this.state.stagedGroups.length === 1}
+          fileInputRef={this.state.fileInputRef}
+          clearFileHandler={this.resetFormHandler}
+          groupname={this.state.groupname}
+          groupNameChangeHandler={this.groupNameHandler}
+          uploadRequest={this.csvHandler}
+          warn={this.state.warn}
+          uploadedContent={this.state.uploadedContent}
+          staged={staged}
+        />
       </div>
     );
   }

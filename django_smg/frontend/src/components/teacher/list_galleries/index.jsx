@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import styles from "./your_galleries.module.css";
+import styles from "./styles.module.css";
 import Button from "../../generics/button";
 import ConfirmDelete from "./confirm_delete";
 import ServerError from "../../generics/server_error";
@@ -13,7 +13,7 @@ import {
   getUserGalleries,
 } from "../../../actions/user";
 
-const YourGalleries = (props) => {
+const ListGalleries = (props) => {
   const [confirmDelete, setConfirmDelete] = useState(null);
   const [blanket, setBlanket] = useState(null);
 
@@ -137,4 +137,4 @@ export default connect(mapStateToProps, {
   getUserGalleries,
   postGallery,
   acknowledgeDelete,
-})(YourGalleries);
+})(ListGalleries);
