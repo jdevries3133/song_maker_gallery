@@ -70,7 +70,7 @@ export const Description = styled.div`
   }
 `;
 
-export const Blanket = styled(description)`
+export const Blanket = styled(Description)`
   position: fixed;
   height: 600px;
   width: 1000px;

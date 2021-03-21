@@ -10,7 +10,7 @@ import {
 } from "@testing-library/react";
 import { Context as TestContext } from "../../test/app_context";
 import "@testing-library/jest-dom";
-import Teacher from "./teacher";
+import { Teacher } from "./index";
 
 jest.mock("../../actions/user");
 

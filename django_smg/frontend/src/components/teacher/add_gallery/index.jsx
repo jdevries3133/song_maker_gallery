@@ -1,20 +1,30 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { postGallery, getUserGalleries } from "../../actions/user";
-import { logout } from "../../actions/auth.action";
+import { postGallery, getUserGalleries } from "../../../actions/user";
+import { logout } from "../../../actions/auth.action";
 import Papa from "papaparse";
 
-import GalPostSuccess from "./add_gallery/gal_post_success";
-import { TeacherLayout } from "./teacher_layout.jsx";
-import ServerError from "../generics/server_error";
-import { BadRequest } from "../generics/validation_error";
-import Staged from "./add_gallery/staged";
-import Verify from "./add_gallery/verify";
+// TODO: these are all blanket components, move them to their own place
+import GalPostSuccess from "./gal_post_success";
+import ServerError from "../../generics/server_error";
+import { BadRequest } from "../../generics/validation_error";
 
-import styles from "./teacher.module.css";
+import FileUploadForm from "./add_gallery";
 
-class Teacher extends Component {
+import Staged from "./staged";
+import Verify from "./verify";
+
+import styles from "./nw_add_gallery.module.css";
+
+const DEFAULT_DESCRIPTION =
+  "We will always find a way to share music. In lieu of the concert " +
+  "hall, our musical performances today are expressed in ones and " +
+  "zeroes, but they are none the less as human and as meaningful as " +
+  "always.\n\nPlease enjoy this showcase of our school's music lab " +
+  "compositions. Our students' creativity truly knows no bounds!";
+
+class AddGallery extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,12 +33,7 @@ class Teacher extends Component {
       stagedGroups: [],
       blankTitleError: false,
       blankDescriptionError: false,
-      descriptionValue:
-        "We will always find a way to share music. In lieu of the concert " +
-        "hall, our musical performances today are expressed in ones and " +
-        "zeroes, but they are none the less as human and as meaningful as " +
-        "always.\n\nPlease enjoy this showcase of our school's music lab " +
-        "compositions. Our students' creativity truly knows no bounds!",
+      descriptionValue: DEFAULT_DESCRIPTION,
       groupname: "",
     };
   }
@@ -225,8 +230,7 @@ class Teacher extends Component {
       requestMade: false,
       titleValue: "",
       stagedGroups: [],
-      descriptionValue:
-        "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds",
+      descriptionValue: DEFAULT_DESCRIPTION,
     });
   };
 
@@ -346,18 +350,9 @@ class Teacher extends Component {
     }
 
     return (
-      <div>
-        <h1 className={styles.h1}>Gallery Management Console</h1>
-        <button
-          className={styles.logout}
-          onClick={() => {
-            this.props.logout(this.props.token);
-          }}
-        >
-          Log Out
-        </button>
+      <>
         {blanket}
-        <TeacherLayout
+        <FileUploadForm
           firstGroupUploaded={this.state.stagedGroups.length === 1}
           fileInputRef={this.state.fileInputRef}
           clearFileHandler={this.resetFormHandler}
@@ -368,7 +363,8 @@ class Teacher extends Component {
           uploadedContent={this.state.uploadedContent}
           staged={staged}
         />
-      </div>
+        {staged}
+      </>
     );
   }
 }
@@ -389,4 +385,4 @@ export default connect(mapStateToProps, {
   postGallery,
   getUserGalleries,
   logout,
-})(Teacher);
+})(AddGallery);
