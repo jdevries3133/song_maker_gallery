@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./add_gallery.module.css";
+import styles from "../add_gallery.module.css";
 
 /* This is just a blurb of jsx that can be inserted; no fancy modal */
 export const InvalidFiletype = (props) => (

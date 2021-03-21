@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
-import StyledDropdownButton from "./styled.dropdown_button";
-import styles from "./add_gallery.module.css";
+import StyledDropdownButton from "../styled.dropdown_button";
+import styles from "../add_gallery.module.css";
 import { ThemeProvider } from "styled-components";
 
 export const StagedGroupBody = (props) => {
@@ -39,7 +39,7 @@ export const StagedGroupBody = (props) => {
   });
 };
 
-const staged_group = (props) => {
+export const StagedGroup = (props) => {
   const [show, setShow] = useState(false);
   const groupname = [...props.group].pop();
   return (
@@ -77,5 +77,3 @@ const staged_group = (props) => {
     </Fragment>
   );
 };
-
-export default staged_group;

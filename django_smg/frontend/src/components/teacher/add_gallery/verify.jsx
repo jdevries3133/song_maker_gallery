@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./add_gallery.module.css";
 
-import { StagedGroupBody } from "./staged_group";
+import { StagedGroupBody } from "./snippets";
 
 // CSS will scale for group names up to this length.
 const GROUP_NAME_LENGTH_LIMIT = 15;

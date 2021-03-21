@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import { render, cleanup, fireEvent, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import Stage, { TITLE_LENGTH_LIMIT } from "./staged";
+import { Stage, TITLE_LENGTH_LIMIT } from "./stage";
 
 const MOCK_STAGED_INIT = {
   titleValue: "title",

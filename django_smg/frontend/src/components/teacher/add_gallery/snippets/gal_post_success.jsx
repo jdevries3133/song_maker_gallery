@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const gal_post_success = (props) => {
+export const GalPostSuccess = (props) => {
   const relative_path = "/gallery/" + props.slug + "/";
   const full_url = `${window.origin}/gallery/${props.slug}/`;
   return (
@@ -22,4 +22,3 @@ const gal_post_success = (props) => {
     </div>
   );
 };
-export default gal_post_success;

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styles from "./errors.module.css";
 
-import { DownloadTemplate } from "../teacher/add_gallery/download_template";
+import { DownloadTemplate } from "../teacher/add_gallery/snippets";
 
 export const CustomError = ({ children, onOk }) => {
   return (

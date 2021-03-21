@@ -1,0 +1,112 @@
+.form_start {
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #c1de8c;
+}
+.par_just {
+  text-align: justify;
+  display: inline-block;
+  margin: 10px 0 10px 0;
+}
+
+.text_container {
+  text-align: justify;
+  font-size: 16px;
+}
+
+.text_container > ol > li {
+  margin-bottom: 0.8rem;
+}
+
+.text_container > ol > li > ul {
+  margin-left: 10%;
+  font-size: 12px;
+}
+
+.upload {
+  margin: auto;
+  display: block;
+  font-size: 16px;
+  padding: 0 0 0 0;
+}
+
+.restart_btn {
+  background-color: salmon;
+}
+
+.wide_input {
+  width: 50%;
+}
+
+.desc_input {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 0px;
+  width: 85%;
+  height: 263px;
+  box-shadow: 1px 1px 1px #999;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+@media (max-width: 500px) {
+  .desc_input {
+    width: 368px;
+    height: 272px;
+  }
+}
+
+.warning {
+  display: inline-block;
+  margin: auto;
+  color: #f44336;
+  max-width: 19rem;
+  border-color: #f44336;
+  border-width: 3px;
+  border-radius: 20px;
+  padding: 10px 60px 10px 60px;
+}
+
+.admin_tile {
+  max-width: 50%;
+  display: inline-block;
+}
+
+.par_strong {
+  display: inline-block;
+  font-weight: bold;
+  color: darkmagenta;
+}
+
+.scroll_blanket {
+  border-radius: 20px 0 0 20px;
+  overflow-y: scroll;
+}
+
+.blanket_table {
+  text-align: center;
+  margin: auto;
+}
+
+.doesThisLookGood {
+  background-color: #3432c761;
+}
+
+.large_button {
+  padding: 50px;
+  background-color: #ffc107;
+  border: 3px solid black;
+}
+
+.large_button:hover {
+  background-color: lightcoral;
+}
+
+.add_ss {
+  background-color: limegreen;
+}
+
+.add_ss:hover {
+  background-color: white;
+}

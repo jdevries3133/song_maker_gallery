@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
-import styles from "./add_gallery.module.css";
+import styles from "./file_upload_form.module.css";
 
-import { TemplateHelp } from "./template_help";
-import { HowToVideo } from "./howto_video";
-import { Directions } from "./directions";
-import { DownloadTemplate } from "./download_template";
-import { InvalidFiletype } from "./invalid_filetype";
+import { TemplateHelp } from "./snippets";
+import { HowToVideo } from "./snippets";
+import { Directions } from "./snippets";
+import { DownloadTemplate } from "./snippets";
+import { InvalidFiletype } from "./snippets";
 import { Donate } from "../../gallery/donate/";
 
 const FileUploadForm = (props) => {

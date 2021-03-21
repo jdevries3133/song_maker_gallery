@@ -10,7 +10,7 @@ import PrivateRoute from "./generics/private_route";
 import SignUp from "./signup-login/signup";
 import Login from "./signup-login/login";
 import Gallery from "./gallery/gallery";
-import { Teacher } from "./teacher/new_teacher";
+import { Teacher } from "./teacher";
 import { Footer } from "./generics/footer";
 import { TosPage, PrivacyPage } from "./legal";
 

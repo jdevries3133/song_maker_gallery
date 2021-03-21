@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import useWidth from "../../generics/useWidth";
+import useWidth from "../../../generics/useWidth";
 
 export const HowToVideo = () => {
   const { width } = useWidth(750);

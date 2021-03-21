@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import styles from "./add_gallery.module.css";
+import styles from "../add_gallery.module.css";
 
 const TemplateHelpBlanket = (props) => (
   <div className="description blanket">

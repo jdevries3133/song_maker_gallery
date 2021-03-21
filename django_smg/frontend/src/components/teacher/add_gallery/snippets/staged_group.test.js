@@ -8,7 +8,7 @@ import {
 } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import StagedGroup from "./staged_group";
+import { StagedGroup } from "./staged_group";
 
 // used by every mock student here
 const LINK =

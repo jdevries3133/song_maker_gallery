@@ -6,16 +6,16 @@ import { logout } from "../../../actions/auth.action";
 import Papa from "papaparse";
 
 // TODO: these are all blanket components, move them to their own place
-import GalPostSuccess from "./gal_post_success";
+import { GalPostSuccess } from "./snippets";
 import ServerError from "../../generics/server_error";
 import { BadRequest } from "../../generics/validation_error";
 
-import FileUploadForm from "./add_gallery";
+import FileUploadForm from "./file_upload_form";
 
-import Staged from "./staged";
+import { Stage } from "./stage";
 import Verify from "./verify";
 
-import styles from "./nw_add_gallery.module.css";
+import styles from "./index.module.css";
 
 const DEFAULT_DESCRIPTION =
   "We will always find a way to share music. In lieu of the concert " +
@@ -141,7 +141,7 @@ class AddGallery extends Component {
       }
     });
   };
-  // see <Staged />
+  // see <Stage />
   unStageGroupHandler = (group_to_delete) => {
     const groups = [...this.state.stagedGroups];
     if (groups.length <= 1) {
@@ -170,19 +170,19 @@ class AddGallery extends Component {
     }
   };
 
-  // see <Staged />
+  // see <Stage />
   titleInputHandler = (e) => {
     this.setState({ titleValue: e.target.value });
   };
 
-  // see <Staged />
+  // see <Stage />
   descriptionInputHandler = (e) => {
     this.setState({
       descriptionValue: e.target.value,
     });
   };
 
-  // fire POST_GALLERY action upon button press in <Staged />
+  // fire POST_GALLERY action upon button press in <Stage />
   inputConfirmation = () => {
     if (
       this.state.titleValue.trim() === "" &&
@@ -263,7 +263,7 @@ class AddGallery extends Component {
     // list at the bottom of the page
     if (this.state.stagedGroups && this.state.stagedGroups.length > 0) {
       staged = (
-        <Staged
+        <Stage
           unStageGroupHandler={this.unStageGroupHandler}
           groups={this.state.stagedGroups}
           confirmCreate={this.inputConfirmation}
