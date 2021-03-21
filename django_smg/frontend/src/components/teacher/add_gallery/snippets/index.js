@@ -5,3 +5,4 @@ export { DownloadTemplate } from "./download_template";
 export { InvalidFiletype } from "./invalid_filetype";
 export { StagedGroup, StagedGroupBody } from "./staged_group";
 export { GalPostSuccess } from "./gal_post_success";
+export { Blankets } from "./blankets";

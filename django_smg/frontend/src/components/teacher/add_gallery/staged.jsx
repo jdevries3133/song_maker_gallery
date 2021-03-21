@@ -6,7 +6,7 @@ import styles from "./add_gallery.module.css";
 
 export const TITLE_LENGTH_LIMIT = 100;
 
-export const stage = (props) => {
+export const Stage = (props) => {
   const [blanket, setBlanket] = useState(null);
   const submitValidation = () => {
     if (props.titleValue.length >= TITLE_LENGTH_LIMIT) {

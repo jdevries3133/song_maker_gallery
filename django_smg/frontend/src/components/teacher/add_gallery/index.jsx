@@ -5,15 +5,9 @@ import { postGallery, getUserGalleries } from "../../../actions/user";
 import { logout } from "../../../actions/auth.action";
 import Papa from "papaparse";
 
-// TODO: these are all blanket components, move them to their own place
-import { GalPostSuccess } from "./snippets";
-import ServerError from "../../generics/server_error";
-import { BadRequest } from "../../generics/validation_error";
-
 import FileUploadForm from "./file_upload_form";
-
+import { Blankets } from "./snippets";
 import { Stage } from "./stage";
-import Verify from "./verify";
 
 import styles from "./index.module.css";
 
@@ -256,11 +250,11 @@ class AddGallery extends Component {
       return <Redirect to="/login" />;
     }
 
-    let blanket;
+    // let blanket;
     let staged;
 
-    // As the user uploads additional groups, the staged groups are held in a
-    // list at the bottom of the page
+    // // As the user uploads additional groups, the staged groups are held in a
+    // // list at the bottom of the page
     if (this.state.stagedGroups && this.state.stagedGroups.length > 0) {
       staged = (
         <Stage
@@ -275,83 +269,91 @@ class AddGallery extends Component {
       );
     }
 
-    // {blanket} is one of these things, else: nothing
-    if (this.state.verifyUpload) {
-      blanket = (
-        <Verify
-          fileInputRef={this.state.fileInputRef}
-          csv={this.state.uploadedContent}
-          restart={this.resetFormHandler}
-          groupname={this.state.groupname}
-          groupNameChange={this.groupNameHandler}
-          otherGroups={this.otherGroups()}
-          validatedHandler={this.groupValidatedHandler}
-          nameIndex={this.state.nameIndex}
-          linkIndex={this.state.linkIndex}
-          indexHandler={this.handleVerificationIndicies}
-        />
-      );
-    } else if (this.state.recover) {
-      if (this.props.serverErrorMessage) {
-        blanket = (
-          <BadRequest
-            onOk={this.recoveryRestageHandler}
-            serverErrorMessage={this.props.serverErrorMessage}
-          />
-        );
-      } else {
-        blanket = <ServerError onOk={this.recoveryRestageHandler} />;
-      }
-    } else if (this.state.requestMade) {
-      blanket = (
-        <GalPostSuccess
-          slug={this.props.galleries.slice(-1)[0].slug}
-          onOk={this.successHandler}
-        />
-      );
-    } else if (this.state.blankTitleError || this.state.blankDescriptionError) {
-      blanket = (
-        <div className="description blanket">
-          {this.state.blankTitleError ? (
-            <Fragment>
-              <h2>Missing Fields</h2>
-              <Fragment>
-                <h3 style={{ display: "block" }}>
-                  Please enter a title for your gallery.
-                </h3>
-                <input onChange={(e) => this.titleInputHandler(e)} />
-              </Fragment>
-            </Fragment>
-          ) : null}
-          {this.state.blankDescriptionError ? (
-            <Fragment>
-              <h3 style={{ display: "block" }}>
-                Please enter a description for your gallery
-              </h3>
-              <textarea
-                className={styles.desc_input}
-                value={this.state.descriptionValue}
-                onChange={(e) => this.descriptionInputHandler(e)}
-              />
-            </Fragment>
-          ) : null}
-
-          {this.state.titleValue.trim() &&
-          this.state.descriptionValue.trim() ? (
-            <Fragment>
-              <br />
-              <button onClick={() => this.dismissTitleBlank()}>Continue</button>
-            </Fragment>
-          ) : null}
-        </div>
-      );
-    } else {
-      blanket = null;
-    }
+    // // {blanket} is one of these things, else: nothing
+    // if (this.state.verifyUpload) {
+    //   blanket = (
+    //     <Verify
+    //       fileInputRef={this.state.fileInputRef}
+    //       csv={this.state.uploadedContent}
+    //       restart={this.resetFormHandler}
+    //       groupName={this.state.groupname}
+    //       groupNameChange={this.groupNameHandler}
+    //       otherGroups={this.otherGroups()}
+    //       validatedHandler={this.groupValidatedHandler}
+    //       nameIndex={this.state.nameIndex}
+    //       linkIndex={this.state.linkIndex}
+    //       indexHandler={this.handleVerificationIndicies}
+    //     />
+    //   );
+    // } else if (this.state.recover) {
+    //   if (this.props.serverErrorMessage) {
+    //     blanket = (
+    //       <BadRequest
+    //         onOk={this.recoveryRestageHandler}
+    //         serverErrorMessage={this.props.serverErrorMessage}
+    //       />
+    //     );
+    //   } else {
+    //     blanket = <ServerError onOk={this.recoveryRestageHandler} />;
+    //   }
+    // } else if (this.state.requestMade) {
+    //   blanket = (
+    //     <GalPostSuccess
+    //       slug={this.props.galleries.slice(-1)[0].slug}
+    //       onOk={this.successHandler}
+    //     />
+    //   );
+    // } else if (this.state.blankTitleError || this.state.blankDescriptionError) {
+    //   blanket = "missing fileds component";
+    // } else {
+    //   blanket = null;
+    // }
 
     return (
       <>
-        {blanket}
+        <Blankets
+          show={
+            this.state.verifyUpload
+              ? "verify"
+              : this.state.recover
+              ? "badRequest"
+              : this.state.requestMade
+              ? "galPostSuccess"
+              : this.state.blankTitleError || this.state.blankDescriptionError
+              ? "missingFields"
+              : null
+          }
+          verifyProps={{
+            fileInputRef: this.state.fileInputRef,
+            csv: this.state.uploadedContent,
+            restart: this.resetFormHandler,
+            groupName: this.state.groupname,
+            groupNameChange: this.groupNameHandler,
+            otherGroups: this.otherGroups(),
+            validatedHandler: this.groupValidatedHandler,
+            nameIndex: this.state.nameIndex,
+            linkIndex: this.state.linkIndex,
+            indexHandler: this.handleVerificationIndicies,
+          }}
+          badRequestProps={{
+            onOk: this.recoveryRestageHandler,
+            serverErrorMessage: this.props.serverErrorMessage,
+          }}
+          missingFields={{
+            blankTitleError: this.state.blankTitleError,
+            blankDescriptionError: this.state.blankDescriptionError,
+            titleValue: this.state.titleValue,
+            descriptionValue: this.state.descriptionValue,
+            titleInputHandler: this.titleInputHandler,
+            descriptionInputHandler: this.descriptionInputHandler,
+            dismissTitleBlank: this.dismissTitleBlank,
+          }}
+          serverErrorProps={{ onOk: this.recoveryRestageHandler }}
+          galPostSuccessProps={{
+            slug: this.props?.galleries?.slice(-1)[0]?.slug,
+            onOk: this.successHandler,
+          }}
+        />
         <FileUploadForm
           firstGroupUploaded={this.state.stagedGroups.length === 1}
           fileInputRef={this.state.fileInputRef}

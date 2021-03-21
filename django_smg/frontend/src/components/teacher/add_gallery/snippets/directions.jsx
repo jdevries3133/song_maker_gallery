@@ -1,9 +1,6 @@
 import React, { useState, Fragment } from "react";
 import styles from "../add_gallery.module.css";
 
-// TODO: factor directions into a separate modal window to declutter the main
-// view.
-
 const DirectionsBlanket = (props) => (
   <div className={`${styles.text_container} description blanket`}>
     <h3>Directions</h3>

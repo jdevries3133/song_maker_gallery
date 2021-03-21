@@ -7,8 +7,8 @@ import { StagedGroupBody } from "./snippets";
 const GROUP_NAME_LENGTH_LIMIT = 15;
 
 const Verify = (props) => {
-  const duplicateGroupName = props.otherGroups.includes(props.groupname);
-  const groupNameTooBig = props.groupname.length > GROUP_NAME_LENGTH_LIMIT;
+  const duplicateGroupName = props.otherGroups.includes(props.groupName);
+  const groupNameTooBig = props.groupName.length > GROUP_NAME_LENGTH_LIMIT;
   const isFormError = duplicateGroupName || groupNameTooBig;
 
   // check spreadsheet headers
@@ -115,7 +115,7 @@ const Verify = (props) => {
         ) : null}
         <input
           className={`${styles.input} ${styles.wide_input}`}
-          value={props.groupname}
+          value={props.groupName}
           onChange={(e) => props.groupNameChange(e)}
         />
         <span
@@ -124,7 +124,7 @@ const Verify = (props) => {
             ...(groupNameTooBig ? { color: "red" } : {}),
           }}
         >
-          {props.groupname.length}/{GROUP_NAME_LENGTH_LIMIT}
+          {props.groupName.length}/{GROUP_NAME_LENGTH_LIMIT}
         </span>
         <br />
         <table className={styles.blanket_table}>
