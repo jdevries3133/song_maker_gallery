@@ -136,44 +136,6 @@ const Verify = (props) => {
           </thead>
           <tbody>
             <StagedGroupBody group={filtered.slice(1)} />
-            {/*
-            {
-              // mmmmm spaghetti
-              filtered.slice(1).map((row, index) => {
-                // name_arr ex. ['Johnny', 'Appleseed']
-                // we want to get 'Johnny A.' from that
-                // and also have it work for all names
-                var name_arr = row[nameIndex].split(" ");
-
-                // try for last initial
-                if (name_arr.length > 1) {
-                  const last_initial = name_arr[name_arr.length - 1][0];
-                  // uh oh didn't think of trailing whitespace
-                  if (
-                    last_initial != undefined ||
-                    last_initial === "" ||
-                    last_initial === " "
-                  ) {
-                    var display = name_arr[0] + " " + last_initial + ".";
-                  } else {
-                    var display = name_arr[0];
-                  }
-                } else {
-                  var display = name_arr[0];
-                }
-                return (
-                  <tr key={index}>
-                    <td data-testid="studentDisplayName" align="left">
-                      {display}
-                    </td>
-                    <td data-testid="studentLinkPreview" align="left">
-                      {row[linkIndex].slice(0, 30)}...
-                    </td>
-                  </tr>
-                );
-              })
-            }
-            */}
           </tbody>
         </table>
         {duplicateGroupName ? (

@@ -269,46 +269,6 @@ class AddGallery extends Component {
       );
     }
 
-    // // {blanket} is one of these things, else: nothing
-    // if (this.state.verifyUpload) {
-    //   blanket = (
-    //     <Verify
-    //       fileInputRef={this.state.fileInputRef}
-    //       csv={this.state.uploadedContent}
-    //       restart={this.resetFormHandler}
-    //       groupName={this.state.groupname}
-    //       groupNameChange={this.groupNameHandler}
-    //       otherGroups={this.otherGroups()}
-    //       validatedHandler={this.groupValidatedHandler}
-    //       nameIndex={this.state.nameIndex}
-    //       linkIndex={this.state.linkIndex}
-    //       indexHandler={this.handleVerificationIndicies}
-    //     />
-    //   );
-    // } else if (this.state.recover) {
-    //   if (this.props.serverErrorMessage) {
-    //     blanket = (
-    //       <BadRequest
-    //         onOk={this.recoveryRestageHandler}
-    //         serverErrorMessage={this.props.serverErrorMessage}
-    //       />
-    //     );
-    //   } else {
-    //     blanket = <ServerError onOk={this.recoveryRestageHandler} />;
-    //   }
-    // } else if (this.state.requestMade) {
-    //   blanket = (
-    //     <GalPostSuccess
-    //       slug={this.props.galleries.slice(-1)[0].slug}
-    //       onOk={this.successHandler}
-    //     />
-    //   );
-    // } else if (this.state.blankTitleError || this.state.blankDescriptionError) {
-    //   blanket = "missing fileds component";
-    // } else {
-    //   blanket = null;
-    // }
-
     return (
       <>
         <Blankets
