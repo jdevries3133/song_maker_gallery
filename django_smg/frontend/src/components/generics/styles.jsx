@@ -2,7 +2,7 @@
  * This is a mirror of the classes from ../App.css towards a future
  * total migration to styled components.
  */
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Div = styled.div`
   text-align: center;
@@ -34,8 +34,18 @@ export const Button = styled.button`
   padding: 20px;
   margin: 20px;
   border-radius: 20px;
-  background-color: #f7943e;
   cursor: pointer;
+  background-color: #f7943e;
+
+  ${(props) =>
+    props.blanketClose &&
+    css`
+      position: absolute;
+      bottom: 1px;
+      right: 1px;
+      background-color: lightcoral;
+      margin: 0;
+    `}
 
   :hover {
     background-color: white;

@@ -1,42 +1,82 @@
 import React from "react";
-import styles from "./donate.module.css";
+import styled, { css } from "styled-components";
+
+import { Blanket, H2, Button } from "../../generics/styles";
+
+const DonateHeader = styled(H2)`
+  background-color: rgba(217, 157, 255, 0.81);
+`;
+
+const FixedCloseButton = styled(Button)`
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  margin: 0;
+`;
+
+const P = styled.p`
+  text-align: justify;
+
+  ${(props) =>
+    props.signature &&
+    css`
+      text-align: right;
+      margin: 0;
+    `}
+`;
+
+const Signature = styled.div`
+  position: relative;
+  bottom: 30px;
+  width: 178px;
+  display: inline-block;
+  @media (max-width: 606px) {
+    margin-top: 30px;
+  }
+`;
+
+const Footer = styled.footer`
+  @media (max-width: 606px) {
+    text-align: right;
+  }
+`;
 
 const donation = (props) => {
   return (
-    <div className={`description blanket ${styles.donation_blanket}`}>
+    <Blanket>
       <div
         style={{ display: "inline-block", textAlign: "center", width: "100%" }}
       >
-        <h2 className={styles.donation_header}>Donate!</h2>
+        <DonateHeader>Donate!</DonateHeader>
       </div>
-      <div className={styles.par_container}>
-        <p className={styles.par}>
+      <div>
+        <P>
           This website was built by me, a music teacher from New Jersey, as a
           way for me to feature the amazing compositions of my own students as
           this unusual school year draws to a close.
-        </p>
-        <p className={styles.par}>
+        </P>
+        <P>
           I've worked very hard to make it possible for anyone to make an
           account and create a gallery for their students completely free of
           charge. This involved creating an entire backend infrastructure behind
           this website, including account management, and a custom solution for
           automatically generating the thumbnails of student work that you see
           on this website.
-        </p>
-        <p className={styles.par}>
+        </P>
+        <P>
           Although this site is free to use, it is not free to operate; and{" "}
           <strong>
             without generous donors, that money is coming from my own pocket.
           </strong>{" "}
           If you are fortunate enough to be able to chip in and support this
           project, please do!
-        </p>
-        <p className={styles.par}>
+        </P>
+        <P>
           Any proceeds in excess of the cost of running this website will be
           used to support music education directly.
-        </p>
+        </P>
       </div>
-      <div className={styles.footer}>
+      <Footer>
         <form
           action="https://www.paypal.com/cgi-bin/webscr"
           method="post"
@@ -68,18 +108,15 @@ const donation = (props) => {
           />
         </form>
 
-        <div className={styles.signature}>
-          <p style={{ textAlign: "right", margin: "0" }}>Thanks,</p>
-          <p style={{ textAlign: "right", margin: "0" }}>The SMG Team</p>
-        </div>
-        <button
-          className={styles.donation_close}
-          onClick={() => props.onClose()}
-        >
+        <Signature>
+          <P signature>Thanks,</P>
+          <P signature>The SMG Team</P>
+        </Signature>
+        <FixedCloseButton blanketClose onClick={() => props.onClose()}>
           close
-        </button>
-      </div>
-    </div>
+        </FixedCloseButton>
+      </Footer>
+    </Blanket>
   );
 };
 
