@@ -42,7 +42,7 @@ exports[`stage matches snapshot 1`] = `
         <tr>
           <td>
             <button
-              className="sc-bdfBwQ gjKOhN"
+              className="styleddropdown_button__Button-hguODr cinrwR"
               data-testid="sgToggleDropdown"
               onClick={[Function]}
             >

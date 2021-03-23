@@ -2,7 +2,7 @@
 
 exports[`legal views privacy policy matches snapshot 1`] = `
 <div
-  className="sc-iBPRYJ sc-pFZIQ cNAYYw cjKnTz"
+  className="styles__Description-emvDpe style__Container-gafmjE hIumWL dXrqyB"
 >
   <h1
     id="privacy-policy"
@@ -34,7 +34,7 @@ exports[`legal views privacy policy matches snapshot 1`] = `
 
 exports[`legal views terms of service matches snapshot 1`] = `
 <div
-  className="sc-iBPRYJ sc-pFZIQ cNAYYw cjKnTz"
+  className="styles__Description-emvDpe style__Container-gafmjE hIumWL dXrqyB"
 >
   <h1>
     Terms of Service
