@@ -10,9 +10,13 @@ import {
 } from "@testing-library/react";
 import { Context as TestContext } from "../../test/app_context";
 import "@testing-library/jest-dom";
-import { Teacher } from "./index";
+
+import { LOGOUT } from "../../actions/types";
+import { logout } from "../../actions/auth.action";
+import Teacher from "./index";
 
 jest.mock("../../actions/user");
+jest.mock("../../actions/auth.action");
 
 const mountFile = (node, data = "") => {
   const file = new File([data], "group.csv", { type: "text/csv" });
@@ -40,7 +44,9 @@ const getTestCsv = (name) => {
 
 const setupRender = () => {
   render(
-    <TestContext initialState={{ auth: { isAuthenticated: true } }}>
+    <TestContext
+      initialState={{ auth: { isAuthenticated: true, token: "testtoken" } }}
+    >
       <Teacher />
     </TestContext>
   );
@@ -61,6 +67,28 @@ const setupAddFirstGroup = async () => {
     fireEvent.click(screen.getByTestId("verifyGroupButton"));
   });
 };
+
+describe("<Teacher />", () => {
+  beforeAll(async () => {
+    await setupRender();
+    logout.mockImplementation(() => (dispatch) =>
+      dispatch({
+        type: LOGOUT,
+      })
+    );
+  });
+  afterEach(() => {
+    logout.mockClear();
+  });
+  it("has logout button which calls logout action on click", async () => {
+    expect(screen.getByTestId("logoutButton")).toBeVisible();
+    act(() => {
+      fireEvent.click(screen.getByTestId("logoutButton"));
+    });
+    expect(logout).toHaveBeenCalledTimes(1);
+    expect(logout).toHaveBeenCalledWith("testtoken");
+  });
+});
 
 describe("gallery addition process via <Teacher />", () => {
   it("mounts modal window to DOM for csv data verification", async (done) => {

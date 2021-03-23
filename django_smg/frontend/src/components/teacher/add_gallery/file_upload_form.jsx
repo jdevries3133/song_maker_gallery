@@ -11,17 +11,6 @@ import { Donate } from "../../gallery/donate/";
 const FileUploadForm = (props) => {
   return (
     <div>
-      <div>
-        <h1 className={styles.h1}>Gallery Management Console</h1>
-        <button
-          className={styles.logout}
-          onClick={() => {
-            this.props.logout(this.props.token);
-          }}
-        >
-          Log Out
-        </button>
-      </div>
       <h1 style={{ fontSize: "34px" }}>Add Gallery</h1>
       <DownloadTemplate />
       <TemplateHelp />

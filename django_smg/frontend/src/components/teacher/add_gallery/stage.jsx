@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { StagedGroup } from "./snippets";
-import CustomError from "../../generics/custom_error";
+import { ErrorArray } from "../../generics/custom_error";
 import styles from "./add_gallery.module.css";
 
 export const TITLE_LENGTH_LIMIT = 100;
@@ -11,7 +11,7 @@ export const Stage = (props) => {
   const submitValidation = () => {
     if (props.titleValue.length >= TITLE_LENGTH_LIMIT) {
       setBlanket(
-        <CustomError
+        <ErrorArray
           header="Title Too Long"
           message={[
             `Gallery title must be less than ${TITLE_LENGTH_LIMIT} characters ` +

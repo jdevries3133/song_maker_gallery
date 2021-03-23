@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { postGallery, getUserGalleries } from "../../../actions/user";
@@ -8,8 +8,6 @@ import Papa from "papaparse";
 import FileUploadForm from "./file_upload_form";
 import { Blankets } from "./snippets";
 import { Stage } from "./stage";
-
-import styles from "./index.module.css";
 
 const DEFAULT_DESCRIPTION =
   "We will always find a way to share music. In lieu of the concert " +
