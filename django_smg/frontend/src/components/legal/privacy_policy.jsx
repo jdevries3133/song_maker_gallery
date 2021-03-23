@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import styles from "./legal.module.css";
+
+import { Blanket, Button } from "../generics/styles";
+import { Container } from "./style";
 
 const PrivacyContent = (props) => (
   <Fragment>
@@ -11,7 +13,6 @@ const PrivacyContent = (props) => (
     <p>
       Also see our <Link to="/tos/">Terms of Service</Link>
     </p>
-    {props.okButton ? props.okButton : null}
     <ol>
       <li>
         Do not upload any personallly identifying information (as defined in the
@@ -29,15 +30,15 @@ const PrivacyContent = (props) => (
 );
 
 export const PrivacyPage = () => (
-  <div className={`description ${styles.container}`} style={{ margin: "3%" }}>
+  <Container>
     <PrivacyContent />
-  </div>
+  </Container>
 );
 
 export const PrivacyText = (props) => (
-  <div className={`description blanket ${styles.container}`}>
+  <Blanket>
     <PrivacyContent
-      okButton={<button onClick={() => props.onOk()}>Close</button>}
+      okButton={<Button onClick={() => props.onOk()}>Close</Button>}
     />
-  </div>
+  </Blanket>
 );

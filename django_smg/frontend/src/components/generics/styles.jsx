@@ -35,7 +35,7 @@ export const Button = styled.button`
   margin: 20px;
   border-radius: 20px;
   cursor: pointer;
-  background-color: #f7943e;
+  background-color: ${(props) => (props.color ? props.color : "#f7943e")};
 
   ${(props) =>
     props.blanketClose &&

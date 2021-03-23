@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import styles from "./legal.module.css";
+
+import { Blanket } from "../generics/styles";
+import { Container } from "./style";
 
 const TosContent = (props) => (
   <Fragment>
@@ -9,8 +11,6 @@ const TosContent = (props) => (
     <p>
       Also see our <Link to="/privacy/">privacy policy</Link>
     </p>
-
-    {props.okButton ? props.okButton : null}
 
     <ol>
       <li>
@@ -97,16 +97,16 @@ const TosContent = (props) => (
 
 /* Free-standing page content */
 export const TosPage = () => (
-  <div className={`description ${styles.container}`} style={{ margin: "3%" }}>
+  <Container>
     <TosContent />
-  </div>
+  </Container>
 );
 
 /* modal with close button */
 export const TosText = (props) => (
-  <div className={`description blanket ${styles.container}`}>
+  <Blanket>
     <TosContent
       okButton={<button onClick={() => props.onOk()}>Close</button>}
     />
-  </div>
+  </Blanket>
 );

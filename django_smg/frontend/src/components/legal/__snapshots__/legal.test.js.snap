@@ -2,12 +2,7 @@
 
 exports[`legal views privacy policy matches snapshot 1`] = `
 <div
-  className="description undefined"
-  style={
-    Object {
-      "margin": "3%",
-    }
-  }
+  className="sc-iBPRYJ sc-pFZIQ cNAYYw cjKnTz"
 >
   <h1
     id="privacy-policy"
@@ -39,12 +34,7 @@ exports[`legal views privacy policy matches snapshot 1`] = `
 
 exports[`legal views terms of service matches snapshot 1`] = `
 <div
-  className="description undefined"
-  style={
-    Object {
-      "margin": "3%",
-    }
-  }
+  className="sc-iBPRYJ sc-pFZIQ cNAYYw cjKnTz"
 >
   <h1>
     Terms of Service

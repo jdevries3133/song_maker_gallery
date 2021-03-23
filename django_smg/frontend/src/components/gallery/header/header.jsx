@@ -1,13 +1,28 @@
 import React from "react";
-import styles from "./header.module.css";
+import styled from "styled-components";
+
+import { Button } from "../../generics/styles";
 import FormattedDescription from "./formatted_description";
 import NavBar from "./navBar";
 import useWidth from "../../generics/useWidth";
 
+const Header = styled.header`
+  margin-bottom: 10rem;
+
+  @media (max-width: 475px) {
+    margin-bottom: auto;
+  }
+`;
+
+const CallToAction = styled(Button)`
+  font-size: 1.5rem;
+  padding: 28px;
+`;
+
 const header = (props) => {
   const { width } = useWidth(1000);
   return (
-    <div className={styles.gallery_top}>
+    <Header>
       {width > 1000 ? <NavBar data={props.data} /> : null}
       <h1>{props.title}</h1>
       <div className="description">
@@ -29,11 +44,11 @@ const header = (props) => {
           </p>
         )}
         <a href="#gallery">
-          <button className={styles.call_to_action}>View Gallery</button>
+          <CallToAction>View Gallery</CallToAction>
         </a>
       </div>
       {width < 1000 ? <NavBar data={props.data} /> : null}
-    </div>
+    </Header>
   );
 };
 
