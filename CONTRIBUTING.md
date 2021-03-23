@@ -18,6 +18,20 @@ This project follows the
 and I wil approach every contribution, big or small with extrordinary
 gratitude and support.
 
+## About the Project & What is Next
+
+Since launching in February 2021, this site has gained hundreds of music
+teacher users, and serves thousands of students. The site also continues
+to grow organically through word of mouth, and version 3 features detailed
+in #34 are sure to bring many more users to the site.
+
+Speaking of #34, this is the next big priority for development now. The
+wireframes there show how to implement #10 and #11 as well. Before diving too
+deep into #34, though, I want to continue cleaning up the frontend codebase
+by working towards #32 (styled-components migration), and continuing to
+housekeep around the frontend code in general because it is a bit unfocused
+and messy as it is.
+
 ## Development Setup
 
 > Run `bash dev_setup.sh` to do all these steps automatically. Beware that it
@@ -67,41 +81,9 @@ gratitude and support.
    change to a frontend src file will trigger webpack to update the JS bundle,
    and you will see the changes in effect by hitting refresh.
 
-### UI Testing Data / the Teacher Inteface
+### The Teacher Interface
 
 Take a look at the csv file in the ui_testing_data folder. This is an example
-of what the user should upload for each group to make their gallery. Something
-to consider in the future is to make the gallery creation interface more user
-friendly. One thing that would be fantastic would be to build a submission link
-model where students can open up a link their teacher gives them and drop their
-MusicLab link into a submision page, which would save the teacher the work
-of gathering up the links first.
-
-However, the teacher console component is pure spaghetti code and very
-difficult to work on, so the best approach for adding functionality isn't clear.
-Overall, I'm not sure if the best thing to do is to get on with it and launch
-a working albeit unintuitive version of the project or to develop that feature.
-
-## Roadmap, Current Project State, and TODO Lists
-
-The project is currently in the midst of refactoring from a screenshot-based
-approach to a dynamically rendered SVG-based tile. This refactor not only
-requires the integration of this "`DynamicTile`" into the frontend, but
-a backend architecture to support it as well. The MIDI file and metadata
-for each song cannot be requested from google directly in the frontend
-because of CORS. As such, a backend is required to fetch, cache, and serve
-this information to our frontend.
-
-Currently, the backend basically does everything that it needs to do
-including the API for teachers to create new galleries, fetching and caching
-song data from Google on the first render request, and an endpoint that the
-frontend can hit a single time to get all the information it needs for a single
-gallery.
-
-Most of the remaining work is on the frontend involving the integration of
-the DynamicTile component. See to-do lists at the following locations for
-details:
-
-- `django_smg/TODO.md`: main to-do list
-- `django_smg/frontend/src/components/gallery/tilegrid/tilegrid.jsx`:
-  DynamicTile-integration-specific to-do list
+of what the user should upload for each group to make their gallery. This
+is currently the only way for the user to create a gallery, but more user
+friendly means for making galleries is on the feature roadmap (#10, #34).
