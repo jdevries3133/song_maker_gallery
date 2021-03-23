@@ -23,10 +23,11 @@ gratitude and support.
 Since launching in February 2021, this site has gained hundreds of music
 teacher users, and serves thousands of students. The site also continues
 to grow organically through word of mouth, and version 3 features detailed
-in #34 are sure to bring many more users to the site.
+in #34 (new wireframes) are sure to bring many more users to the site.
 
 Speaking of #34, this is the next big priority for development now. The
-wireframes there show how to implement #10 and #11 as well. Before diving too
+wireframes there show how to implement #10 (student link uploads) and #11
+(social galleries) as well. Before diving too
 deep into #34, though, I want to continue cleaning up the frontend codebase
 by working towards #32 (styled-components migration), and continuing to
 housekeep around the frontend code in general because it is a bit unfocused
