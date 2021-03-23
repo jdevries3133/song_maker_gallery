@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { register, clearError } from "../../actions/auth.action";
-import CustomError from "../generics/custom_error";
+import { ErrorArray } from "../generics/custom_error";
 import { Tos, Privacy } from "../legal";
 import { BackendRegistrationError } from "./backend_registration_error";
 import styles from "./signup.module.css";
@@ -27,15 +27,10 @@ const signup = (props) => {
     setNoSpace(false);
   }
 
-  const onOk = () => {
-    setBlanket(null);
-    props.clearError();
-  };
-
   const submit = () => {
     if (passwordInput !== passwordConfirm) {
       setBlanket(
-        <CustomError
+        <ErrorArray
           header="Passwords do not match"
           message={[""]}
           onOk={() => setBlanket(null)}
@@ -43,7 +38,7 @@ const signup = (props) => {
       );
     } else if (!TOS) {
       setBlanket(
-        <CustomError
+        <ErrorArray
           header="Terms of Service"
           message={["You must accept the terms of service to make an account"]}
           onOk={() => setBlanket(null)}
@@ -56,7 +51,7 @@ const signup = (props) => {
       passwordConfirm === ""
     ) {
       setBlanket(
-        <CustomError
+        <ErrorArray
           header="Blank Fields"
           message={["Required fields are blank", "All fields are required."]}
           onOk={() => setBlanket(null)}

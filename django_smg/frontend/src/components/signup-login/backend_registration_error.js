@@ -1,5 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 
+/**
+ * TODO: remove this, it is a duplicated generic component
+ */
 export const BackendRegistrationError = ({ errors, onClose }) => {
   return (
     <div className="description blanket">

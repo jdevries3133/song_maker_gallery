@@ -1,33 +1,13 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import styles from "./errors.module.css";
 
 import { DownloadTemplate } from "../teacher/add_gallery/snippets";
+import { CustomError } from "./custom_error";
 
-export const CustomError = ({ children, onOk }) => {
-  return (
-    <div className="description blanket">
-      <div className={styles.container}>
-        {children}
-        <button
-          data-testid="onOkButton"
-          style={{ backgroundColor: "#4caf50" }}
-          onClick={onOk}
-        >
-          Ok
-        </button>
-      </div>
-    </div>
-  );
-};
-
-CustomError.propTypes = {
-  children: PropTypes.node.isRequired,
-  onOk: PropTypes.func.isRequired,
-};
-
-// ex. songData => "Spreadsheet Error"
-const technicalToEnglish = (i) => {
+/**
+ * ex. songData => "Spreadsheet Error"
+ */
+const backendMsgAdapter = (i) => {
   switch (i) {
     case "songData":
       return "Spreadsheet Not Valid";
@@ -42,7 +22,7 @@ export const BadRequest = ({ serverErrorMessage, onOk }) => {
     <CustomError onOk={onOk}>
       {Object.keys(serverErrorMessage).map((k, i) => (
         <Fragment key={i}>
-          <h3 data-testid="errMsgTitle">{technicalToEnglish(k)}</h3>
+          <h3 data-testid="errMsgTitle">{backendMsgAdapter(k)}</h3>
           <p style={{ fontWeight: "bold", textDecoration: "underline" }}>
             Errors:
           </p>

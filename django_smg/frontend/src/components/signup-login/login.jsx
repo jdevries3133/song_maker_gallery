@@ -7,7 +7,7 @@ import {
 } from "../../actions/auth.action";
 import { getUserGalleries } from "../../actions/user";
 import { Link, Redirect } from "react-router-dom";
-import CustomError from "../generics/custom_error";
+import { ErrorArray } from "../generics/custom_error";
 import UsernamePassword from "./username_password";
 import styles from "./signup.module.css";
 import { windowLocation } from "../../util/window";
@@ -36,7 +36,7 @@ const login = (props) => {
   return (
     <div>
       {props.badCredentials ? (
-        <CustomError
+        <ErrorArray
           header="Bad Credentials"
           message={[
             "Please check that you are using the correct username and password.",
