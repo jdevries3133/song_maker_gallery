@@ -1,12 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+
 import { register, clearError } from "../../actions/auth.action";
+import { P, Button, Checkbox } from "../generics/styles";
+
 import { ErrorArray } from "../generics/custom_error";
 import { Tos, Privacy } from "../legal";
 import { BackendRegistrationError } from "./backend_registration_error";
-import styles from "./signup.module.css";
+
+const Header = styled.h1`
+  margin: 0rem;
+  font-size: 60px;
+`;
+
+const SignupModule = styled.div`
+  text-align: center;
+  padding: 3rem;
+`;
+
+const LenMet = styled(P)`
+  color: green;
+  text-align: center;
+`;
+
+const Signup = styled(Button)`
+  font-size: 24px;
+  height: auto;
+  line-height: 40px;
+  padding: 10px 5px 10px 5px;
+  background-color: lightseagreen;
+`;
 
 const signup = (props) => {
   const [emailInput, updateEmail] = useState("");
@@ -84,13 +110,12 @@ const signup = (props) => {
   return (
     <div>
       {blanket}
-      <h1 className={styles.signup}>sign up!</h1>
+      <Header>sign up!</Header>
       <br />
       <div className="description">
-        <div className={styles.signup_module}>
+        <SignupModule>
           <h3>Email</h3>
           <input
-            className={styles.input}
             onChange={(event) => updateEmail(event.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
@@ -101,7 +126,6 @@ const signup = (props) => {
           <h3>Username</h3>
           <input
             style={noSpace ? { borderColor: "red" } : null}
-            className={styles.input}
             value={usernameInput}
             onChange={(event) => updateUsername(event.target.value)}
             onKeyDown={(e) => {
@@ -110,12 +134,11 @@ const signup = (props) => {
               }
             }}
           />
-        </div>
-        <div className={styles.signup_module}>
+        </SignupModule>
+        <SignupModule>
           <h3>Password</h3>
           <input
             type="password"
-            className={styles.input}
             value={passwordInput}
             onChange={(event) => updatePassword(event.target.value)}
             onKeyDown={(e) => {
@@ -135,33 +158,27 @@ const signup = (props) => {
               }
             }}
           />
-        </div>
+        </SignupModule>
         {noSpace ? (
           <p style={{ textAlign: "center", color: "red" }}>
             Username may not contain spaces.
           </p>
         ) : null}
         {pass_bool ? (
-          <p className={styles.met}>
-            Your password is at least eight characters long
-          </p>
+          <LenMet>Your password is at least eight characters long</LenMet>
         ) : (
-          <p className={styles.not_met}>
-            Your password must be at least eight characters long
-          </p>
+          <P center>Your password must be at least eight characters long</P>
         )}
         {/* <label for="tos"> */}
         <span style={{ position: "relative", bottom: "8px" }}>
           I agree to the <Tos /> and <Privacy />
         </span>
-        <input type="checkbox" id="tos" onClick={() => setTOS(!TOS)}></input>
+        <Checkbox id="tos" onClick={() => setTOS(!TOS)}></Checkbox>
         <br />
-        <button onClick={() => submit()} className={styles.sign_up}>
-          Sign Up
-        </button>
+        <Signup onClick={() => submit()}>Sign Up</Signup>
         <br />
         <Link to="/login">
-          <button>Already have an account? Login here!</button>
+          <Button>Already have an account? Login here!</Button>
         </Link>
       </div>
     </div>

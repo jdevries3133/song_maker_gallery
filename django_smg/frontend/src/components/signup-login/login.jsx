@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
 import {
   login as loginAction,
   clearError,
@@ -9,8 +10,21 @@ import { getUserGalleries } from "../../actions/user";
 import { Link, Redirect } from "react-router-dom";
 import { ErrorArray } from "../generics/custom_error";
 import UsernamePassword from "./username_password";
-import styles from "./signup.module.css";
 import { windowLocation } from "../../util/window";
+
+import { Button } from "../generics/styles";
+
+const NeedAccount = styled(Button)`
+  min-width: 14px;
+  background-color: #94c732;
+`;
+
+const ForgotPass = styled(Button)`
+  min-width: 14px;
+  background-color: #00bcd1;
+`;
+
+// TODO: fix this!! styles were deleted one commit ago.
 
 const login = (props) => {
   const [username, updateUsername] = useState("");
@@ -51,7 +65,7 @@ const login = (props) => {
           password={(p) => updatePassword(p)}
           submit={submit}
         />
-        <div className={styles.loginButtonSpace}>
+        <div style={{ marginTop: "20px" }}>
           <button data-testid="loginSubmit" onClick={() => submit()}>
             Login
           </button>
@@ -59,10 +73,10 @@ const login = (props) => {
       </div>
       <br />
       <Link to="/signup">
-        <button className={styles.col_1}>Need an account?</button>
+        <NeedAccount>Need an account?</NeedAccount>
       </Link>
       <a href={`${windowLocation("origin")}/accounts/password_reset/`}>
-        <button className={styles.col_2}>Forgot your password?</button>
+        <ForgotPass>Forgot your password?</ForgotPass>
       </a>
     </div>
   );

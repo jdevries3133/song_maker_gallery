@@ -2,21 +2,23 @@
  * This is a mirror of the classes from ../App.css towards a future
  * total migration to styled components.
  */
+import React from "react";
 import styled, { css } from "styled-components";
 
-export const Div = styled.div`
-  text-align: center;
+const Input = styled.input`
+  &[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
-export const H1 = styled.h1`
-  padding-bottom: 1.5rem;
-  font-size: 80px;
-  font-weight: 30px;
-`;
+export const Checkbox = ({ children }) => (
+  <Input type="checkbox">{children}</Input>
+);
 
 export const H2 = styled.h2`
   display: inline-block;
-  background-color: #88ff00;
+  background-color: "#88ff00";
   font-weight: 400;
   padding: 30px;
   border-radius: 20px;
@@ -25,6 +27,21 @@ export const H2 = styled.h2`
 export const P = styled.p`
   text-align: center;
   padding: 0 20px 0 20px;
+  ${(props) =>
+    props.justify &&
+    css`
+      text-align: justify;
+    `}
+  ${(props) =>
+    props.left &&
+    css`
+      text-align: left;
+    `}
+  ${(props) =>
+    props.right &&
+    css`
+      text-align: right;
+    `}
 `;
 
 export const Button = styled.button`
@@ -50,16 +67,6 @@ export const Button = styled.button`
   :hover {
     background-color: white;
   }
-`;
-
-export const Input = styled.input`
-  font-size: 20px;
-  padding: 10px;
-  border-radius: 5px;
-`;
-
-export const Ul = styled.ul`
-  padding-inline-start: 0px;
 `;
 
 export const Description = styled.div`

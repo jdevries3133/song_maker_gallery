@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Signup /> matches snapshot 1`] = `
+<div>
+  <h1
+    className="signup__Header-bDgREd fkifEm"
+  >
+    sign up!
+  </h1>
+  <br />
+  <div
+    className="description"
+  >
+    <div
+      className="signup__SignupModule-bRLsVm ZBELk"
+    >
+      <h3>
+        Email
+      </h3>
+      <input
+        onChange={[Function]}
+        onKeyDown={[Function]}
+      />
+      <h3>
+        Username
+      </h3>
+      <input
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        style={null}
+        value=""
+      />
+    </div>
+    <div
+      className="signup__SignupModule-bRLsVm ZBELk"
+    >
+      <h3>
+        Password
+      </h3>
+      <input
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        type="password"
+        value=""
+      />
+      <h3>
+        Confirm Password
+      </h3>
+      <input
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        type="password"
+        value=""
+      />
+    </div>
+    <p
+      className="styles__P-dIaYsU fltiwN"
+    >
+      Your password must be at least eight characters long
+    </p>
+    <span
+      style={
+        Object {
+          "bottom": "8px",
+          "position": "relative",
+        }
+      }
+    >
+      I agree to the 
+      <a
+        className="legal__A-iYpixu dCWwcH"
+        onClick={[Function]}
+      >
+        Terms of Service
+      </a>
+       and 
+      <a
+        className="legal__A-iYpixu dCWwcH"
+        onClick={[Function]}
+      >
+        Privacy Policy
+      </a>
+    </span>
+    <input
+      className="styles__Input-lbDPrm fzsTeW"
+      type="checkbox"
+    />
+    <br />
+    <button
+      className="styles__Button-dyjLXS signup__Signup-cNUNxg LXcou zDtLA"
+      onClick={[Function]}
+    >
+      Sign Up
+    </button>
+    <br />
+    <a
+      href="/login"
+      onClick={[Function]}
+    >
+      <button
+        className="styles__Button-dyjLXS LXcou"
+      >
+        Already have an account? Login here!
+      </button>
+    </a>
+  </div>
+</div>
+`;

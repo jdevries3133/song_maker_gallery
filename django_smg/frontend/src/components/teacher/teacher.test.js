@@ -11,7 +11,6 @@ import {
 import { Context as TestContext } from "../../test/app_context";
 import "@testing-library/jest-dom";
 
-import { LOGOUT } from "../../actions/types";
 import { logout } from "../../actions/auth.action";
 import Teacher from "./index";
 
@@ -71,14 +70,6 @@ const setupAddFirstGroup = async () => {
 describe("<Teacher />", () => {
   beforeAll(async () => {
     await setupRender();
-    logout.mockImplementation(() => (dispatch) =>
-      dispatch({
-        type: LOGOUT,
-      })
-    );
-  });
-  afterEach(() => {
-    logout.mockClear();
   });
   it("has logout button which calls logout action on click", async () => {
     expect(screen.getByTestId("logoutButton")).toBeVisible();
