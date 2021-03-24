@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-import { Blanket, Button } from "../generics/styles";
-import { Container } from "./style";
+import { Blanket, Button, Description } from "../generics/styles";
+import { LegalContainer } from "./terms_of_service";
 
 const PrivacyContent = (props) => (
-  <Fragment>
+  <LegalContainer>
     <h1 id="privacy-policy">Privacy Policy</h1>
     <p>
       This Agreement shall be governed by the laws of the State of New Jersey
@@ -26,13 +26,13 @@ const PrivacyContent = (props) => (
       </li>
     </ol>
     {props.okButton ? props.okButton : null}
-  </Fragment>
+  </LegalContainer>
 );
 
 export const PrivacyPage = () => (
-  <Container>
+  <Description>
     <PrivacyContent />
-  </Container>
+  </Description>
 );
 
 export const PrivacyText = (props) => (

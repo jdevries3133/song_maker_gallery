@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import { register, clearError } from "../../actions/auth.action";
-import { P, Button, Checkbox } from "../generics/styles";
+import styled, { P, Button, Checkbox, Description } from "../generics/styles";
 
 import { ErrorArray } from "../generics/custom_error";
 import { Tos, Privacy } from "../legal";
@@ -34,6 +33,9 @@ const Signup = styled(Button)`
   background-color: lightseagreen;
 `;
 
+/**
+ * TODO: finish tests, then refactor by breaking up.
+ */
 const signup = (props) => {
   const [emailInput, updateEmail] = useState("");
   const [usernameInput, updateUsername] = useState("");
@@ -111,8 +113,7 @@ const signup = (props) => {
     <div>
       {blanket}
       <Header>sign up!</Header>
-      <br />
-      <div className="description">
+      <Description>
         <SignupModule>
           <h3>Email</h3>
           <input
@@ -174,13 +175,11 @@ const signup = (props) => {
           I agree to the <Tos /> and <Privacy />
         </span>
         <Checkbox id="tos" onClick={() => setTOS(!TOS)}></Checkbox>
-        <br />
         <Signup onClick={() => submit()}>Sign Up</Signup>
-        <br />
         <Link to="/login">
           <Button>Already have an account? Login here!</Button>
         </Link>
-      </div>
+      </Description>
     </div>
   );
 };

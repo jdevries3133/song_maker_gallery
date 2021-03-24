@@ -1,13 +1,30 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { WelcomeText } from "./WelcomeText";
-import styles from "../landing_page.module.css";
+import styled, { H1 as DefaultH1 } from "../../generics/styles";
+
+import { Button } from "./mobile";
+
+const H1 = styled(DefaultH1)`
+  padding-bottom: 0;
+  margin: 1rem;
+  font-size: 5rem;
+`;
+
+const Table = styled.table`
+  display: inline-block;
+  position: center;
+`;
+
+const Spacer = styled.div`
+  height: 2rem;
+`;
 
 const desktop = () => {
   return (
     <Fragment>
-      <h1 className={styles.h1}>Welcome to the Song Maker Gallery!</h1>
-      <table className={styles.table}>
+      <H1>Welcome to the Song Maker Gallery!</H1>
+      <Table>
         <tbody>
           <tr>
             <td>
@@ -16,23 +33,19 @@ const desktop = () => {
             <td width="40" />
             <td>
               <a href="#gallery_top">
-                <button className={`button ${styles.welc_buttons}`}>
-                  View our sample gallery
-                </button>
+                <Button>View our sample gallery</Button>
               </a>
               <br />
               <Link to="/signup">
-                <button
-                  className={`button ${styles.welc_buttons} ${styles.green}`}
-                >
+                <Button color="lightgreen">
                   Make a custom gallery for free
-                </button>
+                </Button>
               </Link>
             </td>
           </tr>
         </tbody>
-      </table>
-      <div className={styles.space} />
+      </Table>
+      <Spacer />
     </Fragment>
   );
 };

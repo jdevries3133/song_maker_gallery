@@ -2,19 +2,24 @@ import React from "react";
 
 import GalleryBody from "../gallery/gal_body";
 import Welcome from "./welcome/welcome";
+import styled, { Div as DefaultDiv } from "../generics/styles";
 
 import sampleGallery from "./sample-gallery.json";
 
-const landing_page = (props) => {
+const Div = styled(DefaultDiv)`
+  margin-bottom: 11rem;
+`;
+
+const landing_page = () => {
   return (
-    <div>
+    <Div>
       <Welcome />
       <GalleryBody
         title={sampleGallery.title}
         description={sampleGallery.description}
         data={sampleGallery.songData}
       />
-    </div>
+    </Div>
   );
 };
 

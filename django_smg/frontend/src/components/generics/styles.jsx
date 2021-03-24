@@ -5,6 +5,17 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+/**
+ * Use this file as global entrypoint into styled-components
+ */
+export * from "styled-components";
+export default styled;
+
+/**
+ * Below are "global" css classes which are either directly used or extended
+ * throughout the project.
+ */
+
 const Input = styled.input`
   &[type="checkbox"] {
     width: 30px;
@@ -15,6 +26,16 @@ const Input = styled.input`
 export const Checkbox = ({ children }) => (
   <Input type="checkbox">{children}</Input>
 );
+
+export const Div = styled.div`
+  text-align: center;
+`;
+
+export const H1 = styled.h1`
+  padding-bottom: 1.5rem;
+  font-size: 80px;
+  font-weight: 30px;
+`;
 
 export const H2 = styled.h2`
   display: inline-block;

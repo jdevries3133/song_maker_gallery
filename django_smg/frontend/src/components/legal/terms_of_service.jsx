@@ -1,28 +1,40 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-import { Blanket } from "../generics/styles";
-import { Container } from "./style";
+import styled, { Div, Blanket, Description } from "../generics/styles";
+
+export const LegalContainer = styled(Div)`
+  margin: 3%;
+  margin-bottom: 5rem;
+  & > * {
+    text-align: justify;
+  }
+  & > * > * {
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 750px) {
+    & > h1 {
+      font-size: 36px;
+    }
+  }
+`;
 
 const TosContent = (props) => (
-  <Fragment>
+  <LegalContainer>
     <h1>Terms of Service</h1>
     <p>Updated 01/2021</p>
     <p>
       Also see our <Link to="/privacy/">privacy policy</Link>
     </p>
-
     <ol>
       <li>
         These terms constitute an agreement between the maintainer or
         representatives of this website, and any individual who has either
         registered an account or made a donation to support this website.
       </li>
-
       <li>
         This Agreement shall be governed by the laws of the State of New Jersey
       </li>
-
       <li>
         The user hereby acknowledges that they will not upload any personally
         identifying information of any individual under thirteen years of age as
@@ -35,7 +47,6 @@ const TosContent = (props) => (
         By accepting this agreement, you acknowledge that you are at least 18
         years old.
       </li>
-
       <li>
         Any and all donations provided through PayPal to support this website
         are non-refundable. No expectation of goods, services, gifts, or
@@ -52,7 +63,6 @@ const TosContent = (props) => (
         for premium features), should hold a reasonable expectation of site
         outage and service inavalibility.
       </li>
-
       <li>
         Refunds for any premium service which this site provides will be
         provided at the sole discretion of the maintainer of this website. In
@@ -68,7 +78,6 @@ const TosContent = (props) => (
           that this website can not or will not provide a refund.
         </b>
       </li>
-
       <li>
         The website is provided "as is without warranty of any kind, express or
         implied, including but not limited to the warranties of merchantability,
@@ -78,28 +87,26 @@ const TosContent = (props) => (
         arising from, out of or in connection with the website or the use or
         other dealings in the website.
       </li>
-
       <li>
         User accounts may be terminated at any time for any reason. Likewise,
         individuals may be blocked from this website at any time for any reason
         and by any means.
       </li>
     </ol>
-
     <p>
       {" "}
       <a href="mailto:songmakergallery@gmail.com">Contact Us</a> with any
       questions or concerns about this policy.
     </p>
     {props.okButton ? props.okButton : null}
-  </Fragment>
+  </LegalContainer>
 );
 
 /* Free-standing page content */
 export const TosPage = () => (
-  <Container>
+  <Description>
     <TosContent />
-  </Container>
+  </Description>
 );
 
 /* modal with close button */
