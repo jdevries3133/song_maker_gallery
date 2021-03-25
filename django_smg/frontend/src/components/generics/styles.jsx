@@ -23,8 +23,10 @@ const Input = styled.input`
   }
 `;
 
-export const Checkbox = ({ children }) => (
-  <Input type="checkbox">{children}</Input>
+export const Checkbox = ({ children, ...rest }) => (
+  <Input type="checkbox" {...rest}>
+    {children}
+  </Input>
 );
 
 export const Div = styled.div`

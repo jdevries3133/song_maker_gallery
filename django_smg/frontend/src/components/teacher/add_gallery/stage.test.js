@@ -67,7 +67,7 @@ describe("stage", () => {
     await act(async () => {
       fireEvent.click(getByTestId("submit"));
     });
-    expect(getByTestId("customError header")).toHaveTextContent(
+    expect(getByTestId("errorArray header")).toHaveTextContent(
       "Title Too Long"
     );
     expect(

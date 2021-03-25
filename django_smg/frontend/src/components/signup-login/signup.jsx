@@ -3,12 +3,39 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import { register, clearError } from "../../actions/auth.action";
 import styled, { P, Button, Checkbox, Description } from "../generics/styles";
-
 import { ErrorArray } from "../generics/custom_error";
+import { register, clearError } from "../../actions/auth.action";
+
 import { Tos, Privacy } from "../legal";
-import { BackendRegistrationError } from "./backend_registration_error";
+
+const normalizeErrMsg = (data) => {
+  switch (typeof data) {
+    case "object":
+      const response = { ...data };
+      Object.keys(response).forEach((k) => {
+        if (Array.isArray(response[k])) {
+          response[k].forEach((m) => {
+            if (typeof m !== "string") {
+              delete object[k];
+            }
+          });
+        } else {
+          delete object[k];
+        }
+      });
+      return response;
+    case "string":
+      return { Error: [data] };
+    default:
+      console.error(
+        "The following api message could not be normalized and displayed:",
+        data
+      );
+      // TODO: error handling
+      return { Error: "An unknown error occured" };
+  }
+};
 
 const Header = styled.h1`
   margin: 0rem;
@@ -25,7 +52,7 @@ const LenMet = styled(P)`
   text-align: center;
 `;
 
-const Signup = styled(Button)`
+const Submit = styled(Button)`
   font-size: 24px;
   height: auto;
   line-height: 40px;
@@ -56,7 +83,20 @@ const signup = (props) => {
   }
 
   const submit = () => {
-    if (passwordInput !== passwordConfirm) {
+    if (
+      emailInput === "" ||
+      usernameInput === "" ||
+      passwordInput === "" ||
+      passwordConfirm === ""
+    ) {
+      setBlanket(
+        <ErrorArray
+          header="Blank Fields"
+          message={["Required fields are blank", "All fields are required."]}
+          onOk={() => setBlanket(null)}
+        />
+      );
+    } else if (passwordInput !== passwordConfirm) {
       setBlanket(
         <ErrorArray
           header="Passwords do not match"
@@ -69,19 +109,6 @@ const signup = (props) => {
         <ErrorArray
           header="Terms of Service"
           message={["You must accept the terms of service to make an account"]}
-          onOk={() => setBlanket(null)}
-        />
-      );
-    } else if (
-      emailInput === "" ||
-      usernameInput === "" ||
-      passwordInput === "" ||
-      passwordConfirm === ""
-    ) {
-      setBlanket(
-        <ErrorArray
-          header="Blank Fields"
-          message={["Required fields are blank", "All fields are required."]}
           onOk={() => setBlanket(null)}
         />
       );
@@ -99,13 +126,18 @@ const signup = (props) => {
   if (props.isAuthenticated) {
     return <Redirect to="/teacher" />;
   } else if (props.authError && !blanket) {
+    const normalizedErr = normalizeErrMsg(props.authError);
+    const errors = Object.keys(normalizedErr).map(
+      (k) => `${k}: ${normalizedErr[k]}`
+    );
     setBlanket(
-      <BackendRegistrationError
-        onClose={() => {
+      <ErrorArray
+        onOk={() => {
           props.clearError();
           setBlanket(null);
         }}
-        errors={props.authError}
+        header="Validation Error"
+        message={errors}
       />
     );
   }
@@ -117,6 +149,7 @@ const signup = (props) => {
         <SignupModule>
           <h3>Email</h3>
           <input
+            data-testid="emailInput"
             onChange={(event) => updateEmail(event.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
@@ -126,6 +159,7 @@ const signup = (props) => {
           />
           <h3>Username</h3>
           <input
+            data-testid="usernameInput"
             style={noSpace ? { borderColor: "red" } : null}
             value={usernameInput}
             onChange={(event) => updateUsername(event.target.value)}
@@ -139,6 +173,7 @@ const signup = (props) => {
         <SignupModule>
           <h3>Password</h3>
           <input
+            data-testid="passwordInput"
             type="password"
             value={passwordInput}
             onChange={(event) => updatePassword(event.target.value)}
@@ -150,6 +185,7 @@ const signup = (props) => {
           />
           <h3>Confirm Password</h3>
           <input
+            data-testid="passwordConfirmInput"
             value={passwordConfirm}
             onChange={(e) => updateConfirm(e.target.value)}
             type="password"
@@ -170,12 +206,17 @@ const signup = (props) => {
         ) : (
           <P center>Your password must be at least eight characters long</P>
         )}
-        {/* <label for="tos"> */}
         <span style={{ position: "relative", bottom: "8px" }}>
           I agree to the <Tos /> and <Privacy />
         </span>
-        <Checkbox id="tos" onClick={() => setTOS(!TOS)}></Checkbox>
-        <Signup onClick={() => submit()}>Sign Up</Signup>
+        <Checkbox
+          id="tos"
+          onClick={() => setTOS(!TOS)}
+          data-testid="tosCheckbox"
+        />
+        <Submit data-testid="submit" onClick={() => submit()}>
+          Sign Up
+        </Submit>
         <Link to="/login">
           <Button>Already have an account? Login here!</Button>
         </Link>

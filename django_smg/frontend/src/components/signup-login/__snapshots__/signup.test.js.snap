@@ -3,7 +3,7 @@
 exports[`<Signup /> matches snapshot 1`] = `
 <div>
   <h1
-    className="sc-gsTCUz fQZbwX"
+    className="sc-bdfBwQ kmRABv"
   >
     sign up!
   </h1>
@@ -11,12 +11,13 @@ exports[`<Signup /> matches snapshot 1`] = `
     className="styles__Description-emvDpe hIumWL"
   >
     <div
-      className="sc-dlfnbm hyKYoD"
+      className="sc-gsTCUz cCQKqw"
     >
       <h3>
         Email
       </h3>
       <input
+        data-testid="emailInput"
         onChange={[Function]}
         onKeyDown={[Function]}
       />
@@ -24,6 +25,7 @@ exports[`<Signup /> matches snapshot 1`] = `
         Username
       </h3>
       <input
+        data-testid="usernameInput"
         onChange={[Function]}
         onKeyDown={[Function]}
         style={null}
@@ -31,12 +33,13 @@ exports[`<Signup /> matches snapshot 1`] = `
       />
     </div>
     <div
-      className="sc-dlfnbm hyKYoD"
+      className="sc-gsTCUz cCQKqw"
     >
       <h3>
         Password
       </h3>
       <input
+        data-testid="passwordInput"
         onChange={[Function]}
         onKeyDown={[Function]}
         type="password"
@@ -46,6 +49,7 @@ exports[`<Signup /> matches snapshot 1`] = `
         Confirm Password
       </h3>
       <input
+        data-testid="passwordConfirmInput"
         onChange={[Function]}
         onKeyDown={[Function]}
         type="password"
@@ -66,26 +70,24 @@ exports[`<Signup /> matches snapshot 1`] = `
       }
     >
       I agree to the 
-      <a
-        className="legal__A-iYpixu dCWwcH"
-        onClick={[Function]}
-      >
-        Terms of Service
-      </a>
+      <span>
+        TOS MOCK
+      </span>
        and 
-      <a
-        className="legal__A-iYpixu dCWwcH"
-        onClick={[Function]}
-      >
-        Privacy Policy
-      </a>
+      <span>
+        PRIVACY POLICY MOCK
+      </span>
     </span>
     <input
       className="styles__Input-lbDPrm fzsTeW"
+      data-testid="tosCheckbox"
+      id="tos"
+      onClick={[Function]}
       type="checkbox"
     />
     <button
-      className="styles__Button-dyjLXS sc-eCssSg LXcou jgILBz"
+      className="styles__Button-dyjLXS sc-hKgILt LXcou cgUWKs"
+      data-testid="submit"
       onClick={[Function]}
     >
       Sign Up

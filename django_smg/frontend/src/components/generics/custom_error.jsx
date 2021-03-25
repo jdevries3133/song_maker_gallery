@@ -17,7 +17,7 @@ export const StyledCustomError = styled(Blanket)`
 export const CustomError = ({ children, onOk }) => {
   return (
     <StyledCustomError>
-      <div>
+      <div data-testid="CustomError">
         {children}
         <button
           data-testid="onOkButton"
@@ -41,9 +41,11 @@ CustomError.propTypes = {
 export const ErrorArray = (props) => {
   return (
     <CustomError onOk={() => props.onOk()}>
-      <h2 data-testid="customError header">{props.header}</h2>
+      <h2 data-testid="errorArray header">{props.header}</h2>
       {props.message.map((par, i) => (
-        <p key={i}>{par}</p>
+        <p data-testid="errorArray message" key={i}>
+          {par}
+        </p>
       ))}
     </CustomError>
   );

@@ -64,11 +64,12 @@ export const login = (data) => (dispatch) => {
         });
       } else {
         // server error
+        // TODO: error handling
       }
     });
 };
 
-export const clearError = (data) => (dispatch) => {
+export const clearError = () => (dispatch) => {
   dispatch({
     type: CLEAR_ERROR,
     payload: {
@@ -77,8 +78,9 @@ export const clearError = (data) => (dispatch) => {
   });
 };
 
-// data must be {username: str, password: str}
 export const register = (data) => (dispatch) => {
+  // TODO: error handling
+  // I don't think 500 errors are being handled properly here
   axios.defaults.xsrfCookieName = "csrftoken";
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios

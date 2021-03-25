@@ -24,8 +24,6 @@ const ForgotPass = styled(Button)`
   background-color: #00bcd1;
 `;
 
-// TODO: fix this!! styles were deleted one commit ago.
-
 const login = (props) => {
   const [username, updateUsername] = useState("");
   const [password, updatePassword] = useState("");
