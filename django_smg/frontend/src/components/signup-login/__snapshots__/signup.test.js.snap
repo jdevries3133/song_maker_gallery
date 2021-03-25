@@ -3,7 +3,7 @@
 exports[`<Signup /> matches snapshot 1`] = `
 <div>
   <h1
-    className="sc-bdfBwQ kmRABv"
+    className="sc-gsTCUz fQZbwX"
   >
     sign up!
   </h1>
@@ -11,97 +11,103 @@ exports[`<Signup /> matches snapshot 1`] = `
     className="styles__Description-emvDpe hIumWL"
   >
     <div
-      className="sc-gsTCUz cCQKqw"
+      className="sc-dlfnbm fskUme"
     >
-      <h3>
-        Email
-      </h3>
-      <input
-        data-testid="emailInput"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-      />
-      <h3>
-        Username
-      </h3>
-      <input
-        data-testid="usernameInput"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        style={null}
-        value=""
-      />
+      <div>
+        <h3>
+          Email
+        </h3>
+        <input
+          data-testid="emailInput"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+        />
+        <h3>
+          Username
+        </h3>
+        <input
+          data-testid="usernameInput"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          style={null}
+          value=""
+        />
+      </div>
+      <div>
+        <h3>
+          Password
+        </h3>
+        <input
+          data-testid="passwordInput"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="password"
+          value=""
+        />
+        <h3>
+          Confirm Password
+        </h3>
+        <input
+          data-testid="passwordConfirmInput"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="password"
+          value=""
+        />
+      </div>
+      <div>
+        <p
+          className="styles__P-dIaYsU iSTWFs"
+        >
+          Your password must be at least eight characters long
+        </p>
+        <p
+          className="styles__P-dIaYsU iSTWFs"
+        >
+          <span
+            className="sc-bdfBwQ eFmiac"
+          >
+            I agree to the 
+            <span>
+              TOS MOCK
+            </span>
+             and 
+            <span>
+              PRIVACY POLICY MOCK
+            </span>
+                
+          </span>
+          <input
+            className="styles__Input-lbDPrm fzsTeW"
+            data-testid="tosCheckbox"
+            id="tos"
+            onClick={[Function]}
+            type="checkbox"
+          />
+        </p>
+        <div>
+          <button
+            className="styles__Button-dyjLXS sc-eCssSg LXcou jgILBz"
+            data-testid="submit"
+            onClick={[Function]}
+          >
+            Sign Up
+          </button>
+        </div>
+        <div>
+          <a
+            href="/login"
+            onClick={[Function]}
+          >
+            <button
+              className="styles__Button-dyjLXS LXcou"
+            >
+              Already have an account? Login here!
+            </button>
+          </a>
+        </div>
+      </div>
     </div>
-    <div
-      className="sc-gsTCUz cCQKqw"
-    >
-      <h3>
-        Password
-      </h3>
-      <input
-        data-testid="passwordInput"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        type="password"
-        value=""
-      />
-      <h3>
-        Confirm Password
-      </h3>
-      <input
-        data-testid="passwordConfirmInput"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        type="password"
-        value=""
-      />
-    </div>
-    <p
-      className="styles__P-dIaYsU fltiwN"
-    >
-      Your password must be at least eight characters long
-    </p>
-    <span
-      style={
-        Object {
-          "bottom": "8px",
-          "position": "relative",
-        }
-      }
-    >
-      I agree to the 
-      <span>
-        TOS MOCK
-      </span>
-       and 
-      <span>
-        PRIVACY POLICY MOCK
-      </span>
-    </span>
-    <input
-      className="styles__Input-lbDPrm fzsTeW"
-      data-testid="tosCheckbox"
-      id="tos"
-      onClick={[Function]}
-      type="checkbox"
-    />
-    <button
-      className="styles__Button-dyjLXS sc-hKgILt LXcou cgUWKs"
-      data-testid="submit"
-      onClick={[Function]}
-    >
-      Sign Up
-    </button>
-    <a
-      href="/login"
-      onClick={[Function]}
-    >
-      <button
-        className="styles__Button-dyjLXS LXcou"
-      >
-        Already have an account? Login here!
-      </button>
-    </a>
   </div>
 </div>
 `;

@@ -10,14 +10,23 @@ import { Tos, Privacy } from "../legal";
 
 import { normalizeErrMsg } from "./normalize_err_msg";
 
+// subtle adjust to align text with checkbox
+const SpanCbAligned = styled.span`
+  position: relative;
+  bottom: 8px;
+`;
+
 const Header = styled.h1`
   margin: 0rem;
   font-size: 60px;
 `;
 
-const SignupModule = styled.div`
-  text-align: center;
-  padding: 3rem;
+const Grid = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
 `;
 
 const LenMet = styled(P)`
@@ -119,80 +128,91 @@ const signup = (props) => {
       {blanket}
       <Header>sign up!</Header>
       <Description>
-        <SignupModule>
-          <h3>Email</h3>
-          <input
-            data-testid="emailInput"
-            onChange={(event) => updateEmail(event.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                submit();
-              }
-            }}
-          />
-          <h3>Username</h3>
-          <input
-            data-testid="usernameInput"
-            style={noSpace ? { borderColor: "red" } : null}
-            value={usernameInput}
-            onChange={(event) => updateUsername(event.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                submit();
-              }
-            }}
-          />
-        </SignupModule>
-        <SignupModule>
-          <h3>Password</h3>
-          <input
-            data-testid="passwordInput"
-            type="password"
-            value={passwordInput}
-            onChange={(event) => updatePassword(event.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                submit();
-              }
-            }}
-          />
-          <h3>Confirm Password</h3>
-          <input
-            data-testid="passwordConfirmInput"
-            value={passwordConfirm}
-            onChange={(e) => updateConfirm(e.target.value)}
-            type="password"
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                submit();
-              }
-            }}
-          />
-        </SignupModule>
-        {noSpace ? (
-          <p style={{ textAlign: "center", color: "red" }}>
-            Username may not contain spaces.
-          </p>
-        ) : null}
-        {pass_bool ? (
-          <LenMet>Your password is at least eight characters long</LenMet>
-        ) : (
-          <P center>Your password must be at least eight characters long</P>
-        )}
-        <span style={{ position: "relative", bottom: "8px" }}>
-          I agree to the <Tos /> and <Privacy />
-        </span>
-        <Checkbox
-          id="tos"
-          onClick={() => setTOS(!TOS)}
-          data-testid="tosCheckbox"
-        />
-        <Submit data-testid="submit" onClick={() => submit()}>
-          Sign Up
-        </Submit>
-        <Link to="/login">
-          <Button>Already have an account? Login here!</Button>
-        </Link>
+        <Grid>
+          <div>
+            <h3>Email</h3>
+            <input
+              data-testid="emailInput"
+              onChange={(event) => updateEmail(event.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  submit();
+                }
+              }}
+            />
+            <h3>Username</h3>
+            <input
+              data-testid="usernameInput"
+              style={noSpace ? { borderColor: "red" } : null}
+              value={usernameInput}
+              onChange={(event) => updateUsername(event.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  submit();
+                }
+              }}
+            />
+          </div>
+          <div>
+            <h3>Password</h3>
+            <input
+              data-testid="passwordInput"
+              type="password"
+              value={passwordInput}
+              onChange={(event) => updatePassword(event.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  submit();
+                }
+              }}
+            />
+            <h3>Confirm Password</h3>
+            <input
+              data-testid="passwordConfirmInput"
+              value={passwordConfirm}
+              onChange={(e) => updateConfirm(e.target.value)}
+              type="password"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  submit();
+                }
+              }}
+            />
+          </div>
+          <div>
+            {noSpace ? (
+              <P center warn>
+                Username may not contain spaces.
+              </P>
+            ) : null}
+            {pass_bool ? (
+              <LenMet>Your password is at least eight characters long</LenMet>
+            ) : (
+              <P center>Your password must be at least eight characters long</P>
+            )}
+            <P>
+              <SpanCbAligned>
+                I agree to the <Tos /> and <Privacy />
+                {"    "}
+              </SpanCbAligned>
+              <Checkbox
+                id="tos"
+                onClick={() => setTOS(!TOS)}
+                data-testid="tosCheckbox"
+              />
+            </P>
+            <div>
+              <Submit data-testid="submit" onClick={() => submit()}>
+                Sign Up
+              </Submit>
+            </div>
+            <div>
+              <Link to="/login">
+                <Button>Already have an account? Login here!</Button>
+              </Link>
+            </div>
+          </div>
+        </Grid>
       </Description>
     </div>
   );

@@ -51,6 +51,11 @@ export const P = styled.p`
   text-align: center;
   padding: 0 20px 0 20px;
   ${(props) =>
+    props.warn &&
+    css`
+      color: red;
+    `}
+  ${(props) =>
     props.justify &&
     css`
       text-align: justify;
