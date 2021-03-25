@@ -2,12 +2,13 @@
 
 By default, development settings use dbsqlite. This is fine for the most part,
 but sometimes, you might want to run unit tests against a real mysqldb to
-mimic the production environment better. Do this:
+mimic the production environment better. If docker is installed on your
+machine and port `3306` is free, do this:
 
-1. Remember to unset the `DJANGO_DEBUG` environment variable, which causes the
-   project to use the dev config.
-2. Run the python script adjacent to this file (start_db.py)
+1. In `django_smg/django_smg/development_settings.py`, switch the `USE_MYSQL` setting to `True`
+2. Run the python script adjacent to this file (`start_db.py`)
 3. Add the following to `django_smg/django_smg/secret_settings.py`
+   (if you setup the project with `dev_setup.sh`, this should already  be there):
 
    ```python
    MYSQL_PASSWORD = 'passwd'
