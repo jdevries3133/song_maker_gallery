@@ -201,5 +201,4 @@ describe("<Signup />", () => {
     );
     done();
   });
-  it("notifies user of 500 error response", () => {});
 });

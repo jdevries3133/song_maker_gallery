@@ -27,22 +27,19 @@ export const postGallery = (form, token) => (dispatch) => {
         },
       });
     })
-    .catch((err) => {
+    .catch((e) => {
       dispatch({
         type: POST_GALLERY,
         payload: {
           status: 1,
           formPassthrough: form,
           gallery: null,
-          serverErrorMessage:
-            err?.response?.status === 400
-              ? err.response.data
-              : {
-                  "Server Error": [
-                    `Error Message: ${err.response.statusText}`,
-                    `Status Code: ${err.response.status}`,
-                  ],
-                },
+          serverErrorMessage: e.response?.data || {
+            "Server Error": [
+              `Error Message: ${e.response.statusText}`,
+              `Status Code: ${e.response.status}`,
+            ],
+          },
         },
       });
     });
@@ -66,7 +63,17 @@ export const getUserGalleries = (token) => (dispatch) => {
       })
     )
     .catch((e) => {
-      console.log(e);
+      dispatch({
+        type: GET_GALLERIES,
+        payload: {
+          serverErrorMessage: e.response?.data || {
+            "Server Error": [
+              `Error Message: ${err.response.statusText}`,
+              `Status Code: ${err.response.status}`,
+            ],
+          },
+        },
+      });
     });
 };
 
@@ -93,8 +100,7 @@ export const deleteGallery = (pk, token) => (dispatch) => {
         });
       }
     })
-    .catch((e) => {
-      console.log(e);
+    .catch(() => {
       dispatch({
         type: DELETE_GALLERY,
         payload: { status: "error" },

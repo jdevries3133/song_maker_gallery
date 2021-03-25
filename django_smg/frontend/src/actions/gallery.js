@@ -20,7 +20,7 @@ export const getGallery = (slug) => (dispatch) => {
         type: GET_GALLERY,
         payload: {
           gallery: null,
-          status: err,
+          status: err.response.status,
         },
       })
     );

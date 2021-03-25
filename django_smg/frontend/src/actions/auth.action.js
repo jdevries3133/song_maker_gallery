@@ -2,6 +2,8 @@ import axios from "axios";
 
 import { LOGIN, REGISTER, CLEAR_ERROR, LOGOUT } from "./types";
 
+// LOGIN that does not catch or handle an error response. This is for silently
+// trying a localStorage token in the background.
 export const tryToken = (token) => (dispatch) => {
   axios.defaults.xsrfCookieName = "csrftoken";
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
@@ -18,8 +20,7 @@ export const tryToken = (token) => (dispatch) => {
           token: token,
         },
       });
-    })
-    .catch((e) => console.log(e));
+    });
 };
 
 // LOGIN
@@ -52,19 +53,40 @@ export const login = (data) => (dispatch) => {
       }
     })
     .catch((e) => {
-      if (e.response.status === 400) {
+      if (e.response.status >= 400 || e.response.status <= 499) {
         // wrong username or password
         dispatch({
           type: LOGIN,
           payload: {
             isAuthenticated: false,
-            authError: e.response.data,
+            authError: e.response?.data || {
+              [`${e.response.status} Error`]: [e.response.statusText],
+            },
+            token: null,
+          },
+        });
+      } else if (e.response.status >= 500 || e.response.status <= 599) {
+        dispatch({
+          type: LOGIN,
+          payload: {
+            isAuthenticated: false,
+            authError: e.response?.data || {
+              [`${e.response.status} Error`]: [e.response.statusText],
+            },
             token: null,
           },
         });
       } else {
-        // server error
-        // TODO: error handling
+        dispatch({
+          type: LOGIN,
+          payload: {
+            isAuthenticated: false,
+            authError: {
+              [`${e.response.status} Error`]: [e.response.statusText],
+            },
+            token: null,
+          },
+        });
       }
     });
 };
@@ -79,8 +101,6 @@ export const clearError = () => (dispatch) => {
 };
 
 export const register = (data) => (dispatch) => {
-  // TODO: error handling
-  // I don't think 500 errors are being handled properly here
   axios.defaults.xsrfCookieName = "csrftoken";
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   axios
@@ -101,7 +121,9 @@ export const register = (data) => (dispatch) => {
           type: REGISTER,
           payload: {
             isAuthenticated: false,
-            authError: true,
+            authError: e.response?.data || {
+              [`${e.response.status} Error`]: [e.response.statusText],
+            },
             token: null,
             user: null,
           },
@@ -113,7 +135,9 @@ export const register = (data) => (dispatch) => {
         type: REGISTER,
         payload: {
           isAuthenticated: false,
-          authError: e.response.data,
+          authError: e.response?.data || {
+            [`${e.response.status} Error`]: [e.response.statusText],
+          },
           token: null,
           user: null,
         },
@@ -134,5 +158,14 @@ export const logout = (token) => (dispatch) => {
         type: LOGOUT,
       });
     })
-    .catch((e) => console.log(e));
+    .catch((e) => {
+      dispatch({
+        type: REGISTER,
+        payload: {
+          authError: e.response?.data || {
+            [`${e.response.status} Error`]: [e.response.statusText],
+          },
+        },
+      });
+    });
 };
