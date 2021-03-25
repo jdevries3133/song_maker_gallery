@@ -3,39 +3,12 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
+import { register, clearError } from "../../actions/auth.action";
 import styled, { P, Button, Checkbox, Description } from "../generics/styles";
 import { ErrorArray } from "../generics/custom_error";
-import { register, clearError } from "../../actions/auth.action";
-
 import { Tos, Privacy } from "../legal";
 
-const normalizeErrMsg = (data) => {
-  switch (typeof data) {
-    case "object":
-      const response = { ...data };
-      Object.keys(response).forEach((k) => {
-        if (Array.isArray(response[k])) {
-          response[k].forEach((m) => {
-            if (typeof m !== "string") {
-              delete object[k];
-            }
-          });
-        } else {
-          delete object[k];
-        }
-      });
-      return response;
-    case "string":
-      return { Error: [data] };
-    default:
-      console.error(
-        "The following api message could not be normalized and displayed:",
-        data
-      );
-      // TODO: error handling
-      return { Error: "An unknown error occured" };
-  }
-};
+import { normalizeErrMsg } from "./normalize_err_msg";
 
 const Header = styled.h1`
   margin: 0rem;
