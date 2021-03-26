@@ -36,7 +36,7 @@ const App = () => (
           <PrivacyPage />
         </Route>
         <Route path="/tos/*">
-          <TosPage />
+          <TosPage title="Terms of Service" />
         </Route>
         <PrivateRoute path="/teacher">
           <Teacher title="Gallery Management Console" />

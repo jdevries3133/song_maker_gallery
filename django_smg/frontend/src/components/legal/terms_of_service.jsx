@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import styled, { Div, Blanket, Description } from "../generics/styles";
@@ -102,18 +102,28 @@ const TosContent = (props) => (
   </LegalContainer>
 );
 
+const setTitle = (title) => {
+  useEffect((title) => {
+    window.title = title || "Song Maker Gallery";
+  }, []);
+};
+
 /* Free-standing page content */
-export const TosPage = () => (
-  <Description>
-    <TosContent />
-  </Description>
-);
+export const TosPage = ({ title }) => {
+  setTitle(title);
+  return (
+    <Description>
+      <TosContent />
+    </Description>
+  );
+};
 
 /* modal with close button */
-export const TosText = (props) => (
-  <Blanket>
-    <TosContent
-      okButton={<button onClick={() => props.onOk()}>Close</button>}
-    />
-  </Blanket>
-);
+export const TosText = ({ onOk, title }) => {
+  setTitle(title);
+  return (
+    <Blanket>
+      <TosContent okButton={<button onClick={() => onOk()}>Close</button>} />
+    </Blanket>
+  );
+};

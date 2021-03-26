@@ -5,9 +5,10 @@
 import React, { useState, Fragment } from "react";
 import styled from "styled-components";
 
+import { Portal } from "../generics/portal";
+
 import { TosText } from "./terms_of_service";
 import { PrivacyText } from "./privacy_policy";
-
 export { TosPage } from "./terms_of_service";
 export { PrivacyPage } from "./privacy_policy";
 
@@ -25,29 +26,31 @@ const A = styled.a`
 // TODO: this is broken because the blanket typically becomes the child of
 // a paragraph.
 export const Tos = () => {
-  const [blanket, setBlanket] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => setShowModal(!showModal);
   return (
     <Fragment>
-      {blanket}
-      <A onClick={() => setBlanket(<TosText onOk={() => setBlanket(null)} />)}>
-        Terms of Service
-      </A>
+      {showModal ? (
+        <Portal>
+          <TosText onOk={toggleModal} />
+        </Portal>
+      ) : null}
+      <A onClick={toggleModal}>Terms of Service</A>
     </Fragment>
   );
 };
 
 export const Privacy = () => {
-  const [blanket, setBlanket] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => setShowModal(!showModal);
   return (
     <Fragment>
-      {blanket}
-      <A
-        onClick={() =>
-          setBlanket(<PrivacyText onOk={() => setBlanket(null)} />)
-        }
-      >
-        Privacy Policy
-      </A>
+      {showModal ? (
+        <Portal>
+          <PrivacyText onOk={toggleModal} />
+        </Portal>
+      ) : null}
+      <A onClick={toggleModal}>Privacy Policy</A>
     </Fragment>
   );
 };
