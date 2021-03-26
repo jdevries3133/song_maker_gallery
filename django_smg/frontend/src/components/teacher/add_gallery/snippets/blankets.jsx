@@ -64,10 +64,8 @@ Blankets.propTypes = {
     titleInputHandler: PropTypes.func,
     descriptionInputHandler: PropTypes.func,
   }),
-  badRequestProps: PropTypes.shape({
-    onOk: PropTypes.func,
-    serverErrorMessage: PropTypes.arrayOf(PropTypes.string),
-  }),
+  badRequestProps: PropTypes.object.isRequired,
+  onOk: PropTypes.func,
   serverErrorProps: PropTypes.shape({ onOk: PropTypes.func }),
   galPostSuccessProps: PropTypes.shape({
     slug: PropTypes.string,

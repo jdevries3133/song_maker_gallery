@@ -296,7 +296,7 @@ class AddGallery extends Component {
             onOk: this.recoveryRestageHandler,
             serverErrorMessage: this.props.serverErrorMessage,
           }}
-          missingFields={{
+          missingFieldsProps={{
             blankTitleError: this.state.blankTitleError,
             blankDescriptionError: this.state.blankDescriptionError,
             titleValue: this.state.titleValue,

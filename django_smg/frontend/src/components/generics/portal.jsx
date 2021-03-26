@@ -5,6 +5,7 @@ import ReactDOM from "react-dom";
 const getElement = () => {
   const el = document.createElement("div");
   el.setAttribute("data-testid", "portalContainer");
+  el.id = "portalContainer";
   return el;
 };
 
@@ -19,7 +20,7 @@ export const Portal = ({ children }) => {
     document.body.appendChild(el);
     setModalEl(el);
     return () => {
-      if (modalEl) document.body.removeChild(modalEl);
+      document.body.removeChild(document.getElementById("portalContainer"));
     };
   }, []);
   return modalEl ? ReactDOM.createPortal(children, modalEl) : null;

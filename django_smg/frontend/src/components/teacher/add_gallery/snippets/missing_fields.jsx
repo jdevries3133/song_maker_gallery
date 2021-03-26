@@ -25,7 +25,7 @@ export const MissingFields = (props) => {
         </>
       ) : null}
 
-      {props.titleValue.trim() && props.descriptionValue.trim() ? (
+      {props?.titleValue?.trim() && props?.descriptionValue?.trim() ? (
         <>
           <br />
           <button onClick={() => props.dismissTitleBlank()}>Continue</button>

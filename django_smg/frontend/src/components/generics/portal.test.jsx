@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
-  cleanup,
   render,
   fireEvent,
   waitFor,
   screen,
   act,
+  cleanup,
 } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
@@ -16,6 +16,9 @@ const ComponentDismounter = () => {
   const [dismount, setDismount] = useState(false);
   return (
     <>
+      <button data-testid="mountPortal" onClick={() => setDismount(false)}>
+        Mount
+      </button>
       {dismount ? null : (
         <Portal>
           <h1>Hello, world!</h1>
@@ -32,11 +35,10 @@ const ComponentDismounter = () => {
 };
 
 describe("<Portal />", () => {
-  // TODO: test generates warning: ReferenceError: You are trying to access a property or method of the Jest environment after it has been torn down.
-  // it("mounts in a new dom node", () => {
-  //   render(<Portal />);
-  //   expect(screen.queryByTestId("portalContainer")).toBeVisible();
-  // });
+  it("mounts in a new dom node", () => {
+    render(<Portal />);
+    expect(screen.queryByTestId("portalContainer")).toBeVisible();
+  });
   it("cleans up after self by dismounting parent component", () => {
     render(<ComponentDismounter />);
     expect(screen.queryByText("Hello, world!")).toBeVisible();
@@ -44,7 +46,8 @@ describe("<Portal />", () => {
       fireEvent.click(screen.getByTestId("dismountPortal"));
     });
     waitFor(() => {
-      expect(screen.queryByTestId("portalContainer")).toBeFalsy();
+      expect(screen.queryAllByTestId("portalContainer")).toHaveLength(0);
     });
+    screen.debug();
   });
 });

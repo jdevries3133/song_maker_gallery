@@ -23,13 +23,29 @@ const getColIndicies = (headers) => {
   };
 };
 
+/**
+ * Filter the full spreadsheet to the two user-selected columns.
+ */
+const filterData = (data, nameIndex, linkIndex) => {
+  if (typeof nameIndex === "number" && typeof linkIndex === "number") {
+    return data.filter((row) => {
+      // handle csvs with blankline at the end of the file
+      if (row.length < 2) {
+        return null;
+      }
+      return [row[nameIndex], row[linkIndex]];
+    });
+  }
+  return null;
+};
+
 const Verify = (props) => {
   const duplicateGroupName = props.otherGroups.includes(props.groupName);
   const groupNameTooBig = props.groupName.length > GROUP_NAME_LENGTH_LIMIT;
   const isFormError = duplicateGroupName || groupNameTooBig;
 
-  const [nameIndex, setNameIndex] = useState(undefined);
-  const [linkIndex, setLinkIndex] = useState(undefined);
+  const [nameIndex, setNameIndex] = useState("init");
+  const [linkIndex, setLinkIndex] = useState("init");
 
   useEffect(() => {
     const { nameIndex: nameIndexTmp, linkIndex: linkIndexTmp } = getColIndicies(
@@ -39,79 +55,69 @@ const Verify = (props) => {
     setLinkIndex(linkIndexTmp);
   }, []);
 
-  let filtered;
-  if (typeof nameIndex === "number" && typeof linkIndex === "number") {
-    filtered = props.csv.data.filter((row) => {
-      // handle csvs with blankline at the end of the file
-      if (row.length < 2) {
-        return null;
-      }
-      return [row[nameIndex], row[linkIndex]];
-    });
-  } else {
-    if (nameIndex == undefined) {
-      return (
-        <div
-          data-testid="verifyModalNoName"
-          className={`description blanket ${styles.scroll_blanket}`}
-        >
-          <h2>Whoops!</h2>
-          <p>
-            It looks like your spreadsheet didn't have a header of "name," can
-            you select the column that contains <b>names?</b>
-          </p>
-          {props.csv.data[0].map((row, index) => {
-            return (
-              <button
-                data-testid="nameColChoice"
-                key={index}
-                onClick={() => {
-                  setNameIndex(index);
-                }}
-              >
-                {row}
-              </button>
-            );
-          })}
-          <button
-            onClick={(e) => props.restart(e)}
-            className={`button ${styles.restart_btn}`}
-          >
-            Restart
-          </button>
-        </div>
-      );
-    } else if (linkIndex == undefined) {
-      return (
-        <div
-          data-testid="verifyModalNoLink"
-          className={`description blanket ${styles.scroll_blanket}`}
-        >
-          <h2>Whoops!</h2>
-          <p>
-            It looks like your spreadsheet didn't have a header of "link," can
-            you select the column that contains <b>links?</b>
-          </p>
-          {props.csv.data[0].map((row, index) => (
+  const filtered = filterData(props.csv.data, nameIndex, linkIndex);
+
+  if (nameIndex === undefined) {
+    return (
+      <div
+        data-testid="verifyModalNoName"
+        className={`description blanket ${styles.scroll_blanket}`}
+      >
+        <h2>Whoops!</h2>
+        <p>
+          It looks like your spreadsheet didn't have a header of "name," can you
+          select the column that contains <b>names?</b>
+        </p>
+        {props.csv.data[0].map((row, index) => {
+          return (
             <button
-              data-testid="linkColChoice"
+              data-testid="nameColChoice"
               key={index}
-              onClick={() => setLinkIndex(index)}
+              onClick={() => {
+                setNameIndex(index);
+              }}
             >
               {row}
             </button>
-          ))}
+          );
+        })}
+        <button
+          onClick={(e) => props.restart(e)}
+          className={`button ${styles.restart_btn}`}
+        >
+          Restart
+        </button>
+      </div>
+    );
+  } else if (linkIndex === undefined) {
+    return (
+      <div
+        data-testid="verifyModalNoLink"
+        className={`description blanket ${styles.scroll_blanket}`}
+      >
+        <h2>Whoops!</h2>
+        <p>
+          It looks like your spreadsheet didn't have a header of "link," can you
+          select the column that contains <b>links?</b>
+        </p>
+        {props.csv.data[0].map((row, index) => (
           <button
-            onClick={(e) => props.restart(e)}
-            className={`button ${styles.restart_btn}`}
+            data-testid="linkColChoice"
+            key={index}
+            onClick={() => setLinkIndex(index)}
           >
-            Discard and Start Over
+            {row}
           </button>
-        </div>
-      );
-    }
-  }
-  if (typeof filtered != undefined) {
+        ))}
+        <button
+          onClick={(e) => props.restart(e)}
+          className={`button ${styles.restart_btn}`}
+        >
+          Discard and Start Over
+        </button>
+      </div>
+    );
+  } else if (filtered !== null) {
     return (
       <div
         data-testid="verifyModalNormal"
@@ -206,6 +212,9 @@ const Verify = (props) => {
  * This is an unfortunate hack, but the extra wrapping div makes it possible
  * to know if this component has been mounted *at all* regardless of the
  * state it might be mounted in.
+ *
+ * This tagging would otherwise be repetitive because of all the conditional
+ * rendering.
  */
 const VerifyTestWrapper = (props) => (
   <div data-testid="verifyModalPresent">
