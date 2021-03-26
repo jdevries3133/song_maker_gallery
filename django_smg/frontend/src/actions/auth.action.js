@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { LOGIN, REGISTER, CLEAR_ERROR, LOGOUT } from "./types";
+import { normalizeErrorMessage } from "./normalizeErrorMsg";
 
 // LOGIN that does not catch or handle an error response. This is for silently
 // trying a localStorage token in the background.
@@ -53,41 +54,14 @@ export const login = (data) => (dispatch) => {
       }
     })
     .catch((e) => {
-      if (e.response.status >= 400 || e.response.status <= 499) {
-        // wrong username or password
-        dispatch({
-          type: LOGIN,
-          payload: {
-            isAuthenticated: false,
-            authError: e.response?.data || {
-              [`${e.response.status} Error`]: [e.response.statusText],
-            },
-            token: null,
-          },
-        });
-      } else if (e.response.status >= 500 || e.response.status <= 599) {
-        dispatch({
-          type: LOGIN,
-          payload: {
-            isAuthenticated: false,
-            authError: e.response?.data || {
-              [`${e.response.status} Error`]: [e.response.statusText],
-            },
-            token: null,
-          },
-        });
-      } else {
-        dispatch({
-          type: LOGIN,
-          payload: {
-            isAuthenticated: false,
-            authError: {
-              [`${e.response.status} Error`]: [e.response.statusText],
-            },
-            token: null,
-          },
-        });
-      }
+      dispatch({
+        type: LOGIN,
+        payload: {
+          isAuthenticated: false,
+          authError: normalizeErrorMessage(e.response?.data, e.response.status),
+          token: null,
+        },
+      });
     });
 };
 
@@ -106,38 +80,22 @@ export const register = (data) => (dispatch) => {
   axios
     .post("/api/auth/register/", data)
     .then((res) => {
-      if (res.status === 200) {
-        dispatch({
-          type: REGISTER,
-          payload: {
-            isAuthenticated: true,
-            authError: false,
-            token: res.data.token,
-            user: res.data.user,
-          },
-        });
-      } else {
-        dispatch({
-          type: REGISTER,
-          payload: {
-            isAuthenticated: false,
-            authError: e.response?.data || {
-              [`${e.response.status} Error`]: [e.response.statusText],
-            },
-            token: null,
-            user: null,
-          },
-        });
-      }
+      dispatch({
+        type: REGISTER,
+        payload: {
+          isAuthenticated: true,
+          authError: false,
+          token: res.data.token,
+          user: res.data.user,
+        },
+      });
     })
     .catch((e) => {
       dispatch({
         type: REGISTER,
         payload: {
           isAuthenticated: false,
-          authError: e.response?.data || {
-            [`${e.response.status} Error`]: [e.response.statusText],
-          },
+          authError: normalizeErrorMessag(e.response?.data, e.response.status),
           token: null,
           user: null,
         },
@@ -162,9 +120,7 @@ export const logout = (token) => (dispatch) => {
       dispatch({
         type: REGISTER,
         payload: {
-          authError: e.response?.data || {
-            [`${e.response.status} Error`]: [e.response.statusText],
-          },
+          authError: normalizeErrorMessag(e.response?.data, e.response.status),
         },
       });
     });

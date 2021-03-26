@@ -49,7 +49,26 @@ export const BadRequest = ({ serverErrorMessage, onOk }) => {
   );
 };
 
+/**
+ * Ensures the object passed has the correct data structure:
+ * {Header: ['messages']}
+ */
+const errMsgValidator = (props, propName, componentName) => {
+  Object.values(props.serverErrorMessage).forEach((i) => {
+    if (!Array.isArray(i)) {
+      return new Error(
+        `Invalid prop ${propName} supplied to ${componentName}.`
+      );
+    }
+    i.forEach((s) => {
+      if (typeof s !== "string") {
+        `Invalid prop ${propName} supplied to ${componentName}.`;
+      }
+    });
+  });
+};
+
 BadRequest.propTypes = {
-  serverErrorMessage: PropTypes.object.isRequired,
+  serverErrorMessage: errMsgValidator,
   onOk: PropTypes.func.isRequired,
 };

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { normalizeErrorMessage } from "./normalizeErrorMsg";
 import { POST_GALLERY, GET_GALLERIES, DELETE_GALLERY } from "./types";
 
 // POST GALLERY
@@ -31,15 +32,13 @@ export const postGallery = (form, token) => (dispatch) => {
       dispatch({
         type: POST_GALLERY,
         payload: {
-          status: 1,
+          status: e.response.status,
           formPassthrough: form,
           gallery: null,
-          serverErrorMessage: e.response?.data || {
-            "Server Error": [
-              `Error Message: ${e.response.statusText}`,
-              `Status Code: ${e.response.status}`,
-            ],
-          },
+          serverErrorMessage: normalizeErrorMessage(
+            e.response?.data,
+            e.response.status
+          ),
         },
       });
     });
@@ -66,12 +65,10 @@ export const getUserGalleries = (token) => (dispatch) => {
       dispatch({
         type: GET_GALLERIES,
         payload: {
-          serverErrorMessage: e.response?.data || {
-            "Server Error": [
-              `Error Message: ${err.response.statusText}`,
-              `Status Code: ${err.response.status}`,
-            ],
-          },
+          serverErrorMessage: normalizeErrorMessag(
+            e.response?.data,
+            e.response.status
+          ),
         },
       });
     });
