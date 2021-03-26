@@ -271,6 +271,8 @@ class AddGallery extends Component {
       <>
         <Blankets
           show={
+            // an expression of which blanket component will be shown
+            // depending on this component's state.
             this.state.verifyUpload
               ? "verify"
               : this.state.recover
@@ -289,9 +291,6 @@ class AddGallery extends Component {
             groupNameChange: this.groupNameHandler,
             otherGroups: this.otherGroups(),
             validatedHandler: this.groupValidatedHandler,
-            nameIndex: this.state.nameIndex,
-            linkIndex: this.state.linkIndex,
-            indexHandler: this.handleVerificationIndicies,
           }}
           badRequestProps={{
             onOk: this.recoveryRestageHandler,

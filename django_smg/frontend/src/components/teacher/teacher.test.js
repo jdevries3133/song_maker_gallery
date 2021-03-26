@@ -22,7 +22,7 @@ const mountFile = (node, data = "") => {
   fireEvent.change(node, { target: { files: [file] } });
 };
 
-const getTestCsv = (name) => {
+export const getTestCsv = (name) => {
   const rootDir = path.join(
     __dirname,
     "..",
@@ -120,73 +120,6 @@ describe("gallery addition process via <Teacher />", () => {
         "http://localhost/gallery/test-title"
       );
     });
-    done();
-  });
-});
-
-// TODO: migrate this to be the test suite for <Validate />
-describe("spreadsheet validation via <Teacher />", () => {
-  it("asks for name column when it is ambiguous", async (done) => {
-    await setupVerify("bad_name.csv");
-    expect(screen.getByTestId("verifyModalNoName")).toBeVisible();
-    const namebtn = screen.getAllByTestId("nameColChoice")[0];
-    expect(namebtn).toHaveTextContent("nome");
-    act(() => {
-      fireEvent.click(namebtn);
-    });
-    await waitFor(() =>
-      expect(screen.getByTestId("verifyModalNormal")).toBeVisible()
-    );
-    done();
-  });
-  it("asks for link column when it is ambiguous", async (done) => {
-    await setupVerify("bad_link.csv");
-    expect(screen.getByTestId("verifyModalNoLink")).toBeVisible();
-    const linkbtn = screen.getAllByTestId("linkColChoice")[1];
-    expect(linkbtn).toHaveTextContent("lonk");
-    act(() => {
-      fireEvent.click(linkbtn);
-    });
-    await waitFor(() =>
-      expect(screen.getByTestId("verifyModalNormal")).toBeVisible()
-    );
-    done();
-  });
-  it("displays a table with student names and link previews", async (done) => {
-    await setupVerify("test_group_1.csv");
-    expect(screen.getByTestId("verifyModalNormal")).toBeVisible();
-    expect(screen.getAllByTestId("sgName").length).toEqual(20);
-    const expectNames = [
-      "Avery",
-      "Landon",
-      "Elizabeth",
-      "Gianna",
-      "Evianys",
-      "Maisey",
-      "Patrick",
-      "Abigail",
-      "Jack",
-      "Michael",
-      "Avery",
-      "Landon",
-      "Elizabeth",
-      "Gianna",
-      "Ryder",
-      "Evianys",
-      "Evianys",
-      "Maisey",
-      "Patrick",
-      "Abigail",
-      "Michael",
-    ];
-    screen.getAllByTestId("sgName").map((n, i) => {
-      expect(n).toHaveTextContent(expectNames[i]);
-    });
-    screen
-      .getAllByTestId("sgLink")
-      .map((l) =>
-        expect(l).toHaveTextContent("https://musiclab.chromeexperim...")
-      );
     done();
   });
 });

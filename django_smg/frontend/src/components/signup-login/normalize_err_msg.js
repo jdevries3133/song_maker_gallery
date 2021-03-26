@@ -25,7 +25,6 @@ export const normalizeErrMsg = (data) => {
         "The following api message could not be normalized and displayed:",
         data
       );
-      // TODO: error handling
       return { Error: "An unknown error occured" };
   }
 };

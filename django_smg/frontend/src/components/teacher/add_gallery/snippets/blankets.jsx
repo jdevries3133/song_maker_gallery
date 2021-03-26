@@ -26,7 +26,7 @@ export const Blankets = ({ show, ...props }) => {
     case "galPostSuccess":
       return <GalPostSuccess {...props.galPostSuccessProps} />;
     case "missingFields":
-      return <MissingFields {...props.missingFields} />;
+      return <MissingFields {...props.missingFieldsProps} />;
     default:
       return null;
   }
@@ -56,7 +56,7 @@ Blankets.propTypes = {
     linkIndex: PropTypes.number,
     indexHandler: PropTypes.func,
   }),
-  missingFields: PropTypes.shape({
+  missingFieldsProps: PropTypes.shape({
     blankTitleError: PropTypes.bool,
     blankDescriptionError: PropTypes.bool,
     titleValue: PropTypes.string,

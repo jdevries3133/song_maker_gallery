@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./add_gallery.module.css";
 
 import { StagedGroupBody } from "./snippets";
@@ -6,28 +6,40 @@ import { StagedGroupBody } from "./snippets";
 // CSS will scale for group names up to this length.
 const GROUP_NAME_LENGTH_LIMIT = 15;
 
+const getColIndicies = (headers) => {
+  let nameIndex;
+  let linkIndex;
+  for (let i = 0; i < headers.length; i++) {
+    if (headers[i].toLowerCase().includes("name")) {
+      nameIndex = i;
+    } else if (headers[i].toLowerCase().includes("link")) {
+      linkIndex = i;
+    }
+    if (nameIndex && linkIndex) break;
+  }
+  return {
+    nameIndex,
+    linkIndex,
+  };
+};
+
 const Verify = (props) => {
   const duplicateGroupName = props.otherGroups.includes(props.groupName);
   const groupNameTooBig = props.groupName.length > GROUP_NAME_LENGTH_LIMIT;
   const isFormError = duplicateGroupName || groupNameTooBig;
 
-  // check spreadsheet headers
-  var nameIndex = props.nameIndex;
-  var linkIndex = props.linkIndex;
-  var filtered;
-  for (let i = 0; i < props.csv.data[0].length; i++) {
-    if (
-      props.csv.data[0][i].toLowerCase() === "name" ||
-      props.csv.data[0][i].toLowerCase() === "names"
-    ) {
-      var nameIndex = i;
-    } else if (
-      props.csv.data[0][i].toLowerCase() === "links" ||
-      props.csv.data[0][i].toLowerCase() === "link"
-    ) {
-      var linkIndex = i;
-    }
-  }
+  const [nameIndex, setNameIndex] = useState(undefined);
+  const [linkIndex, setLinkIndex] = useState(undefined);
+
+  useEffect(() => {
+    const { nameIndex: nameIndexTmp, linkIndex: linkIndexTmp } = getColIndicies(
+      props.csv.data[0]
+    );
+    setNameIndex(nameIndexTmp);
+    setLinkIndex(linkIndexTmp);
+  }, []);
+
+  let filtered;
   if (typeof nameIndex === "number" && typeof linkIndex === "number") {
     filtered = props.csv.data.filter((row) => {
       // handle csvs with blankline at the end of the file
@@ -54,7 +66,7 @@ const Verify = (props) => {
                 data-testid="nameColChoice"
                 key={index}
                 onClick={() => {
-                  props.indexHandler(index, "name");
+                  setNameIndex(index);
                 }}
               >
                 {row}
@@ -84,7 +96,7 @@ const Verify = (props) => {
             <button
               data-testid="linkColChoice"
               key={index}
-              onClick={() => props.indexHandler(index, "link")}
+              onClick={() => setLinkIndex(index)}
             >
               {row}
             </button>
