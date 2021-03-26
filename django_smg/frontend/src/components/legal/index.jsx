@@ -23,8 +23,6 @@ const A = styled.a`
   }
 `;
 
-// TODO: this is broken because the blanket typically becomes the child of
-// a paragraph.
 export const Tos = () => {
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => setShowModal(!showModal);
