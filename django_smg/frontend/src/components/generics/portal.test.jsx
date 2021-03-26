@@ -48,6 +48,5 @@ describe("<Portal />", () => {
     waitFor(() => {
       expect(screen.queryAllByTestId("portalContainer")).toHaveLength(0);
     });
-    screen.debug();
   });
 });
