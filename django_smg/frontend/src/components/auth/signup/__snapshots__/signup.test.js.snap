@@ -10,8 +10,10 @@ exports[`<Signup /> matches snapshot 1`] = `
   <div
     className="styles__Description-emvDpe hIumWL"
   >
-    <div
+    <form
       className="sc-dlfnbm fskUme"
+      data-testid="signupForm"
+      onSubmit={[Function]}
     >
       <div>
         <h3>
@@ -20,7 +22,6 @@ exports[`<Signup /> matches snapshot 1`] = `
         <input
           data-testid="emailInput"
           onChange={[Function]}
-          onKeyDown={[Function]}
         />
         <h3>
           Username
@@ -28,7 +29,6 @@ exports[`<Signup /> matches snapshot 1`] = `
         <input
           data-testid="usernameInput"
           onChange={[Function]}
-          onKeyDown={[Function]}
           style={null}
           value=""
         />
@@ -40,7 +40,6 @@ exports[`<Signup /> matches snapshot 1`] = `
         <input
           data-testid="passwordInput"
           onChange={[Function]}
-          onKeyDown={[Function]}
           type="password"
           value=""
         />
@@ -50,19 +49,22 @@ exports[`<Signup /> matches snapshot 1`] = `
         <input
           data-testid="passwordConfirmInput"
           onChange={[Function]}
-          onKeyDown={[Function]}
           type="password"
           value=""
         />
       </div>
       <div>
-        <p
-          className="styles__P-dIaYsU iSTWFs"
+        <ul
+          className="sc-hKgILt jtNpxQ"
         >
-          Your password must be at least eight characters long
-        </p>
+          <li
+            className="styles__P-dIaYsU kxTZyV"
+          >
+            Your password must be at least eight characters long
+          </li>
+        </ul>
         <p
-          className="styles__P-dIaYsU iSTWFs"
+          className="styles__P-dIaYsU kxTZyV"
         >
           <span
             className="sc-bdfBwQ eFmiac"
@@ -86,13 +88,11 @@ exports[`<Signup /> matches snapshot 1`] = `
           />
         </p>
         <div>
-          <button
+          <input
             className="styles__Button-dyjLXS sc-eCssSg LXcou jgILBz"
-            data-testid="submit"
-            onClick={[Function]}
-          >
-            Sign Up
-          </button>
+            type="submit"
+            value="Sign Up"
+          />
         </div>
         <div>
           <a
@@ -107,7 +107,7 @@ exports[`<Signup /> matches snapshot 1`] = `
           </a>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>
 `;

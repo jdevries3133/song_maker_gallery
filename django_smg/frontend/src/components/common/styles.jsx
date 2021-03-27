@@ -51,9 +51,15 @@ export const P = styled.p`
   text-align: center;
   padding: 0 20px 0 20px;
   ${(props) =>
+    props.confirm &&
+    css`
+      color: green;
+    `}
+  ${(props) =>
+    // dark red w/ good contrast against white
     props.warn &&
     css`
-      color: red;
+      color: #e41000;
     `}
   ${(props) =>
     props.justify &&

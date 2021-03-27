@@ -8,6 +8,8 @@ import styled, { P, Button, Checkbox, Description } from "../../common/styles";
 import { ErrorArray } from "../../common/custom_error";
 import { Tos, Privacy } from "../../legal";
 
+const PASSWD_MIN_LENGTH = 9;
+
 // subtle adjust to align text with checkbox
 const SpanCbAligned = styled.span`
   position: relative;
@@ -19,7 +21,7 @@ const Header = styled.h1`
   font-size: 60px;
 `;
 
-const Grid = styled.div`
+const FlexForm = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,12 +29,20 @@ const Grid = styled.div`
   gap: 3rem;
 `;
 
-const LenMet = styled(P)`
-  color: green;
-  text-align: center;
+const Li = ({ children, ...rest }) => (
+  <P as="li" {...rest}>
+    {children}
+  </P>
+);
+
+const ValidationMessages = styled.ul`
+  list-style-type: none;
+  background-color: #adff1626;
+  border-radius: 20px;
+  padding: 1em;
 `;
 
-const Submit = styled(Button)`
+const SubmitButton = styled(Button)`
   font-size: 24px;
   height: auto;
   line-height: 40px;
@@ -40,29 +50,30 @@ const Submit = styled(Button)`
   background-color: lightseagreen;
 `;
 
-/**
- * TODO: finish tests, then refactor by breaking up.
- */
 const signup = (props) => {
   const [emailInput, updateEmail] = useState("");
   const [usernameInput, updateUsername] = useState("");
   const [passwordInput, updatePassword] = useState("");
   const [passwordConfirm, updateConfirm] = useState("");
-  const [noSpace, setNoSpace] = useState(false);
   const [blanket, setBlanket] = useState(null);
+  const clearBlanket = () => setBlanket(null);
   const [TOS, setTOS] = useState(false);
 
   useEffect(() => {
     document.title = props.title;
   }, []);
 
-  if (usernameInput.includes(" ") && !noSpace) {
-    setNoSpace(true);
-  } else if (!usernameInput.includes(" ") && noSpace) {
-    setNoSpace(false);
-  }
-
-  const submit = () => {
+  /**
+   * Validate form and inject a modal warning into "blanket" if it is not
+   * valid. Checks for the following:
+   *
+   * - All fields are filled
+   * - Password and confirm password are the same
+   * - Terms of service box has been checked
+   *
+   * @returns {bool} whether form is valid
+   */
+  const validate = () => {
     if (
       emailInput === "" ||
       usernameInput === "" ||
@@ -73,26 +84,37 @@ const signup = (props) => {
         <ErrorArray
           header="Blank Fields"
           message={["Required fields are blank", "All fields are required."]}
-          onOk={() => setBlanket(null)}
+          onOk={clearBlanket}
         />
       );
-    } else if (passwordInput !== passwordConfirm) {
+      return false;
+    }
+    if (passwordInput !== passwordConfirm) {
       setBlanket(
         <ErrorArray
           header="Passwords do not match"
           message={[""]}
-          onOk={() => setBlanket(null)}
+          onOk={clearBlanket}
         />
       );
-    } else if (!TOS) {
+      return false;
+    }
+    if (!TOS) {
       setBlanket(
         <ErrorArray
           header="Terms of Service"
           message={["You must accept the terms of service to make an account"]}
-          onOk={() => setBlanket(null)}
+          onOk={clearBlanket}
         />
       );
-    } else {
+      return false;
+    }
+    return true;
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+    if (validate()) {
       props.register({
         email: emailInput,
         username: usernameInput,
@@ -100,8 +122,6 @@ const signup = (props) => {
       });
     }
   };
-
-  let pass_bool = passwordInput.length >= 8;
 
   if (props.isAuthenticated) {
     return <Redirect to="/teacher" />;
@@ -113,41 +133,34 @@ const signup = (props) => {
       <ErrorArray
         onOk={() => {
           props.clearError();
-          setBlanket(null);
+          clearBlanket();
         }}
         header="Validation Error"
         message={errors}
       />
     );
   }
+
   return (
     <div>
       {blanket}
       <Header>sign up!</Header>
       <Description>
-        <Grid>
+        <FlexForm data-testid="signupForm" onSubmit={submit}>
           <div>
             <h3>Email</h3>
             <input
               data-testid="emailInput"
               onChange={(event) => updateEmail(event.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  submit();
-                }
-              }}
             />
             <h3>Username</h3>
             <input
               data-testid="usernameInput"
-              style={noSpace ? { borderColor: "red" } : null}
+              style={
+                usernameInput.includes(" ") ? { borderColor: "red" } : null
+              }
               value={usernameInput}
               onChange={(event) => updateUsername(event.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  submit();
-                }
-              }}
             />
           </div>
           <div>
@@ -157,11 +170,6 @@ const signup = (props) => {
               type="password"
               value={passwordInput}
               onChange={(event) => updatePassword(event.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  submit();
-                }
-              }}
             />
             <h3>Confirm Password</h3>
             <input
@@ -169,24 +177,22 @@ const signup = (props) => {
               value={passwordConfirm}
               onChange={(e) => updateConfirm(e.target.value)}
               type="password"
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  submit();
-                }
-              }}
             />
           </div>
           <div>
-            {noSpace ? (
-              <P center warn>
-                Username may not contain spaces.
-              </P>
-            ) : null}
-            {pass_bool ? (
-              <LenMet>Your password is at least eight characters long</LenMet>
-            ) : (
-              <P center>Your password must be at least eight characters long</P>
-            )}
+            <ValidationMessages>
+              {passwordInput !== passwordConfirm ? (
+                <Li warn>Passwords do not match</Li>
+              ) : null}
+              {usernameInput.includes(" ") ? (
+                <Li warn>Username may not contain spaces.</Li>
+              ) : null}
+              {passwordInput.length >= PASSWD_MIN_LENGTH ? (
+                <Li confirm>Your password is at least eight characters long</Li>
+              ) : (
+                <Li>Your password must be at least eight characters long</Li>
+              )}
+            </ValidationMessages>
             <P>
               <SpanCbAligned>
                 I agree to the <Tos /> and <Privacy />
@@ -199,9 +205,7 @@ const signup = (props) => {
               />
             </P>
             <div>
-              <Submit data-testid="submit" onClick={() => submit()}>
-                Sign Up
-              </Submit>
+              <SubmitButton as="input" type="submit" value="Sign Up" />
             </div>
             <div>
               <Link to="/login">
@@ -209,7 +213,7 @@ const signup = (props) => {
               </Link>
             </div>
           </div>
-        </Grid>
+        </FlexForm>
       </Description>
     </div>
   );

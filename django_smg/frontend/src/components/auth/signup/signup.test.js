@@ -60,7 +60,7 @@ const submitForm = async (
     fireEvent.click(screen.getByTestId("tosCheckbox"));
   });
   await act(async () => {
-    fireEvent.click(screen.getByTestId("submit"));
+    fireEvent.submit(screen.getByTestId("signupForm"));
   });
   return data;
 };
@@ -101,12 +101,28 @@ describe("<Signup />", () => {
     });
     done();
   });
+  it("warns user if they put a space in the username", () => {
+    act(() => {
+      fireEvent.change(screen.getByTestId("usernameInput"), {
+        target: { value: " " },
+      });
+    });
+    expect(
+      screen.queryByText("Username may not contain spaces.")
+    ).toBeVisible();
+    act(() => {
+      fireEvent.change(screen.getByTestId("usernameInput"), {
+        target: { value: "nospaces" },
+      });
+    });
+    expect(screen.queryByText("Username may not contain spaces.")).toBeNull();
+  });
   it("restores original passwd length message after deleting password", async (done) => {
     // actions
     // input password
     act(() => {
       fireEvent.change(screen.getByTestId("passwordInput"), {
-        target: { value: "123456789" },
+        target: { value: "123456789A" },
       });
     });
     // partially remove password
@@ -126,7 +142,7 @@ describe("<Signup />", () => {
   });
   it("disallows empty fields", async (done) => {
     await act(async () => {
-      fireEvent.click(screen.getByTestId("submit"));
+      fireEvent.submit(screen.getByTestId("signupForm"));
     });
     await waitFor(() => {
       expect(ErrorArray).toHaveBeenCalledWith(
