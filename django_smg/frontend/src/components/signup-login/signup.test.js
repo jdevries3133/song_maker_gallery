@@ -178,27 +178,4 @@ describe("<Signup />", () => {
     );
     done();
   });
-  it("normalizes authErrors that are strings before passing to <ErrorArray />", async (done) => {
-    register.mockImplementation(() => (dispatch) => {
-      dispatch({
-        type: REGISTER,
-        payload: {
-          isAuthenticated: false,
-          authError: "something bad happened",
-          token: null,
-          user: null,
-        },
-      });
-    });
-    await submitForm();
-    expect(ErrorArray).toHaveBeenCalledWith(
-      {
-        message: expect.arrayContaining(["Error: something bad happened"]),
-        header: "Validation Error",
-        onOk: expect.anything(),
-      },
-      expect.anything()
-    );
-    done();
-  });
 });

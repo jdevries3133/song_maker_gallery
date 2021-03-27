@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { LOGIN, REGISTER, CLEAR_ERROR, LOGOUT } from "./types";
-import { normalizeErrorMessage } from "./normalizeErrorMsg";
+import { normalizeErrorMessage } from "./normalize_error_message";
 
 // LOGIN that does not catch or handle an error response. This is for silently
 // trying a localStorage token in the background.

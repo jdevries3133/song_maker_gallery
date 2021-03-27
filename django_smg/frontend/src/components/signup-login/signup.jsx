@@ -8,8 +8,6 @@ import styled, { P, Button, Checkbox, Description } from "../generics/styles";
 import { ErrorArray } from "../generics/custom_error";
 import { Tos, Privacy } from "../legal";
 
-import { normalizeErrMsg } from "./normalize_err_msg";
-
 // subtle adjust to align text with checkbox
 const SpanCbAligned = styled.span`
   position: relative;
@@ -108,9 +106,8 @@ const signup = (props) => {
   if (props.isAuthenticated) {
     return <Redirect to="/teacher" />;
   } else if (props.authError && !blanket) {
-    const normalizedErr = normalizeErrMsg(props.authError);
-    const errors = Object.keys(normalizedErr).map(
-      (k) => `${k}: ${normalizedErr[k]}`
+    const errors = Object.keys(props.authError).map(
+      (k) => `${k}: ${props.authError[k]}`
     );
     setBlanket(
       <ErrorArray

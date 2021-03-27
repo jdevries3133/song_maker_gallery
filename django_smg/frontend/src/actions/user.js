@@ -1,5 +1,5 @@
 import axios from "axios";
-import { normalizeErrorMessage } from "./normalizeErrorMsg";
+import { normalizeErrorMessage } from "./normalize_error_message";
 import { POST_GALLERY, GET_GALLERIES, DELETE_GALLERY } from "./types";
 
 // POST GALLERY
