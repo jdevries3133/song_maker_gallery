@@ -32,7 +32,6 @@ class AddGallery extends Component {
 
   // get user's galleries, available for view or deletion
   componentDidMount() {
-    document.title = this.props.title;
     // initial fetch of user's galleries
     if (this.props) {
       if (this.props.token) {

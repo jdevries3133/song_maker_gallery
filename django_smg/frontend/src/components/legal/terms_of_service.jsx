@@ -102,15 +102,8 @@ const TosContent = (props) => (
   </LegalContainer>
 );
 
-const setTitle = (title) => {
-  useEffect((title) => {
-    window.title = title || "Song Maker Gallery";
-  }, []);
-};
-
 /* Free-standing page content */
 export const TosPage = ({ title }) => {
-  setTitle(title);
   return (
     <Description>
       <TosContent />
@@ -120,7 +113,6 @@ export const TosPage = ({ title }) => {
 
 /* modal with close button */
 export const TosText = ({ onOk, title }) => {
-  setTitle(title);
   return (
     <Blanket>
       <TosContent okButton={<button onClick={() => onOk()}>Close</button>} />

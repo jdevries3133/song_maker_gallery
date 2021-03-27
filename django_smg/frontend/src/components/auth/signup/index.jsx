@@ -54,10 +54,6 @@ const signup = (props) => {
   const clearBlanket = () => setBlanket(null);
   const [TOS, setTOS] = useState(false);
 
-  useEffect(() => {
-    document.title = props.title;
-  }, []);
-
   /**
    * Validate form and inject a modal warning into "blanket" if it is not
    * valid. Checks for the following:

@@ -24,10 +24,7 @@ const TeacherHeader = ({ logout, token }) => {
   );
 };
 
-const Teacher = ({ title, token, logout }) => {
-  useEffect(() => {
-    document.title = title;
-  }, []);
+const Teacher = ({ token, logout }) => {
   return (
     <div>
       <TeacherHeader logout={logout} token={token} />

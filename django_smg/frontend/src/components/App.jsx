@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../store";
 
+import { Title } from "./common/set_page_title";
+
 import LandingPage from "./landing_page/landing_page";
 import PrivateRoute from "./common/private_route";
 import SignUp from "./auth/signup";
@@ -22,25 +24,35 @@ const App = () => (
           <LandingPage />
         </Route>
         <Route path="/signup">
-          <SignUp title="Sign Up" />
-          <Footer />
+          <Title is="Sign Up">
+            <SignUp />
+            <Footer />
+          </Title>
         </Route>
         <Route path="/login">
-          <Login title="Login" />
-          <Footer />
+          <Title is="Login">
+            <Login />
+            <Footer />
+          </Title>
         </Route>
         <Route path="/gallery/*">
           <Gallery />
         </Route>
         <Route path="/privacy/*">
-          <PrivacyPage />
+          <Title is="Privacy Policy">
+            <PrivacyPage />
+          </Title>
         </Route>
         <Route path="/tos/*">
-          <TosPage title="Terms of Service" />
+          <Title is="Terms of Service">
+            <TosPage />
+          </Title>
         </Route>
         <PrivateRoute path="/teacher">
-          <Teacher title="Gallery Management Console" />
-          <Footer />
+          <Title is="Gallery Management Console">
+            <Teacher />
+            <Footer />
+          </Title>
         </PrivateRoute>
       </Switch>
     </Router>
