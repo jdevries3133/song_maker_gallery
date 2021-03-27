@@ -8,17 +8,17 @@ import {
   waitFor,
 } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { Context } from "../../test/app_context";
+import { Context } from "../../../test/app_context";
 
-import Signup from "./signup";
-import { REGISTER } from "../../actions/types";
-import { register } from "../../actions/auth.action";
-import { Tos, Privacy } from "../legal";
-import { ErrorArray } from "../generics/custom_error";
+import Signup from "./index";
+import { REGISTER } from "../../../actions/types";
+import { register } from "../../../actions/auth.action";
+import { Tos, Privacy } from "../../legal";
+import { ErrorArray } from "../../common/custom_error";
 
-jest.mock("../generics/custom_error");
-jest.mock("../legal");
-jest.mock("../../actions/auth.action");
+jest.mock("../../common/custom_error");
+jest.mock("../../legal");
+jest.mock("../../../actions/auth.action");
 
 Tos.mockImplementation(() => <span>TOS MOCK</span>);
 Privacy.mockImplementation(() => <span>PRIVACY POLICY MOCK</span>);

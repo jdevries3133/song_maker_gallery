@@ -1,13 +1,13 @@
 import React from "react";
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import { Route } from "react-router-dom";
-import { Context } from "../../test/app_context";
 
-import Login from "./login";
-import { loginAction } from "../../test/__mocks__/actions";
-import { login, tryToken } from "../../actions/auth.action";
+import { Context } from "../../../test/app_context";
+import { loginAction } from "../../../test/__mocks__/actions";
+import Login from "./index";
+import { login, tryToken } from "../../../actions/auth.action";
 
-jest.mock("../../actions/auth.action");
+jest.mock("../../../actions/auth.action");
 
 beforeEach(() => tryToken.mockImplementation(() => null));
 

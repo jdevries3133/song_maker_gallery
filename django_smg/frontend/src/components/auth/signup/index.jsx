@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import { register, clearError } from "../../actions/auth.action";
-import styled, { P, Button, Checkbox, Description } from "../generics/styles";
-import { ErrorArray } from "../generics/custom_error";
-import { Tos, Privacy } from "../legal";
+import { register, clearError } from "../../../actions/auth.action";
+import styled, { P, Button, Checkbox, Description } from "../../common/styles";
+import { ErrorArray } from "../../common/custom_error";
+import { Tos, Privacy } from "../../legal";
 
 // subtle adjust to align text with checkbox
 const SpanCbAligned = styled.span`

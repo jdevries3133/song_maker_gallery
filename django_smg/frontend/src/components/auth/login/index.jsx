@@ -5,14 +5,14 @@ import {
   login as loginAction,
   clearError,
   tryToken,
-} from "../../actions/auth.action";
-import { getUserGalleries } from "../../actions/user";
+} from "../../../actions/auth.action";
+import { getUserGalleries } from "../../../actions/user";
 import { Link, Redirect } from "react-router-dom";
-import { ErrorArray } from "../generics/custom_error";
+import { ErrorArray } from "../../common/custom_error";
 import UsernamePassword from "./username_password";
-import { windowLocation } from "../../util/window";
+import { windowLocation } from "../../../util/window";
 
-import { Button } from "../generics/styles";
+import { Button } from "../../common/styles";
 
 const NeedAccount = styled(Button)`
   min-width: 14px;
