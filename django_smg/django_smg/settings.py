@@ -17,7 +17,7 @@ if not DEBUG and sys.platform == 'linux':
     # require https in production. The linux check is kinda hacky but
     # prevents this from being set on my local machine when developing.
     # obviously, that won't help if you develop on linux so I'm sorry.
-    SECURE_HSTS_SECONDS = 3600  # increase to 1 yr later if all goes well
+    SECURE_HSTS_SECONDS = 3600  # TODO: increase to 1 yr later if all goes well
     SECURE_SSL_REDIRECT = True
     SECURE_HSTS_PRELOAD = True
     SESSION_COOKIE_SECURE = True

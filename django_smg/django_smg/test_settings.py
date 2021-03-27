@@ -1,3 +1,8 @@
+"""
+This is injected last automatically when you run tests with manage.py. It just
+suppresses log messages because ideally, they don't need to be seen in most
+cases.
+"""
 from .settings import *
 
 SKIP_FETCH_AND_CACHE = True

@@ -3,7 +3,6 @@
  * to test code without causing an implosion other than wrapping every
  * browser API in a mockable function?
  */
-
 export const windowLocation = (property) => {
   return window.location[property] || `window.location.${property} not defined`;
 };

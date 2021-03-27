@@ -13,8 +13,6 @@ from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
 
 logger = logging.getLogger(__name__)
 
-# Register API
-
 
 class RegisterAPI(GenericAPIView):
     permission_classes = [permissions.AllowAny]
@@ -59,13 +57,11 @@ class LoginAPI(KnoxLoginView):
     def get(self, request):
         if request.user.is_authenticated:
             return super().post(request, format=None)
-        return Response(
-            {
+        return Response({
             'message': (
                 'Must provide token for rotation or authenticate with '
                 'credentials via POST request to this endpoint'
-            )
-            },
+            )},
             status=status.HTTP_403_FORBIDDEN,
         )
 
