@@ -41,7 +41,8 @@ const login = (props) => {
     return <Redirect to="/teacher" />;
   }
 
-  const submit = () => {
+  const submit = (e) => {
+    e.preventDefault();
     props.loginAction({ username: username, password: password });
   };
 
@@ -63,19 +64,15 @@ const login = (props) => {
           password={(p) => updatePassword(p)}
           submit={submit}
         />
-        <div style={{ marginTop: "20px" }}>
-          <button data-testid="loginSubmit" onClick={() => submit()}>
-            Login
-          </button>
-        </div>
       </div>
-      <br />
-      <Link to="/signup">
-        <NeedAccount>Need an account?</NeedAccount>
-      </Link>
-      <a href={`${windowLocation("origin")}/accounts/password_reset/`}>
-        <ForgotPass>Forgot your password?</ForgotPass>
-      </a>
+      <div>
+        <Link to="/signup">
+          <NeedAccount>Need an account?</NeedAccount>
+        </Link>
+        <a href={`${windowLocation("origin")}/accounts/password_reset/`}>
+          <ForgotPass>Forgot your password?</ForgotPass>
+        </a>
+      </div>
     </div>
   );
 };

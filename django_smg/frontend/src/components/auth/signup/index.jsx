@@ -4,11 +4,19 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import { register, clearError } from "../../../actions/auth.action";
-import styled, { P, Button, Checkbox, Description } from "../../common/styles";
+import styled, {
+  P,
+  Button,
+  Label,
+  Checkbox,
+  Description,
+} from "../../common/styles";
 import { ErrorArray } from "../../common/custom_error";
 import { Tos, Privacy } from "../../legal";
 
-const PASSWD_MIN_LENGTH = 9;
+import { ValidationMessages } from "./validation_messages";
+
+export const PASSWD_MIN_LENGTH = 9;
 
 // subtle adjust to align text with checkbox
 const SpanCbAligned = styled.span`
@@ -27,19 +35,6 @@ const FlexForm = styled.form`
   justify-content: center;
   flex-wrap: wrap;
   gap: 3rem;
-`;
-
-const Li = ({ children, ...rest }) => (
-  <P as="li" {...rest}>
-    {children}
-  </P>
-);
-
-const ValidationMessages = styled.ul`
-  list-style-type: none;
-  background-color: #adff1626;
-  border-radius: 20px;
-  padding: 1em;
 `;
 
 const SubmitButton = styled(Button)`
@@ -148,13 +143,15 @@ const signup = (props) => {
       <Description>
         <FlexForm data-testid="signupForm" onSubmit={submit}>
           <div>
-            <h3>Email</h3>
+            <Label htmlFor="email">Email</Label>
             <input
+              id="email"
               data-testid="emailInput"
               onChange={(event) => updateEmail(event.target.value)}
             />
-            <h3>Username</h3>
+            <Label htmlFor="username">Username</Label>
             <input
+              id="username"
               data-testid="usernameInput"
               style={
                 usernameInput.includes(" ") ? { borderColor: "red" } : null
@@ -164,35 +161,43 @@ const signup = (props) => {
             />
           </div>
           <div>
-            <h3>Password</h3>
+            <Label htmlFor="password">Password</Label>
             <input
+              id="password"
               data-testid="passwordInput"
               type="password"
               value={passwordInput}
               onChange={(event) => updatePassword(event.target.value)}
+              style={
+                passwordInput &&
+                passwordConfirm &&
+                passwordInput !== passwordConfirm
+                  ? { borderColor: "red" }
+                  : null
+              }
             />
-            <h3>Confirm Password</h3>
+            <Label htmlFor="confirm password">Confirm Password</Label>
             <input
+              id="confirm password"
               data-testid="passwordConfirmInput"
               value={passwordConfirm}
               onChange={(e) => updateConfirm(e.target.value)}
               type="password"
+              style={
+                passwordInput &&
+                passwordConfirm &&
+                passwordInput !== passwordConfirm
+                  ? { borderColor: "red" }
+                  : null
+              }
             />
           </div>
           <div>
-            <ValidationMessages>
-              {passwordInput !== passwordConfirm ? (
-                <Li warn>Passwords do not match</Li>
-              ) : null}
-              {usernameInput.includes(" ") ? (
-                <Li warn>Username may not contain spaces.</Li>
-              ) : null}
-              {passwordInput.length >= PASSWD_MIN_LENGTH ? (
-                <Li confirm>Your password is at least eight characters long</Li>
-              ) : (
-                <Li>Your password must be at least eight characters long</Li>
-              )}
-            </ValidationMessages>
+            <ValidationMessages
+              usernameInput={usernameInput}
+              passwordInput={passwordInput}
+              passwordConfirm={passwordConfirm}
+            />
             <P>
               <SpanCbAligned>
                 I agree to the <Tos /> and <Privacy />

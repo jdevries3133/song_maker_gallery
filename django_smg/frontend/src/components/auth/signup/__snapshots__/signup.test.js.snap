@@ -3,7 +3,7 @@
 exports[`<Signup /> matches snapshot 1`] = `
 <div>
   <h1
-    className="sc-gsTCUz fQZbwX"
+    className="sc-dlfnbm enZwIY"
   >
     sign up!
   </h1>
@@ -11,52 +11,75 @@ exports[`<Signup /> matches snapshot 1`] = `
     className="styles__Description-emvDpe hIumWL"
   >
     <form
-      className="sc-dlfnbm fskUme"
+      className="sc-hKgILt jEtSiU"
       data-testid="signupForm"
       onSubmit={[Function]}
     >
       <div>
-        <h3>
+        <label
+          className="styles__Label-fjhDua bsFPVU"
+          htmlFor="email"
+        >
           Email
-        </h3>
+        </label>
         <input
           data-testid="emailInput"
+          id="email"
           onChange={[Function]}
         />
-        <h3>
+        <label
+          className="styles__Label-fjhDua bsFPVU"
+          htmlFor="username"
+        >
           Username
-        </h3>
+        </label>
         <input
           data-testid="usernameInput"
+          id="username"
           onChange={[Function]}
           style={null}
           value=""
         />
       </div>
       <div>
-        <h3>
+        <label
+          className="styles__Label-fjhDua bsFPVU"
+          htmlFor="password"
+        >
           Password
-        </h3>
+        </label>
         <input
           data-testid="passwordInput"
+          id="password"
           onChange={[Function]}
+          style={null}
           type="password"
           value=""
         />
-        <h3>
+        <label
+          className="styles__Label-fjhDua bsFPVU"
+          htmlFor="confirm password"
+        >
           Confirm Password
-        </h3>
+        </label>
         <input
           data-testid="passwordConfirmInput"
+          id="confirm password"
           onChange={[Function]}
+          style={null}
           type="password"
           value=""
         />
       </div>
       <div>
         <ul
-          className="sc-hKgILt jtNpxQ"
+          className="sc-bdfBwQ eeDijd"
         >
+          <li
+            className="styles__P-dIaYsU hrjpGi"
+          >
+            Username does not contain any spaces
+          </li>
           <li
             className="styles__P-dIaYsU kxTZyV"
           >
@@ -67,7 +90,7 @@ exports[`<Signup /> matches snapshot 1`] = `
           className="styles__P-dIaYsU kxTZyV"
         >
           <span
-            className="sc-bdfBwQ eFmiac"
+            className="sc-gsTCUz eDenOA"
           >
             I agree to the 
             <span>

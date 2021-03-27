@@ -47,6 +47,21 @@ export const H2 = styled.h2`
   border-radius: 20px;
 `;
 
+export const Label = styled.label`
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  ${(props) =>
+    props.inline &&
+    css`
+      display: inline;
+    `}
+`;
+
 export const P = styled.p`
   text-align: center;
   padding: 0 20px 0 20px;

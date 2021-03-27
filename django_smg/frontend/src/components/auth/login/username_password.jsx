@@ -1,30 +1,30 @@
-import React, { Fragment } from "react";
+import React from "react";
+import { Label } from "../../common/styles";
 
-const username_password = (props) => {
+const username_password = ({ username, password, submit }) => {
   return (
-    <Fragment>
-      <h3>Username</h3>
-      <input
-        data-testid="usernameInput"
-        onChange={(event) => props.username(event.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            props.submit();
-          }
-        }}
-      />
-      <h3>Password</h3>
-      <input
-        data-testid="passwordInput"
-        type="password"
-        onChange={(event) => props.password(event.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            props.submit();
-          }
-        }}
-      />
-    </Fragment>
+    <form onSubmit={submit}>
+      <div>
+        <Label htmlFor="username">Username</Label>
+        <input
+          id="username"
+          data-testid="usernameInput"
+          onChange={(event) => username(event.target.value)}
+        />
+        <Label htmlFor="password">Password</Label>
+        <input
+          id="password"
+          data-testid="passwordInput"
+          type="password"
+          onChange={(event) => password(event.target.value)}
+        />
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <button data-testid="loginSubmit" onClick={submit}>
+          Login
+        </button>
+      </div>
+    </form>
   );
 };
 
