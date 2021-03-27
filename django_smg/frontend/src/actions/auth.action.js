@@ -95,7 +95,7 @@ export const register = (data) => (dispatch) => {
         type: REGISTER,
         payload: {
           isAuthenticated: false,
-          authError: normalizeErrorMessag(e.response?.data, e.response.status),
+          authError: normalizeErrorMessage(e.response?.data, e.response.status),
           token: null,
           user: null,
         },
@@ -120,7 +120,7 @@ export const logout = (token) => (dispatch) => {
       dispatch({
         type: REGISTER,
         payload: {
-          authError: normalizeErrorMessag(e.response?.data, e.response.status),
+          authError: normalizeErrorMessage(e.response?.data, e.response.status),
         },
       });
     });
