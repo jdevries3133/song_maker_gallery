@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Loading from "../generics/loading";
+import Loading from "../common/loading";
 import GalleryBody from "./gal_body";
 
 import { getGallery } from "../../actions/gallery";

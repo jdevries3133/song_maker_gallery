@@ -2,7 +2,7 @@ import React from "react";
 
 import GalleryBody from "../gallery/gal_body";
 import Welcome from "./welcome/welcome";
-import styled, { Div as DefaultDiv } from "../generics/styles";
+import styled, { Div as DefaultDiv } from "../common/styles";
 
 import sampleGallery from "./sample-gallery.json";
 

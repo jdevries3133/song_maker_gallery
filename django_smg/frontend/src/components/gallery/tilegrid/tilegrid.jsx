@@ -1,6 +1,6 @@
 import React from "react";
 import { DynamicTile } from "./DynamicTile";
-import useWidth from "../../generics/useWidth";
+import useWidth from "../../common/useWidth";
 import styles from "./tilegrid.module.css";
 
 const tileGrid = (props) => {

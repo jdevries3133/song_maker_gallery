@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "../../generics/styles";
+import { Button } from "../../common/styles";
 
 const Nav = styled.nav`
   text-align: center;

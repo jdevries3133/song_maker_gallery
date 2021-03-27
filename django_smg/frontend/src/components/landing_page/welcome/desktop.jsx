@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { WelcomeText } from "./WelcomeText";
-import styled, { H1 as DefaultH1 } from "../../generics/styles";
+import styled, { H1 as DefaultH1 } from "../../common/styles";
 
 import { Button } from "./mobile";
 

@@ -1,8 +1,8 @@
 import React from "react";
-import useWidth from "../../generics/useWidth";
+import useWidth from "../../common/useWidth";
 import Desktop from "./desktop";
 import Mobile from "./mobile";
-import styled, { Div as DefaultDiv } from "../../generics/styles";
+import styled, { Div as DefaultDiv } from "../../common/styles";
 
 const Div = styled(DefaultDiv)`
   margin-bottom: 11rem;

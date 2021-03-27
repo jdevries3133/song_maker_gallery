@@ -6,12 +6,12 @@ import { Provider } from "react-redux";
 import store from "../store";
 
 import LandingPage from "./landing_page/landing_page";
-import PrivateRoute from "./generics/private_route";
-import SignUp from "./signup-login/signup";
-import Login from "./signup-login/login";
+import PrivateRoute from "./common/private_route";
+import SignUp from "./auth/signup";
+import Login from "./auth/login";
 import Gallery from "./gallery/gallery";
 import Teacher from "./teacher";
-import { Footer } from "./generics/footer";
+import { Footer } from "./common/footer";
 import { TosPage, PrivacyPage } from "./legal";
 
 const App = () => (

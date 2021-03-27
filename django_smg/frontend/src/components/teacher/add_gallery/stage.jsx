@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { StagedGroup } from "./snippets";
-import { ErrorArray } from "../../generics/custom_error";
+import { ErrorArray } from "../../common/custom_error";
 import styles from "./add_gallery.module.css";
 
 export const TITLE_LENGTH_LIMIT = 100;

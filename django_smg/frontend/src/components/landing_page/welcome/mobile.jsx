@@ -4,7 +4,7 @@ import { WelcomeText } from "./WelcomeText";
 import styled, {
   H1 as DefaultH1,
   Button as DefaultButton,
-} from "../../generics/styles";
+} from "../../common/styles";
 
 export const Button = styled(DefaultButton)`
   height: 4 rem;

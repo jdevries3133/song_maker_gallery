@@ -3,9 +3,9 @@ import { ThemeProvider } from "styled-components";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
-import Button from "../../generics/button";
+import Button from "../../common/button";
 import ConfirmDelete from "./confirm_delete";
-import ServerError from "../../generics/server_error";
+import ServerError from "../../common/server_error";
 import {
   postGallery,
   deleteGallery,

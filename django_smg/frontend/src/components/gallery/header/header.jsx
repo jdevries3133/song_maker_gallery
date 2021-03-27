@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Button } from "../../generics/styles";
+import { Button } from "../../common/styles";
 import FormattedDescription from "./formatted_description";
 import NavBar from "./navBar";
-import useWidth from "../../generics/useWidth";
+import useWidth from "../../common/useWidth";
 
 const Header = styled.header`
   margin-bottom: 10rem;

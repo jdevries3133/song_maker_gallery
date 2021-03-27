@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import styled, { Div, Blanket, Description } from "../generics/styles";
+import styled, { Div, Blanket, Description } from "../common/styles";
 
 export const LegalContainer = styled(Div)`
   margin: 3%;
