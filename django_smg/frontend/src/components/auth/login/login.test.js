@@ -90,7 +90,7 @@ describe("login", () => {
         </Route>
       </Context>
     );
-    act(() => {
+    await act(async () => {
       fireEvent.input(screen.getByTestId("usernameInput"), "username");
       fireEvent.input(screen.getByTestId("passwordInput"), "password");
       fireEvent.click(screen.getByTestId("loginSubmit"));
@@ -98,7 +98,7 @@ describe("login", () => {
     await waitFor(() => {
       expect(screen.getByTestId("onOkButton")).toBeVisible();
     });
-    act(() => {
+    await act(async () => {
       fireEvent.click(screen.getByTestId("onOkButton"));
     });
     await waitFor(() => {
