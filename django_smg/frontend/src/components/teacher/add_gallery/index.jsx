@@ -62,7 +62,7 @@ class AddGallery extends Component {
     }
   }
 
-  // see <Add />
+  // called by <Add />
   csvHandler = () => {
     let fileName = "";
     try {
@@ -91,7 +91,7 @@ class AddGallery extends Component {
     Papa.parse(this.state.fileInputRef.current.files[0], config);
   };
 
-  // see <Add /> and <Verify />
+  // called by <Add /> and <Verify />
   resetFormHandler = () => {
     this.state.fileInputRef.current.value = "";
     this.setState({
@@ -100,14 +100,15 @@ class AddGallery extends Component {
       verifyUpload: false,
     });
   };
-  // see <Add /> and <Verify />
+
+  // called by <Add /> and <Verify />
   groupNameHandler = (e) => {
     this.setState({
       groupname: e.target.value,
     });
   };
 
-  // see <Verify />
+  // called by <Verify />
   groupValidatedHandler = (verifiedArray) => {
     // Pull the default group name off and replace it with the user inputted
     // one
@@ -132,8 +133,8 @@ class AddGallery extends Component {
       }
     });
   };
-  // see <Stage />
-  unStageGroupHandler = (group_to_delete) => {
+  // called by <Stage />
+  unstageGroupHandler = (group_to_delete) => {
     const groups = [...this.state.stagedGroups];
     if (groups.length <= 1) {
       this.setState({ stagedGroups: [] });
@@ -148,25 +149,13 @@ class AddGallery extends Component {
       stagedGroups: updated_groups,
     });
   };
-  // see <Verify />
-  handleVerificationIndicies = (value, flag) => {
-    if (flag === "name") {
-      this.setState({
-        nameIndex: value,
-      });
-    } else if (flag === "link") {
-      this.setState({ linkIndex: value });
-    } else {
-      console.warn("invalid index flag");
-    }
-  };
 
-  // see <Stage />
+  // called by <Stage />
   titleInputHandler = (e) => {
     this.setState({ titleValue: e.target.value });
   };
 
-  // see <Stage />
+  // called by <Stage />
   descriptionInputHandler = (e) => {
     this.setState({
       descriptionValue: e.target.value,
@@ -247,25 +236,6 @@ class AddGallery extends Component {
       return <Redirect to="/login" />;
     }
 
-    // let blanket;
-    let staged;
-
-    // // As the user uploads additional groups, the staged groups are held in a
-    // // list at the bottom of the page
-    if (this.state.stagedGroups && this.state.stagedGroups.length > 0) {
-      staged = (
-        <Stage
-          unStageGroupHandler={this.unStageGroupHandler}
-          groups={this.state.stagedGroups}
-          confirmCreate={this.inputConfirmation}
-          titleInput={this.titleInputHandler}
-          titleValue={this.state.titleValue}
-          descriptionInput={this.descriptionInputHandler}
-          descriptionValue={this.state.descriptionValue}
-        />
-      );
-    }
-
     return (
       <>
         <Blankets
@@ -319,9 +289,18 @@ class AddGallery extends Component {
           uploadRequest={this.csvHandler}
           warn={this.state.warn}
           uploadedContent={this.state.uploadedContent}
-          staged={staged}
         />
-        {staged}
+        {this.state.stagedGroups && this.state.stagedGroups.length > 0 ? (
+          <Stage
+            unstageGroupHandler={this.unstageGroupHandler}
+            groups={this.state.stagedGroups}
+            confirmCreate={this.inputConfirmation}
+            titleInput={this.titleInputHandler}
+            titleValue={this.state.titleValue}
+            descriptionInput={this.descriptionInputHandler}
+            descriptionValue={this.state.descriptionValue}
+          />
+        ) : null}
       </>
     );
   }

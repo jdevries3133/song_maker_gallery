@@ -11,7 +11,7 @@ const MOCK_STAGED_INIT = {
   descriptionValue: "description",
   descriptionInput: jest.fn(),
   groups: [[]],
-  unStageGroupHandler: jest.fn(),
+  unstageGroupHandler: jest.fn(),
   confirmCreate: jest.fn(),
 };
 

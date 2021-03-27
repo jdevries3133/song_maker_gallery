@@ -67,7 +67,7 @@ export const Stage = (props) => {
         {props.groups.map((group) => (
           <StagedGroup
             key={group.join("") + Math.random().toString()}
-            unStageGroupHandler={props.unStageGroupHandler}
+            unstageGroupHandler={props.unstageGroupHandler}
             group={group}
           />
         ))}
@@ -93,6 +93,6 @@ Stage.propTypes = {
   descriptionValue: PropTypes.string.isRequired,
   descriptionInput: PropTypes.func.isRequired,
   groups: PropTypes.array.isRequired,
-  unStageGroupHandler: PropTypes.func.isRequired,
+  unstageGroupHandler: PropTypes.func.isRequired,
   confirmCreate: PropTypes.func.isRequired,
 };

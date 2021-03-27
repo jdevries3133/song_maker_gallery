@@ -1,5 +1,13 @@
 import React from "react";
-import { render, fireEvent, cleanup } from "@testing-library/react";
+import {
+  act,
+  render,
+  fireEvent,
+  cleanup,
+  screen,
+  waitFor,
+} from "@testing-library/react";
+import "@testing-library/jest-dom";
 import { Route } from "react-router-dom";
 
 import { Context } from "../../../test/app_context";
@@ -25,7 +33,7 @@ describe("login", () => {
         is_success: true,
       })
     );
-    const { getByTestId } = render(
+    render(
       <Context>
         <Login />
         <Route path="/teacher">
@@ -33,10 +41,10 @@ describe("login", () => {
         </Route>
       </Context>
     );
-    fireEvent.input(getByTestId("usernameInput"), "username");
-    fireEvent.input(getByTestId("passwordInput"), "password");
-    fireEvent.click(getByTestId("loginSubmit"));
-    expect(getByTestId("teacher")).toBeTruthy();
+    fireEvent.input(screen.getByTestId("usernameInput"), "username");
+    fireEvent.input(screen.getByTestId("passwordInput"), "password");
+    fireEvent.click(screen.getByTestId("loginSubmit"));
+    expect(screen.getByTestId("teacher")).toBeTruthy();
   });
 
   it("shows an error if bad credentials are entered", () => {
@@ -46,7 +54,7 @@ describe("login", () => {
         is_success: false,
       })
     );
-    const { queryByTestId, getByTestId, getByText } = render(
+    render(
       <Context>
         <Login />
         <Route path="/teacher">
@@ -54,13 +62,48 @@ describe("login", () => {
         </Route>
       </Context>
     );
-    fireEvent.input(getByTestId("usernameInput"), "username");
-    fireEvent.input(getByTestId("passwordInput"), "password");
-    fireEvent.click(getByTestId("loginSubmit"));
-    expect(queryByTestId("teacher")).toBeFalsy();
-    getByText("Bad Credentials");
-    getByText(
-      "Please check that you are using the correct username and password."
+    act(() => {
+      fireEvent.input(screen.getByTestId("usernameInput"), "username");
+      fireEvent.input(screen.getByTestId("passwordInput"), "password");
+      fireEvent.click(screen.getByTestId("loginSubmit"));
+    });
+    expect(screen.queryByTestId("teacher")).toBeFalsy();
+    expect(screen.getByText("Error")).toBeVisible();
+    expect(
+      screen.getByText(
+        "Please check that you are using the correct username and password."
+      )
+    ).toBeVisible();
+  });
+  test("modal window can be dismissed", async (done) => {
+    login.mockImplementation(() =>
+      loginAction({
+        token: null,
+        is_success: false,
+      })
     );
+    render(
+      <Context>
+        <Login />
+        <Route path="/teacher">
+          <div data-testid="teacher"></div>
+        </Route>
+      </Context>
+    );
+    act(() => {
+      fireEvent.input(screen.getByTestId("usernameInput"), "username");
+      fireEvent.input(screen.getByTestId("passwordInput"), "password");
+      fireEvent.click(screen.getByTestId("loginSubmit"));
+    });
+    await waitFor(() => {
+      expect(screen.getByTestId("onOkButton")).toBeVisible();
+    });
+    act(() => {
+      fireEvent.click(screen.getByTestId("onOkButton"));
+    });
+    await waitFor(() => {
+      expect(screen.queryByTestId("CustomError")).toBeNull();
+    });
+    done();
   });
 });

@@ -63,7 +63,7 @@ export const StagedGroup = (props) => {
             <td>
               <button
                 className={styles.restart_btn}
-                onClick={() => props.unStageGroupHandler(groupname)}
+                onClick={() => props.unstageGroupHandler(groupname)}
               >
                 Unstage Group
               </button>

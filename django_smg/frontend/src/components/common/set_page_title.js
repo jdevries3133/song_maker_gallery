@@ -1,8 +1,8 @@
-import React from "react";
+import { useEffect } from "react";
 
 export const Title = ({ is, children }) => {
   useEffect(() => {
-    window.title = is;
+    document.title = is;
   }, []);
   return children;
 };

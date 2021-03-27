@@ -8,11 +8,11 @@ import {
 } from "../../../actions/auth.action";
 import { getUserGalleries } from "../../../actions/user";
 import { Link, Redirect } from "react-router-dom";
-import { ErrorArray } from "../../common/custom_error";
 import UsernamePassword from "./username_password";
 import { windowLocation } from "../../../util/window";
-
 import { Button } from "../../common/styles";
+
+import { ErrorHandler } from "./error_handler";
 
 const NeedAccount = styled(Button)`
   min-width: 14px;
@@ -47,15 +47,7 @@ const login = (props) => {
 
   return (
     <div>
-      {props.badCredentials ? (
-        <ErrorArray
-          header="Bad Credentials"
-          message={[
-            "Please check that you are using the correct username and password.",
-          ]}
-          onOk={props.clearError}
-        />
-      ) : null}
+      <ErrorHandler err={props.authError} />
       <h1>login!</h1>
       <div className="description">
         <UsernamePassword
@@ -78,9 +70,8 @@ const login = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    badCredentials: state.auth.authError,
+    authError: state.auth.authError,
     isAuthenticated: state.auth.isAuthenticated,
-    serverError: null, // implement global server error handling later
     galleries: state.user.galleries,
   };
 };
