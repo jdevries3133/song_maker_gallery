@@ -1,10 +1,31 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+
 import { StagedGroup } from "./snippets";
 import { ErrorArray } from "../../common/custom_error";
-import styles from "./add_gallery.module.css";
+import styled, { H2, H3, P, Input, Button, Div } from "../../common/styles";
+
+import { SizeLimitCounter } from "./verify";
 
 export const TITLE_LENGTH_LIMIT = 100;
+
+const LargeButton = styled(Button)`
+  padding: 50px;
+  background-color: #ffc107;
+  border: 3px solid black;
+`;
+
+const TextArea = styled.textarea`
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 0px;
+  width: 85%;
+  height: 263px;
+  box-shadow: 1px 1px 1px #999;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
 
 export const Stage = (props) => {
   const [blanket, setBlanket] = useState(null);
@@ -26,44 +47,33 @@ export const Stage = (props) => {
     }
   };
   return (
-    <div>
+    <Div>
       {blanket}
-      <h2>Your Staged Gallery</h2>
-      <br />
-      <div>
-        <h3>Gallery Name:</h3>
-        <input
+      <H2>Your Staged Gallery</H2>
+      <Div>
+        <H3>Gallery Name:</H3>
+        <Input
           data-testid="titleInput"
-          className={styles.wide_input}
           placeholder="Name of your gallery here"
           value={props.titleValue}
           onChange={(e) => props.titleInput(e)}
         />{" "}
-        {props.titleValue.length >= 50 ? (
-          <span
-            style={
-              props.titleValue.length >= TITLE_LENGTH_LIMIT
-                ? { color: "red" }
-                : props.titleValue.length >= TITLE_LENGTH_LIMIT - 10
-                ? { color: "orange" }
-                : null
-            }
-            data-testid="titleLenLimit"
-          >
-            {props.titleValue.length}/{TITLE_LENGTH_LIMIT}
-          </span>
-        ) : null}
-        <h3>Gallery Description:</h3>
-        <p>
+        <SizeLimitCounter
+          length={props.titleValue.length}
+          limit={TITLE_LENGTH_LIMIT}
+          warnLimit={TITLE_LENGTH_LIMIT - 10}
+          hideUntil={50}
+        />
+        <H3>Gallery Description:</H3>
+        <P>
           You may use this default description, or change it to whatever you
           prefer.
-        </p>
-        <textarea
-          className={styles.desc_input}
+        </P>
+        <TextArea
           value={props.descriptionValue}
           onChange={(e) => props.descriptionInput(e)}
         />
-        <h3>Staged Goups</h3>
+        <H3>Staged Goups</H3>
         {props.groups.map((group) => (
           <StagedGroup
             key={group.join("") + Math.random().toString()}
@@ -71,19 +81,14 @@ export const Stage = (props) => {
             group={group}
           />
         ))}
-      </div>
-      <br />
-      <button
-        data-testid="submit"
-        className={styles.large_button}
-        onClick={submitValidation}
-      >
-        <p>Create Gallery</p>
-        <p>
+      </Div>
+      <LargeButton data-testid="submit" onClick={submitValidation}>
+        <P>Create Gallery</P>
+        <P>
           (Or, add another group by uploading another <code>.csv</code> file.)
-        </p>
-      </button>
-    </div>
+        </P>
+      </LargeButton>
+    </Div>
   );
 };
 

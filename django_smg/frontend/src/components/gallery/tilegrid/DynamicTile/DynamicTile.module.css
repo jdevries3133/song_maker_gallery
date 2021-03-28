@@ -47,7 +47,6 @@
 /* RECT */
 .tile__svg:hover > rect {
   opacity: 0;
-  box-sizing: border-box;
   stroke: var(--purple);
   stroke-width: 8px;
   transition: 100ms;

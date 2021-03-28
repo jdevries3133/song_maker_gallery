@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+
+import { Div } from "../common/styles";
+import useWidth from "../common/useWidth";
 import { Tos, Privacy } from "../legal";
 
 const FooterElem = styled.footer`
@@ -14,12 +17,15 @@ const FooterElem = styled.footer`
   }
 `;
 
-export const Footer = (props) => (
-  <FooterElem>
-    <div style={{ display: "inline-block" }}>
-      <Tos displayText="terms of service" />
-      <span>|</span>
-      <Privacy displayText="privacy policy" />
-    </div>
-  </FooterElem>
-);
+export const Footer = () => {
+  const { width } = useWidth(415);
+  return (
+    <FooterElem>
+      <Div>
+        <Tos displayText="terms of service" />
+        {width > 415 ? <span>|</span> : <br />}
+        <Privacy displayText="privacy policy" />
+      </Div>
+    </FooterElem>
+  );
+};

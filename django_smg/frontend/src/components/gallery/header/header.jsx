@@ -1,7 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 
-import { Button } from "../../common/styles";
+import styled, { H1, P, Button, Description } from "../../common/styles";
 import FormattedDescription from "./formatted_description";
 import NavBar from "./navBar";
 import useWidth from "../../common/useWidth";
@@ -24,29 +23,29 @@ const header = (props) => {
   return (
     <Header>
       {width > 1000 ? <NavBar data={props.data} /> : null}
-      <h1>{props.title}</h1>
-      <div className="description">
+      <H1>{props.title}</H1>
+      <Description>
         <FormattedDescription desc_str={props.description} />
         {width > 475 ? (
-          <p>
+          <P>
             <b>
               Hover over the picture of a students' work to see their name, and
               click to open their composition in a new tab
             </b>
-          </p>
+          </P>
         ) : (
-          <p>
+          <P>
             <b>
               Scroll down to view the gallery! Each tile shows a student's
               composition, and that student's name will be displayed when their
               tile reaches the top of your phone screen!
             </b>
-          </p>
+          </P>
         )}
         <a href="#gallery">
           <CallToAction>View Gallery</CallToAction>
         </a>
-      </div>
+      </Description>
       {width < 1000 ? <NavBar data={props.data} /> : null}
     </Header>
   );

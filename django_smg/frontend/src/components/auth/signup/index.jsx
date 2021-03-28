@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import { register, clearError } from "../../../actions/auth.action";
 import styled, {
+  Input,
+  Div,
   P,
   Button,
   Label,
@@ -133,21 +135,23 @@ const signup = (props) => {
   }
 
   return (
-    <div>
+    <Div>
       {blanket}
       <Header>sign up!</Header>
       <Description>
         <FlexForm data-testid="signupForm" onSubmit={submit}>
-          <div>
+          <Div>
             <Label htmlFor="email">Email</Label>
-            <input
+            <Input
               id="email"
+              autoComplete="email"
               data-testid="emailInput"
               onChange={(event) => updateEmail(event.target.value)}
             />
             <Label htmlFor="username">Username</Label>
-            <input
+            <Input
               id="username"
+              autoComplete="username"
               data-testid="usernameInput"
               style={
                 usernameInput.includes(" ") ? { borderColor: "red" } : null
@@ -155,11 +159,12 @@ const signup = (props) => {
               value={usernameInput}
               onChange={(event) => updateUsername(event.target.value)}
             />
-          </div>
-          <div>
+          </Div>
+          <Div>
             <Label htmlFor="password">Password</Label>
-            <input
+            <Input
               id="password"
+              autoComplete="new-password"
               data-testid="passwordInput"
               type="password"
               value={passwordInput}
@@ -173,8 +178,9 @@ const signup = (props) => {
               }
             />
             <Label htmlFor="confirm password">Confirm Password</Label>
-            <input
+            <Input
               id="confirm password"
+              autoComplete="new-password"
               data-testid="passwordConfirmInput"
               value={passwordConfirm}
               onChange={(e) => updateConfirm(e.target.value)}
@@ -187,8 +193,8 @@ const signup = (props) => {
                   : null
               }
             />
-          </div>
-          <div>
+          </Div>
+          <Div>
             <ValidationMessages
               usernameInput={usernameInput}
               passwordInput={passwordInput}
@@ -205,18 +211,18 @@ const signup = (props) => {
                 data-testid="tosCheckbox"
               />
             </P>
-            <div>
-              <SubmitButton as="input" type="submit" value="Sign Up" />
-            </div>
-            <div>
+            <Div>
+              <SubmitButton as="Input" type="submit" value="Sign Up" />
+            </Div>
+            <Div>
               <Link to="/login">
                 <Button>Already have an account? Login here!</Button>
               </Link>
-            </div>
-          </div>
+            </Div>
+          </Div>
         </FlexForm>
       </Description>
-    </div>
+    </Div>
   );
 };
 

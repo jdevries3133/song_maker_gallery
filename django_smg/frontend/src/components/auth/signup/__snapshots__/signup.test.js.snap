@@ -1,21 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Signup /> matches snapshot 1`] = `
-<div>
+<div
+  className="styles__Div-dRMJGn JTCPu"
+>
   <h1
     className="sc-dlfnbm enZwIY"
   >
     sign up!
   </h1>
   <div
-    className="styles__Description-emvDpe hIumWL"
+    className="styles__Description-emvDpe hbbDYw"
   >
     <form
       className="sc-hKgILt jEtSiU"
       data-testid="signupForm"
       onSubmit={[Function]}
     >
-      <div>
+      <div
+        className="styles__Div-dRMJGn JTCPu"
+      >
         <label
           className="styles__Label-fjhDua bsFPVU"
           htmlFor="email"
@@ -23,6 +27,8 @@ exports[`<Signup /> matches snapshot 1`] = `
           Email
         </label>
         <input
+          autoComplete="email"
+          className="styles__Input-lbDPrm knTHdq"
           data-testid="emailInput"
           id="email"
           onChange={[Function]}
@@ -34,6 +40,8 @@ exports[`<Signup /> matches snapshot 1`] = `
           Username
         </label>
         <input
+          autoComplete="username"
+          className="styles__Input-lbDPrm knTHdq"
           data-testid="usernameInput"
           id="username"
           onChange={[Function]}
@@ -41,7 +49,9 @@ exports[`<Signup /> matches snapshot 1`] = `
           value=""
         />
       </div>
-      <div>
+      <div
+        className="styles__Div-dRMJGn JTCPu"
+      >
         <label
           className="styles__Label-fjhDua bsFPVU"
           htmlFor="password"
@@ -49,6 +59,8 @@ exports[`<Signup /> matches snapshot 1`] = `
           Password
         </label>
         <input
+          autoComplete="new-password"
+          className="styles__Input-lbDPrm knTHdq"
           data-testid="passwordInput"
           id="password"
           onChange={[Function]}
@@ -63,6 +75,8 @@ exports[`<Signup /> matches snapshot 1`] = `
           Confirm Password
         </label>
         <input
+          autoComplete="new-password"
+          className="styles__Input-lbDPrm knTHdq"
           data-testid="passwordConfirmInput"
           id="confirm password"
           onChange={[Function]}
@@ -71,7 +85,9 @@ exports[`<Signup /> matches snapshot 1`] = `
           value=""
         />
       </div>
-      <div>
+      <div
+        className="styles__Div-dRMJGn JTCPu"
+      >
         <ul
           className="sc-bdfBwQ eeDijd"
         >
@@ -103,27 +119,31 @@ exports[`<Signup /> matches snapshot 1`] = `
                 
           </span>
           <input
-            className="styles__Input-lbDPrm fzsTeW"
+            className="styles__Input-lbDPrm knTHdq"
             data-testid="tosCheckbox"
             id="tos"
             onClick={[Function]}
             type="checkbox"
           />
         </p>
-        <div>
-          <input
-            className="styles__Button-dyjLXS sc-eCssSg LXcou jgILBz"
+        <div
+          className="styles__Div-dRMJGn JTCPu"
+        >
+          <Input
+            className="styles__Button-dyjLXS sc-eCssSg lpemWd jgILBz"
             type="submit"
             value="Sign Up"
           />
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn JTCPu"
+        >
           <a
             href="/login"
             onClick={[Function]}
           >
             <button
-              className="styles__Button-dyjLXS LXcou"
+              className="styles__Button-dyjLXS lpemWd"
             >
               Already have an account? Login here!
             </button>

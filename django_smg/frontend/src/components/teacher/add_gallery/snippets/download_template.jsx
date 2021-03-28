@@ -1,20 +1,17 @@
 import React from "react";
+import styled from "styled-components";
+
+import { Button } from "../../../common/styles";
+
+/**
+ * For button wrapped in anchor tag.
+ */
+const A = styled.a`
+  text-decoration: none;
+`;
 
 export const DownloadTemplate = () => (
-  <a
-    style={{ textDecoration: "none" }}
-    href="static/frontend/songmakergallery_upload_template.csv"
-    download
-  >
-    <button
-      className="button"
-      style={{
-        display: "block",
-        marginLeft: "auto",
-        marginRight: "auto",
-      }}
-    >
-      Download Template
-    </button>
-  </a>
+  <A href="static/frontend/songmakergallery_upload_template.csv" download>
+    <Button>Download Template</Button>
+  </A>
 );

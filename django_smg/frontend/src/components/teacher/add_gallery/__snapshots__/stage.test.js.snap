@@ -1,42 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`stage matches snapshot 1`] = `
-<div>
-  <h2>
+<div
+  className="styles__Div-dRMJGn JTCPu"
+>
+  <h2
+    className="styles__H2-gHnQoK WCTOC"
+  >
     Your Staged Gallery
   </h2>
-  <br />
-  <div>
-    <h3>
+  <div
+    className="styles__Div-dRMJGn JTCPu"
+  >
+    <h3
+      className="styles__H3-kZHBtr hLSNOW"
+    >
       Gallery Name:
     </h3>
     <input
+      className="styles__Input-lbDPrm knTHdq"
       data-testid="titleInput"
       onChange={[Function]}
       placeholder="Name of your gallery here"
       value="title"
     />
      
-    <h3>
+    <span
+      className="sc-jSgupP iOvDjM"
+      data-testid="titleLenLimit"
+    >
+      5
+      /
+      100
+    </span>
+    <h3
+      className="styles__H3-kZHBtr hLSNOW"
+    >
       Gallery Description:
     </h3>
-    <p>
+    <p
+      className="styles__P-dIaYsU kxTZyV"
+    >
       You may use this default description, or change it to whatever you prefer.
     </p>
     <textarea
+      className="sc-iBPRYJ fOQUfg"
       onChange={[Function]}
       value="description"
     />
-    <h3>
+    <h3
+      className="styles__H3-kZHBtr hLSNOW"
+    >
       Staged Goups
     </h3>
     <table
-      style={
-        Object {
-          "margin": "auto",
-          "marginTop": "15px",
-        }
-      }
+      className="sc-hKgILt hVOEvP"
     >
       <tbody>
         <tr>
@@ -58,6 +76,8 @@ exports[`stage matches snapshot 1`] = `
           />
           <td>
             <button
+              className="styles__Button-dyjLXS dsQPMq"
+              color="salmon"
               onClick={[Function]}
             >
               Unstage Group
@@ -66,19 +86,25 @@ exports[`stage matches snapshot 1`] = `
         </tr>
       </tbody>
     </table>
-    <table>
+    <table
+      className="sc-hKgILt gkPECQ"
+    >
       <tbody />
     </table>
   </div>
-  <br />
   <button
+    className="styles__Button-dyjLXS sc-gKsewC lpemWd dRgbcq"
     data-testid="submit"
     onClick={[Function]}
   >
-    <p>
+    <p
+      className="styles__P-dIaYsU kxTZyV"
+    >
       Create Gallery
     </p>
-    <p>
+    <p
+      className="styles__P-dIaYsU kxTZyV"
+    >
       (Or, add another group by uploading another 
       <code>
         .csv

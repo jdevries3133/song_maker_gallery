@@ -16,7 +16,6 @@ const LdsRing = styled.div`
   width: 80px;
   height: 80px;
   & div {
-    box-sizing: border-box;
     display: block;
     position: absolute;
     width: 64px;

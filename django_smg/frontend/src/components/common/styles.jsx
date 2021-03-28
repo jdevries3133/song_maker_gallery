@@ -12,31 +12,18 @@ export * from "styled-components";
 export default styled;
 
 /**
- * Below are "global" css classes which are either directly used or extended
+ * "Global" css classes which are either directly used or extended
  * throughout the project.
  */
-
-const Input = styled.input`
-  &[type="checkbox"] {
-    width: 30px;
-    height: 30px;
-  }
-`;
-
-export const Checkbox = ({ children, ...rest }) => (
-  <Input type="checkbox" {...rest}>
-    {children}
-  </Input>
-);
-
 export const Div = styled.div`
   text-align: center;
+  padding: ${(props) => props.padding || "inherit"};
 `;
 
 export const H1 = styled.h1`
+  text-align: center;
   padding-bottom: 1.5rem;
-  font-size: 80px;
-  font-weight: 30px;
+  font-size: calc(4vw + 30px);
 `;
 
 export const H2 = styled.h2`
@@ -47,19 +34,13 @@ export const H2 = styled.h2`
   border-radius: 20px;
 `;
 
-export const Label = styled.label`
-  display: block;
-  font-size: 1.17em;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
-  ${(props) =>
-    props.inline &&
-    css`
-      display: inline;
-    `}
+export const H3 = styled.h3`
+${(props) =>
+  props.warn &&
+  css`
+    color: #e41000;
+  `}
+    }
 `;
 
 export const P = styled.p`
@@ -93,15 +74,25 @@ export const P = styled.p`
     `}
 `;
 
+export const A = styled.a`
+  text-decoration: none;
+`;
+
 export const Button = styled.button`
   display: inline-block;
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;
-  margin: 20px;
+  margin: 10px auto;
   border-radius: 20px;
   cursor: pointer;
   background-color: ${(props) => (props.color ? props.color : "#f7943e")};
+
+  ${(props) =>
+    props.block &&
+    css`
+      display: block;
+    `}
 
   ${(props) =>
     props.blanketClose &&
@@ -118,21 +109,57 @@ export const Button = styled.button`
   }
 `;
 
+export const Input = styled.input`
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  &[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+  }
+`;
+
+export const Checkbox = ({ children, ...rest }) => (
+  <Input type="checkbox" {...rest}>
+    {children}
+  </Input>
+);
+
+export const Label = styled.label`
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  ${(props) =>
+    props.inline &&
+    css`
+      display: inline;
+    `}
+`;
+
 export const Description = styled.div`
   font-size: 18px;
   text-align: center;
   display: inline-block;
   max-width: 50rem;
-  padding: 30px;
-  /* min-width: 35rem; */
+  padding: 4%;
   background: white;
   box-shadow: 0px 3px 8px rgb(100, 100, 100);
   border-radius: 20px;
   @media (max-width: 600px) {
     font-size: 16px;
     line-height: 1.5rem;
-    margin: 1rem;
-    padding: 0.7rem;
+    @media (min-width: 315px) {
+      margin: 1rem;
+      padding: 0.7rem;
+    }
+    @media (max-width: 315px) {
+      margin: 0.3rem;
+      padding: 0.3rem;
+    }
   }
 `;
 

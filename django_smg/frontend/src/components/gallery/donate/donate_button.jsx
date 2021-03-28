@@ -7,9 +7,9 @@ const button = styled.button`
   font-weight: lighter;
   font-size: 5rem;
   background-color: rgba(104, 253, 75, 0.719);
-  width: 140px;
+  width: 109px;
   border-radius: 69px;
-  margin: auto;
+  margin: 10px;
 
   :hover {
     background-color: white;
@@ -17,7 +17,7 @@ const button = styled.button`
 
   @media (max-width: 450px) {
     font-size: 3rem;
-    width: 104px;
+    width: 70px;
   }
 `;
 

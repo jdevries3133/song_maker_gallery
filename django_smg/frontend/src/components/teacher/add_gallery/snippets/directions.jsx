@@ -1,8 +1,29 @@
 import React, { useState, Fragment } from "react";
-import styles from "../add_gallery.module.css";
+import styled, { Blanket, Button } from "../../../common/styles";
+
+const A = styled.a`
+  text-decoration: underline;
+  color: blue;
+  fontweight: bold;
+  display: block;
+`;
+
+const Container = styled(Blanket)`
+  text-align: justify;
+  font-size: 16px;
+
+  & > ol > li {
+    margin-bottom: 0.8rem;
+  }
+
+  & > ol > li > ul {
+    margin-left: 10%;
+    font-size: 12px;
+  }
+`;
 
 const DirectionsBlanket = (props) => (
-  <div className={`${styles.text_container} description blanket`}>
+  <Container>
     <h3>Directions</h3>
     <ol>
       <li>
@@ -38,10 +59,10 @@ const DirectionsBlanket = (props) => (
         default description for your gallery.
       </li>
     </ol>
-    <button style={{ backgroundColor: "salmon" }} onClick={props.onClose}>
+    <Button color="salmon" onClick={props.onClose}>
       Close
-    </button>
-  </div>
+    </Button>
+  </Container>
 );
 
 /* Inline <a> element that opens a modal popup onClick */
@@ -50,14 +71,13 @@ export const Directions = () => {
   return (
     <Fragment>
       {blanket}
-      <a
-        style={{ display: "block" }}
+      <A
         onClick={() =>
           setBlanket(<DirectionsBlanket onClose={() => setBlanket(null)} />)
         }
       >
         Directions: Quick Steps
-      </a>
+      </A>
     </Fragment>
   );
 };

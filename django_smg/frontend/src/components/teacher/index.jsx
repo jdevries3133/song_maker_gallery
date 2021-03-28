@@ -1,36 +1,41 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
 import { logout } from "../../actions/auth.action";
+import styled, { Button as DefaultButton, H1, Div } from "../common/styles";
 
-import styles from "./add_gallery/file_upload_form.module.css";
 import AddGallery from "./add_gallery";
-import ListGalleries from "./list_galleries";
+
+const StyledLogOutButton = styled(DefaultButton)`
+  background-color: salmon;
+  position: sticky;
+  float: right;
+  top: 0;
+  right: 0;
+`;
 
 const TeacherHeader = ({ logout, token }) => {
   return (
-    <div>
-      <h1 className={styles.h1}>Gallery Management Console</h1>
-      <button
+    <>
+      <H1>Gallery Management Console</H1>
+      <StyledLogOutButton
         data-testid="logoutButton"
-        className={styles.logout}
         onClick={() => {
           logout(token);
         }}
       >
         Log Out
-      </button>
-    </div>
+      </StyledLogOutButton>
+    </>
   );
 };
 
 const Teacher = ({ token, logout }) => {
   return (
-    <div>
-      <TeacherHeader logout={logout} token={token} />
+    <Div>
+      <TeacherHeader {...{ token, logout }} />
       <AddGallery />
-      <ListGalleries />
-    </div>
+    </Div>
   );
 };
 

@@ -1,7 +1,16 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
+import styled, { Button, ThemeProvider, css } from "../../../common/styles";
 import StyledDropdownButton from "../styled.dropdown_button";
-import styles from "../add_gallery.module.css";
-import { ThemeProvider } from "styled-components";
+
+const Table = styled.table`
+  margin: auto;
+  margin-top: 15px;
+  ${(props) =>
+    props.center &&
+    css`
+      text-align: center;
+    `}
+`;
 
 export const StagedGroupBody = (props) => {
   const group = [...props.group].slice(0, -1);
@@ -43,8 +52,8 @@ export const StagedGroup = (props) => {
   const [show, setShow] = useState(false);
   const groupname = [...props.group].pop();
   return (
-    <Fragment>
-      <table style={{ margin: "auto", marginTop: "15px" }}>
+    <>
+      <Table>
         <tbody>
           <tr>
             <td>
@@ -61,19 +70,19 @@ export const StagedGroup = (props) => {
             </td>
             <td style={{ fontSize: "24px" }}>{groupname}</td>
             <td>
-              <button
-                className={styles.restart_btn}
+              <Button
+                color="salmon"
                 onClick={() => props.unstageGroupHandler(groupname)}
               >
                 Unstage Group
-              </button>
+              </Button>
             </td>
           </tr>
         </tbody>
-      </table>
-      <table className={styles.blanket_table}>
+      </Table>
+      <Table center>
         <tbody>{show ? <StagedGroupBody group={props.group} /> : null}</tbody>
-      </table>
-    </Fragment>
+      </Table>
+    </>
   );
 };

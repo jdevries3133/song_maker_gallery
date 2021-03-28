@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// TODO: remove this whole file, it is duplicate code.
 const Button = styled.button`
   display: inline-block;
   font-size: 1rem;

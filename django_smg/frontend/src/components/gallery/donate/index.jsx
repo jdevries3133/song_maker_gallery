@@ -1,19 +1,19 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 
-import Button from "./donate_button";
+import DonateButton from "./donate_button";
 import Blanket from "./donate";
 
 export const Donate = () => {
   const [blanket, setBlanket] = useState(null);
 
   return (
-    <Fragment>
+    <>
       {blanket}
-      <Button
+      <DonateButton
         onClick={() => setBlanket(<Blanket onClose={() => setBlanket(null)} />)}
       >
         $
-      </Button>
-    </Fragment>
+      </DonateButton>
+    </>
   );
 };

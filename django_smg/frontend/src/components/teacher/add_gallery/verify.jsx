@@ -1,10 +1,53 @@
 import React, { useState, useEffect } from "react";
-import styles from "./add_gallery.module.css";
+
+import styled, {
+  Input,
+  H2,
+  H3,
+  Blanket,
+  Button,
+  P,
+  Div,
+  css,
+} from "../../common/styles";
 
 import { StagedGroupBody } from "./snippets";
 
 // CSS will scale for group names up to this length.
 const GROUP_NAME_LENGTH_LIMIT = 15;
+
+const Table = styled.table`
+  text-align: center;
+  margin: auto;
+`;
+
+// TODO: this is not working
+const StyledLimitCounter = styled.span`
+  padding-left: "10px",
+    ${(props) =>
+        props.length < props.hideUntil &&
+        css`
+          display: none;
+        `}
+      ${(props) =>
+        props.length > props.warnLimit &&
+        css`
+          color: orange;
+        `}
+      ${(props) =>
+        props.length > props.limit &&
+        css`
+          color: "#e41000";
+        `};
+`;
+
+export const SizeLimitCounter = (props) => {
+  return (
+    <StyledLimitCounter data-testid="titleLenLimit" {...props}>
+      {props.length}/{props.limit}
+    </StyledLimitCounter>
+  );
+};
 
 const getColIndicies = (headers) => {
   let nameIndex;
@@ -41,7 +84,7 @@ const filterData = (data, nameIndex, linkIndex) => {
 
 const Verify = (props) => {
   const duplicateGroupName = props.otherGroups.includes(props.groupName);
-  const groupNameTooBig = props.groupName.length > GROUP_NAME_LENGTH_LIMIT;
+  const groupNameTooBig = props.groupName?.length > GROUP_NAME_LENGTH_LIMIT;
   const isFormError = duplicateGroupName || groupNameTooBig;
 
   const [nameIndex, setNameIndex] = useState("init");
@@ -59,18 +102,15 @@ const Verify = (props) => {
 
   if (nameIndex === undefined) {
     return (
-      <div
-        data-testid="verifyModalNoName"
-        className={`description blanket ${styles.scroll_blanket}`}
-      >
-        <h2>Whoops!</h2>
-        <p>
+      <Blanket data-testid="verifyModalNoName">
+        <H2>Whoops!</H2>
+        <P>
           It looks like your spreadsheet didn't have a header of "name," can you
           select the column that contains <b>names?</b>
-        </p>
+        </P>
         {props.csv.data[0].map((row, index) => {
           return (
-            <button
+            <Button
               data-testid="nameColChoice"
               key={index}
               onClick={() => {
@@ -78,74 +118,54 @@ const Verify = (props) => {
               }}
             >
               {row}
-            </button>
+            </Button>
           );
         })}
-        <button
-          onClick={(e) => props.restart(e)}
-          className={`button ${styles.restart_btn}`}
-        >
+        <Button color="salmon" onClick={(e) => props.restart(e)}>
           Restart
-        </button>
-      </div>
+        </Button>
+      </Blanket>
     );
   } else if (linkIndex === undefined) {
     return (
-      <div
-        data-testid="verifyModalNoLink"
-        className={`description blanket ${styles.scroll_blanket}`}
-      >
-        <h2>Whoops!</h2>
-        <p>
+      <Blanket data-testid="verifyModalNoLink">
+        <H2>Whoops!</H2>
+        <P>
           It looks like your spreadsheet didn't have a header of "link," can you
           select the column that contains <b>links?</b>
-        </p>
+        </P>
         {props.csv.data[0].map((row, index) => (
-          <button
+          <Button
             data-testid="linkColChoice"
             key={index}
             onClick={() => setLinkIndex(index)}
           >
             {row}
-          </button>
+          </Button>
         ))}
-        <button
-          onClick={(e) => props.restart(e)}
-          className={`button ${styles.restart_btn}`}
-        >
+        <Button color="salmon" onClick={(e) => props.restart(e)}>
           Discard and Start Over
-        </button>
-      </div>
+        </Button>
+      </Blanket>
     );
   } else if (filtered !== null) {
     return (
-      <div
-        data-testid="verifyModalNormal"
-        className={`description blanket ${styles.scroll_blanket}`}
-      >
-        <h2 className={styles.doesThisLookGood}>Does this look good?</h2>
-        <h3>Group Name to Display:</h3>
-        {duplicateGroupName ? (
-          <p style={{ color: "red" }}>Duplicate group name.</p>
-        ) : null}
-        {groupNameTooBig ? (
-          <p style={{ color: "red" }}>Group name too long.</p>
-        ) : null}
-        <input
-          className={`${styles.input} ${styles.wide_input}`}
-          value={props.groupName}
-          onChange={(e) => props.groupNameChange(e)}
-        />
-        <span
-          style={{
-            paddingLeft: "10px",
-            ...(groupNameTooBig ? { color: "red" } : {}),
-          }}
-        >
-          {props.groupName.length}/{GROUP_NAME_LENGTH_LIMIT}
-        </span>
-        <br />
-        <table className={styles.blanket_table}>
+      <Blanket data-testid="verifyModalNormal">
+        <Div>
+          <h2 style={{ backgroundColor: "#3432c761" }}>Does this look good?</h2>
+          <h3>Group Name to Display:</h3>
+          {duplicateGroupName ? <P warn>Duplicate group name.</P> : null}
+          {groupNameTooBig ? <P warn>Group name too long.</P> : null}
+          <Input
+            value={props.groupName}
+            onChange={(e) => props.groupNameChange(e)}
+          />
+          <SizeLimitCounter
+            length={props.groupName?.length}
+            limit={GROUP_NAME_LENGTH_LIMIT}
+          />
+        </Div>
+        <Table>
           <thead>
             <tr>
               <td>Name</td>
@@ -155,55 +175,48 @@ const Verify = (props) => {
           <tbody>
             <StagedGroupBody group={filtered.slice(1)} />
           </tbody>
-        </table>
+        </Table>
         {duplicateGroupName ? (
-          <h3 style={{ color: "red" }}>
+          <H3 warn>
             Scroll up to change group name. Current group name is a duplicate.
-          </h3>
+          </H3>
         ) : null}
         {groupNameTooBig ? (
-          <h3 style={{ color: "red" }}>
+          <H3 warn>
             Scroll up to shorten group name. Group names must be less than{" "}
             {GROUP_NAME_LENGTH_LIMIT} characters long.
-          </h3>
+          </H3>
         ) : null}
         {!isFormError ? (
-          <button
+          <Button
             data-testid="verifyGroupButton"
             onClick={() => props.validatedHandler(filtered)}
-            className={`button ${styles.up_btn}`}
           >
             Add Group
-          </button>
+          </Button>
         ) : null}
-        <button
-          onClick={(e) => props.restart(e)}
-          className={`button ${styles.restart_btn}`}
-        >
+        <Button color="salmon" onClick={(e) => props.restart(e)}>
           Discard and Start Over
-        </button>
-      </div>
+        </Button>
+      </Blanket>
     );
   } else {
     return (
-      <div className={`description blanket ${styles.scroll_blanket}`}>
-        <h2>Oops!</h2>
-        <p>
+      <Blanket>
+        <H2>Oops!</H2>
+        <P>
           It looks like your spreadsheet does not follow our template, because
           we were unable to parse the information you uploaded in order to
           provide a preview.
-        </p>
-        <p>
+        </P>
+        <P>
           Please download our template and make sure that your <code>.csv</code>{" "}
           file looks the same!
-        </p>
-        <button
-          onClick={(e) => props.restart(e)}
-          className={`button ${styles.restart_btn}`}
-        >
+        </P>
+        <Button color="salmon" onClick={(e) => props.restart(e)}>
           Try Again
-        </button>
-      </div>
+        </Button>
+      </Blanket>
     );
   }
 };
@@ -217,9 +230,9 @@ const Verify = (props) => {
  * rendering.
  */
 const VerifyTestWrapper = (props) => (
-  <div data-testid="verifyModalPresent">
+  <Div data-testid="verifyModalPresent">
     <Verify {...props} />
-  </div>
+  </Div>
 );
 
 export default VerifyTestWrapper;

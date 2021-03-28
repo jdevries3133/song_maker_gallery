@@ -1,5 +1,12 @@
 import React, { Fragment } from "react";
-import styles from "./file_upload_form.module.css";
+import PropTypes from "prop-types";
+
+import styled, {
+  P,
+  H1 as DefaultH1,
+  Button,
+  Description as DefaultDescription,
+} from "../../common/styles";
 
 import { TemplateHelp } from "./snippets";
 import { HowToVideo } from "./snippets";
@@ -8,14 +15,38 @@ import { DownloadTemplate } from "./snippets";
 import { InvalidFiletype } from "./snippets";
 import { Donate } from "../../gallery/donate/";
 
+const Description = styled(DefaultDescription)`
+  padding: 0;
+  margin: 0;
+`;
+
+const H1 = styled(DefaultH1)`
+  font-size: 34px;
+`;
+
+const Container = styled.div`
+  text-align: center;
+  border-radius: 20px;
+  background-color: #c1de8c;
+  margin: 10px;
+  padding: 10px 0;
+`;
+
+const StyledFileInput = styled.input`
+  margin: auto;
+  display: block;
+  font-size: 16px;
+  padding: 0;
+`;
+
 const FileUploadForm = (props) => {
   return (
-    <div>
-      <h1 style={{ fontSize: "34px" }}>Add Gallery</h1>
+    <Description>
+      <H1>Add Gallery</H1>
       <DownloadTemplate />
       <TemplateHelp />
       <HowToVideo />
-      <div className={styles.form_start}>
+      <Container>
         <div>
           <h3>Add a Gallery</h3>
           <Directions />
@@ -29,46 +60,50 @@ const FileUploadForm = (props) => {
               </p>
             </Fragment>
           ) : null}
-          <input
+          <StyledFileInput
             data-testid="csvFileInput"
-            className={styles.upload}
             type="file"
             ref={props.fileInputRef}
           />
         </div>
         <div>
-          <button
+          <Button
+            block
             data-testid="addSpreadsheetButton"
             onClick={() => props.uploadRequest()}
-            className={`button ${styles.add_ss}`}
+            color="limegreen"
           >
             Add Spreadsheet
-          </button>
-          <button
+          </Button>
+          <Button
+            block
             data-testid="clearFileButton"
-            style={{
-              display: "block",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
             onClick={(e) => props.clearFileHandler(e)}
-            className="button"
           >
             Clear File
-          </button>
+          </Button>
         </div>
         {props.warn ? <InvalidFiletype /> : null}
-      </div>
+      </Container>
       <div>
         <h3>Donate and Share!</h3>
-        <p className={styles.par_just}>
+        <P justify>
           Please do share this tool with your colleagues, and consider chipping
           in a few dollars to keep this site alive. We depend on your donations!
-        </p>
+        </P>
         <Donate />
       </div>
-    </div>
+    </Description>
   );
+};
+
+FileUploadForm.propTypes = {
+  uploadRequest: PropTypes.func.isRequired,
+  firstGroupUploaded: PropTypes.bool,
+};
+
+FileUploadForm.defaultProps = {
+  firstGroupUploaded: false,
 };
 
 export default FileUploadForm;

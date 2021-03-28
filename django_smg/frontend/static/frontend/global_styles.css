@@ -1,3 +1,9 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body {
   background: url("/static/frontend/background.png");
   background-size: 50vw;
