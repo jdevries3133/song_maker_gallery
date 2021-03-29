@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
-import { DownloadTemplate } from "../teacher/add_gallery/snippets";
-import { CustomError } from "./custom_error";
+import { DownloadTemplate } from "./download_template";
+import { CustomError } from "../../../common/custom_error";
 
 /**
  * ex. songData => "Spreadsheet Error"

@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import { BadRequest } from "./validation_error";
+import { BadRequest } from "./bad_request";
 
 const MOCK_ERR_MSG = {
   Message: ["Internal Server Error", "Something bad happened on the server"],
