@@ -1,6 +1,9 @@
 import React from "react";
-import styled from "styled-components";
-import { Button } from "../../common/styles";
+import styled, { Button as DefaultButton } from "../../common/styles";
+
+const Button = styled(DefaultButton)`
+  margin: 10px;
+`;
 
 const Nav = styled.nav`
   text-align: center;
