@@ -38,7 +38,11 @@ export const PrivacyPage = () => (
 export const PrivacyText = (props) => (
   <Blanket>
     <PrivacyContent
-      okButton={<Button onClick={() => props.onOk()}>Close</Button>}
+      okButton={
+        <Button color="salmon" onClick={() => props.onOk()}>
+          Close
+        </Button>
+      }
     />
   </Blanket>
 );

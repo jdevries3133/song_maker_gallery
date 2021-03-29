@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-import styled, { Div, Blanket, Description } from "../common/styles";
+import styled, { Button, Div, Blanket, Description } from "../common/styles";
 
 export const LegalContainer = styled(Div)`
   margin: 3%;
@@ -115,7 +115,13 @@ export const TosPage = ({ title }) => {
 export const TosText = ({ onOk, title }) => {
   return (
     <Blanket>
-      <TosContent okButton={<button onClick={() => onOk()}>Close</button>} />
+      <TosContent
+        okButton={
+          <Button color="salmon" onClick={() => onOk()}>
+            Close
+          </Button>
+        }
+      />
     </Blanket>
   );
 };
