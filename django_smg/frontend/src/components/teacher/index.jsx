@@ -5,6 +5,7 @@ import { logout } from "../../actions/auth.action";
 import styled, { Button as DefaultButton, H1, Div } from "../common/styles";
 
 import AddGallery from "./add_gallery";
+import ListGalleries from "./list_galleries";
 
 const StyledLogOutButton = styled(DefaultButton)`
   background-color: salmon;
@@ -35,6 +36,7 @@ const Teacher = ({ token, logout }) => {
     <Div>
       <TeacherHeader {...{ token, logout }} />
       <AddGallery />
+      <ListGalleries />
     </Div>
   );
 };

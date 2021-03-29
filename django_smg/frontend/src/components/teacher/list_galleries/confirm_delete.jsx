@@ -1,28 +1,26 @@
 import React from "react";
-import styles from "./styles.module.css";
-import Button from "../../common/button";
-import { ThemeProvider } from "styled-components";
+import styled, { H2, P, Blanket, Button } from "../../common/styles";
 
-const confirm_delete = (props) => {
+const DeleteBtn = styled(Button)`
+  background-color: maroon;
+  color: white;
+`;
+
+export const ConfirmDelete = (props) => {
   return (
-    <div className="description blanket">
-      <h2>Are you Sure?</h2>
+    <Blanket>
+      <H2>Are you Sure?</H2>
 
-      <p>
+      <P>
         This gallery will be permanently deleted and no longer available at the
         url:
-        <br />
+      </P>
+      <P center>
         <a href={props.url}>{props.url}</a>
-      </p>
-      <ThemeProvider theme={{ backgroundColor: "maroon", color: "white" }}>
-        <Button
-          className={styles.delete_confirm}
-          onClick={() => props.confirmation(props.pk)}
-        >
-          I am sure
-        </Button>
-      </ThemeProvider>
-    </div>
+      </P>
+      <DeleteBtn onClick={() => props.confirmation(props.pk)}>
+        I am sure
+      </DeleteBtn>
+    </Blanket>
   );
 };
-export default confirm_delete;

@@ -189,13 +189,14 @@ const Verify = (props) => {
         ) : null}
         {!isFormError ? (
           <Button
+            block
             data-testid="verifyGroupButton"
             onClick={() => props.validatedHandler(filtered)}
           >
             Add Group
           </Button>
         ) : null}
-        <Button color="salmon" onClick={(e) => props.restart(e)}>
+        <Button block color="salmon" onClick={(e) => props.restart(e)}>
           Discard and Start Over
         </Button>
       </Blanket>

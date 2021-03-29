@@ -1,18 +1,42 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { ThemeProvider } from "styled-components";
-import { connect } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "./styles.module.css";
-import Button from "../../common/button";
-import ConfirmDelete from "./confirm_delete";
-import ServerError from "../../common/server_error";
+import { connect } from "react-redux";
+
 import {
   postGallery,
   deleteGallery,
   acknowledgeDelete,
   getUserGalleries,
 } from "../../../actions/user";
+import ServerError from "../../common/server_error";
 
+import { ConfirmDelete } from "./confirm_delete";
+import styled, { Button, H3 } from "../../common/styles";
+
+const StyledTable = styled.table`
+  margin: auto;
+  padding-bottom: 20px;
+  border-spacing: 0px;
+  width: 100%;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+`;
+
+const StyledTr = styled.tr`
+  @media (max-width: 1170px) {
+    &:nth-child(even) {
+      background-color: rgb(238, 238, 238);
+    }
+
+    & > td {
+      font-size: 14px;
+    }
+  }
+`;
+
+// TODO: factor logic into a hook, factor layout and styles into another
+// component
 const ListGalleries = (props) => {
   const [confirmDelete, setConfirmDelete] = useState(null);
   const [blanket, setBlanket] = useState(null);
@@ -49,56 +73,41 @@ const ListGalleries = (props) => {
         gallery["slug"]
       }/`;
       return (
-        <ThemeProvider
-          theme={{
-            color: "black",
-            resizeThreshold: "1170px",
-          }}
-          key={index}
-        >
-          <tr className={styles.shaded_tr}>
-            <td width="30%">
-              {gallery["title"].slice(0, 14)}
-              {gallery["title"].length < 14 ? null : <span>...</span>}
-            </td>
-            <td width="70%">
-              <Link to={`/gallery/${gallery["slug"]}/`}>
-                <ThemeProvider
-                  theme={(theme) => {
-                    return { backgroundColor: "#00c4ff", ...theme };
-                  }}
-                >
-                  <Button>View</Button>
-                </ThemeProvider>
-              </Link>
-              <ThemeProvider theme={{ backgroundColor: "#fa8071" }}>
-                <Button
-                  onClick={() =>
-                    setConfirmDelete(
-                      <ConfirmDelete
-                        url={url}
-                        pk={gallery["pk"]}
-                        confirmation={deleteConfirmed}
-                      />
-                    )
-                  }
-                >
-                  Delete
-                </Button>
-              </ThemeProvider>
-            </td>
-          </tr>
-        </ThemeProvider>
+        <StyledTr key={index}>
+          <td width="30%">
+            {gallery["title"].slice(0, 14)}
+            {gallery["title"].length < 14 ? null : <span>...</span>}
+          </td>
+          <td width="70%">
+            <Link to={`/gallery/${gallery["slug"]}/`}>
+              <Button color="#00c4ff">View</Button>
+            </Link>
+            <Button
+              color="#fa8071"
+              onClick={() =>
+                setConfirmDelete(
+                  <ConfirmDelete
+                    url={url}
+                    pk={gallery["pk"]}
+                    confirmation={deleteConfirmed}
+                  />
+                )
+              }
+            >
+              Delete
+            </Button>
+          </td>
+        </StyledTr>
       );
     });
   }
 
   return (
-    <Fragment>
+    <>
       {confirmDelete}
       {blanket}
-      <h3>Your Galleries</h3>
-      <table className={styles.outerTable}>
+      <H3>Your Galleries</H3>
+      <StyledTable>
         <tbody>
           {user_gals.length !== 0 ? (
             user_gals
@@ -112,8 +121,8 @@ const ListGalleries = (props) => {
             </tr>
           )}
         </tbody>
-      </table>
-    </Fragment>
+      </StyledTable>
+    </>
   );
 };
 
