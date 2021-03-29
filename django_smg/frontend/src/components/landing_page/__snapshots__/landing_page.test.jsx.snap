@@ -2,43 +2,43 @@
 
 exports[`Landing page Matches snapshot 1`] = `
 <div
-  className="styles__Div-dRMJGn sc-bqyKva JTCPu AWJeV"
+  className="styles__Div-dRMJGn sc-bkzZxe JTCPu iQpXdH"
 >
   <div
-    className="styles__Div-dRMJGn sc-iqHYGH JTCPu cjXJOV"
+    className="styles__Div-dRMJGn sc-hBEYos JTCPu gksvV"
   >
     <h1
-      className="styles__H1-esBQNt sc-fubCfw iAfoss iQtuBL"
+      className="styles__H1-esBQNt sc-crrsfI iAfoss gtOEFX"
     >
       Welcome to the Song Maker Gallery!
     </h1>
     <div
-      className="sc-crrsfI gENlqN"
+      className="sc-fodVxV ldJhov"
     >
       <div
-        className="sc-dQppl imjCIJ"
+        className="sc-fFubgz bNjEay"
       >
         <a
           className="styles__A-gZLWsF dtWskz"
           href="#gallery_top"
         >
           <button
-            className="styles__Button-dyjLXS sc-jrAGrp lpemWd gQnLGA"
+            className="styles__Button-dyjLXS sc-bqyKva lpemWd dlsbAO"
           >
             View our sample gallery
           </button>
         </a>
       </div>
       <div
-        className="sc-dQppl dZSEZS"
+        className="sc-fFubgz fZABJp"
       >
         <a
-          className="sc-kEjbxe cgtSAu"
+          className="sc-kstrdz kJcEEp"
           href="/signup"
           onClick={[Function]}
         >
           <button
-            className="styles__Button-dyjLXS sc-jrAGrp geCMlt gQnLGA"
+            className="styles__Button-dyjLXS sc-bqyKva geCMlt dlsbAO"
             color="lightgreen"
           >
             Make a custom gallery for free
@@ -46,18 +46,18 @@ exports[`Landing page Matches snapshot 1`] = `
         </a>
       </div>
       <div
-        className="sc-dQppl iUUssd"
+        className="sc-fFubgz keYGhm"
       >
         <div
           className="styles__Description-emvDpe hbbDYw"
         >
           <p
-            className="styles__P-dIaYsU sc-pFZIQ fJZlVX dFDgMr"
+            className="styles__P-dIaYsU sc-dQppl fJZlVX bvmTcm"
           >
             This website was created by me, a music teacher, in response to the simple need to find a way to feature our students' work in light of the COVID-19 pandemic. Our students' concerts have been cancelled, their rehearsals ceased, and their opportunities to share music diminished to a whisper of what they once were.
           </p>
           <p
-            className="styles__P-dIaYsU sc-pFZIQ fJZlVX dFDgMr"
+            className="styles__P-dIaYsU sc-dQppl fJZlVX bvmTcm"
           >
             As an upper elementary general music teacher, a big part of my COVID curriculum has been the
              
@@ -70,7 +70,7 @@ exports[`Landing page Matches snapshot 1`] = `
             Students love making creations with it; it's fun and easy to use, and it provides an amazing platform for us to discuss the topics in our music curriculum. For me, the music lab has been an indispensable tool for coping with our school closure.
           </p>
           <p
-            className="styles__P-dIaYsU sc-pFZIQ fJZlVX dFDgMr"
+            className="styles__P-dIaYsU sc-dQppl fJZlVX bvmTcm"
           >
             <b>
               This website
@@ -78,7 +78,7 @@ exports[`Landing page Matches snapshot 1`] = `
              is a simple way to share your students' work with your whole community. I know that I have been awestruck by the creativity of many of the music lab compositions that my students have shared with me, and I am sure that you feel the same.
           </p>
           <p
-            className="styles__P-dIaYsU sc-pFZIQ kxTZyV fdztQw"
+            className="styles__P-dIaYsU sc-dQppl kxTZyV iOeKHV"
             style={Object {}}
           >
             We need a beautiful, simple, and easy way to share these compositions with as many people as possible!
@@ -196,14 +196,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
     className="styles__Div-dRMJGn JTCPu"
   >
     <div
-      className="styles__Div-dRMJGn sc-jSgupP JTCPu hHiNkw"
+      className="styles__Div-dRMJGn sc-jrAGrp JTCPu fqvlTf"
       id="gallery"
     >
       <a
         href="#gallery_top"
       >
         <h2
-          className="styles__H2-gHnQoK sc-gKsewC WCTOC fpaeju"
+          className="styles__H2-gHnQoK sc-kEjbxe WCTOC dcPaNr"
           id={
             Array [
               "Your Group Here",
@@ -214,22 +214,21 @@ Notice that the thumbnail images are not common. Each student's actual compositi
         </h2>
         <br />
         <span
-          className="sc-iBPRYJ hoXXHZ"
+          className="sc-iqHYGH juISoZ"
         >
           ☟
         </span>
       </a>
       <ul
-        className="sc-eCssSg bIuYq"
+        className="sc-pFZIQ fqtBDQ"
       >
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4618045650632704"
@@ -237,10 +236,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -252,14 +253,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4887698964742144"
@@ -267,10 +267,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -282,14 +284,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6591403271389184"
@@ -297,10 +298,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -312,14 +315,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5199130835025920"
@@ -327,10 +329,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -342,14 +346,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4678032385114112"
@@ -357,10 +360,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -372,14 +377,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5788591406972928"
@@ -387,10 +391,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -402,14 +408,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6336564071235584"
@@ -417,10 +422,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -432,14 +439,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5409105243013120"
@@ -447,10 +453,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -462,14 +470,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6297559191519232"
@@ -477,10 +484,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -492,14 +501,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4643688417329152"
@@ -507,10 +515,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -522,14 +532,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5508445823303680"
@@ -537,10 +546,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -552,14 +563,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5508445823303680"
@@ -567,10 +577,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -582,14 +594,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4783781039833088"
@@ -597,10 +608,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -612,14 +625,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6187108805902336"
@@ -627,10 +639,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -642,14 +656,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6099598545256448"
@@ -657,10 +670,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -672,14 +687,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6416354899918848"
@@ -687,10 +701,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -702,14 +718,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6271702649536512"
@@ -717,10 +732,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -732,14 +749,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6414768916135936"
@@ -747,10 +763,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -762,14 +780,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5500108117377024"
@@ -777,10 +794,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -792,14 +811,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4504220729344000"
@@ -807,10 +825,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -825,14 +845,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
-      className="styles__Div-dRMJGn sc-jSgupP JTCPu hHiNkw"
+      className="styles__Div-dRMJGn sc-jrAGrp JTCPu fqvlTf"
       id="gallery"
     >
       <a
         href="#gallery_top"
       >
         <h2
-          className="styles__H2-gHnQoK sc-gKsewC WCTOC fpaeju"
+          className="styles__H2-gHnQoK sc-kEjbxe WCTOC dcPaNr"
           id={
             Array [
               "Collins",
@@ -843,22 +863,21 @@ Notice that the thumbnail images are not common. Each student's actual compositi
         </h2>
         <br />
         <span
-          className="sc-iBPRYJ hoXXHZ"
+          className="sc-iqHYGH juISoZ"
         >
           ☟
         </span>
       </a>
       <ul
-        className="sc-eCssSg bIuYq"
+        className="sc-pFZIQ fqtBDQ"
       >
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5826318131265536"
@@ -866,10 +885,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -881,14 +902,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5558466857926656"
@@ -896,10 +916,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -911,14 +933,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5700574910611456"
@@ -926,10 +947,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -941,14 +964,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5869717836267520"
@@ -956,10 +978,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -971,14 +995,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5541642095296512"
@@ -986,10 +1009,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1001,14 +1026,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6256605336174592"
@@ -1016,10 +1040,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1031,14 +1057,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4997220865671168"
@@ -1046,10 +1071,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1061,14 +1088,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5058705000235008"
@@ -1076,10 +1102,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1091,14 +1119,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6457093738463232"
@@ -1106,10 +1133,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1121,14 +1150,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5854837888516096"
@@ -1136,10 +1164,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1151,14 +1181,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5952120441274368"
@@ -1166,10 +1195,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1181,14 +1212,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4626771262570496"
@@ -1196,10 +1226,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1211,14 +1243,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4954874971160576"
@@ -1226,10 +1257,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1241,14 +1274,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4673638499352576"
@@ -1256,10 +1288,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1271,14 +1305,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5219857038573568"
@@ -1286,10 +1319,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1301,14 +1336,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5429849968607232"
@@ -1316,10 +1350,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1331,14 +1367,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6237552190160896"
@@ -1346,10 +1381,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1361,14 +1398,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6357252928700416"
@@ -1376,10 +1412,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1391,14 +1429,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5193940098613248"
@@ -1406,10 +1443,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1421,14 +1460,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4577109243592704"
@@ -1436,10 +1474,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1454,14 +1494,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
-      className="styles__Div-dRMJGn sc-jSgupP JTCPu hHiNkw"
+      className="styles__Div-dRMJGn sc-jrAGrp JTCPu fqvlTf"
       id="gallery"
     >
       <a
         href="#gallery_top"
       >
         <h2
-          className="styles__H2-gHnQoK sc-gKsewC WCTOC fpaeju"
+          className="styles__H2-gHnQoK sc-kEjbxe WCTOC dcPaNr"
           id={
             Array [
               "Jones",
@@ -1472,22 +1512,21 @@ Notice that the thumbnail images are not common. Each student's actual compositi
         </h2>
         <br />
         <span
-          className="sc-iBPRYJ hoXXHZ"
+          className="sc-iqHYGH juISoZ"
         >
           ☟
         </span>
       </a>
       <ul
-        className="sc-eCssSg bIuYq"
+        className="sc-pFZIQ fqtBDQ"
       >
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5987861347172352"
@@ -1495,10 +1534,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1510,14 +1551,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5301945775423488"
@@ -1525,10 +1565,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1540,14 +1582,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4792148793753600"
@@ -1555,10 +1596,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1570,14 +1613,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4843100393439232"
@@ -1585,10 +1627,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1600,14 +1644,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5416265624584192"
@@ -1615,10 +1658,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1630,14 +1675,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5173307813920768"
@@ -1645,10 +1689,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1660,14 +1706,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5563174544736256"
@@ -1675,10 +1720,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1690,14 +1737,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4883477078999040"
@@ -1705,10 +1751,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1720,14 +1768,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6609490301419520"
@@ -1735,10 +1782,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1750,14 +1799,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6288533116420096"
@@ -1765,10 +1813,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1780,14 +1830,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6326198335438848"
@@ -1795,10 +1844,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1810,14 +1861,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6024225996406784"
@@ -1825,10 +1875,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1840,14 +1892,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5357551576154112"
@@ -1855,10 +1906,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1870,14 +1923,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5835210793943040"
@@ -1885,10 +1937,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1900,14 +1954,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6575764792147968"
@@ -1915,10 +1968,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1930,14 +1985,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5400648284635136"
@@ -1945,10 +1999,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1960,14 +2016,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6677045254815744"
@@ -1975,10 +2030,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1990,14 +2047,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6443833949683712"
@@ -2005,10 +2061,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2020,14 +2078,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4795907628335104"
@@ -2035,10 +2092,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2050,14 +2109,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6518820236689408"
@@ -2065,10 +2123,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2080,14 +2140,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6020835623043072"
@@ -2095,10 +2154,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2113,14 +2174,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
-      className="styles__Div-dRMJGn sc-jSgupP JTCPu hHiNkw"
+      className="styles__Div-dRMJGn sc-jrAGrp JTCPu fqvlTf"
       id="gallery"
     >
       <a
         href="#gallery_top"
       >
         <h2
-          className="styles__H2-gHnQoK sc-gKsewC WCTOC fpaeju"
+          className="styles__H2-gHnQoK sc-kEjbxe WCTOC dcPaNr"
           id={
             Array [
               "Mr. Smith",
@@ -2131,22 +2192,21 @@ Notice that the thumbnail images are not common. Each student's actual compositi
         </h2>
         <br />
         <span
-          className="sc-iBPRYJ hoXXHZ"
+          className="sc-iqHYGH juISoZ"
         >
           ☟
         </span>
       </a>
       <ul
-        className="sc-eCssSg bIuYq"
+        className="sc-pFZIQ fqtBDQ"
       >
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4618045650632704"
@@ -2154,10 +2214,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2169,14 +2231,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4887698964742144"
@@ -2184,10 +2245,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2199,14 +2262,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6591403271389184"
@@ -2214,10 +2276,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2229,14 +2293,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5199130835025920"
@@ -2244,10 +2307,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2259,14 +2324,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4678032385114112"
@@ -2274,10 +2338,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2289,14 +2355,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5788591406972928"
@@ -2304,10 +2369,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2319,14 +2386,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6336564071235584"
@@ -2334,10 +2400,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2349,14 +2417,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5409105243013120"
@@ -2364,10 +2431,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2379,14 +2448,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6297559191519232"
@@ -2394,10 +2462,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2409,14 +2479,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4643688417329152"
@@ -2424,10 +2493,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2439,14 +2510,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5508445823303680"
@@ -2454,10 +2524,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2469,14 +2541,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5508445823303680"
@@ -2484,10 +2555,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2499,14 +2572,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4783781039833088"
@@ -2514,10 +2586,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2529,14 +2603,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6187108805902336"
@@ -2544,10 +2617,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2559,14 +2634,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6099598545256448"
@@ -2574,10 +2648,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2589,14 +2665,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6416354899918848"
@@ -2604,10 +2679,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2619,14 +2696,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6271702649536512"
@@ -2634,10 +2710,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2649,14 +2727,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6414768916135936"
@@ -2664,10 +2741,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2679,14 +2758,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5500108117377024"
@@ -2694,10 +2772,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2709,14 +2789,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4504220729344000"
@@ -2724,10 +2803,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2742,14 +2823,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
-      className="styles__Div-dRMJGn sc-jSgupP JTCPu hHiNkw"
+      className="styles__Div-dRMJGn sc-jrAGrp JTCPu fqvlTf"
       id="gallery"
     >
       <a
         href="#gallery_top"
       >
         <h2
-          className="styles__H2-gHnQoK sc-gKsewC WCTOC fpaeju"
+          className="styles__H2-gHnQoK sc-kEjbxe WCTOC dcPaNr"
           id={
             Array [
               "Mrs. Briggs's Homeroom",
@@ -2760,22 +2841,21 @@ Notice that the thumbnail images are not common. Each student's actual compositi
         </h2>
         <br />
         <span
-          className="sc-iBPRYJ hoXXHZ"
+          className="sc-iqHYGH juISoZ"
         >
           ☟
         </span>
       </a>
       <ul
-        className="sc-eCssSg bIuYq"
+        className="sc-pFZIQ fqtBDQ"
       >
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5826318131265536"
@@ -2783,10 +2863,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2798,14 +2880,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5558466857926656"
@@ -2813,10 +2894,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2828,14 +2911,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5700574910611456"
@@ -2843,10 +2925,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2858,14 +2942,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5869717836267520"
@@ -2873,10 +2956,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2888,14 +2973,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5541642095296512"
@@ -2903,10 +2987,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2918,14 +3004,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6256605336174592"
@@ -2933,10 +3018,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2948,14 +3035,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4997220865671168"
@@ -2963,10 +3049,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2978,14 +3066,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5058705000235008"
@@ -2993,10 +3080,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3008,14 +3097,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6457093738463232"
@@ -3023,10 +3111,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3038,14 +3128,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5854837888516096"
@@ -3053,10 +3142,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3068,14 +3159,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5952120441274368"
@@ -3083,10 +3173,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3098,14 +3190,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4626771262570496"
@@ -3113,10 +3204,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3128,14 +3221,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4954874971160576"
@@ -3143,10 +3235,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3158,14 +3252,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4673638499352576"
@@ -3173,10 +3266,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3188,14 +3283,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5219857038573568"
@@ -3203,10 +3297,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3218,14 +3314,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5429849968607232"
@@ -3233,10 +3328,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3248,14 +3345,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6237552190160896"
@@ -3263,10 +3359,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3278,14 +3376,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6357252928700416"
@@ -3293,10 +3390,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3308,14 +3407,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5193940098613248"
@@ -3323,10 +3421,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3338,14 +3438,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4577109243592704"
@@ -3353,10 +3452,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3371,14 +3472,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
-      className="styles__Div-dRMJGn sc-jSgupP JTCPu hHiNkw"
+      className="styles__Div-dRMJGn sc-jrAGrp JTCPu fqvlTf"
       id="gallery"
     >
       <a
         href="#gallery_top"
       >
         <h2
-          className="styles__H2-gHnQoK sc-gKsewC WCTOC fpaeju"
+          className="styles__H2-gHnQoK sc-kEjbxe WCTOC dcPaNr"
           id={
             Array [
               "Randomton Elementary School Band",
@@ -3389,22 +3490,21 @@ Notice that the thumbnail images are not common. Each student's actual compositi
         </h2>
         <br />
         <span
-          className="sc-iBPRYJ hoXXHZ"
+          className="sc-iqHYGH juISoZ"
         >
           ☟
         </span>
       </a>
       <ul
-        className="sc-eCssSg bIuYq"
+        className="sc-pFZIQ fqtBDQ"
       >
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5987861347172352"
@@ -3412,10 +3512,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3427,14 +3529,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5301945775423488"
@@ -3442,10 +3543,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3457,14 +3560,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4792148793753600"
@@ -3472,10 +3574,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3487,14 +3591,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4843100393439232"
@@ -3502,10 +3605,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3517,14 +3622,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5416265624584192"
@@ -3532,10 +3636,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3547,14 +3653,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5173307813920768"
@@ -3562,10 +3667,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3577,14 +3684,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5563174544736256"
@@ -3592,10 +3698,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3607,14 +3715,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4883477078999040"
@@ -3622,10 +3729,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3637,14 +3746,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6609490301419520"
@@ -3652,10 +3760,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3667,14 +3777,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6288533116420096"
@@ -3682,10 +3791,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3697,14 +3808,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6326198335438848"
@@ -3712,10 +3822,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3727,14 +3839,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6024225996406784"
@@ -3742,10 +3853,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3757,14 +3870,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5357551576154112"
@@ -3772,10 +3884,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3787,14 +3901,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5835210793943040"
@@ -3802,10 +3915,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3817,14 +3932,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6575764792147968"
@@ -3832,10 +3946,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3847,14 +3963,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/5400648284635136"
@@ -3862,10 +3977,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3877,14 +3994,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6677045254815744"
@@ -3892,10 +4008,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3907,14 +4025,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6443833949683712"
@@ -3922,10 +4039,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3937,14 +4056,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/4795907628335104"
@@ -3952,10 +4070,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3967,14 +4087,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6518820236689408"
@@ -3982,10 +4101,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3997,14 +4118,13 @@ Notice that the thumbnail images are not common. Each student's actual compositi
             </a>
           </div>
         </div>
-        <div>
+        <div
+          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+        >
           <div
-            style={
-              Object {
-                "height": "103px",
-                "width": "300px",
-              }
-            }
+            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            height="103px"
+            width="300px"
           >
             <a
               href="https://musiclab.chromeexperiments.com/Song-Maker/song/6020835623043072"
@@ -4012,10 +4132,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
+                className="sc-jSgupP jcWLzq"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
+                  className="sc-gKsewC idRweB"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"

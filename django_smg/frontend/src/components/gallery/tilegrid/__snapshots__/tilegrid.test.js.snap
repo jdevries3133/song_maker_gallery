@@ -2,14 +2,14 @@
 
 exports[`snapshot 1`] = `
 <div
-  className="styles__Div-dRMJGn sc-gsTCUz JTCPu lgxuND"
+  className="styles__Div-dRMJGn sc-gKsewC JTCPu grUsPx"
   id="gallery"
 >
   <a
     href="#gallery_top"
   >
     <h2
-      className="styles__H2-gHnQoK sc-dlfnbm WCTOC dKPzmP"
+      className="styles__H2-gHnQoK sc-iBPRYJ WCTOC iOHtIK"
       id={
         Array [
           "A Group of Marks",
@@ -20,22 +20,21 @@ exports[`snapshot 1`] = `
     </h2>
     <br />
     <span
-      className="sc-hKgILt klArtS"
+      className="sc-fubCfw dzwkg"
     >
       ☟
     </span>
   </a>
   <ul
-    className="sc-bdfBwQ hOBZTA"
+    className="sc-jSgupP golRvT"
   >
-    <div>
+    <div
+      className="styles__Div-dRMJGn sc-bdfBwQ JTCPu eoYFXm"
+    >
       <div
-        style={
-          Object {
-            "height": "103px",
-            "width": "300px",
-          }
-        }
+        className="styles__Div-dRMJGn sc-eCssSg JTCPu dIYszq"
+        height="103px"
+        width="300px"
       >
         <a
           href="https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
@@ -43,10 +42,12 @@ exports[`snapshot 1`] = `
           target="_blank"
         >
           <svg
+            className="sc-gsTCUz iMejqd"
             viewBox="0 0 300 103"
             xmlns="https://www.w3.org/2000/svg"
           >
             <text
+              className="sc-dlfnbm ikVBss"
               dominantBaseline="middle"
               textAnchor="middle"
               x="50%"
@@ -58,14 +59,13 @@ exports[`snapshot 1`] = `
         </a>
       </div>
     </div>
-    <div>
+    <div
+      className="styles__Div-dRMJGn sc-bdfBwQ JTCPu eoYFXm"
+    >
       <div
-        style={
-          Object {
-            "height": "103px",
-            "width": "300px",
-          }
-        }
+        className="styles__Div-dRMJGn sc-eCssSg JTCPu dIYszq"
+        height="103px"
+        width="300px"
       >
         <a
           href="https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
@@ -73,10 +73,12 @@ exports[`snapshot 1`] = `
           target="_blank"
         >
           <svg
+            className="sc-gsTCUz iMejqd"
             viewBox="0 0 300 103"
             xmlns="https://www.w3.org/2000/svg"
           >
             <text
+              className="sc-dlfnbm ikVBss"
               dominantBaseline="middle"
               textAnchor="middle"
               x="50%"
@@ -88,14 +90,13 @@ exports[`snapshot 1`] = `
         </a>
       </div>
     </div>
-    <div>
+    <div
+      className="styles__Div-dRMJGn sc-bdfBwQ JTCPu eoYFXm"
+    >
       <div
-        style={
-          Object {
-            "height": "103px",
-            "width": "300px",
-          }
-        }
+        className="styles__Div-dRMJGn sc-eCssSg JTCPu dIYszq"
+        height="103px"
+        width="300px"
       >
         <a
           href="https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
@@ -103,10 +104,12 @@ exports[`snapshot 1`] = `
           target="_blank"
         >
           <svg
+            className="sc-gsTCUz iMejqd"
             viewBox="0 0 300 103"
             xmlns="https://www.w3.org/2000/svg"
           >
             <text
+              className="sc-dlfnbm ikVBss"
               dominantBaseline="middle"
               textAnchor="middle"
               x="50%"
@@ -118,14 +121,13 @@ exports[`snapshot 1`] = `
         </a>
       </div>
     </div>
-    <div>
+    <div
+      className="styles__Div-dRMJGn sc-bdfBwQ JTCPu eoYFXm"
+    >
       <div
-        style={
-          Object {
-            "height": "103px",
-            "width": "300px",
-          }
-        }
+        className="styles__Div-dRMJGn sc-eCssSg JTCPu dIYszq"
+        height="103px"
+        width="300px"
       >
         <a
           href="https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
@@ -133,10 +135,12 @@ exports[`snapshot 1`] = `
           target="_blank"
         >
           <svg
+            className="sc-gsTCUz iMejqd"
             viewBox="0 0 300 103"
             xmlns="https://www.w3.org/2000/svg"
           >
             <text
+              className="sc-dlfnbm ikVBss"
               dominantBaseline="middle"
               textAnchor="middle"
               x="50%"

@@ -35,12 +35,19 @@ export const H2 = styled.h2`
 `;
 
 export const H3 = styled.h3`
-${(props) =>
-  props.warn &&
-  css`
-    color: #e41000;
-  `}
-    }
+  ${(props) =>
+    props.warn &&
+    css`
+      color: #e41000;
+    `}
+`;
+
+export const H4 = styled.h4`
+  ${(props) =>
+    props.warn &&
+    css`
+      color: #e41000;
+    `}
 `;
 
 export const P = styled.p`

@@ -4,7 +4,8 @@
 
 // This aspect ratio hides the percussion track
 export const ASPECT_RATIO = 2.89;
-// use this ratio to show percussion track
+
+// use this ratio if you want to show percussion track
 // export const ASPECT_RATIO = 2.4;
 
 // a mapping of midi pitch numbers to colors
@@ -22,3 +23,13 @@ export const PITCH_COLORS = {
   10: "rgb(163, 71, 191)", // A#
   11: "rgb(233, 87, 177)", // B
 };
+
+export const TILE_COLORS = [
+  "#e33059",
+  "#f7943e",
+  "#ecd92a",
+  "#95c632",
+  "#12826d",
+  "#5b38cc",
+  "#ea57b2",
+];

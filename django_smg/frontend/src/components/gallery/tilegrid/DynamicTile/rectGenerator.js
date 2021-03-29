@@ -144,7 +144,7 @@ export class RectGenerator {
     // calculate x position of the rectangle
     return (
       (this.currentTime / this.song.midiParsed.timeDivision) *
-      (this.gridContext.pixelWidth / (this.song.bars * this.song.beats))
+      (this.gridContext.width / (this.song.bars * this.song.beats))
     );
   }
   calcY() {
@@ -172,10 +172,9 @@ export class RectGenerator {
     // now that we know tilesFromBottom, the return value is a simple
     // function:
     return (
-      this.gridContext.pixelHeight -
+      this.gridContext.height -
       tilesFromBottom *
-        (this.gridContext.pixelHeight /
-          (this.tilesPerOctave * this.song.octaves))
+        (this.gridContext.height / (this.tilesPerOctave * this.song.octaves))
     );
   }
   calcColor() {
@@ -183,14 +182,12 @@ export class RectGenerator {
   }
   calcWidth() {
     return (
-      this.gridContext.pixelWidth /
+      this.gridContext.width /
       (this.song.bars * this.song.beats * this.song.subdivision)
     );
   }
   calcHeight() {
-    return (
-      this.gridContext.pixelHeight / (this.tilesPerOctave * this.song.octaves)
-    );
+    return this.gridContext.height / (this.tilesPerOctave * this.song.octaves);
   }
 
   pushRect() {
