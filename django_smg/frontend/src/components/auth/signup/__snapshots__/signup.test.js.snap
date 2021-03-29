@@ -129,7 +129,7 @@ exports[`<Signup /> matches snapshot 1`] = `
         <div
           className="styles__Div-dRMJGn JTCPu"
         >
-          <Input
+          <input
             className="styles__Button-dyjLXS sc-eCssSg lpemWd jgILBz"
             type="submit"
             value="Sign Up"

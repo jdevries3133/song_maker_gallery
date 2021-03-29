@@ -212,7 +212,7 @@ const signup = (props) => {
               />
             </P>
             <Div>
-              <SubmitButton as="Input" type="submit" value="Sign Up" />
+              <SubmitButton as="input" type="submit" value="Sign Up" />
             </Div>
             <Div>
               <Link to="/login">
