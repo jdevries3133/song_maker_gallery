@@ -2,43 +2,43 @@
 
 exports[`Landing page Matches snapshot 1`] = `
 <div
-  className="styles__Div-dRMJGn sc-pFZIQ JTCPu ixhcpH"
+  className="styles__Div-dRMJGn sc-kEjbxe JTCPu cerIGc"
 >
   <div
-    className="styles__Div-dRMJGn sc-gKsewC JTCPu gFXNJl"
+    className="styles__Div-dRMJGn sc-fubCfw JTCPu iBsusY"
   >
     <h1
-      className="styles__H1-esBQNt sc-dlfnbm iAfoss kbrRxX"
+      className="styles__H1-esBQNt sc-eCssSg iAfoss jujEjC"
     >
       Welcome to the Song Maker Gallery!
     </h1>
     <div
-      className="sc-iBPRYJ bYmFWc"
+      className="sc-pFZIQ iZyPaS"
     >
       <div
-        className="sc-fubCfw kEYDKX"
+        className="sc-jrAGrp izRAJY"
       >
         <a
           className="styles__A-gZLWsF dtWskz"
           href="#gallery_top"
         >
           <button
-            className="styles__Button-dyjLXS sc-eCssSg lpemWd knniMS"
+            className="styles__Button-dyjLXS sc-gKsewC lpemWd jtm"
           >
             View our sample gallery
           </button>
         </a>
       </div>
       <div
-        className="sc-fubCfw kvxxms"
+        className="sc-jrAGrp iJsHiD"
       >
         <a
-          className="sc-jSgupP cgGffy"
+          className="sc-iBPRYJ gQvTMv"
           href="/signup"
           onClick={[Function]}
         >
           <button
-            className="styles__Button-dyjLXS sc-eCssSg geCMlt knniMS"
+            className="styles__Button-dyjLXS sc-gKsewC geCMlt jtm"
             color="lightgreen"
           >
             Make a custom gallery for free
@@ -46,18 +46,18 @@ exports[`Landing page Matches snapshot 1`] = `
         </a>
       </div>
       <div
-        className="sc-fubCfw cShSQj"
+        className="sc-jrAGrp gwcMZY"
       >
         <div
           className="styles__Description-emvDpe hbbDYw"
         >
           <p
-            className="styles__P-dIaYsU sc-hKgILt fJZlVX dMuJAW"
+            className="styles__P-dIaYsU sc-jSgupP fJZlVX cUqBPs"
           >
             This website was created by me, a music teacher, in response to the simple need to find a way to feature our students' work in light of the COVID-19 pandemic. Our students' concerts have been cancelled, their rehearsals ceased, and their opportunities to share music diminished to a whisper of what they once were.
           </p>
           <p
-            className="styles__P-dIaYsU sc-hKgILt fJZlVX dMuJAW"
+            className="styles__P-dIaYsU sc-jSgupP fJZlVX cUqBPs"
           >
             As an upper elementary general music teacher, a big part of my COVID curriculum has been the
              
@@ -70,7 +70,7 @@ exports[`Landing page Matches snapshot 1`] = `
             Students love making creations with it; it's fun and easy to use, and it provides an amazing platform for us to discuss the topics in our music curriculum. For me, the music lab has been an indispensable tool for coping with our school closure.
           </p>
           <p
-            className="styles__P-dIaYsU sc-hKgILt fJZlVX dMuJAW"
+            className="styles__P-dIaYsU sc-jSgupP fJZlVX cUqBPs"
           >
             <b>
               This website
@@ -78,7 +78,7 @@ exports[`Landing page Matches snapshot 1`] = `
              is a simple way to share your students' work with your whole community. I know that I have been awestruck by the creativity of many of the music lab compositions that my students have shared with me, and I am sure that you feel the same.
           </p>
           <p
-            className="styles__P-dIaYsU sc-hKgILt kxTZyV cyYbDB"
+            className="styles__P-dIaYsU sc-jSgupP kxTZyV dLDDer"
             style={Object {}}
           >
             We need a beautiful, simple, and easy way to share these compositions with as many people as possible!
@@ -88,10 +88,10 @@ exports[`Landing page Matches snapshot 1`] = `
     </div>
   </div>
   <header
-    className="sc-bdfBwQ gWJAzI"
+    className="sc-dlfnbm bdljVH"
   >
     <nav
-      className="navBar__Nav-cCXsAR jpMUKy"
+      className="sc-gsTCUz irZJkF"
       id="gallery_top"
     >
       <a
@@ -99,7 +99,7 @@ exports[`Landing page Matches snapshot 1`] = `
         href="#Your Group Here"
       >
         <button
-          className="styles__Button-dyjLXS eiYycj"
+          className="styles__Button-dyjLXS sc-bdfBwQ eiYycj lgfXJG"
           color="#94c732"
         >
           Your Group Here
@@ -110,7 +110,7 @@ exports[`Landing page Matches snapshot 1`] = `
         href="#Collins"
       >
         <button
-          className="styles__Button-dyjLXS ghgLhG"
+          className="styles__Button-dyjLXS sc-bdfBwQ ghgLhG lgfXJG"
           color="#ffe716"
         >
           Collins
@@ -121,7 +121,7 @@ exports[`Landing page Matches snapshot 1`] = `
         href="#Jones"
       >
         <button
-          className="styles__Button-dyjLXS fkqMeb"
+          className="styles__Button-dyjLXS sc-bdfBwQ fkqMeb lgfXJG"
           color="#2be2f9"
         >
           Jones
@@ -132,7 +132,7 @@ exports[`Landing page Matches snapshot 1`] = `
         href="#Mr. Smith"
       >
         <button
-          className="styles__Button-dyjLXS jrYNzv"
+          className="styles__Button-dyjLXS sc-bdfBwQ jrYNzv lgfXJG"
           color="#c77dd3"
         >
           Mr. Smith
@@ -143,7 +143,7 @@ exports[`Landing page Matches snapshot 1`] = `
         href="#Mrs. Briggs's Homeroom"
       >
         <button
-          className="styles__Button-dyjLXS eiYycj"
+          className="styles__Button-dyjLXS sc-bdfBwQ eiYycj lgfXJG"
           color="#94c732"
         >
           Mrs. Briggs's Homeroom
@@ -154,7 +154,7 @@ exports[`Landing page Matches snapshot 1`] = `
         href="#Randomton Elementary School Band"
       >
         <button
-          className="styles__Button-dyjLXS ghgLhG"
+          className="styles__Button-dyjLXS sc-bdfBwQ ghgLhG lgfXJG"
           color="#ffe716"
         >
           Randomton Elementary School Band
@@ -184,7 +184,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
         href="#gallery"
       >
         <button
-          className="styles__Button-dyjLXS sc-gsTCUz lpemWd boaxJu"
+          className="styles__Button-dyjLXS sc-hKgILt lpemWd cGyftT"
         >
           View Gallery
         </button>
