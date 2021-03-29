@@ -21,7 +21,7 @@ const CallToAction = styled(Button)`
 const header = (props) => {
   const { width } = useWidth(1000);
   return (
-    <Header>
+    <Header id="gallery_top">
       {width > 1000 ? <NavBar data={props.data} /> : null}
       <H1>{props.title}</H1>
       <Description>

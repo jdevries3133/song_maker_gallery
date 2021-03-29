@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import TileGrid from "./tilegrid";
+import { TileGrid } from "./tilegrid";
 
 import { apiResponse } from "../../../test/__mocks__/api_response";
 

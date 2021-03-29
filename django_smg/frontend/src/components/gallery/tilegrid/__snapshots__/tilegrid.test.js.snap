@@ -2,13 +2,14 @@
 
 exports[`snapshot 1`] = `
 <div
+  className="styles__Div-dRMJGn sc-gsTCUz JTCPu lgxuND"
   id="gallery"
 >
-  <div />
   <a
     href="#gallery_top"
   >
     <h2
+      className="styles__H2-gHnQoK sc-dlfnbm WCTOC dKPzmP"
       id={
         Array [
           "A Group of Marks",
@@ -18,11 +19,15 @@ exports[`snapshot 1`] = `
       A Group of Marks
     </h2>
     <br />
-    <span>
+    <span
+      className="sc-hKgILt klArtS"
+    >
       ☟
     </span>
   </a>
-  <ul>
+  <ul
+    className="sc-bdfBwQ hOBZTA"
+  >
     <div>
       <div
         style={

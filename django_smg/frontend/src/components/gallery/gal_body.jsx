@@ -4,7 +4,7 @@ import { Div } from "../common/styles";
 
 import { Donate } from "./donate";
 import Header from "./header/header";
-import TileGrid from "./tilegrid/tilegrid";
+import { TileGrid } from "./tilegrid/tilegrid";
 
 const galBody = (props) => {
   return (

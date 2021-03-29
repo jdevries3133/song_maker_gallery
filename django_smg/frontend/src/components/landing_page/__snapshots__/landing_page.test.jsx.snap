@@ -2,43 +2,43 @@
 
 exports[`Landing page Matches snapshot 1`] = `
 <div
-  className="styles__Div-dRMJGn sc-kEjbxe JTCPu cerIGc"
+  className="styles__Div-dRMJGn sc-bqyKva JTCPu AWJeV"
 >
   <div
-    className="styles__Div-dRMJGn sc-fubCfw JTCPu iBsusY"
+    className="styles__Div-dRMJGn sc-iqHYGH JTCPu cjXJOV"
   >
     <h1
-      className="styles__H1-esBQNt sc-eCssSg iAfoss jujEjC"
+      className="styles__H1-esBQNt sc-fubCfw iAfoss iQtuBL"
     >
       Welcome to the Song Maker Gallery!
     </h1>
     <div
-      className="sc-pFZIQ iZyPaS"
+      className="sc-crrsfI gENlqN"
     >
       <div
-        className="sc-jrAGrp izRAJY"
+        className="sc-dQppl imjCIJ"
       >
         <a
           className="styles__A-gZLWsF dtWskz"
           href="#gallery_top"
         >
           <button
-            className="styles__Button-dyjLXS sc-gKsewC lpemWd jtm"
+            className="styles__Button-dyjLXS sc-jrAGrp lpemWd gQnLGA"
           >
             View our sample gallery
           </button>
         </a>
       </div>
       <div
-        className="sc-jrAGrp iJsHiD"
+        className="sc-dQppl dZSEZS"
       >
         <a
-          className="sc-iBPRYJ gQvTMv"
+          className="sc-kEjbxe cgtSAu"
           href="/signup"
           onClick={[Function]}
         >
           <button
-            className="styles__Button-dyjLXS sc-gKsewC geCMlt jtm"
+            className="styles__Button-dyjLXS sc-jrAGrp geCMlt gQnLGA"
             color="lightgreen"
           >
             Make a custom gallery for free
@@ -46,18 +46,18 @@ exports[`Landing page Matches snapshot 1`] = `
         </a>
       </div>
       <div
-        className="sc-jrAGrp gwcMZY"
+        className="sc-dQppl iUUssd"
       >
         <div
           className="styles__Description-emvDpe hbbDYw"
         >
           <p
-            className="styles__P-dIaYsU sc-jSgupP fJZlVX cUqBPs"
+            className="styles__P-dIaYsU sc-pFZIQ fJZlVX dFDgMr"
           >
             This website was created by me, a music teacher, in response to the simple need to find a way to feature our students' work in light of the COVID-19 pandemic. Our students' concerts have been cancelled, their rehearsals ceased, and their opportunities to share music diminished to a whisper of what they once were.
           </p>
           <p
-            className="styles__P-dIaYsU sc-jSgupP fJZlVX cUqBPs"
+            className="styles__P-dIaYsU sc-pFZIQ fJZlVX dFDgMr"
           >
             As an upper elementary general music teacher, a big part of my COVID curriculum has been the
              
@@ -70,7 +70,7 @@ exports[`Landing page Matches snapshot 1`] = `
             Students love making creations with it; it's fun and easy to use, and it provides an amazing platform for us to discuss the topics in our music curriculum. For me, the music lab has been an indispensable tool for coping with our school closure.
           </p>
           <p
-            className="styles__P-dIaYsU sc-jSgupP fJZlVX cUqBPs"
+            className="styles__P-dIaYsU sc-pFZIQ fJZlVX dFDgMr"
           >
             <b>
               This website
@@ -78,7 +78,7 @@ exports[`Landing page Matches snapshot 1`] = `
              is a simple way to share your students' work with your whole community. I know that I have been awestruck by the creativity of many of the music lab compositions that my students have shared with me, and I am sure that you feel the same.
           </p>
           <p
-            className="styles__P-dIaYsU sc-jSgupP kxTZyV dLDDer"
+            className="styles__P-dIaYsU sc-pFZIQ kxTZyV fdztQw"
             style={Object {}}
           >
             We need a beautiful, simple, and easy way to share these compositions with as many people as possible!
@@ -89,6 +89,7 @@ exports[`Landing page Matches snapshot 1`] = `
   </div>
   <header
     className="sc-dlfnbm bdljVH"
+    id="gallery_top"
   >
     <nav
       className="sc-gsTCUz irZJkF"
@@ -195,13 +196,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
     className="styles__Div-dRMJGn JTCPu"
   >
     <div
+      className="styles__Div-dRMJGn sc-jSgupP JTCPu hHiNkw"
       id="gallery"
     >
-      <div />
       <a
         href="#gallery_top"
       >
         <h2
+          className="styles__H2-gHnQoK sc-gKsewC WCTOC fpaeju"
           id={
             Array [
               "Your Group Here",
@@ -211,11 +213,15 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           Your Group Here
         </h2>
         <br />
-        <span>
+        <span
+          className="sc-iBPRYJ hoXXHZ"
+        >
           ☟
         </span>
       </a>
-      <ul>
+      <ul
+        className="sc-eCssSg bIuYq"
+      >
         <div>
           <div
             style={
@@ -819,13 +825,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
+      className="styles__Div-dRMJGn sc-jSgupP JTCPu hHiNkw"
       id="gallery"
     >
-      <div />
       <a
         href="#gallery_top"
       >
         <h2
+          className="styles__H2-gHnQoK sc-gKsewC WCTOC fpaeju"
           id={
             Array [
               "Collins",
@@ -835,11 +842,15 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           Collins
         </h2>
         <br />
-        <span>
+        <span
+          className="sc-iBPRYJ hoXXHZ"
+        >
           ☟
         </span>
       </a>
-      <ul>
+      <ul
+        className="sc-eCssSg bIuYq"
+      >
         <div>
           <div
             style={
@@ -1443,13 +1454,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
+      className="styles__Div-dRMJGn sc-jSgupP JTCPu hHiNkw"
       id="gallery"
     >
-      <div />
       <a
         href="#gallery_top"
       >
         <h2
+          className="styles__H2-gHnQoK sc-gKsewC WCTOC fpaeju"
           id={
             Array [
               "Jones",
@@ -1459,11 +1471,15 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           Jones
         </h2>
         <br />
-        <span>
+        <span
+          className="sc-iBPRYJ hoXXHZ"
+        >
           ☟
         </span>
       </a>
-      <ul>
+      <ul
+        className="sc-eCssSg bIuYq"
+      >
         <div>
           <div
             style={
@@ -2097,13 +2113,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
+      className="styles__Div-dRMJGn sc-jSgupP JTCPu hHiNkw"
       id="gallery"
     >
-      <div />
       <a
         href="#gallery_top"
       >
         <h2
+          className="styles__H2-gHnQoK sc-gKsewC WCTOC fpaeju"
           id={
             Array [
               "Mr. Smith",
@@ -2113,11 +2130,15 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           Mr. Smith
         </h2>
         <br />
-        <span>
+        <span
+          className="sc-iBPRYJ hoXXHZ"
+        >
           ☟
         </span>
       </a>
-      <ul>
+      <ul
+        className="sc-eCssSg bIuYq"
+      >
         <div>
           <div
             style={
@@ -2721,13 +2742,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
+      className="styles__Div-dRMJGn sc-jSgupP JTCPu hHiNkw"
       id="gallery"
     >
-      <div />
       <a
         href="#gallery_top"
       >
         <h2
+          className="styles__H2-gHnQoK sc-gKsewC WCTOC fpaeju"
           id={
             Array [
               "Mrs. Briggs's Homeroom",
@@ -2737,11 +2759,15 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           Mrs. Briggs's Homeroom
         </h2>
         <br />
-        <span>
+        <span
+          className="sc-iBPRYJ hoXXHZ"
+        >
           ☟
         </span>
       </a>
-      <ul>
+      <ul
+        className="sc-eCssSg bIuYq"
+      >
         <div>
           <div
             style={
@@ -3345,13 +3371,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
+      className="styles__Div-dRMJGn sc-jSgupP JTCPu hHiNkw"
       id="gallery"
     >
-      <div />
       <a
         href="#gallery_top"
       >
         <h2
+          className="styles__H2-gHnQoK sc-gKsewC WCTOC fpaeju"
           id={
             Array [
               "Randomton Elementary School Band",
@@ -3361,11 +3388,15 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           Randomton Elementary School Band
         </h2>
         <br />
-        <span>
+        <span
+          className="sc-iBPRYJ hoXXHZ"
+        >
           ☟
         </span>
       </a>
-      <ul>
+      <ul
+        className="sc-eCssSg bIuYq"
+      >
         <div>
           <div
             style={
