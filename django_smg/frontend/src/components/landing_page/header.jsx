@@ -43,7 +43,7 @@ const Div = styled(DefaultDiv)`
 const Grid = styled.div`
   @media (min-width: 600px) {
     display: grid;
-    grid-template-columns: 5% 30% 60% 5%;
+    grid-template-columns: 5% 60% 30% 5%;
     grid-template-rows: 20% 80%;
   }
 `;
@@ -61,17 +61,17 @@ export const LandingPageHeader = () => {
     <Div>
       <H1>Welcome to the Song Maker Gallery!</H1>
       <Grid>
-        <GridItem col="2" row="1">
+        <GridItem col="3" row="1">
           <A href="#gallery_top">
             <Button>View our sample gallery</Button>
           </A>
         </GridItem>
-        <GridItem col="2" row="2" spanCol="2">
+        <GridItem col="3" row="2" spanCol="2">
           <Link to="/signup">
             <Button color="lightgreen">Make a custom gallery for free</Button>
           </Link>
         </GridItem>
-        <GridItem col="3" row="1">
+        <GridItem col="2" row="1" spanCol="2">
           <Description>
             <P justify>
               This website was created by me, a music teacher, in response to
