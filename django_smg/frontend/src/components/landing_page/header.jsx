@@ -9,7 +9,7 @@ import styled, {
   Div as DefaultDiv,
   H1 as DefaultH1,
   Button as DefaultButton,
-} from "../../common/styles";
+} from "../common/styles";
 
 const H1 = styled(DefaultH1)`
   padding-bottom: 0;
@@ -56,7 +56,7 @@ const GridItem = styled.div`
   }
 `;
 
-const welcome = () => {
+export const LandingPageHeader = () => {
   return (
     <Div>
       <H1>Welcome to the Song Maker Gallery!</H1>
@@ -108,5 +108,3 @@ const welcome = () => {
     </Div>
   );
 };
-
-export default welcome;

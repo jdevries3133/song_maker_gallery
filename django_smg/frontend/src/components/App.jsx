@@ -1,14 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-// import "./App.css";
-
 import { Provider } from "react-redux";
 import store from "../store";
 
 import { Title } from "./common/set_page_title";
 
-import LandingPage from "./landing_page/landing_page";
+import { LandingPage } from "./landing_page";
 import PrivateRoute from "./common/private_route";
 import SignUp from "./auth/signup";
 import Login from "./auth/login";

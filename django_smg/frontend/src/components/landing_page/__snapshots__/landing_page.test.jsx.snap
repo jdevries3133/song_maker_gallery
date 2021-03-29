@@ -1,0 +1,4009 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing page Matches snapshot 1`] = `
+<div
+  className="styles__Div-dRMJGn sc-pFZIQ JTCPu ixhcpH"
+>
+  <div
+    className="styles__Div-dRMJGn sc-gKsewC JTCPu gFXNJl"
+  >
+    <h1
+      className="styles__H1-esBQNt sc-dlfnbm iAfoss kbrRxX"
+    >
+      Welcome to the Song Maker Gallery!
+    </h1>
+    <div
+      className="sc-iBPRYJ bYmFWc"
+    >
+      <div
+        className="sc-fubCfw kEYDKX"
+      >
+        <a
+          className="styles__A-gZLWsF dtWskz"
+          href="#gallery_top"
+        >
+          <button
+            className="styles__Button-dyjLXS sc-eCssSg lpemWd knniMS"
+          >
+            View our sample gallery
+          </button>
+        </a>
+      </div>
+      <div
+        className="sc-fubCfw kvxxms"
+      >
+        <a
+          className="sc-jSgupP cgGffy"
+          href="/signup"
+          onClick={[Function]}
+        >
+          <button
+            className="styles__Button-dyjLXS sc-eCssSg geCMlt knniMS"
+            color="lightgreen"
+          >
+            Make a custom gallery for free
+          </button>
+        </a>
+      </div>
+      <div
+        className="sc-fubCfw cShSQj"
+      >
+        <div
+          className="styles__Description-emvDpe hbbDYw"
+        >
+          <p
+            className="styles__P-dIaYsU sc-hKgILt fJZlVX dMuJAW"
+          >
+            This website was created by me, a music teacher, in response to the simple need to find a way to feature our students' work in light of the COVID-19 pandemic. Our students' concerts have been cancelled, their rehearsals ceased, and their opportunities to share music diminished to a whisper of what they once were.
+          </p>
+          <p
+            className="styles__P-dIaYsU sc-hKgILt fJZlVX dMuJAW"
+          >
+            As an upper elementary general music teacher, a big part of my COVID curriculum has been the
+             
+            <a
+              href="https://musiclab.chromeexperiments.com/"
+            >
+              Chrome Music Lab.
+            </a>
+             
+            Students love making creations with it; it's fun and easy to use, and it provides an amazing platform for us to discuss the topics in our music curriculum. For me, the music lab has been an indispensable tool for coping with our school closure.
+          </p>
+          <p
+            className="styles__P-dIaYsU sc-hKgILt fJZlVX dMuJAW"
+          >
+            <b>
+              This website
+            </b>
+             is a simple way to share your students' work with your whole community. I know that I have been awestruck by the creativity of many of the music lab compositions that my students have shared with me, and I am sure that you feel the same.
+          </p>
+          <p
+            className="styles__P-dIaYsU sc-hKgILt kxTZyV cyYbDB"
+            style={Object {}}
+          >
+            We need a beautiful, simple, and easy way to share these compositions with as many people as possible!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <header
+    className="sc-bdfBwQ gWJAzI"
+  >
+    <nav
+      className="navBar__Nav-cCXsAR jpMUKy"
+      id="gallery_top"
+    >
+      <a
+        className="a_nav"
+        href="#Your Group Here"
+      >
+        <button
+          className="styles__Button-dyjLXS eiYycj"
+          color="#94c732"
+        >
+          Your Group Here
+        </button>
+      </a>
+      <a
+        className="a_nav"
+        href="#Collins"
+      >
+        <button
+          className="styles__Button-dyjLXS ghgLhG"
+          color="#ffe716"
+        >
+          Collins
+        </button>
+      </a>
+      <a
+        className="a_nav"
+        href="#Jones"
+      >
+        <button
+          className="styles__Button-dyjLXS fkqMeb"
+          color="#2be2f9"
+        >
+          Jones
+        </button>
+      </a>
+      <a
+        className="a_nav"
+        href="#Mr. Smith"
+      >
+        <button
+          className="styles__Button-dyjLXS jrYNzv"
+          color="#c77dd3"
+        >
+          Mr. Smith
+        </button>
+      </a>
+      <a
+        className="a_nav"
+        href="#Mrs. Briggs's Homeroom"
+      >
+        <button
+          className="styles__Button-dyjLXS eiYycj"
+          color="#94c732"
+        >
+          Mrs. Briggs's Homeroom
+        </button>
+      </a>
+      <a
+        className="a_nav"
+        href="#Randomton Elementary School Band"
+      >
+        <button
+          className="styles__Button-dyjLXS ghgLhG"
+          color="#ffe716"
+        >
+          Randomton Elementary School Band
+        </button>
+      </a>
+    </nav>
+    <h1
+      className="styles__H1-esBQNt iAfoss"
+    >
+      Sample Gallery
+    </h1>
+    <div
+      className="styles__Description-emvDpe hbbDYw"
+    >
+      <p>
+        This is an example of what one of our galleries look like. All that you need to do is upload a spreadsheet of students' names and links to their song maker creations, and the site does the rest. You can spin up a gallery just like this for your students in only a few minutes!
+Notice that the thumbnail images are not common. Each student's actual composition is displayed on the website so that everyone in your school community can get a bird's eye view of the astounding creativity of our students.
+      </p>
+      <p
+        className="styles__P-dIaYsU kxTZyV"
+      >
+        <b>
+          Hover over the picture of a students' work to see their name, and click to open their composition in a new tab
+        </b>
+      </p>
+      <a
+        href="#gallery"
+      >
+        <button
+          className="styles__Button-dyjLXS sc-gsTCUz lpemWd boaxJu"
+        >
+          View Gallery
+        </button>
+      </a>
+    </div>
+  </header>
+  <div
+    className="styles__Div-dRMJGn JTCPu"
+  >
+    <div
+      id="gallery"
+    >
+      <div />
+      <a
+        href="#gallery_top"
+      >
+        <h2
+          id={
+            Array [
+              "Your Group Here",
+            ]
+          }
+        >
+          Your Group Here
+        </h2>
+        <br />
+        <span>
+          ☟
+        </span>
+      </a>
+      <ul>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4618045650632704"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Arthur
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4887698964742144"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Josiah
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6591403271389184"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Gabriel
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5199130835025920"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Sebastian
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4678032385114112"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Elizabeth
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5788591406972928"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Felix
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6336564071235584"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Freya
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5409105243013120"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ophelia
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6297559191519232"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Adalyn
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4643688417329152"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Fiona
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5508445823303680"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Olivia
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5508445823303680"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Harper
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4783781039833088"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Brielle
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6187108805902336"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Nathaniel
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6099598545256448"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Nadia
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6416354899918848"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Milo
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6271702649536512"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Genevieve
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6414768916135936"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Emmett
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5500108117377024"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Elizabeth
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4504220729344000"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Wyatt
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </ul>
+    </div>
+    <div
+      id="gallery"
+    >
+      <div />
+      <a
+        href="#gallery_top"
+      >
+        <h2
+          id={
+            Array [
+              "Collins",
+            ]
+          }
+        >
+          Collins
+        </h2>
+        <br />
+        <span>
+          ☟
+        </span>
+      </a>
+      <ul>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5826318131265536"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Mabel
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5558466857926656"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Emmett
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5700574910611456"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Margot
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5869717836267520"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Levi
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5541642095296512"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ada
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6256605336174592"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Harper
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4997220865671168"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Xander
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5058705000235008"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Nathan
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6457093738463232"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Aurelia
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5854837888516096"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Mia
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5952120441274368"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Aaron
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4626771262570496"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ruby
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4954874971160576"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ada
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4673638499352576"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Apollo
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5219857038573568"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Tobias
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5429849968607232"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Felix
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6237552190160896"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Samuel
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6357252928700416"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ada
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5193940098613248"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Naomi
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4577109243592704"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Hannah
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </ul>
+    </div>
+    <div
+      id="gallery"
+    >
+      <div />
+      <a
+        href="#gallery_top"
+      >
+        <h2
+          id={
+            Array [
+              "Jones",
+            ]
+          }
+        >
+          Jones
+        </h2>
+        <br />
+        <span>
+          ☟
+        </span>
+      </a>
+      <ul>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5987861347172352"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Callum
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5301945775423488"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Freya
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4792148793753600"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Theodore
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4843100393439232"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Lincoln
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5416265624584192"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Declan
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5173307813920768"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Amara
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5563174544736256"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Lucy
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4883477078999040"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Natalie
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6609490301419520"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ella
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6288533116420096"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Nora
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6326198335438848"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Luna
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6024225996406784"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ezra
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5357551576154112"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Jace
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5835210793943040"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Mabel
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6575764792147968"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Astrid
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5400648284635136"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ava
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6677045254815744"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Isaiah
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6443833949683712"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Wren
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4795907628335104"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Elizabeth
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6518820236689408"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Atticus
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6020835623043072"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Brooke
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </ul>
+    </div>
+    <div
+      id="gallery"
+    >
+      <div />
+      <a
+        href="#gallery_top"
+      >
+        <h2
+          id={
+            Array [
+              "Mr. Smith",
+            ]
+          }
+        >
+          Mr. Smith
+        </h2>
+        <br />
+        <span>
+          ☟
+        </span>
+      </a>
+      <ul>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4618045650632704"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ezekiel
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4887698964742144"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Rose
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6591403271389184"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Audrey
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5199130835025920"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Arlo
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4678032385114112"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Brielle
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5788591406972928"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Cora
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6336564071235584"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Mila
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5409105243013120"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Matthew
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6297559191519232"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Esme
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4643688417329152"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Dominic
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5508445823303680"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Rose
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5508445823303680"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Thea
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4783781039833088"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Audrey
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6187108805902336"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Isaiah
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6099598545256448"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Gabriel
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6416354899918848"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Silas
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6271702649536512"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Michael
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6414768916135936"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Xander
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5500108117377024"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Genevieve
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4504220729344000"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ivy
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </ul>
+    </div>
+    <div
+      id="gallery"
+    >
+      <div />
+      <a
+        href="#gallery_top"
+      >
+        <h2
+          id={
+            Array [
+              "Mrs. Briggs's Homeroom",
+            ]
+          }
+        >
+          Mrs. Briggs's Homeroom
+        </h2>
+        <br />
+        <span>
+          ☟
+        </span>
+      </a>
+      <ul>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5826318131265536"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ruby
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5558466857926656"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Claire
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5700574910611456"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Zachary
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5869717836267520"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Beau
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5541642095296512"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Margot
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6256605336174592"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Alice
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4997220865671168"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Naomi
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5058705000235008"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Madeline
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6457093738463232"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Maeve
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5854837888516096"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ronan
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5952120441274368"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Isla
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4626771262570496"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Fiona
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4954874971160576"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Caleb
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4673638499352576"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Anastasia
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5219857038573568"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Oscar
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5429849968607232"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Nora
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6237552190160896"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Cole
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6357252928700416"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Aurelia
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5193940098613248"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Adeline
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4577109243592704"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Daphne
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </ul>
+    </div>
+    <div
+      id="gallery"
+    >
+      <div />
+      <a
+        href="#gallery_top"
+      >
+        <h2
+          id={
+            Array [
+              "Randomton Elementary School Band",
+            ]
+          }
+        >
+          Randomton Elementary School Band
+        </h2>
+        <br />
+        <span>
+          ☟
+        </span>
+      </a>
+      <ul>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5987861347172352"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Adam
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5301945775423488"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ace
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4792148793753600"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Elliott
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4843100393439232"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Elizabeth
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5416265624584192"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Emily
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5173307813920768"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Gabriel
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5563174544736256"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Henry
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4883477078999040"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Willow
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6609490301419520"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Aurelia
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6288533116420096"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Isabelle
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6326198335438848"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Adrian
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6024225996406784"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Nolan
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5357551576154112"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Fiona
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5835210793943040"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Connor
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6575764792147968"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Eliza
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/5400648284635136"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Eloise
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6677045254815744"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ella
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6443833949683712"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Apollo
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/4795907628335104"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Grace
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6518820236689408"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Ruby
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "height": "103px",
+                "width": "300px",
+              }
+            }
+          >
+            <a
+              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6020835623043072"
+              rel="noopner noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 300 103"
+                xmlns="https://www.w3.org/2000/svg"
+              >
+                <text
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  x="50%"
+                  y="50%"
+                >
+                  Brooke
+                </text>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </ul>
+    </div>
+  </div>
+  <button
+    className="donate_button__button-iFXoIG kbRjEp"
+    onClick={[Function]}
+  >
+    $
+  </button>
+</div>
+`;

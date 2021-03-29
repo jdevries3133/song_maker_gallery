@@ -1,7 +1,7 @@
 import React from "react";
 
 import GalleryBody from "../gallery/gal_body";
-import Welcome from "./welcome/welcome";
+import { LandingPageHeader } from "./header";
 import styled, { Div as DefaultDiv } from "../common/styles";
 
 import sampleGallery from "./sample-gallery.json";
@@ -10,10 +10,10 @@ const Div = styled(DefaultDiv)`
   margin-bottom: 11rem;
 `;
 
-const landing_page = () => {
+export const LandingPage = () => {
   return (
     <Div>
-      <Welcome />
+      <LandingPageHeader />
       <GalleryBody
         title={sampleGallery.title}
         description={sampleGallery.description}
@@ -22,5 +22,3 @@ const landing_page = () => {
     </Div>
   );
 };
-
-export default landing_page;
