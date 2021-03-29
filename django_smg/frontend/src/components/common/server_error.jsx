@@ -1,18 +1,14 @@
 import React from "react";
 
-import styled from "styled-components";
-
-const P = styled.p`
-  text-align: justify;
-`;
+import { P, Button, Blanket } from "./styles";
 
 const server_error = (props) => {
   return (
-    <div className="description blanket">
+    <Blanket>
       <h2>Oops!</h2>
-      <P>Our server must be in a bad mood today; please try again!</P>
-      <button onClick={() => props.onOk()}>Ok</button>
-    </div>
+      <P justify>Our server must be in a bad mood today; please try again!</P>
+      <Button onClick={() => props.onOk()}>Ok</Button>
+    </Blanket>
   );
 };
 export default server_error;
