@@ -1,6 +1,6 @@
 import React from "react";
 
-import { P } from "../../../common/styles";
+import { P } from "Styles";
 
 /* This is just a blurb of jsx that can be inserted; no fancy modal */
 export const InvalidFiletype = () => (

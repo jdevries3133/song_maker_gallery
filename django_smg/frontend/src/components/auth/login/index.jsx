@@ -5,11 +5,11 @@ import {
   login as loginAction,
   clearError,
   tryToken,
-} from "../../../actions/auth.action";
-import { getUserGalleries } from "../../../actions/user";
+} from "Actions/auth.action";
+import { getUserGalleries } from "Actions/user";
 import { Redirect } from "react-router-dom";
 
-import { Div } from "../../common/styles";
+import { Div } from "Styles";
 import { ErrorHandler } from "./error_handler";
 import { LoginFooter } from "./login_footer";
 import { LoginForm } from "./form";

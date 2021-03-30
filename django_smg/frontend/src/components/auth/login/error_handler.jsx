@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { ErrorArray } from "../../common/custom_error";
+import { ErrorArray } from "Common/custom_error";
 
 /**
  * Cleanup more common api message keys to make them more user friendly.

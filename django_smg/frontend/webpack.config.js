@@ -34,6 +34,14 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    alias: {
+      Common: path.resolve(__dirname, "./src/components/common"),
+      Styles$: path.resolve(__dirname, "./src/components/common/styles.jsx"),
+      Actions: path.resolve(__dirname, "./src/actions"),
+      Test: path.resolve(__dirname, "./src/test"),
+    },
+  },
   entry: "./src/index.jsx",
   output: {
     filename: "main_v2.1.2.js",

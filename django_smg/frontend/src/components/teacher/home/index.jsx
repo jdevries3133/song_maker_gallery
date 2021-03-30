@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Div, P } from "../../common/styles";
+import { Div, P } from "Styles";
 
 export const Home = () => (
   <Div>

@@ -7,11 +7,11 @@ import {
   deleteGallery,
   acknowledgeDelete,
   getUserGalleries,
-} from "../../../actions/user";
-import ServerError from "../../common/server_error";
+} from "Actions/user";
+import ServerError from "Common/server_error";
 
 import { ConfirmDelete } from "./confirm_delete";
-import styled, { Description, Button, H3 } from "../../common/styles";
+import styled, { Description, Button, H3 } from "Styles";
 
 const StyledTable = styled.table`
   margin: auto;

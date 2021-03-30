@@ -4,7 +4,7 @@ import React from "react";
 // import AddGallery from "./add_gallery";
 // import ListGalleries from "./list_galleries";
 
-import { Div } from "../common/styles";
+import { Div } from "Styles";
 
 import LogoutButton from "./header/logout_button";
 import { Home } from "./home";

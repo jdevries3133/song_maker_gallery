@@ -1,13 +1,13 @@
 import React from "react";
 import { act, render, fireEvent, screen } from "@testing-library/react";
-import { Context as TestContext } from "../../test/app_context";
+import { Context as TestContext } from "Test/app_context";
 import "@testing-library/jest-dom";
 
-import { logout } from "../../actions/auth.action";
+import { logout } from "Actions/auth.action";
 import Teacher from "./index";
 
-jest.mock("../../actions/user");
-jest.mock("../../actions/auth.action");
+jest.mock("Actions/user");
+jest.mock("Actions/auth.action");
 
 describe("<Teacher />", () => {
   it("has logout button which calls logout action on click", async () => {

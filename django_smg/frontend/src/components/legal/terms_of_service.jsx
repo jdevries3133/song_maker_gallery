@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import styled, { Button, Div, Blanket, Description } from "../common/styles";
+import styled, { Button, Div, Blanket, Description } from "Styles";
 
 export const LegalContainer = styled(Div)`
   margin: 3%;

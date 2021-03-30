@@ -4,15 +4,15 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../store";
 
-import { Title } from "./common/set_page_title";
+import { Title } from "Common/set_page_title";
 
 import { LandingPage } from "./landing_page";
-import PrivateRoute from "./common/private_route";
+import PrivateRoute from "Common/private_route";
 import SignUp from "./auth/signup";
 import Login from "./auth/login";
 import Gallery from "./gallery/gallery";
 import Teacher from "./teacher";
-import { Footer } from "./common/footer";
+import { Footer } from "Common/footer";
 import { TosPage, PrivacyPage } from "./legal";
 
 const App = () => (

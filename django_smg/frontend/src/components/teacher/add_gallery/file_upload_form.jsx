@@ -6,7 +6,7 @@ import styled, {
   H1 as DefaultH1,
   Button,
   Description as DefaultDescription,
-} from "../../common/styles";
+} from "Styles";
 
 import { TemplateHelp } from "./snippets";
 import { HowToVideo } from "./snippets";

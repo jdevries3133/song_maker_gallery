@@ -1,4 +1,4 @@
-import { POST_GALLERY, DELETE_GALLERY, GET_GALLERIES } from "../actions/types";
+import { POST_GALLERY, DELETE_GALLERY, GET_GALLERIES } from "Actions/types";
 
 const initialState = {
   // authenticated: false,

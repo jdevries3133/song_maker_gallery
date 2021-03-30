@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { TileGrid } from "./tilegrid";
 
-import { apiResponse } from "../../../test/__mocks__/api_response";
+import { apiResponse } from "Test/__mocks__/api_response";
 
 test("snapshot", () => {
   const tree = renderer

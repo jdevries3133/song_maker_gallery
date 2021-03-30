@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Loading from "../common/loading";
+import Loading from "Common/loading";
 import GalleryBody from "./gal_body";
 
-import { getGallery } from "../../actions/gallery";
+import { getGallery } from "Actions/gallery";
 import { windowLocation } from "../../util/window";
 
 class Gallery extends Component {

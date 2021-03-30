@@ -8,13 +8,13 @@ import {
   screen,
   waitFor,
 } from "@testing-library/react";
-import { Context as TestContext } from "../../../test/app_context";
+import { Context as TestContext } from "Test/app_context";
 import "@testing-library/jest-dom";
 
 import AddGallery from "./index";
 
-jest.mock("../../../actions/user");
-jest.mock("../../../actions/auth.action");
+jest.mock("Actions/user");
+jest.mock("Actions/auth.action");
 
 const mountFile = (node, data = "") => {
   const file = new File([data], "group.csv", { type: "text/csv" });

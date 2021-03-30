@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Button } from "../../../common/styles";
+import { Button } from "Styles";
 
 /**
  * For button wrapped in anchor tag.

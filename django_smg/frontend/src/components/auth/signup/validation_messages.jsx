@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { P } from "../../common/styles";
+import styled, { P } from "Styles";
 
 import { PASSWD_MIN_LENGTH } from "./index";
 

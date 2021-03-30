@@ -1,9 +1,9 @@
 import React from "react";
 
-import styled, { H1, P, Button, Description } from "../../common/styles";
+import styled, { H1, P, Button, Description } from "Styles";
 import FormattedDescription from "./formatted_description";
 import NavBar from "./navBar";
-import useWidth from "../../common/useWidth";
+import useWidth from "Common/useWidth";
 
 const Header = styled.header`
   margin-bottom: 10rem;

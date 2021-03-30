@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { Button } from "../../common/styles";
+import styled, { Button } from "Styles";
 import { Link as DefaultLink } from "react-router-dom";
 import { windowLocation } from "../../../util/window";
 

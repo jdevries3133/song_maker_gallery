@@ -10,12 +10,12 @@ import {
 import "@testing-library/jest-dom";
 import { Route } from "react-router-dom";
 
-import { Context } from "../../../test/app_context";
-import { loginAction } from "../../../test/__mocks__/actions";
+import { Context } from "Test/app_context";
+import { loginAction } from "Test/__mocks__/actions";
 import Login from "./index";
-import { login, tryToken } from "../../../actions/auth.action";
+import { login, tryToken } from "Actions/auth.action";
 
-jest.mock("../../../actions/auth.action");
+jest.mock("Actions/auth.action");
 
 beforeEach(() => tryToken.mockImplementation(() => null));
 

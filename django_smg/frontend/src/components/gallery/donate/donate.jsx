@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-import { Blanket, H2, Button } from "../../common/styles";
+import { Blanket, H2, Button } from "Styles";
 
 const DonateHeader = styled(H2)`
   background-color: rgba(217, 157, 255, 0.81);

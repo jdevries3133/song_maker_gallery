@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Div } from "../common/styles";
-import useWidth from "../common/useWidth";
+import { Div } from "Styles";
+import useWidth from "Common/useWidth";
 import { Tos, Privacy } from "../legal";
 
 const FooterElem = styled.footer`

@@ -2,7 +2,7 @@ import React from "react";
 
 import GalleryBody from "../gallery/gal_body";
 import { LandingPageHeader } from "./header";
-import styled, { Div as DefaultDiv } from "../common/styles";
+import styled, { Div as DefaultDiv } from "Styles";
 
 import sampleGallery from "./sample-gallery.json";
 

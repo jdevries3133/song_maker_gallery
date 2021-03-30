@@ -7,7 +7,7 @@ import {
   waitFor,
 } from "@testing-library/react";
 import Papa from "papaparse";
-import { Context as TestContext } from "../../../test/app_context";
+import { Context as TestContext } from "Test/app_context";
 import "@testing-library/jest-dom";
 
 import Verify from "./verify";

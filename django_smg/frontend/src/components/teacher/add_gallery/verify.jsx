@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import styled, {
-  Input,
-  H2,
-  H3,
-  Blanket,
-  Button,
-  P,
-  Div,
-  css,
-} from "../../common/styles";
+import styled, { Input, H2, H3, Blanket, Button, P, Div, css } from "Styles";
 
 import { StagedGroupBody } from "./snippets";
 

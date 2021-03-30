@@ -5,7 +5,7 @@
 import React, { useState, Fragment } from "react";
 import styled from "styled-components";
 
-import { Portal } from "../common/portal";
+import { Portal } from "Common/portal";
 
 import { TosText } from "./terms_of_service";
 import { PrivacyText } from "./privacy_policy";

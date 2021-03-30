@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { Button as DefaultButton } from "../../common/styles";
+import styled, { Button as DefaultButton } from "Styles";
 
 const Button = styled(DefaultButton)`
   margin: 10px;

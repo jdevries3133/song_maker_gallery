@@ -1,8 +1,8 @@
 import React from "react";
 import { DynamicTile } from "./DynamicTile";
-import useWidth from "../../common/useWidth";
+import useWidth from "Common/useWidth";
 
-import styled, { A, P, Button, Div, H2 } from "../../common/styles";
+import styled, { A, P, Button, Div, H2 } from "Styles";
 
 const Ul = styled.ul`
   text-align: center;

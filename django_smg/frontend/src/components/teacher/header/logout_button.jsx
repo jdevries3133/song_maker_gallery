@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { logout } from "../../../actions/auth.action";
-import styled, { Button as DefaultButton } from "../../common/styles";
+import { logout } from "Actions/auth.action";
+import styled, { Button as DefaultButton } from "Styles";
 
 const StyledLogOutButton = styled(DefaultButton)`
   background-color: salmon;

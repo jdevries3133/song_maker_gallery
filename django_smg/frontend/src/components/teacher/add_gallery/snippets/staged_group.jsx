@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled, { Button, ThemeProvider, css } from "../../../common/styles";
+import styled, { Button, ThemeProvider, css } from "Styles";
 import StyledDropdownButton from "../styled.dropdown_button";
 
 const Table = styled.table`

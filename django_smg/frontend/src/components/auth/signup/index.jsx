@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import { register, clearError } from "../../../actions/auth.action";
+import { register, clearError } from "Actions/auth.action";
 import styled, {
   Input,
   Div,
@@ -12,8 +12,8 @@ import styled, {
   Label,
   Checkbox,
   Description,
-} from "../../common/styles";
-import { ErrorArray } from "../../common/custom_error";
+} from "Styles";
+import { ErrorArray } from "Common/custom_error";
 import { Tos, Privacy } from "../../legal";
 
 import { ValidationMessages } from "./validation_messages";

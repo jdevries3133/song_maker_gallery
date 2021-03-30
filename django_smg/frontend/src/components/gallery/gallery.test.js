@@ -2,13 +2,13 @@ import React from "react";
 import Gallery from "./gallery";
 
 import { render, cleanup } from "@testing-library/react";
-import { Context as TestContext } from "../../test/app_context";
-import { mockGetGallery } from "../../test/__mocks__/actions";
-import { getGallery } from "../../actions/gallery";
+import { Context as TestContext } from "Test/app_context";
+import { mockGetGallery } from "Test/__mocks__/actions";
+import { getGallery } from "Actions/gallery";
 import { windowLocation } from "../../util/window";
 
 jest.mock("../../util/window");
-jest.mock("../../actions/gallery");
+jest.mock("Actions/gallery");
 
 beforeEach(() => {
   windowLocation.mockImplementation(() => "/gallery/test-gallery");

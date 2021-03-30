@@ -1,5 +1,5 @@
 import React from "react";
-import { Div, Button, Description, Input, Label } from "../../common/styles";
+import { Div, Button, Description, Input, Label } from "Styles";
 
 export const LoginForm = ({ username, password, submit }) => {
   return (

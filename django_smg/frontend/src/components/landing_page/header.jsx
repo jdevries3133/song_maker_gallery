@@ -9,7 +9,7 @@ import styled, {
   Div as DefaultDiv,
   H1 as DefaultH1,
   Button as DefaultButton,
-} from "../common/styles";
+} from "Styles";
 
 const H1 = styled(DefaultH1)`
   padding-bottom: 0;

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { postGallery, getUserGalleries } from "../../../actions/user";
-import { logout } from "../../../actions/auth.action";
+import { postGallery, getUserGalleries } from "Actions/user";
+import { logout } from "Actions/auth.action";
 import Papa from "papaparse";
 
 import FileUploadForm from "./file_upload_form";

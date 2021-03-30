@@ -2,7 +2,7 @@ import React from "react";
 
 import LogoutButton from "./logout_button";
 
-import styled, { H1 as DefaultH1 } from "../../common/styles";
+import styled, { H1 as DefaultH1 } from "Styles";
 
 const H1 = styled(DefaultH1)`
   margin-top: 4rem;

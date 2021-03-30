@@ -1,12 +1,5 @@
 import React from "react";
-import styled, {
-  Div,
-  H2,
-  H3,
-  Input,
-  Blanket,
-  Button,
-} from "../../../common/styles";
+import styled, { Div, H2, H3, Input, Blanket, Button } from "Styles";
 
 const TextArea = styled.textarea`
   font-family: Helvetica, Arial, sans-serif;

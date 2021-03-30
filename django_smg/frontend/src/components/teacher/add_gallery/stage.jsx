@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { StagedGroup } from "./snippets";
-import { ErrorArray } from "../../common/custom_error";
-import styled, { H2, H3, P, Input, Button, Div } from "../../common/styles";
+import { ErrorArray } from "Common/custom_error";
+import styled, { H2, H3, P, Input, Button, Div } from "Styles";
 
 import { SizeLimitCounter } from "./verify";
 

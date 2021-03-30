@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import styled, { Div, H4 } from "../../../common/styles";
+import styled, { Div, H4 } from "Styles";
 
 import { ASPECT_RATIO } from "./constants";
 import { Layout } from "./dynamic_tile_layout";

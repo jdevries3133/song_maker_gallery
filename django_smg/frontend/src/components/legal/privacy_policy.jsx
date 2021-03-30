@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { Blanket, Button, Description } from "../common/styles";
+import { Blanket, Button, Description } from "Styles";
 import { LegalContainer } from "./terms_of_service";
 
 const PrivacyContent = (props) => (

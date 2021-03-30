@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { Div, H4 } from "../../../common/styles";
+import styled, { Div, H4 } from "Styles";
 
 import { TILE_COLORS } from "./constants";
 import { useSongRect } from "./useSongRect";

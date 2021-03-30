@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Div } from "../common/styles";
+import { Div } from "Styles";
 
 import { Donate } from "./donate";
 import Header from "./header/header";

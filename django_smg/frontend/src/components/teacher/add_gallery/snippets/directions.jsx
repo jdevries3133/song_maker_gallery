@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import styled, { Blanket, Button } from "../../../common/styles";
+import styled, { Blanket, Button } from "Styles";
 
 const A = styled.a`
   text-decoration: underline;

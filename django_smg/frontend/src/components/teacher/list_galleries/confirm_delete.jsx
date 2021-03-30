@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { H2, P, Blanket, Button } from "../../common/styles";
+import styled, { H2, P, Blanket, Button } from "Styles";
 
 const DeleteBtn = styled(Button)`
   background-color: maroon;

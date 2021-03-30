@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, REGISTER, CLEAR_ERROR } from "../actions/types";
+import { LOGIN, LOGOUT, REGISTER, CLEAR_ERROR } from "Actions/types";
 
 const initialState = {
   token: "",

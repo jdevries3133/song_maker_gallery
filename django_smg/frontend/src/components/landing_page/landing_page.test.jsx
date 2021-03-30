@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import { Context as C } from "../../test/app_context.js";
+import { Context as C } from "Test/app_context.js";
 
 import { LandingPage } from "./index";
 

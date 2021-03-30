@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled, { P, H3, Blanket, Button } from "../../../common/styles";
+import styled, { P, H3, Blanket, Button } from "Styles";
 
 const A = styled.a`
   font-weight: bold;
