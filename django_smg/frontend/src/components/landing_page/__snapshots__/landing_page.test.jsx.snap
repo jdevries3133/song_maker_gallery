@@ -49,7 +49,7 @@ exports[`Landing page Matches snapshot 1`] = `
         className="sc-fFubgz keYGhm"
       >
         <div
-          className="styles__Description-emvDpe hbbDYw"
+          className="styles__Description-emvDpe eQRSUx"
         >
           <p
             className="styles__P-dIaYsU sc-dQppl fJZlVX bvmTcm"
@@ -168,7 +168,7 @@ exports[`Landing page Matches snapshot 1`] = `
       Sample Gallery
     </h1>
     <div
-      className="styles__Description-emvDpe hbbDYw"
+      className="styles__Description-emvDpe eQRSUx"
     >
       <p>
         This is an example of what one of our galleries look like. All that you need to do is upload a spreadsheet of students' names and links to their song maker creations, and the site does the rest. You can spin up a gallery just like this for your students in only a few minutes!

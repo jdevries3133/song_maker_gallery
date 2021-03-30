@@ -11,7 +11,7 @@ import {
 import ServerError from "../../common/server_error";
 
 import { ConfirmDelete } from "./confirm_delete";
-import styled, { Button, H3 } from "../../common/styles";
+import styled, { Description, Button, H3 } from "../../common/styles";
 
 const StyledTable = styled.table`
   margin: auto;
@@ -103,7 +103,7 @@ const ListGalleries = (props) => {
   }
 
   return (
-    <>
+    <Description>
       {confirmDelete}
       {blanket}
       <H3>Your Galleries</H3>
@@ -122,7 +122,7 @@ const ListGalleries = (props) => {
           )}
         </tbody>
       </StyledTable>
-    </>
+    </Description>
   );
 };
 

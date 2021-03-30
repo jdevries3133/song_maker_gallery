@@ -10,7 +10,7 @@ exports[`<Signup /> matches snapshot 1`] = `
     sign up!
   </h1>
   <div
-    className="styles__Description-emvDpe hbbDYw"
+    className="styles__Description-emvDpe eQRSUx"
   >
     <form
       className="sc-hKgILt jEtSiU"

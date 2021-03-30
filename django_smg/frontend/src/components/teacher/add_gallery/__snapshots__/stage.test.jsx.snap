@@ -44,7 +44,7 @@ exports[`stage matches snapshot 1`] = `
       You may use this default description, or change it to whatever you prefer.
     </p>
     <textarea
-      className="sc-iBPRYJ fOQUfg"
+      className="sc-fubCfw iBHKkR"
       onChange={[Function]}
       value="description"
     />
@@ -93,7 +93,7 @@ exports[`stage matches snapshot 1`] = `
     </table>
   </div>
   <button
-    className="styles__Button-dyjLXS sc-gKsewC lpemWd dRgbcq"
+    className="styles__Button-dyjLXS sc-iBPRYJ lpemWd hAoyUe"
     data-testid="submit"
     onClick={[Function]}
   >

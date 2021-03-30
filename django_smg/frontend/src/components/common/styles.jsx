@@ -152,7 +152,7 @@ export const Description = styled.div`
   text-align: center;
   display: inline-block;
   max-width: 50rem;
-  padding: 4%;
+  padding: 1vw;
   background: white;
   box-shadow: 0px 3px 8px rgb(100, 100, 100);
   border-radius: 20px;
