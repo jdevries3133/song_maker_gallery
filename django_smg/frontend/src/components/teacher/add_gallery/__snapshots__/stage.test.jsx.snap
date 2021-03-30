@@ -1,24 +1,122 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`stage matches snapshot 1`] = `
+.c0 {
+  text-align: center;
+  padding: inherit;
+}
+
+.c1 {
+  display: inline-block;
+  background-color: "#88ff00";
+  font-weight: 400;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.c4 {
+  text-align: center;
+  padding: 0 20px 0 20px;
+}
+
+.c8 {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 20px;
+  margin: 10px auto;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: salmon;
+}
+
+.c8:hover {
+  background-color: white;
+}
+
+.c10 {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 20px;
+  margin: 10px auto;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #f7943e;
+}
+
+.c10:hover {
+  background-color: white;
+}
+
+.c2 {
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.c2[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+}
+
+.c7 {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c6 {
+  margin: auto;
+  margin-top: 15px;
+}
+
+.c9 {
+  margin: auto;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.c3 {
+  padding-left: "10px",  display:none;
+}
+
+.c11 {
+  padding: 50px;
+  background-color: #ffc107;
+  border: 3px solid black;
+}
+
+.c5 {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 0px;
+  width: 85%;
+  height: 263px;
+  box-shadow: 1px 1px 1px #999;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 <div
-  className="styles__Div-dRMJGn JTCPu"
+  className="c0"
 >
   <h2
-    className="styles__H2-gHnQoK WCTOC"
+    className="c1"
   >
     Your Staged Gallery
   </h2>
   <div
-    className="styles__Div-dRMJGn JTCPu"
+    className="c0"
   >
     <h3
-      className="styles__H3-kZHBtr"
+      className="styles__H3-kZjLbA"
     >
       Gallery Name:
     </h3>
     <input
-      className="styles__Input-lbDPrm knTHdq"
+      className="c2"
       data-testid="titleInput"
       onChange={[Function]}
       placeholder="Name of your gallery here"
@@ -26,7 +124,7 @@ exports[`stage matches snapshot 1`] = `
     />
      
     <span
-      className="sc-jSgupP iOvDjM"
+      className="c3"
       data-testid="titleLenLimit"
     >
       5
@@ -34,33 +132,33 @@ exports[`stage matches snapshot 1`] = `
       100
     </span>
     <h3
-      className="styles__H3-kZHBtr"
+      className="styles__H3-kZjLbA"
     >
       Gallery Description:
     </h3>
     <p
-      className="styles__P-dIaYsU kxTZyV"
+      className="c4"
     >
       You may use this default description, or change it to whatever you prefer.
     </p>
     <textarea
-      className="sc-fubCfw iBHKkR"
+      className="c5"
       onChange={[Function]}
       value="description"
     />
     <h3
-      className="styles__H3-kZHBtr"
+      className="styles__H3-kZjLbA"
     >
       Staged Goups
     </h3>
     <table
-      className="sc-hKgILt hVOEvP"
+      className="c6"
     >
       <tbody>
         <tr>
           <td>
             <button
-              className="styleddropdown_button__Button-hguODr cinrwR"
+              className="c7"
               data-testid="sgToggleDropdown"
               onClick={[Function]}
             >
@@ -76,7 +174,7 @@ exports[`stage matches snapshot 1`] = `
           />
           <td>
             <button
-              className="styles__Button-dyjLXS dsQPMq"
+              className="c8"
               color="salmon"
               onClick={[Function]}
             >
@@ -87,23 +185,23 @@ exports[`stage matches snapshot 1`] = `
       </tbody>
     </table>
     <table
-      className="sc-hKgILt gkPECQ"
+      className="c9"
     >
       <tbody />
     </table>
   </div>
   <button
-    className="styles__Button-dyjLXS sc-iBPRYJ lpemWd hAoyUe"
+    className="c10 c11"
     data-testid="submit"
     onClick={[Function]}
   >
     <p
-      className="styles__P-dIaYsU kxTZyV"
+      className="c4"
     >
       Create Gallery
     </p>
     <p
-      className="styles__P-dIaYsU kxTZyV"
+      className="c4"
     >
       (Or, add another group by uploading another 
       <code>

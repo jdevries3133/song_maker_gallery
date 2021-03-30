@@ -1,5 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import "jest-styled-components";
 import { MemoryRouter } from "react-router-dom";
 
 import { TosPage } from "./terms_of_service";

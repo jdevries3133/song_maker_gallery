@@ -1,44 +1,443 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Landing page Matches snapshot 1`] = `
+.c0 {
+  text-align: center;
+  padding: inherit;
+}
+
+.c3 {
+  text-align: center;
+  padding-bottom: 1.5rem;
+  font-size: calc(4vw + 30px);
+}
+
+.c27 {
+  display: inline-block;
+  background-color: "#88ff00";
+  font-weight: 400;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.c15 {
+  text-align: center;
+  padding: 0 20px 0 20px;
+  text-align: justify;
+}
+
+.c16 {
+  text-align: center;
+  padding: 0 20px 0 20px;
+}
+
+.c7 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c8 {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 20px;
+  margin: 10px auto;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #f7943e;
+}
+
+.c8:hover {
+  background-color: white;
+}
+
+.c12 {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 20px;
+  margin: 10px auto;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: lightgreen;
+}
+
+.c12:hover {
+  background-color: white;
+}
+
+.c20 {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 20px;
+  margin: 10px auto;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #94c732;
+}
+
+.c20:hover {
+  background-color: white;
+}
+
+.c22 {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 20px;
+  margin: 10px auto;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #ffe716;
+}
+
+.c22:hover {
+  background-color: white;
+}
+
+.c23 {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 20px;
+  margin: 10px auto;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #2be2f9;
+}
+
+.c23:hover {
+  background-color: white;
+}
+
+.c24 {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 20px;
+  margin: 10px auto;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #c77dd3;
+}
+
+.c24:hover {
+  background-color: white;
+}
+
+.c14 {
+  font-size: 18px;
+  text-align: center;
+  display: inline-block;
+  max-width: 50rem;
+  padding: 1vw;
+  background: white;
+  box-shadow: 0px 3px 8px rgb(100,100,100);
+  border-radius: 20px;
+}
+
+.c35 {
+  font-family: "Merriweather Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+  font-weight: lighter;
+  font-size: 5rem;
+  background-color: rgba(104,253,75,0.719);
+  width: 109px;
+  border-radius: 69px;
+  margin: 10px;
+}
+
+.c35:hover {
+  background-color: white;
+}
+
+.c21 {
+  margin: 10px;
+}
+
+.c19 {
+  text-align: center;
+  padding-top: 4rem;
+}
+
+.c18 {
+  margin-bottom: 10rem;
+}
+
+.c25 {
+  font-size: 1.5rem;
+  padding: 28px;
+}
+
+.c31 {
+  display: inline-block;
+  text-align: left;
+}
+
+.c31:nth-child(7n + 0):hover > * > * > svg {
+  background-color: #e33059;
+}
+
+.c31:nth-child(7n + 1):hover > * > * > svg {
+  background-color: #f7943e;
+}
+
+.c31:nth-child(7n + 2):hover > * > * > svg {
+  background-color: #ecd92a;
+}
+
+.c31:nth-child(7n + 3):hover > * > * > svg {
+  background-color: #95c632;
+}
+
+.c31:nth-child(7n + 4):hover > * > * > svg {
+  background-color: #12826d;
+}
+
+.c31:nth-child(7n + 5):hover > * > * > svg {
+  background-color: #5b38cc;
+}
+
+.c31:nth-child(7n + 6):hover > * > * > svg {
+  background-color: #ea57b2;
+}
+
+.c33 {
+  border-radius: 10px;
+  -webkit-transition: 100ms;
+  transition: 100ms;
+}
+
+.c33:hover > rect {
+  opacity: 0;
+  stroke: var(--purple);
+  stroke-width: 8px;
+  -webkit-transition: 100ms;
+  transition: 100ms;
+}
+
+.c33:hover > text {
+  opacity: 100;
+}
+
+.c34 {
+  font: bold 40px "Indie Flower";
+  fill: white;
+  -webkit-transition: 100ms;
+  transition: 100ms;
+  opacity: 0;
+}
+
+.c32 {
+  width: 300px;
+  height: 103px;
+  display: inline-block;
+  background-color: white;
+  box-shadow: 5px 5px 8px #ddd;
+  margin: 10px;
+}
+
+.c32:hover {
+  border-radius: 20px;
+}
+
+.c30 {
+  text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c26 {
+  margin-top: 8rem;
+}
+
+.c28 {
+  margin: 0;
+  position: relative;
+  z-index: 10;
+  top: min(10vw,5.9rem);
+  font-size: min(6vw,3.5rem);
+  color: black;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0px 3px 8px rgb(100,100,100);
+  padding: 7px;
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+}
+
+.c29 {
+  opacity: 0%;
+  color: white;
+  display: inline-block;
+  background-color: #5a38cc;
+  border-radius: 20px;
+  font-size: min(7vw,3.5rem);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+}
+
+.c4 {
+  padding-bottom: 0;
+  margin: 1rem;
+}
+
+.c17 {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.c9 {
+  display: block;
+  height: 4 rem;
+  width: 80%;
+}
+
+.c11 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2 {
+  margin-bottom: 11rem;
+}
+
+.c1 {
+  margin-bottom: 11rem;
+}
+
+@media (max-width:600px) {
+  .c14 {
+    font-size: 16px;
+    line-height: 1.5rem;
+  }
+}
+
+@media (max-width:450px) {
+  .c35 {
+    font-size: 3rem;
+    width: 70px;
+  }
+}
+
+@media (max-width:475px) {
+  .c18 {
+    margin-bottom: auto;
+  }
+}
+
+@media (max-width:600px) {
+  .c28 {
+    position: static;
+    font-size: 2rem;
+    border-radius: 15px;
+  }
+}
+
+@media (min-width:600px) {
+  .c28:hover {
+    cursor: pointer;
+    background: green;
+    opacity: 0%;
+  }
+
+  .c28:hover ~ span {
+    opacity: 100%;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+
+@media (max-width:600px) {
+  .c29 {
+    background: none;
+    color: black;
+    opacity: 100%;
+    font-family: "Noto Sans JP",sans-serif;
+    font-size: 4rem;
+    padding: 0;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+
+@media (min-width:600px) {
+  .c5 {
+    display: grid;
+    grid-template-columns: 5% 60% 30% 5%;
+    grid-template-rows: 20% 80%;
+  }
+}
+
+@media (min-width:600px) {
+  .c6 {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 1;
+  }
+}
+
+@media (min-width:600px) {
+  .c10 {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 2;
+  }
+}
+
+@media (min-width:600px) {
+  .c13 {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+  }
+}
+
 <div
-  className="styles__Div-dRMJGn sc-bkzZxe JTCPu iQpXdH"
+  className="c0 c1"
 >
   <div
-    className="styles__Div-dRMJGn sc-hBEYos JTCPu gksvV"
+    className="c0 c2"
   >
     <h1
-      className="styles__H1-esBQNt sc-crrsfI iAfoss gtOEFX"
+      className="c3 c4"
     >
       Welcome to the Song Maker Gallery!
     </h1>
     <div
-      className="sc-fodVxV ldJhov"
+      className="c5"
     >
       <div
-        className="sc-fFubgz bNjEay"
+        className="c6"
       >
         <a
-          className="styles__A-gZLWsF dtWskz"
+          className="c7"
           href="#gallery_top"
         >
           <button
-            className="styles__Button-dyjLXS sc-bqyKva lpemWd dlsbAO"
+            className="c8 c9"
           >
             View our sample gallery
           </button>
         </a>
       </div>
       <div
-        className="sc-fFubgz fZABJp"
+        className="c10"
       >
         <a
-          className="sc-kstrdz kJcEEp"
+          className="c11"
           href="/signup"
           onClick={[Function]}
         >
           <button
-            className="styles__Button-dyjLXS sc-bqyKva geCMlt dlsbAO"
+            className="c12 c9"
             color="lightgreen"
           >
             Make a custom gallery for free
@@ -46,18 +445,18 @@ exports[`Landing page Matches snapshot 1`] = `
         </a>
       </div>
       <div
-        className="sc-fFubgz keYGhm"
+        className="c13"
       >
         <div
-          className="styles__Description-emvDpe eQRSUx"
+          className="c14"
         >
           <p
-            className="styles__P-dIaYsU sc-dQppl fJZlVX bvmTcm"
+            className="c15 "
           >
             This website was created by me, a music teacher, in response to the simple need to find a way to feature our students' work in light of the COVID-19 pandemic. Our students' concerts have been cancelled, their rehearsals ceased, and their opportunities to share music diminished to a whisper of what they once were.
           </p>
           <p
-            className="styles__P-dIaYsU sc-dQppl fJZlVX bvmTcm"
+            className="c15 "
           >
             As an upper elementary general music teacher, a big part of my COVID curriculum has been the
              
@@ -70,7 +469,7 @@ exports[`Landing page Matches snapshot 1`] = `
             Students love making creations with it; it's fun and easy to use, and it provides an amazing platform for us to discuss the topics in our music curriculum. For me, the music lab has been an indispensable tool for coping with our school closure.
           </p>
           <p
-            className="styles__P-dIaYsU sc-dQppl fJZlVX bvmTcm"
+            className="c15 "
           >
             <b>
               This website
@@ -78,7 +477,7 @@ exports[`Landing page Matches snapshot 1`] = `
              is a simple way to share your students' work with your whole community. I know that I have been awestruck by the creativity of many of the music lab compositions that my students have shared with me, and I am sure that you feel the same.
           </p>
           <p
-            className="styles__P-dIaYsU sc-dQppl kxTZyV iOeKHV"
+            className="c16 c17"
             style={Object {}}
           >
             We need a beautiful, simple, and easy way to share these compositions with as many people as possible!
@@ -88,11 +487,11 @@ exports[`Landing page Matches snapshot 1`] = `
     </div>
   </div>
   <header
-    className="sc-dlfnbm bdljVH"
+    className="c18"
     id="gallery_top"
   >
     <nav
-      className="sc-gsTCUz irZJkF"
+      className="c19"
       id="gallery_top"
     >
       <a
@@ -100,7 +499,7 @@ exports[`Landing page Matches snapshot 1`] = `
         href="#Your Group Here"
       >
         <button
-          className="styles__Button-dyjLXS sc-bdfBwQ eiYycj lgfXJG"
+          className="c20 c21"
           color="#94c732"
         >
           Your Group Here
@@ -111,7 +510,7 @@ exports[`Landing page Matches snapshot 1`] = `
         href="#Collins"
       >
         <button
-          className="styles__Button-dyjLXS sc-bdfBwQ ghgLhG lgfXJG"
+          className="c22 c21"
           color="#ffe716"
         >
           Collins
@@ -122,7 +521,7 @@ exports[`Landing page Matches snapshot 1`] = `
         href="#Jones"
       >
         <button
-          className="styles__Button-dyjLXS sc-bdfBwQ fkqMeb lgfXJG"
+          className="c23 c21"
           color="#2be2f9"
         >
           Jones
@@ -133,7 +532,7 @@ exports[`Landing page Matches snapshot 1`] = `
         href="#Mr. Smith"
       >
         <button
-          className="styles__Button-dyjLXS sc-bdfBwQ jrYNzv lgfXJG"
+          className="c24 c21"
           color="#c77dd3"
         >
           Mr. Smith
@@ -144,7 +543,7 @@ exports[`Landing page Matches snapshot 1`] = `
         href="#Mrs. Briggs's Homeroom"
       >
         <button
-          className="styles__Button-dyjLXS sc-bdfBwQ eiYycj lgfXJG"
+          className="c20 c21"
           color="#94c732"
         >
           Mrs. Briggs's Homeroom
@@ -155,7 +554,7 @@ exports[`Landing page Matches snapshot 1`] = `
         href="#Randomton Elementary School Band"
       >
         <button
-          className="styles__Button-dyjLXS sc-bdfBwQ ghgLhG lgfXJG"
+          className="c22 c21"
           color="#ffe716"
         >
           Randomton Elementary School Band
@@ -163,19 +562,19 @@ exports[`Landing page Matches snapshot 1`] = `
       </a>
     </nav>
     <h1
-      className="styles__H1-esBQNt iAfoss"
+      className="c3"
     >
       Sample Gallery
     </h1>
     <div
-      className="styles__Description-emvDpe eQRSUx"
+      className="c14"
     >
       <p>
         This is an example of what one of our galleries look like. All that you need to do is upload a spreadsheet of students' names and links to their song maker creations, and the site does the rest. You can spin up a gallery just like this for your students in only a few minutes!
 Notice that the thumbnail images are not common. Each student's actual composition is displayed on the website so that everyone in your school community can get a bird's eye view of the astounding creativity of our students.
       </p>
       <p
-        className="styles__P-dIaYsU kxTZyV"
+        className="c16"
       >
         <b>
           Hover over the picture of a students' work to see their name, and click to open their composition in a new tab
@@ -185,7 +584,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
         href="#gallery"
       >
         <button
-          className="styles__Button-dyjLXS sc-hKgILt lpemWd cGyftT"
+          className="c8 c25"
         >
           View Gallery
         </button>
@@ -193,17 +592,17 @@ Notice that the thumbnail images are not common. Each student's actual compositi
     </div>
   </header>
   <div
-    className="styles__Div-dRMJGn JTCPu"
+    className="c0"
   >
     <div
-      className="styles__Div-dRMJGn sc-jrAGrp JTCPu fqvlTf"
+      className="c0 c26"
       id="gallery"
     >
       <a
         href="#gallery_top"
       >
         <h2
-          className="styles__H2-gHnQoK sc-kEjbxe WCTOC dcPaNr"
+          className="c27 c28"
           id={
             Array [
               "Your Group Here",
@@ -214,19 +613,19 @@ Notice that the thumbnail images are not common. Each student's actual compositi
         </h2>
         <br />
         <span
-          className="sc-iqHYGH juISoZ"
+          className="c29"
         >
           ☟
         </span>
       </a>
       <ul
-        className="sc-pFZIQ fqtBDQ"
+        className="c30"
       >
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -236,12 +635,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -254,10 +653,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -267,12 +666,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -285,10 +684,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -298,12 +697,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -316,10 +715,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -329,12 +728,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -347,10 +746,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -360,12 +759,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -378,10 +777,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -391,12 +790,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -409,10 +808,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -422,12 +821,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -440,10 +839,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -453,12 +852,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -471,10 +870,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -484,12 +883,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -502,10 +901,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -515,12 +914,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -533,10 +932,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -546,12 +945,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -564,10 +963,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -577,12 +976,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -595,10 +994,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -608,12 +1007,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -626,10 +1025,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -639,12 +1038,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -657,10 +1056,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -670,12 +1069,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -688,10 +1087,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -701,12 +1100,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -719,10 +1118,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -732,12 +1131,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -750,10 +1149,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -763,12 +1162,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -781,10 +1180,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -794,12 +1193,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -812,10 +1211,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -825,12 +1224,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -845,14 +1244,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
-      className="styles__Div-dRMJGn sc-jrAGrp JTCPu fqvlTf"
+      className="c0 c26"
       id="gallery"
     >
       <a
         href="#gallery_top"
       >
         <h2
-          className="styles__H2-gHnQoK sc-kEjbxe WCTOC dcPaNr"
+          className="c27 c28"
           id={
             Array [
               "Collins",
@@ -863,19 +1262,19 @@ Notice that the thumbnail images are not common. Each student's actual compositi
         </h2>
         <br />
         <span
-          className="sc-iqHYGH juISoZ"
+          className="c29"
         >
           ☟
         </span>
       </a>
       <ul
-        className="sc-pFZIQ fqtBDQ"
+        className="c30"
       >
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -885,12 +1284,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -903,10 +1302,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -916,12 +1315,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -934,10 +1333,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -947,12 +1346,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -965,10 +1364,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -978,12 +1377,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -996,10 +1395,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1009,12 +1408,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1027,10 +1426,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1040,12 +1439,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1058,10 +1457,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1071,12 +1470,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1089,10 +1488,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1102,12 +1501,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1120,10 +1519,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1133,12 +1532,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1151,10 +1550,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1164,12 +1563,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1182,10 +1581,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1195,12 +1594,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1213,10 +1612,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1226,12 +1625,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1244,10 +1643,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1257,12 +1656,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1275,10 +1674,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1288,12 +1687,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1306,10 +1705,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1319,12 +1718,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1337,10 +1736,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1350,12 +1749,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1368,10 +1767,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1381,12 +1780,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1399,10 +1798,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1412,12 +1811,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1430,10 +1829,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1443,12 +1842,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1461,10 +1860,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1474,12 +1873,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1494,14 +1893,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
-      className="styles__Div-dRMJGn sc-jrAGrp JTCPu fqvlTf"
+      className="c0 c26"
       id="gallery"
     >
       <a
         href="#gallery_top"
       >
         <h2
-          className="styles__H2-gHnQoK sc-kEjbxe WCTOC dcPaNr"
+          className="c27 c28"
           id={
             Array [
               "Jones",
@@ -1512,19 +1911,19 @@ Notice that the thumbnail images are not common. Each student's actual compositi
         </h2>
         <br />
         <span
-          className="sc-iqHYGH juISoZ"
+          className="c29"
         >
           ☟
         </span>
       </a>
       <ul
-        className="sc-pFZIQ fqtBDQ"
+        className="c30"
       >
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1534,12 +1933,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1552,10 +1951,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1565,12 +1964,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1583,10 +1982,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1596,12 +1995,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1614,10 +2013,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1627,12 +2026,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1645,10 +2044,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1658,12 +2057,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1676,10 +2075,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1689,12 +2088,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1707,10 +2106,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1720,12 +2119,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1738,10 +2137,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1751,12 +2150,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1769,10 +2168,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1782,12 +2181,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1800,10 +2199,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1813,12 +2212,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1831,10 +2230,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1844,12 +2243,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1862,10 +2261,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1875,12 +2274,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1893,10 +2292,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1906,12 +2305,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1924,10 +2323,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1937,12 +2336,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1955,10 +2354,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1968,12 +2367,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -1986,10 +2385,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -1999,12 +2398,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2017,10 +2416,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2030,12 +2429,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2048,10 +2447,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2061,12 +2460,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2079,10 +2478,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2092,12 +2491,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2110,10 +2509,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2123,12 +2522,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2141,10 +2540,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2154,12 +2553,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2174,14 +2573,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
-      className="styles__Div-dRMJGn sc-jrAGrp JTCPu fqvlTf"
+      className="c0 c26"
       id="gallery"
     >
       <a
         href="#gallery_top"
       >
         <h2
-          className="styles__H2-gHnQoK sc-kEjbxe WCTOC dcPaNr"
+          className="c27 c28"
           id={
             Array [
               "Mr. Smith",
@@ -2192,19 +2591,19 @@ Notice that the thumbnail images are not common. Each student's actual compositi
         </h2>
         <br />
         <span
-          className="sc-iqHYGH juISoZ"
+          className="c29"
         >
           ☟
         </span>
       </a>
       <ul
-        className="sc-pFZIQ fqtBDQ"
+        className="c30"
       >
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2214,12 +2613,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2232,10 +2631,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2245,12 +2644,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2263,10 +2662,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2276,12 +2675,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2294,10 +2693,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2307,12 +2706,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2325,10 +2724,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2338,12 +2737,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2356,10 +2755,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2369,12 +2768,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2387,10 +2786,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2400,12 +2799,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2418,10 +2817,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2431,12 +2830,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2449,10 +2848,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2462,12 +2861,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2480,10 +2879,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2493,12 +2892,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2511,10 +2910,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2524,12 +2923,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2542,10 +2941,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2555,12 +2954,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2573,10 +2972,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2586,12 +2985,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2604,10 +3003,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2617,12 +3016,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2635,10 +3034,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2648,12 +3047,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2666,10 +3065,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2679,12 +3078,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2697,10 +3096,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2710,12 +3109,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2728,10 +3127,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2741,12 +3140,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2759,10 +3158,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2772,12 +3171,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2790,10 +3189,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2803,12 +3202,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2823,14 +3222,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
-      className="styles__Div-dRMJGn sc-jrAGrp JTCPu fqvlTf"
+      className="c0 c26"
       id="gallery"
     >
       <a
         href="#gallery_top"
       >
         <h2
-          className="styles__H2-gHnQoK sc-kEjbxe WCTOC dcPaNr"
+          className="c27 c28"
           id={
             Array [
               "Mrs. Briggs's Homeroom",
@@ -2841,19 +3240,19 @@ Notice that the thumbnail images are not common. Each student's actual compositi
         </h2>
         <br />
         <span
-          className="sc-iqHYGH juISoZ"
+          className="c29"
         >
           ☟
         </span>
       </a>
       <ul
-        className="sc-pFZIQ fqtBDQ"
+        className="c30"
       >
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2863,12 +3262,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2881,10 +3280,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2894,12 +3293,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2912,10 +3311,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2925,12 +3324,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2943,10 +3342,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2956,12 +3355,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -2974,10 +3373,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -2987,12 +3386,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3005,10 +3404,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3018,12 +3417,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3036,10 +3435,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3049,12 +3448,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3067,10 +3466,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3080,12 +3479,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3098,10 +3497,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3111,12 +3510,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3129,10 +3528,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3142,12 +3541,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3160,10 +3559,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3173,12 +3572,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3191,10 +3590,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3204,12 +3603,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3222,10 +3621,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3235,12 +3634,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3253,10 +3652,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3266,12 +3665,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3284,10 +3683,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3297,12 +3696,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3315,10 +3714,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3328,12 +3727,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3346,10 +3745,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3359,12 +3758,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3377,10 +3776,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3390,12 +3789,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3408,10 +3807,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3421,12 +3820,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3439,10 +3838,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3452,12 +3851,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3472,14 +3871,14 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       </ul>
     </div>
     <div
-      className="styles__Div-dRMJGn sc-jrAGrp JTCPu fqvlTf"
+      className="c0 c26"
       id="gallery"
     >
       <a
         href="#gallery_top"
       >
         <h2
-          className="styles__H2-gHnQoK sc-kEjbxe WCTOC dcPaNr"
+          className="c27 c28"
           id={
             Array [
               "Randomton Elementary School Band",
@@ -3490,19 +3889,19 @@ Notice that the thumbnail images are not common. Each student's actual compositi
         </h2>
         <br />
         <span
-          className="sc-iqHYGH juISoZ"
+          className="c29"
         >
           ☟
         </span>
       </a>
       <ul
-        className="sc-pFZIQ fqtBDQ"
+        className="c30"
       >
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3512,12 +3911,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3530,10 +3929,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3543,12 +3942,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3561,10 +3960,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3574,12 +3973,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3592,10 +3991,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3605,12 +4004,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3623,10 +4022,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3636,12 +4035,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3654,10 +4053,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3667,12 +4066,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3685,10 +4084,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3698,12 +4097,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3716,10 +4115,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3729,12 +4128,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3747,10 +4146,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3760,12 +4159,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3778,10 +4177,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3791,12 +4190,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3809,10 +4208,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3822,12 +4221,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3840,10 +4239,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3853,12 +4252,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3871,10 +4270,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3884,12 +4283,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3902,10 +4301,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3915,12 +4314,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3933,10 +4332,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3946,12 +4345,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3964,10 +4363,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -3977,12 +4376,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -3995,10 +4394,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -4008,12 +4407,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -4026,10 +4425,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -4039,12 +4438,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -4057,10 +4456,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -4070,12 +4469,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -4088,10 +4487,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -4101,12 +4500,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -4119,10 +4518,10 @@ Notice that the thumbnail images are not common. Each student's actual compositi
           </div>
         </div>
         <div
-          className="styles__Div-dRMJGn sc-eCssSg JTCPu kuvESw"
+          className="c0 c31"
         >
           <div
-            className="styles__Div-dRMJGn sc-fubCfw JTCPu bAUAsT"
+            className="c0 c32"
             height="103px"
             width="300px"
           >
@@ -4132,12 +4531,12 @@ Notice that the thumbnail images are not common. Each student's actual compositi
               target="_blank"
             >
               <svg
-                className="sc-jSgupP jcWLzq"
+                className="c33"
                 viewBox="0 0 300 103"
                 xmlns="https://www.w3.org/2000/svg"
               >
                 <text
-                  className="sc-gKsewC idRweB"
+                  className="c34"
                   dominantBaseline="middle"
                   textAnchor="middle"
                   x="50%"
@@ -4153,7 +4552,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
     </div>
   </div>
   <button
-    className="donate_button__button-iFXoIG kbRjEp"
+    className="c35"
     onClick={[Function]}
   >
     $

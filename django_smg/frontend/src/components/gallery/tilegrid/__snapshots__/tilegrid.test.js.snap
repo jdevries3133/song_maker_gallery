@@ -1,15 +1,177 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snapshot 1`] = `
+.c0 {
+  text-align: center;
+  padding: inherit;
+}
+
+.c2 {
+  display: inline-block;
+  background-color: "#88ff00";
+  font-weight: 400;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.c6 {
+  display: inline-block;
+  text-align: left;
+}
+
+.c6:nth-child(7n + 0):hover > * > * > svg {
+  background-color: #e33059;
+}
+
+.c6:nth-child(7n + 1):hover > * > * > svg {
+  background-color: #f7943e;
+}
+
+.c6:nth-child(7n + 2):hover > * > * > svg {
+  background-color: #ecd92a;
+}
+
+.c6:nth-child(7n + 3):hover > * > * > svg {
+  background-color: #95c632;
+}
+
+.c6:nth-child(7n + 4):hover > * > * > svg {
+  background-color: #12826d;
+}
+
+.c6:nth-child(7n + 5):hover > * > * > svg {
+  background-color: #5b38cc;
+}
+
+.c6:nth-child(7n + 6):hover > * > * > svg {
+  background-color: #ea57b2;
+}
+
+.c8 {
+  border-radius: 10px;
+  -webkit-transition: 100ms;
+  transition: 100ms;
+}
+
+.c8:hover > rect {
+  opacity: 0;
+  stroke: var(--purple);
+  stroke-width: 8px;
+  -webkit-transition: 100ms;
+  transition: 100ms;
+}
+
+.c8:hover > text {
+  opacity: 100;
+}
+
+.c9 {
+  font: bold 40px "Indie Flower";
+  fill: white;
+  -webkit-transition: 100ms;
+  transition: 100ms;
+  opacity: 0;
+}
+
+.c7 {
+  width: 300px;
+  height: 103px;
+  display: inline-block;
+  background-color: white;
+  box-shadow: 5px 5px 8px #ddd;
+  margin: 10px;
+}
+
+.c7:hover {
+  border-radius: 20px;
+}
+
+.c5 {
+  text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  margin-top: 8rem;
+}
+
+.c3 {
+  margin: 0;
+  position: relative;
+  z-index: 10;
+  top: min(10vw,5.9rem);
+  font-size: min(6vw,3.5rem);
+  color: black;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0px 3px 8px rgb(100,100,100);
+  padding: 7px;
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+}
+
+.c4 {
+  opacity: 0%;
+  color: white;
+  display: inline-block;
+  background-color: #5a38cc;
+  border-radius: 20px;
+  font-size: min(7vw,3.5rem);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+}
+
+@media (max-width:600px) {
+  .c3 {
+    position: static;
+    font-size: 2rem;
+    border-radius: 15px;
+  }
+}
+
+@media (min-width:600px) {
+  .c3:hover {
+    cursor: pointer;
+    background: green;
+    opacity: 0%;
+  }
+
+  .c3:hover ~ span {
+    opacity: 100%;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+
+@media (max-width:600px) {
+  .c4 {
+    background: none;
+    color: black;
+    opacity: 100%;
+    font-family: "Noto Sans JP",sans-serif;
+    font-size: 4rem;
+    padding: 0;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+
 <div
-  className="styles__Div-dRMJGn sc-gKsewC JTCPu grUsPx"
+  className="c0 c1"
   id="gallery"
 >
   <a
     href="#gallery_top"
   >
     <h2
-      className="styles__H2-gHnQoK sc-iBPRYJ WCTOC iOHtIK"
+      className="c2 c3"
       id={
         Array [
           "A Group of Marks",
@@ -20,19 +182,19 @@ exports[`snapshot 1`] = `
     </h2>
     <br />
     <span
-      className="sc-fubCfw dzwkg"
+      className="c4"
     >
       ☟
     </span>
   </a>
   <ul
-    className="sc-jSgupP golRvT"
+    className="c5"
   >
     <div
-      className="styles__Div-dRMJGn sc-bdfBwQ JTCPu eoYFXm"
+      className="c0 c6"
     >
       <div
-        className="styles__Div-dRMJGn sc-eCssSg JTCPu dIYszq"
+        className="c0 c7"
         height="103px"
         width="300px"
       >
@@ -42,12 +204,12 @@ exports[`snapshot 1`] = `
           target="_blank"
         >
           <svg
-            className="sc-gsTCUz iMejqd"
+            className="c8"
             viewBox="0 0 300 103"
             xmlns="https://www.w3.org/2000/svg"
           >
             <text
-              className="sc-dlfnbm ikVBss"
+              className="c9"
               dominantBaseline="middle"
               textAnchor="middle"
               x="50%"
@@ -60,10 +222,10 @@ exports[`snapshot 1`] = `
       </div>
     </div>
     <div
-      className="styles__Div-dRMJGn sc-bdfBwQ JTCPu eoYFXm"
+      className="c0 c6"
     >
       <div
-        className="styles__Div-dRMJGn sc-eCssSg JTCPu dIYszq"
+        className="c0 c7"
         height="103px"
         width="300px"
       >
@@ -73,12 +235,12 @@ exports[`snapshot 1`] = `
           target="_blank"
         >
           <svg
-            className="sc-gsTCUz iMejqd"
+            className="c8"
             viewBox="0 0 300 103"
             xmlns="https://www.w3.org/2000/svg"
           >
             <text
-              className="sc-dlfnbm ikVBss"
+              className="c9"
               dominantBaseline="middle"
               textAnchor="middle"
               x="50%"
@@ -91,10 +253,10 @@ exports[`snapshot 1`] = `
       </div>
     </div>
     <div
-      className="styles__Div-dRMJGn sc-bdfBwQ JTCPu eoYFXm"
+      className="c0 c6"
     >
       <div
-        className="styles__Div-dRMJGn sc-eCssSg JTCPu dIYszq"
+        className="c0 c7"
         height="103px"
         width="300px"
       >
@@ -104,12 +266,12 @@ exports[`snapshot 1`] = `
           target="_blank"
         >
           <svg
-            className="sc-gsTCUz iMejqd"
+            className="c8"
             viewBox="0 0 300 103"
             xmlns="https://www.w3.org/2000/svg"
           >
             <text
-              className="sc-dlfnbm ikVBss"
+              className="c9"
               dominantBaseline="middle"
               textAnchor="middle"
               x="50%"
@@ -122,10 +284,10 @@ exports[`snapshot 1`] = `
       </div>
     </div>
     <div
-      className="styles__Div-dRMJGn sc-bdfBwQ JTCPu eoYFXm"
+      className="c0 c6"
     >
       <div
-        className="styles__Div-dRMJGn sc-eCssSg JTCPu dIYszq"
+        className="c0 c7"
         height="103px"
         width="300px"
       >
@@ -135,12 +297,12 @@ exports[`snapshot 1`] = `
           target="_blank"
         >
           <svg
-            className="sc-gsTCUz iMejqd"
+            className="c8"
             viewBox="0 0 300 103"
             xmlns="https://www.w3.org/2000/svg"
           >
             <text
-              className="sc-dlfnbm ikVBss"
+              className="c9"
               dominantBaseline="middle"
               textAnchor="middle"
               x="50%"

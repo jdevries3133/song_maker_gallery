@@ -1,12 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {
-  screen,
-  render,
-  cleanup,
-  fireEvent,
-  act,
-} from "@testing-library/react";
+import "jest-styled-components";
+import { render, cleanup, fireEvent, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import { Stage, TITLE_LENGTH_LIMIT } from "./stage";

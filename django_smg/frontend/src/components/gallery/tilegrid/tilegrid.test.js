@@ -1,5 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import "jest-styled-components";
 import { TileGrid } from "./tilegrid";
 
 import { apiResponse } from "Test/__mocks__/api_response";
