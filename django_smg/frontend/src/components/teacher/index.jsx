@@ -1,25 +1,19 @@
 import React from "react";
 
-import styled, { Div as DefaultDiv } from "../common/styles";
+// import Header from "./header";
+// import AddGallery from "./add_gallery";
+// import ListGalleries from "./list_galleries";
 
-import Header from "./header";
-import AddGallery from "./add_gallery";
-import ListGalleries from "./list_galleries";
+import { Div } from "../common/styles";
 
-const Div = styled(DefaultDiv)`
-  & > div {
-    margin-bottom: 2rem;
-  }
-`;
+import LogoutButton from "./header/logout_button";
+import { Home } from "./home";
 
-const Teacher = ({ token, logout }) => {
+export default () => {
   return (
     <Div>
-      <Header />
-      <AddGallery />
-      <ListGalleries />
+      <LogoutButton />
+      <Home />
     </Div>
   );
 };
-
-export default Teacher;

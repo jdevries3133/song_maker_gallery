@@ -11,7 +11,7 @@ import { Context as TestContext } from "../../../test/app_context";
 import "@testing-library/jest-dom";
 
 import Verify from "./verify";
-import { getTestCsv } from "../teacher.test.js";
+import { getTestCsv } from "./index.test";
 
 const setup = (fileName, otherGroups = []) => {
   const config = {

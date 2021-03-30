@@ -6,12 +6,16 @@ import useWidth from "../common/useWidth";
 import { Tos, Privacy } from "../legal";
 
 const FooterElem = styled.footer`
+  text-align: center;
   margin: 3rem;
+
   > div {
+    display: inline-block;
     background-color: white;
     padding: 5px;
     border-radius: 3px;
   }
+
   > * > a {
     font-size: 18px;
   }
