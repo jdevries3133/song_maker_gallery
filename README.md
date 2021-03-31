@@ -1,3 +1,20 @@
+# Task # 1
+
+https://github.com/jdevries3133/song_maker_gallery/issues/44
+
+Remember your job is to make *incremental* progress, break the task into smaller tasks, or finish something in 15 minutes, then pass it along to the next contributor. 
+No responsibility, only fun.
+
+
+When you have finished your 15 minutes, add your next task to the readme.md. Then make a pull request to the repo.
+
+
+Email with questions
+Cheers,
+Michael
+
+
+
 # Post This on Social Media!
 
 > Help the site grow. Music teachers trust music teachers, and you're probably
