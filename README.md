@@ -1,12 +1,12 @@
-# Task # 1
+# Task # 2
 
 https://github.com/jdevries3133/song_maker_gallery/issues/44
 
 Task 1:
 
-- created django_smg/frontend/src/editable_rich_title.js added initial
-- props to take for title, description and link as in wireframe added this
-- component to storybook stories
+- created django_smg/frontend/src/editable_rich_title.js
+- added initial props to take for title, description and link as in wireframe
+- added this component to storybook stories
 
 Pending:
 
