@@ -105,10 +105,11 @@ export const Button = styled.button`
     props.blanketClose &&
     css`
       position: absolute;
-      bottom: 1px;
-      right: 1px;
-      background-color: lightcoral;
+      top: 1px;
+      left: 1px;
       margin: 0;
+      border-radius: 0 0 20px 0;
+      background-color: salmon;
     `}
 
   :hover {

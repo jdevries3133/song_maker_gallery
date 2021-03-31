@@ -3,17 +3,9 @@ import PropTypes from "prop-types";
 
 import styled, { H3 as DefaultH3, P as DefaultP, css } from "Styles";
 
-const ChildContainer = styled.div`
-  transition: visibility 0s, opacity 0.5s linear;
-  opacity: 0;
-  visibility: hidden;
-`;
+const ChildContainer = styled.div``;
 
 const StyledCard = styled.div`
-  & * {
-    transition: 1s;
-  }
-
   display: inline-flex;
   align-items: flex-end;
   margin-bottom: 1rem;
@@ -30,8 +22,6 @@ const StyledCard = styled.div`
 
   @media(min-width: 1000px) {
     &:hover > ${ChildContainer} {
-      visibility: visible;
-      opacity: 1;
     }
   }
 `;
