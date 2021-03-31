@@ -24,9 +24,10 @@ module.exports = {
   },
   resolve: {
     alias: {
-      Common: path.resolve(__dirname, "./src/components/common"),
-      Styles$: path.resolve(__dirname, "./src/components/common/styles.jsx"),
       Actions: path.resolve(__dirname, "./src/actions"),
+      Common: path.resolve(__dirname, "./src/components/common"),
+      Media: path.resolve(__dirname, "./src/media"),
+      Styles$: path.resolve(__dirname, "./src/components/common/styles.jsx"),
       Test: path.resolve(__dirname, "./src/test"),
     },
   },

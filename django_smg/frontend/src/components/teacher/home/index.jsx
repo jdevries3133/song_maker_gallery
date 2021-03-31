@@ -3,13 +3,13 @@ import React from "react";
 import styled, { Div as DefaultDiv } from "Styles";
 import { Card } from "Common/card";
 
-import StuSubmitImg from "./media/student_submit_md.jpg";
+import StuSubmitImg from "Media/student_submit_md.jpg";
 import { StudentSubmitDescription } from "./long_descriptions/student_submit";
 
-import SpreadsheetImg from "./media/spreadsheet_md.jpg";
+import SpreadsheetImg from "Media/spreadsheet_md.jpg";
 import { ManualDescription } from "./long_descriptions/manual";
 
-import OverseeImg from "./media/monitor_students_md.jpg";
+import OverseeImg from "Media/monitor_students_md.jpg";
 import { SocialDescription } from "./long_descriptions/social";
 
 const Div = styled(DefaultDiv)`
