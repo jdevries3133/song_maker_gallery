@@ -96,28 +96,22 @@ export const Button = styled.button`
   margin: 10px auto;
   border-radius: 20px;
   cursor: pointer;
+
   background-color: ${(props) => (props.color ? props.color : "#f7943e")};
+  ${(props) =>
+    props.text &&
+    css`
+      color: ${props.text};
+    `}
+  :hover {
+    background-color: ${(props) => props.hover || "white"};
+  }
 
   ${(props) =>
     props.block &&
     css`
       display: block;
     `}
-
-  ${(props) =>
-    props.blanketClose &&
-    css`
-      position: absolute;
-      top: 1px;
-      left: 1px;
-      margin: 0;
-      border-radius: 0 0 20px 0;
-      background-color: salmon;
-    `}
-
-  :hover {
-    background-color: white;
-  }
 `;
 
 export const Input = styled.input`
@@ -187,7 +181,7 @@ export const Blanket = styled(Description)`
   z-index: 100;
 
   @media (min-width: 800px) {
-    @media (min-height: 300px) {
+    @media (min-height: 600px) {
       height: 600px;
       width: 700px;
       top: 50%;
