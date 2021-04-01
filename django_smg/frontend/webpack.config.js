@@ -14,16 +14,20 @@ module.exports = {
         },
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource",
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: "file-loader",
+        options: {
+          publicPath: "/static/frontend/webpack_output",
+        },
       },
     ],
   },
   resolve: {
     alias: {
-      Common: path.resolve(__dirname, "./src/components/common"),
-      Styles$: path.resolve(__dirname, "./src/components/common/styles.jsx"),
       Actions: path.resolve(__dirname, "./src/actions"),
+      Common: path.resolve(__dirname, "./src/components/common"),
+      Media: path.resolve(__dirname, "./src/media"),
+      Styles$: path.resolve(__dirname, "./src/components/common/styles.jsx"),
       Test: path.resolve(__dirname, "./src/test"),
     },
   },
