@@ -2,16 +2,16 @@
 
 https://github.com/jdevries3133/song_maker_gallery/issues/44
 
-Task 1:
+Still needs to be done: 
+- create input components for title, link and description add
+- DyanamicTile
 
-- created django_smg/frontend/src/editable_rich_title.js
+What we did in Task 1:
+
+- created django_smg/frontend/src/editable_rich_title.js https://github.com/code-relay-io/song_maker_gallery/blob/779d486d8f9a76eca81d7903655f7a1a0f9b4d0f/django_smg/frontend/src/components/common/editable_rich_tile.js
 - added initial props to take for title, description and link as in wireframe
 - added this component to storybook stories
 
-Pending:
-
-- create input components for title, link and description add
-- DyanamicTile
 
 Remember your job is to make _incremental_ progress, break the task into smaller
 tasks, or finish something in 15 minutes, then pass it along to the next
