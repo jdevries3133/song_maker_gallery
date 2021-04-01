@@ -93,7 +93,6 @@ export const Button = styled.button`
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;
-  margin: 10px auto;
   border-radius: 20px;
   cursor: pointer;
 
@@ -112,6 +111,10 @@ export const Button = styled.button`
     css`
       display: block;
     `}
+
+  @media(max-width: 400px) {
+    padding: 10px;
+  }
 `;
 
 export const Input = styled.input`
