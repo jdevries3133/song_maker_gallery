@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Card } from "./card";
+import { Card } from "./index";
 import { P, Button } from "Styles";
 
 export default {

@@ -3,9 +3,22 @@ import PropTypes from "prop-types";
 
 import styled, { H3 as DefaultH3, P as DefaultP, css } from "Styles";
 
-const ChildContainer = styled.div``;
+const ChildContainer = styled.div`
+  visibility: hidden;
+`;
+
+const TextContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0px 3px 8px rgb(100, 100, 100);
+  border-radius: 10px 10px 0 0;
+`;
 
 const StyledCard = styled.div`
+  overflow-y: clip;
   display: inline-flex;
   align-items: flex-end;
   margin-bottom: 1rem;
@@ -20,20 +33,15 @@ const StyledCard = styled.div`
       background-image: url(${props.background});
     `}
 
-  @media(min-width: 1000px) {
-    &:hover > ${ChildContainer} {
-    }
+  &:hover {
   }
-`;
 
-const TextContainer = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 10px;
-  background-color: white;
-  box-shadow: 0px 3px 8px rgb(100, 100, 100);
-  border-radius: 10px 10px 0 0;
+  &:hover > ${ChildContainer} {
+    visibility: visible;
+  }
+
+  &:hover > ${TextContainer} {
+  }
 `;
 
 const P = styled(DefaultP)`
@@ -60,7 +68,7 @@ export const Card = ({ title, description, media, children }) => {
         <H3>{title}</H3>
         {description ? <P>{description}</P> : null}
       </TextContainer>
-      {children ? <ChildContainer>{children}</ChildContainer> : null}
+      {/* {children ? <ChildContainer>{children}</ChildContainer> : null} */}
     </StyledCard>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { H2, H3, P } from "Styles";
-import { Blanket } from "./blanket";
+import { Blanket } from "./index";
 
 export default {
   title: "Blanket",

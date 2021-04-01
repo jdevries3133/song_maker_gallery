@@ -9,7 +9,7 @@ import {
 import "@testing-library/jest-dom/extend-expect";
 import "jest-styled-components";
 
-import { Blanket } from "./blanket";
+import { Blanket } from "./index";
 
 const onOk = jest.fn();
 
