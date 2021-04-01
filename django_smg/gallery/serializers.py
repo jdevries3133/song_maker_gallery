@@ -115,7 +115,10 @@ class GalleryDatasetSerializer(serializers.Serializer):
         for group in groups:
             group_songs = []
             for song in iter_fetch_and_cache(
-                songs=Song.objects.filter(id__in=data['songs'], group=group)   #type: ignore
+                songs=Song.objects.filter(  # type: ignore
+                    id__in=data['songs'],
+                    group=group
+                )
             ):
                 # this should really be defined as some sort of serializer in
                 # its own rite.

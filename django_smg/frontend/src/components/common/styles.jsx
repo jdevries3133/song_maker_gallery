@@ -15,6 +15,9 @@ export default styled;
  * "Global" css classes which are either directly used or extended
  * throughout the project.
  */
+
+// do not feel obligated to inherit from this one, I might just delete it
+// because it seems unnecessary
 export const Div = styled.div`
   text-align: center;
   padding: ${(props) => props.padding || "inherit"};
