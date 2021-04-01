@@ -12,6 +12,8 @@ What we did in Task 1:
 - added initial props to take for title, description and link as in wireframe
 - added this component to storybook stories
 
+Checkout [Contributing.md](CONTRIBUTING.md)
+
 
 Remember your job is to make _incremental_ progress, break the task into smaller
 tasks, or finish something in 15 minutes, then pass it along to the next
