@@ -39,7 +39,7 @@ describe("<Portal />", () => {
     render(<Portal />);
     expect(screen.queryByTestId("portalContainer")).toBeVisible();
   });
-  it("cleans up after self by dismounting parent component", () => {
+  it("cleans up after self by dismounting parent component", async (done) => {
     render(<ComponentDismounter />);
     expect(screen.queryByText("Hello, world!")).toBeVisible();
     act(() => {
@@ -48,5 +48,6 @@ describe("<Portal />", () => {
     waitFor(() => {
       expect(screen.queryAllByTestId("portalContainer")).toHaveLength(0);
     });
+    done();
   });
 });

@@ -3,10 +3,9 @@ import { render, fireEvent, screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { ErrorArray, CustomError } from "./custom_error";
 
-let onOk;
+const onOk = jest.fn();
 
 beforeEach(() => {
-  onOk = jest.fn();
   onOk.mockImplementation(() => {});
 });
 
@@ -26,18 +25,19 @@ describe("ErrorArray", () => {
     render(<ErrorArray header={header} message={msg} onOk={onOk} />);
     expect(screen.getByText(header)).toBeTruthy();
   });
-  it('calls onOk by clicking "Ok" button', () => {
+  it('calls onOk by clicking "Ok" button', async (done) => {
     const msg = ["a", "b", "c"];
     render(<ErrorArray message={msg} onOk={onOk} />);
     act(() => {
       fireEvent.click(screen.getByTestId("onOkButton"));
     });
     expect(onOk).toHaveBeenCalledTimes(1);
+    done();
   });
 });
 
 describe("CustomError", () => {
-  it("has onOk button for self-dismissal", () => {
+  it("has onOk button for self-dismissal", async (done) => {
     render(
       <CustomError onOk={onOk}>
         <h1>Hello, world!</h1>
@@ -47,5 +47,6 @@ describe("CustomError", () => {
       fireEvent.click(screen.getByTestId("onOkButton"));
     });
     expect(onOk).toHaveBeenCalledTimes(1);
+    done();
   });
 });

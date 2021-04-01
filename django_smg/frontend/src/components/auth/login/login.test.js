@@ -47,7 +47,7 @@ describe("login", () => {
     expect(screen.getByTestId("teacher")).toBeTruthy();
   });
 
-  it("shows an error if bad credentials are entered", () => {
+  it("shows an error if bad credentials are entered", async (done) => {
     login.mockImplementation(() =>
       loginAction({
         token: null,
@@ -74,6 +74,7 @@ describe("login", () => {
         "Please check that you are using the correct username and password."
       )
     ).toBeVisible();
+    done();
   });
   test("modal window can be dismissed", async (done) => {
     login.mockImplementation(() =>
@@ -90,7 +91,7 @@ describe("login", () => {
         </Route>
       </Context>
     );
-    await act(async () => {
+    act(() => {
       fireEvent.input(screen.getByTestId("usernameInput"), "username");
       fireEvent.input(screen.getByTestId("passwordInput"), "password");
       fireEvent.click(screen.getByTestId("loginSubmit"));
@@ -98,7 +99,7 @@ describe("login", () => {
     await waitFor(() => {
       expect(screen.getByTestId("onOkButton")).toBeVisible();
     });
-    await act(async () => {
+    act(() => {
       fireEvent.click(screen.getByTestId("onOkButton"));
     });
     await waitFor(() => {

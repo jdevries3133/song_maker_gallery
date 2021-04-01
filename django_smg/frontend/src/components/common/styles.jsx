@@ -173,22 +173,24 @@ export const Description = styled.div`
 
 export const Blanket = styled(Description)`
   position: fixed;
-  height: 600px;
-  width: 1000px;
-  top: 50%;
-  left: 50%;
-  margin-top: -300px;
-  margin-left: -402px;
+  margin: 0;
+  padding: 0;
+  height: 90vh;
+  width: 90vw;
+  overflow-x: hidden;
   background-color: #d9e6e8;
   border-radius: 20px;
-  overflow-x: hidden;
   opacity: 95%;
   z-index: 100;
-  @media (max-width: 830px) {
-    height: 500px;
-    width: 400px;
-    margin-top: -250px;
-    margin-left: -200px;
-    border-radius: 20px 20px 20px 20px;
+
+  @media (min-width: 800px) {
+    @media (min-height: 300px) {
+      height: 600px;
+      width: 700px;
+      top: 50%;
+      left: 50%;
+      margin-top: -300px;
+      margin-left: -350px;
+    }
   }
 `;

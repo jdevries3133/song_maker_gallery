@@ -45,7 +45,7 @@ const submitForm = async (
     password: "123456789",
   }
 ) => {
-  await act(async () => {
+  act(() => {
     fireEvent.change(screen.getByTestId("emailInput"), {
       target: { value: data.email },
     });
@@ -60,7 +60,7 @@ const submitForm = async (
     });
     fireEvent.click(screen.getByTestId("tosCheckbox"));
   });
-  await act(async () => {
+  act(() => {
     fireEvent.submit(screen.getByTestId("signupForm"));
   });
   return data;
@@ -102,7 +102,7 @@ describe("<Signup />", () => {
     });
     done();
   });
-  it("warns user if they put a space in the username", () => {
+  it("warns user if they put a space in the username", async (done) => {
     act(() => {
       fireEvent.change(screen.getByTestId("usernameInput"), {
         target: { value: " " },
@@ -117,6 +117,7 @@ describe("<Signup />", () => {
       });
     });
     expect(screen.queryByText("Username may not contain spaces.")).toBeNull();
+    done();
   });
   it("restores original passwd length message after deleting password", async (done) => {
     // actions
@@ -127,7 +128,7 @@ describe("<Signup />", () => {
       });
     });
     // partially remove password
-    await act(async () => {
+    act(() => {
       fireEvent.change(screen.getByTestId("passwordInput"), {
         target: { value: "123456" },
       });
@@ -142,7 +143,7 @@ describe("<Signup />", () => {
     done();
   });
   it("disallows empty fields", async (done) => {
-    await act(async () => {
+    act(() => {
       fireEvent.submit(screen.getByTestId("signupForm"));
     });
     await waitFor(() => {
