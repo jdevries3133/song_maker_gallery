@@ -46,6 +46,8 @@ class Gallery(models.Model):
             if re.search(r'[a-zA-Z0-9\-]', i):
                 outstr += i
         slug = outstr
+
+        # slug is the slug we will try
         conflicting_urls = [
             i.slug for i in Gallery.objects.filter(  # type: ignore
                 slug__contains=slug
@@ -93,7 +95,7 @@ class Song(models.Model):
     """
     created = models.DateTimeField(auto_now_add=True)
     songId = models.CharField(_("Song ID"), max_length=20)
-    student_name =  models.CharField(_("Student Name"), max_length=100)
+    student_name = models.CharField(_("Student Name"), max_length=100)
 
     # relationships
     gallery = models.ForeignKey(
