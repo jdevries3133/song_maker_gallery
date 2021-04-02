@@ -1,8 +1,7 @@
 import React from "react";
 
 // import Header from "./header";
-// import AddGallery from "./add_gallery";
-// import ListGalleries from "./list_galleries";
+import ListGalleries from "./list_galleries";
 
 import { Div } from "Styles";
 
@@ -14,6 +13,7 @@ export default () => {
     <Div>
       <LogoutButton />
       <Home />
+      <ListGalleries />
     </Div>
   );
 };

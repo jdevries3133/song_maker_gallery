@@ -69,7 +69,11 @@ const StyledTable = styled.table`
 export const UserGalleries = (props) => (
   <StyledTable>
     <tbody>
-      {props.galleries ? <GalleryRows {...props} /> : <Placeholder />}
+      {props.galleries.length > 0 ? (
+        <GalleryRows {...props} />
+      ) : (
+        <Placeholder />
+      )}
     </tbody>
   </StyledTable>
 );
