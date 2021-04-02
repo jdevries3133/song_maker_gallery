@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { H2, P, Button } from "Styles";
-import { Blanket } from "Common/blanket";
 
 const DeleteBtn = styled(Button)`
   background-color: maroon;
@@ -9,7 +8,7 @@ const DeleteBtn = styled(Button)`
 
 export const ConfirmDelete = (props) => {
   return (
-    <Blanket>
+    <>
       <H2>Are you Sure?</H2>
       <P>
         This gallery will be permanently deleted and no longer available at the
@@ -24,6 +23,20 @@ export const ConfirmDelete = (props) => {
       >
         I am sure
       </DeleteBtn>
-    </Blanket>
+    </>
   );
 };
+
+export const GalleryDeleted = () => (
+  <>
+    <H2>Success</H2>
+    <P>Your gallery has been deleted.</P>
+  </>
+);
+
+export const ServerError = () => (
+  <>
+    <H2>Oops!</H2>
+    <P justify>Our server must be in a bad mood today; please try again!</P>
+  </>
+);

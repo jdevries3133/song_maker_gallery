@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import {
@@ -9,127 +8,59 @@ import {
   acknowledgeDelete,
   getUserGalleries,
 } from "Actions/user";
-import ServerError from "Common/server_error";
 
-import { ConfirmDelete } from "./confirm_delete";
-import styled, { Description, Button, H3 } from "Styles";
-import { Blanket } from "Common/blanket";
-
-const StyledTable = styled.table`
-  margin: auto;
-  padding-bottom: 20px;
-  border-spacing: 0px;
-  width: 100%;
-  @media (max-width: 500px) {
-    width: 100%;
-  }
-`;
-
-const StyledTr = styled.tr`
-  @media (max-width: 1170px) {
-    &:nth-child(even) {
-      background-color: rgb(238, 238, 238);
-    }
-
-    & > td {
-      font-size: 14px;
-    }
-  }
-`;
+import { ConfirmDelete, ServerError, GalleryDeleted } from "./modals";
+import { Description, H3 } from "Styles";
+import { useModals, types } from "../../common/useModals";
+import { UserGalleries } from "./user_galleries";
 
 /**
  * This named export is only used for storybook. Usually, the redux-connected
  * default export is used.
  */
 export const ListGalleries = (props) => {
-  const [blanket, setBlanket] = useState(null);
+  const [modals, dispatchModal] = useModals({
+    props: props,
+    modals: [
+      {
+        test: (props) => props.deleteStatus === "deleted",
+        show: GalleryDeleted,
+        onDismissed: props.acknowledgeDelete,
+      },
+      {
+        test: (props) => props.deleteStatus === "error",
+        show: ServerError,
+        onDismissed: props.acknowledgeDelete,
+      },
+      {
+        name: "ConfirmDelete",
+        show: ConfirmDelete,
+      },
+    ],
+  });
 
-  let user_gals;
-  const onOk = () => {
-    setBlanket(null);
-    props.acknowledgeDelete();
+  const requestDelete = (ConfirmDeleteProps) => {
+    dispatchModal("ConfirmDelete", {
+      confirmation: deleteConfirmed,
+      ...ConfirmDeleteProps,
+    });
   };
-
-  useEffect(() => {
-    if (props.deleteStatus) {
-      if (props.deleteStatus === "deleted") {
-        props.getUserGalleries(props.token);
-        setBlanket(
-          <Blanket>
-            <h2>Success</h2>
-            <p>Your gallery has been deleted.</p>
-          </Blanket>
-        );
-      } else if (props.deleteStatus === "error") {
-        setBlanket(<ServerError onOk={onOk} />);
-      }
-    }
-  }, [props.deleteStatus]);
 
   const deleteConfirmed = (pk) => {
     props.deleteGallery(pk, props.token);
-  };
 
-  if (props.galleries) {
-    user_gals = props.galleries.map((gallery, index) => {
-      const url = `${window.location.href.slice(0, -7)}gallery/${
-        gallery["slug"]
-      }/`;
-      return (
-        <StyledTr key={index}>
-          <td data-testid="galleryName" width="30%">
-            {gallery["title"].slice(0, 14)}
-            {gallery["title"].length < 14 ? null : <span>...</span>}
-          </td>
-          <td width="70%">
-            <Link
-              data-testid="viewGalleryLink"
-              to={`/gallery/${gallery["slug"]}/`}
-            >
-              <Button data-testid="viewGalleryBtn" color="#00c4ff">
-                View
-              </Button>
-            </Link>
-            <Button
-              data-testid="deleteGalleryBtn"
-              color="#fa8071"
-              onClick={() =>
-                setBlanket(
-                  <ConfirmDelete
-                    url={url}
-                    pk={gallery["pk"]}
-                    confirmation={deleteConfirmed}
-                  />
-                )
-              }
-            >
-              Delete
-            </Button>
-          </td>
-        </StyledTr>
-      );
-    });
-  }
+    //dismount delte confirmation modal
+    dispatchModal("ConfirmDelete", {}, types.REMOVE);
+  };
 
   return (
     <Description>
-      {blanket}
+      {modals}
       <H3>Your Galleries</H3>
-      <StyledTable>
-        <tbody>
-          {user_gals.length !== 0 ? (
-            user_gals
-          ) : (
-            <tr>
-              <td>
-                <h3 style={{ fontWeight: 400 }}>
-                  Your galleries will go here some day.
-                </h3>
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </StyledTable>
+      <UserGalleries
+        galleries={props.galleries}
+        requestDelete={requestDelete}
+      />
     </Description>
   );
 };
