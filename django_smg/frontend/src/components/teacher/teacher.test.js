@@ -2,6 +2,7 @@ import React from "react";
 import { act, render, fireEvent, screen } from "@testing-library/react";
 import { Context as TestContext } from "Test/app_context";
 import "@testing-library/jest-dom";
+import "jest-styled-components";
 
 import { logout } from "Actions/auth.action";
 import Teacher from "./index";

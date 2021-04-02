@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "Actions/*": ["src/actions/*"],
+      "Common/*": ["src/components/common/*"],
+      "Media/*": ["src/media/*"],
+      "Styles": ["src/components/common/styles.jsx"],
+      "Test": ["src/test/*"]
+    }
+  },
+  "include": ["src"]
+}

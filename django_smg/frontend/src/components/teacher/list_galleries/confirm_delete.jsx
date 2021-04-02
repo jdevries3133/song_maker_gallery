@@ -1,5 +1,6 @@
 import React from "react";
-import styled, { H2, P, Blanket, Button } from "Styles";
+import styled, { H2, P, Button } from "Styles";
+import { Blanket } from "Common/blanket";
 
 const DeleteBtn = styled(Button)`
   background-color: maroon;
@@ -10,7 +11,6 @@ export const ConfirmDelete = (props) => {
   return (
     <Blanket>
       <H2>Are you Sure?</H2>
-
       <P>
         This gallery will be permanently deleted and no longer available at the
         url:
@@ -18,7 +18,10 @@ export const ConfirmDelete = (props) => {
       <P center>
         <a href={props.url}>{props.url}</a>
       </P>
-      <DeleteBtn onClick={() => props.confirmation(props.pk)}>
+      <DeleteBtn
+        data-testid="confirmDeleteBtn"
+        onClick={() => props.confirmation(props.pk)}
+      >
         I am sure
       </DeleteBtn>
     </Blanket>

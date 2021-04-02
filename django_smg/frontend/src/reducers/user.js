@@ -38,7 +38,6 @@ export default function (state = initialState, action) {
     case DELETE_GALLERY:
       return {
         ...state,
-        loopback: action.payload.loopback,
         deleteStatus: action.payload.status,
       };
     default:

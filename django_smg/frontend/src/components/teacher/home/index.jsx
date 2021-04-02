@@ -14,6 +14,7 @@ import { SocialDescription } from "./long_descriptions/social";
 
 const CardContainer = styled.div`
   display: inline-block;
+  margin-top: 5rem;
   background: #d5cbffeb;
   border: 1px solid black;
   border-radius: 20px;
@@ -27,8 +28,7 @@ const CardContainer = styled.div`
     flex-wrap: wrap;
     flex-direction: row;
     width: 90%;
-    margin: 5vw;
-    margin-top: 5rem;
+    margin: 5rem 5vw 5vw 5vw;
     padding: 5vw;
 
     & > * {
