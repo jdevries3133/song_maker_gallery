@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Verify from "../verify";
 import { GalPostSuccess } from "./gal_post_success";
-import ServerError from "Common/server_error";
+import { ServerError } from "Common/server_error";
 import { BadRequest } from "./bad_request";
 import { MissingFields } from "./missing_fields";
 
