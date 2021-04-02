@@ -26,7 +26,7 @@ describe("<Blanket />", () => {
   });
 
   it("contains a button which calls an optional callback fn passed as a prop", async (done) => {
-    render(<Blanket dismissedCallback={onOk} />);
+    render(<Blanket onDismissed={onOk} />);
     act(() => {
       fireEvent.click(screen.getByTestId("dismissBlanketButton"));
     });
@@ -37,7 +37,7 @@ describe("<Blanket />", () => {
   });
 
   it("unmounts itself when close button is pressed", async (done) => {
-    render(<Blanket dismissedCallback={onOk} />);
+    render(<Blanket onDismissed={onOk} />);
     act(() => {
       fireEvent.click(screen.getByTestId("dismissBlanketButton"));
     });

@@ -177,7 +177,7 @@ export const Description = styled.div`
 
 export const Blanket = styled(Description)`
   position: fixed;
-  margin: 0;
+  margin: 4vw;
   padding: 0;
   height: 90vh;
   width: 90vw;

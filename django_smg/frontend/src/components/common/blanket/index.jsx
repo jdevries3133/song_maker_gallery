@@ -20,7 +20,7 @@ const OkButton = styled(Button)`
   background-color: salmon;
 `;
 
-export const Blanket = ({ children, dismissedCallback, ...props }) => {
+export const Blanket = ({ children, onDismissed, ...props }) => {
   // manage whether the component is displayed
   const [enabled, setEnabled] = useState(true);
 
@@ -35,7 +35,7 @@ export const Blanket = ({ children, dismissedCallback, ...props }) => {
         data-testid="dismissBlanketButton"
         onClick={() => {
           setEnabled(false);
-          dismissedCallback && dismissedCallback();
+          onDismissed && onDismissed();
         }}
       >
         Close
