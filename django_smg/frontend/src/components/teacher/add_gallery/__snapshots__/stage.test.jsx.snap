@@ -24,7 +24,6 @@ exports[`stage matches snapshot 1`] = `
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;
-  margin: 10px auto;
   border-radius: 20px;
   cursor: pointer;
   background-color: salmon;
@@ -39,7 +38,6 @@ exports[`stage matches snapshot 1`] = `
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;
-  margin: 10px auto;
   border-radius: 20px;
   cursor: pointer;
   background-color: #f7943e;
@@ -97,6 +95,30 @@ exports[`stage matches snapshot 1`] = `
   box-shadow: 1px 1px 1px #999;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+@media (max-width:400px) {
+  .c8 {
+    padding: 10px;
+  }
+}
+
+@media (max-width:350px) {
+  .c8 {
+    padding: 5px;
+  }
+}
+
+@media (max-width:400px) {
+  .c10 {
+    padding: 10px;
+  }
+}
+
+@media (max-width:350px) {
+  .c10 {
+    padding: 5px;
+  }
 }
 
 <div

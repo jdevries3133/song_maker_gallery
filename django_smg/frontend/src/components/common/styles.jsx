@@ -115,6 +115,10 @@ export const Button = styled.button`
   @media(max-width: 400px) {
     padding: 10px;
   }
+
+  @media (max-width: 350px) {
+    padding: 5px;
+  }
 `;
 
 export const Input = styled.input`
