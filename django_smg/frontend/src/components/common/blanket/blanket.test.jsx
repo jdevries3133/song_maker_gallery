@@ -50,13 +50,14 @@ describe("<Blanket />", () => {
     });
   });
 
-  it("can be initialized with visibility: none", () => {
+  it("can be initialized with visibility: none", async (done) => {
     render(<Blanket enabled={false} />);
-    waitFor(() => {
+    await waitFor(() => {
       expect(screen.queryByTestId("blanket")).toHaveStyleRule(
         "display",
         "none"
       );
     });
+    done();
   });
 });

@@ -45,7 +45,7 @@ describe("<Portal />", () => {
     act(() => {
       fireEvent.click(screen.getByTestId("dismountPortal"));
     });
-    waitFor(() => {
+    await waitFor(() => {
       expect(screen.queryAllByTestId("portalContainer")).toHaveLength(0);
     });
     done();

@@ -20,9 +20,7 @@ describe("<Teacher />", () => {
       </TestContext>
     );
     expect(screen.getByTestId("logoutButton")).toBeVisible();
-    act(() => {
-      fireEvent.click(screen.getByTestId("logoutButton"));
-    });
+    fireEvent.click(screen.getByTestId("logoutButton"));
     expect(logout).toHaveBeenCalledTimes(1);
     expect(logout).toHaveBeenCalledWith("testtoken");
     done();

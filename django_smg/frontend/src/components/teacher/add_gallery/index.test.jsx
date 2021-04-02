@@ -53,18 +53,14 @@ const setupRender = () => {
 
 const setupVerify = async (spreadsheet = "test_group.csv") => {
   setupRender();
-  act(() => {
-    mountFile(screen.getByTestId("csvFileInput"), getTestCsv(spreadsheet));
-  });
+  mountFile(screen.getByTestId("csvFileInput"), getTestCsv(spreadsheet));
   fireEvent.click(screen.getByTestId("addSpreadsheetButton"));
   await waitFor(() => screen.findAllByTestId("verifyModalPresent"));
 };
 
 const setupAddFirstGroup = async () => {
   await setupVerify();
-  act(() => {
-    fireEvent.click(screen.getByTestId("verifyGroupButton"));
-  });
+  fireEvent.click(screen.getByTestId("verifyGroupButton"));
 };
 
 describe("gallery addition process via <Teacher />", () => {
@@ -89,16 +85,12 @@ describe("gallery addition process via <Teacher />", () => {
     await setupAddFirstGroup();
 
     // Input title
-    act(() => {
-      fireEvent.change(screen.getByTestId("titleInput"), {
-        target: { value: "Test Title" },
-      });
+    fireEvent.change(screen.getByTestId("titleInput"), {
+      target: { value: "Test Title" },
     });
 
     // Submit to create gallery
-    act(() => {
-      fireEvent.click(screen.getByTestId("submit"));
-    });
+    fireEvent.click(screen.getByTestId("submit"));
 
     await waitFor(async () => {
       expect(screen.queryByText("Success!")).toBeVisible();
