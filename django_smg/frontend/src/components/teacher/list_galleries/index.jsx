@@ -49,7 +49,7 @@ export const ListGalleries = (props) => {
   const deleteConfirmed = (pk) => {
     props.deleteGallery(pk, props.token);
 
-    //dismount delte confirmation modal
+    // dismount delete confirmation modal
     dispatchModal("ConfirmDelete", null, types.REMOVE);
   };
 
