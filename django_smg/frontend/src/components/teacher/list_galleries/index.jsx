@@ -50,7 +50,7 @@ export const ListGalleries = (props) => {
     props.deleteGallery(pk, props.token);
 
     //dismount delte confirmation modal
-    dispatchModal("ConfirmDelete", {}, types.REMOVE);
+    dispatchModal("ConfirmDelete", null, types.REMOVE);
   };
 
   return (
