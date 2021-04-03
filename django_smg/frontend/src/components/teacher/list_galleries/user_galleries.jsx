@@ -44,7 +44,7 @@ const GalleryRows = ({ galleries, requestDelete }) =>
             color="#fa8071"
             onClick={() =>
               requestDelete({
-                url: `${windowLocation}galHref`,
+                url: `${windowLocation("origin")}galHref`,
                 pk: gallery["pk"],
               })
             }
