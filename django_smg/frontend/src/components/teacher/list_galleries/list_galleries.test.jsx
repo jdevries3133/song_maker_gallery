@@ -76,6 +76,15 @@ describe("<ListGalleries />", () => {
   it("renders modal to confirm gallery deletion", () => {
     fireEvent.click(screen.queryAllByTestId("deleteGalleryBtn")[0]);
     expect(screen.queryByTestId("blanket")).toBeVisible();
+    expect(screen.queryByText("Are you sure?")).toBeVisible();
+    // The gallery will no longer be available at...
+    expect(screen.queryByTestId("lastChanceLink")).toHaveTextContent(
+      "http://localhost:8000//gallery/gallery-1/"
+    );
+    expect(screen.queryByTestId("lastChanceLink")).toHaveAttribute(
+      "href",
+      "http://localhost:8000//gallery/gallery-1/"
+    );
   });
 
   test("confirm delete modal is dismissable", async (done) => {
@@ -106,12 +115,12 @@ describe("<ListGalleries />", () => {
   it("unmounts modal after successful deletion", async (done) => {
     fireEvent.click(screen.getAllByTestId("deleteGalleryBtn")[0]);
     await waitFor(() =>
-      expect(screen.queryByText("Are you Sure?")).toBeVisible()
+      expect(screen.queryByText("Are you sure?")).toBeVisible()
     );
 
     fireEvent.click(screen.getByTestId("confirmDeleteBtn"));
     await waitFor(() =>
-      expect(screen.queryByText("Are you Sure?")).toBeFalsy()
+      expect(screen.queryByText("Are you sure?")).toBeFalsy()
     );
     done();
   });

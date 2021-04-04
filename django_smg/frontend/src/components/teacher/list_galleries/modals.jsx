@@ -9,13 +9,15 @@ const DeleteBtn = styled(Button)`
 export const ConfirmDelete = (props) => {
   return (
     <>
-      <H2>Are you Sure?</H2>
+      <H2>Are you sure?</H2>
       <P>
         This gallery will be permanently deleted and no longer available at the
         url:
       </P>
       <P center>
-        <a href={props.url}>{props.url}</a>
+        <a data-testid="lastChanceLink" href={props.url}>
+          {props.url}
+        </a>
       </P>
       <DeleteBtn
         data-testid="confirmDeleteBtn"
