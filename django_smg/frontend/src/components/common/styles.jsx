@@ -23,6 +23,26 @@ export const Div = styled.div`
   padding: ${(props) => props.padding || "inherit"};
 `;
 
+export const Grid = styled.div`
+  justify-items: center;
+  align-items: center;
+  gap: ${(props) => props.gap || "1rem"};
+  display: ${(props) => (props.inline ? "inline-grid" : "grid")};
+  grid-template-rows: ${(props) => props.rows};
+  grid-template-columns: ${(props) => props.cols};
+`;
+
+// prettier-ignore
+export const GridItem = styled.div`
+  ${props => props.row      && css`grid-row:            ${props.row}`};
+  ${props => props.row      && css`grid-row:            ${props.row}`};
+  ${props => props.rowStart && css`grid-row-start:      ${props.rowStart}`};
+  ${props => props.rowEnd   && css`grid-row-end:        ${props.rowEnd}`};
+  ${props => props.col      && css`grid-column:         ${props.col}`};
+  ${props => props.colStart && css`grid-column-start:   ${props.colStart}`};
+  ${props => props.colEnd   && css`grid-column-end:     ${props.colEnd}`};
+`;
+
 export const H1 = styled.h1`
   text-align: center;
   padding-bottom: 1.5rem;

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { ConfirmDelete, ServerError, GalleryDeleted } from "./modals";
 import { Description, H3 } from "Styles";
 import { useModals, types } from "../../common/useModals";
-import { UserGalleries } from "./user_galleries";
+import { Layout } from "./layout";
 
 /**
  * This named export is only used for storybook. Usually, the redux-connected
@@ -48,11 +48,7 @@ export const ListGalleries = (props) => {
   return (
     <Description>
       {modals}
-      <H3>Your Galleries</H3>
-      <UserGalleries
-        galleries={props.galleries}
-        requestDelete={requestDelete}
-      />
+      <Layout galleries={props.galleries} requestDelete={requestDelete} />
     </Description>
   );
 };
