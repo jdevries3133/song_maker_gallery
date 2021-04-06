@@ -6,19 +6,19 @@ export default {
   component: Button,
 };
 
-const Template = (args) => <Button {...args}>{args.text}</Button>;
+const Template = (args) => <Button {...args}>{args.children}</Button>;
 
 export const Normal = Template.bind({});
-Normal.args = { text: "Click Me" };
+Normal.args = { children: "Click Me" };
 
 export const Green = Template.bind({});
 Green.args = {
-  text: "Green",
+  children: "Green",
   color: "green",
 };
 
 export const Blue = Template.bind({});
 Blue.args = {
-  text: "Ligt Blue",
+  children: "Light Blue",
   color: "cadetblue",
 };
