@@ -2,15 +2,37 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import styled, {
-  Button,
+  Button as DefaultButton,
   H3,
   Grid as DefaultGrid,
   GridItem as Item,
 } from "Styles";
 import { windowLocation } from "../../../util/window";
 
+/* Take away padding shrinkage media query */
+const Button = styled(DefaultButton)`
+  && {
+    padding: 20px;
+  }
+`;
+
 const Grid = styled(DefaultGrid)`
   margin: 1rem 0;
+
+  @media (max-width: 600px) {
+    margin: 3rem 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(1fr, 3);
+  }
+`;
+
+/* Spans whole row on mobile */
+const GalleryName = styled(Item)`
+  @media (max-width: 600px) {
+    font-size: 1.4rem;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
 `;
 
 /* This forms the table layout */
@@ -21,24 +43,24 @@ const GalleryRows = ({ galleries, requestDelete }) => (
       /* Inner default grid lays out buttons and titles */
       return (
         <Grid cols="3fr 2fr 2fr 2fr 2fr" key={index}>
-          <Item col="1">
+          <GalleryName>
             <span>{gallery["title"].slice(0, 14)}</span>
             {gallery["title"].length < 14 ? null : <span>...</span>}
-          </Item>
-          <Item col="2">
-            <Button color="lightgreen">Edit</Button>
-          </Item>
-          <Item col="3">
-            <Button color="pink">Settings</Button>
-          </Item>
-          <Item col="4">
+          </GalleryName>
+          <Item>
             <Link data-testid="viewGalleryLink" to={galPath}>
               <Button data-testid="viewGalleryBtn" color="#00c4ff">
                 View
               </Button>
             </Link>
           </Item>
-          <Item col="5">
+          <Item>
+            <Button color="lightgreen">Edit</Button>
+          </Item>
+          <Item>
+            <Button color="pink">Settings</Button>
+          </Item>
+          <Item>
             <Button
               data-testid="deleteGalleryBtn"
               color="#fa8071"

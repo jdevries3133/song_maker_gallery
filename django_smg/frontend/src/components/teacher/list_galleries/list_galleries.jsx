@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 import { ConfirmDelete, ServerError, GalleryDeleted } from "./modals";
-import { Description, H3 } from "Styles";
+import { Description } from "Styles";
 import { useModals, types } from "../../common/useModals";
 import { Layout } from "./layout";
 
@@ -31,6 +31,10 @@ export const ListGalleries = (props) => {
     ],
   });
 
+  useEffect(() => {
+    props.getUserGalleries(props.token);
+  }, []);
+
   const requestDelete = (ConfirmDeleteProps) => {
     dispatchModal("ConfirmDelete", {
       confirmation: deleteConfirmed,
@@ -40,9 +44,7 @@ export const ListGalleries = (props) => {
 
   const deleteConfirmed = (pk) => {
     props.deleteGallery(pk, props.token);
-
-    //dismount delte confirmation modal
-    dispatchModal("ConfirmDelete", {}, types.REMOVE);
+    dispatchModal("ConfirmDelete", null, types.REMOVE);
   };
 
   return (

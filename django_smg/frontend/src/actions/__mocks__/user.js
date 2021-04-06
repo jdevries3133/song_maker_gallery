@@ -28,24 +28,24 @@ export const getUserGalleries = jest
       payload: {
         galleries: [
           {
-            title: "e",
+            title: "Gallery",
             description:
               "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds!",
-            slug: "e",
+            slug: "gallery-1",
             pk: 1,
           },
           {
-            title: "e",
+            title: "Other Gallery",
             description:
               "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds!",
-            slug: "e-1",
+            slug: "other-gallery",
             pk: 2,
           },
           {
-            title: "e",
+            title: "My Gallery",
             description:
               "We will always find a way to share music. In lieu of the concert hall, our musical performances today are expressed in ones and zeroes, but they are none the less as human and as meaningful as always.\n\nPlease enjoy this showcase of our school's music lab compositions. Our students' creativity truly knows no bounds!",
-            slug: "e-2",
+            slug: "my-gallery",
             pk: 3,
           },
         ],

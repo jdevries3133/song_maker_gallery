@@ -57,19 +57,20 @@ afterEach(() => {
 
 describe("<ListGalleries />", () => {
   it("lists user's galleries in redux state", () => {
+    // these come from src/actions/__mocks__/user.js
+    const expect_names = ["Gallery", "Other Gallery", "My Gallery"];
     screen
       .queryAllByTestId("galleryName")
       .map((name, i) =>
-        expect(name).toHaveTextContent(INITIAL_STATE.user.galleries[i].title)
+        expect(name).toHaveTextContent(`/gallery/${expect_names[i]}/`)
       );
   });
 
   it("renders links to gallery from redux state", () => {
+    // these come from src/actions/__mocks__/user.js
+    const expect_slugs = ["gallery-1", "other-gallery", "my-gallery"];
     screen.queryAllByTestId("viewGalleryLink").map((link, i) => {
-      expect(link).toHaveAttribute(
-        "href",
-        `/gallery/${INITIAL_STATE.user.galleries[i].slug}/`
-      );
+      expect(link).toHaveAttribute("href", `/gallery/${expect_slugs[i]}/`);
     });
   });
 
