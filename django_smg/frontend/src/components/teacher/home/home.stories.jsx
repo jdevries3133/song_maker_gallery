@@ -3,7 +3,7 @@ import React from "react";
 import { Home } from "./index";
 
 export default {
-  title: "Teacher Home Cards",
+  title: "teacher/Teacher Home Cards",
   component: Home,
 };
 

@@ -127,3 +127,13 @@ export const logout = (token) => (dispatch) => {
       });
     });
 };
+
+// TODO: implement for changing email/password
+export const updateUser = (pk, data) => {
+  throw new Error("Not implemented");
+};
+
+// TODO: implement
+export const deleteAccount = (pk, username, password) => {
+  throw new Error("Not implemented");
+};

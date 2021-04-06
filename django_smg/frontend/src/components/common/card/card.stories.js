@@ -4,7 +4,7 @@ import { Card } from "./card";
 import styled, { Button } from "Styles";
 
 export default {
-  title: "Card",
+  title: "Common/Card",
   component: Card,
 };
 

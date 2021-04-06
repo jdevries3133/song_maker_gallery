@@ -12,7 +12,7 @@ const SAMPLE_GROUP = [
 ];
 
 export default {
-  title: "Staged Group",
+  title: "teacher/Staged Group",
   component: StagedGroup,
 };
 

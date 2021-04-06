@@ -1,4 +1,4 @@
-import { LOGIN, REGISTER, CLEAR_ERROR, LOGOUT } from "../types";
+import { LOGIN, REGISTER, CLEAR_ERROR, LOGOUT, UPDATE } from "../types";
 
 export const register = jest.fn().mockImplementation(() => (dispatch) => {
   dispatch({
@@ -45,6 +45,26 @@ export const login = jest.fn().mockImplementation(() => (dispatch) => {
       isAuthenticated: true,
       authError: false,
       token: "testtoken",
+    },
+  });
+});
+
+export const updateUser = jest.fn().mockImplementation(() => (dispatch) => {
+  dispatch({
+    type: UPDATE,
+    payload: {
+      authError: false,
+      token: "testtoken",
+    },
+  });
+});
+
+export const deleteAccount = jest.fn().mockImplementation(() => (dispatch) => {
+  dispatch({
+    type: DELETE,
+    payload: {
+      isAuthenticated: false,
+      token: null,
     },
   });
 });

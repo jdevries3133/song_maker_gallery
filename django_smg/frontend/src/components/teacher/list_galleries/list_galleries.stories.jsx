@@ -3,7 +3,7 @@ import { Context as C } from "Test/app_context";
 import { ListGalleries } from "./index";
 
 export default {
-  title: "List Galleries",
+  title: "teacher/List Galleries",
   component: ListGalleries,
 };
 

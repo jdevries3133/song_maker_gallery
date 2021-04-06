@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "Styles";
 
 export default {
-  title: "Button",
+  title: "Common/Button",
   component: Button,
 };
 

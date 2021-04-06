@@ -3,7 +3,7 @@ import { H2, H3, P } from "Styles";
 import { Blanket } from "./index";
 
 export default {
-  title: "Blanket",
+  title: "Common/Blanket",
   component: Blanket,
 };
 
