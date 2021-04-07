@@ -1,23 +1,23 @@
 import React from "react";
+
 import { Blanket } from "Common/blanket";
 
-import { ChangeEmail } from "./change_email";
+import { ChangePassword } from "./change_password";
 
 export default {
-  title: "Modals/Manage Account/Change Email",
-  component: ChangeEmail,
+  title: "Modals/Manage Account/Change Password",
+  component: ChangePassword,
 };
 
 const Template = (args) => (
   <Blanket>
-    <ChangeEmail
-      changeEmail={(eml, usr, token) =>
+    <ChangePassword
+      changePassword={(uid, curPass, newPass) =>
         console.log(
-          `Changed email for user ${usr} to ${eml} with token ${token}`
+          `Changed password for user id ${uid} from ${curPass} to ${newPass}`
         )
       }
       userId={args.userId}
-      token={args.token}
     />
   </Blanket>
 );
@@ -25,5 +25,4 @@ const Template = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   userId: 1,
-  token: "testtoken",
 };

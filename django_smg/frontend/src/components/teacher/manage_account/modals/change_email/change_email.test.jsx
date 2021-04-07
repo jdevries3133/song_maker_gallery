@@ -1,18 +1,13 @@
 import React from "react";
-import {
-  act,
-  render,
-  fireEvent,
-  screen,
-  waitFor,
-} from "@testing-library/react";
-import { Context as TestContext } from "Test/app_context";
+import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import "jest-styled-components";
 
 import { updateUser } from "Actions/auth.action";
 import { ChangeEmail } from "./change_email";
 
+// TODO: this is using redux in a kind of cursed way... circle back when
+// real actions are implemented
 jest.mock("Actions/auth.action");
 
 beforeEach(() =>
