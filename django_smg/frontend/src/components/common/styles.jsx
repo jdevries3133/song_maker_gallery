@@ -149,6 +149,12 @@ export const Input = styled.input`
     width: 30px;
     height: 30px;
   }
+
+  ${(props) =>
+    props.block &&
+    css`
+      display: block;
+    `}
 `;
 
 export const Checkbox = ({ children, ...rest }) => (
