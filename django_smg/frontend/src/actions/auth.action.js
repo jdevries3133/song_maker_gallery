@@ -136,6 +136,6 @@ export const updateUser = (pk, data) => {
 };
 
 // TODO: implement
-export const deleteAccount = (pk, username, password) => {
+export const deleteAccount = (username, password) => {
   throw new Error("Not implemented");
 };
