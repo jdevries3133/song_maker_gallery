@@ -72,13 +72,3 @@ class LoginAPI(KnoxLoginView):
             )},
             status=status.HTTP_403_FORBIDDEN,
         )
-
-
-class UserAPI(RetrieveAPIView):
-    permission_classes = (
-        permissions.IsAuthenticated,
-    )
-    serializer_class = UserSerializer
-
-    def get_object(self):
-        return self.request.user
