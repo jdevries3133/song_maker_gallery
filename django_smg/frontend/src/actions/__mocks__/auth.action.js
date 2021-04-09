@@ -1,4 +1,4 @@
-import { LOGIN, REGISTER, CLEAR_ERROR, LOGOUT, UPDATE } from "../types";
+import { LOGIN, REGISTER, CLEAR_ERROR, LOGOUT, UPDATE, DELETE } from "../types";
 
 export const register = jest.fn().mockImplementation(() => (dispatch) => {
   dispatch({
