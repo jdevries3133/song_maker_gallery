@@ -181,6 +181,18 @@ export const Input = styled.input`
     `}
 `;
 
+export const Textarea = styled.textarea`
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 0px;
+  width: 80%;
+  height: 20vh;
+  box-shadow: 1px 1px 1px #999;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
+
 export const Checkbox = ({ children, ...rest }) => (
   <Input type="checkbox" {...rest}>
     {children}

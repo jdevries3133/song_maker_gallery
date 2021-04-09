@@ -58,6 +58,18 @@ exports[`stage matches snapshot 1`] = `
   height: 30px;
 }
 
+.c5 {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 0px;
+  width: 80%;
+  height: 20vh;
+  box-shadow: 1px 1px 1px #999;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 .c7 {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
@@ -83,18 +95,6 @@ exports[`stage matches snapshot 1`] = `
   padding: 50px;
   background-color: #ffc107;
   border: 3px solid black;
-}
-
-.c5 {
-  font-family: Helvetica,Arial,sans-serif;
-  font-size: 19px;
-  line-height: 1.5;
-  margin: 0px;
-  width: 85%;
-  height: 263px;
-  box-shadow: 1px 1px 1px #999;
-  border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
 @media (max-width:400px) {

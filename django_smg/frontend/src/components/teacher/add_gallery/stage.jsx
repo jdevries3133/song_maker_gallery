@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { StagedGroup } from "./snippets";
 import { ErrorArray } from "Common/custom_error";
-import styled, { H2, H3, P, Input, Button, Div } from "Styles";
+import styled, { H2, H3, P, Input, Textarea, Button, Div } from "Styles";
 
 import { SizeLimitCounter } from "./verify";
 
@@ -13,18 +13,6 @@ const LargeButton = styled(Button)`
   padding: 50px;
   background-color: #ffc107;
   border: 3px solid black;
-`;
-
-const TextArea = styled.textarea`
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 19px;
-  line-height: 1.5;
-  margin: 0px;
-  width: 85%;
-  height: 263px;
-  box-shadow: 1px 1px 1px #999;
-  border: 1px solid #ccc;
-  border-radius: 5px;
 `;
 
 export const Stage = (props) => {
@@ -69,7 +57,7 @@ export const Stage = (props) => {
           You may use this default description, or change it to whatever you
           prefer.
         </P>
-        <TextArea
+        <Textarea
           value={props.descriptionValue}
           onChange={(e) => props.descriptionInput(e)}
         />
