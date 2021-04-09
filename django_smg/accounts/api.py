@@ -53,12 +53,16 @@ class LoginAPI(KnoxLoginView):
         user = serializer.validated_data['user']
         login(request, user)
         response = super().post(request, format=None)
+
+        # TODO: move user_id insertion into a serializer
         response.data.setdefault('user_id', user.pk)
         return response
 
     def get(self, request):
         if request.user.is_authenticated:
             response = super().post(request, format=None)
+
+            # TODO: move user_id insertion into a serializer (same as above)
             response.data.setdefault('user_id', request.user.pk)
             return response
         return Response({

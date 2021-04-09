@@ -14,13 +14,14 @@ export const tryToken = (token) => (dispatch) => {
     .get("/api/auth/login/", {
       headers: { Authorization: `Token ${token}` },
     })
-    .then(() => {
+    .then((res) => {
       dispatch({
         type: LOGIN,
         payload: {
           isAuthenticated: true,
           authError: false,
           token: token,
+          id: res.data.user_id,
         },
       });
     });
@@ -42,6 +43,7 @@ export const login = (data) => (dispatch) => {
             isAuthenticated: true,
             authError: false,
             token: res.data.token,
+            id: res.data.user_id,
           },
         });
       } else {
@@ -88,7 +90,7 @@ export const register = (data) => (dispatch) => {
           isAuthenticated: true,
           authError: false,
           token: res.data.token,
-          user: res.data.user,
+          id: res.data.user.id,
         },
       });
     })
