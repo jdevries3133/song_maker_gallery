@@ -31,6 +31,16 @@ exports[`<Signup /> matches snapshot 1`] = `
   background-color: white;
 }
 
+.c4 {
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
 .c5 {
   font-size: 20px;
   padding: 10px;
@@ -40,16 +50,6 @@ exports[`<Signup /> matches snapshot 1`] = `
 .c5[type="checkbox"] {
   width: 30px;
   height: 30px;
-}
-
-.c4 {
-  display: block;
-  font-size: 1.17em;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
 }
 
 .c2 {

@@ -1,21 +1,15 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import styled, { H2, Button as DefaultButton, Input } from "Styles";
+import styled, {
+  H2,
+  Button as DefaultButton,
+  Form,
+  Label,
+  Input,
+} from "Styles";
 
 const Button = styled(DefaultButton)`
   max-width: 100px;
-`;
-
-const Form = styled.form`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1rem;
-  margin: 5vh 5vw;
-`;
-const Label = styled.label`
-  display: block;
 `;
 
 export const ChangeEmail = ({ changeEmail, userId, token }) => {
