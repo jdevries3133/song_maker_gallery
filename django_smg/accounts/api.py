@@ -52,11 +52,15 @@ class LoginAPI(KnoxLoginView):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
         login(request, user)
-        return super().post(request, format=None)
+        response = super().post(request, format=None)
+        response.data.setdefault('user_id', user.pk)
+        return response
 
     def get(self, request):
         if request.user.is_authenticated:
-            return super().post(request, format=None)
+            response = super().post(request, format=None)
+            response.data.setdefault('user_id', request.user.pk)
+            return response
         return Response({
             'message': (
                 'Must provide token for rotation or authenticate with '
