@@ -35,6 +35,7 @@ const reducer = (state, action) => {
 };
 
 export const ChangePassword = ({ changePassword, userId }) => {
+  // TODO: follow-up view to confirm action or report error
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleCur = (e) =>
@@ -57,6 +58,7 @@ export const ChangePassword = ({ changePassword, userId }) => {
         value={state.curPassword}
         type="password"
         id="current"
+        autocomplete="current-password"
       />
       <Label htmlFor="new">New Password</Label>
       <Input
@@ -65,6 +67,7 @@ export const ChangePassword = ({ changePassword, userId }) => {
         value={state.newPassword}
         type="password"
         id="new"
+        autocomplete="new-password"
       />
       <Button data-testid="submit" as="input" type="submit" value="Submit" />
     </Form>

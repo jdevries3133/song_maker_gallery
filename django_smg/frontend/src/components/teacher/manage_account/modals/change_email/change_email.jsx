@@ -13,6 +13,7 @@ const Button = styled(DefaultButton)`
 `;
 
 export const ChangeEmail = ({ changeEmail, userId, token }) => {
+  // TODO: follow-up view to confirm action or report error
   const [email, setEmail] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,6 +29,7 @@ export const ChangeEmail = ({ changeEmail, userId, token }) => {
         type="test"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
+        autocomplete="email"
       />
       <Button
         block

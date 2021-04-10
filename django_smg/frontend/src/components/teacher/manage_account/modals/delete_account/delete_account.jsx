@@ -39,6 +39,7 @@ const Warning = styled.div`
 `;
 
 export const DeleteAccount = ({ userId, deleteAccount }) => {
+  // TODO: follow-up view to confirm action or report error
   const [showAttestWarning, setShowAttestWarning] = useState(false);
   const [attestation, setAttestation] = useState("");
   const [passwd, setPasswd] = useState("");
@@ -78,6 +79,7 @@ export const DeleteAccount = ({ userId, deleteAccount }) => {
         id="password"
         type="password"
         onChange={handlePasswdInput}
+        autocomplete="current-password"
       />
       <Button
         color="red"

@@ -48,7 +48,7 @@ const reducer = (state, action) => {
  *  ]
  * }
  */
-export const useModals = ({ props, modals }) => {
+export const useModals = ({ modals, props = {} }) => {
   const [state, dispatch] = useReducer(reducer, { showNamed: [] });
 
   // are not held in state

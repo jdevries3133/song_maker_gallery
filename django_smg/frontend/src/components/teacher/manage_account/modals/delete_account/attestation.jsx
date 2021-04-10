@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { Label, Textarea, P } from "Styles";
 
 export const ATTESTATION = "Delete account, all galleries, and all other data";

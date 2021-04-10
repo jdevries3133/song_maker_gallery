@@ -1,10 +1,14 @@
 import React from "react";
-import { Blanket } from "Common/blanket";
+
+import { Context as C } from "Test/app_context";
 
 import { ManageAccount } from "./manage_account";
-import { ChangeEmail } from "./modals";
 
-const Template = (args) => <ManageAccount {...args} />;
+const Template = (args) => (
+  <C>
+    <ManageAccount {...args} />
+  </C>
+);
 
 export default {
   title: "teacher/Manage Account",
