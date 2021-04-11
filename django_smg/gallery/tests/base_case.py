@@ -1,191 +1,134 @@
+from copy import deepcopy
 import json
+from typing import Union, Iterable, Generator
+from unittest.mock import patch
 
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from django.test import TestCase, Client
 
-from ..models import Gallery
+from ..models import Gallery, Song
 from ..serializers import GalleryDatasetSerializer
+from ..services import mock_data as default_api_return_data
+
+
+
+def mock_iter_fetch_and_cache(songs: Iterable[Song]
+                              ) -> Generator[Song, None, None]:
+    for song in songs:
+        for k, v in default_api_return_data.items():
+            setattr(song, k, v)
+        song.midi = b''  # type: ignore
+        yield song
+
+
+def patch_fetch_and_cache(func):
+    def wrap(*a, **kw):
+        with patch('gallery.serializers.iter_fetch_and_cache') as p:
+            p.side_effect = mock_iter_fetch_and_cache
+            func(*a, **kw)
+    return wrap
 
 
 class GalleryTestCase(TestCase):
-    mock_api_data =  {
-        'title': 'Test Title',
-        'description': 'This is the test description.',
-        'songData':  # JSON string
-        """
-            [
-              [
-                [
-                  "Mark Johnson",
-                  "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
-                ],
-                [
-                  "Mark J.",
-                  "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
-                ],
-                [
-                  "Mark  Johnson",
-                  "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
-                ],
 
-                [
-                  "Mark   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Johnson",
-                  "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
-                ],
-                "A Group of Marks"
-              ],
-              [
-                [
-                  "Lilly Gohnson",
-                  "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
-                ],
-                [
-                  "Lilly G.",
-                  "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
-                ],
-                [
-                  "lilly  Gohnson",
-                  "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
-                ],
-                [
-                  "Lilly   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Gohnson",
-                  "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
-                ],
-                "A Group of Lillys"
-              ]
-            ]
+    @ property
+    def mock_api_data(self):
+        return deepcopy({
+            'title': 'Test Title',
+            'description': 'This is the test description.',
+            'songData':  # JSON string
             """
-    }
+                [
+                  [
+                    [
+                      "Mark Johnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+                    ],
+                    [
+                      "Mark J.",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+                    ],
+                    [
+                      "Mark  Johnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+                    ],
 
-    expected_rendered_data = {
-        'description': 'This is the test description.',
-         'pk': 2,
-         'slug': 'test-title-1',
-         'songData': [[{'metadata': {'bars': 4,
-                                     'beats': 4,
-                                     'instrument': 'marimba',
-                                     'octaves': 2,
-                                     'percussion': 'electronic',
-                                     'percussionNotes': 2,
-                                     'rootNote': 48,
-                                     'rootOctave': 4,
-                                     'rootPitch': 0,
-                                     'scale': 'major',
-                                     'subdivision': 2,
-                                     'tempo': 120},
-                        'midiBytes': 'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRyawAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4AAJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CBNwAAgTkAsGD/LwA=',
-                        'name': 'Mark J.',
-                        'songId': '5676759593254912'},
-                       {'metadata': {'bars': 4,
-                                     'beats': 4,
-                                     'instrument': 'marimba',
-                                     'octaves': 2,
-                                     'percussion': 'electronic',
-                                     'percussionNotes': 2,
-                                     'rootNote': 48,
-                                     'rootOctave': 4,
-                                     'rootPitch': 0,
-                                     'scale': 'major',
-                                     'subdivision': 2,
-                                     'tempo': 120},
-                        'midiBytes': 'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRyawAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4AAJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CBNwAAgTkAsGD/LwA=',
-                        'name': 'Mark J.',
-                        'songId': '5676759593254912'},
-                       {'metadata': {'bars': 4,
-                                     'beats': 4,
-                                     'instrument': 'marimba',
-                                     'octaves': 2,
-                                     'percussion': 'electronic',
-                                     'percussionNotes': 2,
-                                     'rootNote': 48,
-                                     'rootOctave': 4,
-                                     'rootPitch': 0,
-                                     'scale': 'major',
-                                     'subdivision': 2,
-                                     'tempo': 120},
-                        'midiBytes': 'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRyawAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4AAJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CBNwAAgTkAsGD/LwA=',
-                        'name': 'Mark J.',
-                        'songId': '5676759593254912'},
-                       {'metadata': {'bars': 4,
-                                     'beats': 4,
-                                     'instrument': 'marimba',
-                                     'octaves': 2,
-                                     'percussion': 'electronic',
-                                     'percussionNotes': 2,
-                                     'rootNote': 48,
-                                     'rootOctave': 4,
-                                     'rootPitch': 0,
-                                     'scale': 'major',
-                                     'subdivision': 2,
-                                     'tempo': 120},
-                        'midiBytes': 'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRyawAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4AAJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CBNwAAgTkAsGD/LwA=',
-                        'name': 'Mark J.',
-                        'songId': '5676759593254912'},
-                       'A Group of Marks'],
-                      [{'metadata': {'bars': 4,
-                                     'beats': 4,
-                                     'instrument': 'marimba',
-                                     'octaves': 2,
-                                     'percussion': 'electronic',
-                                     'percussionNotes': 2,
-                                     'rootNote': 48,
-                                     'rootOctave': 4,
-                                     'rootPitch': 0,
-                                     'scale': 'major',
-                                     'subdivision': 2,
-                                     'tempo': 120},
-                        'midiBytes': 'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRyawAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4AAJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CBNwAAgTkAsGD/LwA=',
-                        'name': 'Lilly G.',
-                        'songId': '5676759593254912'},
-                       {'metadata': {'bars': 4,
-                                     'beats': 4,
-                                     'instrument': 'marimba',
-                                     'octaves': 2,
-                                     'percussion': 'electronic',
-                                     'percussionNotes': 2,
-                                     'rootNote': 48,
-                                     'rootOctave': 4,
-                                     'rootPitch': 0,
-                                     'scale': 'major',
-                                     'subdivision': 2,
-                                     'tempo': 120},
-                        'midiBytes': 'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRyawAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4AAJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CBNwAAgTkAsGD/LwA=',
-                        'name': 'Lilly G.',
-                        'songId': '5676759593254912'},
-                       {'metadata': {'bars': 4,
-                                     'beats': 4,
-                                     'instrument': 'marimba',
-                                     'octaves': 2,
-                                     'percussion': 'electronic',
-                                     'percussionNotes': 2,
-                                     'rootNote': 48,
-                                     'rootOctave': 4,
-                                     'rootPitch': 0,
-                                     'scale': 'major',
-                                     'subdivision': 2,
-                                     'tempo': 120},
-                        'midiBytes': 'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRyawAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4AAJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CBNwAAgTkAsGD/LwA=',
-                        'name': 'Lilly G.',
-                        'songId': '5676759593254912'},
-                       {'metadata': {'bars': 4,
-                                     'beats': 4,
-                                     'instrument': 'marimba',
-                                     'octaves': 2,
-                                     'percussion': 'electronic',
-                                     'percussionNotes': 2,
-                                     'rootNote': 48,
-                                     'rootOctave': 4,
-                                     'rootPitch': 0,
-                                     'scale': 'major',
-                                     'subdivision': 2,
-                                     'tempo': 120},
-                        'midiBytes': 'TVRoZAAAAAYAAQACA8BNVHJrAAAACwD/UQMHoSAA/y8ATVRyawAAAHIAwQ2lQJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINggT4AAJE+f4NgkT5/AIE+AINgkT5/AIE+AINggT4AAJE+fwCRPH8AkTt/g2CBPgAAgTwAAIE7AACRN38AkTl/g2CBNwAAgTkAsGD/LwA=',
-                        'name': 'Lilly G.',
-                        'songId': '5676759593254912'},
-                       'A Group of Lillys']],
-         'title': 'Test Title'
-         }
+                    [
+                      "Mark   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Johnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+                    ],
+                    "A Group of Marks"
+                  ],
+                  [
+                    [
+                      "Lilly Gohnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+                    ],
+                    [
+                      "Lilly G.",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+                    ],
+                    [
+                      "lilly  Gohnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+                    ],
+                    [
+                      "Lilly   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Gohnson",
+                      "https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912"
+                    ],
+                    "A Group of Lillys"
+                  ]
+                ]
+                """
+        })
+
+    @ property
+    def expected_rendered_data(self):
+        # all songs look like this
+        song = {
+            'metadata': {
+                'bars': 1,
+                 'beats': 4,
+                 'instrument': 'piano',
+                 'octaves': 2,
+                 'percussion': 'electronic',
+                 'percussionNotes': 2,
+                 'rootNote': 48,
+                 'rootOctave': 4,
+                 'rootPitch': 0,
+                 'scale': 'major',
+                 'subdivision': 2,
+                 'tempo': 91
+            },
+            'midiBytes': b''
+        }
+        return {
+            'title': 'Test Title',
+            'description': 'This is the test description.',
+            'pk': 1,
+            'slug': 'test-title',
+            'songData': [
+                [
+                    {
+                    'name': 'Mark J.',
+                    'songId': '5676759593254912',
+                    **song
+                    } for _ in range(4)
+                ] + ['A Group of Marks'],  # type: ignore
+                [
+                    {
+                    'name': 'Lilly G.',
+                    'songId': '5676759593254912',
+                    **song
+                    } for _ in range(4)
+                ] + ['A Group of Lillys']  # type: ignore
+            ]
+        }
+
+
+
+
 
     def setUp(self):
         self.user = User.objects.create_user(
@@ -216,13 +159,17 @@ class GalleryTestCase(TestCase):
             ).rendered_content  # type: ignore
         )['token']
 
-    def _add_gallery(self) -> Gallery:
-        """
-        Add a gallery to the database – all clones of the first.
-        """
-        serializer = GalleryDatasetSerializer(data=self.mock_api_data, context={
-            'user': self.user,
-        })
-        serializer.is_valid(raise_exception=True)
-        self.gallery = serializer.save()
-        return self.gallery
+    def _add_gallery(self, *, song_data=None) -> Union[Gallery, None]:
+        full_data = self.mock_api_data
+        if song_data:
+           full_data['songData'] = song_data
+        serializer = GalleryDatasetSerializer(
+            data=full_data,
+            context={
+                'user': self.user,
+            }
+        )
+        if serializer.is_valid():
+            result = serializer.save()
+            if isinstance(result, Gallery):
+                return result

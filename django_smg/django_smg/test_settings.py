@@ -5,8 +5,6 @@ cases.
 """
 from .settings import *
 
-SKIP_FETCH_AND_CACHE = True
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
