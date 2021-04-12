@@ -78,19 +78,31 @@ before you start so that you know where to put what!
 4. Since the frontend is served by django. start the django development server
    to get the frontend to the browser.
 
-   source django_smg/venv/bin/activate
-   python django_smg/manage.py runserver
+```bash
+ source django_smg/venv/bin/activate
+ python django_smg/manage.py runserver
+```
 
 5. Now, the frontend should appear in the browser at `localhost:8000`. Any
    change to a frontend src file will trigger webpack to update the JS bundle,
    and you will see the changes in effect by hitting refresh.
 
+**Storybook**
+
+[Storybook](https://storybook.js.org/docs/react/get-started/introduction)
+is a platform for developing UI components in isolation. Anytime you are
+working on laying out or styling a single component, this is the best way to
+do it. Storybook is already set up for this project, and quite easy to use. To
+get started, just run `npm run storybook`. See their docs or examples in this
+repo for how to write stories to bring new components into the storybook.
+
 ### Approaching the UI As a User
 
-Take a look at the csv file in the ui_testing_data folder. This is an example
+Take a look at the csv file in the `ui_testing_data` folder. This is an example
 of what the user should upload for each group to make their gallery. This
 is currently the only way for the user to create a gallery, but more user
-friendly means for making galleries is on the feature roadmap (#10, #34).
+friendly means for making galleries is on the feature roadmap
+([#10](https://github.com/jdevries3133/song_maker_gallery/issues/10)).
 
 # Code Style
 
