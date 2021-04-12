@@ -1,29 +1,26 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import styled from "Styles";
+import styled, { Label } from "Styles";
 
-const Slider = styled.span`
+const Slider = styled.div`
   border-radius: 34px;
-  position: absolute;
+  height: 25px;
+  width: 50px;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  transition: 0.3s;
+
   &:before {
-    position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
+    display: block;
+    position: relative;
+    top: 2px;
+    left: 3px;
+    height: 21px;
+    width: 21px;
     border-radius: 50%;
     background-color: white;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
+    transition: 0.3s;
   }
 `;
 
@@ -48,27 +45,34 @@ const Input = styled.input`
     background-color: #37e817;
   }
   &:checked + ${Slider}:before {
-    transform: translateX(26px);
+    transform: translateX(23px);
   }
 `;
 
-export const ToggleSlider = ({ id, name, labelText }) => {
-  const [checked, _setter] = useState(false);
+export const Switch = ({ labelText, checked = false, id, onChange }) => {
+  const [_checked, _setter] = useState(checked);
   const toggleChecked = () => {
-    _setter(!checked);
+    onChange && onChange(!_checked);
+    _setter(!_checked);
   };
 
   return (
     <Container>
-      <label for={id}>{labelText}</label>
-      <Input id={id} name={name} type="checkbox" checked={checked} />
+      <Label htmlFor={id}>{labelText}</Label>
+      <Input
+        id={id}
+        type="checkbox"
+        checked={_checked}
+        onChange={toggleChecked}
+      />
       <Slider onClick={toggleChecked} />
     </Container>
   );
 };
 
-ToggleSlider.propTypes = {
+Switch.propTypes = {
   id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   labelText: PropTypes.string.isRequired,
+  checked: PropTypes.bool,
+  onChange: PropTypes.func,
 };
