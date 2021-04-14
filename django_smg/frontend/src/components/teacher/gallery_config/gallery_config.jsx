@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 
-import styled, { H2, P, Form, Button } from "Styles";
+import styled, { Description as DefaultDescription, H2, P, Form } from "Styles";
 
 import {
   ConfigItem,
@@ -9,10 +9,8 @@ import {
   types,
 } from "Common/config_item";
 
-/* emphasize */
-const E = styled.span`
-  font-weight: bold;
-  font-style: italic;
+const Description = styled(DefaultDescription)`
+  text-align: inherit;
 `;
 
 /**
@@ -71,83 +69,89 @@ export const GalleryConfig = () => {
 
   return (
     <Form onSubmit={submitHandler}>
-      <div>
-        <H2>Gallery State</H2>
-        <P warn>
-          By making the gallery simultaneously public and editable by students
-          through submission, an opportunity for students to take advantage is
-          created. Unless you have a unique lesson plan that uses the ability to
-          do these two things at once, I recommend you keep your gallery either
-          open for submissions <E>OR</E> public; not both.
-        </P>
-
-        <ConfigItem
-          id={state.allowStudentSubmissions.id}
-          label="Allow Student Submissions"
-          checked={state.allowStudentSubmissions.checked}
-          onChange={() => checkedHandler(state.allowStudentSubmissions.id)}
-        >
-          <P>
+      <Description>
+        <H2>Main Settings</H2>
+        {state.allowStudentSubmissions.checked &&
+          state.isGalleryPublished.checked && (
+            <P warn justify>
+              Warning! We do not advise making the gallery editable and viewable
+              by students at the same time. Last thing you want is a student
+              posting{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://musiclab.chromeexperiments.com/Song-Maker/song/4588479686639616"
+              >
+                this!
+              </a>
+            </P>
+          )}
+        <div>
+          <ConfigItem
+            id={state.allowStudentSubmissions.id}
+            label="Allow Student Submissions"
+            checked={state.allowStudentSubmissions.checked}
+            onChange={() => checkedHandler(state.allowStudentSubmissions.id)}
+          >
             Enable students to actively submit compositions at{" "}
             <a href="#temp">this link</a>
-          </P>
-        </ConfigItem>
+          </ConfigItem>
 
-        <ConfigItem
-          id={state.isGalleryPublished.id}
-          label="Gallery is Private"
-          checked={state.isGalleryPublished.checked}
-          onChange={() => checkedHandler(state.isGalleryPublished.id)}
-        >
-          <P>
+          <ConfigItem
+            id={state.isGalleryPublished.id}
+            label="Gallery is Public"
+            checked={state.isGalleryPublished.checked}
+            onChange={() => checkedHandler(state.isGalleryPublished.id)}
+          >
             If on, only you can see the gallery. If off, anyone can see the
             gallery at the link. This is helpful if you want to withhold the
             gallery leading up to a release, or want to keep it in private mode
             while student submissions are ongoing
-          </P>
-        </ConfigItem>
-      </div>
-      <div>
+          </ConfigItem>
+        </div>
+      </Description>
+
+      <Description>
         <H2>Social Gallery Features</H2>
 
-        <ConfigItemSet>
-          <ConfigItem
-            id={state.enableSocialGal.id}
-            label="Enable Social Gallery"
-            checked={state.enableSocialGal.checked}
-            onChange={() => checkedHandler(state.enableSocialGal.id)}
-          >
-            <P>
-              Flip this switch to turn this gallery into a social gallery, and
-              to gain access to the finer grain settings below
-            </P>
-          </ConfigItem>
-
-          <ConfigItem
-            id={state.reactionsEnabled.id}
-            label="Enable Reactions"
-            checked={state.reactionsEnabled.checked}
-            onChange={() => checkedHandler(state.reactionsEnabled.id)}
-          >
-            <P>Like, Thumb's Up, Star, etc.</P>
-          </ConfigItem>
-
+        <div>
           <ConfigItemSet>
             <ConfigItem
-              id={state.commentsEnabled.id}
-              label="Enable Comments"
-              checked={state.commentsEnabled.checked}
-              onChange={() => checkedHandler(state.commentsEnabled.id)}
-            />
-            <ConfigItem
-              id={state.moderateComments.id}
-              label="Pre-Approve All Comments"
+              id={state.enableSocialGal.id}
+              label="Enable Social Gallery"
+              checked={state.enableSocialGal.checked}
+              onChange={() => checkedHandler(state.enableSocialGal.id)}
             >
-              <P>No comments will be viewable until they are approved by you</P>
+              Flip this switch to turn this gallery into a social gallery, and
+              to gain access to the finer grain settings below
             </ConfigItem>
+
+            <ConfigItem
+              id={state.reactionsEnabled.id}
+              label="Enable Reactions"
+              checked={state.reactionsEnabled.checked}
+              onChange={() => checkedHandler(state.reactionsEnabled.id)}
+            >
+              Like, Thumb's Up, Star, etc.
+            </ConfigItem>
+
+            <ConfigItemSet>
+              <ConfigItem
+                id={state.commentsEnabled.id}
+                label="Enable Comments"
+                checked={state.commentsEnabled.checked}
+                onChange={() => checkedHandler(state.commentsEnabled.id)}
+              />
+              <ConfigItem
+                id={state.moderateComments.id}
+                label="Pre-Approve All Comments"
+              >
+                No comments will be viewable until they are approved by you.
+              </ConfigItem>
+            </ConfigItemSet>
           </ConfigItemSet>
-        </ConfigItemSet>
-      </div>
+        </div>
+      </Description>
     </Form>
   );
 };

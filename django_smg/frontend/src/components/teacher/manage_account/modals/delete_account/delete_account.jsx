@@ -7,10 +7,14 @@ import styled, {
   Button as DefaultButton,
   Input,
   Label,
-  Form,
+  Form as DefaultForm,
 } from "Styles";
 
 import { Attestation } from "./attestation";
+
+const Form = styled(DefaultForm)`
+  padding: 3vw;
+`;
 
 const Button = styled(DefaultButton)`
   background-color: #c22014;

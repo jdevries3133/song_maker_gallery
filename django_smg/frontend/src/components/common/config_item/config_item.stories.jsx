@@ -1,7 +1,5 @@
 import React from "react";
 
-import { P } from "Styles";
-
 import { ConfigItem } from "./config_item";
 
 export default {
@@ -28,21 +26,21 @@ Many.args = {
       id: "example",
       label: "Example Item",
       checked: true,
-      onChange: () => console.log("checked"),
+      onChange: () => console.log("checked #1"),
       children: "Additional information passed as children",
     },
     {
       id: "example2",
       label: "Example Item #2",
       checked: false,
-      onChange: () => console.log("checked"),
-      children: <P>Can also pass jsx children</P>,
+      onChange: () => console.log("checked #2"),
+      children: "More information goes here",
     },
     {
       id: "example3",
       label: "Example Item #3",
       checked: true,
-      onChange: () => console.log("checked"),
+      onChange: () => console.log("checked #3"),
       children: "Last thing goes here",
     },
   ],

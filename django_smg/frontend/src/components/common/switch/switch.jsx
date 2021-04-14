@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "Styles";
 
 const Slider = styled.div`
+  box-sizing: content-box; /* border gets applied on focus */
   border-radius: 34px;
   height: 25px;
   width: 50px;
@@ -51,7 +52,7 @@ const Input = styled.input`
   }
 `;
 
-export const Switch = ({ checked = false, id, onChange }) => {
+export const Switch = ({ checked = false, id, onChange, className }) => {
   const [_checked, _setter] = useState(checked);
   const toggleChecked = () => {
     onChange && onChange(!_checked);
@@ -59,7 +60,7 @@ export const Switch = ({ checked = false, id, onChange }) => {
   };
 
   return (
-    <Container>
+    <Container className={className}>
       <Input
         id={id}
         type="checkbox"

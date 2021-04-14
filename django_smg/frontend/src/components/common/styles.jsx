@@ -53,7 +53,7 @@ export const H2 = styled.h2`
   display: inline-block;
   background-color: "#88ff00";
   font-weight: 400;
-  padding: 30px;
+  padding: 30px 0;
   border-radius: 20px;
 `;
 
@@ -147,7 +147,6 @@ export const Form = styled.form`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 5vh 5vw;
 `;
 
 export const Label = styled.label`
@@ -200,25 +199,18 @@ export const Checkbox = ({ children, ...rest }) => (
 );
 
 export const Description = styled.div`
-  font-size: 18px;
   text-align: center;
-  display: inline-block;
+  margin: 3vw;
+  padding: 3vw;
+  font-size: 18px;
   max-width: 50rem;
-  padding: 1vw;
   background: white;
-  box-shadow: 0px 3px 8px rgb(100, 100, 100);
   border-radius: 20px;
+  box-shadow: 0px 3px 8px rgb(100, 100, 100);
+
   @media (max-width: 600px) {
     font-size: 16px;
     line-height: 1.5rem;
-    @media (min-width: 315px) {
-      margin: 1rem;
-      padding: 0.7rem;
-    }
-    @media (max-width: 315px) {
-      margin: 0.3rem;
-      padding: 0.3rem;
-    }
   }
 `;
 
