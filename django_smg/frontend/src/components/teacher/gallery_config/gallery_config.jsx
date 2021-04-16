@@ -1,6 +1,12 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 
-import styled, { Description as DefaultDescription, H2, P, Form } from "Styles";
+import styled, {
+  Description as DefaultDescription,
+  H2,
+  P,
+  Form,
+  Input,
+} from "Styles";
 
 import {
   ConfigItem,
@@ -8,6 +14,15 @@ import {
   configItemReducer,
   types,
 } from "Common/config_item";
+
+const Emoji = styled.span`
+  font-size: 2rem;
+  margin 0 3vw;
+`;
+
+const InlineLabel = styled.label`
+  margin-right: 20px;
+`;
 
 const Description = styled(DefaultDescription)`
   text-align: inherit;
@@ -38,6 +53,9 @@ export const GalleryConfig = () => {
     enableSocialGal: {
       id: "enableSocialGal",
     },
+    socialGalPasscodeEnabled: {
+      id: "socialGalPasscodeEnabled",
+    },
     reactionsEnabled: {
       id: "reactionsEnabled",
     },
@@ -52,10 +70,11 @@ export const GalleryConfig = () => {
     initialState[k] = {
       ...initialState[k],
       enabled: true,
-      checked: false,
+      checked: true,
     };
   });
 
+  const [socialGalleryPasscode, setSocialGalleryPasscode] = useState("");
   const [state, dispatch] = useReducer(configItemReducer, initialState);
 
   const checkedHandler = (id) => {
@@ -80,7 +99,7 @@ export const GalleryConfig = () => {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://musiclab.chromeexperiments.com/Song-Maker/song/4588479686639616"
+                href="https://musiclab.chromeexperiments.com/Song-Maker/song/6209714916950016"
               >
                 this!
               </a>
@@ -94,7 +113,7 @@ export const GalleryConfig = () => {
             onChange={() => checkedHandler(state.allowStudentSubmissions.id)}
           >
             Enable students to actively submit compositions at{" "}
-            <a href="#temp">this link</a>
+            <a href="#temp">this link.</a>
           </ConfigItem>
 
           <ConfigItem
@@ -103,10 +122,10 @@ export const GalleryConfig = () => {
             checked={state.isGalleryPublished.checked}
             onChange={() => checkedHandler(state.isGalleryPublished.id)}
           >
-            If on, only you can see the gallery. If off, anyone can see the
-            gallery at the link. This is helpful if you want to withhold the
-            gallery leading up to a release, or want to keep it in private mode
-            while student submissions are ongoing
+            When you switch this off, the gallery goes into private mode. This
+            is helpful if you want to withhold the gallery leading up to a
+            release, or want to keep it in private mode while student
+            submissions are ongoing.
           </ConfigItem>
         </div>
       </Description>
@@ -123,7 +142,32 @@ export const GalleryConfig = () => {
               onChange={() => checkedHandler(state.enableSocialGal.id)}
             >
               Flip this switch to turn this gallery into a social gallery, and
-              to gain access to the finer grain settings below
+              to gain access to the finer grain settings below.
+            </ConfigItem>
+
+            <ConfigItem
+              id={state.socialGalPasscodeEnabled.id}
+              label="Social Gallery Passcode"
+              checked={state.socialGalPasscodeEnabled.checked}
+              onChange={() => checkedHandler(state.socialGalPasscodeEnabled.id)}
+            >
+              {state.socialGalPasscodeEnabled.checked ? (
+                <>
+                  <P left>
+                    Students must enter this passcode to interact with the
+                    social gallery
+                  </P>
+                  <InlineLabel htmlFor="socialGalleryPasscode">
+                    Passcode
+                  </InlineLabel>
+                  <Input
+                    id="socialGalleryPasscode"
+                    type="text"
+                    value={socialGalleryPasscode}
+                    onChange={(e) => setSocialGalleryPasscode(e.target.value)}
+                  />
+                </>
+              ) : null}
             </ConfigItem>
 
             <ConfigItem
@@ -132,7 +176,9 @@ export const GalleryConfig = () => {
               checked={state.reactionsEnabled.checked}
               onChange={() => checkedHandler(state.reactionsEnabled.id)}
             >
-              Like, Thumb's Up, Star, etc.
+              <Emoji>👍</Emoji>
+              <Emoji>❤️</Emoji>
+              <Emoji>⭐️</Emoji>
             </ConfigItem>
 
             <ConfigItemSet>
