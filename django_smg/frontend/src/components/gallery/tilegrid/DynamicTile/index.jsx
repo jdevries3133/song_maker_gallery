@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { _DynamicTileComponent } from "./dynamic_tile";
+import { _DynamicTile } from "./dynamic_tile";
 import { FallbackTile } from "./fallback_tile";
 
 export class DynamicTile extends Component {
@@ -15,6 +15,6 @@ export class DynamicTile extends Component {
     if (this.state.hasError) {
       return <FallbackTile name={this.props.song.name} />;
     }
-    return <_DynamicTileComponent {...this.props} />;
+    return <_DynamicTile {...this.props} />;
   }
 }

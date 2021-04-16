@@ -1,26 +1,37 @@
-import React from "react";
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
 
-import { Like, Heart, Star } from "Common/icon";
+import styled from "Styles";
+import { useScrollCallback } from "Common/useScrollCallback";
 
-import { Comment } from "./comment";
-import { Reaction } from "./reaction";
+import { SocialEvent } from "./event";
+
+const Container = styled.div`
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: scroll;
+`;
 
 export const EventStream = ({ events, fetchMoreEvents }) => {
-  return events.map((event, i) => {
-    switch (event.type) {
-      case "like":
-        return <Reaction key={i} icon={<Like />} {...event} />;
-      case "heart":
-        return <Reaction key={i} icon={<Heart />} {...event} />;
-      case "star":
-        return <Reaction key={i} icon={<Star />} {...event} />;
-      case "comment":
-        return <Comment key={i} {...event} />;
-      default:
-        throw new Error("unsupported event type: ${event.type}");
-    }
-  });
+  const rootRef = useRef(null);
+  const targetRef = useRef(null);
+
+  useScrollCallback(fetchMoreEvents, targetRef, rootRef);
+
+  return (
+    <Container ref={rootRef}>
+      {events.map((event, i) =>
+        // target second to last item for infinite scroll trigger
+        i == events.length - 2 ? (
+          <>
+            <SocialEvent ref={targetRef} event={event} />
+          </>
+        ) : (
+          <SocialEvent event={event} />
+        )
+      )}
+    </Container>
+  );
 };
 
 EventStream.propTypes = {

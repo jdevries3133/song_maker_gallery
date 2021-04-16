@@ -14,15 +14,25 @@ export const useSongRect = (song, gridSize) => {
   useEffect(() => {
     // fetch and parse Song object
     const songObj = new Song(song);
-    songObj.parse();
+    try {
+      songObj.parse();
+    } catch (e) {
+      console.log("song parsing failed", e);
+      return;
+    }
     setSong(songObj);
   }, [song]);
 
   // generate rects once midi has been parsed
   let rectGenerator;
   if (parsedSong && parsedSong.isParsed) {
-    rectGenerator = new RectGenerator(parsedSong, gridSize);
-    rectGenerator.generateRects();
+    try {
+      rectGenerator = new RectGenerator(parsedSong, gridSize);
+      rectGenerator.generateRects();
+    } catch (e) {
+      console.log("rect generation failed", e);
+      return;
+    }
   }
   return rectGenerator?.rects || null;
 };

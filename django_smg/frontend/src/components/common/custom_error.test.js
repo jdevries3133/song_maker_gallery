@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent, screen, act } from "@testing-library/react";
+import { render, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { ErrorArray, CustomError } from "./custom_error";
 
@@ -28,9 +28,7 @@ describe("ErrorArray", () => {
   it('calls onOk by clicking "Ok" button', async (done) => {
     const msg = ["a", "b", "c"];
     render(<ErrorArray message={msg} onOk={onOk} />);
-    act(() => {
-      fireEvent.click(screen.getByTestId("onOkButton"));
-    });
+    fireEvent.click(screen.getByTestId("onOkButton"));
     expect(onOk).toHaveBeenCalledTimes(1);
     done();
   });
@@ -43,9 +41,7 @@ describe("CustomError", () => {
         <h1>Hello, world!</h1>
       </CustomError>
     );
-    act(() => {
-      fireEvent.click(screen.getByTestId("onOkButton"));
-    });
+    fireEvent.click(screen.getByTestId("onOkButton"));
     expect(onOk).toHaveBeenCalledTimes(1);
     done();
   });

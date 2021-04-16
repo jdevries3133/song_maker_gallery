@@ -2,15 +2,19 @@ import React from "react";
 
 import { EventStream } from "./event_stream";
 
+export default {
+  title: "Teacher/Event Stream",
+};
+
 const SAMPLE_SONG = {
-  name: "Jamie",
-  songId: "5868376585404416",
+  name: "Josiah",
+  songId: "6594803161104384",
   midiBytes:
-    "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",
+    "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",
   metadata: {
-    bars: 13,
+    bars: 4,
     beats: 4,
-    instrument: "synth",
+    nstrument: "marimba",
     octaves: 2,
     percussion: "electronic",
     percussionNotes: 2,
@@ -19,18 +23,15 @@ const SAMPLE_SONG = {
     rootPitch: 0,
     scale: "major",
     subdivision: 2,
-    tempo: 240,
+    tempo: 120,
   },
-};
-
-export default {
-  title: "Teacher/Event Stream",
 };
 
 const Template = (args) => <EventStream {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  fetchMoreEvents: () => console.log("getting more events"),
   events: [
     {
       type: "like",
@@ -58,6 +59,49 @@ Default.args = {
       username: "Mike",
       value: "Wohoo! 😁 😁",
       isApproved: true,
+      song: SAMPLE_SONG,
+    },
+    {
+      type: "heart",
+      username: "Janice",
+      value: "Nice song, Jamie!",
+      isApproved: true,
+      song: SAMPLE_SONG,
+    },
+    {
+      type: "comment",
+      username: "Amir",
+      value: "Good stuff my guy",
+      isApproved: false,
+      song: SAMPLE_SONG,
+    },
+    {
+      type: "heart",
+      username: "Janice",
+      value: "Nice song, Jamie!",
+      isApproved: true,
+      song: SAMPLE_SONG,
+    },
+    {
+      type: "comment",
+      username: "Amir",
+      value: "Good stuff my guy",
+      isApproved: false,
+      song: SAMPLE_SONG,
+    },
+    {
+      type: "heart",
+      username: "Janice",
+      value: "Nice song, Jamie!",
+      isApproved: true,
+      song: SAMPLE_SONG,
+    },
+    {
+      type: "comment",
+      username: "Shawn",
+      value:
+        "That is all fine and good, but did you think about what would happen if you ended up with a really, really long comment in here?",
+      isApproved: false,
       song: SAMPLE_SONG,
     },
     {

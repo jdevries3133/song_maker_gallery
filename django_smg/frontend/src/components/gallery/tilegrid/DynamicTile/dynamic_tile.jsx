@@ -11,7 +11,7 @@ import { Layout } from "./dynamic_tile_layout";
  * Instead, use the HOC in index.jsx, which includes error handling and a
  * fallback UI.
  */
-export const _DynamicTileComponent = (props) => {
+export const _DynamicTile = (props) => {
   const tileSize = {
     width: props.pixelWidth,
     height: Math.floor(props.pixelWidth / ASPECT_RATIO),
@@ -20,11 +20,11 @@ export const _DynamicTileComponent = (props) => {
   return <Layout mobile={props.mobile} song={props.song} tileSize={tileSize} />;
 };
 
-_DynamicTileComponent.propTypes = {
+_DynamicTile.propTypes = {
   song: PropTypes.object.isRequired,
   pixelWidth: PropTypes.number,
 };
 
-_DynamicTileComponent.defaultProps = {
+_DynamicTile.defaultProps = {
   pixelWidth: 600,
 };
