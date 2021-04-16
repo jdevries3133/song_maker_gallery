@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { Div as AlignCenter, keyframes } from "./styles";
+import styled, { keyframes } from "./styles";
 
 const Animation = keyframes`
   0% {
@@ -39,14 +39,12 @@ const LdsRing = styled.div`
 
 const loading = () => {
   return (
-    <AlignCenter>
-      <LdsRing data-testid="loading spinner">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </LdsRing>
-    </AlignCenter>
+    <LdsRing data-testid="loading spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </LdsRing>
   );
 };
 

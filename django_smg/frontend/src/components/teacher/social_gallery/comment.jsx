@@ -3,6 +3,7 @@ import React from "react";
 import { Comment as CommentIcon } from "Common/icon";
 import styled, { H4 as DefaultH4 } from "Styles";
 
+import { ApproveCommentForm } from "./approve_comment_form";
 import { SongPreview } from "./styled_preview";
 import { SocialEventContainer, IconContainer } from "./reaction";
 
@@ -21,8 +22,7 @@ const P = styled.p`
   font-size: max(0.8rem, 2vw);
 `;
 
-// TODO: this will need to be connected to a redux action to approve comments
-export const Comment = ({ username, song, value }) => (
+export const Comment = ({ username, song, value, isApproved, ...rest }) => (
   <SocialEventContainer>
     <IconContainer>
       <CommentIcon />
@@ -34,5 +34,6 @@ export const Comment = ({ username, song, value }) => (
       <P>{value}</P>
     </Text>
     <SongPreview song={song} />
+    {isApproved ? null : <ApproveCommentForm {...rest} />}
   </SocialEventContainer>
 );
