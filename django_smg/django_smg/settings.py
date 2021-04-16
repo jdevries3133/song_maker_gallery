@@ -16,8 +16,8 @@ SKIP_FETCH_AND_CACHE = False  # speeds up unit tests significantly
 if not DEBUG and sys.platform == 'linux':
     # require https in production. The linux check is kinda hacky but
     # prevents this from being set on my local machine when developing.
-    # obviously, that won't help if you develop on linux so I'm sorry.
-    SECURE_HSTS_SECONDS = 3600  # TODO: increase to 1 yr later if all goes well
+    # obviously, that won't help if you develop on linux
+    SECURE_HSTS_SECONDS = 3600
     SECURE_SSL_REDIRECT = True
     SECURE_HSTS_PRELOAD = True
     SESSION_COOKIE_SECURE = True
@@ -64,6 +64,10 @@ REST_FRAMEWORK = {
         'knox.auth.TokenAuthentication',
     )
 }
+
+# Explicitly name default primary key setting; silences warning.
+# https://dev.to/rubyflewtoo/upgrading-to-django-3-2-and-fixing-defaultautofield-warnings-518n
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 TEMPLATES = [
     {
