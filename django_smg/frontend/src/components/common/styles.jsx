@@ -237,3 +237,13 @@ export const Blanket = styled(Description)`
     }
   }
 `;
+
+/**
+ * Looks like a comment bubble
+ */
+export const SocialEventContainer = styled.div`
+  background-color: ${(props) => props.background || "#d9e6e8"};
+  border-radius: 30px;
+  padding: 1rem;
+  margin: 1rem 0;
+`;
