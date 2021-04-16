@@ -1,0 +1,17 @@
+{
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "target": "es2017",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "jsx": "react",
+    "paths": {
+      "Actions/*": ["src/actions/*"],
+      "Common/*": ["src/components/common/*"],
+      "Media/*": ["src/media/*"],
+      "Styles": ["src/components/common/styles.jsx"],
+      "Test/*": ["src/test/*"]
+    }
+  },
+  "exclude": ["node_modules", "static"]
+}

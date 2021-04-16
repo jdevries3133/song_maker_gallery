@@ -15,9 +15,32 @@ export default styled;
  * "Global" css classes which are either directly used or extended
  * throughout the project.
  */
+
+// do not feel obligated to inherit from this one, I might just delete it
+// because it seems unnecessary
 export const Div = styled.div`
   text-align: center;
   padding: ${(props) => props.padding || "inherit"};
+`;
+
+export const Grid = styled.div`
+  justify-items: center;
+  align-items: center;
+  gap: ${(props) => props.gap || "1rem"};
+  display: ${(props) => (props.inline ? "inline-grid" : "grid")};
+  grid-template-rows: ${(props) => props.rows};
+  grid-template-columns: ${(props) => props.cols};
+`;
+
+// prettier-ignore
+export const GridItem = styled.div`
+  ${props => props.row      && css`grid-row:            ${props.row}`};
+  ${props => props.row      && css`grid-row:            ${props.row}`};
+  ${props => props.rowStart && css`grid-row-start:      ${props.rowStart}`};
+  ${props => props.rowEnd   && css`grid-row-end:        ${props.rowEnd}`};
+  ${props => props.col      && css`grid-column:         ${props.col}`};
+  ${props => props.colStart && css`grid-column-start:   ${props.colStart}`};
+  ${props => props.colEnd   && css`grid-column-end:     ${props.colEnd}`};
 `;
 
 export const H1 = styled.h1`
@@ -30,7 +53,7 @@ export const H2 = styled.h2`
   display: inline-block;
   background-color: "#88ff00";
   font-weight: 400;
-  padding: 30px;
+  padding: 30px 0;
   border-radius: 20px;
 `;
 
@@ -90,10 +113,18 @@ export const Button = styled.button`
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;
-  margin: 10px auto;
   border-radius: 20px;
   cursor: pointer;
+
   background-color: ${(props) => (props.color ? props.color : "#f7943e")};
+  ${(props) =>
+    props.text &&
+    css`
+      color: ${props.text};
+    `}
+  :hover {
+    background-color: ${(props) => props.hover || "white"};
+  }
 
   ${(props) =>
     props.block &&
@@ -101,36 +132,22 @@ export const Button = styled.button`
       display: block;
     `}
 
-  ${(props) =>
-    props.blanketClose &&
-    css`
-      position: absolute;
-      bottom: 1px;
-      right: 1px;
-      background-color: lightcoral;
-      margin: 0;
-    `}
+  @media(max-width: 400px) {
+    padding: 10px;
+  }
 
-  :hover {
-    background-color: white;
+  @media (max-width: 350px) {
+    padding: 5px;
   }
 `;
 
-export const Input = styled.input`
-  font-size: 20px;
-  padding: 10px;
-  border-radius: 5px;
-  &[type="checkbox"] {
-    width: 30px;
-    height: 30px;
-  }
+export const Form = styled.form`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;
-
-export const Checkbox = ({ children, ...rest }) => (
-  <Input type="checkbox" {...rest}>
-    {children}
-  </Input>
-);
 
 export const Label = styled.label`
   display: block;
@@ -147,47 +164,76 @@ export const Label = styled.label`
     `}
 `;
 
+export const Input = styled.input`
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  &[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+  }
+
+  ${(props) =>
+    props.block &&
+    css`
+      display: block;
+    `}
+`;
+
+export const Textarea = styled.textarea`
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 0px;
+  width: 80%;
+  height: 20vh;
+  box-shadow: 1px 1px 1px #999;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
+
+export const Checkbox = ({ children, ...rest }) => (
+  <Input type="checkbox" {...rest}>
+    {children}
+  </Input>
+);
+
 export const Description = styled.div`
-  font-size: 18px;
   text-align: center;
-  display: inline-block;
+  margin: 3vw;
+  padding: 3vw;
+  font-size: 18px;
   max-width: 50rem;
-  padding: 1vw;
   background: white;
-  box-shadow: 0px 3px 8px rgb(100, 100, 100);
   border-radius: 20px;
+  box-shadow: 0px 3px 8px rgb(100, 100, 100);
+
   @media (max-width: 600px) {
     font-size: 16px;
     line-height: 1.5rem;
-    @media (min-width: 315px) {
-      margin: 1rem;
-      padding: 0.7rem;
-    }
-    @media (max-width: 315px) {
-      margin: 0.3rem;
-      padding: 0.3rem;
-    }
   }
 `;
 
 export const Blanket = styled(Description)`
   position: fixed;
-  height: 600px;
-  width: 1000px;
-  top: 50%;
-  left: 50%;
-  margin-top: -300px;
-  margin-left: -402px;
+  margin: 4vw;
+  padding: 0;
+  height: 90vh;
+  width: 90vw;
+  overflow-x: hidden;
   background-color: #d9e6e8;
   border-radius: 20px;
-  overflow-x: hidden;
   opacity: 95%;
   z-index: 100;
-  @media (max-width: 830px) {
-    height: 500px;
-    width: 400px;
-    margin-top: -250px;
-    margin-left: -200px;
-    border-radius: 20px 20px 20px 20px;
+
+  @media (min-width: 800px) {
+    @media (min-height: 600px) {
+      height: 600px;
+      width: 700px;
+      top: 50%;
+      left: 50%;
+      margin-top: -300px;
+      margin-left: -350px;
+    }
   }
 `;

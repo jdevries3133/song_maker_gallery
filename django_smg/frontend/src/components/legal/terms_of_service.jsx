@@ -103,7 +103,7 @@ const TosContent = (props) => (
 );
 
 /* Free-standing page content */
-export const TosPage = ({ title }) => {
+export const TosPage = () => {
   return (
     <Description>
       <TosContent />
@@ -112,7 +112,7 @@ export const TosPage = ({ title }) => {
 };
 
 /* modal with close button */
-export const TosText = ({ onOk, title }) => {
+export const TosText = ({ onOk }) => {
   return (
     <Blanket>
       <TosContent

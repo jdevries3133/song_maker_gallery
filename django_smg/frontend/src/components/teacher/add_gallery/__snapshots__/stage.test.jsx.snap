@@ -10,7 +10,7 @@ exports[`stage matches snapshot 1`] = `
   display: inline-block;
   background-color: "#88ff00";
   font-weight: 400;
-  padding: 30px;
+  padding: 30px 0;
   border-radius: 20px;
 }
 
@@ -24,7 +24,6 @@ exports[`stage matches snapshot 1`] = `
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;
-  margin: 10px auto;
   border-radius: 20px;
   cursor: pointer;
   background-color: salmon;
@@ -39,7 +38,6 @@ exports[`stage matches snapshot 1`] = `
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;
-  margin: 10px auto;
   border-radius: 20px;
   cursor: pointer;
   background-color: #f7943e;
@@ -58,6 +56,18 @@ exports[`stage matches snapshot 1`] = `
 .c2[type="checkbox"] {
   width: 30px;
   height: 30px;
+}
+
+.c5 {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 0px;
+  width: 80%;
+  height: 20vh;
+  box-shadow: 1px 1px 1px #999;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .c7 {
@@ -87,16 +97,28 @@ exports[`stage matches snapshot 1`] = `
   border: 3px solid black;
 }
 
-.c5 {
-  font-family: Helvetica,Arial,sans-serif;
-  font-size: 19px;
-  line-height: 1.5;
-  margin: 0px;
-  width: 85%;
-  height: 263px;
-  box-shadow: 1px 1px 1px #999;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+@media (max-width:400px) {
+  .c8 {
+    padding: 10px;
+  }
+}
+
+@media (max-width:350px) {
+  .c8 {
+    padding: 5px;
+  }
+}
+
+@media (max-width:400px) {
+  .c10 {
+    padding: 10px;
+  }
+}
+
+@media (max-width:350px) {
+  .c10 {
+    padding: 5px;
+  }
 }
 
 <div

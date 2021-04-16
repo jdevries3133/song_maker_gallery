@@ -88,7 +88,7 @@ export const deleteGallery = (pk, token) => (dispatch) => {
       if (response.status === 200) {
         dispatch({
           type: DELETE_GALLERY,
-          payload: { loopback: response.data, status: "deleted" },
+          payload: { status: "deleted" },
         });
       } else if (response.data.error) {
         dispatch({

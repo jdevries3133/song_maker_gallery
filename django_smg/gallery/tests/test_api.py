@@ -5,10 +5,7 @@ from rest_framework import status
 
 from ..models import Gallery
 from .util import are_rendered_groups_same
-from .base_case import GalleryTestCase
-
-# TODO: patch google api calls so that the test suite can run without the
-# network.
+from .base_case import GalleryTestCase, patch_fetch_and_cache
 
 
 class TestAuthGalleryViewset(GalleryTestCase):
@@ -16,6 +13,7 @@ class TestAuthGalleryViewset(GalleryTestCase):
     def setUp(self):
         super().setUp()
         self._login_client()
+        self.gallery = self._add_gallery()
 
     def test_response_status(self):
         response = self.client.get(
@@ -90,15 +88,16 @@ class TestAuthGalleryViewset(GalleryTestCase):
 
 class TestPublicGalleryViewset(GalleryTestCase):
 
+    @ patch_fetch_and_cache
     def test_get_request(self):
-        with self.settings(SKIP_FETCH_AND_CACHE=False):
-            self._add_gallery()
-            url = reverse('public_gallery', kwargs={
-                'slug': 'test-title'
-            })
-            response = self.client.get(url, secure=True)
-            self.assertTrue(are_rendered_groups_same(
-                response.json(),  # type: ignore
-                self.expected_rendered_data,
-            ))
+        self._add_gallery()
+        url = reverse('public_gallery', kwargs={
+            'slug': 'test-title'
+        })
+        response = self.client.get(url, secure=True)
+        self.assertTrue(are_rendered_groups_same(
+            response.json(),  # type: ignore
+            self.expected_rendered_data,
+            strict_midibytes=False
+        ))
 

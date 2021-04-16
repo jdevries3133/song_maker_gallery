@@ -13,8 +13,6 @@ const Div = styled.div`
     box-sizing: border-box;
   }
 
-  background: url("/static/frontend/background.png");
-  background-size: 50vw;
   font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
@@ -43,4 +41,3 @@ export const parameters = {
     },
   },
 };
-

@@ -15,6 +15,7 @@ export default function (state = initialState, action) {
         authError: action.payload.authError,
         token: action.payload.token,
         user: action.payload.user,
+        id: action.payload.id,
       };
     case REGISTER:
       return {
@@ -23,6 +24,7 @@ export default function (state = initialState, action) {
         authError: action.payload.authError,
         token: action.payload.token,
         user: action.payload.user,
+        id: action.payload.id,
       };
     case CLEAR_ERROR:
       return {

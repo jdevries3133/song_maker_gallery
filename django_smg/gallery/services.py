@@ -39,11 +39,7 @@ def iter_fetch_and_cache(*, songs: QuerySet):
         if song.is_cached:
             yield song
             continue
-        if settings.SKIP_FETCH_AND_CACHE:
-            song.midi = b''  # type: ignore
-            song.is_cached = True  # type: ignore
-            yield song
-            continue
+
         needs_update = True
         SONG_JSON_DATA = lambda song_id : (
             f'https://musiclab.chromeexperiments.com/Song-Maker/data/{song_id}'

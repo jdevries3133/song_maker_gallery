@@ -1,14 +1,13 @@
 import React from "react";
 
-import { P, Button, Blanket } from "./styles";
+import { P } from "./styles";
+import { Blanket } from "./blanket";
 
-const server_error = (props) => {
+export const ServerError = ({ onOk }) => {
   return (
-    <Blanket>
+    <Blanket onDismissed={onOk}>
       <h2>Oops!</h2>
       <P justify>Our server must be in a bad mood today; please try again!</P>
-      <Button onClick={() => props.onOk()}>Ok</Button>
     </Blanket>
   );
 };
-export default server_error;

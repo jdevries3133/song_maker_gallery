@@ -27,13 +27,16 @@ in #34 (new wireframes) are sure to bring many more users to the site.
 
 Speaking of #34, this is the next big priority for development now. The
 wireframes there show how to implement #10 (student link uploads) and #11
-(social galleries) as well. Before diving too
-deep into #34, though, I want to continue cleaning up the frontend codebase
-by working towards #32 (styled-components migration), and continuing to
-housekeep around the frontend code in general because it is a bit unfocused
-and messy as it is.
+(social galleries) as well.
 
-## Development Setup
+## [#34](https://github.com/jdevries3133/song_maker_gallery/issues/34)
+
+If you would like to get going on implementing a wireframe for #34, that is
+fantastic! Take a look at
+[the issue](https://github.com/jdevries3133/song_maker_gallery/issues/34)
+before you start so that you know where to put what!
+
+# Development Setup
 
 > Run `bash dev_setup.sh` to do all these steps automatically. Beware that it
 > will append to your `~/.bashrc`.
@@ -75,16 +78,69 @@ and messy as it is.
 4. Since the frontend is served by django. start the django development server
    to get the frontend to the browser.
 
-   source django_smg/venv/bin/activate
-   python django_smg/manage.py runserver
+```bash
+ source django_smg/venv/bin/activate
+ python django_smg/manage.py runserver
+```
 
 5. Now, the frontend should appear in the browser at `localhost:8000`. Any
    change to a frontend src file will trigger webpack to update the JS bundle,
    and you will see the changes in effect by hitting refresh.
 
-### The Teacher Interface
+**Storybook**
 
-Take a look at the csv file in the ui_testing_data folder. This is an example
+[Storybook](https://storybook.js.org/docs/react/get-started/introduction)
+is a platform for developing UI components in isolation. Anytime you are
+working on laying out or styling a single component, this is the best way to
+do it. Storybook is already set up for this project, and quite easy to use. To
+get started, just run `npm run storybook`. See their docs or examples in this
+repo for how to write stories to bring new components into the storybook.
+
+### Approaching the UI As a User
+
+Take a look at the csv file in the `ui_testing_data` folder. This is an example
 of what the user should upload for each group to make their gallery. This
 is currently the only way for the user to create a gallery, but more user
-friendly means for making galleries is on the feature roadmap (#10, #34).
+friendly means for making galleries is on the feature roadmap
+([#10](https://github.com/jdevries3133/song_maker_gallery/issues/10)).
+
+# Code Style
+
+## Python
+
+- Follow PEP8.
+- 80 chars per line (religiously)
+  - I know that is not everyone's preference
+  - I do it because it allows me to be able to vertically split 3 files at a
+    nice font size on my monitor, and make the most of screen real estate in
+    general.
+- Indent with 4 spaces.
+- Use type annotations when it makes sense to do so! Consider using a static
+  type checker (I use pyright).
+
+Exemplary use of parenthesis to flow statements across multiple lines:
+
+```python
+return Response(
+    GallerySerializer(
+        request.user.gallery.all(),
+        many=True
+    ).data
+)
+
+for song in iter_fetch_and_cache(
+    songs=Song.objects.filter(  # type: ignore
+        id__in=data['songs'],
+        group=group
+    )
+):
+```
+
+## Javascript
+
+Use prettier.
+
+- I use 100% default settings
+- 80 char line limit
+  - _I know that sometimes prettier pushes lines a few characters over;_
+    _that is ok._

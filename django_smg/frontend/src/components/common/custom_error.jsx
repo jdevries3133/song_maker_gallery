@@ -1,8 +1,13 @@
+/**
+ * TODO: depricate this module.
+ * Do not use this, use the useModals hook instead, and replace the
+ * use of this module with useModals whenever possible.
+ */
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import { Blanket } from "./styles";
+import { Blanket, Button, H2 } from "./styles";
 
 export const StyledCustomError = styled(Blanket)`
   & > div {
@@ -19,13 +24,9 @@ export const CustomError = ({ children, onOk }) => {
     <StyledCustomError>
       <div data-testid="CustomError">
         {children}
-        <button
-          data-testid="onOkButton"
-          style={{ backgroundColor: "#4caf50" }}
-          onClick={onOk}
-        >
+        <Button data-testid="onOkButton" color="#4caf50" onClick={onOk}>
           Ok
-        </button>
+        </Button>
       </div>
     </StyledCustomError>
   );
@@ -41,7 +42,7 @@ CustomError.propTypes = {
 export const ErrorArray = (props) => {
   return (
     <CustomError onOk={() => props.onOk()}>
-      <h2 data-testid="errorArray header">{props.header}</h2>
+      <H2 data-testid="errorArray header">{props.header}</H2>
       {props.message.map((par, i) => (
         <p data-testid="errorArray message" key={i}>
           {par}

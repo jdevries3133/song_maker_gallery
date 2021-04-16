@@ -2,12 +2,19 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-def are_rendered_groups_same(r1: dict, r2: dict) -> bool:
+# TODO: this function is cursed and enormous. Break up into smaller parts.
+# alternatively, since it is basically just a deep strict equality operation,
+# find an established way to do it other than this hack.
+def are_rendered_groups_same(r1: dict, r2: dict, strict_midibytes: bool=True
+                             ) -> bool:
     """
     This is a helper function for testing to determine if data structures
     frequently used to describe galleries are recursively the same. The code
     is very confusing. Look to the tests for a clearer understanding of what
     this does.
+
+    If strict_midibytes is set to False, we do not care if the python datatype
+    is string or bytes, only that they have the same value.
     """
     # r => "rendered"
     if r1.get('title') != r2.get('title'):
@@ -38,6 +45,33 @@ def are_rendered_groups_same(r1: dict, r2: dict) -> bool:
                 try:
                     for k in ['name', 'songId', 'midiBytes']:
                         if st1[k] != st2[k]:
+
+
+                            if not strict_midibytes:
+                                cmp1 = None
+                                cmp2 = None
+
+                                # coerce type of st1[k]
+                                if isinstance(st1[k], str):
+                                    cmp1 = bytes(st1[k], 'utf8')
+                                elif isinstance(st1[k], bytes):
+                                    cmp1 = st1[k]
+                                else:
+                                    raise TypeError(f'Cannot coerce comparison between {st1[k]} and {st2[k]}')
+
+                                # coerce type of st2[k]
+                                if isinstance(st2[k], str):
+                                    cmp2 = bytes(st2[k], 'utf8')
+                                elif isinstance(st2[k], bytes):
+                                    cmp2 = st2[k]
+                                else:
+                                    raise TypeError(f'Cannot coerce comparison between {st1[k]} and {st2[k]}')
+
+                                # finally, make comparison
+                                if cmp1 == cmp2:
+                                    continue
+
+
                             logger.error(
                                 f'Name, songId, or midiBytes are not the same'
                             )

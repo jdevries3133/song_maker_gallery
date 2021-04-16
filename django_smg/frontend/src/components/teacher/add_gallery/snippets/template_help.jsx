@@ -39,7 +39,6 @@ const TemplateHelpBlanket = (props) => (
 );
 
 /* Inline <a> element that opens a modal popup onClick */
-// TODO: implement portal popup here to avoid invalid nesting
 export const TemplateHelp = () => {
   const [blanket, setBlanket] = useState(null);
   return (

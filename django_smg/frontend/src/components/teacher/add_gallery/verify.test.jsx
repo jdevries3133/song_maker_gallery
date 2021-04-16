@@ -38,7 +38,7 @@ describe("<Verify />", () => {
     expect(screen.getByTestId("verifyModalNoName")).toBeVisible();
     const namebtn = screen.getAllByTestId("nameColChoice")[0];
     expect(namebtn).toHaveTextContent("nome");
-    await act(async () => {
+    act(() => {
       fireEvent.click(namebtn);
     });
     await waitFor(() =>

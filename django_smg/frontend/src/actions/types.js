@@ -11,3 +11,5 @@ export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const REGISTER = "REGISTER";
 export const CLEAR_ERROR = "CLEAR_ERROR";
+export const UPDATE = "UPDATE";
+export const DELETE = "DELETE";

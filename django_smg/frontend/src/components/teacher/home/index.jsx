@@ -1,6 +1,6 @@
 import React from "react";
 
-import styled, { Div as DefaultDiv } from "Styles";
+import styled, { Button } from "Styles";
 import { Card } from "Common/card";
 
 import StuSubmitImg from "Media/student_submit_md.jpg";
@@ -12,37 +12,41 @@ import { ManualDescription } from "./long_descriptions/manual";
 import OverseeImg from "Media/monitor_students_md.jpg";
 import { SocialDescription } from "./long_descriptions/social";
 
-const Div = styled(DefaultDiv)`
-  text-align: center;
-  margin: 5vw;
+// TODO: this should not be doing so much snapping around. It should just
+// freely fit the parent container so that it can play nice with multiple
+// home page layouts.
+const CardContainer = styled.div`
+  display: inline-block;
   margin-top: 5rem;
   background: #d5cbffeb;
   border: 1px solid black;
   border-radius: 20px;
-  padding: 5vw;
 
   & > * {
-    height: 30%;
-    width: 100%;
+    margin: 10px;
   }
 
-  @media (min-width: 1000px) {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+  @media (min-width: 800px) {
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 90%;
+    margin: 5rem 5vw 5vw 5vw;
+    padding: 5vw;
+
     & > * {
-      margin: 0.5rem;
-      width: calc(30% - 1rem);
+      width: 30%;
     }
   }
 `;
 
 export const Home = () => (
-  <Div>
+  <CardContainer>
     <Card
       title="Automatic Gallery"
       description="Let students post links."
       media={StuSubmitImg}
+      actionButton={<Button>Placeholder</Button>}
     >
       <StudentSubmitDescription />
     </Card>
@@ -50,6 +54,7 @@ export const Home = () => (
       title="Manual Gallery"
       description="Uploading spreadsheet data."
       media={SpreadsheetImg}
+      actionButton={<Button>Placeholder</Button>}
     >
       <ManualDescription />
     </Card>
@@ -57,8 +62,9 @@ export const Home = () => (
       title="Social Galleries"
       description="Responding: It's in the curriculum!"
       media={OverseeImg}
+      actionButton={<Button>Placeholder</Button>}
     >
       <SocialDescription />
     </Card>
-  </Div>
+  </CardContainer>
 );

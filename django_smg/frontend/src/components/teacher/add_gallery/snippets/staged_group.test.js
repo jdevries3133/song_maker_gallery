@@ -13,7 +13,7 @@ import { StagedGroup } from "./staged_group";
 // used by every mock student here
 const LINK =
   "https://musiclab.chromeexperiments.com/Song-Maker/song/5635608291049472";
-const GROUP = [
+export const SAMPLE_GROUP = [
   ["John A.", LINK],
   ["Sally Gregson", LINK],
   ["Mike", LINK],
@@ -21,17 +21,20 @@ const GROUP = [
 ];
 
 describe("StagedGroup", () => {
-  it("has dropdown that renders group member list", async () => {
-    render(<StagedGroup group={GROUP} />);
+  it("has dropdown that renders group member list", async (done) => {
+    render(<StagedGroup group={SAMPLE_GROUP} />);
     act(() => {
       fireEvent.click(screen.getByTestId("sgToggleDropdown"));
     });
-    waitFor(() => {
-      expect(screen.getByTestId("dropdownRow")).toBeVisible();
+    await waitFor(() => {
+      screen
+        .queryAllByTestId("dropdownRow")
+        .map((i) => expect(i).toBeVisible());
     });
     const expectNames = ["John A.", "Sally G.", "Mike"];
     screen.getAllByTestId("sgName").map((n, i) => {
       expect(n).toHaveTextContent(expectNames[i]);
     });
+    done();
   });
 });
