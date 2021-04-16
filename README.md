@@ -1,56 +1,3 @@
-# Task # 2
-
-https://github.com/jdevries3133/song_maker_gallery/issues/44
-
-Still needs to be done: 
-- create input components for title, link and description add
-- DyanamicTile
-
-What we did in Task 1:
-
-- created django_smg/frontend/src/editable_rich_title.js https://github.com/code-relay-io/song_maker_gallery/blob/779d486d8f9a76eca81d7903655f7a1a0f9b4d0f/django_smg/frontend/src/components/common/editable_rich_tile.js
-- added initial props to take for title, description and link as in wireframe
-- added this component to storybook stories
-
-Checkout [Contributing.md](CONTRIBUTING.md)
-
-
-Remember your job is to make _incremental_ progress, break the task into smaller
-tasks, or finish something in 15 minutes, then pass it along to the next
-contributor. No responsibility, only fun.
-
-When you have finished your 15 minutes, add your next task to the readme.md.
-Then make a pull request to the repo.
-
-Email with questions Cheers, Michael
-
-# Post This on Social Media!
-
-> Help the site grow. Music teachers trust music teachers, and you're probably
-> here because you think this is an awesome project and want to know more!
-
-Hi all! I am really excited to share this awesome quarentine project / hopefully
-helpful website made by a music teacher!
-
-Here it is! [https://songmakergallery.com/](https://songmakergallery.com/)
-
-This website is an extension of the popular and much-beloved Google Chrome Music
-Lab. I personally love using the music lab in a wide variety of ways in my own
-lessons, but at the end of the day all you are left to show for students'
-creative output is a spreadsheet full of URLs. With the song maker gallery, you
-can upload the links to your students' work and the website will automatically
-create a beautiful, interactive, and ad-free online gallery where you can share
-your students compositions with their peers and your school community!
-
-Best of all, this project is 100% free to use and open source. Feel free to
-check it out on GitHub if you are interested in contributing, or just want to
-suggest a new feature
-([https://github.com/jdevries3133/song_maker_gallery](https://github.com/jdevries3133/song_maker_gallery)).
-
-> Feel free to attach this image too!
-
-<img src="https://songmakergallery.com/static/frontend/media/site_screenshot.png" />
-
 # Welcome to the Music Lab Song Maker Gallery!
 
 ### Feature Request?
@@ -80,14 +27,26 @@ you feel the same.
 ### How it Works
 
 The teacher posts links from
-[this website](http://musiclab.chromeexperiments.com/Song-Maker/). The site
-captures student work by fetching midi and json data from google's api. The
-frontend then uses that data to display beautiful, dynamically rendered
-thumbnails of students' work.
+[Google's Music Lab Song Maker](http://musiclab.chromeexperiments.com/Song-Maker/).
+This site captures student work by fetching midi and json data from google's
+api. The frontend then uses that data to display beautiful, dynamically
+rendered thumbnails of students' work.
+
+### Contributing
+
+See
+[our contributing guide](https://github.com/jdevries3133/song_maker_gallery/blob/main/CONTRIBUTING.md)
+for details. Contributors are welcome! The local development environment is
+(hopefully) very easy to setup. As you can see, I have a setup script that
+does a lot of the heavy lifting and you don't need any credentials or anything
+to start developing.
+
+As you can see, there is even a setup script for an extra easy start on
+Mac/Linux.
 
 ### Roadmap
 
-These are some major new features I'm interested in implementing.
+These are some major new features I'm implementing now or would like help with.
 
 **Submission Links**
 
@@ -108,14 +67,3 @@ also being monitored by the teacher.
 
 See [#11](https://github.com/jdevries3133/song_maker_gallery/issues/11) if you
 are interested!
-
-**SEO**
-
-Making the homepage static and generally making the site look to search engines
-like the dynamic site it is will drastically improve search engine optimization.
-
-**Blog**
-
-A blog that helps explain specific ways to use the site would be useful to
-teachers. I'd be happy to maintain a blog if it existed, but first someone would
-need to implement a blog into the project. Probably easy to do with Django.
