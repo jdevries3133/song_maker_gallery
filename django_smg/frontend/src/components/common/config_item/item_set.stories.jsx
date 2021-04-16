@@ -4,7 +4,7 @@ import { ConfigItemSet } from "./item_set";
 import { ConfigItem } from "./config_item";
 
 export default {
-  title: "Common/Config Item/Config Item Set",
+  title: "Common/Config Item/Item Set",
 };
 
 const Template = ({ checked }) => {

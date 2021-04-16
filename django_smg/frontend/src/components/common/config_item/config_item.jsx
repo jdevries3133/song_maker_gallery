@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import { Switch as DefaultSwitch } from "Common/switch";
 import styled, { Label } from "Styles";
 
+// TODO: child styling gets weird if there is only one child; it should have
+// rounded borders all around, but only gets the last-child rule for round
+// borders on the bottom.
 const Container = styled.div`
   display: grid;
   grid-template-rows: repeat(2, auto);
@@ -11,7 +14,7 @@ const Container = styled.div`
   max-width: 50rem;
   padding: 3vw;
 
-  &:nth-child(1) {
+  &:first-child {
     border-radius: 20px 20px 0 0;
   }
 

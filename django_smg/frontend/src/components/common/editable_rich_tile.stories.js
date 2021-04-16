@@ -1,17 +1,17 @@
-import React from 'react'
+import React from "react";
 
-import {EditableRichTile} from './editable_rich_tile'
+import { EditableRichTile } from "./editable_rich_tile";
 
 export default {
-  title: 'Editable Rich Tile',
+  title: "Common/Editable Rich Tile",
   component: EditableRichTile,
-}
+};
 
-const Template = (args) => <EditableRichTile {...args} />
+const Template = (args) => <EditableRichTile {...args} />;
 
-export const Default = Template.bind({})
+export const Default = Template.bind({});
 
 Default.args = {
-  title: 'New title',
-  description: 'description',
-}
+  title: "New title",
+  description: "description",
+};

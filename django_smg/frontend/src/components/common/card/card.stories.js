@@ -10,8 +10,8 @@ export default {
 
 const Template = (args) => <Card {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const Single = Template.bind({});
+Single.args = {
   title: "Custom Gallery",
   description: "Make your students' compositions shine",
   media: "monitor_students_md.jpg",
