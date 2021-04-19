@@ -1,0 +1,492 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="sc-hBURRC bIvzMU"
+>
+  <div
+    className="sc-jrQzUz cTczIb"
+  >
+    <div
+      className="sc-kDThTU bdnIYs"
+    >
+      <span
+        className="icon__Span-jtAmdl IYVOc"
+      >
+        👍
+      </span>
+    </div>
+    <div
+      className="sc-iqsfdx kQKKGL"
+    >
+      <p
+        className="sc-crHlIS fiQlej"
+      >
+        <b>
+          Janice
+        </b>
+         reacted to 
+        <b>
+          Josiah
+          's
+        </b>
+         song
+      </p>
+    </div>
+    <svg
+      className="styled_preview__StyledPreview-eLGCJJ gQOsuY"
+      viewBox="0 0 100 100"
+    />
+  </div>
+  <div
+    className="sc-jrQzUz cTczIb"
+  >
+    <div
+      className="sc-kDThTU bdnIYs"
+    >
+      <span
+        className="icon__Span-jtAmdl IYVOc"
+      >
+        ❤️
+      </span>
+    </div>
+    <div
+      className="sc-iqsfdx kQKKGL"
+    >
+      <p
+        className="sc-crHlIS fiQlej"
+      >
+        <b>
+          James
+        </b>
+         reacted to 
+        <b>
+          Josiah
+          's
+        </b>
+         song
+      </p>
+    </div>
+    <svg
+      className="styled_preview__StyledPreview-eLGCJJ gQOsuY"
+      viewBox="0 0 100 100"
+    />
+  </div>
+  <div
+    className="sc-jrQzUz cTczIb"
+  >
+    <div
+      className="sc-kDThTU bdnIYs"
+    >
+      <span
+        className="icon__Span-jtAmdl IYVOc"
+      >
+        ⭐️
+      </span>
+    </div>
+    <div
+      className="sc-iqsfdx kQKKGL"
+    >
+      <p
+        className="sc-crHlIS fiQlej"
+      >
+        <b>
+          Asaun
+        </b>
+         reacted to 
+        <b>
+          Josiah
+          's
+        </b>
+         song
+      </p>
+    </div>
+    <svg
+      className="styled_preview__StyledPreview-eLGCJJ gQOsuY"
+      viewBox="0 0 100 100"
+    />
+  </div>
+  <div
+    className="sc-jrQzUz cTczIb"
+  >
+    <div
+      className="sc-kDThTU bdnIYs"
+    >
+      <span
+        className="icon__Span-jtAmdl IYVOc"
+      >
+        ✍️
+      </span>
+    </div>
+    <div
+      className="sc-egiSv jfUQsi"
+    >
+      <h4
+        className="styles__H4-ggNJUq sc-bqiQRQ  kgtDui"
+      >
+        <b>
+          Mike
+        </b>
+         commented on 
+        <b>
+          Josiah
+          's
+        </b>
+         song
+      </h4>
+      <p
+        className="sc-ksdxAp ZViNI"
+      >
+        Wohoo! 😁 😁
+      </p>
+    </div>
+    <svg
+      className="styled_preview__StyledPreview-eLGCJJ gQOsuY"
+      viewBox="0 0 100 100"
+    />
+    <form
+      className="sc-dkPtyc fuaMj"
+      onSubmit={[Function]}
+    >
+      <label
+        className="sc-hKwCoD dhnZkD"
+        htmlFor="approve"
+      >
+        Approve Comment?
+      </label>
+      <input
+        className="styles__Button-dxTSuI sc-eCImvq ejDiDY daNQhM"
+        id="approve"
+        type="submit"
+        value="Approve"
+      />
+    </form>
+  </div>
+  <div
+    className="sc-jrQzUz cTczIb"
+  >
+    <div
+      className="sc-kDThTU bdnIYs"
+    >
+      <span
+        className="icon__Span-jtAmdl IYVOc"
+      >
+        ❤️
+      </span>
+    </div>
+    <div
+      className="sc-iqsfdx kQKKGL"
+    >
+      <p
+        className="sc-crHlIS fiQlej"
+      >
+        <b>
+          Janice
+        </b>
+         reacted to 
+        <b>
+          Josiah
+          's
+        </b>
+         song
+      </p>
+    </div>
+    <svg
+      className="styled_preview__StyledPreview-eLGCJJ gQOsuY"
+      viewBox="0 0 100 100"
+    />
+  </div>
+  <div
+    className="sc-jrQzUz cTczIb"
+  >
+    <div
+      className="sc-kDThTU bdnIYs"
+    >
+      <span
+        className="icon__Span-jtAmdl IYVOc"
+      >
+        ✍️
+      </span>
+    </div>
+    <div
+      className="sc-egiSv jfUQsi"
+    >
+      <h4
+        className="styles__H4-ggNJUq sc-bqiQRQ  kgtDui"
+      >
+        <b>
+          Amir
+        </b>
+         commented on 
+        <b>
+          Josiah
+          's
+        </b>
+         song
+      </h4>
+      <p
+        className="sc-ksdxAp ZViNI"
+      >
+        Good stuff my guy
+      </p>
+    </div>
+    <svg
+      className="styled_preview__StyledPreview-eLGCJJ gQOsuY"
+      viewBox="0 0 100 100"
+    />
+  </div>
+  <div
+    className="sc-jrQzUz cTczIb"
+  >
+    <div
+      className="sc-kDThTU bdnIYs"
+    >
+      <span
+        className="icon__Span-jtAmdl IYVOc"
+      >
+        ❤️
+      </span>
+    </div>
+    <div
+      className="sc-iqsfdx kQKKGL"
+    >
+      <p
+        className="sc-crHlIS fiQlej"
+      >
+        <b>
+          Janice
+        </b>
+         reacted to 
+        <b>
+          Josiah
+          's
+        </b>
+         song
+      </p>
+    </div>
+    <svg
+      className="styled_preview__StyledPreview-eLGCJJ gQOsuY"
+      viewBox="0 0 100 100"
+    />
+  </div>
+  <div
+    className="sc-jrQzUz cTczIb"
+  >
+    <div
+      className="sc-kDThTU bdnIYs"
+    >
+      <span
+        className="icon__Span-jtAmdl IYVOc"
+      >
+        ✍️
+      </span>
+    </div>
+    <div
+      className="sc-egiSv jfUQsi"
+    >
+      <h4
+        className="styles__H4-ggNJUq sc-bqiQRQ  kgtDui"
+      >
+        <b>
+          Amir
+        </b>
+         commented on 
+        <b>
+          Josiah
+          's
+        </b>
+         song
+      </h4>
+      <p
+        className="sc-ksdxAp ZViNI"
+      >
+        Good stuff my guy
+      </p>
+    </div>
+    <svg
+      className="styled_preview__StyledPreview-eLGCJJ gQOsuY"
+      viewBox="0 0 100 100"
+    />
+  </div>
+  <div
+    className="sc-jrQzUz cTczIb"
+  >
+    <div
+      className="sc-kDThTU bdnIYs"
+    >
+      <span
+        className="icon__Span-jtAmdl IYVOc"
+      >
+        ❤️
+      </span>
+    </div>
+    <div
+      className="sc-iqsfdx kQKKGL"
+    >
+      <p
+        className="sc-crHlIS fiQlej"
+      >
+        <b>
+          Janice
+        </b>
+         reacted to 
+        <b>
+          Josiah
+          's
+        </b>
+         song
+      </p>
+    </div>
+    <svg
+      className="styled_preview__StyledPreview-eLGCJJ gQOsuY"
+      viewBox="0 0 100 100"
+    />
+  </div>
+  <div
+    className="sc-jrQzUz cTczIb"
+  >
+    <div
+      className="sc-kDThTU bdnIYs"
+    >
+      <span
+        className="icon__Span-jtAmdl IYVOc"
+      >
+        ✍️
+      </span>
+    </div>
+    <div
+      className="sc-egiSv jfUQsi"
+    >
+      <h4
+        className="styles__H4-ggNJUq sc-bqiQRQ  kgtDui"
+      >
+        <b>
+          Shawn
+        </b>
+         commented on 
+        <b>
+          Josiah
+          's
+        </b>
+         song
+      </h4>
+      <p
+        className="sc-ksdxAp ZViNI"
+      >
+        That is all fine and good, but did you think about what would happen if you ended up with a really, really long comment in here?
+      </p>
+    </div>
+    <svg
+      className="styled_preview__StyledPreview-eLGCJJ gQOsuY"
+      viewBox="0 0 100 100"
+    />
+    <form
+      className="sc-dkPtyc fuaMj"
+      onSubmit={[Function]}
+    >
+      <label
+        className="sc-hKwCoD dhnZkD"
+        htmlFor="approve"
+      >
+        Approve Comment?
+      </label>
+      <input
+        className="styles__Button-dxTSuI sc-eCImvq ejDiDY daNQhM"
+        id="approve"
+        type="submit"
+        value="Approve"
+      />
+    </form>
+  </div>
+  <div
+    className="sc-jrQzUz cTczIb"
+  >
+    <div
+      className="sc-kDThTU bdnIYs"
+    >
+      <span
+        className="icon__Span-jtAmdl IYVOc"
+      >
+        ❤️
+      </span>
+    </div>
+    <div
+      className="sc-iqsfdx kQKKGL"
+    >
+      <p
+        className="sc-crHlIS fiQlej"
+      >
+        <b>
+          Janice
+        </b>
+         reacted to 
+        <b>
+          Josiah
+          's
+        </b>
+         song
+      </p>
+    </div>
+    <svg
+      className="styled_preview__StyledPreview-eLGCJJ gQOsuY"
+      viewBox="0 0 100 100"
+    />
+  </div>
+  <div
+    className="sc-jrQzUz cTczIb"
+  >
+    <div
+      className="sc-kDThTU bdnIYs"
+    >
+      <span
+        className="icon__Span-jtAmdl IYVOc"
+      >
+        ✍️
+      </span>
+    </div>
+    <div
+      className="sc-egiSv jfUQsi"
+    >
+      <h4
+        className="styles__H4-ggNJUq sc-bqiQRQ  kgtDui"
+      >
+        <b>
+          Amir
+        </b>
+         commented on 
+        <b>
+          Josiah
+          's
+        </b>
+         song
+      </h4>
+      <p
+        className="sc-ksdxAp ZViNI"
+      >
+        Good stuff my guy
+      </p>
+    </div>
+    <svg
+      className="styled_preview__StyledPreview-eLGCJJ gQOsuY"
+      viewBox="0 0 100 100"
+    />
+    <form
+      className="sc-dkPtyc fuaMj"
+      onSubmit={[Function]}
+    >
+      <label
+        className="sc-hKwCoD dhnZkD"
+        htmlFor="approve"
+      >
+        Approve Comment?
+      </label>
+      <input
+        className="styles__Button-dxTSuI sc-eCImvq ejDiDY daNQhM"
+        id="approve"
+        type="submit"
+        value="Approve"
+      />
+    </form>
+  </div>
+</div>
+`;

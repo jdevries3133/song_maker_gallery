@@ -2,7 +2,7 @@ import React from "react";
 
 import styled from "Styles";
 
-import { SongPreview } from "./styled_preview";
+import { SongPreview } from "Common/song_tiles";
 
 export const SocialEventContainer = styled.div`
   display: grid;

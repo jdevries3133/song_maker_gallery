@@ -17,6 +17,6 @@ export const SocialEvent = forwardRef((props, ref) => {
     case "comment":
       return <Comment {...event} />;
     default:
-      throw new Error("unsupported event type: ${event.type}");
+      throw new Error(`unsupported event type: ${event?.type}`);
   }
 });

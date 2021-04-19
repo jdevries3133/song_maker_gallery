@@ -4,7 +4,7 @@ import { Comment as CommentIcon } from "Common/icon";
 import styled, { H4 as DefaultH4 } from "Styles";
 
 import { ApproveCommentForm } from "./approve_comment_form";
-import { SongPreview } from "./styled_preview";
+import { SongPreview } from "Common/song_tiles";
 import { SocialEventContainer, IconContainer } from "./reaction";
 
 const Text = styled.div`

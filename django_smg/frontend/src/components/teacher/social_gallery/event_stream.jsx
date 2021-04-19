@@ -23,11 +23,9 @@ export const EventStream = ({ events, fetchMoreEvents }) => {
       {events.map((event, i) =>
         // target second to last item for infinite scroll trigger
         i == events.length - 2 ? (
-          <>
-            <SocialEvent ref={targetRef} event={event} />
-          </>
+          <SocialEvent key={i} ref={targetRef} event={event} />
         ) : (
-          <SocialEvent event={event} />
+          <SocialEvent key={i} event={event} />
         )
       )}
     </Container>

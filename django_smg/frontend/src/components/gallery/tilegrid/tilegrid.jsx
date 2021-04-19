@@ -1,5 +1,5 @@
 import React from "react";
-import { DynamicTile } from "./DynamicTile";
+import { DynamicTile } from "Common/song_tiles";
 import useWidth from "Common/useWidth";
 
 import styled, { A, P, Button, Div, H2 } from "Styles";

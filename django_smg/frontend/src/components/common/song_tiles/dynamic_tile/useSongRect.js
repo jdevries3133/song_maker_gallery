@@ -4,6 +4,16 @@ import { Song } from "./Parser.js";
 import { RectGenerator } from "./rectGenerator.js";
 
 /**
+ *
+ *
+ * Hook that takes a song object and returns an array of svg `<rect>` elements.
+ * This is helpful to get at the underlying rects, for example displaing
+ * a preview in a different context as is done in `<EventStream />`, where the
+ * teacher user can see and overview of the events in their gallery.
+ *
+ * Uses useEffect and useState under the hood to parse and generate without
+ * blocking the UI
+ *
  * @returns Array[<rect>] || null
  */
 export const useSongRect = (song, gridSize) => {
