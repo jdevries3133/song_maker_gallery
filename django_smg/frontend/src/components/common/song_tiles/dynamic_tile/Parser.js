@@ -10,8 +10,9 @@ export class Song {
   constructor(song) {
     this.song = song;
     this.isParsed = false;
-    Object.keys(this.song.metadata).forEach((i) => {
-      this[i] = this.song.metadata[i];
+    // expand song metadata into attrs
+    Object.keys(this?.song?.metadata || []).forEach((i) => {
+      this[i] = this?.song?.metadata[i];
     });
   }
   parse() {

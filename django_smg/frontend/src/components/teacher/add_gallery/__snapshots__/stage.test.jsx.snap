@@ -64,7 +64,6 @@ exports[`stage matches snapshot 1`] = `
   line-height: 1.5;
   margin: 0px;
   width: 80%;
-  height: 20vh;
   box-shadow: 1px 1px 1px #999;
   border: 1px solid #ccc;
   border-radius: 5px;

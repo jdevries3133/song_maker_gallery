@@ -186,10 +186,18 @@ export const Textarea = styled.textarea`
   line-height: 1.5;
   margin: 0px;
   width: 80%;
-  height: 20vh;
   box-shadow: 1px 1px 1px #999;
   border: 1px solid #ccc;
   border-radius: 5px;
+
+  ${(props) =>
+    props.warn &&
+    css`
+      border: 2px solid #e41000;
+
+      &:focus {
+        outline: hsl(0deg 100% 70%) auto 1px;
+    `}
 `;
 
 export const Checkbox = ({ children, ...rest }) => (

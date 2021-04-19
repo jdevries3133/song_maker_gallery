@@ -27,6 +27,10 @@ const Div = styled.div`
 export const decorators = [
   (Story) => (
     <Div>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Merriweather+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@500&display=swap"
+        rel="stylesheet"
+      />
       <Story />
     </Div>
   ),

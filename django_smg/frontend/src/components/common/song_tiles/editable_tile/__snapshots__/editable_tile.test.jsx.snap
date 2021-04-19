@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EditableTile /> matches snapshot 1`] = `
+.c1 {
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+.c2 {
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.c2[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+}
+
+.c3 {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 0px;
+  width: 80%;
+  box-shadow: 1px 1px 1px #999;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.c0 {
+  text-align: center;
+  margin: 3vw;
+  padding: 3vw;
+  font-size: 18px;
+  max-width: 50rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0px 3px 8px rgb(100,100,100);
+}
+
+@media (max-width:600px) {
+  .c0 {
+    font-size: 16px;
+    line-height: 1.5rem;
+  }
+}
+
+<form
+  className="c0"
+  onSubmit={[Function]}
+>
+  <label
+    className="c1"
+    htmlFor="name"
+  >
+    Name
+  </label>
+  <input
+    className="c2"
+    data-testid="nameInput"
+    id="name"
+    onChange={[Function]}
+    value="Frank G."
+  />
+  <div>
+    <label
+      htmlFor="link"
+    >
+      <h3
+        className="styles__H3-kZrHQh"
+      >
+        Link
+      </h3>
+    </label>
+    <textarea
+      className="c3"
+      data-testid="linkInput"
+      id="link"
+      onChange={[Function]}
+      value="https://musiclab.chromeexperiments.com/Song-Maker/song/6594803161104384"
+    />
+  </div>
+</form>
+`;

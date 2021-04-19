@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  render,
-  fireEvent,
-  waitFor,
-  screen,
-  act,
-  cleanup,
-} from "@testing-library/react";
+import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 import { Portal } from "./portal";
@@ -42,9 +35,7 @@ describe("<Portal />", () => {
   it("cleans up after self by dismounting parent component", async (done) => {
     render(<ComponentDismounter />);
     expect(screen.queryByText("Hello, world!")).toBeVisible();
-    act(() => {
-      fireEvent.click(screen.getByTestId("dismountPortal"));
-    });
+    fireEvent.click(screen.getByTestId("dismountPortal"));
     await waitFor(() => {
       expect(screen.queryAllByTestId("portalContainer")).toHaveLength(0);
     });

@@ -1,6 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
+/**
+ * TODO: this looks bad and should safely respond to size props.
+ *
+ * It should also not have the relative positioning hacks it has now. That
+ * specifically makes it look ok in the context of the galleries so the
+ * rows line up.
+ */
+
 const Div = styled.div`
   border: 2px solid red;
   bottom: 50px;
