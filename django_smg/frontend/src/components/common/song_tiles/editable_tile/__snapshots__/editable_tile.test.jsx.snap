@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<EditableTile /> matches snapshot 1`] = `
-.c1 {
+.c2 {
   display: block;
   font-size: 1.17em;
   margin-block-start: 1em;
@@ -11,19 +11,19 @@ exports[`<EditableTile /> matches snapshot 1`] = `
   font-weight: bold;
 }
 
-.c2 {
+.c3 {
   max-width: 100%;
   font-size: 20px;
   padding: 10px;
   border-radius: 5px;
 }
 
-.c2[type="checkbox"] {
+.c3[type="checkbox"] {
   width: 30px;
   height: 30px;
 }
 
-.c3 {
+.c4 {
   font-family: Helvetica,Arial,sans-serif;
   font-size: 19px;
   line-height: 1.5;
@@ -39,10 +39,14 @@ exports[`<EditableTile /> matches snapshot 1`] = `
   margin: 3vw;
   padding: 3vw;
   font-size: 18px;
-  max-width: 50rem;
   background: white;
   border-radius: 20px;
   box-shadow: 0px 3px 8px rgb(100,100,100);
+}
+
+.c1 {
+  margin: 0;
+  padding: 1.5vw;
 }
 
 @media (max-width:600px) {
@@ -53,17 +57,17 @@ exports[`<EditableTile /> matches snapshot 1`] = `
 }
 
 <form
-  className="c0"
+  className="c0 c1"
   onSubmit={[Function]}
 >
   <label
-    className="c1"
+    className="c2"
     htmlFor="name"
   >
     Name
   </label>
   <input
-    className="c2"
+    className="c3"
     data-testid="nameInput"
     id="name"
     onChange={[Function]}
@@ -80,7 +84,7 @@ exports[`<EditableTile /> matches snapshot 1`] = `
       </h3>
     </label>
     <textarea
-      className="c3"
+      className="c4"
       data-testid="linkInput"
       id="link"
       onChange={[Function]}

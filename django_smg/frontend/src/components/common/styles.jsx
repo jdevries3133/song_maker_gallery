@@ -213,7 +213,7 @@ export const Description = styled.div`
   margin: 3vw;
   padding: 3vw;
   font-size: 18px;
-  max-width: 50rem;
+  /* max-width: 50rem; */
   background: white;
   border-radius: 20px;
   box-shadow: 0px 3px 8px rgb(100, 100, 100);

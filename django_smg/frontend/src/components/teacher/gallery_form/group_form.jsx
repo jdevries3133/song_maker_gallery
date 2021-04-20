@@ -2,17 +2,25 @@ import React, { useState } from "react";
 
 import { DraggableTile } from "./draggable_tile";
 
-import styled, { Form, Input, Label } from "Styles";
+import styled, { Description, Form, Input, Label } from "Styles";
 
 const TileContainer = styled.div`
-  @media (min-width: 500px) {
-    display: flex;
-    flex-wrap: wrap;
+  margin-top: 2rem;
+  display: grid;
+  grid-gap: 2vw;
+  grid-template-rows: mix-content;
+  align-content: stretch;
+
+  @media (min-width: 720px) {
+    grid-template-columns: repeat(2, 1fr);
   }
+
+  @media (min-width: 1150px) {
+  grid-template-columns: repeat(3, 1fr);
 `;
 
 export const GroupForm = ({ group }) => {
-  const [groupName, setGroupName] = useState(group.slice(-1)[0]);
+  const groupName = group.slice(-1)[0];
   const [groupStudents, setGroupStudents] = useState(group.slice(0, -1));
 
   /**
@@ -28,7 +36,7 @@ export const GroupForm = ({ group }) => {
   };
 
   return (
-    <div>
+    <Description>
       <Form>
         <Label htmlFor="group name">Group Name</Label>
         <Input type="text" id="group name" defaultValue={groupName} />
@@ -36,7 +44,7 @@ export const GroupForm = ({ group }) => {
       <TileContainer>
         {groupStudents.map((song, i) => (
           <DraggableTile
-            key={i + song.songId}
+            key={i + song.songId + Math.random()}
             name={song.name}
             songId={song.songId}
             groupName={groupName}
@@ -45,6 +53,6 @@ export const GroupForm = ({ group }) => {
           />
         ))}
       </TileContainer>
-    </div>
+    </Description>
   );
 };

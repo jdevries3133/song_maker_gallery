@@ -1,9 +1,22 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { Label, Input, Button, Textarea, Description, P, H3 } from "Styles";
+import styled, {
+  Label,
+  Input,
+  Button,
+  Textarea,
+  Description as DefaultDescription,
+  P,
+  H3,
+} from "Styles";
 
 const VALIDATION_REGEX = /^http(s)?:\/\/musiclab.chromeexperiments.com\/Song-Maker\/song\/\d{16}$/;
+
+const Description = styled(DefaultDescription)`
+  margin: 0;
+  padding: 1.5vw;
+`;
 
 export const EditableTile = ({ name = "", link = "" }) => {
   const [_name, setName] = useState(name);
