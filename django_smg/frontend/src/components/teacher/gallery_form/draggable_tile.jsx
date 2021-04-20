@@ -80,14 +80,15 @@ export const DraggableTile = ({ name, songId, groupName, swap, index }) => {
             // you cannot drag from one group to another
             <BadDragHint />
           )
-        ) : null}
-        <EditableTile
-          name={name}
-          link={
-            `https://musiclab.chromeexperiments.com` +
-            `/Song-Maker/song/${songId}`
-          }
-        />
+        ) : (
+          <EditableTile
+            name={name}
+            link={
+              `https://musiclab.chromeexperiments.com` +
+              `/Song-Maker/song/${songId}`
+            }
+          />
+        )}
       </Div>
     </Div>
   );
