@@ -47,6 +47,7 @@ export const H1 = styled.h1`
   text-align: center;
   padding-bottom: 1.5rem;
   font-size: calc(4vw + 30px);
+  line-height: calc(4vw + 30px);
 `;
 
 export const H2 = styled.h2`
@@ -165,6 +166,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
+  max-width: 100%;
   font-size: 20px;
   padding: 10px;
   border-radius: 5px;

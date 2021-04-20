@@ -10,6 +10,7 @@ exports[`Landing page Matches snapshot 1`] = `
   text-align: center;
   padding-bottom: 1.5rem;
   font-size: calc(4vw + 30px);
+  line-height: calc(4vw + 30px);
 }
 
 .c27 {

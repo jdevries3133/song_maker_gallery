@@ -42,6 +42,7 @@ exports[`<Signup /> matches snapshot 1`] = `
 }
 
 .c5 {
+  max-width: 100%;
   font-size: 20px;
   padding: 10px;
   border-radius: 5px;
