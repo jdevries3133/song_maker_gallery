@@ -46,7 +46,7 @@ before you start so that you know where to put what!
 > The project's backend is a REST API built with the
 > [Django Rest Framework.](https://www.django-rest-framework.org/)
 
-1. Create the file `django_smg/django_smg/secrets_settings.py`.
+1. Create the file `django_smg/django_smg/secret_settings.py`.
 2. Define the `SECRET_KEY` variable in this file. Set it to any string your
    heart desires
 3. Set the environment variable `DJANGO_DEBUG` to any non-zero value
