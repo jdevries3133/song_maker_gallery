@@ -48,7 +48,7 @@ describe("<EditableTile />", () => {
   });
 
   it("does not allow invalid link submission", () => {
-    // TODO: make sure the #e41000ux action is not called here once the component
+    // TODO: make sure the redux action is not called here once the component
     // is hooked up
   });
 
@@ -91,6 +91,17 @@ describe("<EditableTile />", () => {
       await waitFor(() => {
         expect(screen.getByText("Link is not valid")).toBeVisible();
         expect(linkInput()).toHaveStyle({ border: "2px solid #e41000" });
+      });
+      done();
+    });
+    it("trims whitespace", async (done) => {
+      expect(linkInput()).toHaveStyle({ border: "1px solid #ccc" });
+      changeTo(
+        "    https://musiclab.chromeexperiments.com/Song-Maker/song/6594803161104384    "
+      );
+      await waitFor(() => {
+        expect(screen.queryByText("Link is not valid")).toBeNull();
+        expect(linkInput()).toHaveStyle({ border: "1px solid #ccc" });
       });
       done();
     });

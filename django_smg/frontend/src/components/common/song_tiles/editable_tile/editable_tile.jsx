@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 
 import { Label, Input, Button, Textarea, Description, P, H3 } from "Styles";
 
-const VALIDATION_REGEX = /http(s)?:\/\/musiclab.chromeexperiments.com\/Song-Maker\/song\/\d{16}/;
+const VALIDATION_REGEX = /^http(s)?:\/\/musiclab.chromeexperiments.com\/Song-Maker\/song\/\d{16}$/;
 
 export const EditableTile = ({ name = "", link = "" }) => {
   const [_name, setName] = useState(name);
   const [_link, setLink] = useState(link);
 
-  const isLinkValid = !VALIDATION_REGEX.test(_link);
+  const isLinkValid = !VALIDATION_REGEX.test(_link.trim());
   const changesMade = name !== _name || link !== _link;
 
   const submit = (e) => {
