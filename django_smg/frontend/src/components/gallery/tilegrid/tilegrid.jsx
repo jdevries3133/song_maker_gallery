@@ -16,7 +16,7 @@ const GalleryContainer = styled(Div)`
 `;
 
 const TgTitle = styled(H2)`
-  margin: 0;
+  margin: 0 0 2rem 0;
   position: relative;
   z-index: 10;
   top: min(10vw, 5.9rem);
@@ -49,6 +49,8 @@ const TgTitle = styled(H2)`
 `;
 
 const Finger = styled.span`
+  position: relative;
+  bottom: max(1.3vw, 1.7rem);
   opacity: 0%;
   color: white;
   display: inline-block;
@@ -72,6 +74,7 @@ const Finger = styled.span`
 export const TileGrid = (props) => {
   const group_name = props.data.slice(-1);
   const { width } = useWidth(600);
+
   return width > 600 ? (
     <GalleryContainer id="gallery">
       <a href="#gallery_top">

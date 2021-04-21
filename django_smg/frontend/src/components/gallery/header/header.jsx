@@ -1,11 +1,23 @@
 import React from "react";
 
-import styled, { H1, P, Button, Description } from "Styles";
+import styled, {
+  H1,
+  P,
+  Button,
+  Description as DefaultDescription,
+} from "Styles";
 import FormattedDescription from "./formatted_description";
 import NavBar from "./navBar";
 import useWidth from "Common/useWidth";
 
+const Description = styled(DefaultDescription)`
+  display: inline-block;
+  max-width: 850px;
+`;
+
 const Header = styled.header`
+  width: 100%;
+  text-align: center;
   margin-bottom: 10rem;
 
   @media (max-width: 475px) {

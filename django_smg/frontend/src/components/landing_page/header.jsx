@@ -5,7 +5,7 @@ import styled, {
   css,
   A,
   P as DefaultP,
-  Description,
+  Description as DefaultDescription,
   Div as DefaultDiv,
   H1 as DefaultH1,
   Button as DefaultButton,
@@ -13,7 +13,7 @@ import styled, {
 
 const H1 = styled(DefaultH1)`
   padding-bottom: 0;
-  margin: 1rem;
+  margin: 3rem;
 `;
 
 const P = styled(DefaultP)`
@@ -26,10 +26,16 @@ const P = styled(DefaultP)`
     `}
 `;
 
+const Description = styled(DefaultDescription)`
+  margin: 0;
+  max-width: 50vw;
+`;
+
 const Button = styled(DefaultButton)`
   display: block;
   height: 4 rem;
   width: 80%;
+  box-shadow: 1px 4px 12px #999;
 `;
 
 const Link = styled(DefaultLink)`
@@ -41,6 +47,7 @@ const Div = styled(DefaultDiv)`
 `;
 
 const Grid = styled.div`
+  grid-column-gap: 2rem;
   @media (min-width: 600px) {
     display: grid;
     grid-template-columns: 5% 60% 30% 5%;

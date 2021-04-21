@@ -5,8 +5,8 @@ import { Redirect } from "react-router-dom";
 
 import { register, clearError } from "Actions/auth.action";
 import styled, {
-  Input,
   Div,
+  Input,
   P,
   Button,
   Label,
@@ -19,6 +19,15 @@ import { Tos, Privacy } from "../../legal";
 import { ValidationMessages } from "./validation_messages";
 
 export const PASSWD_MIN_LENGTH = 9;
+
+const Wrapper = styled.div`
+  width: 100%;
+  text-align: center;
+`;
+
+const Container = styled(Description)`
+  max-width: 800px;
+`;
 
 // subtle adjust to align text with checkbox
 const SpanCbAligned = styled.span`
@@ -40,6 +49,7 @@ const FlexForm = styled.form`
 `;
 
 const SubmitButton = styled(Button)`
+  margin-bottom: 1.5rem;
   font-size: 24px;
   height: auto;
   line-height: 40px;
@@ -135,10 +145,10 @@ const signup = (props) => {
   }
 
   return (
-    <Div>
+    <Wrapper>
       {blanket}
       <Header>sign up!</Header>
-      <Description>
+      <Container>
         <FlexForm data-testid="signupForm" onSubmit={submit}>
           <Div>
             <Label htmlFor="email">Email</Label>
@@ -221,8 +231,8 @@ const signup = (props) => {
             </Div>
           </Div>
         </FlexForm>
-      </Description>
-    </Div>
+      </Container>
+    </Wrapper>
   );
 };
 

@@ -209,6 +209,7 @@ export const Checkbox = ({ children, ...rest }) => (
 );
 
 export const Description = styled.div`
+  display: inline-block;
   text-align: center;
   margin: 3vw;
   padding: 3vw;
