@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
 import { DownloadTemplate } from "./download_template";
-import { CustomError } from "Common/custom_error";
+import { Blanket } from "Common/blanket";
 
 /**
  * ex. songData => "Spreadsheet Error"

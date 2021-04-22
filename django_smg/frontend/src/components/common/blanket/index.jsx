@@ -47,7 +47,7 @@ export const Blanket = ({ children, onDismissed, ...props }) => {
 
 Blanket.propTypes = {
   children: PropTypes.node,
-  dimissedCallback: PropTypes.func,
+  onDismissed: PropTypes.func,
   enabled: PropTypes.bool,
 };
 
