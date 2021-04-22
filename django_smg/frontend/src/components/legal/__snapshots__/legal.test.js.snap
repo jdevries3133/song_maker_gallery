@@ -7,6 +7,7 @@ exports[`legal views privacy policy matches snapshot 1`] = `
 }
 
 .c0 {
+  display: inline-block;
   text-align: center;
   margin: 3vw;
   padding: 3vw;
@@ -84,6 +85,7 @@ exports[`legal views terms of service matches snapshot 1`] = `
 }
 
 .c0 {
+  display: inline-block;
   text-align: center;
   margin: 3vw;
   padding: 3vw;

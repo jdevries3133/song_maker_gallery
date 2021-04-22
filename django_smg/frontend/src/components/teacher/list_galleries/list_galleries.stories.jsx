@@ -15,10 +15,16 @@ const Template = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  acknowledgeDelete: () => {},
-  getUserGalleries: () => {},
+  acknowledgeDelete: (a) => {
+    console.log("delete acknowledged", a);
+  },
+  getUserGalleries: (u) => {
+    console.log("getting galleries", u);
+  },
   deleteStatus: "",
-  deleteGallery: () => {},
+  deleteGallery: (g) => {
+    console.log("deleted", g);
+  },
   token: "test token",
   galleries: [
     {

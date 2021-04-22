@@ -35,6 +35,7 @@ exports[`<EditableTile /> matches snapshot 1`] = `
 }
 
 .c0 {
+  display: inline-block;
   text-align: center;
   margin: 3vw;
   padding: 3vw;

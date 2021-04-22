@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Signup /> matches snapshot 1`] = `
-.c0 {
+.c5 {
   text-align: center;
   padding: inherit;
 }
 
-.c7 {
+.c9 {
   text-align: center;
   padding: 0 20px 0 20px;
   color: green;
 }
 
-.c8 {
+.c10 {
   text-align: center;
   padding: 0 20px 0 20px;
 }
 
-.c10 {
+.c12 {
   display: inline-block;
   font-size: 1rem;
   font-weight: bold;
@@ -27,11 +27,11 @@ exports[`<Signup /> matches snapshot 1`] = `
   background-color: #f7943e;
 }
 
-.c10:hover {
+.c12:hover {
   background-color: white;
 }
 
-.c4 {
+.c6 {
   display: block;
   font-size: 1.17em;
   margin-block-start: 1em;
@@ -41,19 +41,20 @@ exports[`<Signup /> matches snapshot 1`] = `
   font-weight: bold;
 }
 
-.c5 {
+.c7 {
   max-width: 100%;
   font-size: 20px;
   padding: 10px;
   border-radius: 5px;
 }
 
-.c5[type="checkbox"] {
+.c7[type="checkbox"] {
   width: 30px;
   height: 30px;
 }
 
 .c2 {
+  display: inline-block;
   text-align: center;
   margin: 3vw;
   padding: 3vw;
@@ -63,14 +64,23 @@ exports[`<Signup /> matches snapshot 1`] = `
   box-shadow: 0px 3px 8px rgb(100,100,100);
 }
 
-.c6 {
+.c8 {
   list-style-type: none;
   background-color: #adff1626;
   border-radius: 20px;
   padding: 1em;
 }
 
-.c9 {
+.c0 {
+  width: 100%;
+  text-align: center;
+}
+
+.c3 {
+  max-width: 800px;
+}
+
+.c11 {
   position: relative;
   bottom: 8px;
 }
@@ -80,7 +90,7 @@ exports[`<Signup /> matches snapshot 1`] = `
   font-size: 60px;
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -99,7 +109,8 @@ exports[`<Signup /> matches snapshot 1`] = `
   gap: 3rem;
 }
 
-.c11 {
+.c13 {
+  margin-bottom: 1.5rem;
   font-size: 24px;
   height: auto;
   line-height: 40px;
@@ -108,13 +119,13 @@ exports[`<Signup /> matches snapshot 1`] = `
 }
 
 @media (max-width:400px) {
-  .c10 {
+  .c12 {
     padding: 10px;
   }
 }
 
 @media (max-width:350px) {
-  .c10 {
+  .c12 {
     padding: 5px;
   }
 }
@@ -135,38 +146,38 @@ exports[`<Signup /> matches snapshot 1`] = `
     sign up!
   </h1>
   <div
-    className="c2"
+    className="c2 c3"
   >
     <form
-      className="c3"
+      className="c4"
       data-testid="signupForm"
       onSubmit={[Function]}
     >
       <div
-        className="c0"
+        className="c5"
       >
         <label
-          className="c4"
+          className="c6"
           htmlFor="email"
         >
           Email
         </label>
         <input
           autoComplete="email"
-          className="c5"
+          className="c7"
           data-testid="emailInput"
           id="email"
           onChange={[Function]}
         />
         <label
-          className="c4"
+          className="c6"
           htmlFor="username"
         >
           Username
         </label>
         <input
           autoComplete="username"
-          className="c5"
+          className="c7"
           data-testid="usernameInput"
           id="username"
           onChange={[Function]}
@@ -175,17 +186,17 @@ exports[`<Signup /> matches snapshot 1`] = `
         />
       </div>
       <div
-        className="c0"
+        className="c5"
       >
         <label
-          className="c4"
+          className="c6"
           htmlFor="password"
         >
           Password
         </label>
         <input
           autoComplete="new-password"
-          className="c5"
+          className="c7"
           data-testid="passwordInput"
           id="password"
           onChange={[Function]}
@@ -194,14 +205,14 @@ exports[`<Signup /> matches snapshot 1`] = `
           value=""
         />
         <label
-          className="c4"
+          className="c6"
           htmlFor="confirm password"
         >
           Confirm Password
         </label>
         <input
           autoComplete="new-password"
-          className="c5"
+          className="c7"
           data-testid="passwordConfirmInput"
           id="confirm password"
           onChange={[Function]}
@@ -211,27 +222,27 @@ exports[`<Signup /> matches snapshot 1`] = `
         />
       </div>
       <div
-        className="c0"
+        className="c5"
       >
         <ul
-          className="c6"
+          className="c8"
         >
           <li
-            className="c7"
+            className="c9"
           >
             Username does not contain any spaces
           </li>
           <li
-            className="c8"
+            className="c10"
           >
             Your password must be at least eight characters long
           </li>
         </ul>
         <p
-          className="c8"
+          className="c10"
         >
           <span
-            className="c9"
+            className="c11"
           >
             I agree to the 
             <span>
@@ -244,7 +255,7 @@ exports[`<Signup /> matches snapshot 1`] = `
                 
           </span>
           <input
-            className="c5"
+            className="c7"
             data-testid="tosCheckbox"
             id="tos"
             onClick={[Function]}
@@ -252,23 +263,23 @@ exports[`<Signup /> matches snapshot 1`] = `
           />
         </p>
         <div
-          className="c0"
+          className="c5"
         >
           <input
-            className="c10 c11"
+            className="c12 c13"
             type="submit"
             value="Sign Up"
           />
         </div>
         <div
-          className="c0"
+          className="c5"
         >
           <a
             href="/login"
             onClick={[Function]}
           >
             <button
-              className="c10"
+              className="c12"
             >
               Already have an account? Login here!
             </button>

@@ -98,7 +98,7 @@ exports[`snapshot 1`] = `
 }
 
 .c3 {
-  margin: 0;
+  margin: 0 0 2rem 0;
   position: relative;
   z-index: 10;
   top: min(10vw,5.9rem);
@@ -113,6 +113,8 @@ exports[`snapshot 1`] = `
 }
 
 .c4 {
+  position: relative;
+  bottom: max(1.3vw,1.7rem);
   opacity: 0%;
   color: white;
   display: inline-block;

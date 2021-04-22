@@ -23,15 +23,6 @@ const GlobalStyles = styled.div`
   }
 `;
 
-/* Necessary because this div should cover the whole screen */
-const FixedWrapper = styled(GlobalStyles)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vh;
-  height: 100vh;
-`;
-
 /* Makes an element that jest / react-testing library can test against */
 const getElement = () => {
   const el = document.createElement("div");
@@ -55,6 +46,6 @@ export const Portal = ({ children }) => {
     };
   }, []);
   return modalEl
-    ? ReactDOM.createPortal(<FixedWrapper>{children}</FixedWrapper>, modalEl)
+    ? ReactDOM.createPortal(<GlobalStyles>{children}</GlobalStyles>, modalEl)
     : null;
 };
