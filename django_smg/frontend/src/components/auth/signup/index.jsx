@@ -8,15 +8,16 @@ import styled, {
   Div,
   Input,
   P,
+  H2,
   Button,
   Label,
   Checkbox,
   Description,
 } from "Styles";
-import { ErrorArray } from "Common/custom_error";
 import { Tos, Privacy } from "../../legal";
 
 import { ValidationMessages } from "./validation_messages";
+import { useModals } from "Common/useModals";
 
 export const PASSWD_MIN_LENGTH = 9;
 
@@ -62,9 +63,58 @@ const signup = (props) => {
   const [usernameInput, updateUsername] = useState("");
   const [passwordInput, updatePassword] = useState("");
   const [passwordConfirm, updateConfirm] = useState("");
-  const [blanket, setBlanket] = useState(null);
-  const clearBlanket = () => setBlanket(null);
   const [TOS, setTOS] = useState(false);
+
+  const modalTypes = {
+    BLANK_FIELDS: "BLANK FIELDS",
+    PASSWORD_MISMATCH: "PASSWORD MISMATCH",
+    TOS_UNCHECKED: "TOS_UNCHECKED",
+    VALIDATION_ERROR: "VALIDATION_ERROR",
+  };
+  const [modals, dispatchModal] = useModals({
+    props,
+    modals: [
+      {
+        name: modalTypes.BLANK_FIELDS,
+        show: () => (
+          <>
+            <H2>Blank Fields</H2>
+            <p>Required fields are blank</p>
+            <p>All fields are required.</p>
+          </>
+        ),
+      },
+      {
+        name: modalTypes.PASSWORD_MISMATCH,
+        show: () => (
+          <H2 data-testid="passwordMismatchModal">Passwords do not match</H2>
+        ),
+      },
+      {
+        name: modalTypes.TOS_UNCHECKED,
+        show: () => (
+          <>
+            <H2 data-testid="tosModalHeader">Terms of Service</H2>
+            <p>You must accept the terms of service to make an account</p>
+          </>
+        ),
+      },
+      {
+        name: modalTypes.VALIDATION_ERROR,
+        show: ({ errors }) => {
+          return (
+            <>
+              <H2>Validation Error</H2>
+              {errors.map((e, i) => (
+                <p key={e + i}>{e}</p>
+              ))}
+            </>
+          );
+        },
+        onDismissed: () => props.clearError(),
+      },
+    ],
+  });
 
   /**
    * Validate form and inject a modal warning into "blanket" if it is not
@@ -83,33 +133,13 @@ const signup = (props) => {
       passwordInput === "" ||
       passwordConfirm === ""
     ) {
-      setBlanket(
-        <ErrorArray
-          header="Blank Fields"
-          message={["Required fields are blank", "All fields are required."]}
-          onOk={clearBlanket}
-        />
-      );
+      dispatchModal(modalTypes.BLANK_FIELDS);
       return false;
-    }
-    if (passwordInput !== passwordConfirm) {
-      setBlanket(
-        <ErrorArray
-          header="Passwords do not match"
-          message={[""]}
-          onOk={clearBlanket}
-        />
-      );
+    } else if (passwordInput !== passwordConfirm) {
+      dispatchModal(modalTypes.PASSWORD_MISMATCH);
       return false;
-    }
-    if (!TOS) {
-      setBlanket(
-        <ErrorArray
-          header="Terms of Service"
-          message={["You must accept the terms of service to make an account"]}
-          onOk={clearBlanket}
-        />
-      );
+    } else if (!TOS) {
+      dispatchModal(modalTypes.TOS_UNCHECKED);
       return false;
     }
     return true;
@@ -128,25 +158,16 @@ const signup = (props) => {
 
   if (props.isAuthenticated) {
     return <Redirect to="/teacher" />;
-  } else if (props.authError && !blanket) {
+  } else if (props.authError) {
     const errors = Object.keys(props.authError).map(
       (k) => `${k}: ${props.authError[k]}`
     );
-    setBlanket(
-      <ErrorArray
-        onOk={() => {
-          props.clearError();
-          clearBlanket();
-        }}
-        header="Validation Error"
-        message={errors}
-      />
-    );
+    dispatchModal(modalTypes.VALIDATION_ERROR, { errors });
   }
 
   return (
     <Wrapper>
-      {blanket}
+      {modals}
       <Header>sign up!</Header>
       <Container>
         <FlexForm data-testid="signupForm" onSubmit={submit}>

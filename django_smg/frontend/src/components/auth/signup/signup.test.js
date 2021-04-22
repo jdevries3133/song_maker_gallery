@@ -1,29 +1,21 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import "jest-styled-components";
-import {
-  render,
-  screen,
-  fireEvent,
-  act,
-  waitFor,
-} from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import "jest-styled-components";
+
 import { Context } from "Test/app_context";
 
 import Signup from "./index";
 import { REGISTER } from "Actions/types";
 import { register } from "Actions/auth.action";
 import { Tos, Privacy } from "../../legal";
-import { ErrorArray } from "Common/custom_error";
 
-jest.mock("Common/custom_error");
 jest.mock("../../legal");
 jest.mock("Actions/auth.action");
 
 Tos.mockImplementation(() => <span>TOS MOCK</span>);
 Privacy.mockImplementation(() => <span>PRIVACY POLICY MOCK</span>);
-ErrorArray.mockImplementation(() => <span>MOCK ERRORARRAY</span>);
 
 beforeEach(() => {
   render(
@@ -35,8 +27,23 @@ beforeEach(() => {
 
 afterEach(() => {
   register.mockClear();
-  ErrorArray.mockClear();
 });
+
+const fillOutFields = (data) => {
+  fireEvent.change(screen.getByTestId("emailInput"), {
+    target: { value: data.email },
+  });
+  fireEvent.change(screen.getByTestId("usernameInput"), {
+    target: { value: data.username },
+  });
+  fireEvent.change(screen.getByTestId("passwordInput"), {
+    target: { value: data.password },
+  });
+  fireEvent.change(screen.getByTestId("passwordConfirmInput"), {
+    target: { value: data.password },
+  });
+  fireEvent.click(screen.getByTestId("tosCheckbox"));
+};
 
 const submitForm = async (
   data = {
@@ -45,24 +52,8 @@ const submitForm = async (
     password: "123456789",
   }
 ) => {
-  act(() => {
-    fireEvent.change(screen.getByTestId("emailInput"), {
-      target: { value: data.email },
-    });
-    fireEvent.change(screen.getByTestId("usernameInput"), {
-      target: { value: data.username },
-    });
-    fireEvent.change(screen.getByTestId("passwordInput"), {
-      target: { value: data.password },
-    });
-    fireEvent.change(screen.getByTestId("passwordConfirmInput"), {
-      target: { value: data.password },
-    });
-    fireEvent.click(screen.getByTestId("tosCheckbox"));
-  });
-  act(() => {
-    fireEvent.submit(screen.getByTestId("signupForm"));
-  });
+  fillOutFields(data);
+  fireEvent.submit(screen.getByTestId("signupForm"));
   return data;
 };
 
@@ -85,10 +76,8 @@ describe("<Signup />", () => {
 
   it("tells user when passswd is long enough with green text", async (done) => {
     // action: input password
-    act(() => {
-      fireEvent.change(screen.getByTestId("passwordInput"), {
-        target: { value: "123456789" },
-      });
+    fireEvent.change(screen.getByTestId("passwordInput"), {
+      target: { value: "123456789" },
     });
 
     // assertions
@@ -103,18 +92,14 @@ describe("<Signup />", () => {
     done();
   });
   it("warns user if they put a space in the username", async (done) => {
-    act(() => {
-      fireEvent.change(screen.getByTestId("usernameInput"), {
-        target: { value: " " },
-      });
+    fireEvent.change(screen.getByTestId("usernameInput"), {
+      target: { value: " " },
     });
     expect(
       screen.queryByText("Username may not contain spaces.")
     ).toBeVisible();
-    act(() => {
-      fireEvent.change(screen.getByTestId("usernameInput"), {
-        target: { value: "nospaces" },
-      });
+    fireEvent.change(screen.getByTestId("usernameInput"), {
+      target: { value: "nospaces" },
     });
     expect(screen.queryByText("Username may not contain spaces.")).toBeNull();
     done();
@@ -122,16 +107,12 @@ describe("<Signup />", () => {
   it("restores original passwd length message after deleting password", async (done) => {
     // actions
     // input password
-    act(() => {
-      fireEvent.change(screen.getByTestId("passwordInput"), {
-        target: { value: "123456789A" },
-      });
+    fireEvent.change(screen.getByTestId("passwordInput"), {
+      target: { value: "123456789A" },
     });
     // partially remove password
-    act(() => {
-      fireEvent.change(screen.getByTestId("passwordInput"), {
-        target: { value: "123456" },
-      });
+    fireEvent.change(screen.getByTestId("passwordInput"), {
+      target: { value: "123456" },
     });
 
     // assertions
@@ -143,20 +124,59 @@ describe("<Signup />", () => {
     done();
   });
   it("disallows empty fields", async (done) => {
-    act(() => {
-      fireEvent.submit(screen.getByTestId("signupForm"));
-    });
+    fireEvent.submit(screen.getByTestId("signupForm"));
     await waitFor(() => {
-      expect(ErrorArray).toHaveBeenCalledWith(
-        {
-          header: "Blank Fields",
-          message: ["Required fields are blank", "All fields are required."],
-          onOk: expect.anything(),
-        },
-        expect.anything() // other args from react framework, etc.
+      expect(screen.queryByText("Blank Fields")).toBeVisible();
+      expect(screen.queryByText("Required fields are blank")).toBeVisible();
+      expect(screen.queryByText("All fields are required.")).toBeVisible();
+    });
+    done();
+  });
+  it("disallows mismatched passwords", async (done) => {
+    fillOutFields({
+      username: "myuser",
+      email: "myuser@email.com",
+      password: "thispassword",
+    });
+
+    // change password confirm to something that does not match
+    fireEvent.change(screen.getByTestId("passwordConfirmInput"), {
+      target: { value: "mismatch" },
+    });
+
+    // hint should show before form submission
+    await waitFor(() => {
+      expect(screen.getByText("Passwords do not match")).toBeVisible();
+    });
+
+    // submit form
+    fireEvent.submit(screen.getByTestId("signupForm"));
+    await waitFor(() => {
+      expect(screen.getByTestId("passwordMismatchModal")).toHaveTextContent(
+        "Passwords do not match"
       );
     });
     done();
+  });
+  it("disallows empty TOS checkbox", () => {
+    fillOutFields({
+      username: "myuser",
+      email: "myuser@email.com",
+      password: "thispassword",
+    });
+    // toggle back off after above toggles it on
+    fireEvent.click(screen.getByTestId("tosCheckbox"));
+    // submit form
+    fireEvent.submit(screen.getByTestId("signupForm"));
+
+    expect(screen.getByTestId("tosModalHeader")).toHaveTextContent(
+      "Terms of Service"
+    );
+    expect(
+      screen.queryByText(
+        "You must accept the terms of service to make an account"
+      )
+    ).toBeVisible();
   });
   it("calls user register action on form submission", async (done) => {
     const data = await submitForm();
@@ -183,17 +203,12 @@ describe("<Signup />", () => {
       });
     });
     await submitForm();
-    expect(ErrorArray).toHaveBeenCalledWith(
-      {
-        header: "Validation Error",
-        message: expect.arrayContaining([
-          `username: ${fakeApiResponse["username"]}`,
-          `email: ${fakeApiResponse["email"]}`,
-        ]),
-        onOk: expect.anything(),
-      },
-      expect.anything()
-    );
+    await waitFor(async () => {
+      expect(
+        screen.queryByText("username: A user with that username already exists")
+      ).toBeVisible();
+      expect(screen.queryByText("email: Invalid email address")).toBeVisible();
+    });
     done();
   });
 });
