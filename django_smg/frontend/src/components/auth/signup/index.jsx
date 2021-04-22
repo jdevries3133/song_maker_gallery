@@ -17,6 +17,7 @@ import { ErrorArray } from "Common/custom_error";
 import { Tos, Privacy } from "../../legal";
 
 import { ValidationMessages } from "./validation_messages";
+import { FocusLoop } from "Common/focus_loop";
 
 export const PASSWD_MIN_LENGTH = 9;
 
@@ -146,7 +147,8 @@ const signup = (props) => {
 
   return (
     <Wrapper>
-      {blanket}
+      {blanket != null ? <FocusLoop>{blanket}</FocusLoop> : ""}
+
       <Header>sign up!</Header>
       <Container>
         <FlexForm data-testid="signupForm" onSubmit={submit}>
