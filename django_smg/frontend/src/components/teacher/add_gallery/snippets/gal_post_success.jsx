@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Blanket, Div, H2, P } from "Styles";
+import { StyledBlanket as Blanket } from "Common/blanket/styled_blanket";
+import { Button, H2, P } from "Styles";
 
 export const GalPostSuccess = (props) => {
   const relative_path = "/gallery/" + props.slug + "/";

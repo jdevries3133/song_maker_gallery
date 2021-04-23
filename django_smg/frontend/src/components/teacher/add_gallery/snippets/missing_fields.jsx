@@ -1,5 +1,9 @@
 import React from "react";
-import styled, { Div, H2, H3, Input, Blanket, Button } from "Styles";
+
+// TODO: factor out depricated use of low-level blanket ("modal")
+import { StyledBlanket as Blanket } from "Common/blanket/styled_blanket";
+
+import styled, { Div, H2, H3, Input, Button } from "Styles";
 
 const TextArea = styled.textarea`
   font-family: Helvetica, Arial, sans-serif;

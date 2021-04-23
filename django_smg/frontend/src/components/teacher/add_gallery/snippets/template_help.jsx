@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import styled, { P, H3, Blanket, Button } from "Styles";
+
+// TODO: factor out depricated use of low-level blanket ("modal")
+import { StyledBlanket as Blanket } from "Common/blanket/styled_blanket";
+
+import styled, { P, H3, Button } from "Styles";
 
 const A = styled.a`
   font-weight: bold;

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import styled, { Input, H2, H3, Blanket, Button, P, Div, css } from "Styles";
+// TODO: factor out depricated use of low-level blanket ("modal")
+import { StyledBlanket as Blanket } from "Common/blanket/styled_blanket";
+
+import styled, { Input, H2, H3, Button, P, Div, css } from "Styles";
 
 import { StagedGroupBody } from "./snippets";
 

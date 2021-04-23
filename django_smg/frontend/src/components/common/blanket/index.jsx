@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 
 import { FocusLoop } from "Common/focus_loop";
 import { Portal } from "Common/portal";
-import styled, { Blanket as StyledBlanket, Button } from "Styles";
+import styled, { Button } from "Styles";
+
+import { StyledBlanket } from "./styled_blanket";
 
 const BlanketChildren = styled.div`
   margin-top: 2rem;

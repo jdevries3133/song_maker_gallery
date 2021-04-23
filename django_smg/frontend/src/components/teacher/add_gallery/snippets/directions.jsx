@@ -1,5 +1,9 @@
 import React, { useState, Fragment } from "react";
-import styled, { Blanket, Button } from "Styles";
+
+// TODO: factor out depricated use of low-level blanket ("modal")
+import { StyledBlanket as Blanket } from "Common/blanket/styled_blanket";
+
+import styled, { Button } from "Styles";
 
 const A = styled.a`
   text-decoration: underline;
