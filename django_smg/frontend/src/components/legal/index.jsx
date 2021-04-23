@@ -5,10 +5,9 @@
 import React, { useState, Fragment } from "react";
 import styled from "styled-components";
 
-import { Portal } from "Common/portal";
-
 import { TosText } from "./terms_of_service";
 import { PrivacyText } from "./privacy_policy";
+
 export { TosPage } from "./terms_of_service";
 export { PrivacyPage } from "./privacy_policy";
 
@@ -28,11 +27,7 @@ export const Tos = () => {
   const toggleModal = () => setShowModal(!showModal);
   return (
     <Fragment>
-      {showModal ? (
-        <Portal>
-          <TosText onOk={toggleModal} />
-        </Portal>
-      ) : null}
+      {showModal ? <TosText onOk={toggleModal} /> : null}
       <A onClick={toggleModal}>Terms of Service</A>
     </Fragment>
   );
@@ -43,11 +38,7 @@ export const Privacy = () => {
   const toggleModal = () => setShowModal(!showModal);
   return (
     <Fragment>
-      {showModal ? (
-        <Portal>
-          <PrivacyText onOk={toggleModal} />
-        </Portal>
-      ) : null}
+      {showModal ? <PrivacyText onOk={toggleModal} /> : null}
       <A onClick={toggleModal}>Privacy Policy</A>
     </Fragment>
   );

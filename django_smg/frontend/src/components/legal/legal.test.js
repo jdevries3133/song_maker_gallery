@@ -3,25 +3,25 @@ import renderer from "react-test-renderer";
 import "jest-styled-components";
 import { MemoryRouter } from "react-router-dom";
 
-import { TosPage } from "./terms_of_service";
-import { PrivacyPage } from "./privacy_policy";
+import { TosContent } from "./terms_of_service";
+import { PrivacyContent } from "./privacy_policy";
 
 describe("legal views", () => {
-  test("terms of service matches snapshot", () => {
+  test("terms of service content matches snapshot", () => {
     const tree = renderer
       .create(
         <MemoryRouter>
-          <TosPage />
+          <TosContent />
         </MemoryRouter>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-  test("privacy policy matches snapshot", () => {
+  test("privacy policy content matches snapshot", () => {
     const tree = renderer
       .create(
         <MemoryRouter>
-          <PrivacyPage />
+          <PrivacyContent />
         </MemoryRouter>
       )
       .toJSON();

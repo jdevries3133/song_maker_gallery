@@ -11,6 +11,8 @@ import "jest-styled-components";
 
 import { Blanket } from "./index";
 
+jest.mock("Common/portal/portal");
+
 const onOk = jest.fn();
 
 afterEach(() => onOk.mockClear());

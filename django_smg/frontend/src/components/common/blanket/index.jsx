@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
+import { Portal } from "Common/portal";
 import styled, { Blanket as StyledBlanket, Button } from "Styles";
 
 const BlanketChildren = styled.div`
@@ -30,18 +31,20 @@ export const Blanket = ({ children, onDismissed, ...props }) => {
   }, [props.enabled]);
 
   return (
-    <ToggleBlanket isEnabled={enabled} data-testid="blanket">
-      <OkButton
-        data-testid="dismissBlanketButton"
-        onClick={() => {
-          setEnabled(false);
-          onDismissed && onDismissed();
-        }}
-      >
-        Close
-      </OkButton>
-      <BlanketChildren>{children}</BlanketChildren>
-    </ToggleBlanket>
+    <Portal>
+      <ToggleBlanket isEnabled={enabled} data-testid="blanket">
+        <OkButton
+          data-testid="dismissBlanketButton"
+          onClick={() => {
+            setEnabled(false);
+            onDismissed && onDismissed();
+          }}
+        >
+          Close
+        </OkButton>
+        <BlanketChildren>{children}</BlanketChildren>
+      </ToggleBlanket>
+    </Portal>
   );
 };
 

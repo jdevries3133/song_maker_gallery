@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { Blanket, Button, Description } from "Styles";
+import { Description } from "Styles";
+import { Blanket } from "Common/blanket";
 import { LegalContainer } from "./terms_of_service";
 
-const PrivacyContent = (props) => (
+export const PrivacyContent = (props) => (
   <LegalContainer>
     <h1 id="privacy-policy">Privacy Policy</h1>
     <p>
@@ -35,14 +36,9 @@ export const PrivacyPage = () => (
   </Description>
 );
 
-export const PrivacyText = (props) => (
+export const PrivacyText = () => (
   <Blanket>
-    <PrivacyContent
-      okButton={
-        <Button color="salmon" onClick={() => props.onOk()}>
-          Close
-        </Button>
-      }
-    />
+    <div style={{ height: "2rem" }} />
+    <PrivacyContent />
   </Blanket>
 );

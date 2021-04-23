@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import styled, { Button, Div, Blanket, Description } from "Styles";
+import styled, { Div, Description } from "Styles";
+import { Blanket } from "Common/blanket";
 
 export const LegalContainer = styled(Div)`
   margin: 3%;
@@ -19,12 +20,12 @@ export const LegalContainer = styled(Div)`
   }
 `;
 
-const TosContent = (props) => (
+export const TosContent = (props) => (
   <LegalContainer>
     <h1>Terms of Service</h1>
     <p>Updated 01/2021</p>
     <p>
-      Also see our <Link to="/privacy/">privacy policy</Link>
+      Also see our <Link to="/privacy/">Privacy Policy</Link>
     </p>
     <ol>
       <li>
@@ -112,16 +113,11 @@ export const TosPage = () => {
 };
 
 /* modal with close button */
-export const TosText = ({ onOk }) => {
+export const TosText = () => {
   return (
     <Blanket>
-      <TosContent
-        okButton={
-          <Button color="salmon" onClick={() => onOk()}>
-            Close
-          </Button>
-        }
-      />
+      <div style={{ height: "2rem" }} />
+      <TosContent />
     </Blanket>
   );
 };
