@@ -97,10 +97,10 @@ describe("login", () => {
       fireEvent.click(screen.getByTestId("loginSubmit"));
     });
     await waitFor(() => {
-      expect(screen.getByTestId("dismissBlanketButton")).toBeVisible();
+      expect(screen.getByTestId("onOkButton")).toBeVisible();
     });
     act(() => {
-      fireEvent.click(screen.getByTestId("dismissBlanketButton"));
+      fireEvent.click(screen.getByTestId("onOkButton"));
     });
     await waitFor(() => {
       expect(screen.queryByTestId("CustomError")).toBeNull();

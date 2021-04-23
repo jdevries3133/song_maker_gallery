@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
+import { FocusLoop } from "Common/focus_loop";
 import { Portal } from "Common/portal";
 import styled, { Blanket as StyledBlanket, Button } from "Styles";
 
@@ -29,18 +30,20 @@ export const Blanket = ({ children, onDismissed, ...props }) => {
   if (enabled) {
     return (
       <Portal>
-        <StyledBlanket data-testid="blanket">
-          <OkButton
-            data-testid="dismissBlanketButton"
-            onClick={() => {
-              setEnabled(false);
-              onDismissed && onDismissed();
-            }}
-          >
-            Close
-          </OkButton>
-          <BlanketChildren>{children}</BlanketChildren>
-        </StyledBlanket>
+        <FocusLoop>
+          <StyledBlanket data-testid="blanket">
+            <OkButton
+              data-testid="dismissBlanketButton"
+              onClick={() => {
+                setEnabled(false);
+                onDismissed && onDismissed();
+              }}
+            >
+              Close
+            </OkButton>
+            <BlanketChildren>{children}</BlanketChildren>
+          </StyledBlanket>
+        </FocusLoop>
       </Portal>
     );
   }
@@ -49,7 +52,7 @@ export const Blanket = ({ children, onDismissed, ...props }) => {
 
 Blanket.propTypes = {
   children: PropTypes.node,
-  onDismissed: PropTypes.func,
+  dimissedCallback: PropTypes.func,
   enabled: PropTypes.bool,
 };
 
