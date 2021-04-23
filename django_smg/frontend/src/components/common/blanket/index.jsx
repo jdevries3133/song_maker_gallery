@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import styled, { Blanket as StyledBlanket, Button } from "Styles";
-import { FocusLoop } from "Common/focus_loop";
 
 const BlanketChildren = styled.div`
   margin-top: 2rem;
@@ -31,20 +30,18 @@ export const Blanket = ({ children, onDismissed, ...props }) => {
   }, [props.enabled]);
 
   return (
-    <FocusLoop>
-      <ToggleBlanket isEnabled={enabled} data-testid="blanket">
-        <OkButton
-          data-testid="dismissBlanketButton"
-          onClick={() => {
-            setEnabled(false);
-            onDismissed && onDismissed();
-          }}
-        >
-          Close
-        </OkButton>
-        <BlanketChildren>{children}</BlanketChildren>
-      </ToggleBlanket>
-    </FocusLoop>
+    <ToggleBlanket isEnabled={enabled} data-testid="blanket">
+      <OkButton
+        data-testid="dismissBlanketButton"
+        onClick={() => {
+          setEnabled(false);
+          onDismissed && onDismissed();
+        }}
+      >
+        Close
+      </OkButton>
+      <BlanketChildren>{children}</BlanketChildren>
+    </ToggleBlanket>
   );
 };
 
