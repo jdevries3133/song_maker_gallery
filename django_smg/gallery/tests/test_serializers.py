@@ -167,33 +167,10 @@ class TestGallerySerializer(GalleryTestCase):
         ))
 
     @ patch_fetch_and_cache
-    def test_render_many(self):
-        self._add_gallery()
-        result = GalleryDatasetSerializer(
-            context={
-                'user': self.user,
-            }).render_many()
-        self.assertTrue(
-            are_rendered_groups_same(
-                result[0],
-                result[1],
-            )
-        )
-
-    @ patch_fetch_and_cache
     def test_render_method_num_queries(self):
         GalleryDatasetSerializer().render('test-title')
         with self.assertNumQueries(4):
             GalleryDatasetSerializer().render('test-title')
-
-    @ patch_fetch_and_cache
-    def test_render_many_max_galleries(self):
-        for _ in range(5):
-            self._add_gallery()
-        rendered = GalleryDatasetSerializer(context={
-            'user': self.user
-        }).render_many(max_galleries=3)
-        self.assertEqual(len(rendered), 3)
 
     def test_duplicate_group_names_are_invalid(self):
         self.assertFalse(

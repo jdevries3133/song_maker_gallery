@@ -32,6 +32,7 @@ class GallerySerializer(serializers.ModelSerializer):
             'pk',
         )
 
+
 class GalleryDatasetSerializer(serializers.Serializer):
     """
     Brings together information from the following models to create or render
@@ -73,24 +74,6 @@ class GalleryDatasetSerializer(serializers.Serializer):
             'songs': songs,
             'groups': groups
         }
-
-    def render_many(self, *, max_galleries=None) -> list:
-        """
-        Render all the user's galleries, or a certain amount sorted
-        by date created.
-        """
-        queryset = [
-            self.render(gallery=g) for g in
-            Gallery.objects.filter(  # type: ignore
-                owner=self.context.get('user')
-            ).order_by(
-                'created'
-            ).prefetch_related(
-                'songs',
-                'song_groups'
-            )
-        ]
-        return queryset if not max_galleries else queryset[:max_galleries]
 
     def render(self, slug=None, gallery=None) -> dict:
         """
