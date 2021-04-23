@@ -1,17 +1,13 @@
 import React from "react";
-import styled, { css } from "styled-components";
 
-import { Blanket, H2, Button } from "Styles";
+import styled, { H2, css } from "Styles";
+
+const Container = styled.div`
+  padding: clamp(10px, 4vw, 20px);
+`;
 
 const DonateHeader = styled(H2)`
   background-color: rgba(217, 157, 255, 0.81);
-`;
-
-const FixedCloseButton = styled(Button)`
-  position: absolute;
-  bottom: 1px;
-  right: 1px;
-  margin: 0;
 `;
 
 const P = styled.p`
@@ -26,8 +22,6 @@ const P = styled.p`
 `;
 
 const Signature = styled.div`
-  position: relative;
-  bottom: 30px;
   width: 178px;
   display: inline-block;
   @media (max-width: 606px) {
@@ -41,9 +35,9 @@ const Footer = styled.footer`
   }
 `;
 
-const donation = (props) => {
+const donation = () => {
   return (
-    <Blanket>
+    <Container>
       <div
         style={{ display: "inline-block", textAlign: "center", width: "100%" }}
       >
@@ -112,11 +106,8 @@ const donation = (props) => {
           <P signature>Thanks,</P>
           <P signature>The SMG Team</P>
         </Signature>
-        <FixedCloseButton blanketClose onClick={() => props.onClose()}>
-          close
-        </FixedCloseButton>
       </Footer>
-    </Blanket>
+    </Container>
   );
 };
 

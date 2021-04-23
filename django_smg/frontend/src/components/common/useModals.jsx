@@ -1,6 +1,5 @@
 import React, { useReducer } from "react";
 import { Blanket } from "./blanket";
-import { Portal } from "./portal";
 
 export const types = { SHOW: "SHOW_NAME", REMOVE: "REMOVE_NAME" };
 const reducer = (state, action) => {
@@ -100,24 +99,26 @@ export const useModals = ({ modals, props = {} }) => {
       const Component = obj.show;
       return (
         obj.test(props) && (
-          <Portal key={i + Math.random()}>
-            <Blanket onDismissed={() => dismissedHandler(obj)}>
-              <Component {...state[obj.name]?.props} />
-            </Blanket>
-          </Portal>
+          <Blanket
+            key={i + Math.random()}
+            onDismissed={() => dismissedHandler(obj)}
+          >
+            <Component {...state[obj.name]?.props} />
+          </Blanket>
         )
       );
     }),
 
-    ...namedModals.map((obj) => {
+    ...namedModals.map((obj, i) => {
       const Component = obj.show;
       return (
         state[obj.name]?.isVisible && (
-          <Portal key={obj.name}>
-            <Blanket onDismissed={() => dismissedHandler(obj)}>
-              <Component {...state[obj.name]?.props} />
-            </Blanket>
-          </Portal>
+          <Blanket
+            key={i + Math.random()}
+            onDismissed={() => dismissedHandler(obj)}
+          >
+            <Component {...state[obj.name]?.props} />
+          </Blanket>
         )
       );
     }),

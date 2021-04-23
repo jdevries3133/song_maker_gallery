@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
+
+import { useModals } from "Common/useModals";
 
 import DonateButton from "./donate_button";
-import Blanket from "./donate";
+import DonateModal from "./donate";
 
 export const Donate = () => {
-  const [blanket, setBlanket] = useState(null);
+  const [modal, dispatchModal] = useModals({
+    modals: [
+      {
+        name: "donateModal",
+        show: DonateModal,
+      },
+    ],
+  });
 
   return (
     <>
-      {blanket}
-      <DonateButton
-        onClick={() => setBlanket(<Blanket onClose={() => setBlanket(null)} />)}
-      >
+      {modal}
+      <DonateButton onClick={() => dispatchModal("donateModal")}>
         $
       </DonateButton>
     </>

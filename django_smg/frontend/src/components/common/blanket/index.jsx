@@ -8,10 +8,6 @@ const BlanketChildren = styled.div`
   margin-top: 2rem;
 `;
 
-const ToggleBlanket = styled(StyledBlanket)`
-  display: ${(props) => (props.isEnabled ? "auto" : "none")};
-`;
-
 const OkButton = styled(Button)`
   position: absolute;
   top: 0;
@@ -30,22 +26,25 @@ export const Blanket = ({ children, onDismissed, ...props }) => {
     setEnabled(props.enabled);
   }, [props.enabled]);
 
-  return (
-    <Portal>
-      <ToggleBlanket isEnabled={enabled} data-testid="blanket">
-        <OkButton
-          data-testid="dismissBlanketButton"
-          onClick={() => {
-            setEnabled(false);
-            onDismissed && onDismissed();
-          }}
-        >
-          Close
-        </OkButton>
-        <BlanketChildren>{children}</BlanketChildren>
-      </ToggleBlanket>
-    </Portal>
-  );
+  if (enabled) {
+    return (
+      <Portal>
+        <StyledBlanket data-testid="blanket">
+          <OkButton
+            data-testid="dismissBlanketButton"
+            onClick={() => {
+              setEnabled(false);
+              onDismissed && onDismissed();
+            }}
+          >
+            Close
+          </OkButton>
+          <BlanketChildren>{children}</BlanketChildren>
+        </StyledBlanket>
+      </Portal>
+    );
+  }
+  return null;
 };
 
 Blanket.propTypes = {

@@ -2,16 +2,18 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 
-/* Hack because global css doesn't work in storybook... */
-const GlobalStyles = styled.div`
+/**
+ * TODO: find a way to de-dupe global styles. They are here for the sake of
+ * storybook only.
+ */
+const PortalContainer = styled.div`
+  /************************** GLOBAL STYLES *************************************/
   *,
   *:before,
   *:after {
     box-sizing: border-box;
   }
 
-  background: url("/static/frontend/background.png");
-  background-size: 50vw;
   font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
@@ -21,6 +23,13 @@ const GlobalStyles = styled.div`
   @media (min-width: 475px) {
     scroll-behavior: smooth;
   }
+
+  /************************** WRAPPER STYLES ************************************/
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
 `;
 
 /* Makes an element that jest / react-testing library can test against */
@@ -46,6 +55,9 @@ export const Portal = ({ children }) => {
     };
   }, []);
   return modalEl
-    ? ReactDOM.createPortal(<GlobalStyles>{children}</GlobalStyles>, modalEl)
+    ? ReactDOM.createPortal(
+        <PortalContainer>{children}</PortalContainer>,
+        modalEl
+      )
     : null;
 };

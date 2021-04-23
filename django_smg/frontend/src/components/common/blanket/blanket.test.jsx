@@ -44,21 +44,15 @@ describe("<Blanket />", () => {
       fireEvent.click(screen.getByTestId("dismissBlanketButton"));
     });
     await waitFor(() => {
-      expect(screen.queryByTestId("blanket")).toHaveStyleRule(
-        "display",
-        "none"
-      );
+      expect(screen.queryByTestId("blanket")).toBeNull();
       done();
     });
   });
 
-  it("can be initialized with visibility: none", async (done) => {
+  it("can be initialized without being mounted", async (done) => {
     render(<Blanket enabled={false} />);
     await waitFor(() => {
-      expect(screen.queryByTestId("blanket")).toHaveStyleRule(
-        "display",
-        "none"
-      );
+      expect(screen.queryByTestId("blanket")).toBeNull();
     });
     done();
   });
