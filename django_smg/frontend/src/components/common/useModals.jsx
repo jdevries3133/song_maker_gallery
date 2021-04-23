@@ -1,10 +1,5 @@
-/**
- * Hook which accepts a schema and returns modal components if passed test
- * are met.
- */
 import React, { useReducer } from "react";
 import { Blanket } from "./blanket";
-import { Portal } from "Common/portal";
 
 export const types = { SHOW: "SHOW_NAME", REMOVE: "REMOVE_NAME" };
 const reducer = (state, action) => {
@@ -12,20 +7,36 @@ const reducer = (state, action) => {
     case types.SHOW:
       return {
         ...state,
-        showNamed: [...state.showNamed, action.name],
-        passProps: {
-          ...state.passProps,
-          [action.name]: action.passProps,
+        [action.name]: {
+          isVisible: true,
+          props: action.passProps,
         },
       };
+      break;
     case types.REMOVE:
       return {
         ...state,
-        showNamed: state.showNamed.filter((n) => n !== action.name),
+        [action.name]: {
+          isVisible: false,
+        },
       };
+      break;
     default:
       throw new Error(`Unsupported action type: ${action.type}`);
   }
+};
+
+/* guard against infinite re-renders */
+const shouldDispatch = (modalName, dispatchType, currentState) => {
+  switch (dispatchType) {
+    case types.SHOW:
+      if (currentState[modalName]?.isVisible) return false;
+      break;
+    case types.REMOVE:
+      if (!currentState[modalName]?.isVisible) return false;
+      break;
+  }
+  return true;
 };
 
 /**
@@ -49,12 +60,12 @@ const reducer = (state, action) => {
  * }
  */
 export const useModals = ({ modals, props = {} }) => {
-  const [state, dispatch] = useReducer(reducer, { showNamed: [] });
+  const [state, dispatch] = useReducer(reducer, {});
 
   // are not held in state
   const propDependentModals = modals.filter((obj) => !!obj.test);
 
-  // are held in state, and exposed for update via dispatch wrapper
+  // are held in state, and exposed for mount/dismount via dispatch wrapper
   const namedModals = modals.filter((obj) => !!obj.name);
 
   const dispatchWrapper = (modalName, passProps, type = types.SHOW) => {
@@ -66,16 +77,17 @@ export const useModals = ({ modals, props = {} }) => {
           `not a named modal in your schema.`
       );
     }
-    // fire action
-    dispatch({
-      type: type,
-      name: modalName,
-      passProps: passProps,
-    });
+    if (shouldDispatch(modalName, type, state)) {
+      dispatch({
+        type: type,
+        name: modalName,
+        passProps: passProps,
+      });
+    }
   };
 
   const dismissedHandler = (obj) => {
-    obj.onDismissed ? obj.onDismissed() : null;
+    obj.onDismissed && obj.onDismissed();
     dispatch({
       type: types.REMOVE,
       name: obj.name,
@@ -85,23 +97,30 @@ export const useModals = ({ modals, props = {} }) => {
   const returnModals = [
     ...propDependentModals.map((obj, i) => {
       const Component = obj.show;
-      return obj.test(props) ? (
-        <Portal key={i + Math.random()}>
-          <Blanket onDismissed={() => dismissedHandler(obj)}>
-            <Component />
+      return (
+        obj.test(props) && (
+          <Blanket
+            key={i + Math.random()}
+            onDismissed={() => dismissedHandler(obj)}
+          >
+            <Component {...state[obj.name]?.props} />
           </Blanket>
-        </Portal>
-      ) : null;
+        )
+      );
     }),
-    ...namedModals.map((obj) => {
+
+    ...namedModals.map((obj, i) => {
       const Component = obj.show;
-      return state.showNamed.includes(obj.name) ? (
-        <Portal key={obj.name}>
-          <Blanket onDismissed={() => dismissedHandler(obj)}>
-            <Component {...state.passProps[obj.name]} />
+      return (
+        state[obj.name]?.isVisible && (
+          <Blanket
+            key={i + Math.random()}
+            onDismissed={() => dismissedHandler(obj)}
+          >
+            <Component {...state[obj.name]?.props} />
           </Blanket>
-        </Portal>
-      ) : null;
+        )
+      );
     }),
   ];
 
