@@ -17,7 +17,7 @@ echo "MYSQL_USER = 'songmaker'" >> django_smg/django_smg/secret_settings.py
 echo "MYSQL_NAME = 'songmaker'" >> django_smg/django_smg/secret_settings.py
 
 
-echo "\n# Config for Song Maker Gallery" >> ~/.bashrc
+echo "# Config for Song Maker Gallery" >> ~/.bashrc
 echo "DJANGO_DEBUG=\"true\"" >> ~/.bashrc
 
 echo "SMG SETUP: Creating virtual environment..."
