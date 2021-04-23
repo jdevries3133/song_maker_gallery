@@ -120,7 +120,9 @@ describe("<ListGalleries />", () => {
     );
 
     fireEvent.click(screen.getByTestId("confirmDeleteBtn"));
-    expect(deleteGallery).toHaveBeenCalled();
+    await waitFor(() =>
+      expect(screen.queryByText("Are you sure?")).toBeFalsy()
+    );
     done();
   });
 });

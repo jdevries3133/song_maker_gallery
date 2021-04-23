@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
 import { DownloadTemplate } from "./download_template";
-import { Blanket } from "Common/blanket";
+import { CustomError } from "Common/custom_error";
 
 /**
  * ex. songData => "Spreadsheet Error"
@@ -19,7 +19,7 @@ const backendMsgAdapter = (i) => {
 /* For when a 400 code comes back */
 export const BadRequest = ({ serverErrorMessage, onOk }) => {
   return (
-    <Blanket onDismissed={onOk}>
+    <CustomError onOk={onOk}>
       {Object.keys(serverErrorMessage).map((k, i) => (
         <Fragment key={i}>
           <h3 data-testid="errMsgTitle">{backendMsgAdapter(k)}</h3>
@@ -45,7 +45,7 @@ export const BadRequest = ({ serverErrorMessage, onOk }) => {
           ) : null}
         </Fragment>
       ))}
-    </Blanket>
+    </CustomError>
   );
 };
 
