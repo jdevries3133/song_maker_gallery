@@ -45,8 +45,21 @@ describe("<Blanket />", () => {
     });
     await waitFor(() => {
       expect(screen.queryByTestId("blanket")).toBeNull();
-      done();
+      expect(onOk).toHaveBeenCalled();
     });
+    done();
+  });
+
+  it("unmounts itself when escape key is pressed", async (done) => {
+    render(<Blanket onDismissed={onOk} />);
+    fireEvent.keyDown(document, {
+      key: "Escape",
+      code: "Escape",
+    });
+    await waitFor(() => {
+      expect(screen.queryByTestId("blanket")).toBeNull();
+    });
+    done();
   });
 
   it("can be initialized without being mounted", async (done) => {

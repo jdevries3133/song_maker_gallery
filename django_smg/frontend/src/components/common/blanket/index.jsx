@@ -23,29 +23,35 @@ const OkButton = styled(Button)`
 export const Blanket = ({ children, onDismissed, ...props }) => {
   // manage whether the component is displayed
   const [enabled, setEnabled] = useState(true);
+  const disable = (e) => {
+    if (e.type == "keydown" && e.key !== "Escape") return;
+    e.preventDefault();
+    setEnabled(false);
+    onDismissed && onDismissed();
+  };
 
   // parent can override and force the blanket to come back or go away
   useEffect(() => {
     setEnabled(props.enabled);
   }, [props.enabled]);
 
+  // modal can be closed with Escape key
+  useEffect(() => {
+    document.addEventListener("keydown", disable);
+    return () => document.removeEventListener("keydown", disable);
+  });
+
   if (enabled) {
     return (
       <Portal>
-        <FocusLoop>
-          <StyledBlanket data-testid="blanket">
-            <OkButton
-              data-testid="dismissBlanketButton"
-              onClick={() => {
-                setEnabled(false);
-                onDismissed && onDismissed();
-              }}
-            >
+        <StyledBlanket data-testid="blanket">
+          <FocusLoop>
+            <OkButton data-testid="dismissBlanketButton" onClick={disable}>
               Close
             </OkButton>
             <BlanketChildren>{children}</BlanketChildren>
-          </StyledBlanket>
-        </FocusLoop>
+          </FocusLoop>
+        </StyledBlanket>
       </Portal>
     );
   }
