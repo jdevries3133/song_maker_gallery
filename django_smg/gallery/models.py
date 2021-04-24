@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 
+from .order_managers import OrderManager
+
 
 class Gallery(models.Model):
     owner = models.ForeignKey(
@@ -84,6 +86,10 @@ class SongGroup(models.Model):
         related_name='song_groups',
     )
 
+    # order of this SongGroup withing the Gallery
+    order = models.IntegerField(null=True)
+    objects = OrderManager('gallery')
+
     def __str__(self):
         return str(self.group_name)
 
@@ -109,6 +115,10 @@ class Song(models.Model):
         related_name='song',
         related_query_name='songs'
     )
+
+    # order of this song withing the SongGroup
+    order = models.IntegerField(null=True)
+    objects = OrderManager('group')
 
     # worker will respond to this field and update it when pulling down data
     # into cache.
