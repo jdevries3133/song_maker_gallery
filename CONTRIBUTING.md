@@ -38,8 +38,8 @@ before you start so that you know where to put what!
 
 # Development Setup
 
-> Run `bash dev_setup.sh` to do all these steps automatically. Beware that it
-> will append to your `~/.bashrc`.
+> Run `bash scripts/dev_setup.sh` to do all these steps automatically. Beware
+> that it will append to your `~/.bashrc`.
 
 ### Django
 

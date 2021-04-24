@@ -32,6 +32,3 @@ db.sqlite3
 db.sqlite3-journal
 *.db
 *.log*
-
-# ---- my start script; not portable ----
-django_smg/start
