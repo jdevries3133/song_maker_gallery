@@ -1,5 +1,10 @@
 import os
 
+# inject type hints all over the place
+import django_stubs_ext
+django_stubs_ext.monkeypatch()
+
+
 ################################################################################
 
                         ## Configurable Settings ##
