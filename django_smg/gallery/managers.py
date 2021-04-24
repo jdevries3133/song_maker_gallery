@@ -14,7 +14,7 @@ class OrderManager(models.Manager):
     https://www.revsys.com/tidbits/keeping-django-model-objects-ordered/
     """
 
-    def __init__(self, foreign_field: str):
+    def __init__(self, foreign_field: str = None):
         """
         I manage the model with an order column. The ordered group is formed
         by combining my model and peers who are related by foreign key to a
@@ -30,6 +30,12 @@ class OrderManager(models.Manager):
         """
         Move an object to a new order position
         """
+
+        if not self.foreign_field:
+            raise Exception(
+                'Move method is unsupported because foreign field is not '
+                'defined.'
+            )
 
         qs = self.get_queryset()
 
@@ -59,6 +65,10 @@ class OrderManager(models.Manager):
             obj.save()
 
     def create(self, **kwargs):
+
+        if not self.foreign_field:
+            return super().create(**kwargs)
+
         instance = self.model(**kwargs)
 
         with transaction.atomic():

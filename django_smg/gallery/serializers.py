@@ -14,22 +14,56 @@ logger = logging.getLogger(__name__)
 class SongSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
-        fields = ('songId', 'galleries')
+        fields = ('songId', 'student_name')
 
 class SongGroupSerializer(serializers.ModelSerializer):
+    songs = SongSerializer(many=True)
     class Meta:
         model = SongGroup
-        fields = ('group_name',)
+        fields = ('group_name', 'songs')
+
+    def create(self, validated_data):
+        song_data = validated_data.pop('songs')
+        song_serializer = self.fields['songs']
+        instance = SongGroup.objects.create(**validated_data)
+        for each in song_data:
+            each['group'] = instance
+            each['gallery'] = instance.gallery
+        song_serializer.create(song_data)
+        return instance
 
 
 class GallerySerializer(serializers.ModelSerializer):
+    song_groups = SongGroupSerializer(many=True)
     class Meta:
         model = Gallery
         fields = (
             'title',
             'description',
-            'slug',
+            'song_groups',
+        )
+
+    def create(self, validated_data):
+        group_data = validated_data.pop('song_groups')
+        group_serializer = self.fields['song_groups']
+        instance = Gallery.objects.create(**validated_data)
+        for each in group_data:
+            each['gallery'] = instance
+        result = group_serializer.create(group_data)
+        return instance
+
+
+class NaiveGallerySerializer(serializers.ModelSerializer):
+    """
+    Depricated and supports convoluted serializer below.
+    """
+    class Meta:
+        model = Gallery
+        fields = (
+            'title',
+            'description',
             'pk',
+            'slug'
         )
 
 

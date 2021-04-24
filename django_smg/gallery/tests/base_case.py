@@ -3,7 +3,6 @@ import json
 from typing import Union, Iterable, Generator
 from unittest.mock import patch
 
-from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from django.test import TestCase, Client
 
@@ -33,7 +32,36 @@ def patch_fetch_and_cache(func):
 class GalleryTestCase(TestCase):
 
     @ property
-    def mock_api_data(self):
+    def mock_api_data(self, new=False):
+
+        if new:
+            return deepcopy({
+            'title': 'Test Title',
+            'description': 'This is the test description.',
+                'songData': [
+                    {'group_name': 'A Group of Marks',
+                      'songs': [{'songId': '5676759593254912',
+                                 'student_name': 'Mark Johnson'},
+                                {'songId': '5676759593254912',
+                                 'student_name': 'Mark J.'},
+                                {'songId': '5676759593254912',
+                                 'student_name': 'Mark  Johnson'},
+                                {'songId': '5676759593254912',
+                                 'student_name': 'Mark   l,;mavdl;sjgoawrjeoia jowgaow; ejioa '
+                                                 'Johnson'}]},
+                     {'group_name': 'A Group of Lillys',
+                      'songs': [{'songId': '5676759593254912',
+                                 'student_name': 'Lilly Gohnson'},
+                                {'songId': '5676759593254912',
+                                 'student_name': 'Lilly G.'},
+                                {'songId': '5676759593254912',
+                                 'student_name': 'lilly  Gohnson'},
+                                {'songId': '5676759593254912',
+                                 'student_name': 'Lilly   l,;mavdl;sjgoawrjeoia jowgaow; ejioa '
+                                                 'Gohnson'}]}
+                ]
+            })
+
         return deepcopy({
             'title': 'Test Title',
             'description': 'This is the test description.',
@@ -131,7 +159,7 @@ class GalleryTestCase(TestCase):
 
 
     def setUp(self):
-        self.user = User.objects.create_user(
+        self.user = User.objects.create_user(  # type: ignore
             username='jack',
             email='jack@jack.com',
             password='ghjlesdfr;aghruiao;'

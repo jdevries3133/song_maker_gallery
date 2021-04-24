@@ -10,16 +10,17 @@ from django.db import connection
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.core.exceptions import ValidationError
+from django.test import TestCase
 from rest_framework import serializers
 
 from .base_case import GalleryTestCase, patch_fetch_and_cache
 from .util import are_rendered_groups_same
-from ..serializers import GalleryDatasetSerializer
+from ..serializers import GalleryDatasetSerializer, GallerySerializer
 from ..models import Gallery, SongGroup, Song
 from ..services import mock_data as default_api_return_data
 
 
-class TestGallerySerializer(GalleryTestCase):
+class TestGallerDatasetSerializer(GalleryTestCase):
     """
     Gallery serializer handles normalizing bulk create request into models,
     and rendering gallery views from the database.
@@ -335,3 +336,43 @@ class TestSongDataValidatorMessages(test.TestCase):
                 GalleryDatasetSerializer.validate_songData(
                     self._make_song_data(rows)
                 )
+
+
+class TestGallerySerializer(TestCase):
+
+    def test_simple_usage(self):
+        serializer = GallerySerializer(data={
+            'title': 'My Gallery',
+            'description': 'My gallery description.',
+            'song_groups': [
+                {
+                    'group_name': 'Larry\'s Homeroom',
+                    'songs': [
+                        {
+                            'songId': '1234',
+                            'student_name': 'Chris J.'
+                        }
+                    ]
+                }
+            ]
+        })
+        self.assertTrue(serializer.is_valid())
+        instance = serializer.save()
+
+
+        # Gallery
+        self.assertEqual(instance.title, 'My Gallery')                      # type: ignore
+        self.assertEqual(instance.description, 'My gallery description.')   # type: ignore
+        self.assertEqual(instance.slug, 'my-gallery')                       # type: ignore
+
+        # Song group
+        self.assertEqual(
+            instance.song_groups.first().group_name,                        # type: ignore
+            'Larry\'s Homeroom'
+        )
+        self.assertEqual(len(instance.song_groups.all()), 1)                # type: ignore
+
+        # Song
+        self.assertEqual(len(instance.songs.all()), 1)                      # type: ignore
+        self.assertEqual(instance.songs.first().student_name, 'Chris J.')   # type: ignore
+        self.assertEqual(instance.songs.first().songId, '1234')             # type: ignore

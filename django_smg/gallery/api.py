@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import Gallery
-from .serializers import GallerySerializer, GalleryDatasetSerializer
+from .serializers import NaiveGallerySerializer, GalleryDatasetSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -25,13 +25,11 @@ class AuthGalleryViewset(APIView):
         Decompose the batch of data sent from the frontend and create a
         gallery with songs.
         """
-        if 'api_obj' in request.data:
-            raise Exception('Use of depricated "api_obj"')
         serializer = GalleryDatasetSerializer(data=request.data, context={
             'user': request.user
         })
         serializer.is_valid(raise_exception=True)
-        return Response(GallerySerializer(serializer.save()).data)
+        return Response(NaiveGallerySerializer(serializer.save()).data)
 
     @ staticmethod
     def get(request):
@@ -39,7 +37,7 @@ class AuthGalleryViewset(APIView):
         Return all the galleries of an authenticated user.
         """
         return Response(
-            GallerySerializer(
+            NaiveGallerySerializer(
                 request.user.gallery.all(),
                 many=True
             ).data
