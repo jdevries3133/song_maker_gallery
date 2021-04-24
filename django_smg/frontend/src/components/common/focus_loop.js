@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import styled from "Styles";
+
 const GhostButton = styled.button`
-  /* remove to see ghost buttons which are placed when modal is mounted */
-  visibility: hidden;
+  width: 0;
+  height: 0;
+  opacity: 0;
 `;
 
 export const FocusLoop = ({ children }) => {
@@ -11,17 +13,14 @@ export const FocusLoop = ({ children }) => {
 
   useEffect(() => {
     first.current.focus();
-
     document.addEventListener("keydown", handleTabPress);
-
     return () => {
       document.removeEventListener("keydown", handleTabPress);
     };
   }, []);
 
   const handleTabPress = (e) => {
-    let isTabPressed = e.key === "Tab";
-
+    const isTabPressed = e.key === "Tab";
     if (!isTabPressed) {
       return;
     }
