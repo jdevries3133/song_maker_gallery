@@ -138,7 +138,6 @@ class GalleryDatasetSerializer(serializers.Serializer):
             owner=self.get_user() ,
             title=validated_data['title'],
             description=validated_data['description'],
-            slug=Gallery.generate_slug(validated_data['title'])
         )
         self.parse_song_data(validated_data['songData'])
         return self._gallery

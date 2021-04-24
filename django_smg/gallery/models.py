@@ -2,9 +2,8 @@ import re
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
-from django.utils.text import slugify
 
-from .order_managers import OrderManager
+from .managers import OrderManager, SlugManager
 
 
 class Gallery(models.Model):
@@ -21,50 +20,15 @@ class Gallery(models.Model):
         null=False,
         blank=False,
     )
+
+    objects = SlugManager()
     slug = models.SlugField(
         max_length=50,
         unique=True
     )
+
     description = models.TextField()
 
-    @staticmethod
-    def generate_slug(title):
-        """
-        Generates a unique url extension given a title, avoiding url extensions
-        currently in the database.
-
-        THE URL_EXTENSION RETURNED BY THIS FUNCTION MAY BE CONCURRENCY UNSAFE,
-
-        A portion of the codebase that assigns a model's url extension
-        with this function should be prepared that a separate worker is
-        doing the same thing at the same time. A simultaneous database write
-        with the same slug is unlikely but possible, so integrity
-        and operational errors should be caught and a new unique slug
-        should be fetched and tried again.
-        """
-        slug = slugify(title[:40])
-        outstr = ''
-        for i in slug:
-            if re.search(r'[a-zA-Z0-9\-]', i):
-                outstr += i
-        slug = outstr
-
-        # slug is the slug we will try
-        conflicting_urls = [
-            i.slug for i in Gallery.objects.filter(  # type: ignore
-                slug__contains=slug
-            )
-        ]
-        if conflicting_urls:
-            append_int = 1
-            slug += '-' + str(append_int)
-            while slug in conflicting_urls:
-                append_int += 1
-                slug = (
-                    slug[:-len(str(append_int - 1))]
-                    + str(append_int)
-                )
-        return slug
 
     def __str__(self):
         return str(self.title)

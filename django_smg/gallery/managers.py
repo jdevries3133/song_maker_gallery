@@ -1,4 +1,7 @@
+import re
+
 from django.db import models, transaction
+from django.utils.text import slugify
 from django.db.models import F, Max
 
 from django.db import models, transaction
@@ -76,3 +79,49 @@ class OrderManager(models.Manager):
             instance.save()
 
             return instance
+
+class SlugManager(models.Manager):
+
+    def create(self, **kwargs):
+        instance = self.model(**kwargs)
+        instance.slug = self.generate_slug(instance.title)
+        instance.save()
+        return instance
+
+    def generate_slug(self, title):
+        """
+        Generates a unique url extension given a title, avoiding url extensions
+        currently in the database.
+
+        THE URL_EXTENSION RETURNED BY THIS FUNCTION MAY BE CONCURRENCY UNSAFE,
+
+        A portion of the codebase that assigns a model's url extension
+        with this function should be prepared that a separate worker is
+        doing the same thing at the same time. A simultaneous database write
+        with the same slug is unlikely but possible, so integrity
+        and operational errors should be caught and a new unique slug
+        should be fetched and tried again.
+        """
+        slug = slugify(title[:40])
+        outstr = ''
+        for i in slug:
+            if re.search(r'[a-zA-Z0-9\-]', i):
+                outstr += i
+        slug = outstr
+
+        # slug is the slug we will try
+        conflicting_urls = [
+            i.slug for i in self.get_queryset().filter(  # type: ignore
+                slug__contains=slug
+            )
+        ]
+        if conflicting_urls:
+            append_int = 1
+            slug += '-' + str(append_int)
+            while slug in conflicting_urls:
+                append_int += 1
+                slug = (
+                    slug[:-len(str(append_int - 1))]
+                    + str(append_int)
+                )
+        return slug
