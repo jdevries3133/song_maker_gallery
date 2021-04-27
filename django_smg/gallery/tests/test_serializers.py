@@ -14,7 +14,6 @@ from django.test import TestCase
 from rest_framework import serializers
 
 from .base_case import GalleryTestCase, patch_fetch_and_cache
-from .util import are_rendered_groups_same
 from ..serializers import GalleryDatasetSerializer, GallerySerializer
 from ..models import Gallery, SongGroup, Song
 from ..services import mock_data as default_api_return_data
@@ -29,19 +28,10 @@ class TestGallerDatasetSerializer(GalleryTestCase):
     def setUp(self ):
         super().setUp()
         self._login_client()
-        self._add_gallery()
-
-    def old_setUp(self):
-        raise Exception('depricated')
-        self.user = User.objects.create_user(  # type: ignore
-            username='jack',
-            email='jack@jack.com',
-            password='ghjlesdfr;aghruiao;'
-        )
-        self._make_gallery()
+        self.add_gallery()
 
     def test_gallery_single_gallery_exists(self):
-        gallery_set = Gallery.objects.filter(slug='test-title')  # type: ignore
+        gallery_set = Gallery.objects.filter(title='Test Title')  # type: ignore
         self.assertEqual(len(gallery_set), 1)
 
     def test_gallery_title_and_description(self):
@@ -79,6 +69,8 @@ class TestGallerDatasetSerializer(GalleryTestCase):
         and all student names in the second group shouldbe coerced into
         "Lilly G."
         """
+
+        # TODO: move to a test on the song serializer.
         for song in Song.objects.all():  # type: ignore
             self.assertIn(
                 song.student_name,
@@ -89,71 +81,15 @@ class TestGallerDatasetSerializer(GalleryTestCase):
             )
             self.assertEqual(song.songId, '5676759593254912')
 
-    def test_songmaker_urls_have_been_validated(self):
+    def test_songId_normalization(self):
         """
-        All urls should be valid musiclab links.
+        # TODO: implement and put in services test suite
         """
-        contains_good_urls = GalleryDatasetSerializer(data={
-            'title': 'title',
-            'description': 'description',
-            'songData': [
-                [
-                    [
-                        'Insecure Bryan',
-                        'http://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/5676759593254912',
-                    ],
-                    [
-                        'Suzy Goodlink',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/5676759593254912',
-                    ],
-                    'Good Link Group'
-                ]
-            ]
-        })
-        self.assertTrue(contains_good_urls.is_valid())
 
-        contains_invalid_url = GalleryDatasetSerializer(data={
-            'title': 'title',
-            'description': 'description',
-            'songData': [
-                [
-                    [
-                        'Linda Badlink',
-                        'http://wrongsite.com'
-                    ],
-                    'Bad Link Group',
-                ]
-            ]
-        })
-        self.assertFalse(contains_invalid_url.is_valid())
-
-        wrong_data_structure = GalleryDatasetSerializer(data={
-            'title': 'title',
-            'description': 'description',
-            'songData': [
-                'wrong',
-                [
-                    'something',
-                    'else',
-                ],
-                [
-                    [
-                        'Student Name',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/5676759593254912'
-                    ],
-                    [
-                        'Student Name',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/'
-                        'song/5676759593254912'
-                    ]
-                ]
-            ]
-        })
-        self.assertFalse(wrong_data_structure.is_valid())
-
+    def test_songId_validation(self):
+        """
+        # TODO: implement and put in Song serializer test suite
+        """
 
     @ patch_fetch_and_cache
     def test_gallery_serializer_render_method(self):
@@ -161,11 +97,11 @@ class TestGallerDatasetSerializer(GalleryTestCase):
         Render method makes a complex query and renders the data for the
         frontend to render a single gallery.
         """
-        rendered = GalleryDatasetSerializer().render('test-title')
-        self.assertTrue(are_rendered_groups_same(
+        rendered = GallerySerializer(Gallery.objects.get(slug='test-title')).data
+        self.assertEqual(
             self.expected_rendered_data,
             rendered
-        ))
+        )
 
     @ patch_fetch_and_cache
     def test_render_method_num_queries(self):
@@ -174,44 +110,21 @@ class TestGallerDatasetSerializer(GalleryTestCase):
             GalleryDatasetSerializer().render('test-title')
 
     def test_duplicate_group_names_are_invalid(self):
-        self.assertFalse(
-            self._add_gallery(
-                song_data=[
-                    [
-                        'Mark J.',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912'
-                    ], 'group',
-                    [
-                        'Mark J.',
-                        'https://musiclab.chromeexperiments.com/Song-Maker/song/5676759593254912'
-                    ], 'group',
-                ]
-            )
-        )
-
-
-    # TODO: move to iter_fetch_and_cache test suite
-
-    # @ patch('gallery.services.requests.models.Response.json', side_effect=ValueError)
-    # def test_bad_api_response_causes_mock_data_assignment(self, mock_json):
-    #     self._add_gallery()
-    #     with self.settings(SKIP_FETCH_AND_CACHE=False):
-    #         rendered = (
-    #             GalleryDatasetSerializer().render(
-    #                 slug=Gallery.objects.all().last().slug)  # type: ignore
-    #         )
-    #         for group in rendered['songData']:
-    #             for song in group[:-1]:
-    #                 for k, v in mock_data.items():
-    #                     self.assertEqual(
-    #                         v,
-    #                         song.get('metadata').get(k),
-    #                     )
-
-
-
-
-
+        song_data = [
+            {
+                'group_name': 'duplicate',
+                'songs': []
+            },
+            {
+                'group_name': 'duplicate',
+                'songs': []
+            }
+        ]
+        data = self.mock_api_data
+        data['song_groups'] = song_data
+        serializer = GallerySerializer(data=data)
+        # breakpoint()
+        # self.assertFalse(serializer.is_valid())
 
 
 
@@ -224,7 +137,10 @@ class TestQueryCountLargeGallery(test.TestCase):
             password='ghjlesdfr;aghruiao;'
         )
         with open(
-            Path(Path(__file__).parent, 'mock_data', 'gallery_post_request_data_example.json'), 'r'
+            Path(Path(__file__).parent,
+                 'mock_data',
+                 'gallery_post_request_data_example.json'
+            ), 'r'
         ) as jsn:
             data = json.load(jsn)
         self.serializer = GalleryDatasetSerializer(data=data, context={
@@ -349,7 +265,7 @@ class TestGallerySerializer(TestCase):
                     'group_name': 'Larry\'s Homeroom',
                     'songs': [
                         {
-                            'songId': '1234',
+                            'songId': '1234123412341234',
                             'student_name': 'Chris J.'
                         }
                     ]
@@ -358,7 +274,6 @@ class TestGallerySerializer(TestCase):
         })
         self.assertTrue(serializer.is_valid())
         instance = serializer.save()
-
 
         # Gallery
         self.assertEqual(instance.title, 'My Gallery')                      # type: ignore
@@ -375,4 +290,4 @@ class TestGallerySerializer(TestCase):
         # Song
         self.assertEqual(len(instance.songs.all()), 1)                      # type: ignore
         self.assertEqual(instance.songs.first().student_name, 'Chris J.')   # type: ignore
-        self.assertEqual(instance.songs.first().songId, '1234')             # type: ignore
+        self.assertEqual(instance.songs.first().songId, '1234123412341234') # type: ignore

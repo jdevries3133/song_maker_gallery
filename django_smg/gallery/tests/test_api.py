@@ -1,10 +1,10 @@
 import time
 
 from django.urls import reverse
+from django.utils.http import urlencode
 from rest_framework import status
 
 from ..models import Gallery
-from .util import are_rendered_groups_same
 from .base_case import GalleryTestCase, patch_fetch_and_cache
 
 
@@ -13,7 +13,7 @@ class TestAuthGalleryViewset(GalleryTestCase):
     def setUp(self):
         super().setUp()
         self._login_client()
-        self.gallery = self._add_gallery()
+        self.gallery = self.depr_add_gallery()
 
     def test_response_status(self):
         response = self.client.get(
@@ -27,24 +27,24 @@ class TestAuthGalleryViewset(GalleryTestCase):
         with self.settings(SKIP_FETCH_AND_CACHE=False):
             res = self.client.post(
                 '/api/gallery/',
-                data=self.mock_api_data,
+                data=self.depr_mock_api_data,
                 HTTP_AUTHORIZATION=f'Token {self.token}',
                 secure=True
             )
         self.assertEqual(
             res.json()['title'],  # type: ignore
-            self.mock_api_data['title']
+            self.depr_mock_api_data['title']
         )
         self.assertEqual(
             res.json()['description'],  # type: ignore
-            self.mock_api_data['description'],
+            self.depr_mock_api_data['description'],
         )
 
     def test_post_request_is_fast(self):
         start = time.perf_counter()
         self.client.post(
             '/api/gallery/',
-            data=self.mock_api_data,
+            data=self.depr_mock_api_data,
             HTTP_AUTHORIZATION=f'Token {self.token}',
             secure=True
         )
@@ -63,7 +63,7 @@ class TestAuthGalleryViewset(GalleryTestCase):
         )
 
     def test_delete_single_gallery(self):
-        self._add_gallery()
+        self.depr_add_gallery()
         self.client.delete(
             f'/api/gallery/?pk={self.gallery.pk}',  # type: ignore
             HTTP_AUTHORIZATION=f'Token {self.token}',
@@ -73,7 +73,7 @@ class TestAuthGalleryViewset(GalleryTestCase):
             self.gallery.refresh_from_db()  # type: ignore
 
     def test_delete_multiple_galleries(self):
-        pks = [str(self._add_gallery().pk) for _ in range(5)]
+        pks = [str(self.depr_add_gallery().pk) for _ in range(5)]
         qs = ','.join(pks)
         res = self.client.delete(
             f'/api/gallery/?pk={qs}',
@@ -90,14 +90,16 @@ class TestPublicGalleryViewset(GalleryTestCase):
 
     @ patch_fetch_and_cache
     def test_get_request(self):
-        self._add_gallery()
+        self.add_gallery()
         url = reverse('public_gallery', kwargs={
             'slug': 'test-title'
         })
+        url += '?' + urlencode({'serializer': 'new'})
         response = self.client.get(url, secure=True)
-        self.assertTrue(are_rendered_groups_same(
+        # TODO: this used to have leniency on midi bytes...
+        # need to either make it perfect or restore the leniency
+        self.assertEqual(
             response.json(),  # type: ignore
             self.expected_rendered_data,
-            strict_midibytes=False
-        ))
+        )
 

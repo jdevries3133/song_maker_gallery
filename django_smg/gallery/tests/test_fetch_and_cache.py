@@ -19,7 +19,6 @@ class MockResponse:
         return self.json_data
 
 
-
 class TestFetchAndCache(GalleryTestCase):
 
     EXPECT_JSON = {
@@ -55,7 +54,7 @@ class TestFetchAndCache(GalleryTestCase):
         mock_post.return_value = MockResponse(content=self.EXPECT_MIDI)
 
         super().setUp()
-        self._add_gallery()
+        self.add_gallery()
         self.processed = Song.objects.all().first()  # type: ignore
         for _ in iter_fetch_and_cache(songs=Song.objects.all()):  # type: ignore
             pass
@@ -73,3 +72,22 @@ class TestFetchAndCache(GalleryTestCase):
             self.EXPECT_MIDI,
             self.processed.midi
         )
+
+    # TODO: re-implement this test
+
+    # @ patch('gallery.services.requests.models.Response.json', side_effect=ValueError)
+    # def test_bad_api_response_causes_mock_data_assignment(self, mock_json):
+    #     self.depr_add_gallery()
+    #     with self.settings(SKIP_FETCH_AND_CACHE=False):
+    #         rendered = (
+    #             GalleryDatasetSerializer().render(
+    #                 slug=Gallery.objects.all().last().slug)  # type: ignore
+    #         )
+    #         for group in rendered['songData']:
+    #             for song in group[:-1]:
+    #                 for k, v in mock_data.items():
+    #                     self.assertEqual(
+    #                         v,
+    #                         song.get('metadata').get(k),
+    #                     )
+

@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.test import TestCase, Client
 
 from ..models import Gallery, Song
-from ..serializers import GalleryDatasetSerializer
+from ..serializers import GalleryDatasetSerializer, GallerySerializer
 from ..services import mock_data as default_api_return_data
 
 
@@ -32,36 +32,36 @@ def patch_fetch_and_cache(func):
 class GalleryTestCase(TestCase):
 
     @ property
-    def mock_api_data(self, new=False):
+    def mock_api_data(self):
+        return deepcopy({
+        'title': 'Test Title',
+        'description': 'This is the test description.',
+            'song_groups': [
+                {'group_name': 'A Group of Marks',
+                  'songs': [{'songId': '5676759593254912',
+                             'student_name': 'Mark Johnson'},
+                            {'songId': '5676759593254912',
+                             'student_name': 'Mark J.'},
+                            {'songId': '5676759593254912',
+                             'student_name': 'Mark  Johnson'},
+                            {'songId': '5676759593254912',
+                             'student_name': 'Mark   l,;mavdl;sjgoawrjeoia jowgaow; ejioa '
+                                             'Johnson'}]},
+                 {'group_name': 'A Group of Lillys',
+                  'songs': [{'songId': '5676759593254912',
+                             'student_name': 'Lilly Gohnson'},
+                            {'songId': '5676759593254912',
+                             'student_name': 'Lilly G.'},
+                            {'songId': '5676759593254912',
+                             'student_name': 'lilly  Gohnson'},
+                            {'songId': '5676759593254912',
+                             'student_name': 'Lilly   l,;mavdl;sjgoawrjeoia jowgaow; ejioa '
+                                             'Gohnson'}]}
+            ]
+        })
 
-        if new:
-            return deepcopy({
-            'title': 'Test Title',
-            'description': 'This is the test description.',
-                'songData': [
-                    {'group_name': 'A Group of Marks',
-                      'songs': [{'songId': '5676759593254912',
-                                 'student_name': 'Mark Johnson'},
-                                {'songId': '5676759593254912',
-                                 'student_name': 'Mark J.'},
-                                {'songId': '5676759593254912',
-                                 'student_name': 'Mark  Johnson'},
-                                {'songId': '5676759593254912',
-                                 'student_name': 'Mark   l,;mavdl;sjgoawrjeoia jowgaow; ejioa '
-                                                 'Johnson'}]},
-                     {'group_name': 'A Group of Lillys',
-                      'songs': [{'songId': '5676759593254912',
-                                 'student_name': 'Lilly Gohnson'},
-                                {'songId': '5676759593254912',
-                                 'student_name': 'Lilly G.'},
-                                {'songId': '5676759593254912',
-                                 'student_name': 'lilly  Gohnson'},
-                                {'songId': '5676759593254912',
-                                 'student_name': 'Lilly   l,;mavdl;sjgoawrjeoia jowgaow; ejioa '
-                                                 'Gohnson'}]}
-                ]
-            })
-
+    @ property
+    def depr_mock_api_data(self):
         return deepcopy({
             'title': 'Test Title',
             'description': 'This is the test description.',
@@ -113,50 +113,26 @@ class GalleryTestCase(TestCase):
 
     @ property
     def expected_rendered_data(self):
-        # all songs look like this
-        song = {
-            'metadata': {
-                'bars': 1,
-                 'beats': 4,
-                 'instrument': 'piano',
-                 'octaves': 2,
-                 'percussion': 'electronic',
-                 'percussionNotes': 2,
-                 'rootNote': 48,
-                 'rootOctave': 4,
-                 'rootPitch': 0,
-                 'scale': 'major',
-                 'subdivision': 2,
-                 'tempo': 91
-            },
-            'midiBytes': b''
-        }
-        return {
-            'title': 'Test Title',
-            'description': 'This is the test description.',
-            'pk': 1,
-            'slug': 'test-title',
-            'songData': [
-                [
-                    {
-                    'name': 'Mark J.',
-                    'songId': '5676759593254912',
-                    **song
-                    } for _ in range(4)
-                ] + ['A Group of Marks'],  # type: ignore
-                [
-                    {
-                    'name': 'Lilly G.',
-                    'songId': '5676759593254912',
-                    **song
-                    } for _ in range(4)
-                ] + ['A Group of Lillys']  # type: ignore
-            ]
-        }
-
-
-
-
+        return {'description': 'This is the test description.',
+         'song_groups': [{'group_name': 'A Group of Marks',
+                          'songs': [{'songId': '5676759593254912',
+                                     'student_name': 'Mark J.'},
+                                    {'songId': '5676759593254912',
+                                     'student_name': 'Mark J.'},
+                                    {'songId': '5676759593254912',
+                                     'student_name': 'Mark J.'},
+                                    {'songId': '5676759593254912',
+                                     'student_name': 'Mark J.'}]},
+                         {'group_name': 'A Group of Lillys',
+                          'songs': [{'songId': '5676759593254912',
+                                     'student_name': 'Lilly G.'},
+                                    {'songId': '5676759593254912',
+                                     'student_name': 'Lilly G.'},
+                                    {'songId': '5676759593254912',
+                                     'student_name': 'Lilly G.'},
+                                    {'songId': '5676759593254912',
+                                     'student_name': 'Lilly G.'}]}],
+         'title': 'Test Title'}
 
     def setUp(self):
         self.user = User.objects.create_user(  # type: ignore
@@ -187,8 +163,8 @@ class GalleryTestCase(TestCase):
             ).rendered_content  # type: ignore
         )['token']
 
-    def _add_gallery(self, *, song_data=None) -> Union[Gallery, None]:
-        full_data = self.mock_api_data
+    def depr_add_gallery(self, *, song_data=None) -> Union[Gallery, None]:
+        full_data = self.depr_mock_api_data
         if song_data:
            full_data['songData'] = song_data
         serializer = GalleryDatasetSerializer(
@@ -201,3 +177,11 @@ class GalleryTestCase(TestCase):
             result = serializer.save()
             if isinstance(result, Gallery):
                 return result
+
+    def add_gallery(self, *, song_data=None):
+        full_data = self.mock_api_data
+        if song_data:
+            full_data['song_groups'] = song_data
+        serializer = GallerySerializer(data=full_data)
+        if serializer.is_valid():
+            return serializer.save()

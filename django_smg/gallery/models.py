@@ -9,8 +9,7 @@ from .managers import OrderManager, SlugManager
 class Gallery(models.Model):
     owner = models.ForeignKey(
         User,
-        related_name='gallery',
-        related_query_name='galleries',
+        related_name='galleries',
         on_delete=models.CASCADE,
         null=True,
     )
@@ -76,8 +75,7 @@ class Song(models.Model):
     group = models.ForeignKey(
         SongGroup,
         on_delete=models.CASCADE,
-        related_name='song',
-        related_query_name='songs'
+        related_name='songs',
     )
 
     # order of this song withing the SongGroup

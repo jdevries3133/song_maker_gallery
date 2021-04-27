@@ -32,6 +32,7 @@ class Base(TestCase):
         ]
 
 
+
 class TestOrderManager(Base):
 
     def test_default_order_assignment(self):

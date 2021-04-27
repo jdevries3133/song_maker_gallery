@@ -1,10 +1,10 @@
 import logging
-
+from typing import Any
 
 import requests
-
 from django.conf import settings
 from django.db.models.query import QuerySet
+from rest_framework.exceptions import ValidationError
 
 from .models import Song
 
@@ -83,3 +83,35 @@ def iter_fetch_and_cache(*, songs: QuerySet):
             'subdivision',
             'tempo',
         ])
+
+def normalize_student_name(name: str):
+    """
+    Try our very best to store names as first name, last initial.
+    """
+    name = name.strip()  # thanks Wendy!
+    name_parts = [i for i in name.split(' ') if i]
+    if len(name_parts) > 1:
+        name = (
+            name_parts[0].title()
+            + ' '
+            + name_parts[-1][0].upper() + '.'
+        )
+    else:
+        if name_parts:
+            name = name_parts[0]
+        else:
+            name = ''
+    return name
+
+def normalize_songId(songId: Any) -> str:
+    """
+    Cast to a string if it is not already and if possible.
+    """
+    if not isinstance(songId, str):
+        try:
+            return str(songId)
+        except (TypeError, ValueError):
+            raise ValidationError(
+                'Could not interpret {songId} as a string'
+            )
+    return songId

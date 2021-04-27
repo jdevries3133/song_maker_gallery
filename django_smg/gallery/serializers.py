@@ -5,9 +5,10 @@ import re
 
 from django.http import Http404
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 
 from .models import Gallery, Song, SongGroup
-from .services import iter_fetch_and_cache
+from .services import iter_fetch_and_cache, normalize_songId, normalize_student_name
 
 logger = logging.getLogger(__name__)
 
@@ -16,15 +17,32 @@ class SongSerializer(serializers.ModelSerializer):
         model = Song
         fields = ('songId', 'student_name')
 
+    def create(self, validated_data):
+        return Song.objects.create(**validated_data)
+
+    def validate_student_name(self, value):
+        return normalize_student_name(value)
+
+    def validate_songId(self, value):
+        """
+        Must be 16 character numeric string.
+        """
+        value = normalize_songId(value)
+        if not value.isnumeric():
+            raise ValidationError('songId must be numeric')
+        if not len(value) == 16:
+            raise ValidationError('songId must be 16 characters in length')
+        return value
+
 class SongGroupSerializer(serializers.ModelSerializer):
     songs = SongSerializer(many=True)
     class Meta:
         model = SongGroup
         fields = ('group_name', 'songs')
 
-    def create(self, validated_data):
+    def create(self, validated_data, **kw):
         song_data = validated_data.pop('songs')
-        song_serializer = self.fields['songs']
+        song_serializer = self.fields['songs']  # type: ignore
         instance = SongGroup.objects.create(**validated_data)
         for each in song_data:
             each['group'] = instance
@@ -44,8 +62,12 @@ class GallerySerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
+        # pop off related data and serializer
         group_data = validated_data.pop('song_groups')
-        group_serializer = self.fields['song_groups']
+        group_serializer = self.fields['song_groups']  # type: ignore
+
+        # assign owner
+        validated_data['owner'] = self.context.get('user')
         instance = Gallery.objects.create(**validated_data)
         for each in group_data:
             each['gallery'] = instance
@@ -231,9 +253,6 @@ class GalleryDatasetSerializer(serializers.Serializer):
 
     @ staticmethod
     def validate_songData(song_data):
-        """
-        Check shape of data structure: a list of lists of two strings.
-        """
         if isinstance(song_data, str):
             song_data = json.loads(song_data)
         elif isinstance(song_data, dict):
