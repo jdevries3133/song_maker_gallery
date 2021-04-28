@@ -8,14 +8,37 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 from .models import Gallery, Song, SongGroup
-from .services import iter_fetch_and_cache, normalize_songId, normalize_student_name
+from .services import (
+    iter_fetch_and_cache,
+    normalize_songId,
+    normalize_student_name,
+    validate_spreadsheet_data,
+)
 
 logger = logging.getLogger(__name__)
+
 
 class SongSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
-        fields = ('songId', 'student_name')
+        fields = (
+            'songId',
+            'student_name',
+            'order',
+            'bars',
+            'beats',
+            'instrument',
+            'octaves',
+            'percussion',
+            'percussionNotes',
+            'rootNote',
+            'rootOctave',
+            'rootPitch',
+            'scale',
+            'subdivision',
+            'tempo',
+            'midi'
+        )
 
     def create(self, validated_data):
         return Song.objects.create(**validated_data)
@@ -34,8 +57,10 @@ class SongSerializer(serializers.ModelSerializer):
             raise ValidationError('songId must be 16 characters in length')
         return value
 
+
 class SongGroupSerializer(serializers.ModelSerializer):
     songs = SongSerializer(many=True)
+
     class Meta:
         model = SongGroup
         fields = ('group_name', 'songs')
@@ -53,9 +78,11 @@ class SongGroupSerializer(serializers.ModelSerializer):
 
 class GallerySerializer(serializers.ModelSerializer):
     song_groups = SongGroupSerializer(many=True)
+
     class Meta:
         model = Gallery
         fields = (
+            'pk',
             'title',
             'description',
             'song_groups',
@@ -118,11 +145,11 @@ class GalleryDatasetSerializer(serializers.Serializer):
         songs = Song.objects.select_related(  # type: ignore
             'gallery',
             'group'
-                ).filter(
-                    gallery=gallery
-                        ).order_by(
-                            'created'
-                        )
+        ).filter(
+            gallery=gallery
+        ).order_by(
+            'created'
+        )
 
         groups = SongGroup.objects.filter(gallery=gallery)  # type: ignore
         return {
@@ -185,13 +212,12 @@ class GalleryDatasetSerializer(serializers.Serializer):
         output['songData'] = rendered_groups
         return output
 
-
     def create(self, validated_data):
         """
         Create new gallery, to which everything else will relationally linked.
         """
         self._gallery = Gallery.objects.create(  # type: ignore
-            owner=self.get_user() ,
+            owner=self.get_user(),
             title=validated_data['title'],
             description=validated_data['description'],
         )
@@ -212,7 +238,8 @@ class GalleryDatasetSerializer(serializers.Serializer):
 
         SongGroup.objects.bulk_create(song_groups)  # type: ignore
         # need to re-fetch ForeignKeys for later
-        song_groups = SongGroup.objects.filter(gallery=self._gallery)  # type: ignore
+        song_groups = SongGroup.objects.filter(
+            gallery=self._gallery)  # type: ignore
 
         # bulk create Songs
         songs = []
@@ -253,55 +280,4 @@ class GalleryDatasetSerializer(serializers.Serializer):
 
     @ staticmethod
     def validate_songData(song_data):
-        if isinstance(song_data, str):
-            song_data = json.loads(song_data)
-        elif isinstance(song_data, dict):
-            song_data = json.loads(song_data.get('songData'))  # type: ignore
-        assert isinstance(song_data, list)
-
-        validation_errors = []
-
-        try:
-            group_names = set()
-            for group in song_data:
-                if group[-1] in group_names:
-                    validation_errors += [
-                        'Spreadsheet data is not valid',
-                        f'Two spreadsheets named {group[-1]} are not allowed.'
-                        'Group names must be unique.'
-                    ]
-                    continue
-                group_names.update(group[-1])
-                for rownum, row in enumerate(group[:-1], start=1):
-                    row = [r for r in row if r]
-                    if not row:
-                        validation_errors.append(
-                            f'The spreadsheet for the group, "{group[-1]}," '
-                            f'row {rownum} is empty'
-                        )
-                        continue
-                    if len(row) != 2:
-                        validation_errors += [
-                            f'Row #{rownum} of the spreadsheet for your '
-                            f'group, "{group[-1]}," does not contain two items. '
-                            f'Instead, it contains: "{", ".join(row)}".'
-                        ]
-                        continue
-                    if not re.match(
-                        r'http(s)?://musiclab.chromeexperiments.com/Song-Maker/'
-                        r'song/(\d){16}',
-                        row[1].strip()
-                    ):
-                        validation_errors += [
-                            'An error occured while parsing the spreadsheet '
-                            f'for your group named, "{group[-1]}." '
-                            f'The Song Maker link for {row[0]} ({row[1]}) is '
-                            f'not valid. (row #{rownum})'
-                        ]
-        except Exception as e:
-            logger.error(f'Validation failed due to error: {e}')
-            logger.error(f'songData: {song_data}')
-            validation_errors.append('Invalid spreadsheet data.')
-        if validation_errors:
-            raise serializers.ValidationError(validation_errors)
-        return song_data
+        validate_spreadsheet_data(song_data)
