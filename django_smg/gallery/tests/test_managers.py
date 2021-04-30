@@ -1,11 +1,13 @@
+from unittest.mock import patch
+
 from django.contrib.auth.models import User
 from django.db import models
-from django.test import TestCase
+from django.test import TransactionTestCase
 
 from ..models import Gallery, Song, SongGroup
-from ..managers import OrderManager
+from ..managers import OrderManager, SlugCreationFailed, SlugManager
 
-class Base(TestCase):
+class Base(TransactionTestCase):
 
     def setUp(self):
         self.user = User.objects.create(                        # type: ignore
@@ -30,7 +32,6 @@ class Base(TestCase):
             )
             for i, n in enumerate(('Sally', 'Chris', 'Tom'))
         ]
-
 
 
 class TestOrderManager(Base):
@@ -89,7 +90,7 @@ class TestOrderManager(Base):
 class TestSlugManager(Base):
 
     def setUp(self):
-        self.user = User.objects.create_user(
+        self.user = User.objects.create_user(  # type: ignore
             'jack', 'jack@jack.com', 'jackpassword'
         )
         self.galleries = [
@@ -155,3 +156,16 @@ class TestSlugManager(Base):
             gal.slug,
             'test-gallery-nametest-gallery-nametest-g'
         )
+
+    @ patch.object(SlugManager, 'generate_slug')
+    @ patch('gallery.managers.logger')
+    def test_integrity_error_handled(self, mock_log, mock_slug):
+        """
+        Handle by logging and aborting by raising exception.
+        """
+        mock_slug.return_value = 'always_same_slug'
+        gal = Gallery.objects.create(owner=self.user, title="", description="")
+        self.assertEqual(gal.slug, 'always_same_slug')
+        with self.assertRaises(SlugCreationFailed):
+            gal1 = Gallery.objects.create(owner=self.user, title="", description="")
+            mock_log.exception.assert_called()

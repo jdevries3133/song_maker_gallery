@@ -1,11 +1,15 @@
+import logging
 import re
 
-from django.db import models, transaction
+from django.db import models, transaction, IntegrityError
 from django.utils.text import slugify
 from django.db.models import F, Max
-
 from django.db import models, transaction
-from django.db.models import F
+
+from rest_framework.exceptions import APIException
+
+
+logger = logging.getLogger(__name__)
 
 
 class OrderManager(models.Manager):
@@ -90,28 +94,32 @@ class OrderManager(models.Manager):
 
             return instance
 
+class SlugCreationFailed(APIException):
+    status_code = 500
+    default_detail = 'Server failed to create your gallery, please try again'
+    default_code = 'create_gallery_failed'
+
 class SlugManager(models.Manager):
 
     def create(self, **kwargs):
         instance = self.model(**kwargs)
-        instance.slug = self.generate_slug(instance.title)
-        instance.save()
+        try:
+            with transaction.atomic():
+                value = self.generate_slug(instance.title)
+                instance.slug = self.generate_slug(instance.title)
+                instance.save()
+        except IntegrityError:
+            logger.exception('Slug generator failed. Aborting create')
+            raise SlugCreationFailed()
         return instance
 
     def generate_slug(self, title):
         """
-        Generates a unique url extension given a title, avoiding url extensions
-        currently in the database.
-
-        THE URL_EXTENSION RETURNED BY THIS FUNCTION MAY BE CONCURRENCY UNSAFE,
-
-        A portion of the codebase that assigns a model's url extension
-        with this function should be prepared that a separate worker is
-        doing the same thing at the same time. A simultaneous database write
-        with the same slug is unlikely but possible, so integrity
-        and operational errors should be caught and a new unique slug
-        should be fetched and tried again.
+        Create a unique slug derived for the title for this gallery.
         """
+        # TODO: Use a more complex query like the order manager to move this
+        # processing into the db, make it atomic, and remove the need for
+        # error handling in the create method.
         slug = slugify(title[:40])
         outstr = ''
         for i in slug:
