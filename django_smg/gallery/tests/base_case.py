@@ -1,6 +1,6 @@
 from copy import deepcopy
 import json
-from typing import OrderedDict, Union, Iterable, Generator
+from typing import OrderedDict
 from unittest.mock import patch
 
 from django.contrib.auth.models import User
@@ -11,19 +11,18 @@ from ..serializers import GallerySerializer
 from ..services import mock_data as default_api_return_data
 
 
-def mock_iter_fetch_and_cache(songs: Iterable[Song]
-                              ) -> Generator[Song, None, None]:
+def mock_fetch_and_cache(songs):
     for song in songs:
         for k, v in default_api_return_data.items():
             setattr(song, k, v)
         song.midi = b''  # type: ignore
-        yield song
+    return songs
 
 
 def patch_fetch_and_cache(func):
     def wrap(*a, **kw):
-        with patch('gallery.serializers.iter_fetch_and_cache') as p:
-            p.side_effect = mock_iter_fetch_and_cache
+        with patch('gallery.serializers.fetch_and_cache') as p:
+            p.side_effect = mock_fetch_and_cache
             func(*a, **kw)
     return wrap
 

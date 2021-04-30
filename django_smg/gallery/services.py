@@ -32,16 +32,17 @@ mock_data = {
 logger = logging.getLogger(__name__)
 
 
-def iter_fetch_and_cache(*, songs: QuerySet):
+def fetch_and_cache(*, songs: QuerySet):
     """
     Fetch and cache data for a currently uncached song.
     """
     needs_update = False
     session1 = requests.Session()
     session2 = requests.Session()
+
     for song in songs:
+
         if song.is_cached:
-            yield song
             continue
 
         needs_update = True
@@ -51,7 +52,8 @@ def iter_fetch_and_cache(*, songs: QuerySet):
         )
 
         def SONG_MIDI_FILE(song_id): return (
-            f'https://storage.googleapis.com/song-maker-midifiles-prod/{song_id}.mid'
+            'https://storage.googleapis.com/song-maker-midifiles-prod/'
+            f'{song_id}.mid'
         )
 
         try:
@@ -65,14 +67,12 @@ def iter_fetch_and_cache(*, songs: QuerySet):
             logger.error(
                 f'Failed to get data for {song.student_name}\'s song with songId: {song.songId}'
             )
-            yield song
             continue
         midi_bytes = session2.get(SONG_MIDI_FILE(song.songId)).content
         for k, v in json_data.items():
             setattr(song, k, v)
         song.midi = midi_bytes  # type: ignore
         song.is_cached = True  # type: ignore
-        yield song
     if needs_update:
         Song.objects.bulk_update(songs, [  # type: ignore
             'midi',
@@ -90,6 +90,7 @@ def iter_fetch_and_cache(*, songs: QuerySet):
             'subdivision',
             'tempo',
         ])
+    return songs
 
 
 def normalize_student_name(name: str):

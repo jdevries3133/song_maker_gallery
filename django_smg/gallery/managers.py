@@ -94,10 +94,12 @@ class OrderManager(models.Manager):
 
             return instance
 
+
 class SlugCreationFailed(APIException):
     status_code = 500
     default_detail = 'Server failed to create your gallery, please try again'
     default_code = 'create_gallery_failed'
+
 
 class SlugManager(models.Manager):
 

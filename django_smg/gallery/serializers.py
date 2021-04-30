@@ -9,7 +9,7 @@ from rest_framework.exceptions import ValidationError
 
 from .models import Gallery, Song, SongGroup
 from .services import (
-    iter_fetch_and_cache,
+    fetch_and_cache,
     normalize_songId,
     normalize_student_name,
     depr_validate_spreadsheet_data,
@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 
 
 class SongSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Song
         fields = (
@@ -47,7 +48,16 @@ class SongSerializer(serializers.ModelSerializer):
 
 
 class SongGroupSerializer(serializers.ModelSerializer):
+
     songs = SongSerializer(many=True)
+
+    def to_representation(self, instance):
+        """
+        Hijack point for song fetching.
+        """
+        if instance.songs.filter(is_cached=False).count() > 0:
+            fetch_and_cache(songs=instance.songs.all())
+        return super().to_representation(instance)
 
     class Meta:
         model = SongGroup

@@ -6,7 +6,7 @@ from requests import Session
 from django.test import TestCase
 
 from ..models import Song
-from ..services import iter_fetch_and_cache
+from ..services import fetch_and_cache
 from .base_case import GalleryTestCase
 
 class MockResponse:
@@ -56,8 +56,7 @@ class TestFetchAndCache(GalleryTestCase):
         super().setUp()
         self.add_gallery()
         self.processed = Song.objects.all().first()  # type: ignore
-        for _ in iter_fetch_and_cache(songs=Song.objects.all()):  # type: ignore
-            pass
+        fetch_and_cache(songs=Song.objects.all())  # type: ignore
         self.processed.refresh_from_db()
 
     def test_song_is_cached(self):
