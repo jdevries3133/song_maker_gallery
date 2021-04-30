@@ -8,29 +8,31 @@ roadmap.
 
 ### Overview
 
-This website was created by me, a music teacher, in response to the simple need
-to find a way to feature our students' work in light of the COVID-19 pandemic.
+This website was created by me, a music teacher, in response to the need to find a
+simple way to feature our students' work in light of the COVID-19 pandemic.
 Our students' concerts have been canceled, their rehearsals ceased, and their
 opportunities to share music diminished to a whisper of what they once were.
 
-As a third, fourth, and fifth grade elementary general music teacher, a big part
-of my COVID curriculum has been the Chrome Music Lab. Students love making
-creations with it; it's fun and easy to use, and it provides an amazing platform
-for us to discuss the topics in our music curriculum. For me, the music lab has
-been an indispensable tool for coping with our school closure.
+As an elementary general music teacher, a big part of my COVID curriculum has
+been the [Chrome Music Lab.](http://musiclab.chromeexperiments.com/)
+Students love making creations with it; it's fun
+and easy to use, and it provides an amazing platform for us to discuss the
+topics in our music curriculum. For me, the music lab has been an
+indispensable tool for coping with our school closure.
 
 This website is a simple way to share your students' work with your whole
 community. I know that I have been awestruck by the creativity of many of the
-music lab compositions that my students have shared with me, and I am sure that
-you feel the same.
+music lab compositions that my students have shared with me, and getting this
+project off the ground has shown that hundreds of other music teachers feel
+the same way.
 
 ### How it Works
 
 The teacher posts links from
 [Google's Music Lab Song Maker](http://musiclab.chromeexperiments.com/Song-Maker/).
-This site captures student work by fetching midi and json data from google's
-api. The frontend then uses that data to display beautiful, dynamically
-rendered thumbnails of students' work.
+This site captures student work by fetching and caching midi and json data
+from google's api. The frontend then uses that data to display beautiful,
+dynamically rendered thumbnails of students' work.
 
 ### Contributing
 
@@ -41,8 +43,8 @@ for details. Contributors are welcome! The local development environment is
 does a lot of the heavy lifting and you don't need any credentials or anything
 to start developing.
 
-As you can see, there is even a setup script for an extra easy start on
-Mac/Linux.
+As you can see, there is even a setup script for an extra easy start, which I
+have tested on Mac and Ubuntu Linux.
 
 ### Roadmap
 
