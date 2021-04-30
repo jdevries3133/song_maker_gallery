@@ -126,10 +126,10 @@ def normalize_songId(songId: Any) -> str:
     return songId
 
 
-def validate_spreadsheet_data(data):
+def depr_validate_spreadsheet_data(data):
     if isinstance(data, str):
         data = json.loads(data)
-    elif isinstance(data, dict):
+    elif isinstance(data, dict) and isinstance(data.get('songData'), str):
         data = json.loads(data.get('songData'))  # type: ignore
     assert isinstance(data, list)
 
@@ -173,7 +173,7 @@ def validate_spreadsheet_data(data):
                         f'not valid. (row #{rownum})'
                     ]
     except Exception as e:
-        logger.error(f'Validation failed due to error: {e}')
+        logger.exception(f'Validation failed due to error: {e}')
         logger.error(f'songData: {data}')
         validation_errors.append('Invalid spreadsheet data.')
     if validation_errors:

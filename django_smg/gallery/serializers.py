@@ -12,7 +12,7 @@ from .services import (
     iter_fetch_and_cache,
     normalize_songId,
     normalize_student_name,
-    validate_spreadsheet_data,
+    depr_validate_spreadsheet_data,
 )
 
 logger = logging.getLogger(__name__)
@@ -22,22 +22,10 @@ class SongSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
         fields = (
-            'songId',
-            'student_name',
-            'order',
-            'bars',
-            'beats',
-            'instrument',
-            'octaves',
-            'percussion',
-            'percussionNotes',
-            'rootNote',
-            'rootOctave',
-            'rootPitch',
-            'scale',
-            'subdivision',
-            'tempo',
-            'midi'
+            'songId',           'student_name',     'order',        'bars',
+            'beats',            'instrument',       'octaves',      'percussion',
+            'percussionNotes',  'rootNote',         'rootOctave',   'rootPitch',
+            'scale',            'subdivision',      'tempo',        'midi'
         )
 
     def create(self, validated_data):
@@ -101,183 +89,20 @@ class GallerySerializer(serializers.ModelSerializer):
         result = group_serializer.create(group_data)
         return instance
 
-
-class NaiveGallerySerializer(serializers.ModelSerializer):
-    """
-    Depricated and supports convoluted serializer below.
-    """
-    class Meta:
-        model = Gallery
-        fields = (
-            'title',
-            'description',
-            'pk',
-            'slug'
-        )
-
-
-class GalleryDatasetSerializer(serializers.Serializer):
-    """
-    Brings together information from the following models to create or render
-    galleries in a single request:
-
-    - Gallery
-    - Song
-    - SongGroup
-    """
-    title = serializers.CharField(max_length=100, allow_blank=False)
-    description = serializers.CharField(max_length=1e10, allow_blank=False)
-    songData = serializers.JSONField()
-
-    @ staticmethod
-    def get_queryset(slug=None, gallery=None):
+    def validate_song_groups(self, value):
         """
-        **CAREFUL! This returns a dict of querysets and model instances; not
-        a regular queryset.
+        Group names must be unique together.
         """
-        if not gallery and not slug:
-            raise Exception('Must pass gallery object or gallery slug')
-        if not gallery:
-            try:
-                gallery = Gallery.objects.get(slug=slug)  # type: ignore
-            except Gallery.DoesNotExist:  # type: ignore
-                raise Http404
-        songs = Song.objects.select_related(  # type: ignore
-            'gallery',
-            'group'
-        ).filter(
-            gallery=gallery
-        ).order_by(
-            'created'
-        )
-
-        groups = SongGroup.objects.filter(gallery=gallery)  # type: ignore
-        return {
-            'gallery': gallery,
-            'songs': songs,
-            'groups': groups
-        }
-
-    def render(self, slug=None, gallery=None) -> dict:
-        """
-        Give the frontend the whole structured blob necessary for it to render
-        a gallery at once.
-        """
-        if not slug and not gallery:
-            raise Exception('Must pass gallery object or gallery slug')
-        if gallery:
-            data = self.get_queryset(gallery=gallery)
-        else:
-            data = self.get_queryset(slug=slug)
-        gallery = data['gallery']
-        groups = data['groups']
-        output = {
-            'slug': gallery.slug,
-            'pk': gallery.pk,
-            'title': gallery.title,
-            'description': gallery.description,
-        }
-        rendered_groups = []
-        for group in groups:
-            group_songs = []
-            for song in iter_fetch_and_cache(
-                songs=Song.objects.filter(  # type: ignore
-                    id__in=data['songs'],
-                    group=group
-                )
-            ):
-                # this should really be defined as some sort of serializer in
-                # its own rite.
-                group_songs.append({
-                    "name": song.student_name,
-                    "songId": song.songId,
-                    "midiBytes": base64.b64encode(song.midi),
-                    "metadata": {
-                        "bars": song.bars,
-                        "beats": song.beats,
-                        "instrument": song.instrument,
-                        "octaves": song.octaves,
-                        "percussion": song.percussion,
-                        "percussionNotes": song.percussionNotes,
-                        "rootNote": song.rootNote,
-                        "rootOctave": song.rootOctave,
-                        "rootPitch": song.rootPitch,
-                        "scale": song.scale,
-                        "subdivision": song.subdivision,
-                        "tempo": song.tempo,
-                    }
-                })
-            group_songs.append(group.group_name)
-            rendered_groups.append(group_songs)
-        output['songData'] = rendered_groups
-        return output
-
-    def create(self, validated_data):
-        """
-        Create new gallery, to which everything else will relationally linked.
-        """
-        self._gallery = Gallery.objects.create(  # type: ignore
-            owner=self.get_user(),
-            title=validated_data['title'],
-            description=validated_data['description'],
-        )
-        self.parse_song_data(validated_data['songData'])
-        return self._gallery
-
-    def parse_song_data(self, song_data):
-        """
-        Parse nested list of groups and songs. Create SongGroups and Songs.
-        """
-        # bulk create SongGroups
-        song_groups = []
-        for group in song_data:
-            song_groups.append(SongGroup(
-                group_name=group[-1],
-                gallery=self._gallery
-            ))
-
-        SongGroup.objects.bulk_create(song_groups)  # type: ignore
-        # need to re-fetch ForeignKeys for later
-        song_groups = SongGroup.objects.filter(
-            gallery=self._gallery)  # type: ignore
-
-        # bulk create Songs
-        songs = []
-        for group in song_data:
-            group_obj = song_groups.get(group_name=group[-1])
-            for row in group[:-1]:
-                # change names to first name, last initial
-                full_name = row[0].strip()  # thanks Wendy!
-                songId = row[1].strip()[-16:]
-                name_arr = [i for i in full_name.split(' ') if i]
-                if len(name_arr) > 1:
-                    name = (
-                        name_arr[0].title()
-                        + ' '
-                        + name_arr[-1][0].upper() + '.'
+        if value is None:
+            return
+        seen = set()
+        for group in value:
+            if (group_name := group.get('group_name')) is not None:
+                if group_name in seen:
+                    raise ValidationError(
+                        f'Group names must be unique. The name {group_name} was '
+                        'repeated'
                     )
                 else:
-                    if name_arr:
-                        name = name_arr[0]
-                    else:
-                        name = ''
-                songs.append(Song(
-                    songId=songId,
-                    student_name=name,
-                    gallery=self._gallery,
-                    group=group_obj
-                ))
-        songs = Song.objects.bulk_create(songs)  # type: ignore
-
-    def get_user(self):
-        """
-        Safely get the user or raise a descriptive exception.
-        """
-        user = self.context.get('user')
-        if not user:
-            raise Exception('Current request context has no user')
-        return user
-
-    @ staticmethod
-    def validate_songData(song_data):
-        validate_spreadsheet_data(song_data)
+                    seen.add(group_name)
+        return value

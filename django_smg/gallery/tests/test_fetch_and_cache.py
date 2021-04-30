@@ -77,17 +77,4 @@ class TestFetchAndCache(GalleryTestCase):
 
     # @ patch('gallery.services.requests.models.Response.json', side_effect=ValueError)
     # def test_bad_api_response_causes_mock_data_assignment(self, mock_json):
-    #     self.depr_add_gallery()
-    #     with self.settings(SKIP_FETCH_AND_CACHE=False):
-    #         rendered = (
-    #             GalleryDatasetSerializer().render(
-    #                 slug=Gallery.objects.all().last().slug)  # type: ignore
-    #         )
-    #         for group in rendered['songData']:
-    #             for song in group[:-1]:
-    #                 for k, v in mock_data.items():
-    #                     self.assertEqual(
-    #                         v,
-    #                         song.get('metadata').get(k),
-    #                     )
-
+    #     ...

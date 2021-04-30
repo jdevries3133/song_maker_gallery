@@ -12,14 +12,15 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 from rest_framework import serializers
+from rest_framework.exceptions import ErrorDetail
 
 from .base_case import GalleryTestCase, patch_fetch_and_cache
-from ..serializers import GalleryDatasetSerializer, GallerySerializer
+from ..serializers import GallerySerializer
 from ..models import Gallery, SongGroup, Song
 from ..services import mock_data as default_api_return_data
 
 
-class TestGallerDatasetSerializer(GalleryTestCase):
+class TestGallerySerializer(GalleryTestCase):
     """
     Gallery serializer handles normalizing bulk create request into models,
     and rendering gallery views from the database.
@@ -69,8 +70,6 @@ class TestGallerDatasetSerializer(GalleryTestCase):
         and all student names in the second group shouldbe coerced into
         "Lilly G."
         """
-
-        # TODO: move to a test on the song serializer.
         for song in Song.objects.all():  # type: ignore
             self.assertIn(
                 song.student_name,
@@ -81,22 +80,8 @@ class TestGallerDatasetSerializer(GalleryTestCase):
             )
             self.assertEqual(song.songId, '5676759593254912')
 
-    def test_songId_normalization(self):
-        """
-        # TODO: implement and put in services test suite
-        """
-
-    def test_songId_validation(self):
-        """
-        # TODO: implement and put in Song serializer test suite
-        """
-
     @ patch_fetch_and_cache
     def test_gallery_serializer_render_method(self):
-        """
-        Render method makes a complex query and renders the data for the
-        frontend to render a single gallery.
-        """
         rendered = GallerySerializer(Gallery.objects.get(slug='test-title')).data
         self.assertEqual(
             self.expected_rendered_data,
@@ -124,9 +109,51 @@ class TestGallerDatasetSerializer(GalleryTestCase):
         data = self.mock_api_data
         data['song_groups'] = song_data
         serializer = GallerySerializer(data=data)
-        # breakpoint()
-        # self.assertFalse(serializer.is_valid())
+        self.assertFalse(serializer.is_valid())
+        self.assertEqual(
+            serializer.errors.get('song_groups')[0],
+            'Group names must be unique. The name duplicate was repeated'
+        )
 
+    def test_validator_message_for_empty_link(self):
+        data = self.mock_api_data
+        try:
+            data['song_groups'][0]['songs'][0]['songId'] = ''  # type: ignore
+        except LookupError:  # aka KeyError or IndexError
+            self.fail('Lookup error in test setup')
+        serializer = GallerySerializer(data=data)
+        self.assertFalse(serializer.is_valid())
+
+    def test_validator_message_for_empty_name(self):
+        data = self.mock_api_data
+        try:
+            data['song_groups'][0]['songs'][0]['student_name'] = ''  # type: ignore
+        except LookupError:  # aka KeyError or IndexError
+            self.fail('Lookup error in test setup')
+        serializer = GallerySerializer(data=data)
+        self.assertFalse(serializer.is_valid())
+
+    def test_validator_message_for_invalid_songId(self):
+
+        def set_songId(value):
+            data = self.mock_api_data
+            try:
+                data['song_groups'][0]['songs'][0]['songId'] = value  # type: ignore
+            except LookupError:  # aka KeyError or IndexError
+                self.fail('Lookup error in test setup')
+            return data
+
+        # wrong length
+        serializer = GallerySerializer(data=set_songId('1234'))
+        self.assertFalse(serializer.is_valid())
+
+        # not numeric
+        serializer = GallerySerializer(data=set_songId('abcdabcdabcdabcd'))
+        self.assertFalse(serializer.is_valid())
+
+        # not string
+        serializer = GallerySerializer(data=set_songId({'value': '1234123412341234'}))
+        self.assertFalse(serializer.is_valid())
 
 
 class TestQueryCountLargeGallery(test.TestCase):
@@ -180,112 +207,3 @@ class TestQueryCountLargeGallery(test.TestCase):
         with CaptureQueriesContext(connection) as query_count:
             self.serializer.data
         self.assertLess(query_count.final_queries, 10)
-
-class TestSongDataValidatorMessages(test.TestCase):
-
-    UI_TEST_DATA_DIR = Path(Path(__file__).parent, 'mock_data')
-
-    @ staticmethod
-    def _make_song_data(rows: list) -> list:
-        """
-        Append a group name to the rows, which is the data structure for
-        storing the group name.
-        """
-        rows.append('Test Group')
-        return [rows]
-
-    def test_validator_message_for_empty_link(self):
-        with open(Path(self.UI_TEST_DATA_DIR, 'empty_link.csv'), 'r') as csvf:
-            rows = [r for r in csv.reader(csvf)][1:]
-        with self.assertRaisesMessage(serializers.ValidationError, 'Row #3'):
-            GalleryDatasetSerializer.validate_songData(
-                self._make_song_data(rows)
-            )
-        with self.assertRaisesMessage(serializers.ValidationError, 'Jamir'):
-            GalleryDatasetSerializer.validate_songData(
-                self._make_song_data(rows)
-            )
-
-    def test_validator_message_for_empty_name(self):
-        with open(Path(self.UI_TEST_DATA_DIR, 'empty_name.csv'), 'r') as csvf:
-            rows = [r for r in csv.reader(csvf)][1:]
-        with self.assertRaisesMessage(serializers.ValidationError, '"Test Group,"'):
-            GalleryDatasetSerializer.validate_songData(
-                self._make_song_data(rows)
-            )
-        with self.assertRaisesMessage(
-                serializers.ValidationError,
-                'https://musiclab.chromeexperiments.com/Song-Maker/song/'
-                '4914262951591936'
-        ):
-            GalleryDatasetSerializer.validate_songData(
-                self._make_song_data(rows)
-            )
-
-    def test_validator_message_for_empty_row(self):
-        with open(Path(self.UI_TEST_DATA_DIR, 'empty_row.csv'), 'r') as csvf:
-            rows = [r for r in csv.reader(csvf)][1:]
-        with self.assertRaisesMessage(
-            serializers.ValidationError,
-            '"Test Group," row 3 is empty'
-        ):
-            GalleryDatasetSerializer.validate_songData(
-                self._make_song_data(rows)
-            )
-
-    def test_validator_message_for_invalid_link(self):
-        invalid_link_files = [
-            Path(self.UI_TEST_DATA_DIR, f'invalid_link_{n}.csv')
-            for n in range(1, 5)
-        ]
-        for p in invalid_link_files:
-            with open(p, 'r') as csvf:
-                rows = [r for r in csv.reader(csvf)][1:]
-            expect = (
-            )
-            with self.assertRaisesMessage(
-                serializers.ValidationError,
-                f'The Song Maker link for Jamir ({rows[2][1]}) is not valid.'
-            ):
-                GalleryDatasetSerializer.validate_songData(
-                    self._make_song_data(rows)
-                )
-
-
-class TestGallerySerializer(TestCase):
-
-    def test_simple_usage(self):
-        serializer = GallerySerializer(data={
-            'title': 'My Gallery',
-            'description': 'My gallery description.',
-            'song_groups': [
-                {
-                    'group_name': 'Larry\'s Homeroom',
-                    'songs': [
-                        {
-                            'songId': '1234123412341234',
-                            'student_name': 'Chris J.'
-                        }
-                    ]
-                }
-            ]
-        })
-        self.assertTrue(serializer.is_valid())
-        instance = serializer.save()
-
-        # Gallery
-        self.assertEqual(instance.title, 'My Gallery')                      # type: ignore
-        self.assertEqual(instance.description, 'My gallery description.')   # type: ignore
-        self.assertEqual(instance.slug, 'my-gallery')                       # type: ignore
-
-        # Song group
-        self.assertEqual(
-            instance.song_groups.first().group_name,                        # type: ignore
-            'Larry\'s Homeroom'
-        )
-        self.assertEqual(len(instance.song_groups.all()), 1)                # type: ignore
-
-        # Song
-        self.assertEqual(len(instance.songs.all()), 1)                      # type: ignore
-        self.assertEqual(instance.songs.first().student_name, 'Chris J.')   # type: ignore
-        self.assertEqual(instance.songs.first().songId, '1234123412341234') # type: ignore

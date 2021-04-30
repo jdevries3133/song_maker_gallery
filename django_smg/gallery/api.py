@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import Gallery
-from .serializers import GallerySerializer, NaiveGallerySerializer
+from .serializers import GallerySerializer
 
 logger = logging.getLogger(__name__)
 
@@ -39,7 +39,7 @@ class AuthGalleryViewset(APIView):
         Return all the galleries of an authenticated user.
         """
         return Response(
-            NaiveGallerySerializer(
+            GallerySerializer(
                 request.user.galleries.all(),
                 many=True
             ).data
