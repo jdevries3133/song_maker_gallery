@@ -23,7 +23,7 @@ echo "EMAIL_HOST_PASSWORD = 'deveml'" >> django_smg/django_smg/settings/secret.p
 echo "# Config for Song Maker Gallery" >> ~/.bashrc
 echo "DJANGO_DEBUG=\"true\"" >> ~/.bashrc
 
-echo "SMG SETUP: Creating virtual environment..."
+echo "SMG SETUP: Creating python virtual environment..."
 cd django_smg
 python3 -m venv venv
 source venv/bin/activate
@@ -49,6 +49,9 @@ npm run build
 echo "SMG SETUP: Starting server"
 cd ..
 python -c "import webbrowser; webbrowser.open('http://localhost:8000')"
-exec python manage.py runserver
 
-echo "!!!--PLEASE RESTART YOUR TERMINAL TO APPLY ENVIRONMENT VARIABLES--!!!"
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo "!!!--------PLEASE RESTART YOUR TERMINAL TO APPLY ENVIRONMENT VARIABLES-------!!!"
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
+exec python manage.py runserver
