@@ -16,7 +16,7 @@ echo "MYSQL_PASSWORD = 'passwd'" >> django_smg/django_smg/settings/secret.py
 echo "MYSQL_USER = 'songmaker'" >> django_smg/django_smg/settings/secret.py
 echo "MYSQL_NAME = 'songmaker'" >> django_smg/django_smg/settings/secret.py
 echo "EMAIL_HOST_USER = 'deveml'" >> django_smg/django_smg/settings/secret.py
-echo "EMAIL_HOST_PASSWORD = 'deveml" >> django_smg/django_smg/settings/secret.py
+echo "EMAIL_HOST_PASSWORD = 'deveml'" >> django_smg/django_smg/settings/secret.py
 
 
 # append env variable to ~/.bashrc
