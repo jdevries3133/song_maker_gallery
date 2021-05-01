@@ -2,7 +2,7 @@
 # where backup_sql.sh puts dump files
 sqldumps
 # home of our db passwords and API keys
-secret_settings.py
+django_smg/django_smg/settings/secret.py
 
 static_root
 webpack_output

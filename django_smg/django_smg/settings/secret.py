@@ -1,6 +1,0 @@
-SECRET_KEY = 'randomstr'
-MYSQL_PASSWORD = 'passwd'
-MYSQL_USER = 'songmaker'
-MYSQL_NAME = 'songmaker'
-EMAIL_HOST_USER = 'devemailuser'
-EMAIL_HOST_PASSWORD = 'devemailpasswd'
