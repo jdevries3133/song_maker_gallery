@@ -23,8 +23,9 @@ class TestAuthGalleryViewset(GalleryTestCase):
             HTTP_AUTHORIZATION=f'Token {self.token}',
             secure=True
         )
-        # type: ignore
-        self.assertTrue(status.is_success(response.status_code))
+        self.assertTrue(
+            status.is_success(response.status_code)
+        )
 
     def test_post_request_returns_expected_information(self):
         res = self.client.post(

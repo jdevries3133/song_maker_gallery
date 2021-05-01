@@ -1,12 +1,12 @@
 import os
 
-from .settings import BASE_DIR
+from .base import BASE_DIR
 
 
 ALLOWED_HOSTS = ['songmakergallery.com']
 
 
-from .secret_settings import (
+from .secret import (
     EMAIL_HOST_USER,
     EMAIL_HOST_PASSWORD
 )
@@ -16,7 +16,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
-from .secret_settings import (
+from .secret import (
     MYSQL_PASSWORD,
     MYSQL_USER,
     MYSQL_NAME

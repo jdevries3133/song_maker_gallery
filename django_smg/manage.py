@@ -4,7 +4,7 @@ import os
 import sys
 
 def _supress_logging_for_testing():
-    sys.argv.append('--settings=django_smg.test_settings')
+    sys.argv.append('--settings=django_smg.settings.test')
     print('Running tests with django_smg.test_settings to supress log output')
 
 def main():

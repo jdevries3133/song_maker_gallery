@@ -11,12 +11,15 @@ else
 fi
 
 # setup django secret_settings file
-echo "SECRET_KEY = 'randomstr'" > django_smg/django_smg/secret_settings.py
-echo "MYSQL_PASSWORD = 'passwd'" >> django_smg/django_smg/secret_settings.py
-echo "MYSQL_USER = 'songmaker'" >> django_smg/django_smg/secret_settings.py
-echo "MYSQL_NAME = 'songmaker'" >> django_smg/django_smg/secret_settings.py
+echo "SECRET_KEY = 'randomstr'" > django_smg/django_smg/settings/secret.py
+echo "MYSQL_PASSWORD = 'passwd'" >> django_smg/django_smg/settings/secret.py
+echo "MYSQL_USER = 'songmaker'" >> django_smg/django_smg/settings/secret.py
+echo "MYSQL_NAME = 'songmaker'" >> django_smg/django_smg/settings/secret.py
+echo "EMAIL_HOST_USER = 'deveml'" >> django_smg/django_smg/settings/secret.py
+echo "EMAIL_HOST_PASSWORD = 'deveml" >> django_smg/django_smg/settings/secret.py
 
 
+# append env variable to ~/.bashrc
 echo "# Config for Song Maker Gallery" >> ~/.bashrc
 echo "DJANGO_DEBUG=\"true\"" >> ~/.bashrc
 
@@ -47,3 +50,5 @@ echo "SMG SETUP: Starting server"
 cd ..
 python -c "import webbrowser; webbrowser.open('http://localhost:8000')"
 exec python manage.py runserver
+
+echo "!!!--PLEASE RESTART YOUR TERMINAL TO APPLY ENVIRONMENT VARIABLES--!!!"

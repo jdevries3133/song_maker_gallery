@@ -2,14 +2,14 @@ import os
 import json
 import sys
 
-from .secret_settings import SECRET_KEY
+from .secret import SECRET_KEY
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True if os.getenv('DJANGO_DEBUG') == '1' else False
 if not DEBUG:
-    from .production_settings import *
+    from .production import *
 else:
-    from .development_settings import *
+    from .development import *
 
 SKIP_FETCH_AND_CACHE = False  # speeds up unit tests significantly
 
