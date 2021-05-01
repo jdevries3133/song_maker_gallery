@@ -44,13 +44,21 @@ work.
 > The project's backend is a REST API built with the
 > [Django Rest Framework.](https://www.django-rest-framework.org/)
 
-1. Create the file `django_smg/django_smg/secret_settings.py`.
+1. Create the file `django_smg/django_smg/settings/secret.py`.
 2. Define the `SECRET_KEY` variable in this file. Set it to any string your
    heart desires.
+
+   - `SECRET_KEY`
+   - `MYSQL_PASSWORD`
+   - `MYSQL_USER`
+   - `MYSQL_NAME`
+   - `EMAIL_HOST_USER`
+   - `EMAIL_HOST_PASSWORD`
+
 3. Set the environment variable `DJANGO_DEBUG` to any non-zero value.
    - Set to any truthy value: `true`, `1`, etc...
-   - This `DEBUG` to be set to `True` inside Django and causes project to use
-     sqlite.
+   - This causes `DEBUG` to be set to `True` inside Django and causes project
+     to use sqlite, along with anything else in the development settings.
 4. `cd django_smg`
 5. Create a virtual environment: `python3 -m venv venv`.
 6. Activate the environment (`source venv/bin/activate` for unix/linux)
