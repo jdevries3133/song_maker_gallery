@@ -72,11 +72,13 @@ class Song(models.Model):
         Gallery,
         on_delete=models.CASCADE,
         related_name='songs',
+        null=True
     )
     group = models.ForeignKey(
         SongGroup,
         on_delete=models.CASCADE,
         related_name='songs',
+        null=True
     )
 
     # order of this song withing the SongGroup

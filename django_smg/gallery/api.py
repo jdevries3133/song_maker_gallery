@@ -1,11 +1,14 @@
 import logging
+from typing import Iterable
 
 from rest_framework import permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.decorators import api_view, permission_classes
 
-from .models import Gallery
-from .serializers import GallerySerializer, GallerySummarySerializer
+from .models import Gallery, Song
+from .serializers import GallerySerializer, GallerySummarySerializer, SongSerializer
+from .services import fetch_and_cache
 
 logger = logging.getLogger(__name__)
 
@@ -76,3 +79,15 @@ class PublicGalleryViewset(APIView):
     def get(_, slug):
         instance = Gallery.objects.get(slug=slug)
         return Response(GallerySerializer(instance).data)
+
+@ api_view(['POST'])
+@ permission_classes([permissions.IsAuthenticated])
+def instant_song_data(request):
+    """
+    Provide instant song data for a list of song objects.
+    """
+    serializer = SongSerializer(data=request.data)
+    if serializer.is_valid():
+        song = serializer.save()
+        song = fetch_and_cache(songs=[song])[0]  # type: ignore
+        return Response(serializer.data, status.HTTP_201_CREATED)

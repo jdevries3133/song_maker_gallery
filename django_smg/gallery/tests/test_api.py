@@ -1,13 +1,16 @@
 import time
 import json
+from unittest.mock import patch
 
+from django.test.testcases import TestCase
 from django.urls import reverse
 from django.utils.http import urlencode
 from rest_framework import status
 
 from ..models import Gallery
 from ..serializers import GallerySerializer
-from .base_case import GalleryTestCase, patch_fetch_and_cache
+from .base_case import GalleryTestCase, mock_fetch_and_cache, patch_fetch_and_cache
+from ..services import mock_data
 
 
 class TestAuthGalleryViewset(GalleryTestCase):
@@ -110,4 +113,35 @@ class TestPublicGalleryViewset(GalleryTestCase):
         self.assertEqual(
             response.json(),                                    # type: ignore
             self.expected_rendered_data,
+        )
+
+class TestInstantSongData(GalleryTestCase):
+
+    maxDiff = None
+
+    def setUp(self):
+        super().setUp()
+        self._login_client()
+
+    @ patch('gallery.api.fetch_and_cache', side_effect=mock_fetch_and_cache)
+    def test_data_returned(self, mocker):
+        response = self.client.post(
+            reverse('instant_song_data'),
+            {
+                'songId': '5676759593254912',
+                'student_name': 'Mark Johnson'
+            },
+            HTTP_AUTHORIZATION=f'Token {self.token}',
+            content_type='application/json',
+            secure=True
+        )
+        self.assertEqual(
+            response.json(),
+            {
+                'songId': '5676759593254912',
+                'student_name': 'Mark J.',
+                'order': 0,
+                'midi': '',
+                **mock_data
+            }
         )
