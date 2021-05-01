@@ -76,6 +76,7 @@ class SongGroupSerializer(serializers.ModelSerializer):
 
 class GallerySerializer(serializers.ModelSerializer):
     song_groups = SongGroupSerializer(many=True)
+    slug = serializers.CharField(max_length=50, required=False)
 
     class Meta:
         model = Gallery
@@ -83,6 +84,7 @@ class GallerySerializer(serializers.ModelSerializer):
             'pk',
             'title',
             'description',
+            'slug',
             'song_groups',
         )
 
@@ -98,6 +100,12 @@ class GallerySerializer(serializers.ModelSerializer):
             each['gallery'] = instance
         result = group_serializer.create(group_data)
         return instance
+
+    def validate_slug(self, value):
+        """
+        Slug is dealt with by the model manager, so it can bypass validation.
+        """
+        return value
 
     def validate_song_groups(self, value):
         """
@@ -116,3 +124,12 @@ class GallerySerializer(serializers.ModelSerializer):
                 else:
                     seen.add(group_name)
         return value
+
+class GallerySummarySerializer(serializers.ModelSerializer):
+    """
+    This makes it possible to GET a gallery entity but delay fetching and
+    caching if it is not necessary yet.
+    """
+    class Meta:
+        model = Gallery
+        fields = ('pk', 'slug', 'title', 'description')

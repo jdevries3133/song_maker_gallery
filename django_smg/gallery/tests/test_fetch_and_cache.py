@@ -71,9 +71,3 @@ class TestFetchAndCache(GalleryTestCase):
             self.EXPECT_MIDI,
             self.processed.midi
         )
-
-    # TODO: re-implement this test
-
-    # @ patch('gallery.services.requests.models.Response.json', side_effect=ValueError)
-    # def test_bad_api_response_causes_mock_data_assignment(self, mock_json):
-    #     ...

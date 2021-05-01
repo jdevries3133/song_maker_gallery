@@ -40,12 +40,40 @@ def fetch_and_cache(*, songs: QuerySet):
     session1 = requests.Session()
     session2 = requests.Session()
 
+    copies = {
+        copy.songId: copy for copy in Song.objects.filter(
+        songId__in=[s.songId for s in songs],
+        is_cached=True
+    )}
+
     for song in songs:
 
         if song.is_cached:
             continue
 
         needs_update = True
+
+        if song.songId in copies:
+            # we already have this song in our database! Copy these attributes
+            # from the duplicate to the new song
+            for key in [
+                'midi',
+                'is_cached',
+                'beats',
+                'bars',
+                'instrument',
+                'octaves',
+                'percussion',
+                'percussionNotes',
+                'rootNote',
+                'rootOctave',
+                'rootPitch',
+                'scale',
+                'subdivision',
+                'tempo',
+            ]:
+                setattr(song, key, getattr(copies[song.songId], key))
+            continue
 
         def SONG_JSON_DATA(song_id): return (
             f'https://musiclab.chromeexperiments.com/Song-Maker/data/{song_id}'

@@ -27,14 +27,29 @@ class TestAuthGalleryViewset(GalleryTestCase):
             status.is_success(response.status_code)
         )
 
-    def test_post_request_returns_expected_information(self):
-        res = self.client.post(
+    def test_get(self):
+        res = self.client.get(
             '/api/gallery/',
-            self.mock_api_data,
             HTTP_AUTHORIZATION=f'Token {self.token}',
             content_type="application/json",
             secure=True,
         )
+        self.assertEqual(
+            res.json(),
+            [{'pk': 1, 'slug': 'test-title', 'title': 'Test Title',
+              'description': 'This is the test description.'}]
+        )
+
+    def test_post(self):
+        # TODO: the queries are too damn high!
+        with self.assertNumQueries(48):
+            res = self.client.post(
+                '/api/gallery/',
+                self.mock_api_data,
+                HTTP_AUTHORIZATION=f'Token {self.token}',
+                content_type="application/json",
+                secure=True,
+            )
         self.assertEqual(
             res.json().get('title'),                            # type: ignore
             self.mock_api_data['title']
@@ -44,18 +59,7 @@ class TestAuthGalleryViewset(GalleryTestCase):
             self.mock_api_data['description'],
         )
 
-    def test_post_request_is_fast(self):
-        start = time.perf_counter()
-        self.client.post(
-            '/api/gallery/',
-            data=self.mock_api_data,
-            HTTP_AUTHORIZATION=f'Token {self.token}',
-            secure=True
-        )
-        stop = time.perf_counter()
-        self.assertLess((start-stop), 0.3)
-
-    def test_delete_gallery_without_pk_returns_400(self):
+    def test_delete_gallery_bad_request(self):
         res = self.client.delete(
             '/api/gallery/?invalid=this',
             HTTP_AUTHORIZATION=f'Token {self.token}',
@@ -68,11 +72,12 @@ class TestAuthGalleryViewset(GalleryTestCase):
 
     def test_delete_single_gallery(self):
         self.add_gallery()
-        self.client.delete(
-            f'/api/gallery/?pk={self.gallery.pk}',              # type: ignore
-            HTTP_AUTHORIZATION=f'Token {self.token}',
-            secure=True
-        )
+        with self.assertNumQueries(9):
+            self.client.delete(
+                f'/api/gallery/?pk={self.gallery.pk}',              # type: ignore
+                HTTP_AUTHORIZATION=f'Token {self.token}',
+                secure=True
+            )
         with self.assertRaises(Gallery.DoesNotExist):           # type: ignore
             self.gallery.refresh_from_db()                      # type: ignore
 

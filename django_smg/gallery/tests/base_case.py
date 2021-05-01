@@ -61,6 +61,8 @@ class GalleryTestCase(TestCase):
     @ property
     def expected_rendered_data(self):
         return {'description': 'This is the test description.',
+         'title': 'Test Title',
+         'slug': 'test-title',
          'pk': 1,
          'song_groups': [{'group_name': 'A Group of Marks',
                           'songs': [{'bars': None,
@@ -192,7 +194,7 @@ class GalleryTestCase(TestCase):
                                      'student_name': 'Lilly G.',
                                      'subdivision': None,
                                      'tempo': None}]}],
-         'title': 'Test Title'}
+        }
 
     def setUp(self):
         self.user = User.objects.create_user(  # type: ignore
