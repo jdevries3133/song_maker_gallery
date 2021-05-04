@@ -18,3 +18,4 @@ urlpatterns = [
 router = routers.SimpleRouter()
 router.register(r'song', SongViewset, 'song')
 router.register(r'song_group', SongGroupViewset, 'song_group')
+urlpatterns += router.urls
