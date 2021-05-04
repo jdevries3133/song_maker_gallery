@@ -12,10 +12,16 @@ from .services import (
     fetch_and_cache,
     normalize_songId,
     normalize_student_name,
-    depr_validate_spreadsheet_data,
 )
 
 logger = logging.getLogger(__name__)
+
+
+################################################################################
+
+            # Default serializers for Gallery, SongGroup, and Song entities
+
+################################################################################
 
 
 class SongSerializer(serializers.ModelSerializer):
@@ -111,17 +117,28 @@ class GallerySerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
-        # pop off related data and serializer
-        group_data = validated_data.pop('song_groups')
-        group_serializer = self.fields['song_groups']  # type: ignore
-        instance = Gallery.objects.create(
+        groups_data = validated_data.pop('song_groups')
+        gallery = Gallery.objects.create(
             owner=self.context['request'].user,
             **validated_data
         )
-        for each in group_data:
-            each['gallery'] = instance
-        result = group_serializer.create(group_data)
-        return instance
+        songs = []
+        for group_data in groups_data:
+            songs_data = group_data.pop('songs')
+            group = SongGroup.objects.create(
+                owner=self.context['request'].user,
+                gallery=gallery,
+                **group_data
+            )
+            for song in songs_data:
+                songs.append(Song(
+                    owner=self.context['request'].user,
+                    group=group,
+                    gallery=gallery,
+                    **song
+                ))
+        Song.objects.bulk_create(songs)
+        return gallery
 
     def validate_slug(self, value):
         """
@@ -146,6 +163,12 @@ class GallerySerializer(serializers.ModelSerializer):
                 else:
                     seen.add(group_name)
         return value
+
+################################################################################
+
+            # Custom serializers, mainly for optimizing common operations
+
+################################################################################
 
 class GallerySummarySerializer(serializers.ModelSerializer):
     """

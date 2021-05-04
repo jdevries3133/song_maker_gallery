@@ -220,9 +220,10 @@ class TestQueryCountLargeGallery(test.TestCase):
             ), 'r'
         ) as jsn:
             data = json.load(jsn)
-        self.serializer = GallerySerializer(data=data, context={
-            'request': SimpleNamespace(user=self.user)
-        })
+        self.serializer = GallerySerializer(
+            data=data,
+            context={'request': SimpleNamespace(user=self.user)}
+        )
         self.serializer.is_valid()
 
     def test_num_queries_on_create(self):
@@ -231,9 +232,7 @@ class TestQueryCountLargeGallery(test.TestCase):
         """
         with CaptureQueriesContext(connection) as query_count:
             self.serializer.save()
-        # TODO: optimize this; we did this in 15 queries with the old bloated
-        # serializer
-        self.assertLess(query_count.final_queries, 600)
+        self.assertLess(query_count.final_queries, 40)
 
     @ patch_fetch_and_cache
     def test_num_queries_on_initial_render(self):
@@ -243,9 +242,7 @@ class TestQueryCountLargeGallery(test.TestCase):
         self.assertTrue(self.serializer.save())
         with CaptureQueriesContext(connection) as query_count:
             self.serializer.data
-        # TODO: optimize this; we did this in 8 queries with the old bloated
-        # serializer
-        self.assertLess(query_count.final_queries, 30)
+        self.assertLess(query_count.final_queries, 20)
 
     @ patch_fetch_and_cache
     def test_num_queries_on_cached_render(self):

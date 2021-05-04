@@ -1,11 +1,11 @@
 import logging
 import re
+from typing import Any, Iterable
 
 from django.db import models, transaction, IntegrityError
 from django.utils.text import slugify
 from django.db.models import F, Max
 from django.db import models, transaction
-
 from rest_framework.exceptions import APIException
 
 
@@ -18,7 +18,7 @@ class OrderManager(models.Manager):
     https://www.revsys.com/tidbits/keeping-django-model-objects-ordered/
     """
 
-    def __init__(self, foreign_field: str = None):
+    def __init__(self, foreign_field: str = ''):
         """
         I manage the model with an order column. The ordered group is formed
         by combining my model and peers who are related by foreign key to a
@@ -34,12 +34,6 @@ class OrderManager(models.Manager):
         """
         Move an object to a new order position
         """
-
-        if not self.foreign_field:
-            raise Exception(
-                'Move method is unsupported because foreign field is not '
-                'defined.'
-            )
 
         qs = self.get_queryset()
 
@@ -70,9 +64,6 @@ class OrderManager(models.Manager):
 
     def create(self, **kwargs):
 
-        if not self.foreign_field:
-            return super().create(**kwargs)
-
         instance = self.model(**kwargs)
 
         with transaction.atomic():
@@ -93,6 +84,21 @@ class OrderManager(models.Manager):
             instance.save()
 
             return instance
+
+    def bulk_create(self, objs: Iterable[Any], *a, **kw):
+        # we want to order the objects within rather than across related
+        # groups, so first we will group them by foreign field
+        related_groupings = {}
+        for obj in objs:
+            group_key = getattr(obj, self.foreign_field).pk
+            related_groupings.setdefault(group_key, [])
+            related_groupings[group_key].append(obj)
+
+        # Now that we are grouped, we can order
+        for group in related_groupings.values():
+            for index, item in enumerate(group):
+                setattr(item, 'order', index)
+        return super().bulk_create(objs, *a, **kw)
 
 
 class SlugCreationFailed(APIException):

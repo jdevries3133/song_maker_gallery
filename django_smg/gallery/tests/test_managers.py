@@ -1,3 +1,5 @@
+import string
+import random
 from unittest.mock import patch
 
 from django.contrib.auth.models import User
@@ -89,6 +91,58 @@ class TestOrderManager(Base):
         [s.refresh_from_db() for s in self.songs]
         self.assertEqual(self.songs[1].order, 0)
         self.assertEqual(self.songs[2].order, 1)
+
+    def test_bulk_create(self):
+        """
+        The big trick here is that if you throw in a jumble of random objects,
+        the bulk create method should separate them out into groups based on
+        the foreign_field primary key, then order them within the group only.
+        """
+        other_group = SongGroup.objects.create(
+            gallery=self.gallery,
+            owner=self.user,
+            group_name='Second Group',
+        )
+        songs = [
+            # songs in original group (self.group)
+            Song(
+                group=self.group,
+                gallery=self.gallery,
+                owner=self.user,
+                student_name=str(i),  # later, this shows if original order was maintained
+                songId='1234123412341234'
+            ) for i in range(10)
+        ] + [
+            # songs in the new group created first
+            Song(
+                group=other_group,
+                gallery=self.gallery,
+                owner=self.user,
+                student_name=str(i),  # later, this shows if original order was maintained
+                songId='1234123412341234'
+            ) for i in range(10)
+        ]
+        result = Song.objects.bulk_create(songs)
+
+        # filter the results back out
+        grp1 = sorted([r for r in result if r.group.pk == self.group.pk], key=lambda i: i.order)
+        grp2 = sorted([r for r in result if r.group.pk == other_group.pk], key=lambda i: i.order)
+
+        self.assertEqual(len(grp1), 10)
+        self.assertEqual(len(grp2), 10)
+
+        for index, song in enumerate(grp1):
+            self.assertEqual(song.group, self.group)
+            self.assertEqual(song.order, index)
+            # shows that order of the input list matches the order value
+            # assignment
+            self.assertEqual(int(song.student_name), index)
+        for index, song in enumerate(grp2):
+            self.assertEqual(song.group, other_group)
+            self.assertEqual(song.order, index)
+            # shows that order of the input list matches the order value
+            # assignment
+            self.assertEqual(int(song.student_name), index)
 
 
 class TestSlugManager(Base):
