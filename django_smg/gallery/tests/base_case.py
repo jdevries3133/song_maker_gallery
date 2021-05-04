@@ -1,10 +1,12 @@
 from copy import deepcopy
 import json
+from types import SimpleNamespace
 from typing import OrderedDict
 from unittest.mock import patch
 
 from django.contrib.auth.models import User
 from django.test import TestCase, Client
+from rest_framework.response import Response
 
 from ..models import Gallery, Song
 from ..serializers import GallerySerializer
@@ -61,16 +63,18 @@ class GalleryTestCase(TestCase):
     @ property
     def expected_rendered_data(self):
         return {'description': 'This is the test description.',
-         'title': 'Test Title',
-         'slug': 'test-title',
+         'owner': 1,
          'pk': 1,
+         'slug': 'test-title',
          'song_groups': [{'group_name': 'A Group of Marks',
+                          'owner': 1,
                           'songs': [{'bars': None,
                                      'beats': None,
                                      'instrument': None,
                                      'midi': None,
                                      'octaves': None,
                                      'order': 0,
+                                     'owner': 1,
                                      'percussion': None,
                                      'percussionNotes': None,
                                      'rootNote': None,
@@ -87,6 +91,7 @@ class GalleryTestCase(TestCase):
                                      'midi': None,
                                      'octaves': None,
                                      'order': 1,
+                                     'owner': 1,
                                      'percussion': None,
                                      'percussionNotes': None,
                                      'rootNote': None,
@@ -103,6 +108,7 @@ class GalleryTestCase(TestCase):
                                      'midi': None,
                                      'octaves': None,
                                      'order': 2,
+                                     'owner': 1,
                                      'percussion': None,
                                      'percussionNotes': None,
                                      'rootNote': None,
@@ -119,6 +125,7 @@ class GalleryTestCase(TestCase):
                                      'midi': None,
                                      'octaves': None,
                                      'order': 3,
+                                     'owner': 1,
                                      'percussion': None,
                                      'percussionNotes': None,
                                      'rootNote': None,
@@ -130,12 +137,14 @@ class GalleryTestCase(TestCase):
                                      'subdivision': None,
                                      'tempo': None}]},
                          {'group_name': 'A Group of Lillys',
+                          'owner': 1,
                           'songs': [{'bars': None,
                                      'beats': None,
                                      'instrument': None,
                                      'midi': None,
                                      'octaves': None,
                                      'order': 0,
+                                     'owner': 1,
                                      'percussion': None,
                                      'percussionNotes': None,
                                      'rootNote': None,
@@ -152,6 +161,7 @@ class GalleryTestCase(TestCase):
                                      'midi': None,
                                      'octaves': None,
                                      'order': 1,
+                                     'owner': 1,
                                      'percussion': None,
                                      'percussionNotes': None,
                                      'rootNote': None,
@@ -168,6 +178,7 @@ class GalleryTestCase(TestCase):
                                      'midi': None,
                                      'octaves': None,
                                      'order': 2,
+                                     'owner': 1,
                                      'percussion': None,
                                      'percussionNotes': None,
                                      'rootNote': None,
@@ -184,6 +195,7 @@ class GalleryTestCase(TestCase):
                                      'midi': None,
                                      'octaves': None,
                                      'order': 3,
+                                     'owner': 1,
                                      'percussion': None,
                                      'percussionNotes': None,
                                      'rootNote': None,
@@ -194,7 +206,7 @@ class GalleryTestCase(TestCase):
                                      'student_name': 'Lilly G.',
                                      'subdivision': None,
                                      'tempo': None}]}],
-        }
+         'title': 'Test Title'}
 
     def setUp(self):
         self.user = User.objects.create_user(  # type: ignore
@@ -229,8 +241,10 @@ class GalleryTestCase(TestCase):
         full_data = self.mock_api_data
         if song_data:
             full_data['song_groups'] = song_data
-        serializer = GallerySerializer(data=full_data, context={
-            'user': self.user
-        })
+        serializer = GallerySerializer(
+            data=full_data,
+            context={'request': SimpleNamespace(user=self.user)}
+        )
         if serializer.is_valid():
             return serializer.save()
+        self.fail(serializer.errors)

@@ -28,7 +28,7 @@ ALLOWED_HOSTS = ['localhost']
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 if USE_MYSQL:
-    from .production_settings import DATABASES
+    from .production import DATABASES
 else:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     DATABASES = {

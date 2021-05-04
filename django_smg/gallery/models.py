@@ -12,7 +12,6 @@ class Gallery(models.Model):
         User,
         related_name='galleries',
         on_delete=models.CASCADE,
-        null=True,
     )
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(
@@ -20,6 +19,7 @@ class Gallery(models.Model):
         null=False,
         blank=False,
     )
+    description = models.TextField()
 
     objects = SlugManager()
     slug = models.SlugField(
@@ -27,7 +27,6 @@ class Gallery(models.Model):
         unique=True
     )
 
-    description = models.TextField()
 
 
     def __str__(self):
@@ -44,10 +43,18 @@ class SongGroup(models.Model):
     """
     created = models.DateTimeField(auto_now_add=True)
     group_name = models.CharField(_("Group Name"), max_length=100)
+
+    # relationships
+    owner = models.ForeignKey(
+        User,
+        related_name='song_groups',
+        on_delete=models.CASCADE,
+    )
     gallery = models.ForeignKey(
         Gallery,
         on_delete=models.CASCADE,
         related_name='song_groups',
+        null=True
     )
 
     # order of this SongGroup withing the Gallery
@@ -68,6 +75,11 @@ class Song(models.Model):
     student_name = models.CharField(_("Student Name"), max_length=100)
 
     # relationships
+    owner = models.ForeignKey(
+        User,
+        related_name='songs',
+        on_delete=models.CASCADE,
+    )
     gallery = models.ForeignKey(
         Gallery,
         on_delete=models.CASCADE,

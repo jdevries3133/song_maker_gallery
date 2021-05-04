@@ -1,6 +1,7 @@
 import csv
 from pathlib import Path
 import json
+from types import SimpleNamespace
 from typing import Generator, Iterable, Union
 from unittest.mock import patch
 
@@ -108,7 +109,10 @@ class TestGallerySerializer(GalleryTestCase):
         ]
         data = self.mock_api_data
         data['song_groups'] = song_data
-        serializer = GallerySerializer(data=data)
+        serializer = GallerySerializer(
+            data=data,
+            context={'request': SimpleNamespace(user=self.user)}
+        )
         self.assertFalse(serializer.is_valid())
         self.assertEqual(
             serializer.errors.get('song_groups')[0],
@@ -121,7 +125,10 @@ class TestGallerySerializer(GalleryTestCase):
             data['song_groups'][0]['songs'][0]['songId'] = ''  # type: ignore
         except LookupError:  # aka KeyError or IndexError
             self.fail('Lookup error in test setup')
-        serializer = GallerySerializer(data=data)
+        serializer = GallerySerializer(
+            data=data,
+            context={'request': SimpleNamespace(user=self.user)}
+        )
         self.assertFalse(serializer.is_valid())
 
     def test_validator_message_for_empty_name(self):
@@ -130,7 +137,10 @@ class TestGallerySerializer(GalleryTestCase):
             data['song_groups'][0]['songs'][0]['student_name'] = ''  # type: ignore
         except LookupError:  # aka KeyError or IndexError
             self.fail('Lookup error in test setup')
-        serializer = GallerySerializer(data=data)
+        serializer = GallerySerializer(
+            data=data,
+            context={'request': SimpleNamespace(user=self.user)}
+        )
         self.assertFalse(serializer.is_valid())
 
     def test_validator_message_for_invalid_songId(self):
@@ -144,15 +154,24 @@ class TestGallerySerializer(GalleryTestCase):
             return data
 
         # wrong length
-        serializer = GallerySerializer(data=set_songId('1234'))
+        serializer = GallerySerializer(
+            data=set_songId('1234'),
+            context={'request': SimpleNamespace(user=self.user)}
+        )
         self.assertFalse(serializer.is_valid())
 
         # not numeric
-        serializer = GallerySerializer(data=set_songId('abcdabcdabcdabcd'))
+        serializer = GallerySerializer(
+            data=set_songId('abcdabcdabcdabcd'),
+            context={'request': SimpleNamespace(user=self.user)}
+        )
         self.assertFalse(serializer.is_valid())
 
         # not string
-        serializer = GallerySerializer(data=set_songId({'value': '1234123412341234'}))
+        serializer = GallerySerializer(
+            data=set_songId({'value': '1234123412341234'}),
+            context={'request': SimpleNamespace(user=self.user)}
+        )
         self.assertFalse(serializer.is_valid())
 
     @ patch('gallery.serializers.fetch_and_cache')
@@ -202,7 +221,7 @@ class TestQueryCountLargeGallery(test.TestCase):
         ) as jsn:
             data = json.load(jsn)
         self.serializer = GallerySerializer(data=data, context={
-            'user': self.user,
+            'request': SimpleNamespace(user=self.user)
         })
         self.serializer.is_valid()
 

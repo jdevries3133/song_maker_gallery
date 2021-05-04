@@ -1,13 +1,14 @@
 import logging
+from types import SimpleNamespace
 from typing import Iterable
 
-from rest_framework import permissions, status
+from rest_framework import permissions, status, viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 
 from .models import Gallery, Song
-from .serializers import GallerySerializer, GallerySummarySerializer, SongSerializer
+from .serializers import GallerySerializer, GallerySummarySerializer, SongGroupSerializer, SongSerializer
 from .services import fetch_and_cache
 
 logger = logging.getLogger(__name__)
@@ -30,7 +31,8 @@ class AuthGalleryViewset(APIView):
         return Response(
             GallerySummarySerializer(
                 request.user.galleries.all(),
-                many=True
+                many=True,
+                context={'request': request}
             ).data
         )
 
@@ -42,7 +44,7 @@ class AuthGalleryViewset(APIView):
         """
         serializer = GallerySerializer(
             data=request.data,
-            context={'user': request.user},
+            context={'request': request}
         )
         if serializer.is_valid():
             instance = serializer.save()
@@ -80,14 +82,37 @@ class PublicGalleryViewset(APIView):
         instance = Gallery.objects.get(slug=slug)
         return Response(GallerySerializer(instance).data)
 
+
 @ api_view(['POST'])
 @ permission_classes([permissions.IsAuthenticated])
 def instant_song_data(request):
     """
     Provide instant song data for a list of song objects.
     """
-    serializer = SongSerializer(data=request.data)
+    serializer = SongSerializer(
+        data=request.data,
+        context={'request': request}
+    )
     if serializer.is_valid():
         song = serializer.save()
         song = fetch_and_cache(songs=[song])[0]  # type: ignore
         return Response(serializer.data, status.HTTP_201_CREATED)
+
+
+class SongViewset(viewsets.ModelViewSet):
+
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = SongSerializer
+
+    def get_queryset(self):
+        return self.request.user.songs.all()  # type: ignore
+
+
+class SongGroupViewset(viewsets.ModelViewSet):
+
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = SongGroupSerializer
+
+    def get_queryset(self):
+        return self.request.user.song_groups.all()  # type: ignore
+

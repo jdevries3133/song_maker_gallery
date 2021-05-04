@@ -20,17 +20,26 @@ logger = logging.getLogger(__name__)
 
 class SongSerializer(serializers.ModelSerializer):
 
+    owner = serializers.PrimaryKeyRelatedField(
+        read_only=True,
+        default=serializers.CurrentUserDefault()
+    )
+
     class Meta:
         model = Song
         fields = (
             'songId',           'student_name',     'order',        'bars',
             'beats',            'instrument',       'octaves',      'percussion',
             'percussionNotes',  'rootNote',         'rootOctave',   'rootPitch',
-            'scale',            'subdivision',      'tempo',        'midi'
+            'scale',            'subdivision',      'tempo',        'midi',
+            'owner'
         )
 
     def create(self, validated_data):
-        return Song.objects.create(**validated_data)
+        return Song.objects.create(
+            owner=self.context['request'].user,
+            **validated_data
+        )
 
     def validate_student_name(self, value):
         return normalize_student_name(value)
@@ -50,6 +59,10 @@ class SongSerializer(serializers.ModelSerializer):
 class SongGroupSerializer(serializers.ModelSerializer):
 
     songs = SongSerializer(many=True)
+    owner = serializers.PrimaryKeyRelatedField(
+        read_only=True,
+        default=serializers.CurrentUserDefault()
+    )
 
     def to_representation(self, instance):
         """
@@ -61,12 +74,15 @@ class SongGroupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SongGroup
-        fields = ('group_name', 'songs')
+        fields = ('group_name', 'songs', 'owner')
 
     def create(self, validated_data, **kw):
         song_data = validated_data.pop('songs')
         song_serializer = self.fields['songs']  # type: ignore
-        instance = SongGroup.objects.create(**validated_data)
+        instance = SongGroup.objects.create(
+            owner=self.context['request'].user,
+            **validated_data
+        )
         for each in song_data:
             each['group'] = instance
             each['gallery'] = instance.gallery
@@ -75,14 +91,20 @@ class SongGroupSerializer(serializers.ModelSerializer):
 
 
 class GallerySerializer(serializers.ModelSerializer):
+
     song_groups = SongGroupSerializer(many=True)
     slug = serializers.CharField(max_length=50, required=False)
+    owner = serializers.PrimaryKeyRelatedField(
+        read_only=True,
+        default=serializers.CurrentUserDefault()
+    )
 
     class Meta:
         model = Gallery
         fields = (
             'pk',
             'title',
+            'owner',
             'description',
             'slug',
             'song_groups',
@@ -92,10 +114,10 @@ class GallerySerializer(serializers.ModelSerializer):
         # pop off related data and serializer
         group_data = validated_data.pop('song_groups')
         group_serializer = self.fields['song_groups']  # type: ignore
-
-        # assign owner
-        validated_data['owner'] = self.context.get('user')
-        instance = Gallery.objects.create(**validated_data)
+        instance = Gallery.objects.create(
+            owner=self.context['request'].user,
+            **validated_data
+        )
         for each in group_data:
             each['gallery'] = instance
         result = group_serializer.create(group_data)

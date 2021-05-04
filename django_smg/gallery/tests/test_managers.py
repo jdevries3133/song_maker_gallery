@@ -21,11 +21,13 @@ class Base(TransactionTestCase):
         )
         self.group = SongGroup.objects.create(                  # type: ignore
             group_name='Test Group',
+            owner=self.user,
             gallery=self.gallery
         )
         self.songs = [
             Song.objects.create(
                 songId=f'{i}',
+                owner=self.user,
                 student_name=n,
                 gallery=self.gallery,
                 group=self.group
@@ -44,6 +46,7 @@ class TestOrderManager(Base):
     def test_order_can_be_manually_assigned(self):
         obj = Song.objects.create(
             songId=10,
+            owner=self.user,
             student_name='Jake',
             gallery=self.gallery,
             group=self.group,
@@ -54,6 +57,7 @@ class TestOrderManager(Base):
     def test_high_order_normalized(self):
         obj = Song.objects.create(
             songId=10,
+            owner=self.user,
             student_name='Jake',
             gallery=self.gallery,
             group=self.group,

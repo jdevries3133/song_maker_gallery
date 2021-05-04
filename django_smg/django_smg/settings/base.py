@@ -4,7 +4,7 @@ import sys
 
 from .secret import SECRET_KEY
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DEBUG = True if os.getenv('DJANGO_DEBUG') == '1' else False
 if not DEBUG:
     from .production import *
