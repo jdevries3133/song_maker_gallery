@@ -7,4 +7,4 @@
 # preserved, and you can hammer on a specific test suite or even test if
 # needed
 
-find . -name '*.py' | grep -v venv | entr python ./manage.py test --parallel 2 $@
+find . -name '*.py' | grep -v venv | entr python ./manage.py test $@
