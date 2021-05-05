@@ -4,10 +4,9 @@
   "description": "songmakergallery.com's frontend application.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development --watch",
+    "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "test": "jest",
-    "watch": "jest --watch",
     "storybook": "start-storybook -p 6006 -s ./src/media",
     "build-storybook": "build-storybook"
   },
