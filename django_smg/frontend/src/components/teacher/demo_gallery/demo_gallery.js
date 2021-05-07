@@ -2,12 +2,22 @@ import React from "react";
 import styled, {
   Div,
   Button,
-  Description,
+  Description as DefaultDescription,
   Grid,
   GridItem,
+  H3 as DefaultH3,
   P,
 } from "Common/styles";
 import GalleryBody from "./../../gallery/gal_body";
+
+const Description = styled(DefaultDescription)`
+  background-color: hsl(6deg 100% 89%);
+`;
+
+const H3 = styled(DefaultH3)`
+  font-size: 2rem;
+  font-weight: normal;
+`;
 
 const ActionButton = styled(Button)`
   font-size: 1.3rem;
@@ -46,21 +56,22 @@ const ButtonItems = styled(GridItem)`
 export const DemoGallery = ({ gallery }) => {
   return (
     <Div>
-      <Grid cols="3fr 2fr" rows="1fr 1fr">
-        <DescriptionItem>
-          <Description>
-            <P warn>
-              Warning! This is a demo gallery that only you can view. To launch,
-              click "Launch Gallery", or click "Go Back" to return to the form
-              on the last page and make changes
+      <Description>
+        <Grid cols="3fr 2fr" rows="1fr 1fr">
+          <DescriptionItem>
+            <H3>Warning!</H3>
+            <P>This is a demo gallery that only you can view.</P>
+            <P italic small>
+              To launch, click "Launch Gallery", or click "Go Back" to return to
+              the form on the last page and make changes.
             </P>
-          </Description>
-        </DescriptionItem>
-        <ButtonItems>
-          <ActionButton>Launch Gallery</ActionButton>
-          <ActionButton> Go Back</ActionButton>
-        </ButtonItems>
-      </Grid>
+          </DescriptionItem>
+          <ButtonItems>
+            <ActionButton color="lime">Launch Gallery</ActionButton>
+            <ActionButton color="salmon"> Go Back</ActionButton>
+          </ButtonItems>
+        </Grid>
+      </Description>
       <GalleryBody
         title={gallery.title}
         description={gallery.description}

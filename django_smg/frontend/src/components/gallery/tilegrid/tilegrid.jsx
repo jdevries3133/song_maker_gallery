@@ -61,6 +61,7 @@ const Finger = styled.span`
   transition: 0.4s ease;
 
   @media (max-width: 600px) {
+    position: static;
     background: none;
     color: black;
     opacity: 100%;

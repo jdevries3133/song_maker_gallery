@@ -19,6 +19,7 @@ exports[`<Signup /> matches snapshot 1`] = `
 
 .c12 {
   display: inline-block;
+  margin: auto;
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;

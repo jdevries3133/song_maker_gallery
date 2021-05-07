@@ -9,10 +9,14 @@ import {
 import { getUserGalleries } from "Actions/user";
 import { Redirect } from "react-router-dom";
 
-import { Div } from "Styles";
+import styled, { Div, H1 as DefaultH1 } from "Styles";
 import { ErrorHandler } from "./error_handler";
 import { LoginFooter } from "./login_footer";
 import { LoginForm } from "./form";
+
+const H1 = styled(DefaultH1)`
+  margin-bottom: 0;
+`;
 
 const login = (props) => {
   const [username, updateUsername] = useState("");
@@ -38,7 +42,7 @@ const login = (props) => {
   return (
     <Div>
       <ErrorHandler err={props.authError} />
-      <h1>login!</h1>
+      <H1>login!</H1>
       <LoginForm
         username={(u) => updateUsername(u)}
         password={(p) => updatePassword(p)}

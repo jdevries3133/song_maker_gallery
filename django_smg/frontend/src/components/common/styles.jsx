@@ -83,7 +83,17 @@ export const P = styled.p`
       color: green;
     `}
   ${(props) =>
-    // dark red w/ good contrast against white
+    props.small &&
+    css`
+      font-size: 0.8rem;
+    `}
+    ${(props) =>
+    props.italic &&
+    css`
+      font-style: italic;
+    `}
+  ${(props) =>
+    // dark red has better contrast against white than "color: red"
     props.warn &&
     css`
       color: #e41000;
@@ -111,6 +121,7 @@ export const A = styled.a`
 
 export const Button = styled.button`
   display: inline-block;
+  margin: auto;
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;

@@ -153,6 +153,7 @@ exports[`snapshot 1`] = `
 
 @media (max-width:600px) {
   .c4 {
+    position: static;
     background: none;
     color: black;
     opacity: 100%;

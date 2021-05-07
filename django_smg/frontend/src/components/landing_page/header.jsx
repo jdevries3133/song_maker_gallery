@@ -28,14 +28,15 @@ const P = styled(DefaultP)`
 
 const Description = styled(DefaultDescription)`
   margin: 0;
-  max-width: 50vw;
+  max-width: max(50vw, 600px);
 `;
 
 const Button = styled(DefaultButton)`
   display: block;
-  height: 4 rem;
+  height: 4rem;
   width: 80%;
   box-shadow: 1px 4px 12px #999;
+  margin: 1em auto;
 `;
 
 const Link = styled(DefaultLink)`

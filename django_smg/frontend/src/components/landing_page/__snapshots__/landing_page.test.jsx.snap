@@ -39,6 +39,7 @@ exports[`Landing page Matches snapshot 1`] = `
 
 .c8 {
   display: inline-block;
+  margin: auto;
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;
@@ -53,6 +54,7 @@ exports[`Landing page Matches snapshot 1`] = `
 
 .c12 {
   display: inline-block;
+  margin: auto;
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;
@@ -67,6 +69,7 @@ exports[`Landing page Matches snapshot 1`] = `
 
 .c21 {
   display: inline-block;
+  margin: auto;
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;
@@ -81,6 +84,7 @@ exports[`Landing page Matches snapshot 1`] = `
 
 .c23 {
   display: inline-block;
+  margin: auto;
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;
@@ -95,6 +99,7 @@ exports[`Landing page Matches snapshot 1`] = `
 
 .c24 {
   display: inline-block;
+  margin: auto;
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;
@@ -109,6 +114,7 @@ exports[`Landing page Matches snapshot 1`] = `
 
 .c25 {
   display: inline-block;
+  margin: auto;
   font-size: 1rem;
   font-weight: bold;
   padding: 20px;
@@ -298,14 +304,15 @@ exports[`Landing page Matches snapshot 1`] = `
 
 .c15 {
   margin: 0;
-  max-width: 50vw;
+  max-width: max(50vw,600px);
 }
 
 .c9 {
   display: block;
-  height: 4 rem;
+  height: 4rem;
   width: 80%;
   box-shadow: 1px 4px 12px #999;
+  margin: 1em auto;
 }
 
 .c11 {
@@ -442,6 +449,7 @@ exports[`Landing page Matches snapshot 1`] = `
 
 @media (max-width:600px) {
   .c31 {
+    position: static;
     background: none;
     color: black;
     opacity: 100%;

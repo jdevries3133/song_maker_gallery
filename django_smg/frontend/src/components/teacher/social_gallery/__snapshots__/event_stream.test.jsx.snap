@@ -155,7 +155,7 @@ exports[`matches snapshot 1`] = `
         Approve Comment?
       </label>
       <input
-        className="styles__Button-dxTSuI sc-eCImvq ejDiDY daNQhM"
+        className="styles__Button-dxTSuI sc-eCImvq kieHs daNQhM"
         id="approve"
         type="submit"
         value="Approve"
@@ -391,7 +391,7 @@ exports[`matches snapshot 1`] = `
         Approve Comment?
       </label>
       <input
-        className="styles__Button-dxTSuI sc-eCImvq ejDiDY daNQhM"
+        className="styles__Button-dxTSuI sc-eCImvq kieHs daNQhM"
         id="approve"
         type="submit"
         value="Approve"
@@ -481,7 +481,7 @@ exports[`matches snapshot 1`] = `
         Approve Comment?
       </label>
       <input
-        className="styles__Button-dxTSuI sc-eCImvq ejDiDY daNQhM"
+        className="styles__Button-dxTSuI sc-eCImvq kieHs daNQhM"
         id="approve"
         type="submit"
         value="Approve"

@@ -1,5 +1,16 @@
 import React from "react";
-import { Div, Button, Description, Input, Label } from "Styles";
+import styled, {
+  Div,
+  Button,
+  Description as DefaultDescription,
+  Input,
+  Label,
+} from "Styles";
+
+const Description = styled(DefaultDescription)`
+  margin: 1vw;
+  padding: 1vw;
+`;
 
 export const LoginForm = ({ username, password, submit }) => {
   return (
