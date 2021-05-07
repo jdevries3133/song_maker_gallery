@@ -1,15 +1,75 @@
+from django.contrib.auth.models import User
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 from .base_case import BaseCase
 
 
-class TestSignup(BaseCase):
+class TestAuth(BaseCase):
 
-    def test_test_setup(self):
+    headless = True
+
+    def test_registration_process(self):
         self.goTo('/signup')
-        value = self.awaitDataTestId('emailInput')
-        self.assertIsInstance(value, WebElement)
 
+        # fill out and submit registration form
+        self.awaitDataTestId('emailInput').send_keys('usereml@website.com')
+        self.awaitDataTestId('usernameInput').send_keys('myusername')
+        self.awaitDataTestId('passwordInput').send_keys('passwordgoeshere')
+        self.awaitDataTestId('passwordConfirmInput').send_keys('passwordgoeshere')
+        self.awaitDataTestId('tosCheckbox').click()
+        self.awaitXpath('//input[@type="submit"]').click()
+
+        # check we have been redirected to teacher page
+        WebDriverWait(self.driver, 3).until(EC.title_is, 'teacher')
+        retries = 0
+        while not self.driver.current_url.endswith('/teacher'):
+            retries += 1
+            if retries > 200:
+                self.fail('Browser did not redirect to /teacher route')
+
+        # ensure the account now exists
+        user = User.objects.get(username='myusername')  # type: ignore
+        self.assertEqual(user.email, 'usereml@website.com')
+
+    def login(self, username, password):
+        self.awaitDataTestId('usernameInput').send_keys(username)
+        self.awaitDataTestId('passwordInput').send_keys(password)
+        self.awaitDataTestId('loginSubmit').click()
+
+    def test_username_login(self):
         self.goTo('/login')
-        value = self.awaitDataTestId('passwordInput')
-        self.assertEqual(value.tag_name, 'input')
+        User.objects.create_user(  # type: ignore
+            username="myusername",
+            password="passwordgoeshere"
+        )
+        self.login('myusername', 'passwordgoeshere')
+
+        # check we have been redirected to teacher page
+        WebDriverWait(self.driver, 3).until(EC.title_is, 'teacher')
+        retries = 0
+        while not self.driver.current_url.endswith('/teacher'):
+            retries += 1
+            if retries > 200:
+                self.fail('Browser did not redirect to /teacher route')
+
+    def test_email_login(self):
+        self.goTo('/login')
+        User.objects.create_user(  # type: ignore
+            username="myusername",
+            email="myemail@email.com",
+            password="passwordgoeshere"
+        )
+        self.login(
+            'myemail@email.com',
+            'passwordgoeshere'
+        )
+
+        # check we have been redirected to teacher page
+        WebDriverWait(self.driver, 3).until(EC.title_is, 'teacher')
+        retries = 0
+        while not self.driver.current_url.endswith('/teacher'):
+            retries += 1
+            if retries > 200:
+                self.fail('Browser did not redirect to /teacher route')
