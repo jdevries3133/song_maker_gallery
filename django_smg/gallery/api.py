@@ -97,6 +97,7 @@ def instant_song_data(request):
         song = serializer.save()
         song = fetch_and_cache(songs=[song])[0]  # type: ignore
         return Response(serializer.data, status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class SongViewset(viewsets.ModelViewSet):

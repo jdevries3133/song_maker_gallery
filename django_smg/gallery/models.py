@@ -27,8 +27,6 @@ class Gallery(models.Model):
         unique=True
     )
 
-
-
     def __str__(self):
         return str(self.title)
 
@@ -72,7 +70,11 @@ class Song(models.Model):
     """
     created = models.DateTimeField(auto_now_add=True)
     songId = models.CharField(_("Song ID"), max_length=20)
-    student_name = models.CharField(_("Student Name"), max_length=100)
+    student_name = models.CharField(
+        _("Student Name"),
+        null=True,
+        max_length=100
+    )
 
     # relationships
     owner = models.ForeignKey(
