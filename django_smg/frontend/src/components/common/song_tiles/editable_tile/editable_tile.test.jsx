@@ -6,14 +6,19 @@ import "jest-styled-components";
 
 import { EditableTile } from "./editable_tile";
 
+const onSave = jest.fn();
+
 beforeEach(() => {
   render(
     <EditableTile
       name="Frank G."
       link="https://musiclab.chromeexperiments.com/Song-Maker/song/6594803161104384"
+      onSave={onSave}
     />
   );
 });
+
+afterEach(() => onSave.mockClear());
 
 describe("<EditableTile />", () => {
   it("matches snapshot", () => {
@@ -48,8 +53,22 @@ describe("<EditableTile />", () => {
   });
 
   it("does not allow invalid link submission", () => {
-    // TODO: make sure the redux action is not called here once the component
-    // is hooked up
+    fireEvent.change(screen.queryByTestId("linkInput"), {
+      target: { value: "different" },
+    });
+    fireEvent.click(screen.queryByTestId("submit"));
+    expect(onSave).toHaveBeenCalledTimes(0);
+  });
+
+  it("calls passed func if data is valid", () => {
+    fireEvent.change(screen.queryByTestId("linkInput"), {
+      target: {
+        value:
+          "https://musiclab.chromeexperiments.com/Song-Maker/song/1234567812345678",
+      },
+    });
+    fireEvent.click(screen.queryByTestId("submit"));
+    expect(onSave).toHaveBeenCalledWith("Frank G.", "1234567812345678");
   });
 
   describe("link validation", () => {

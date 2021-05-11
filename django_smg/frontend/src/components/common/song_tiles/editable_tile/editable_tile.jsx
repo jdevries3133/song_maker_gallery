@@ -18,15 +18,16 @@ const Description = styled(DefaultDescription)`
   padding: 1.5vw;
 `;
 
-export const EditableTile = ({ name = "", link = "" }) => {
+export const EditableTile = ({ name = "", link = "", onSave }) => {
   const [_name, setName] = useState(name);
   const [_link, setLink] = useState(link);
 
-  const isLinkValid = !VALIDATION_REGEX.test(_link.trim());
+  const isLinkValid = VALIDATION_REGEX.test(_link.trim());
   const changesMade = name !== _name || link !== _link;
 
   const submit = (e) => {
     e.preventDefault();
+    isLinkValid && onSave && onSave(_name, _link.slice(-16));
   };
 
   return (
@@ -41,10 +42,10 @@ export const EditableTile = ({ name = "", link = "" }) => {
       <div>
         <label htmlFor="link">
           <H3>Link</H3>
-          {isLinkValid && <P warn>Link is not valid</P>}
+          {!isLinkValid && <P warn>Link is not valid</P>}
         </label>
         <Textarea
-          warn={isLinkValid}
+          warn={!isLinkValid}
           id="link"
           data-testid="linkInput"
           onChange={(e) => setLink(e.target.value)}
@@ -61,4 +62,6 @@ export const EditableTile = ({ name = "", link = "" }) => {
 EditableTile.propTypes = {
   name: PropTypes.string,
   link: PropTypes.string,
+  /* Should take two arguments: name and songId */
+  onSave: PropTypes.func,
 };
