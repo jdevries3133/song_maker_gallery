@@ -35,7 +35,7 @@ export const useSongRect = (song, gridSize) => {
 
   // generate rects once midi has been parsed
   let rectGenerator;
-  if (parsedSong && parsedSong.isParsed) {
+  if (parsedSong?.isParsed) {
     try {
       rectGenerator = new RectGenerator(parsedSong, gridSize);
       rectGenerator.generateRects();

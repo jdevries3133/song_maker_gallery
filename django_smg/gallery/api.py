@@ -84,7 +84,6 @@ class PublicGalleryViewset(APIView):
 
 
 @ api_view(['POST'])
-@ permission_classes([permissions.IsAuthenticated])
 def instant_song_data(request):
     """
     Provide instant song data for a list of song objects.

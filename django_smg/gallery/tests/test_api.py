@@ -119,7 +119,6 @@ class TestInstantSongData(GalleryTestCase):
 
     def setUp(self):
         super().setUp()
-        self._login_client()
 
     @ patch('gallery.api.fetch_and_cache', side_effect=mock_fetch_and_cache)
     def test_data_returned(self, mocker):
@@ -129,17 +128,16 @@ class TestInstantSongData(GalleryTestCase):
                 'songId': '5676759593254912',
                 'student_name': 'Mark Johnson'
             },
-            HTTP_AUTHORIZATION=f'Token {self.token}',
             content_type='application/json',
             secure=True
         )
         self.assertEqual(
-            response.json(),
+            response.json(), # type: ignore
             {
                 'songId': '5676759593254912',
                 'student_name': 'Mark J.',
                 'order': 0,
-                'owner': 1,
+                'owner': None,
                 'midi': '',
                 **mock_data
             }

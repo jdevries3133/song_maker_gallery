@@ -72,8 +72,8 @@ class Song(models.Model):
     songId = models.CharField(_("Song ID"), max_length=20)
     student_name = models.CharField(
         _("Student Name"),
-        null=True,
-        max_length=100
+        max_length=100,
+        default=''
     )
 
     # relationships
@@ -81,6 +81,7 @@ class Song(models.Model):
         User,
         related_name='songs',
         on_delete=models.CASCADE,
+        null=True
     )
     gallery = models.ForeignKey(
         Gallery,

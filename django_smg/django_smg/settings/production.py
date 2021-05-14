@@ -4,6 +4,7 @@ from .base import BASE_DIR
 
 
 ALLOWED_HOSTS = ['songmakergallery.com']
+CORS_ORIGIN_ALLOW_ALL = False
 
 
 from .secret import (

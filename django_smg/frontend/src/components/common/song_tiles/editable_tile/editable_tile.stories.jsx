@@ -1,5 +1,7 @@
 import React from "react";
 
+import { BackendDependentStory } from "Common/storybook_util";
+
 import { EditableTile } from "./editable_tile";
 
 export default {
@@ -7,7 +9,11 @@ export default {
   component: EditableTile,
 };
 
-const Template = (args) => <EditableTile {...args} />;
+const Template = (args) => (
+  <BackendDependentStory>
+    <EditableTile {...args} />
+  </BackendDependentStory>
+);
 
 export const Default = Template.bind({});
 Default.args = {

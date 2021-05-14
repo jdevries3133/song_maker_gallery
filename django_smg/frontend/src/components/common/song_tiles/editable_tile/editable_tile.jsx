@@ -11,6 +11,8 @@ import styled, {
   H3,
 } from "Styles";
 
+import { LiveUpdatingTile } from "../live_updating_tile";
+
 const VALIDATION_REGEX = /^http(s)?:\/\/musiclab.chromeexperiments.com\/Song-Maker\/song\/\d{16}$/;
 
 const Description = styled(DefaultDescription)`
@@ -24,14 +26,16 @@ export const EditableTile = ({ name = "", link = "", onSave }) => {
 
   const isLinkValid = VALIDATION_REGEX.test(_link.trim());
   const changesMade = name !== _name || link !== _link;
+  const songId = isLinkValid ? _link.slice(-16) : null;
 
   const submit = (e) => {
     e.preventDefault();
-    isLinkValid && onSave && onSave(_name, _link.slice(-16));
+    isLinkValid && onSave && onSave(_name, songId);
   };
 
   return (
     <Description as="form" onSubmit={submit}>
+      <LiveUpdatingTile songId={isLinkValid ? songId : null} />
       <Label htmlFor="name">Name</Label>
       <Input
         id="name"

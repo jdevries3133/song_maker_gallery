@@ -12,7 +12,8 @@ const isNumeric = (str) => {
   );
 };
 
-const validateSongData = (songId) => songId.length === 16 && isNumeric(songId);
+const validateSongId = (songId) =>
+  songId && songId.length === 16 && isNumeric(songId);
 
 const fetchSongData = async (songId) => {
   axios.defaults.xsrfCookieName = "csrftoken";
@@ -37,8 +38,15 @@ export const useLiveSongData = (songId) => {
   });
 
   useEffect(() => {
-    if (validateSongData(songId)) {
-      if (songData.current?.songId === songId) return;
+    if (validateSongId(songId)) {
+      if (
+        songData.current?.songId === songId &&
+        // this confirms that we have the rich songData from the API, not
+        // just a little stub after initialization
+        songData.current?.midi
+      ) {
+        return;
+      }
       if (songId in songData.cache) {
         setSongData({
           current: songData.cache[songId],

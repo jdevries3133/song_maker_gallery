@@ -2,8 +2,10 @@ import base64
 import logging
 import json
 import re
+from django.contrib.auth.models import AnonymousUser
 
 from django.http import Http404
+from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
@@ -23,12 +25,20 @@ logger = logging.getLogger(__name__)
 
 ################################################################################
 
+class SongOwner(serializers.CurrentUserDefault):
+
+    def __call__(self, serializer_filed):
+        user = super().__call__(serializer_filed)
+        if user.is_authenticated:
+            return user
+
 
 class SongSerializer(serializers.ModelSerializer):
 
     owner = serializers.PrimaryKeyRelatedField(
+        allow_null=True,
         read_only=True,
-        default=serializers.CurrentUserDefault()
+        default=SongOwner()
     )
 
     class Meta:
@@ -42,10 +52,7 @@ class SongSerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
-        return Song.objects.create(
-            owner=self.context['request'].user,
-            **validated_data
-        )
+        return Song.objects.create(**validated_data)
 
     def validate_student_name(self, value):
         return normalize_student_name(value)
