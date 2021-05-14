@@ -2,6 +2,10 @@
 
 ## Welcome!!
 
+**Please take a look at
+[issue #66](https://github.com/jdevries3133/song_maker_gallery/issues/66) for
+pointers on how to get MySQL going. It is currently necessary due to a bug!**
+
 Not only is this a free and open source project, I also strive to keep
 as much of the site itself free to users for as long as possible. Any revenue
 from the website will always directly support the site's long-term operation,
