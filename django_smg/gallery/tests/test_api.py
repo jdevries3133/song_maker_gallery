@@ -2,7 +2,9 @@ import time
 import json
 from unittest.mock import patch
 
+from django.db import connection
 from django.test.testcases import TestCase
+from django.test.utils import CaptureQueriesContext
 from django.urls import reverse
 from django.utils.http import urlencode
 from rest_framework import status
@@ -38,10 +40,12 @@ class TestAuthGalleryViewset(GalleryTestCase):
             content_type="application/json",
             secure=True,
         )
+        res_data = res.json()[0]
+        self.assertEqual(res_data.get('slug'), 'test-title')
+        self.assertEqual(res_data.get('title'), 'Test Title')
         self.assertEqual(
-            res.json(),
-            [{'pk': 1, 'slug': 'test-title', 'title': 'Test Title',
-              'description': 'This is the test description.'}]
+            res_data.get('description'),
+            'This is the test description.'
         )
 
     def test_post(self):
@@ -75,12 +79,13 @@ class TestAuthGalleryViewset(GalleryTestCase):
 
     def test_delete_single_gallery(self):
         self.add_gallery()
-        with self.assertNumQueries(9):
+        with CaptureQueriesContext(connection) as query_count:
             self.client.delete(
                 f'/api/gallery/?pk={self.gallery.pk}',              # type: ignore
                 HTTP_AUTHORIZATION=f'Token {self.token}',
                 secure=True
             )
+        self.assertLess(query_count.final_queries, 15)
         with self.assertRaises(Gallery.DoesNotExist):           # type: ignore
             self.gallery.refresh_from_db()                      # type: ignore
 
@@ -100,20 +105,67 @@ class TestAuthGalleryViewset(GalleryTestCase):
 
 class TestPublicGalleryViewset(GalleryTestCase):
 
-    maxDiff = None
-
     @ patch_fetch_and_cache
     def test_get_request(self):
         self.add_gallery()
         url = reverse('public_gallery', kwargs={
             'slug': 'test-title'
         })
-        url += '?' + urlencode({'serializer': 'new'})
-        response = self.client.get(url, secure=True)
+        data = self.client.get(url, secure=True).json()
+        # basic info is same
         self.assertEqual(
-            response.json(),                                    # type: ignore
-            self.expected_rendered_data,
+            data.get('description'),
+            self.expected_rendered_data.get('description')
         )
+        self.assertEqual(
+            data.get('title'),
+            self.expected_rendered_data.get('title')
+        )
+        self.assertEqual(
+            data.get('slug'),
+            self.expected_rendered_data.get('slug')
+        )
+
+        # check groups
+        for expected_grp, actual_grp in zip(  # type: ignore
+            self.expected_rendered_data.get('song_groups'),
+            data.get('song_groups')
+        ):
+            self.assertEqual(actual_grp['group_name'], expected_grp['group_name'])
+
+            # check songs
+            for actual_song, expected_song in zip(
+                actual_grp.get('songs'),
+                expected_grp.get('songs'),
+            ):
+                for key in [
+                    'bars',
+                    'beats',
+                    'instrument',
+                    'midi',
+                    'octaves',
+                    'order',
+                    'percussion',
+                    'percussionNotes',
+                    'rootNote',
+                    'rootOctave',
+                    'rootPitch',
+                    'scale',
+                    'songId',
+                    'student_name',
+                    'subdivision',
+                    'tempo',
+                ]:
+                    actual_value, expected_value = (
+                        actual_song.get(key),
+                        expected_song.get(key)
+                    )
+                    if actual_value != expected_value:
+                        self.fail(
+                            f'AssertionError: {actual_value} != {expected_value} '
+                            f'for key {key}'
+                        )
+
 
 class TestInstantSongData(GalleryTestCase):
 

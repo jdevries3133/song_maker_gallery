@@ -82,14 +82,6 @@ class TestGallerySerializer(GalleryTestCase):
             self.assertEqual(song.songId, '5676759593254912')
 
     @ patch_fetch_and_cache
-    def test_gallery_serializer_render_method(self):
-        rendered = GallerySerializer(Gallery.objects.get(slug='test-title')).data
-        self.assertEqual(
-            self.expected_rendered_data,
-            rendered
-        )
-
-    @ patch_fetch_and_cache
     def test_render_method_num_queries(self):
         self.add_gallery()
         with self.assertNumQueries(8):
