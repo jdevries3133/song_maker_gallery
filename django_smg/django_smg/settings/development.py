@@ -13,7 +13,7 @@ django_stubs_ext.monkeypatch()
 # instance in docker.
 #
 # When this is set to false, dbsqlite is used instead.
-USE_MYSQL = False
+USE_MYSQL = True
 
 # see Python's logging levels for valid strings to use
 # https://docs.python.org/3/library/logging.html#logging-levels
