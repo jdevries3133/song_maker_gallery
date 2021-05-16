@@ -34,7 +34,6 @@ export const GroupForm = ({ group }) => {
     setGroupStudents(newGroupStudents);
   };
 
-  console.log(groupStudents);
   return (
     <Description>
       <Form>

@@ -1,7 +1,14 @@
 import React from "react";
+import styled from "styled-components";
 
-import { DynamicTile } from "./dynamic_tile";
+import { SongPreview } from "./song_preview";
 import { useLiveSongData } from "./use_live_song_data";
+
+const S = styled.div`
+  & > svg {
+    border-radius: 20px;
+  }
+`;
 
 /**
  * Integration of DynamicTile and useLiveSongData in order to provide
@@ -10,5 +17,9 @@ import { useLiveSongData } from "./use_live_song_data";
  */
 export const LiveUpdatingTile = ({ songId, width }) => {
   const song = useLiveSongData(songId);
-  return song ? <DynamicTile song={song} width={width} /> : null;
+  return song ? (
+    <S>
+      <SongPreview song={song} width={width} />{" "}
+    </S>
+  ) : null;
 };

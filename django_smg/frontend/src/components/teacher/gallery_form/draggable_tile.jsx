@@ -2,6 +2,7 @@ import React from "react";
 import { useDrag, useDrop } from "react-dnd";
 
 import styled from "styled-components";
+import useWidth from "Common/useWidth";
 import { EditableTile } from "Common/song_tiles/editable_tile";
 
 import { SwapHint, BadDragHint } from "./hints";
@@ -43,6 +44,7 @@ const Handle = styled.div`
 `;
 
 export const DraggableTile = ({ name, songId, groupName, swap, index }) => {
+  const { width } = useWidth(450);
   const [_, drag, dragPreview] = useDrag(() => ({
     type: "formGroup",
     item: {
@@ -69,10 +71,12 @@ export const DraggableTile = ({ name, songId, groupName, swap, index }) => {
     <Div ref={drop}>
       <Div ref={dragPreview}>
         {/* The drag ref marks this node as being the "pick-up" node */}
-        <Controllers>
-          <Handle role="Handle" ref={drag} />
-          <Tooltip>Drag and Drop</Tooltip>
-        </Controllers>
+        {width > 450 && (
+          <Controllers>
+            <Handle role="Handle" ref={drag} />
+            <Tooltip>Drag and Drop</Tooltip>
+          </Controllers>
+        )}
         {isOver ? (
           item.group == groupName ? (
             <SwapHint />
