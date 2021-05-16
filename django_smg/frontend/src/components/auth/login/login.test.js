@@ -14,7 +14,9 @@ import { Context } from "Test/app_context";
 import { loginAction } from "Test/__mocks__/actions";
 import Login from "./index";
 import { login, tryToken } from "Actions/auth.action";
+import { windowLocation } from "../../../util/window";
 
+jest.mock("../../../util/window");
 jest.mock("Actions/auth.action");
 
 beforeEach(() => tryToken.mockImplementation(() => null));
@@ -45,6 +47,23 @@ describe("login", () => {
     fireEvent.input(screen.getByTestId("passwordInput"), "password");
     fireEvent.click(screen.getByTestId("loginSubmit"));
     expect(screen.getByTestId("teacher")).toBeTruthy();
+  });
+
+  it("redirects dynamically based on search param 'next'", async (done) => {
+    windowLocation.mockImplementation(() => "?next=/teacher/demo");
+    render(
+      <Context>
+        <Login />
+        <Route path="/teacher/demo">
+          <div data-testid="teacher"></div>
+        </Route>
+      </Context>
+    );
+    fireEvent.input(screen.getByTestId("usernameInput"), "username");
+    fireEvent.input(screen.getByTestId("passwordInput"), "password");
+    fireEvent.click(screen.getByTestId("loginSubmit"));
+    expect(screen.getByTestId("teacher")).toBeTruthy();
+    done();
   });
 
   it("shows an error if bad credentials are entered", async (done) => {

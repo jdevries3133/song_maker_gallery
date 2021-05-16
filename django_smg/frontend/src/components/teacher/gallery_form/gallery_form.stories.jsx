@@ -1,9 +1,9 @@
 import React from "react";
 
-import { BackendDependentStory } from "Common/storybook_util";
+import { Context, BackendDependentStory } from "Common/storybook_util";
+import testData from "Test/test_data";
 
 import { GalleryForm } from "./gallery_form";
-import testData from "Test/test_data";
 
 export default {
   title: "Teacher/Gallery Form",
@@ -11,9 +11,11 @@ export default {
 };
 
 const Template = (args) => (
-  <BackendDependentStory>
-    <GalleryForm {...args} />
-  </BackendDependentStory>
+  <Context>
+    <BackendDependentStory>
+      <GalleryForm {...args} />
+    </BackendDependentStory>
+  </Context>
 );
 
 export const Default = Template.bind({});

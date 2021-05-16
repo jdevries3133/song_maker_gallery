@@ -4,6 +4,9 @@ import axios from "axios";
 
 import { P } from "Styles";
 
+// TODO: this should live in this file. See #70
+export { Context } from "../../test/app_context";
+
 export const BackendDependentStory = ({ backendPort = 8000, children }) => {
   axios.defaults.baseURL = `http://localhost:${backendPort}/`;
   useEffect(() => {

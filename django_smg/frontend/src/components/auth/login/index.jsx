@@ -13,6 +13,7 @@ import styled, { Div, H1 as DefaultH1 } from "Styles";
 import { ErrorHandler } from "./error_handler";
 import { LoginFooter } from "./login_footer";
 import { LoginForm } from "./form";
+import { windowLocation } from "../../../util/window";
 
 const H1 = styled(DefaultH1)`
   margin-bottom: 0;
@@ -21,7 +22,7 @@ const H1 = styled(DefaultH1)`
 const login = (props) => {
   const [username, updateUsername] = useState("");
   const [password, updatePassword] = useState("");
-
+  const params = new URLSearchParams(windowLocation("search"));
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const login = (props) => {
   }, []);
 
   if (props.isAuthenticated) {
-    return <Redirect to="/teacher" />;
+    return <Redirect to={params.get("next") ?? "/teacher"} />;
   }
 
   const submit = (e) => {

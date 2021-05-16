@@ -6,18 +6,13 @@ const private_route = ({ children, isAuthenticated, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={({ location }) =>
-        isAuthenticated ? (
+      render={(args) => {
+        return isAuthenticated ? (
           children
         ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: location },
-            }}
-          />
-        )
-      }
+          <Redirect to={`/login?next=${args.location.pathname}`} />
+        );
+      }}
     />
   );
 };

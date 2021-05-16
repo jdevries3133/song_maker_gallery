@@ -8,7 +8,7 @@ import { useLiveSongData } from "./use_live_song_data";
  * a tile that updates every time the songId changes, including all the
  * caching functionality of useLiveSongData
  */
-export const LiveUpdatingTile = ({ songId }) => {
+export const LiveUpdatingTile = ({ songId, width }) => {
   const song = useLiveSongData(songId);
-  return song ? <DynamicTile song={song} /> : null;
+  return song ? <DynamicTile song={song} width={width} /> : null;
 };

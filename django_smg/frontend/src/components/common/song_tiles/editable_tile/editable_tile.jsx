@@ -35,7 +35,7 @@ export const EditableTile = ({ name = "", link = "", onSave }) => {
 
   return (
     <Description as="form" onSubmit={submit}>
-      <LiveUpdatingTile songId={isLinkValid ? songId : null} />
+      <LiveUpdatingTile width={200} songId={isLinkValid ? songId : null} />
       <Label htmlFor="name">Name</Label>
       <Input
         id="name"
