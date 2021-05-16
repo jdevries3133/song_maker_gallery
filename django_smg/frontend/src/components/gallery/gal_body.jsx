@@ -15,8 +15,8 @@ const galBody = (props) => {
         data={props.data}
       />
       <Div>
-        {props.data.map((group) => (
-          <TileGrid data={group} key={group.slice(-1)[0]} />
+        {props.data.song_groups.map((group) => (
+          <TileGrid data={group} key={group.group_name + Math.random()} />
         ))}
       </Div>
       <Donate />

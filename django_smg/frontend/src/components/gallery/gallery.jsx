@@ -51,7 +51,7 @@ class Gallery extends Component {
             <GalleryBody
               title={this.props.gallery.title}
               description={this.props.gallery.description}
-              data={this.props.gallery.songData}
+              data={this.props.gallery}
               button={this.state.button}
             />
           </div>

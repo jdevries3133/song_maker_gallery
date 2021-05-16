@@ -5,11 +5,11 @@ import { Blanket } from "Common/blanket";
 import { DownloadTemplate } from "./download_template";
 
 /**
- * ex. songData => "Spreadsheet Error"
+ * ex. song_groups => "Spreadsheet Error"
  */
 const backendMsgAdapter = (i) => {
   switch (i) {
-    case "songData":
+    case "song_groups":
       return "Spreadsheet Not Valid";
     default:
       return i.slice(0, 1).toUpperCase() + i.slice(1, i.length);
@@ -33,7 +33,7 @@ export const BadRequest = ({ serverErrorMessage, onOk }) => {
               </li>
             ))}
           </ul>
-          {k === "songData" ? (
+          {k === "song_groups" ? (
             <Fragment>
               <h3>Quick Tips</h3>
               <p>

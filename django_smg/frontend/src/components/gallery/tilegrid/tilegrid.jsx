@@ -72,26 +72,25 @@ const Finger = styled.span`
   }
 `;
 
-export const TileGrid = (props) => {
-  const group_name = props.data.slice(-1);
+export const TileGrid = ({ data }) => {
   const { width } = useWidth(600);
 
   return width > 600 ? (
     <GalleryContainer id="gallery">
       <a href="#gallery_top">
-        <TgTitle id={group_name}>{group_name}</TgTitle>
+        <TgTitle id={data.group_name}>{data.group_name}</TgTitle>
         <br />
         <Finger>☟</Finger>
       </a>
       <Ul>
-        {props.data.slice(0, -1).map((song, index) => (
+        {data.songs.map((song, index) => (
           <DynamicTile song={song} pixelWidth={300} key={song.songId + index} />
         ))}
       </Ul>
     </GalleryContainer>
   ) : (
     <GalleryContainer id="gallery">
-      <TgTitle id={group_name}>{group_name}</TgTitle>
+      <TgTitle id={data.group_name}>{data.group_name}</TgTitle>
       <A href="#gallery_top">
         <Button block>
           <Finger>☟</Finger>
@@ -100,7 +99,7 @@ export const TileGrid = (props) => {
       </A>
       <div style={{ textAlign: "center" }}>
         <Ul>
-          {props.data.slice(0, -1).map((song, index) => (
+          {data.songs.map((song, index) => (
             <DynamicTile
               mobile={true}
               song={song}

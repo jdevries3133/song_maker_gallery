@@ -75,7 +75,7 @@ export const DemoGallery = ({ gallery }) => {
       <GalleryBody
         title={gallery.title}
         description={gallery.description}
-        data={gallery.songData}
+        data={gallery}
       />
     </Div>
   );

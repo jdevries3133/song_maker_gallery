@@ -45,8 +45,8 @@ class AddGallery extends Component {
       props.getUserGalleries(props.token);
       return {
         titleValue: props.formRecover.title,
-        stagedGroups: props.formRecover.songData
-          ? props.formRecover.songData
+        stagedGroups: props.formRecover.song_groups
+          ? props.formRecover.song_groups
           : [],
         descriptionValue: props.formRecover.description,
         recover: true,
@@ -188,7 +188,7 @@ class AddGallery extends Component {
       {
         title: this.state.titleValue,
         description: this.state.descriptionValue,
-        songData: this.state.stagedGroups,
+        song_groups: this.state.stagedGroups,
       },
       this.props.token
     );

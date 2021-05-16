@@ -40,7 +40,7 @@ Context.defaultProps = {
       gallery: {
         title: "title",
         description: "description",
-        songData: [],
+        song_groups: [],
       },
     },
   },

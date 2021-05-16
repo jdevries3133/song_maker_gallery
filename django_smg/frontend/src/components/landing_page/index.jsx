@@ -17,7 +17,7 @@ export const LandingPage = () => {
       <GalleryBody
         title={sampleGallery.title}
         description={sampleGallery.description}
-        data={sampleGallery.songData}
+        data={sampleGallery}
       />
     </Div>
   );

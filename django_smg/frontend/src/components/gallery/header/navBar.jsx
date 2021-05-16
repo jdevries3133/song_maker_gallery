@@ -10,7 +10,7 @@ const Nav = styled.nav`
   padding-top: 4rem;
 `;
 
-const navBar = (props) => {
+const navBar = ({ data }) => {
   const colors = [
     "#94c732", // green
     "#ffe716", // yellow
@@ -19,12 +19,16 @@ const navBar = (props) => {
   ];
   return (
     <Nav id="gallery_top">
-      {props.data.map((group, i) => {
-        const group_name = group.slice(-1);
-
+      {data.song_groups.map((group, i) => {
         return (
-          <a className="a_nav" key={i + group_name} href={"#" + group_name}>
-            <Button color={colors[i % colors.length]}>{group_name}</Button>
+          <a
+            className="a_nav"
+            key={i + group.group_name}
+            href={"#" + group.group_name}
+          >
+            <Button color={colors[i % colors.length]}>
+              {group.group_name}
+            </Button>
           </a>
         );
       })}

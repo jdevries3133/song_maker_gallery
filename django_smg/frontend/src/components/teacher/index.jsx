@@ -1,19 +1,29 @@
 import React from "react";
-
-// import Header from "./header";
-import ListGalleries from "./list_galleries";
+import { Switch, Route } from "react-router";
 
 import { Div } from "Styles";
 
+import ListGalleries from "./list_galleries";
 import LogoutButton from "./header/logout_button";
 import { Home } from "./home";
+import { GalleryForm } from "./gallery_form/gallery_form";
+
+// temp
+import sampleGallery from "../landing_page/sample_gallery.json";
 
 export default () => {
   return (
     <Div>
-      <LogoutButton />
-      <Home />
-      <ListGalleries />
+      <Switch>
+        <Route path="/">
+          <LogoutButton />
+          <Home />
+          <ListGalleries />
+        </Route>
+        <Route path="/form">
+          <GalleryForm gallery={sampleGallery} />
+        </Route>
+      </Switch>
     </Div>
   );
 };

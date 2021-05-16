@@ -665,7 +665,8 @@ exports[`Landing page Matches snapshot 1`] = `
     >
       <p>
         This is an example of what one of our galleries look like. All that you need to do is upload a spreadsheet of students' names and links to their song maker creations, and the site does the rest. You can spin up a gallery just like this for your students in only a few minutes!
-Notice that the thumbnail images are not common. Each student's actual composition is displayed on the website so that everyone in your school community can get a bird's eye view of the astounding creativity of our students.
+Notice that the thumbnail images are not generic. Each student's actual composition is displayed on the website so that everyone in your school community can get a bird's eye view of the astounding creativity of our students.
+We, these childrens' music teachers, have had the pleasure of experiencing the boundless creativity that students have expressed through these difficult times through tools like the Song Maker; let's share that with our communities and celebrate the end of an unusual school year.
       </p>
       <p
         className="c17"
@@ -697,11 +698,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       >
         <h2
           className="c29 c30"
-          id={
-            Array [
-              "Your Group Here",
-            ]
-          }
+          id="Your Group Here"
         >
           Your Group Here
         </h2>
@@ -739,9 +736,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Arthur
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -770,9 +765,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Josiah
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -801,9 +794,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Gabriel
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -832,9 +823,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Sebastian
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -863,9 +852,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Elizabeth
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -894,9 +881,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Felix
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -925,9 +910,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Freya
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -956,9 +939,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ophelia
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -987,9 +968,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Adalyn
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1018,9 +997,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Fiona
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1049,9 +1026,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Olivia
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1080,9 +1055,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Harper
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1111,9 +1084,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Brielle
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1142,9 +1113,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Nathaniel
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1173,9 +1142,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Nadia
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1204,9 +1171,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Milo
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1235,9 +1200,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Genevieve
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1266,9 +1229,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Emmett
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1297,9 +1258,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Elizabeth
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1328,9 +1287,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Wyatt
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1346,11 +1303,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       >
         <h2
           className="c29 c30"
-          id={
-            Array [
-              "Collins",
-            ]
-          }
+          id="Collins"
         >
           Collins
         </h2>
@@ -1388,9 +1341,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Mabel
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1419,9 +1370,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Emmett
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1450,9 +1399,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Margot
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1481,9 +1428,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Levi
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1512,9 +1457,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ada
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1543,9 +1486,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Harper
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1574,9 +1515,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Xander
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1605,9 +1544,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Nathan
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1636,9 +1573,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Aurelia
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1667,9 +1602,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Mia
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1698,9 +1631,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Aaron
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1729,9 +1660,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ruby
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1760,9 +1689,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ada
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1791,9 +1718,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Apollo
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1822,9 +1747,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Tobias
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1853,9 +1776,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Felix
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1884,9 +1805,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Samuel
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1915,9 +1834,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ada
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1946,9 +1863,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Naomi
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1977,9 +1892,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Hannah
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -1995,11 +1908,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       >
         <h2
           className="c29 c30"
-          id={
-            Array [
-              "Jones",
-            ]
-          }
+          id="Jones"
         >
           Jones
         </h2>
@@ -2037,9 +1946,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Callum
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2068,9 +1975,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Freya
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2099,9 +2004,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Theodore
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2130,9 +2033,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Lincoln
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2161,9 +2062,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Declan
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2192,9 +2091,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Amara
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2223,9 +2120,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Lucy
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2254,9 +2149,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Natalie
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2285,9 +2178,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ella
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2316,9 +2207,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Nora
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2347,9 +2236,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Luna
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2378,9 +2265,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ezra
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2409,9 +2294,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Jace
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2440,9 +2323,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Mabel
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2471,9 +2352,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Astrid
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2502,9 +2381,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ava
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2533,9 +2410,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Isaiah
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2564,9 +2439,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Wren
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2595,9 +2468,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Elizabeth
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2626,9 +2497,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Atticus
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2657,9 +2526,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Brooke
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2675,11 +2542,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       >
         <h2
           className="c29 c30"
-          id={
-            Array [
-              "Mr. Smith",
-            ]
-          }
+          id="Mr. Smith"
         >
           Mr. Smith
         </h2>
@@ -2717,9 +2580,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ezekiel
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2748,9 +2609,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Rose
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2779,9 +2638,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Audrey
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2810,9 +2667,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Arlo
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2841,9 +2696,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Brielle
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2872,9 +2725,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Cora
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2903,9 +2754,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Mila
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2934,9 +2783,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Matthew
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2965,9 +2812,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Esme
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -2996,9 +2841,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Dominic
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3027,9 +2870,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Rose
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3058,9 +2899,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Thea
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3089,9 +2928,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Audrey
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3120,9 +2957,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Isaiah
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3151,9 +2986,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Gabriel
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3182,9 +3015,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Silas
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3213,9 +3044,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Michael
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3244,9 +3073,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Xander
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3275,9 +3102,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Genevieve
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3306,9 +3131,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ivy
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3324,11 +3147,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       >
         <h2
           className="c29 c30"
-          id={
-            Array [
-              "Mrs. Briggs's Homeroom",
-            ]
-          }
+          id="Mrs. Briggs's Homeroom"
         >
           Mrs. Briggs's Homeroom
         </h2>
@@ -3366,9 +3185,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ruby
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3397,9 +3214,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Claire
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3428,9 +3243,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Zachary
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3459,9 +3272,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Beau
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3490,9 +3301,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Margot
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3521,9 +3330,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Alice
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3552,9 +3359,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Naomi
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3583,9 +3388,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Madeline
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3614,9 +3417,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Maeve
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3645,9 +3446,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ronan
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3676,9 +3475,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Isla
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3707,9 +3504,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Fiona
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3738,9 +3533,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Caleb
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3769,9 +3562,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Anastasia
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3800,9 +3591,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Oscar
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3831,9 +3620,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Nora
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3862,9 +3649,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Cole
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3893,9 +3678,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Aurelia
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3924,9 +3707,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Adeline
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3955,9 +3736,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Daphne
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -3973,11 +3752,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
       >
         <h2
           className="c29 c30"
-          id={
-            Array [
-              "Randomton Elementary School Band",
-            ]
-          }
+          id="Randomton Elementary School Band"
         >
           Randomton Elementary School Band
         </h2>
@@ -4015,9 +3790,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Adam
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4046,9 +3819,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ace
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4077,9 +3848,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Elliott
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4108,9 +3877,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Elizabeth
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4139,9 +3906,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Emily
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4170,9 +3935,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Gabriel
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4201,9 +3964,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Henry
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4232,9 +3993,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Willow
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4263,9 +4022,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Aurelia
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4294,9 +4051,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Isabelle
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4325,9 +4080,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Adrian
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4356,9 +4109,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Nolan
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4387,9 +4138,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Fiona
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4418,9 +4167,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Connor
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4449,9 +4196,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Eliza
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4480,9 +4225,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Eloise
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4511,9 +4254,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ella
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4542,9 +4283,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Apollo
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4573,9 +4312,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Grace
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4604,9 +4341,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Ruby
-                </text>
+                />
               </svg>
             </a>
           </div>
@@ -4635,9 +4370,7 @@ Notice that the thumbnail images are not common. Each student's actual compositi
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                >
-                  Brooke
-                </text>
+                />
               </svg>
             </a>
           </div>

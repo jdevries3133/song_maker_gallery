@@ -12,7 +12,7 @@ export const postGallery = (form, token) => (dispatch) => {
       {
         title: form.title,
         description: form.description,
-        songData: form.songData,
+        song_groups: form.song_groups,
       },
       {
         headers: { Authorization: `Token ${token}` },

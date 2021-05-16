@@ -15,8 +15,8 @@ export const GalleryForm = ({ gallery }) => (
     </Grid>
     <HeaderForm title={gallery.title} description={gallery.description} />
 
-    {gallery.songData.map((group, i) => (
-      <GroupForm key={group.slice(-1) + i} group={group} />
+    {gallery.song_groups.map((group, i) => (
+      <GroupForm key={group.group_name + i} group={group} />
     ))}
   </DndProvider>
 );
