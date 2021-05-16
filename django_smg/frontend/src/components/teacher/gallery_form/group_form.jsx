@@ -20,8 +20,7 @@ const TileContainer = styled.div`
 `;
 
 export const GroupForm = ({ group }) => {
-  const groupName = group.slice(-1)[0];
-  const [groupStudents, setGroupStudents] = useState(group.slice(0, -1));
+  const [groupStudents, setGroupStudents] = useState(group.songs);
 
   /**
    * Swaps the position of two students in the group
@@ -35,19 +34,20 @@ export const GroupForm = ({ group }) => {
     setGroupStudents(newGroupStudents);
   };
 
+  console.log(groupStudents);
   return (
     <Description>
       <Form>
         <Label htmlFor="group name">Group Name</Label>
-        <Input type="text" id="group name" defaultValue={groupName} />
+        <Input type="text" id="group name" defaultValue={group.group_name} />
       </Form>
       <TileContainer>
         {groupStudents.map((song, i) => (
           <DraggableTile
             key={i + song.songId + Math.random()}
-            name={song.name}
+            name={song.student_name}
             songId={song.songId}
-            groupName={groupName}
+            groupName={group.group_name}
             swap={swap}
             index={i}
           />
