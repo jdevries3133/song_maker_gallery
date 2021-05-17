@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
 from selenium import webdriver
@@ -34,6 +35,32 @@ class BaseCase(StaticLiveServerTestCase):
         Navigate the driver to http://localhost:8000/[route]
         """
         self.driver.get(self.live_server_url + route)
+
+    def login(self, username='testuser', password='testpass'):
+        self.make_user()
+        self.goTo('/login')
+        self.submit_login_form(self.username, self.password)
+        self.expect_path_to_become('/teacher')
+
+    def make_user(self, username='testuser', password='testpass'):
+        self.username = username
+        self.password = password
+        self.user = User.objects.create_user(  # type: ignore
+            username=self.username,
+            password=self.password
+        )
+
+    def submit_login_form(self, username, password):
+        self.awaitDataTestId('usernameInput').send_keys(username)
+        self.awaitDataTestId('passwordInput').send_keys(password)
+        self.awaitDataTestId('loginSubmit').click()
+
+    def expect_path_to_become(self, route: str, max_retries=200):
+        retries = 0
+        while not self.driver.current_url.endswith(route):
+            retries += 1
+            if retries > max_retries:
+                self.fail(f'Browser did not redirect to {route} route')
 
     def awaitId(self, id_: str, timeout: int=3) -> WebElement:
         try:

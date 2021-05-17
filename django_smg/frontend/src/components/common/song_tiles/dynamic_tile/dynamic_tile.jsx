@@ -16,7 +16,6 @@ export const _DynamicTile = (props) => {
     width: props.pixelWidth,
     height: Math.floor(props.pixelWidth / ASPECT_RATIO),
   };
-  console.log(tileSize);
 
   return <Layout mobile={props.mobile} song={props.song} tileSize={tileSize} />;
 };

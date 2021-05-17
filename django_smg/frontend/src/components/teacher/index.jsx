@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router";
+import { Switch, Route, useRouteMatch } from "react-router";
 
 import { Div } from "Styles";
 
@@ -13,15 +13,16 @@ import { DemoGallery } from "./demo_gallery";
 import sampleGallery from "../landing_page/sample_gallery.json";
 
 export default () => {
+  const { path } = useRouteMatch();
   return (
     <Div>
       <Switch>
-        <Route path="/">
+        <Route exact path={path}>
           <LogoutButton />
           <Home />
           <ListGalleries />
         </Route>
-        <Route path="/form">
+        <Route path={`${path}/form`}>
           <GalleryForm gallery={sampleGallery} />
         </Route>
         <Route path="/teacher/demo">
