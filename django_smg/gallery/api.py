@@ -8,7 +8,13 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 
 from .models import Gallery, Song
-from .serializers import GallerySerializer, GallerySummarySerializer, SongGroupSerializer, SongSerializer
+from .serializers import (
+    GallerySerializer,
+    GallerySummarySerializer,
+    GalleryUpdateSerializer,
+    SongGroupSerializer,
+    SongSerializer
+)
 from .services import fetch_and_cache
 
 logger = logging.getLogger(__name__)
@@ -54,6 +60,19 @@ class AuthGalleryViewset(APIView):
             )
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
+    @ staticmethod
+    def patch(request):
+        gal = Gallery.objects.get(pk=request.data.get('pk'))
+        serializer = GalleryUpdateSerializer(
+            gal,
+            data=request.data,
+            context={'request': request}
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
 
     @ staticmethod
     def delete(request):
@@ -63,10 +82,16 @@ class AuthGalleryViewset(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
         for gallery_pk in pks.split(','):
-            Gallery.objects.get(  # type: ignore
-                pk=gallery_pk,
-                owner=request.user
-            ).delete()
+            try:
+                Gallery.objects.get(  # type: ignore
+                    pk=gallery_pk,
+                    owner=request.user
+                ).delete()
+            except Gallery.DoesNotExist:
+                return Response(
+                    {'pk': f'Gallery with a pk of {gallery_pk} was not found'},
+                    status=status.HTTP_404_NOT_FOUND
+                )
         return Response({'message': 'deleted'})
 
 
@@ -79,7 +104,10 @@ class PublicGalleryViewset(APIView):
 
     @ staticmethod
     def get(_, slug):
-        instance = Gallery.objects.get(slug=slug)
+        try:
+            instance = Gallery.objects.get(slug=slug)
+        except Gallery.DoesNotExist:  # type: ignore
+            return Response({'slug': slug}, status=status.HTTP_404_NOT_FOUND)
         return Response(GallerySerializer(instance).data)
 
 

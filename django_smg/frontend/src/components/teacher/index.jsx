@@ -6,11 +6,9 @@ import { Div } from "Styles";
 import ListGalleries from "./list_galleries";
 import LogoutButton from "./header/logout_button";
 import { Home } from "./home";
-import { GalleryForm } from "./gallery_form/gallery_form";
-import { DemoGallery } from "./demo_gallery";
-
-// temp
-import sampleGallery from "../landing_page/sample_gallery.json";
+import { GalleryFormPage } from "./gallery_form";
+import { DemoGalleryPage } from "./demo_gallery";
+import { GalleryConfigPage } from "./gallery_config";
 
 export default () => {
   const { path } = useRouteMatch();
@@ -22,12 +20,18 @@ export default () => {
           <Home />
           <ListGalleries />
         </Route>
-        <Route path={`${path}/form`}>
-          <GalleryForm gallery={sampleGallery} />
-        </Route>
-        <Route path="/teacher/demo">
-          <DemoGallery gallery={sampleGallery} />
-        </Route>
+        <Route
+          path={`${path}/:slug/edit`}
+          children={<GalleryFormPage />}
+        ></Route>
+        <Route
+          path={`${path}/:slug/demo`}
+          children={<DemoGalleryPage />}
+        ></Route>
+        <Route
+          path={`${path}/:slug/settings`}
+          children={<GalleryConfigPage />}
+        />
       </Switch>
     </Div>
   );

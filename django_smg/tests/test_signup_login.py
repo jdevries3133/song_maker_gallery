@@ -8,7 +8,7 @@ from .base_case import BaseCase
 
 class TestAuth(BaseCase):
 
-    headless = True
+    headless = False
 
     def test_registration_process(self):
         self.goTo('/signup')

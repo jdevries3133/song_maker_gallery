@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import { DraggableTile } from "./draggable_tile";
-
 import styled, { Description, Form, Input, Label } from "Styles";
+
+import { DraggableTile } from "./draggable_tile";
 
 const TileContainer = styled.div`
   margin-top: 2rem;

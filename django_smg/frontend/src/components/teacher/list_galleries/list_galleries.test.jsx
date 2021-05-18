@@ -80,11 +80,11 @@ describe("<ListGalleries />", () => {
     expect(screen.queryByText("Are you sure?")).toBeVisible();
     // The gallery will no longer be available at...
     expect(screen.queryByTestId("lastChanceLink")).toHaveTextContent(
-      "http://localhost:8000//gallery/gallery-1/"
+      "http://localhost:8000/gallery/gallery-1/"
     );
     expect(screen.queryByTestId("lastChanceLink")).toHaveAttribute(
       "href",
-      "http://localhost:8000//gallery/gallery-1/"
+      "http://localhost:8000/gallery/gallery-1/"
     );
   });
 

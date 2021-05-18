@@ -35,12 +35,19 @@ const GalleryName = styled(Item)`
   }
 `;
 
+const galleryViewHrefs = (slug) => {
+  return {
+    view: `/gallery/${slug}/`,
+    edit: `/teacher/${slug}/edit/`,
+    settings: `/teacher/${slug}/settings/`,
+  };
+};
+
 /* This forms the table layout */
 const GalleryRows = ({ galleries, requestDelete }) => (
   <div>
     {galleries.map((gallery, index) => {
-      const galPath = `/gallery/${gallery["slug"]}/`;
-      /* Inner default grid lays out buttons and titles */
+      const paths = galleryViewHrefs(gallery.slug);
       return (
         <Grid cols="3fr 2fr 2fr 2fr 2fr" key={index}>
           <GalleryName>
@@ -48,17 +55,21 @@ const GalleryRows = ({ galleries, requestDelete }) => (
             {gallery["title"].length < 14 ? null : <span>...</span>}
           </GalleryName>
           <Item>
-            <Link data-testid="viewGalleryLink" to={galPath}>
+            <Link data-testid="viewGalleryLink" to={paths.view}>
               <Button data-testid="viewGalleryBtn" color="#00c4ff">
                 View
               </Button>
             </Link>
           </Item>
           <Item>
-            <Button color="lightgreen">Edit</Button>
+            <Link to={paths.edit}>
+              <Button color="lightgreen">Edit</Button>
+            </Link>
           </Item>
           <Item>
-            <Button color="pink">Settings</Button>
+            <Link to={paths.settings}>
+              <Button color="pink">Settings</Button>
+            </Link>
           </Item>
           <Item>
             <Button
@@ -66,7 +77,7 @@ const GalleryRows = ({ galleries, requestDelete }) => (
               color="#fa8071"
               onClick={() =>
                 requestDelete({
-                  url: `${windowLocation("origin")}/${galPath}`,
+                  url: `${windowLocation("origin")}${paths.view}`,
                   pk: gallery["pk"],
                 })
               }

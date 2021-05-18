@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "./styles";
+import styled, { css, keyframes } from "Styles";
 
 const Animation = keyframes`
   0% {
@@ -11,7 +11,8 @@ const Animation = keyframes`
 `;
 
 const LdsRing = styled.div`
-  display: inline-block;
+  display: ${(props) => (props.block ? "block" : "inline-block")};
+  margin: auto;
   position: relative;
   width: 80px;
   height: 80px;
@@ -35,11 +36,19 @@ const LdsRing = styled.div`
   & div:nth-child(3) {
     animation-delay: -0.15s;
   }
+
+  ${(props) =>
+    props.dark &&
+    css`
+    & div {
+      border: 8px solid #444;
+      border-color: #444 transparent transparent transparent;
+    `}
 `;
 
-const loading = () => {
+const loading = (props) => {
   return (
-    <LdsRing data-testid="loading spinner">
+    <LdsRing data-testid="loading spinner" {...props}>
       <div></div>
       <div></div>
       <div></div>

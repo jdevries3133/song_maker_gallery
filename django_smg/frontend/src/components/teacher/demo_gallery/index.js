@@ -1,3 +1,2 @@
 export { DemoGallery } from "./demo_gallery";
-
-// export default DemoGallery;
+export { DemoGalleryPage } from "./demo_gallery_page";

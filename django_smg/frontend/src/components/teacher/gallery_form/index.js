@@ -1,1 +1,1 @@
-export { GalleryForm } from "./gallery_form";
+export { GalleryFormPage } from "./form_page";

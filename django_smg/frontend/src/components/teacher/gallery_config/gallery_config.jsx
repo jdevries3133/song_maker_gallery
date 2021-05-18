@@ -40,9 +40,9 @@ const Description = styled(DefaultDescription)`
  *   - Comments (on/off to disable all)
  *      - Pre-Approve Comments? (on/off)
  */
-export const GalleryConfig = () => {
-  // TODO: HOC should pass this state down after a data request and show
-  // a loading icon until then
+export const GalleryConfig = ({ slug }) => {
+  //TODO: the slug passed in should be the means by which we can interact
+  //with the gallery
   const initialState = {
     allowStudentSubmissions: {
       id: "allowStudentSubmissions",

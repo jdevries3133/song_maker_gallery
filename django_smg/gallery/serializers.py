@@ -177,6 +177,17 @@ class GallerySerializer(serializers.ModelSerializer):
 
 ################################################################################
 
+class GalleryUpdateSerializer(serializers.ModelSerializer):
+    owner = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(),
+        default=serializers.CurrentUserDefault()
+    )
+
+    slug = serializers.SlugField(read_only=True)
+    class Meta:
+        model = Gallery
+        fields = ('owner', 'pk', 'slug', 'title', 'description')
+
 class GallerySummarySerializer(serializers.ModelSerializer):
     """
     This makes it possible to GET a gallery entity but delay fetching and
