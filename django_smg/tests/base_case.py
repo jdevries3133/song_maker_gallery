@@ -1,3 +1,8 @@
+import json
+from pathlib import Path
+from types import SimpleNamespace
+from typing import Union, List
+
 from django.contrib.auth.models import User
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
@@ -9,11 +14,15 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.chrome.options import Options
 
+from gallery.serializers import GallerySerializer  # type: ignore
+
 
 class BaseCase(StaticLiveServerTestCase):
     """
     Includes some adapter code for the cumbersome Selenium API.
     """
+
+    headless = False
 
     @ classmethod
     def setUpClass(cls):
@@ -36,24 +45,56 @@ class BaseCase(StaticLiveServerTestCase):
         """
         self.driver.get(self.live_server_url + route)
 
-    def login(self, username='testuser', password='testpass'):
-        self.make_user()
+    def login(self, username: str='testuser', password: str='testpass') -> User:
+        user = self.create_user()
         self.goTo('/login')
         self.submit_login_form(self.username, self.password)
         self.expect_path_to_become('/teacher')
+        return user
 
-    def make_user(self, username='testuser', password='testpass'):
+    def submit_login_form(self, username: str, password: str) -> None:
+        """
+        Just the form interaction after the page is loaded and user created.
+        """
+        el = self.await_data_testid('usernameInput')
+        isinstance(el, WebElement) and el.send_keys(username)
+
+        el = self.await_data_testid('passwordInput')
+        isinstance(el, WebElement) and el.send_keys(password)
+
+        el = self.await_data_testid('loginSubmit')
+        isinstance(el, WebElement) and el.click()
+
+    def create_user(self, username: str='testuser', password: str='testpass') -> User:
         self.username = username
         self.password = password
         self.user = User.objects.create_user(  # type: ignore
             username=self.username,
             password=self.password
         )
+        return self.user
 
-    def submit_login_form(self, username, password):
-        self.awaitDataTestId('usernameInput').send_keys(username)
-        self.awaitDataTestId('passwordInput').send_keys(password)
-        self.awaitDataTestId('loginSubmit').click()
+    def create_sample_gallery(self):
+        if not hasattr(self, 'user'):
+            raise Exception(
+                'You must call create_user before calling '
+                'create_sample_gallery, because the created gallery is '
+                'assigned to self.user'
+            )
+        with open(Path(Path(__file__).parent, 'mock_data', 'gallery.json'), 'r') as jsonf:
+            data = json.load(jsonf)
+            serializer = GallerySerializer(
+                data=data,
+                context={'request': SimpleNamespace(user=self.user)}
+            )
+            if serializer.is_valid():
+                gallery = serializer.save()
+                return gallery
+            else:
+                self.fail(
+                    f'Serializer not valid due to errors: {serializer.errors}'
+                )
+
 
     def expect_path_to_become(self, route: str, max_retries=200):
         retries = 0
@@ -62,7 +103,7 @@ class BaseCase(StaticLiveServerTestCase):
             if retries > max_retries:
                 self.fail(f'Browser did not redirect to {route} route')
 
-    def awaitId(self, id_: str, timeout: int=3) -> WebElement:
+    def await_id(self, id_: str, timeout: int=3) -> WebElement:
         try:
             return WebDriverWait(self.driver, timeout).until(
                 EC.presence_of_element_located((By.ID, id_))
@@ -74,11 +115,12 @@ class BaseCase(StaticLiveServerTestCase):
                 'seconds'
             )
 
-    def awaitDataTestId(self, test_id: str, timeout: int=3) -> WebElement:
+    def await_data_testid(self, test_id: str, timeout: int=3
+                          ) -> Union[WebElement, List[WebElement]]:
         xpath = f'//*[@data-testid="{test_id}"]'
-        return self.awaitXpath(xpath, timeout)
+        return self.await_xpath(xpath, timeout)
 
-    def awaitXpath(self, xpath: str, timeout: int=3) -> WebElement:
+    def await_xpath(self, xpath: str, timeout: int=3) -> Union[WebElement, List[WebElement]]:
         try:
             return WebDriverWait(self.driver, timeout).until(
                 EC.presence_of_element_located((By.XPATH, xpath))
@@ -92,12 +134,16 @@ class BaseCase(StaticLiveServerTestCase):
 
 
 class TestTestSetup(BaseCase):
+    """
+    Check that the base case itself works.
+    """
 
     def test_simple_usage(self):
         self.goTo('/signup')
-        value = self.awaitDataTestId('emailInput')
+        value = self.await_data_testid('emailInput')
         self.assertIsInstance(value, WebElement)
 
         self.goTo('/login')
-        value = self.awaitDataTestId('passwordInput')
-        self.assertEqual(value.tag_name, 'input')
+        value = self.await_data_testid('passwordInput')
+        self.assertIsInstance(value, WebElement)
+        self.assertEqual(value.tag_name, 'input')  # type: ignore

@@ -8,18 +8,27 @@ from .base_case import BaseCase
 
 class TestAuth(BaseCase):
 
-    headless = False
-
     def test_registration_process(self):
         self.goTo('/signup')
 
         # fill out and submit registration form
-        self.awaitDataTestId('emailInput').send_keys('usereml@website.com')
-        self.awaitDataTestId('usernameInput').send_keys('myusername')
-        self.awaitDataTestId('passwordInput').send_keys('passwordgoeshere')
-        self.awaitDataTestId('passwordConfirmInput').send_keys('passwordgoeshere')
-        self.awaitDataTestId('tosCheckbox').click()
-        self.awaitXpath('//input[@type="submit"]').click()
+        el = self.await_data_testid('emailInput')
+        isinstance(el, WebElement) and el.send_keys('usereml@website.com')
+
+        el = self.await_data_testid('usernameInput')
+        isinstance(el, WebElement) and el.send_keys('myusername')
+
+        el = self.await_data_testid('passwordInput')
+        isinstance(el, WebElement) and el.send_keys('passwordgoeshere')
+
+        el = self.await_data_testid('passwordConfirmInput')
+        isinstance(el, WebElement) and el.send_keys('passwordgoeshere')
+
+        el = self.await_data_testid('tosCheckbox')
+        isinstance(el, WebElement) and el.click()
+
+        el = self.await_xpath('//input[@type="submit"]')
+        isinstance(el, WebElement) and el.click()
 
         # check we have been redirected to teacher page
         WebDriverWait(self.driver, 3).until(EC.title_is, 'teacher')
