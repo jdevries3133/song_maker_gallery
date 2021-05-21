@@ -22,7 +22,7 @@ class TestTeacherHome(BaseCase):
         self.goTo('/login')
 
     def test_all_galleries_listed(self):
-        els = self.await_xpath('//*[text() = "Test Title"]')
+        els = self.await_text('Test Title', many=True)
         if isinstance(els, list):
             (self.assertEqual(i.text, 'Test Title') for i in els)
             self.assertEqual(len(els), self.NUM_GALLERIES)
@@ -39,27 +39,16 @@ class TestTeacherHome(BaseCase):
         if isinstance(el, WebElement):
             el.click()
 
-        tries = 0
-        while self.user.galleries.all().count() != 4:
-            tries += 1
-            sleep(0.01)
-            if tries > 10:
-                self.fail('Gallery was never deleted')
+        # frontent indicates delete was successful
+        self.await_text('Your gallery has been deleted.')
+        el = self.await_data_testid('dismissBlanketButton')
+        if isinstance(el, WebElement):
+            el.click()
+        else:
+            self.fail('The page appears to contain overlapping blankets')
 
-        # one gallery has been deleted
+        # gallery has been removed from the database
         self.assertEqual(
             self.user.galleries.all().count(),
             self.NUM_GALLERIES - 1
         )
-
-        # modal should unmount
-        try:
-            tries = 0
-            while self.driver.find_element_by_xpath(f'//*[@data-testid="blanket"]'):
-                tries += 1
-                sleep(0.01)
-                if tries > 30:
-                    self.fail('Delete gallery blanket did not unmount')
-        except WebDriverException:
-            # this is what we want. This means that the modal unmounted
-            pass

@@ -29,7 +29,7 @@ export const ConfirmDelete = (props) => {
   );
 };
 
-export const GalleryDeleted = () => (
+export const AcknowledgeDelete = () => (
   <>
     <H2>Success</H2>
     <P>Your gallery has been deleted.</P>

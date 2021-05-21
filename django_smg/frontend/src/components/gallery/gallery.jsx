@@ -28,7 +28,7 @@ class Gallery extends Component {
       // navigated to
       (this.props.gallery && this.props.gallery.slug !== this.state.slug)
     ) {
-      return <Loading />;
+      return <Loading dark />;
     } else if (this.state.slug === "") {
       return (
         <div>

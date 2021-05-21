@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useRef } from "react";
 import { Blanket } from "./blanket";
 
 export const types = { SHOW: "SHOW_NAME", REMOVE: "REMOVE_NAME" };
@@ -28,13 +28,25 @@ const reducer = (state, action) => {
 
 /* guard against infinite re-renders */
 const shouldDispatch = (modalName, dispatchType, currentState) => {
+  // we need to dispatch if the modal is not present in state at all yet.
+  if (!(modalName in currentState)) return true;
   switch (dispatchType) {
     case types.SHOW:
-      if (currentState[modalName]?.isVisible) return false;
-      break;
+      if (currentState[modalName]?.isVisible) {
+        // console.log(
+        //   `${modalName} is already ${currentState[modalName]}, so the dispatcher will not fire.`,
+        //   currentState
+        // );
+        return false;
+      }
     case types.REMOVE:
-      if (!currentState[modalName]?.isVisible) return false;
-      break;
+      if (!currentState[modalName]?.isVisible) {
+        // console.log(
+        //   `${modalName} is already ${currentState[modalName]}, so the dispatcher will not fire.`,
+        //   currentState
+        // );
+        return false;
+      }
   }
   return true;
 };
@@ -62,6 +74,11 @@ const shouldDispatch = (modalName, dispatchType, currentState) => {
 export const useModals = ({ modals, props = {} }) => {
   const [state, dispatch] = useReducer(reducer, {});
 
+  // ngl, I still have a tenuous grasp on why this is necessary
+  // https://reactjs.org/docs/hooks-faq.html#why-am-i-seeing-stale-props-or-state-inside-my-function
+  const stateRef = useRef();
+  stateRef.current = state;
+
   // are not held in state
   const propDependentModals = modals.filter((obj) => !!obj.test);
 
@@ -77,7 +94,7 @@ export const useModals = ({ modals, props = {} }) => {
           `not a named modal in your schema.`
       );
     }
-    if (shouldDispatch(modalName, type, state)) {
+    if (shouldDispatch(modalName, type, stateRef.current)) {
       dispatch({
         type: type,
         name: modalName,
@@ -88,10 +105,12 @@ export const useModals = ({ modals, props = {} }) => {
 
   const dismissedHandler = (obj) => {
     obj.onDismissed && obj.onDismissed();
-    dispatch({
-      type: types.REMOVE,
-      name: obj.name,
-    });
+    if (namedModals.includes(obj.name)) {
+      dispatch({
+        type: types.REMOVE,
+        name: obj.name,
+      });
+    }
   };
 
   const returnModals = [
@@ -124,5 +143,5 @@ export const useModals = ({ modals, props = {} }) => {
     }),
   ];
 
-  return [returnModals, dispatchWrapper];
+  return [returnModals, dispatchWrapper, state];
 };

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
-import { ConfirmDelete, ServerError, GalleryDeleted } from "./modals";
+import { ConfirmDelete, ServerError, AcknowledgeDelete } from "./modals";
 import { Description } from "Styles";
 import { useModals, types } from "../../common/useModals";
 import { Layout } from "./layout";
@@ -16,7 +16,7 @@ export const ListGalleries = (props) => {
     modals: [
       {
         test: (props) => props.deleteStatus === "deleted",
-        show: GalleryDeleted,
+        show: AcknowledgeDelete,
         onDismissed: props.acknowledgeDelete,
       },
       {
@@ -43,8 +43,8 @@ export const ListGalleries = (props) => {
   };
 
   const deleteConfirmed = (pk) => {
-    props.deleteGallery(pk, props.token);
     dispatchModal("ConfirmDelete", null, types.REMOVE);
+    props.deleteGallery(pk, props.token);
   };
 
   return (

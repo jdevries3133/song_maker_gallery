@@ -103,11 +103,17 @@ class BaseCase(StaticLiveServerTestCase):
             if retries > max_retries:
                 self.fail(f'Browser did not redirect to {route} route')
 
-    def await_id(self, id_: str, timeout: int=3) -> WebElement:
+    def await_id(self, id_: str, timeout: int=3, many: bool=False
+                 ) -> Union[WebElement, List[WebElement]]:
         try:
-            return WebDriverWait(self.driver, timeout).until(
-                EC.presence_of_element_located((By.ID, id_))
-            )
+            if many:
+                return WebDriverWait(self.driver, timeout).until(
+                    EC.presence_of_all_elements_located((By.ID, id_))
+                )
+            else:
+                return WebDriverWait(self.driver, timeout).until(
+                    EC.presence_of_element_located((By.ID, id_))
+                )
         except WebDriverException:
             self.driver.quit()
             self.fail(
@@ -115,22 +121,33 @@ class BaseCase(StaticLiveServerTestCase):
                 'seconds'
             )
 
-    def await_data_testid(self, test_id: str, timeout: int=3
-                          ) -> Union[WebElement, List[WebElement]]:
-        xpath = f'//*[@data-testid="{test_id}"]'
-        return self.await_xpath(xpath, timeout)
-
-    def await_xpath(self, xpath: str, timeout: int=3) -> Union[WebElement, List[WebElement]]:
+    def await_xpath(self, xpath: str, timeout: int=3, many: bool=False
+                    ) -> Union[WebElement, List[WebElement]]:
         try:
-            return WebDriverWait(self.driver, timeout).until(
-                EC.presence_of_element_located((By.XPATH, xpath))
-            )
+            if many:
+                return WebDriverWait(self.driver, timeout).until(
+                    EC.presence_of_all_elements_located((By.XPATH, xpath))
+                )
+            else:
+                return WebDriverWait(self.driver, timeout).until(
+                    EC.presence_of_element_located((By.XPATH, xpath))
+                )
         except WebDriverException:
             self.driver.quit()
             self.fail(
                 f'Element with xpath of {xpath} did not appear within '
                 f'{timeout} seconds'
             )
+
+    def await_data_testid(self, test_id: str, timeout: int=3, many: bool=False
+                          ) -> Union[WebElement, List[WebElement]]:
+        xpath = f'//*[@data-testid="{test_id}"]'
+        return self.await_xpath(xpath, timeout, many)
+
+
+    def await_text(self, text: str, timeout: int=3, many: bool=False
+                   ) -> Union[WebElement, List[WebElement]]:
+        return self.await_xpath(f'//*[text() = "{text}"]', timeout, many)
 
 
 class TestTestSetup(BaseCase):
