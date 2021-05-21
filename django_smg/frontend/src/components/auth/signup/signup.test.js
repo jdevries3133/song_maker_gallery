@@ -4,7 +4,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import "jest-styled-components";
 
-import { Context } from "Test/app_context";
+import { Context } from "Common/storybook_util";
 
 import Signup from "./index";
 import { REGISTER } from "Actions/types";

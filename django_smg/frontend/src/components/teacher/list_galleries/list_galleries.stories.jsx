@@ -1,5 +1,5 @@
 import React from "react";
-import { Context as C } from "Test/app_context";
+import { Context as C } from "Common/storybook_util";
 import { ListGalleries } from "./index";
 
 export default {

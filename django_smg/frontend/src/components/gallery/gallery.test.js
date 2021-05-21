@@ -2,7 +2,7 @@ import React from "react";
 import Gallery from "./gallery";
 
 import { render, cleanup } from "@testing-library/react";
-import { Context as TestContext } from "Test/app_context";
+import { Context as TestContext } from "Common/storybook_util";
 import { mockGetGallery } from "Test/__mocks__/actions";
 import { getGallery } from "Actions/gallery";
 import { windowLocation } from "../../util/window";

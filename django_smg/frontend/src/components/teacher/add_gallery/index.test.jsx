@@ -8,7 +8,7 @@ import {
   screen,
   waitFor,
 } from "@testing-library/react";
-import { Context as TestContext } from "Test/app_context";
+import { Context as TestContext } from "Common/storybook_util";
 import "@testing-library/jest-dom";
 
 import AddGallery from "./index";

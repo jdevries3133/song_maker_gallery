@@ -3,7 +3,7 @@ import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import "jest-styled-components";
 
-import { Context as TestContext } from "Test/app_context";
+import { Context as TestContext } from "Common/storybook_util";
 
 import { deleteAccount } from "Actions/auth.action";
 

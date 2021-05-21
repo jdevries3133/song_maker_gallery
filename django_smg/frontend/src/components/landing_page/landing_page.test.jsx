@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "jest-styled-components";
 
-import { Context as C } from "Test/app_context.js";
+import { Context as C } from "Common/storybook_util";
 
 import { LandingPage } from "./index";
 
