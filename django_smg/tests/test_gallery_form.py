@@ -28,11 +28,18 @@ class TestGalleryForm(BaseCase):
         # loading spinner appears
         self.await_data_testid('loading spinner')
 
-        # button disappears
+        # button no longer appears
         self.assertEqual(
             self.driver.find_elements_by_xpath('//input[@type="submit"]'),
             []
         )
+
+        retries = 0
+        while self.gallery.title != 'New Title':
+            self.gallery.refresh_from_db()
+            retries += 1
+            if retries > 100:
+                self.fail('Title did not change to "New Title" after 100 tries')
 
         # assert on gallery in db
         self.gallery.refresh_from_db()
