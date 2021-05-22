@@ -12,23 +12,20 @@ class TestAuth(BaseCase):
         self.goTo('/signup')
 
         # fill out and submit registration form
-        el = self.await_data_testid('emailInput')
-        isinstance(el, WebElement) and el.send_keys('usereml@website.com')
-
-        el = self.await_data_testid('usernameInput')
-        isinstance(el, WebElement) and el.send_keys('myusername')
-
-        el = self.await_data_testid('passwordInput')
-        isinstance(el, WebElement) and el.send_keys('passwordgoeshere')
-
-        el = self.await_data_testid('passwordConfirmInput')
-        isinstance(el, WebElement) and el.send_keys('passwordgoeshere')
-
-        el = self.await_data_testid('tosCheckbox')
-        isinstance(el, WebElement) and el.click()
-
-        el = self.await_xpath('//input[@type="submit"]')
-        isinstance(el, WebElement) and el.click()
+        self.first_el(self.await_data_testid('emailInput')).send_keys(
+            'usereml@website.com'
+        )
+        self.first_el(self.await_data_testid('usernameInput')).send_keys(
+            'myusername'
+        )
+        self.first_el(self.await_data_testid('passwordInput')).send_keys(
+            'passwordgoeshere'
+        )
+        self.first_el(self.await_data_testid('passwordConfirmInput')).send_keys(
+            'passwordgoeshere'
+        )
+        self.first_el(self.await_data_testid('tosCheckbox')).click()
+        self.first_el(self.await_xpath('//input[@type="submit"]')).click()
 
         # check we have been redirected to teacher page
         WebDriverWait(self.driver, 3).until(EC.title_is, 'teacher')

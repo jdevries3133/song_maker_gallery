@@ -22,7 +22,7 @@ class BaseCase(StaticLiveServerTestCase):
     Includes some adapter code for the cumbersome Selenium API.
     """
 
-    headless = False
+    headless = True
 
     @ classmethod
     def setUpClass(cls):
@@ -46,6 +46,10 @@ class BaseCase(StaticLiveServerTestCase):
         self.driver.get(self.live_server_url + route)
 
     def login(self, username: str='testuser', password: str='testpass') -> User:
+        """
+        Create user and authenticate them in the frontend; leaving the browser
+        at the /teacher route.
+        """
         user = self.create_user()
         self.goTo('/login')
         self.submit_login_form(self.username, self.password)
@@ -95,31 +99,12 @@ class BaseCase(StaticLiveServerTestCase):
                     f'Serializer not valid due to errors: {serializer.errors}'
                 )
 
-
     def expect_path_to_become(self, route: str, max_retries=200):
         retries = 0
         while not self.driver.current_url.endswith(route):
             retries += 1
             if retries > max_retries:
                 self.fail(f'Browser did not redirect to {route} route')
-
-    def await_id(self, id_: str, timeout: int=3, many: bool=False
-                 ) -> Union[WebElement, List[WebElement]]:
-        try:
-            if many:
-                return WebDriverWait(self.driver, timeout).until(
-                    EC.presence_of_all_elements_located((By.ID, id_))
-                )
-            else:
-                return WebDriverWait(self.driver, timeout).until(
-                    EC.presence_of_element_located((By.ID, id_))
-                )
-        except WebDriverException:
-            self.driver.quit()
-            self.fail(
-                f'Element with id of {id_} did not appear within {timeout} '
-                'seconds'
-            )
 
     def await_xpath(self, xpath: str, timeout: int=3, many: bool=False
                     ) -> Union[WebElement, List[WebElement]]:
@@ -139,15 +124,45 @@ class BaseCase(StaticLiveServerTestCase):
                 f'{timeout} seconds'
             )
 
+    def await_id(self, id_: str, timeout: int=3, many: bool=False
+                 ) -> Union[WebElement, List[WebElement]]:
+        """
+        Wraps await_xpath
+        """
+        return self.await_xpath(f'//*[@id="{id_}"]', timeout, many)
+
     def await_data_testid(self, test_id: str, timeout: int=3, many: bool=False
                           ) -> Union[WebElement, List[WebElement]]:
+        """
+        Wraps await_xpath
+        """
         xpath = f'//*[@data-testid="{test_id}"]'
         return self.await_xpath(xpath, timeout, many)
-
 
     def await_text(self, text: str, timeout: int=3, many: bool=False
                    ) -> Union[WebElement, List[WebElement]]:
         return self.await_xpath(f'//*[text() = "{text}"]', timeout, many)
+
+    def first_el(self, item: Union[WebElement, List[WebElement]]
+                 ) -> WebElement:
+
+        """
+        Kind of cursed, but I always have to check what comes back from these
+        await_* functions despite **knowing** what it is based on the `many`
+        param..... *sigh*
+        """
+        if isinstance(item, WebElement):
+            return item
+        return item[0]
+
+    def all_el(self, item: Union[WebElement, List[WebElement]]
+               ) -> List[WebElement]:
+        """
+        Equally cursed; same as above.
+        """
+        if isinstance(item, WebElement):
+            return [item]
+        return item
 
 
 class TestTestSetup(BaseCase):
