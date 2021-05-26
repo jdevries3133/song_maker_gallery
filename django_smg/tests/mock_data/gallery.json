@@ -5,24 +5,21 @@
     {
       "group_name": "A Group of Marks",
       "songs": [
-        { "songId": "5676759593254912", "student_name": "Mark Johnson" },
-        { "songId": "5676759593254912", "student_name": "Mark J." },
-        { "songId": "5676759593254912", "student_name": "Mark  Johnson" },
-        {
-          "songId": "5676759593254912",
-          "student_name": "Mark   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Johnson"
-        }
+        { "songId": "5676759593254912", "student_name": "Mark1 J." },
+        { "songId": "5676759593254912", "student_name": "Mark2 J." },
+        { "songId": "5676759593254912", "student_name": "Mark3 J." },
+        { "songId": "5676759593254912", "student_name": "Mark4 J." }
       ]
     },
     {
       "group_name": "A Group of Lillys",
       "songs": [
-        { "songId": "5676759593254912", "student_name": "Lilly Gohnson" },
-        { "songId": "5676759593254912", "student_name": "Lilly G." },
-        { "songId": "5676759593254912", "student_name": "lilly  Gohnson" },
+        { "songId": "5676759593254912", "student_name": "Lilly1 G." },
+        { "songId": "5676759593254912", "student_name": "Lilly2 G." },
+        { "songId": "5676759593254912", "student_name": "Lilly3 G." },
         {
           "songId": "5676759593254912",
-          "student_name": "Lilly   l,;mavdl;sjgoawrjeoia jowgaow; ejioa Gohnson"
+          "student_name": "Lilly4 G."
         }
       ]
     }

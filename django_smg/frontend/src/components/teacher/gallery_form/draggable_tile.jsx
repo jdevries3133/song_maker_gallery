@@ -68,7 +68,7 @@ export const DraggableTile = ({ name, songId, groupName, swap, index }) => {
   }));
 
   return (
-    <Div ref={drop}>
+    <Div data-testid="drop target" ref={drop}>
       <Div ref={dragPreview}>
         {/* The drag ref marks this node as being the "pick-up" node */}
         {width > 450 && (

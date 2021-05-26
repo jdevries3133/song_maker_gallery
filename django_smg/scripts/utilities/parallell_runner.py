@@ -56,6 +56,9 @@ class _Process:
         self.process.wait()
         self.is_open = False
 
+    # TODO: weirdness
+    # this is a bug or at least a typo... the function seems to return the
+    # inverse of what it's supposed to?...
     @ property
     def is_finished(self):
         """

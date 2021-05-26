@@ -33,11 +33,7 @@ class TestTeacherHome(BaseCase):
 
         # frontent indicates delete was successful
         self.await_text('Your gallery has been deleted.')
-        el = self.await_data_testid('dismissBlanketButton')
-        if isinstance(el, WebElement):
-            el.click()
-        else:
-            self.fail('The page appears to contain overlapping blankets')
+        self.first_el(self.await_data_testid('dismissBlanketButton')).click()
 
         # gallery has been removed from the database
         self.assertEqual(

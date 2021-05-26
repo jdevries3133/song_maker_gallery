@@ -25,7 +25,7 @@ const H1 = styled(DefaultH1)`
 `;
 
 export const SwapHint = () => (
-  <Description>
+  <Description data-testid="swap target">
     <H1>Swap Us</H1>
   </Description>
 );

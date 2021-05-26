@@ -45,7 +45,7 @@ class BaseCase(StaticLiveServerTestCase):
         """
         self.driver.get(self.live_server_url + route)
 
-    def login(self, username: str='testuser', password: str='testpass') -> User:
+    def login(self, username: str = 'testuser', password: str = 'testpass') -> User:
         """
         Create user and authenticate them in the frontend; leaving the browser
         at the /teacher route.
@@ -60,16 +60,15 @@ class BaseCase(StaticLiveServerTestCase):
         """
         Just the form interaction after the page is loaded and user created.
         """
-        el = self.await_data_testid('usernameInput')
-        isinstance(el, WebElement) and el.send_keys(username)
+        self.first_el(self.await_data_testid('usernameInput')).send_keys(
+            username
+        )
+        self.first_el(self.await_data_testid('passwordInput')).send_keys(
+            password
+        )
+        self.first_el(self.await_data_testid('loginSubmit')).click()
 
-        el = self.await_data_testid('passwordInput')
-        isinstance(el, WebElement) and el.send_keys(password)
-
-        el = self.await_data_testid('loginSubmit')
-        isinstance(el, WebElement) and el.click()
-
-    def create_user(self, username: str='testuser', password: str='testpass') -> User:
+    def create_user(self, username: str = 'testuser', password: str = 'testpass') -> User:
         self.username = username
         self.password = password
         self.user = User.objects.create_user(  # type: ignore
@@ -106,7 +105,7 @@ class BaseCase(StaticLiveServerTestCase):
             if retries > max_retries:
                 self.fail(f'Browser did not redirect to {route} route')
 
-    def await_xpath(self, xpath: str, timeout: int=3, many: bool=False
+    def await_xpath(self, xpath: str, timeout: int = 3, many: bool = False
                     ) -> Union[WebElement, List[WebElement]]:
         try:
             if many:
@@ -124,14 +123,14 @@ class BaseCase(StaticLiveServerTestCase):
                 f'{timeout} seconds'
             )
 
-    def await_id(self, id_: str, timeout: int=3, many: bool=False
+    def await_id(self, id_: str, timeout: int = 3, many: bool = False
                  ) -> Union[WebElement, List[WebElement]]:
         """
         Wraps await_xpath
         """
         return self.await_xpath(f'//*[@id="{id_}"]', timeout, many)
 
-    def await_data_testid(self, test_id: str, timeout: int=3, many: bool=False
+    def await_data_testid(self, test_id: str, timeout: int = 3, many: bool = False
                           ) -> Union[WebElement, List[WebElement]]:
         """
         Wraps await_xpath
@@ -139,13 +138,12 @@ class BaseCase(StaticLiveServerTestCase):
         xpath = f'//*[@data-testid="{test_id}"]'
         return self.await_xpath(xpath, timeout, many)
 
-    def await_text(self, text: str, timeout: int=3, many: bool=False
+    def await_text(self, text: str, timeout: int = 3, many: bool = False
                    ) -> Union[WebElement, List[WebElement]]:
         return self.await_xpath(f'//*[text() = "{text}"]', timeout, many)
 
     def first_el(self, item: Union[WebElement, List[WebElement]]
                  ) -> WebElement:
-
         """
         Kind of cursed, but I always have to check what comes back from these
         await_* functions despite **knowing** what it is based on the `many`
