@@ -54,8 +54,6 @@ class TestGalleryForm(BaseCase):
             'New description is here'
         )
 
-    headless = False
-
     def test_reorder_songs(self):
         # list of all drag and drop handles
         handles = self.all_el(self.await_xpath(
