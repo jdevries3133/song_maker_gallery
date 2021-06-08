@@ -32,13 +32,12 @@ describe("<Portal />", () => {
     render(<Portal />);
     expect(screen.queryByTestId("portalContainer")).toBeVisible();
   });
-  it("cleans up after self by dismounting parent component", async (done) => {
+  it("cleans up after self by dismounting parent component", async () => {
     render(<ComponentDismounter />);
     expect(screen.queryByText("Hello, world!")).toBeVisible();
     fireEvent.click(screen.getByTestId("dismountPortal"));
     await waitFor(() => {
       expect(screen.queryAllByTestId("portalContainer")).toHaveLength(0);
     });
-    done();
   });
 });

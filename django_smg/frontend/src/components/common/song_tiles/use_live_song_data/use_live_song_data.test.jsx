@@ -45,11 +45,10 @@ describe("useLiveSongData hook", () => {
   beforeEach(() => render(<Fixture />));
   afterEach(() => axios.post.mockClear());
 
-  it("fetches song data from api", async (done) => {
+  it("fetches song data from api", async () => {
     expect(axios.post).toHaveBeenCalledWith("/api/gallery/song_data/", {
       songId: "1234123412341234",
     });
-    done();
   });
   it("caches data to avoid excessive api hits", () => {
     expect(axios.post).toHaveBeenCalledTimes(1);

@@ -27,7 +27,7 @@ describe("<Blanket />", () => {
     expect(screen.queryByText("hello world")).toBeVisible();
   });
 
-  it("contains a button which calls an optional callback fn passed as a prop", async (done) => {
+  it("contains a button which calls an optional callback fn passed as a prop", async () => {
     render(<Blanket onDismissed={onOk} />);
     act(() => {
       fireEvent.click(screen.getByTestId("dismissBlanketButton"));
@@ -35,10 +35,9 @@ describe("<Blanket />", () => {
     await waitFor(() => {
       expect(onOk).toHaveBeenCalled();
     });
-    done();
   });
 
-  it("unmounts itself when close button is pressed", async (done) => {
+  it("unmounts itself when close button is pressed", async () => {
     render(<Blanket onDismissed={onOk} />);
     act(() => {
       fireEvent.click(screen.getByTestId("dismissBlanketButton"));
@@ -47,10 +46,9 @@ describe("<Blanket />", () => {
       expect(screen.queryByTestId("blanket")).toBeNull();
       expect(onOk).toHaveBeenCalled();
     });
-    done();
   });
 
-  it("unmounts itself when escape key is pressed", async (done) => {
+  it("unmounts itself when escape key is pressed", async () => {
     render(<Blanket onDismissed={onOk} />);
     fireEvent.keyDown(document, {
       key: "Escape",
@@ -59,14 +57,12 @@ describe("<Blanket />", () => {
     await waitFor(() => {
       expect(screen.queryByTestId("blanket")).toBeNull();
     });
-    done();
   });
 
-  it("can be initialized without being mounted", async (done) => {
+  it("can be initialized without being mounted", async () => {
     render(<Blanket enabled={false} />);
     await waitFor(() => {
       expect(screen.queryByTestId("blanket")).toBeNull();
     });
-    done();
   });
 });

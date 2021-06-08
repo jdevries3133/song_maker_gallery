@@ -64,13 +64,12 @@ const setupAddFirstGroup = async () => {
 };
 
 describe("gallery addition process via <Teacher />", () => {
-  it("mounts modal window to DOM for csv data verification", async (done) => {
+  it("mounts modal window to DOM for csv data verification", async () => {
     await setupVerify();
     expect(screen.getByTestId("verifyModalNormal")).toBeTruthy();
-    done();
   });
 
-  it("unmounts <Verify /> and mounts <Staged /> on first group added", async (done) => {
+  it("unmounts <Verify /> and mounts <Staged /> on first group added", async () => {
     await setupAddFirstGroup();
     // Click "Add Group," which unmounts <Verify /> and mounts <Staged />
     expect(screen.getByTestId("firstFileUploadedMsg")).toHaveTextContent(
@@ -78,10 +77,9 @@ describe("gallery addition process via <Teacher />", () => {
     );
     expect(screen.queryByTestId("verifyModalNormal")).toBeFalsy();
     screen.getByText("Your Staged Gallery");
-    done();
   });
 
-  it("creates a new gallery", async (done) => {
+  it("creates a new gallery", async () => {
     await setupAddFirstGroup();
 
     // Input title
@@ -98,6 +96,5 @@ describe("gallery addition process via <Teacher />", () => {
         "http://localhost/gallery/test-title"
       );
     });
-    done();
   });
 });

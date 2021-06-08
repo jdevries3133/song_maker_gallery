@@ -23,15 +23,14 @@ beforeEach(() =>
 afterEach(() => deleteAccount.mockClear());
 
 describe("<ChangeEmail />", () => {
-  it("does not allow form submission without attestation", async (done) => {
+  it("does not allow form submission without attestation", async () => {
     fireEvent.change(screen.getByTestId("password"), {
       target: { value: "my_password" },
     });
     fireEvent.click(screen.getByTestId("submit"));
     await waitFor(() => expect(deleteAccount).toHaveBeenCalledTimes(0));
-    done();
   });
-  it("shows warning upon incorrect submission attempt", async (done) => {
+  it("shows warning upon incorrect submission attempt", async () => {
     fireEvent.change(screen.getByTestId("password"), {
       target: { value: "my_password" },
     });
@@ -44,10 +43,8 @@ describe("<ChangeEmail />", () => {
         )
       ).toBeVisible()
     );
-
-    done();
   });
-  it("calls action with userId and passwd on form submit", async (done) => {
+  it("calls action with userId and passwd on form submit", async () => {
     fireEvent.change(screen.getByTestId("password"), {
       target: { value: "my_password" },
     });
@@ -58,6 +55,5 @@ describe("<ChangeEmail />", () => {
     await waitFor(() =>
       expect(deleteAccount).toHaveBeenCalledWith(4, "my_password")
     );
-    done();
   });
 });

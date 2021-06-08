@@ -21,20 +21,20 @@ class RegisterAPI(GenericAPIView):
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save()
+        if serializer.is_valid():
+            user = serializer.save()
+            userData = UserSerializer(
+                user, context=self.get_serializer_context()).data
+            token = AuthToken.objects.create(user)[1]
 
-        userData = UserSerializer(
-            user, context=self.get_serializer_context()).data
-        token = AuthToken.objects.create(user)[1]
+            logger.debug(userData)
+            logger.debug(token)
 
-        logger.debug(userData)
-        logger.debug(token)
-
-        return Response({
-            'user': userData,
-            'token': token,
-        })
+            return Response({
+                'user': userData,
+                'token': token,
+            })
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class LoginAPI(KnoxLoginView):

@@ -49,7 +49,7 @@ describe("login", () => {
     expect(screen.getByTestId("teacher")).toBeTruthy();
   });
 
-  it("redirects dynamically based on search param 'next'", async (done) => {
+  it("redirects dynamically based on search param 'next'", async () => {
     windowLocation.mockImplementation(() => "?next=/teacher/demo");
     render(
       <Context>
@@ -63,10 +63,9 @@ describe("login", () => {
     fireEvent.input(screen.getByTestId("passwordInput"), "password");
     fireEvent.click(screen.getByTestId("loginSubmit"));
     expect(screen.getByTestId("teacher")).toBeTruthy();
-    done();
   });
 
-  it("shows an error if bad credentials are entered", async (done) => {
+  it("shows an error if bad credentials are entered", async () => {
     login.mockImplementation(() =>
       loginAction({
         token: null,
@@ -93,9 +92,8 @@ describe("login", () => {
         "Please check that you are using the correct username and password."
       )
     ).toBeVisible();
-    done();
   });
-  test("modal window can be dismissed", async (done) => {
+  test("modal window can be dismissed", async () => {
     login.mockImplementation(() =>
       loginAction({
         token: null,
@@ -124,6 +122,5 @@ describe("login", () => {
     await waitFor(() => {
       expect(screen.queryByTestId("CustomError")).toBeNull();
     });
-    done();
   });
 });

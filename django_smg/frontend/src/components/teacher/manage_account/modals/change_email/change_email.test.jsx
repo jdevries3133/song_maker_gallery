@@ -15,7 +15,7 @@ beforeEach(() =>
 );
 
 describe("<ChangeEmail />", () => {
-  it("calls changeEmail fn when form has valid data", async (done) => {
+  it("calls changeEmail fn when form has valid data", async () => {
     fireEvent.change(screen.getByTestId("newEmailInput"), {
       target: { value: "neweml@newaddr.com" },
     });
@@ -27,6 +27,5 @@ describe("<ChangeEmail />", () => {
         "testtoken"
       );
     });
-    done();
   });
 });

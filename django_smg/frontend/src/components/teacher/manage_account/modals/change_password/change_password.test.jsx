@@ -14,7 +14,7 @@ beforeEach(() =>
 afterEach(() => updateUsrFunc.mockClear());
 
 describe("<ChangePassword />", () => {
-  it("calls changePassword fn when form has valid data", async (done) => {
+  it("calls changePassword fn when form has valid data", async () => {
     fireEvent.change(screen.getByTestId("curPasswordInput"), {
       target: { value: "currentPass" },
     });
@@ -26,6 +26,5 @@ describe("<ChangePassword />", () => {
     await waitFor(() => {
       expect(updateUsrFunc).toHaveBeenCalledWith(1, "currentPass", "newPass");
     });
-    done();
   });
 });

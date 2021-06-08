@@ -11,7 +11,7 @@ jest.mock("Actions/user");
 jest.mock("Actions/auth.action");
 
 describe("<Teacher />", () => {
-  it("has logout button which calls logout action on click", async (done) => {
+  it("has logout button which calls logout action on click", async () => {
     render(
       <TestContext
         initialState={{ auth: { isAuthenticated: true, token: "testtoken" } }}
@@ -23,6 +23,5 @@ describe("<Teacher />", () => {
     fireEvent.click(screen.getByTestId("logoutButton"));
     expect(logout).toHaveBeenCalledTimes(1);
     expect(logout).toHaveBeenCalledWith("testtoken");
-    done();
   });
 });

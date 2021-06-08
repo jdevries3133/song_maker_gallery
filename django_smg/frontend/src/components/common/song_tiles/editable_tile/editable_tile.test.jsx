@@ -34,22 +34,20 @@ describe("<EditableTile />", () => {
     ).toMatchSnapshot();
   });
 
-  it("only shows submit button after changes to name are made", async (done) => {
+  it("only shows submit button after changes to name are made", async () => {
     expect(screen.queryByTestId("submit")).toBeNull();
     fireEvent.change(screen.queryByTestId("nameInput"), {
       target: { value: "different" },
     });
     await waitFor(() => expect(screen.queryByTestId("submit")).toBeVisible());
-    done();
   });
 
-  it("only shows submit button after changes to link are made", async (done) => {
+  it("only shows submit button after changes to link are made", async () => {
     expect(screen.queryByTestId("submit")).toBeNull();
     fireEvent.change(screen.queryByTestId("linkInput"), {
       target: { value: "different" },
     });
     await waitFor(() => expect(screen.queryByTestId("submit")).toBeVisible());
-    done();
   });
 
   it("does not allow invalid link submission", () => {
@@ -80,7 +78,7 @@ describe("<EditableTile />", () => {
 
     const linkInput = () => screen.getByTestId("linkInput");
 
-    it("validates domain", async (done) => {
+    it("validates domain", async () => {
       expect(linkInput()).toHaveStyle({ border: "1px solid #ccc" });
       changeTo(
         "https://musiclb.chromeexperiments.com/Song-Maker/song/6594803161104384"
@@ -89,9 +87,8 @@ describe("<EditableTile />", () => {
         expect(screen.getByText("Link is not valid")).toBeVisible();
         expect(linkInput()).toHaveStyle({ border: "2px solid #e41000" });
       });
-      done();
     });
-    it("validates path", async (done) => {
+    it("validates path", async () => {
       expect(linkInput()).toHaveStyle({ border: "1px solid #ccc" });
       changeTo(
         "https://musiclab.chromeexperiments.com/Song-Maker/embed/6594803161104384"
@@ -100,9 +97,8 @@ describe("<EditableTile />", () => {
         expect(screen.getByText("Link is not valid")).toBeVisible();
         expect(linkInput()).toHaveStyle({ border: "2px solid #e41000" });
       });
-      done();
     });
-    it("validates id", async (done) => {
+    it("validates id", async () => {
       expect(linkInput()).toHaveStyle({ border: "1px solid #ccc" });
       changeTo(
         "https://musiclab.chromeexperiments.com/Song-Maker/embed/6594a03161104384"
@@ -111,9 +107,8 @@ describe("<EditableTile />", () => {
         expect(screen.getByText("Link is not valid")).toBeVisible();
         expect(linkInput()).toHaveStyle({ border: "2px solid #e41000" });
       });
-      done();
     });
-    it("trims whitespace", async (done) => {
+    it("trims whitespace", async () => {
       expect(linkInput()).toHaveStyle({ border: "1px solid #ccc" });
       changeTo(
         "    https://musiclab.chromeexperiments.com/Song-Maker/song/6594803161104384    "
@@ -122,7 +117,6 @@ describe("<EditableTile />", () => {
         expect(screen.queryByText("Link is not valid")).toBeNull();
         expect(linkInput()).toHaveStyle({ border: "1px solid #ccc" });
       });
-      done();
     });
   });
 });

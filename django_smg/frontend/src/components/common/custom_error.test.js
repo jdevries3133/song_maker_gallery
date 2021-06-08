@@ -25,11 +25,10 @@ describe("ErrorArray", () => {
     render(<ErrorArray header={header} message={msg} onOk={onOk} />);
     expect(screen.getByText(header)).toBeTruthy();
   });
-  it('calls onOk by clicking "Ok" button', async (done) => {
+  it('calls onOk by clicking "Ok" button', async () => {
     const msg = ["a", "b", "c"];
     render(<ErrorArray message={msg} onOk={onOk} />);
     fireEvent.click(screen.getByTestId("dismissBlanketButton"));
     expect(onOk).toHaveBeenCalledTimes(1);
-    done();
   });
 });

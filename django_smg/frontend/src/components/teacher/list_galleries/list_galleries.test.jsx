@@ -88,7 +88,7 @@ describe("<ListGalleries />", () => {
     );
   });
 
-  test("confirm delete modal is dismissable", async (done) => {
+  test("confirm delete modal is dismissable", async () => {
     fireEvent.click(screen.queryAllByTestId("deleteGalleryBtn")[0]);
     expect(screen.queryByTestId("dismissBlanketButton")).toBeVisible();
 
@@ -96,10 +96,9 @@ describe("<ListGalleries />", () => {
     await waitFor(() => {
       expect(screen.queryByTestId("dismissBlanketButton")).toBeFalsy();
     });
-    done();
   });
 
-  it("calls redux delete action when modal button is clicked", async (done) => {
+  it("calls redux delete action when modal button is clicked", async () => {
     fireEvent.click(screen.getAllByTestId("deleteGalleryBtn")[0]);
     await waitFor(() =>
       expect(screen.getByTestId("confirmDeleteBtn")).toBeVisible()
@@ -110,10 +109,9 @@ describe("<ListGalleries />", () => {
       INITIAL_STATE.user.galleries[0].pk,
       INITIAL_STATE.auth.token
     );
-    done();
   });
 
-  it("unmounts modal after successful deletion", async (done) => {
+  it("unmounts modal after successful deletion", async () => {
     fireEvent.click(screen.getAllByTestId("deleteGalleryBtn")[0]);
     await waitFor(() =>
       expect(screen.queryByText("Are you sure?")).toBeVisible()
@@ -121,6 +119,5 @@ describe("<ListGalleries />", () => {
 
     fireEvent.click(screen.getByTestId("confirmDeleteBtn"));
     expect(deleteGallery).toHaveBeenCalled();
-    done();
   });
 });

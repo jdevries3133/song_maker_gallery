@@ -21,7 +21,7 @@ export const SAMPLE_GROUP = [
 ];
 
 describe("StagedGroup", () => {
-  it("has dropdown that renders group member list", async (done) => {
+  it("has dropdown that renders group member list", async () => {
     render(<StagedGroup group={SAMPLE_GROUP} />);
     act(() => {
       fireEvent.click(screen.getByTestId("sgToggleDropdown"));
@@ -35,6 +35,5 @@ describe("StagedGroup", () => {
     screen.getAllByTestId("sgName").map((n, i) => {
       expect(n).toHaveTextContent(expectNames[i]);
     });
-    done();
   });
 });

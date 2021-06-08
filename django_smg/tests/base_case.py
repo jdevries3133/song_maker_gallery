@@ -22,7 +22,7 @@ class BaseCase(StaticLiveServerTestCase):
     Includes some adapter code for the cumbersome Selenium API.
     """
 
-    headless = True
+    headless = False
 
     @ classmethod
     def setUpClass(cls):

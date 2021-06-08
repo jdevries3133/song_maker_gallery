@@ -80,14 +80,13 @@ describe("useModals", () => {
     expect(screen.queryByTestId("blanket")).toBeNull();
   });
 
-  it("calls callback function when modal is closed", async (done) => {
+  it("calls callback function when modal is closed", async () => {
     render(<SimpleUsage showPropDependent={true} />);
     fireEvent.click(screen.getByTestId("dismissBlanketButton"));
     await waitFor(() => expect(onDismissedCallback).toHaveBeenCalled());
-    done();
   });
 
-  it("mounts and unmounts modal through dispatcher", async (done) => {
+  it("mounts and unmounts modal through dispatcher", async () => {
     render(<SimpleUsage />);
 
     // mount
@@ -103,7 +102,6 @@ describe("useModals", () => {
       expect(screen.queryByTestId("blanket")).toBeNull();
       expect(screen.queryByText("Component-Managed Modal")).toBeNull();
     });
-    done();
   });
 
   it("resists inifinite re-renders", () => {

@@ -70,7 +70,7 @@ describe("stage", () => {
   //   expect(getByTestId("titleLenLimit")).toHaveStyle("color: rgb(228, 16, 0);");
   // });
 
-  it("prevents submission of title longer than 100 chars", async (done) => {
+  it("prevents submission of title longer than 100 chars", async () => {
     const { getByTestId, getByText } = renderWithChars(101);
     act(() => {
       fireEvent.click(getByTestId("submit"));
@@ -86,15 +86,13 @@ describe("stage", () => {
         exact: false,
       })
     ).toBeTruthy();
-    done();
   });
 
-  it("calls confirmCreate for valid data", async (done) => {
+  it("calls confirmCreate for valid data", async () => {
     const { getByTestId } = render(<Stage {...mockStaged} />);
     act(() => {
       fireEvent.click(getByTestId("submit"));
     });
     expect(mockStaged.confirmCreate).toHaveBeenCalledTimes(1);
-    done();
   });
 });

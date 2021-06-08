@@ -74,24 +74,24 @@ describe("<Signup />", () => {
     ).toBeVisible();
   });
 
-  it("tells user when passswd is long enough with green text", async (done) => {
-    // action: input password
-    fireEvent.change(screen.getByTestId("passwordInput"), {
-      target: { value: "123456789" },
-    });
+  "tells user when passswd is long enough with green text",
+    async () => {
+      // action: input password
+      fireEvent.change(screen.getByTestId("passwordInput"), {
+        target: { value: "123456789" },
+      });
 
-    // assertions
-    await waitFor(() => {
-      expect(
-        screen.queryByText("Your password is at least eight characters long")
-      ).toBeVisible();
-      expect(
-        screen.queryByText("Your password is at least eight characters long")
-      ).toHaveStyle("color: green;");
-    });
-    done();
-  });
-  it("warns user if they put a space in the username", async (done) => {
+      // assertions
+      await waitFor(() => {
+        expect(
+          screen.queryByText("Your password is at least eight characters long")
+        ).toBeVisible();
+        expect(
+          screen.queryByText("Your password is at least eight characters long")
+        ).toHaveStyle("color: green;");
+      });
+    };
+  it("warns user if they put a space in the username", async () => {
     fireEvent.change(screen.getByTestId("usernameInput"), {
       target: { value: " " },
     });
@@ -102,9 +102,8 @@ describe("<Signup />", () => {
       target: { value: "nospaces" },
     });
     expect(screen.queryByText("Username may not contain spaces.")).toBeNull();
-    done();
   });
-  it("restores original passwd length message after deleting password", async (done) => {
+  it("restores original passwd length message after deleting password", async () => {
     // actions
     // input password
     fireEvent.change(screen.getByTestId("passwordInput"), {
@@ -121,18 +120,16 @@ describe("<Signup />", () => {
         screen.getByText("Your password must be at least eight characters long")
       ).toBeVisible();
     });
-    done();
   });
-  it("disallows empty fields", async (done) => {
+  it("disallows empty fields", async () => {
     fireEvent.submit(screen.getByTestId("signupForm"));
     await waitFor(() => {
       expect(screen.queryByText("Blank Fields")).toBeVisible();
       expect(screen.queryByText("Required fields are blank")).toBeVisible();
       expect(screen.queryByText("All fields are required.")).toBeVisible();
     });
-    done();
   });
-  it("disallows mismatched passwords", async (done) => {
+  it("disallows mismatched passwords", async () => {
     fillOutFields({
       username: "myuser",
       email: "myuser@email.com",
@@ -156,7 +153,6 @@ describe("<Signup />", () => {
         "Passwords do not match"
       );
     });
-    done();
   });
   it("disallows empty TOS checkbox", () => {
     fillOutFields({
@@ -178,15 +174,14 @@ describe("<Signup />", () => {
       )
     ).toBeVisible();
   });
-  it("calls user register action on form submission", async (done) => {
+  it("calls user register action on form submission", async () => {
     const data = await submitForm();
     await waitFor(() => {
       expect(register).toHaveBeenCalledTimes(1);
       expect(register).toHaveBeenCalledWith(data);
     });
-    done();
   });
-  it("renders 400 error messages from server", async (done) => {
+  it("renders 400 error messages from server", async () => {
     const fakeApiResponse = {
       username: ["A user with that username already exists"],
       email: ["Invalid email address"],
@@ -209,6 +204,5 @@ describe("<Signup />", () => {
       ).toBeVisible();
       expect(screen.queryByText("email: Invalid email address")).toBeVisible();
     });
-    done();
   });
 });

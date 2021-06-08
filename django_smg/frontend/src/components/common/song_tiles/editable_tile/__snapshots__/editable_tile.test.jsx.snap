@@ -79,7 +79,7 @@ exports[`<EditableTile /> matches snapshot 1`] = `
       htmlFor="link"
     >
       <h3
-        className="styles__H3-kZrHQh"
+        className="styles__H3-kZzEYv"
       >
         Link
       </h3>

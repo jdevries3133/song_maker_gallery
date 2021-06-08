@@ -33,7 +33,7 @@ const setup = (fileName, otherGroups = []) => {
 };
 
 describe("<Verify />", () => {
-  it("asks for name column when it is ambiguous", async (done) => {
+  it("asks for name column when it is ambiguous", async () => {
     setup("bad_name.csv");
     expect(screen.getByTestId("verifyModalNoName")).toBeVisible();
     const namebtn = screen.getAllByTestId("nameColChoice")[0];
@@ -44,9 +44,8 @@ describe("<Verify />", () => {
     await waitFor(() =>
       expect(screen.getByTestId("verifyModalNormal")).toBeVisible()
     );
-    done();
   });
-  it("asks for link column when it is ambiguous", async (done) => {
+  it("asks for link column when it is ambiguous", async () => {
     await setup("bad_link.csv");
     await waitFor(() => {
       expect(screen.getByTestId("verifyModalNoLink")).toBeVisible();
@@ -59,9 +58,8 @@ describe("<Verify />", () => {
     await waitFor(() =>
       expect(screen.getByTestId("verifyModalNormal")).toBeVisible()
     );
-    done();
   });
-  it("displays a table with student names and link previews", async (done) => {
+  it("displays a table with student names and link previews", async () => {
     setup("test_group_1.csv");
     expect(screen.getByTestId("verifyModalNormal")).toBeVisible();
     expect(screen.getAllByTestId("sgName").length).toEqual(20);
@@ -96,6 +94,5 @@ describe("<Verify />", () => {
       .map((l) =>
         expect(l).toHaveTextContent("https://musiclab.chromeexperim...")
       );
-    done();
   });
 });
