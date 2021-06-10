@@ -6,7 +6,7 @@ cffi==1.14.4
 chardet==4.0.0
 coverage==5.5
 cryptography==3.3.2
-Django==3.2.1
+Django==3.2.4
 django-cors-headers==3.7.0
 django-rest-knox==4.1.0
 django-stubs-ext==0.2.0
