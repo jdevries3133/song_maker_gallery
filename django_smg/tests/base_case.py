@@ -3,6 +3,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from typing import Union, List
 
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
@@ -12,7 +13,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import WebDriverException
-from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 
 from gallery.serializers import GallerySerializer  # type: ignore
 
@@ -27,12 +29,25 @@ class BaseCase(StaticLiveServerTestCase):
     @ classmethod
     def setUpClass(cls):
         super().setUpClass()
-        options = Options()
-        if getattr(cls, 'headless', None):
-            options.add_argument('--headless')
-            options.add_argument('--disable-gpu')
-            options.add_argument('--window-size=1280,1696')
-        cls.driver = webdriver.Chrome(options=options)
+
+        if settings.INTEGRATION_TEST_BROWSER == 'CHROME':
+            options = Options()
+            if getattr(cls, 'headless', None):
+                options.add_argument('--headless')
+                options.add_argument('--disable-gpu')
+                options.add_argument('--window-size=1280,1696')
+            cls.driver = webdriver.Chrome(options=options)
+
+        elif settings.INTEGRATION_TEST_BROWSER == 'FIREFOX':
+            # firefox options
+            options = Options()
+            if getattr(cls, 'headless', None):
+                options.headless = True
+            cls.driver = webdriver.Firefox(options=options)
+
+        else:
+            raise ValueError('Value for INTEGRATION_TEST_BROWSER was not valid. '
+                             'See settings/development.py')
 
     @ classmethod
     def tearDownClass(cls):
@@ -45,7 +60,7 @@ class BaseCase(StaticLiveServerTestCase):
         """
         self.driver.get(self.live_server_url + route)
 
-    def login(self, username: str = 'testuser', password: str = 'testpass') -> User:
+    def login(self) -> User:
         """
         Create user and authenticate them in the frontend; leaving the browser
         at the /teacher route.
