@@ -32,14 +32,43 @@ mock_data = {
 logger = logging.getLogger(__name__)
 
 
+
 def fetch_and_cache(*, songs: QuerySet):
     """
     Fetch and cache data for a currently uncached song.
     """
-    needs_update = False
-    session1 = requests.Session()
-    session2 = requests.Session()
 
+
+    def err_recover(song):
+        """
+        In the case of bad json data or a network error from the API.
+        DOES NOT save the song, because that happens at the very end of this
+        function.
+        """
+        # Put placeholder data such that the song appears blank.
+        for k, v in mock_data.items():
+            setattr(song, k, v)
+        song.midi = b''
+
+        # leaving this False means that we will try to fetch again next time
+        song.is_cached = False
+
+    needs_update = False
+
+    # json and midi data are served from separate domains; use separate
+    # sessions to get the most out of each handshake; avoid thrashing between
+    # them
+    json_session = requests.Session()
+    midi_session = requests.Session()
+
+    # dirty hack for saving round-trips to google apis. New features like
+    # instant song preview thumbnails make it more likely that the data is
+    # already in the database. Here, we fetch all the duplicates for the
+    # set of songs we are about to process in a single query. That data will
+    # be copied over (duplicated) later.
+
+    # TODO: split song relations and song data into separate models so that
+    # this data duplication is no longer necessary
     copies = {
         copy.songId: copy for copy in Song.objects.filter(
         songId__in=[s.songId for s in songs],
@@ -55,7 +84,7 @@ def fetch_and_cache(*, songs: QuerySet):
 
         if song.songId in copies:
             # we already have this song in our database! Copy these attributes
-            # from the duplicate to the new song
+            # from the duplicate to the new song.
             for key in [
                 'midi',
                 'is_cached',
@@ -75,32 +104,42 @@ def fetch_and_cache(*, songs: QuerySet):
                 setattr(song, key, getattr(copies[song.songId], key))
             continue
 
-        def SONG_JSON_DATA(song_id): return (
-            f'https://musiclab.chromeexperiments.com/Song-Maker/data/{song_id}'
-        )
-
-        def SONG_MIDI_FILE(song_id): return (
-            'https://storage.googleapis.com/song-maker-midifiles-prod/'
-            f'{song_id}.mid'
-        )
-
         try:
-            json_data = session1.post(SONG_JSON_DATA(song.songId)).json()
+            # fetch json
+            uri = (
+                'https://musiclab.chromeexperiments.com'
+                f'/Song-Maker/data/{song.songId}'
+            )
+            json_data = json_session.post(uri).json()
+
+            # fetch midi
+            uri = (
+                'https://storage.googleapis.com'
+                f'/song-maker-midifiles-prod/{song.songId}.mid'
+            )
+            midi_bytes = midi_session.get(uri).content
         except ValueError:
-            # Put placeholder data such that the song appears blank.
-            for k, v in mock_data.items():
-                setattr(song, k, v)
-            song.midi = b''
-            song.is_cached = True
+            err_recover(song)
             logger.error(
-                f'Failed to get data for {song.student_name}\'s song with songId: {song.songId}'
+                f'API data not valid for {song.student_name}\'s song with '
+                f'songId: {song.songId}'
             )
             continue
-        midi_bytes = session2.get(SONG_MIDI_FILE(song.songId)).content
+        except IOError:
+            err_recover(song)
+            logger.error(
+                f'Could not fetch data for {song.student_name}\'s song '
+                f'(songId: {song.songId})'
+            )
+            continue
+
         for k, v in json_data.items():
             setattr(song, k, v)
         song.midi = midi_bytes  # type: ignore
         song.is_cached = True  # type: ignore
+
+    # main loop over. Songs have been mutated; now, perform a single
+    # bulk-update query.
     if needs_update:
         Song.objects.bulk_update(songs, [  # type: ignore
             'midi',
@@ -118,10 +157,11 @@ def fetch_and_cache(*, songs: QuerySet):
             'subdivision',
             'tempo',
         ])
+
     return songs
 
 
-def normalize_student_name(name: str):
+def normalize_student_name(name: str) -> str:
     """
     Try our very best to store names as first name, last initial.
     """
@@ -139,17 +179,3 @@ def normalize_student_name(name: str):
         else:
             name = ''
     return name
-
-
-def normalize_songId(songId: Any) -> str:
-    """
-    Cast to a string if it is not already and if possible.
-    """
-    if not isinstance(songId, str):
-        try:
-            return str(songId)
-        except (TypeError, ValueError):
-            raise ValidationError(
-                'Could not interpret {songId} as a string'
-            )
-    return songId

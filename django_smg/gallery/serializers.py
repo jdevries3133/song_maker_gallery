@@ -12,7 +12,6 @@ from rest_framework.exceptions import ValidationError
 from .models import Gallery, Song, SongGroup
 from .services import (
     fetch_and_cache,
-    normalize_songId,
     normalize_student_name,
 )
 
@@ -61,7 +60,6 @@ class SongSerializer(serializers.ModelSerializer):
         """
         Must be 16 character numeric string.
         """
-        value = normalize_songId(value)
         if not value.isnumeric():
             raise ValidationError('songId must be numeric')
         if not len(value) == 16:
