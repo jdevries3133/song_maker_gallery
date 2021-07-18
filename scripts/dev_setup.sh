@@ -21,14 +21,14 @@ echo "EMAIL_HOST_PASSWORD = 'deveml'" >> django_smg/django_smg/settings/secret.p
 
 # append env variable to ~/.bashrc
 echo "# Config for Song Maker Gallery" >> ~/.bashrc
-echo "DJANGO_DEBUG=\"true\"" >> ~/.bashrc
+echo "export DJANGO_DEBUG=\"true\"" >> ~/.bashrc
 
 echo "SMG SETUP: Creating python virtual environment..."
 cd django_smg
 python3 -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r requirements.dev.txt
 
 echo "SMG SETUP: performing django database migration on new sqlite database"
 python manage.py migrate

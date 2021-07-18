@@ -17,12 +17,6 @@ idna==2.10
 iniconfig==1.1.1
 mypy==0.812
 mypy-extensions==0.4.3
-
-# only required for production, or development when USE_MYSQL is set to True
-# not installed by dev_setup script because install fails if mysql isn't
-# installed.
-mysqlclient==2.0.3
-
 packaging==20.9
 pluggy==0.13.1
 py==1.10.0
