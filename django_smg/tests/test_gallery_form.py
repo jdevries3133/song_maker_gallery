@@ -27,17 +27,16 @@ class TestGalleryForm(BaseCase):
         # submit form
         self.first_el(self.await_xpath('//input[@type="submit"]')).click()
 
-        # loading spinner appears
-        try:
-            self.await_data_testid('loading spinner')
-        except AssertionError:
-            logger.error('Warning: loading spinner was not seen.')
-
         # button no longer appears
-        self.assertEqual(
-            self.driver.find_elements_by_xpath('//input[@type="submit"]'),
-            []
-        )
+        def the_button_is_still_there() -> bool:
+            xp = '//input[@type="submit"]'
+            return bool(len(self.driver.find_elements_by_xpath(xp)))
+
+        retries = 0
+        while the_button_is_still_there():
+            retries += 1
+            if retries > 5:
+                self.fail('Button did not disappear after form submission')
 
         retries = 0
         while self.gallery.title != 'New Title':
