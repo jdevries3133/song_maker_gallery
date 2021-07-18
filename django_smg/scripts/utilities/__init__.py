@@ -1,1 +1,1 @@
-from .parallell_runner import Runner
+from .parallel_runner import Runner

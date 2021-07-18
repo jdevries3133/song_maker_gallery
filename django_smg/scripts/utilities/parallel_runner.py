@@ -56,14 +56,13 @@ class _Process:
         self.process.wait()
         self.is_open = False
 
-    # TODO: weirdness
-    # this is a bug or at least a typo... the function seems to return the
-    # inverse of what it's supposed to?...
     @ property
     def is_finished(self):
         """
-        Process is finished when the poll() method returns None
+        Process is finished when the poll() method returns None.
         """
+        if not self.process:
+            return True
         return True if self.process.poll() is not None else False
 
 
@@ -80,7 +79,7 @@ class Runner:
         self.arg = arg
         self.procs = []
         self.is_running = False
-        signal.signal(signal.SIGINT, lambda *a: self.exit('Gracefully exiting...'))
+        signal.signal(signal.SIGINT, self.exit)
         signal.signal(signal.SIGTERM, self._hard_exit)
 
     def start(self):
@@ -105,9 +104,8 @@ class Runner:
         self.procs = []
         pass
 
-    def exit(self, message=None):
-        if message:
-            print(message)
+    def exit(self, *_):
+        print('Exiting gracefully...')
         if self.is_running:
             self.stop()
         sys.exit()
@@ -146,7 +144,7 @@ class Runner:
                 self.exit()
             sleep(0.1)
 
-    def _hard_exit(self):
+    def _hard_exit(self, *_):
         print(
             'Hard exit has left the following processes dangling:',
             '\n\t'.join([f'{p.pid}\t{p.command}' for p in self.procs])
