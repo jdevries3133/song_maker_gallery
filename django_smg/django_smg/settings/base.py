@@ -1,5 +1,4 @@
 import os
-import json
 import sys
 
 from .secret import SECRET_KEY
