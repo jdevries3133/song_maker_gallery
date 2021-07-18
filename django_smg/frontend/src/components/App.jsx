@@ -14,6 +14,7 @@ import Gallery from "./gallery/gallery";
 import Teacher from "./teacher";
 import { Footer } from "Common/footer";
 import { TosPage, PrivacyPage } from "./legal";
+import { NotFound } from "Common/error";
 
 const App = () => (
   <Provider store={store}>
@@ -53,6 +54,9 @@ const App = () => (
             <Footer />
           </Title>
         </PrivateRoute>
+        <Route path="/*">
+          <NotFound />
+        </Route>
       </Switch>
     </Router>
   </Provider>

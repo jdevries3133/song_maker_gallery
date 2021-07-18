@@ -56,6 +56,13 @@ export const H2 = styled.h2`
   font-weight: 400;
   padding: 30px 0;
   border-radius: 20px;
+
+  ${(props) =>
+    props.center &&
+    css`
+      display: block;
+      text-align: center;
+    `}
 `;
 
 export const H3 = styled.h3`
