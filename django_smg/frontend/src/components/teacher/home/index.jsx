@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link, useRouteMatch } from "react-router-dom";
+
 import styled, { Button } from "Styles";
 import { Card } from "Common/card";
 
@@ -40,31 +42,42 @@ const CardContainer = styled.div`
   }
 `;
 
-export const Home = () => (
-  <CardContainer>
-    <Card
-      title="Automatic Gallery"
-      description="Let students post links."
-      media={StuSubmitImg}
-      actionButton={<Button>Placeholder</Button>}
-    >
-      <StudentSubmitDescription />
-    </Card>
-    <Card
-      title="Manual Gallery"
-      description="Uploading spreadsheet data."
-      media={SpreadsheetImg}
-      actionButton={<Button>Placeholder</Button>}
-    >
-      <ManualDescription />
-    </Card>
-    <Card
-      title="Social Galleries"
-      description="Responding: It's in the curriculum!"
-      media={OverseeImg}
-      actionButton={<Button>Placeholder</Button>}
-    >
-      <SocialDescription />
-    </Card>
-  </CardContainer>
-);
+export const Home = () => {
+  const { path } = useRouteMatch();
+  return (
+    <CardContainer>
+      <Card
+        title="Automatic Gallery"
+        description="Let students post links."
+        media={StuSubmitImg}
+        actionButton={
+          <Link to={`${path}/launch/auto`}>
+            <Button>Start</Button>
+          </Link>
+        }
+      >
+        <StudentSubmitDescription />
+      </Card>
+      <Card
+        title="Manual Gallery"
+        description="Uploading spreadsheet data."
+        media={SpreadsheetImg}
+        actionButton={
+          <Link to={`${path}/launch/manual`}>
+            <Button>Start</Button>
+          </Link>
+        }
+      >
+        <ManualDescription />
+      </Card>
+      <Card
+        title="Something Else"
+        description="Gotta fill one more card..."
+        media={OverseeImg}
+        actionButton={<Button>Placeholder</Button>}
+      >
+        <SocialDescription />
+      </Card>
+    </CardContainer>
+  );
+};

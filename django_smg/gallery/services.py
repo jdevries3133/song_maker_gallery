@@ -105,6 +105,7 @@ def fetch_and_cache(*, songs: QuerySet):
             continue
 
         try:
+            raise IOError
             # fetch json
             uri = (
                 'https://musiclab.chromeexperiments.com'

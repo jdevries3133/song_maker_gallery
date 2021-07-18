@@ -19,7 +19,8 @@ USE_MYSQL = False
 # https://docs.python.org/3/library/logging.html#logging-levels
 LOG_LEVEL = 'DEBUG'
 
-INTEGRATION_TEST_BROWSER = 'FIREFOX'  # can be 'FIREFOX' or 'CHROME'
+INTEGRATION_TEST_BROWSER = 'FIREFOX'    # 'FIREFOX' or 'CHROME'
+INTEGRATION_TEST_OPEN_DEVTOOLS = False  # only works for Firefox
 
 ################################################################################
 

@@ -162,6 +162,24 @@ class AddGallery extends Component {
     });
   };
 
+  /**
+   * convert old array-based data structure to new object-based data structure
+   * at form-submission-time.
+   */
+  apiAdapter = (data) => {
+    return data.map((group) => {
+      return {
+        group_name: group.slice(-1)[0],
+        songs: group.slice(0, -1).map(([name, url]) => {
+          return {
+            student_name: name,
+            songId: url.slice(-16),
+          };
+        }),
+      };
+    });
+  };
+
   // fire POST_GALLERY action upon button press in <Stage />
   inputConfirmation = () => {
     if (
@@ -188,7 +206,7 @@ class AddGallery extends Component {
       {
         title: this.state.titleValue,
         description: this.state.descriptionValue,
-        song_groups: this.state.stagedGroups,
+        song_groups: this.apiAdapter(this.state.stagedGroups),
       },
       this.props.token
     );

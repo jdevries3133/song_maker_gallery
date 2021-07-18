@@ -43,6 +43,8 @@ class BaseCase(StaticLiveServerTestCase):
             options = Options()
             if getattr(cls, 'headless', None):
                 options.headless = True
+            if settings.INTEGRATION_TEST_OPEN_DEVTOOLS:
+                options.add_argument('-devtools')
             cls.driver = webdriver.Firefox(options=options)
 
         else:
@@ -60,14 +62,14 @@ class BaseCase(StaticLiveServerTestCase):
         """
         self.driver.get(self.live_server_url + route)
 
-    def login(self) -> User:
+    def login(self, username=None, password=None) -> User:
         """
         Create user and authenticate them in the frontend; leaving the browser
         at the /teacher route.
         """
         user = self.create_user()
         self.goTo('/login')
-        self.submit_login_form(self.username, self.password)
+        self.submit_login_form(username or self.username, password or self.password)
         self.expect_path_to_become('/teacher')
         return user
 

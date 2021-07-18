@@ -1,11 +1,4 @@
-from time import sleep
-from typing import Iterable
-
 from django.db import transaction
-from selenium.common.exceptions import WebDriverException
-from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 from .base_case import BaseCase
 
