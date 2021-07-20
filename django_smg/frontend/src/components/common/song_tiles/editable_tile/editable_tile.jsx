@@ -13,7 +13,8 @@ import styled, {
 
 import { LiveUpdatingTile } from "../live_updating_tile";
 
-const VALIDATION_REGEX = /^http(s)?:\/\/musiclab.chromeexperiments.com\/Song-Maker\/song\/\d{16}$/;
+const VALIDATION_REGEX =
+  /^http(s)?:\/\/musiclab.chromeexperiments.com\/Song-Maker\/song\/\d{16}$/;
 
 const Description = styled(DefaultDescription)`
   margin: 0;
@@ -24,6 +25,7 @@ export const EditableTile = ({ name = "", link = "", onSave }) => {
   const [_name, setName] = useState(name);
   const [_link, setLink] = useState(link);
 
+  const isNameValid = !!_name;
   const isLinkValid = VALIDATION_REGEX.test(_link.trim());
   const changesMade = name !== _name || link !== _link;
   const songId = isLinkValid ? _link.slice(-16) : null;
@@ -37,26 +39,29 @@ export const EditableTile = ({ name = "", link = "", onSave }) => {
     <Description as="form" onSubmit={submit}>
       <LiveUpdatingTile width={200} songId={isLinkValid ? songId : null} />
       <Label htmlFor="name">Name</Label>
+      {changesMade && !isNameValid && <P warn>Please enter your name.</P>}
       <Input
         id="name"
         data-testid="nameInput"
         value={_name}
         onChange={(e) => setName(e.target.value)}
+        warn={changesMade && !isNameValid}
       />
       <div>
-        <label htmlFor="link">
+        <Label htmlFor="link">
           <H3>Link</H3>
-          {!isLinkValid && <P warn>Link is not valid</P>}
-        </label>
+          {changesMade && !isLinkValid && <P warn>Link is not valid</P>}
+        </Label>
         <Textarea
-          warn={!isLinkValid}
+          warn={changesMade && !isLinkValid}
           id="link"
           data-testid="linkInput"
           onChange={(e) => setLink(e.target.value)}
           value={_link}
         />
       </div>
-      {changesMade && (
+      <br />
+      {changesMade && isLinkValid && isNameValid && (
         <Button data-testid="submit" as="input" type="submit" value="Save" />
       )}
     </Description>

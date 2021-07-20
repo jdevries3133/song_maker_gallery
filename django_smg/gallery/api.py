@@ -1,17 +1,19 @@
+from copy import copy
 import logging
+from types import SimpleNamespace
 
 from rest_framework import permissions, status, viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 
-from .models import Gallery
+from .models import Gallery, SongGroup
 from .serializers import (
     GallerySerializer,
     GallerySummarySerializer,
     GalleryUpdateSerializer,
     SongGroupSerializer,
-    SongSerializer
+    SongSerializer,
 )
 from .services import fetch_and_cache
 
@@ -56,7 +58,7 @@ class AuthGalleryViewset(APIView):
                 GallerySummarySerializer(instance).data,
                 status.HTTP_201_CREATED
             )
-        return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @ staticmethod
     def patch(request):
@@ -69,7 +71,7 @@ class AuthGalleryViewset(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(serializer.errors)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
     @ staticmethod
@@ -123,6 +125,81 @@ def instant_song_data(request):
         song = fetch_and_cache(songs=[song])[0]  # type: ignore
         return Response(serializer.data, status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@ api_view(['PATCH'])
+@ permission_classes([permissions.IsAuthenticated])
+def gallery_settings(request):
+    """
+    User can provide updates one setting at a time.
+    """
+    try:
+        gal = Gallery.objects.get(slug=request.data.pop('slug'),
+                                  owner=request.user)
+    except Gallery.DoesNotExist:
+        return Response({'message': 'Gallery not found'},
+                        status=status.HTTP_404_NOT_FOUND)
+    serializer = GallerySummarySerializer(gal, data=request.data,
+                                          context={'request': request},
+                                          partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class StudentCreateSong(APIView):
+    """
+    Views that allow a student to upload their own song.
+    get: lists groups in the gallery for them to choose from
+    post: submit the song
+    """
+
+    permission_classes = (permissions.AllowAny,)
+
+    @ staticmethod
+    def get(request):
+        """
+        List groups in gallery (via query param).
+        """
+        try:
+            if pk := (request.query_params.get('pk')):
+                gal = Gallery.objects.get(pk=pk)
+            elif slug := (request.query_params.get('slug')):
+                gal = Gallery.objects.get(slug=slug)
+            else:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+        except Gallery.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        return Response(SongGroupSerializer(gal.song_groups, many=True).data)
+
+    @ staticmethod
+    def post(request):
+        """
+        Create a gallery
+        """
+        try:
+            group = SongGroup.objects.get(pk=request.data.get('group_pk'))
+        except SongGroup.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        if not group.gallery.is_editable:
+            return Response({'error': 'Gallery is not editable'},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+        new_song = copy(request.data)
+        new_song['group'] = group.pk
+        new_song['gallery'] = group.gallery
+        serializer = SongSerializer(
+            data=new_song,
+            context={'request': SimpleNamespace(user=group.owner)}
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 class SongViewset(viewsets.ModelViewSet):

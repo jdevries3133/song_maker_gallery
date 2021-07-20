@@ -1,28 +1,37 @@
-import React, { useReducer, useState } from "react";
+/**
+ * note: social gallery elements are commented out. I don't think I'm going
+ * to implement social galleries anytime soon.
+ */
+import React, {
+  useReducer,
+  // useState
+} from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import styled, {
   Description as DefaultDescription,
   H2,
   P,
   Form,
-  Input,
+  // Input,
 } from "Styles";
 
 import {
   ConfigItem,
-  ConfigItemSet,
+  // ConfigItemSet,
   configItemReducer,
   types,
 } from "Common/config_item";
 
-const Emoji = styled.span`
-  font-size: 2rem;
-  margin 0 3vw;
-`;
+// const Emoji = styled.span`
+//   font-size: 2rem;
+//   margin 0 3vw;
+// `;
 
-const InlineLabel = styled.label`
-  margin-right: 20px;
-`;
+// const InlineLabel = styled.label`
+//   margin-right: 20px;
+// `;
 
 const Description = styled(DefaultDescription)`
   text-align: inherit;
@@ -40,41 +49,47 @@ const Description = styled(DefaultDescription)`
  *   - Comments (on/off to disable all)
  *      - Pre-Approve Comments? (on/off)
  */
-export const GalleryConfig = ({ slug }) => {
+export const _GalleryConfig = ({ slug, token }) => {
+  console.log(slug);
   //TODO: the slug passed in should be the means by which we can interact
   //with the gallery
   const initialState = {
+    slug,
+    token,
     allowStudentSubmissions: {
       id: "allowStudentSubmissions",
     },
     isGalleryPublished: {
       id: "isGalleryPublished",
     },
-    enableSocialGal: {
-      id: "enableSocialGal",
-    },
-    socialGalPasscodeEnabled: {
-      id: "socialGalPasscodeEnabled",
-    },
-    reactionsEnabled: {
-      id: "reactionsEnabled",
-    },
-    commentsEnabled: {
-      id: "commentsEnabled",
-    },
-    moderateComments: {
-      id: "moderateComments",
-    },
+    // enableSocialGal: {
+    //   id: "enableSocialGal",
+    // },
+    // socialGalPasscodeEnabled: {
+    //   id: "socialGalPasscodeEnabled",
+    // },
+    // reactionsEnabled: {
+    //   id: "reactionsEnabled",
+    // },
+    // commentsEnabled: {
+    //   id: "commentsEnabled",
+    // },
+    // moderateComments: {
+    //   id: "moderateComments",
+    // },
   };
+  // TODO: initialState comes from API
   Object.keys(initialState).forEach((k) => {
-    initialState[k] = {
-      ...initialState[k],
-      enabled: true,
-      checked: true,
-    };
+    if (typeof k == "object") {
+      initialState[k] = {
+        ...initialState[k],
+        enabled: true,
+        checked: true,
+      };
+    }
   });
 
-  const [socialGalleryPasscode, setSocialGalleryPasscode] = useState("");
+  // const [socialGalleryPasscode, setSocialGalleryPasscode] = useState("");
   const [state, dispatch] = useReducer(configItemReducer, initialState);
 
   const checkedHandler = (id) => {
@@ -113,7 +128,7 @@ export const GalleryConfig = ({ slug }) => {
             onChange={() => checkedHandler(state.allowStudentSubmissions.id)}
           >
             Enable students to actively submit compositions at{" "}
-            <a href="#temp">this link.</a>
+            <Link to={`/gallery/${slug}/submit-song/`}>this link.</Link>
           </ConfigItem>
 
           <ConfigItem
@@ -130,74 +145,82 @@ export const GalleryConfig = ({ slug }) => {
         </div>
       </Description>
 
-      <Description>
-        <H2>Social Gallery Features</H2>
+      {/* <Description> */}
+      {/*   <H2>Social Gallery Features</H2> */}
 
-        <div>
-          <ConfigItemSet>
-            <ConfigItem
-              id={state.enableSocialGal.id}
-              label="Enable Social Gallery"
-              checked={state.enableSocialGal.checked}
-              onChange={() => checkedHandler(state.enableSocialGal.id)}
-            >
-              Flip this switch to turn this gallery into a social gallery, and
-              to gain access to the finer grain settings below.
-            </ConfigItem>
+      {/*   <div> */}
+      {/*     <ConfigItemSet> */}
+      {/*       <ConfigItem */}
+      {/*         id={state.enableSocialGal.id} */}
+      {/*         label="Enable Social Gallery" */}
+      {/*         checked={state.enableSocialGal.checked} */}
+      {/*         onChange={() => checkedHandler(state.enableSocialGal.id)} */}
+      {/*       > */}
+      {/*         Flip this switch to turn this gallery into a social gallery, and */}
+      {/*         to gain access to the finer grain settings below. */}
+      {/*       </ConfigItem> */}
 
-            <ConfigItem
-              id={state.socialGalPasscodeEnabled.id}
-              label="Social Gallery Passcode"
-              checked={state.socialGalPasscodeEnabled.checked}
-              onChange={() => checkedHandler(state.socialGalPasscodeEnabled.id)}
-            >
-              {state.socialGalPasscodeEnabled.checked ? (
-                <>
-                  <P left>
-                    Students must enter this passcode to interact with the
-                    social gallery
-                  </P>
-                  <InlineLabel htmlFor="socialGalleryPasscode">
-                    Passcode
-                  </InlineLabel>
-                  <Input
-                    id="socialGalleryPasscode"
-                    type="text"
-                    value={socialGalleryPasscode}
-                    onChange={(e) => setSocialGalleryPasscode(e.target.value)}
-                  />
-                </>
-              ) : null}
-            </ConfigItem>
+      {/*       <ConfigItem */}
+      {/*         id={state.socialGalPasscodeEnabled.id} */}
+      {/*         label="Social Gallery Passcode" */}
+      {/*         checked={state.socialGalPasscodeEnabled.checked} */}
+      {/*         onChange={() => checkedHandler(state.socialGalPasscodeEnabled.id)} */}
+      {/*       > */}
+      {/*         {state.socialGalPasscodeEnabled.checked ? ( */}
+      {/*           <> */}
+      {/*             <P left> */}
+      {/*               Students must enter this passcode to interact with the */}
+      {/*               social gallery */}
+      {/*             </P> */}
+      {/*             <InlineLabel htmlFor="socialGalleryPasscode"> */}
+      {/*               Passcode */}
+      {/*             </InlineLabel> */}
+      {/*             <Input */}
+      {/*               id="socialGalleryPasscode" */}
+      {/*               type="text" */}
+      {/*               value={socialGalleryPasscode} */}
+      {/*               onChange={(e) => setSocialGalleryPasscode(e.target.value)} */}
+      {/*             /> */}
+      {/*           </> */}
+      {/*         ) : null} */}
+      {/*       </ConfigItem> */}
 
-            <ConfigItem
-              id={state.reactionsEnabled.id}
-              label="Enable Reactions"
-              checked={state.reactionsEnabled.checked}
-              onChange={() => checkedHandler(state.reactionsEnabled.id)}
-            >
-              <Emoji>👍</Emoji>
-              <Emoji>❤️</Emoji>
-              <Emoji>⭐️</Emoji>
-            </ConfigItem>
+      {/*       <ConfigItem */}
+      {/*         id={state.reactionsEnabled.id} */}
+      {/*         label="Enable Reactions" */}
+      {/*         checked={state.reactionsEnabled.checked} */}
+      {/*         onChange={() => checkedHandler(state.reactionsEnabled.id)} */}
+      {/*       > */}
+      {/*         <Emoji>👍</Emoji> */}
+      {/*         <Emoji>❤️</Emoji> */}
+      {/*         <Emoji>⭐️</Emoji> */}
+      {/*       </ConfigItem> */}
 
-            <ConfigItemSet>
-              <ConfigItem
-                id={state.commentsEnabled.id}
-                label="Enable Comments"
-                checked={state.commentsEnabled.checked}
-                onChange={() => checkedHandler(state.commentsEnabled.id)}
-              />
-              <ConfigItem
-                id={state.moderateComments.id}
-                label="Pre-Approve All Comments"
-              >
-                No comments will be viewable until they are approved by you.
-              </ConfigItem>
-            </ConfigItemSet>
-          </ConfigItemSet>
-        </div>
-      </Description>
+      {/*       <ConfigItemSet> */}
+      {/*         <ConfigItem */}
+      {/*           id={state.commentsEnabled.id} */}
+      {/*           label="Enable Comments" */}
+      {/*           checked={state.commentsEnabled.checked} */}
+      {/*           onChange={() => checkedHandler(state.commentsEnabled.id)} */}
+      {/*         /> */}
+      {/*         <ConfigItem */}
+      {/*           id={state.moderateComments.id} */}
+      {/*           label="Pre-Approve All Comments" */}
+      {/*         > */}
+      {/*           No comments will be viewable until they are approved by you. */}
+      {/*         </ConfigItem> */}
+      {/*       </ConfigItemSet> */}
+      {/*     </ConfigItemSet> */}
+      {/*   </div> */}
+      {/* </Description> */}
     </Form>
   );
 };
+
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.token,
+  };
+};
+
+export const GalleryConfig = connect(mapStateToProps)(_GalleryConfig);

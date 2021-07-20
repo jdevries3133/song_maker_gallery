@@ -11,6 +11,7 @@ import PrivateRoute from "Common/private_route";
 import SignUp from "./auth/signup";
 import Login from "./auth/login";
 import Gallery from "./gallery/gallery";
+import { SongSubmitForm } from "./gallery/submit_song";
 import Teacher from "./teacher";
 import { Footer } from "Common/footer";
 import { TosPage, PrivacyPage } from "./legal";
@@ -35,7 +36,10 @@ const App = () => (
             <Footer />
           </Title>
         </Route>
-        <Route path="/gallery/*">
+        <Route path="/gallery/:slug/submit-song/">
+          <SongSubmitForm />
+        </Route>
+        <Route path="/gallery/:slug/">
           <Gallery />
         </Route>
         <Route path="/privacy/*">

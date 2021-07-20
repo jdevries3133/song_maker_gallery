@@ -36,25 +36,23 @@ describe("<EditableTile />", () => {
 
   it("only shows submit button after changes to name are made", async () => {
     expect(screen.queryByTestId("submit")).toBeNull();
-    fireEvent.change(screen.queryByTestId("nameInput"), {
-      target: { value: "different" },
+    fireEvent.change(screen.getByTestId("nameInput"), {
+      target: { value: "Timmy T." },
+    });
+    fireEvent.change(screen.getByTestId("linkInput"), {
+      target: {
+        value:
+          "https://musiclab.chromeexperiments.com/Song-Maker/song/1234567812345678",
+      },
     });
     await waitFor(() => expect(screen.queryByTestId("submit")).toBeVisible());
   });
 
-  it("only shows submit button after changes to link are made", async () => {
+  it("doesn't show submit button without name", () => {
+    fireEvent.change(screen.queryByTestId("linkInput"), {
+      target: { value: "different" },
+    });
     expect(screen.queryByTestId("submit")).toBeNull();
-    fireEvent.change(screen.queryByTestId("linkInput"), {
-      target: { value: "different" },
-    });
-    await waitFor(() => expect(screen.queryByTestId("submit")).toBeVisible());
-  });
-
-  it("does not allow invalid link submission", () => {
-    fireEvent.change(screen.queryByTestId("linkInput"), {
-      target: { value: "different" },
-    });
-    fireEvent.click(screen.queryByTestId("submit"));
     expect(onSave).toHaveBeenCalledTimes(0);
   });
 

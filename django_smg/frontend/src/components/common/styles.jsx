@@ -198,6 +198,15 @@ export const Input = styled.input`
     css`
       display: block;
     `}
+
+  ${(props) =>
+    props.warn &&
+    css`
+      border: 2px solid #e41000;
+
+      &:focus {
+        outline: hsl(0deg 100% 70%) auto 1px;
+    `}
 `;
 
 export const Textarea = styled.textarea`

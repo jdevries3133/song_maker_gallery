@@ -47,7 +47,7 @@ class SongSerializer(serializers.ModelSerializer):
             'beats',            'instrument',       'octaves',      'percussion',
             'percussionNotes',  'rootNote',         'rootOctave',   'rootPitch',
             'scale',            'subdivision',      'tempo',        'midi',
-            'owner'
+            'owner',            'group'
         )
 
     def create(self, validated_data):
@@ -85,7 +85,7 @@ class SongGroupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SongGroup
-        fields = ('group_name', 'songs', 'owner')
+        fields = ('group_name', 'songs', 'owner', 'pk')
 
     def create(self, validated_data, **kw):
         song_data = validated_data.pop('songs')
@@ -177,7 +177,7 @@ class GallerySerializer(serializers.ModelSerializer):
 
 class GalleryUpdateSerializer(serializers.ModelSerializer):
     owner = serializers.PrimaryKeyRelatedField(
-        queryset=User.objects.all(),
+        queryset=User.objects.all(),  # type: ignore
         default=serializers.CurrentUserDefault()
     )
 
@@ -193,4 +193,5 @@ class GallerySummarySerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Gallery
-        fields = ('pk', 'slug', 'title', 'description')
+        fields = ('pk', 'slug', 'title', 'description',
+                  'is_public', 'is_editable')

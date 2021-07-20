@@ -21,6 +21,10 @@ class Gallery(models.Model):
     )
     description = models.TextField()
 
+    # settings
+    is_public = models.BooleanField(default=True)
+    is_editable = models.BooleanField(default=False)
+
     objects = SlugManager()
     slug = models.SlugField(
         max_length=50,

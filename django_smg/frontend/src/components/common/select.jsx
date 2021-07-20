@@ -1,17 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Label as StyledLabel, Select as StyledSelect } from "Styles";
+import styled, { Label } from "Styles";
+
+const StyledSelect = styled.select`
+  font-size: 1.2rem;
+`;
 
 /**
  * To pass additional information, children are placed between the label
  * and the dropdown selector
  */
-export const Select = ({ id, label, choices, children }) => (
+export const Select = ({ id, label, choices, children, value, onChange }) => (
   <>
-    <StyledLabel htmlFor={id}>{label}</StyledLabel>
-    <label htmlFor={id}>{children}</label>
-    <StyledSelect id={id}>
+    <Label htmlFor={id}>{label}</Label>
+    {children && <label htmlFor={id}>{children}</label>}
+    <StyledSelect value={value} onChange={onChange} id={id}>
       {choices.map((choice) => (
         <option key={choice} value={choice}>
           {choice}

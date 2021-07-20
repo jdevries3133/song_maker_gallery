@@ -1,27 +1,24 @@
-import time
-import json
 from unittest.mock import patch
 
 from django.db import connection
-from django.test.testcases import TestCase
 from django.test.utils import CaptureQueriesContext
 from django.urls import reverse
-from django.utils.http import urlencode
 from rest_framework import status
 
-from ..models import Gallery
-from ..serializers import GallerySerializer
+from ..models import Gallery, Song
 from .base_case import GalleryTestCase, mock_fetch_and_cache, patch_fetch_and_cache
 from ..services import mock_data
 
 
-class TestAuthGalleryViewset(GalleryTestCase):
+class SignedInTestCase(GalleryTestCase):
 
     def setUp(self):
-        ...
         super().setUp()
         self._login_client()
         self.gallery = self.add_gallery()
+
+
+class TestAuthGalleryViewset(SignedInTestCase):
 
     def test_response_status(self):
         response = self.client.get(
@@ -169,9 +166,6 @@ class TestPublicGalleryViewset(GalleryTestCase):
 
 class TestInstantSongData(GalleryTestCase):
 
-    def setUp(self):
-        super().setUp()
-
     @ patch('gallery.api.fetch_and_cache', side_effect=mock_fetch_and_cache)
     def test_data_returned(self, mocker):
         response = self.client.post(
@@ -190,7 +184,91 @@ class TestInstantSongData(GalleryTestCase):
                 'student_name': 'Mark J.',
                 'order': 0,
                 'owner': None,
+                'group': None,
                 'midi': '',
                 **mock_data
             }
         )
+
+
+class TestGallerySettings(SignedInTestCase):
+
+    def test_gallery_settings(self):
+        def update_attr(attr, value):
+            res =  self.client.patch(
+                reverse('gallery_settings'),
+                HTTP_AUTHORIZATION=f'Token {self.token}',
+                secure=True,
+                content_type='application/json',
+                data={
+                    'slug': self.gallery.slug,
+                    attr: value
+                }
+            )
+            self.assertTrue(res.status_code == 200)
+            self.gallery.refresh_from_db()
+            self.assertEqual(getattr(self.gallery, attr), value)
+
+
+        update_attr('is_editable', True)
+        update_attr('is_editable', False)
+        update_attr('is_public', True)
+        update_attr('is_public', False)
+
+    def test_gallery_settings_requires_authentication(self):
+        res =  self.client.patch(
+            reverse('gallery_settings'),
+            secure=True,
+            content_type='application/json',
+            data={
+                'slug': self.gallery.slug,
+                'is_public': True
+            }
+        )
+        self.assertEqual(res.status_code, 401)
+
+
+class TestStudentCreateSong(GalleryTestCase):
+
+    def setUp(self):
+        super().setUp()
+        self.gallery = self.add_gallery()
+        self.gallery.is_editable = True
+        self.gallery.save()
+        self.group = self.gallery.song_groups.first()
+
+    def test_list_groups(self):
+        "User can fetch by pk or slug"
+        # TODO: this test is slow
+        fetch_by = {
+            'pk': self.gallery.pk,
+            'slug': self.gallery.slug
+        }
+        for method, value in fetch_by.items():
+            base = reverse('student_create_song')
+            url = f'{base}?{method}={value}'
+            res = self.client.get(url)
+            for result in res.json():
+                self.assertEqual(set(result.keys()),
+                                 set(('pk', 'group_name', 'songs', 'owner')))
+            self.assertEqual(res.status_code, 200)
+            self.assertEqual(len(res.json()), 2)
+
+
+    def test_create_song(self):
+        # note: the request is made without authentication
+        res = self.client.post(reverse('student_create_song'), {
+            'group_pk': self.group.pk,
+            'student_name': 'Timmy Tamson',
+            'songId': '1112223334445555'
+        })
+
+        # request was successful
+        self.assertEqual(res.status_code, 200)
+        # name is shortened via serializer
+        self.assertEqual(res.json()['student_name'], 'Timmy T.')
+        # songId is set
+        self.assertEqual(res.json()['songId'], '1112223334445555')
+        # ensure db entry was created
+        song = Song.objects.get(songId=res.json()['songId'])
+        self.assertEqual(song.student_name, 'Timmy T.')

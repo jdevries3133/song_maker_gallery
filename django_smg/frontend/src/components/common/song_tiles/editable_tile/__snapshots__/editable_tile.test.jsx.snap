@@ -76,6 +76,7 @@ exports[`<EditableTile /> matches snapshot 1`] = `
   />
   <div>
     <label
+      className="c2"
       htmlFor="link"
     >
       <h3
@@ -92,5 +93,6 @@ exports[`<EditableTile /> matches snapshot 1`] = `
       value="https://musiclab.chromeexperiments.com/Song-Maker/song/6594803161104384"
     />
   </div>
+  <br />
 </form>
 `;

@@ -13,8 +13,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import WebDriverException
-# from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options as ChromeOpts
+from selenium.webdriver.firefox.options import Options as FirefoxOpts
 
 from gallery.serializers import GallerySerializer  # type: ignore
 
@@ -31,7 +31,7 @@ class BaseCase(StaticLiveServerTestCase):
         super().setUpClass()
 
         if settings.INTEGRATION_TEST_BROWSER == 'CHROME':
-            options = Options()
+            options = ChromeOpts()
             if getattr(cls, 'headless', None):
                 options.add_argument('--headless')
                 options.add_argument('--disable-gpu')
@@ -40,7 +40,7 @@ class BaseCase(StaticLiveServerTestCase):
 
         elif settings.INTEGRATION_TEST_BROWSER == 'FIREFOX':
             # firefox options
-            options = Options()
+            options = FirefoxOpts()
             if getattr(cls, 'headless', None):
                 options.headless = True
             if settings.INTEGRATION_TEST_OPEN_DEVTOOLS:
