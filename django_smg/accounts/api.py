@@ -2,7 +2,7 @@ import logging
 
 from django.contrib.auth.models import User
 from django.contrib.auth import login
-from rest_framework.generics import GenericAPIView, RetrieveAPIView
+from rest_framework.generics import GenericAPIView
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.authtoken.serializers import AuthTokenSerializer
@@ -17,9 +17,9 @@ logger = logging.getLogger(__name__)
 class RegisterAPI(GenericAPIView):
     permission_classes = [permissions.AllowAny]
     serializer_class = RegisterSerializer
-    queryset = User.objects.all()
+    queryset = User.objects.all()  # type: ignore
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
@@ -40,22 +40,23 @@ class RegisterAPI(GenericAPIView):
 class LoginAPI(KnoxLoginView):
     permission_classes = (permissions.AllowAny,)
     serializer_class = LoginSerializer
-    queryset = User.objects.all()
+    queryset = User.objects.all()  # type: ignore
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         # allow user to authenticate with email
-        if User.objects.filter(email=request.data['username']):
+        if User.objects.filter(email=request.data['username']):  # type: ignore
             request.data['username'] = (
-                User.objects.filter(email=request.data['username'])[0].username
+                User.objects.filter(email=request.data['username'])[0].username  # type: ignore
             )
         serializer = AuthTokenSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
+        user = serializer.validated_data['user']  # type: ignore
         login(request, user)
         response = super().post(request, format=None)
 
         # TODO: move user_id insertion into a serializer
-        response.data.setdefault('user_id', user.pk)
+        if response.data:
+            response.data.setdefault('user_id', user.pk)
         return response
 
     def get(self, request):
@@ -63,7 +64,8 @@ class LoginAPI(KnoxLoginView):
             response = super().post(request, format=None)
 
             # TODO: move user_id insertion into a serializer (same as above)
-            response.data.setdefault('user_id', request.user.pk)
+            if response.data:
+                response.data.setdefault('user_id', request.user.pk)
             return response
         return Response({
             'message': (

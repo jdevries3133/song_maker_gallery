@@ -1,7 +1,5 @@
-import re
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.query_utils import Q
 from django.utils.translation import gettext_lazy as _
 
 from .managers import OrderManager, SlugManager
@@ -13,7 +11,7 @@ class Gallery(models.Model):
         related_name='galleries',
         on_delete=models.CASCADE,
     )
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)  # type: ignore
     title = models.CharField(
         max_length=100,
         null=False,
@@ -43,7 +41,7 @@ class SongGroup(models.Model):
     """
     Songs in the gallery are visually grouped. This model defines the grouping.
     """
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)  # type: ignore
     group_name = models.CharField(_("Group Name"), max_length=100)
 
     # relationships
@@ -72,7 +70,7 @@ class Song(models.Model):
     A single song that is part of a gallery. Contains cached midi files and
     json objects from the Chrome Music Lab site.
     """
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)  # type: ignore
     songId = models.CharField(_("Song ID"), max_length=20)
     student_name = models.CharField(
         _("Student Name"),

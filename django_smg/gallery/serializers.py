@@ -1,10 +1,5 @@
-import base64
 import logging
-import json
-import re
-from django.contrib.auth.models import AnonymousUser
 
-from django.http import Http404
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError

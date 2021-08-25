@@ -1,13 +1,7 @@
-import re
 import logging
-from typing import Any
-import json
 
 import requests
-from django.conf import settings
 from django.db.models.query import QuerySet
-from rest_framework.exceptions import ValidationError
-from rest_framework import serializers
 
 from .models import Song
 
