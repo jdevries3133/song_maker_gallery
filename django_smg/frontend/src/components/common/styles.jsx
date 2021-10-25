@@ -160,6 +160,14 @@ export const Button = styled.button`
   }
 `;
 
+const _ErrText = styled(P)`
+  font-size: 12px;
+`;
+
+export const FormErrorText = ({ children }) => (
+  <_ErrText warn>{children}</_ErrText>
+);
+
 export const Form = styled.form`
   display: flex;
   gap: 0.5rem;

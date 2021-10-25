@@ -3,6 +3,7 @@ import store from "../../../store";
 
 /* send new state to the backend via patch request */
 const backendToggle = (slug, key, value) => {
+  if (!slug || !key) return; // skip syncing with the backend; only update state
   /* convert frontend keys to backend keys */
   const keyNameMap = (key) => {
     const map = {
@@ -12,6 +13,8 @@ const backendToggle = (slug, key, value) => {
     return map[key];
   };
   const state = store.getState();
+  // TODO: this API side-effect absolutely should not be buried in here,
+  // because this is supposed to be a general purpose configuration component
   if (state.auth.isAuthenticated) {
     axios.defaults.xsrfCookieName = "csrftoken";
     axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";

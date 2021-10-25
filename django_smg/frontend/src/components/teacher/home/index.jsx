@@ -18,7 +18,11 @@ import { SocialDescription } from "./long_descriptions/social";
 // freely fit the parent container so that it can play nice with multiple
 // home page layouts.
 const CardContainer = styled.div`
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-gap: 2em;
   margin-top: 5rem;
   background: #d5cbffeb;
   border: 1px solid black;
@@ -28,17 +32,11 @@ const CardContainer = styled.div`
     margin: 10px;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 700px) {
     display: inline-flex;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 90%;
-    margin: 5rem 5vw 5vw 5vw;
-    padding: 5vw;
-
-    & > * {
-      width: 30%;
-    }
+    padding: 1rem;
   }
 `;
 
@@ -69,14 +67,6 @@ export const Home = () => {
         }
       >
         <ManualDescription />
-      </Card>
-      <Card
-        title="Something Else"
-        description="Gotta fill one more card..."
-        media={OverseeImg}
-        actionButton={<Button>Placeholder</Button>}
-      >
-        <SocialDescription />
       </Card>
     </CardContainer>
   );
