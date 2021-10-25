@@ -38,7 +38,7 @@ const GalleryName = styled(Item)`
 const galleryViewHrefs = (slug) => {
   return {
     view: `/gallery/${slug}/`,
-    edit: `/teacher/${slug}/edit/`,
+    addSong: `/gallery/${slug}/submit-song/`,
     settings: `/teacher/${slug}/settings/`,
   };
 };
@@ -62,8 +62,8 @@ const GalleryRows = ({ galleries, requestDelete }) => (
             </Link>
           </Item>
           <Item>
-            <Link to={paths.edit}>
-              <Button color="lightgreen">Edit</Button>
+            <Link to={paths.addSong}>
+              <Button color="lightgreen">Add Song</Button>
             </Link>
           </Item>
           <Item>

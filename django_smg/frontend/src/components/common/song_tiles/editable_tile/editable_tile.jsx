@@ -35,6 +35,8 @@ export const EditableTile = ({ name = "", link = "", onSave }) => {
     isLinkValid && onSave && onSave(_name, songId);
   };
 
+  const submitEnabled = changesMade && isLinkValid && isNameValid;
+
   return (
     <Description as="form" onSubmit={submit}>
       <LiveUpdatingTile width={200} songId={isLinkValid ? songId : null} />
@@ -61,9 +63,14 @@ export const EditableTile = ({ name = "", link = "", onSave }) => {
         />
       </div>
       <br />
-      {changesMade && isLinkValid && isNameValid && (
-        <Button data-testid="submit" as="input" type="submit" value="Save" />
-      )}
+
+      <Button
+        disabled={!submitEnabled}
+        data-testid="submit"
+        as="input"
+        type="submit"
+        value="Save"
+      />
     </Description>
   );
 };

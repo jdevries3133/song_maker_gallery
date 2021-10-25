@@ -145,6 +145,10 @@ export const Button = styled.button`
     background-color: ${(props) => props.hover || "white"};
   }
 
+  :disabled {
+    background-color: #aaa;
+  }
+
   ${(props) =>
     props.block &&
     css`
@@ -242,6 +246,20 @@ export const Checkbox = ({ children, ...rest }) => (
     {children}
   </Input>
 );
+
+export const FlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ${(props) =>
+    props.col
+      ? css`
+          flex-direction: column;
+        `
+      : css`
+          flex-direction: row;
+        `};
+`;
 
 export const Description = styled.div`
   display: inline-block;

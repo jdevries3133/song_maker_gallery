@@ -12,6 +12,7 @@ from .serializers import (
     GallerySerializer,
     GallerySummarySerializer,
     GalleryUpdateSerializer,
+    PrivatePublicGallerySerializer,
     SongGroupSerializer,
     SongSerializer,
 )
@@ -108,7 +109,14 @@ class PublicGalleryViewset(APIView):
             instance = Gallery.objects.get(slug=slug)
         except Gallery.DoesNotExist:  # type: ignore
             return Response({'slug': slug}, status=status.HTTP_404_NOT_FOUND)
-        return Response(GallerySerializer(instance).data)
+
+        if instance.is_public:
+            return Response(GallerySerializer(instance).data)
+
+        # if the gallery is not public, there is no need to serve the song
+        # data, and it also kind of violates the principle of things being
+        # truly private
+        return Response(PrivatePublicGallerySerializer(instance).data)
 
 
 @ api_view(['POST'])
@@ -172,6 +180,9 @@ class StudentCreateSong(APIView):
         except Gallery.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
+        if not gal.is_editable:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
         return Response(SongGroupSerializer(gal.song_groups, many=True).data)
 
     @ staticmethod
@@ -198,6 +209,7 @@ class StudentCreateSong(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

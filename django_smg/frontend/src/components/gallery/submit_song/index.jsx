@@ -7,11 +7,17 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import { P, H1, Description, Button } from "Styles";
+import styled, { P, H1, Description, Button } from "Styles";
 import { EditableTile } from "Common/song_tiles/editable_tile";
 import { Breadcrumb } from "Common/breadcrumb";
 import { Select } from "Common/select";
 import Loading from "Common/loading";
+
+const FlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 /*** API CONNECTORS ***/
 
@@ -26,10 +32,13 @@ const getGroups = async (slug, retries = 0) => {
     if (res.status === 200) {
       return res.data;
     }
-  } catch {
+  } catch (e) {
+    if (e.response.status === 401) {
+      return "FORBIDDEN";
+    }
     if (retries > max_retries) {
       console.error("Failed to fetch groups");
-      return null;
+      return "ERROR";
     }
     return await getGroups(slug, retries + 1);
   }
@@ -58,6 +67,23 @@ const submitSong = async (slug, data, retries = 0) => {
 };
 
 /*** FORM BREADCRUMBS ***/
+
+const SubmissionBlocked = ({ slug }) => (
+  <>
+    <H1>Uh oh!</H1>
+    <FlexContainer>
+      <Description>
+        <p>
+          Your teacher has link posting by students turned off. If you are the
+          teacher,{" "}
+          <Link to={`/teacher/${slug}/settings/`}>
+            click here to change the gallery settings
+          </Link>
+        </p>
+      </Description>
+    </FlexContainer>
+  </>
+);
 
 const FormPartOne = ({ onSave }) => {
   // adapt EditableTile API to parent
@@ -98,7 +124,6 @@ const FormPartTwo = ({ groups, onSave }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     let pk;
-    console.log(choice);
     groups.forEach((group) => {
       if (group.group_name == choice) {
         pk = group.pk;
@@ -112,29 +137,33 @@ const FormPartTwo = ({ groups, onSave }) => {
   return (
     <>
       <H1>Submit Your Song</H1>
-      <Description as="form" onSubmit={submitHandler}>
-        <P>One more thing!</P>
-        <Select
-          id="selectGroup"
-          label="Select the group in the gallery that you are a part of."
-          choices={groups.map((g) => g.group_name)}
-          value={choice}
-          onChange={(e) => setChoice(e.target.value)}
-        />
-        <Button block as="input" type="submit" id="submit" value="Submit" />
-      </Description>
+      <FlexContainer>
+        <Description as="form" onSubmit={submitHandler}>
+          <P>One more thing!</P>
+          <Select
+            id="selectGroup"
+            label="Select the group in the gallery that you are a part of."
+            choices={groups.map((g) => g.group_name)}
+            value={choice}
+            onChange={(e) => setChoice(e.target.value)}
+          />
+          <Button block as="input" type="submit" id="submit" value="Submit" />
+        </Description>
+      </FlexContainer>
     </>
   );
 };
 
 const Success = ({ slug }) => (
-  <Description>
-    <H1 data-testid="success">Success!</H1>
-    <P>Your song has been submitted.</P>
-    <Link data-testid="gotoGallery" to={`/gallery/${slug}/`}>
-      <Button>View Gallery</Button>
-    </Link>
-  </Description>
+  <FlexContainer>
+    <Description>
+      <H1 data-testid="success">Success!</H1>
+      <P>Your song has been submitted.</P>
+      <Link data-testid="gotoGallery" to={`/gallery/${slug}/`}>
+        <Button>View Gallery</Button>
+      </Link>
+    </Description>
+  </FlexContainer>
 );
 
 const Error = () => (
@@ -150,6 +179,7 @@ const Error = () => (
 /*** MAIN COMPONENT ***/
 
 export const SongSubmitForm = () => {
+  const [submissionBlocked, setSubmissionBlocked] = useState(false);
   const [userData, setUserData] = useState({});
   const [formPart, setFormPart] = useState(1);
   const [err, setErr] = useState(false);
@@ -157,11 +187,13 @@ export const SongSubmitForm = () => {
   const { slug } = useParams();
 
   useEffect(() => {
-    getGroups(slug).then((groups) => {
-      if (groups) {
-        setGroups(groups);
-      } else {
+    getGroups(slug).then((result) => {
+      if (result === "ERROR") {
         setErr(true);
+      } else if (result === "FORBIDDEN") {
+        setSubmissionBlocked(true);
+      } else {
+        setGroups(result);
       }
     });
   }, []);
@@ -184,6 +216,7 @@ export const SongSubmitForm = () => {
   };
 
   if (err) return <Error />;
+  if (submissionBlocked) return <SubmissionBlocked slug={slug} />;
 
   switch (formPart) {
     case 1:

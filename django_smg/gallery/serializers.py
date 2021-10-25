@@ -96,6 +96,22 @@ class SongGroupSerializer(serializers.ModelSerializer):
         return instance
 
 
+class PrivatePublicGallerySerializer(serializers.ModelSerializer):
+    """Where the public view requests a gallery, this serializer is used if
+    `is_public` is set to false. Note that this serializer only provides
+    the most basic details."""
+
+    class Meta:
+        model = Gallery
+        fields = (
+            'pk',
+            'slug',
+            'is_public',
+            'is_editable'
+        )
+
+
+
 class GallerySerializer(serializers.ModelSerializer):
 
     song_groups = SongGroupSerializer(many=True)
@@ -114,6 +130,8 @@ class GallerySerializer(serializers.ModelSerializer):
             'description',
             'slug',
             'song_groups',
+            'is_public',
+            'is_editable'
         )
 
     def create(self, validated_data):

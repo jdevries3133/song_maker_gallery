@@ -18,6 +18,7 @@ const reducer = (state, action) => {
         ...state,
         [action.name]: {
           isVisible: false,
+          props: action.passProps,
         },
       };
       break;
@@ -39,6 +40,7 @@ const shouldDispatch = (modalName, dispatchType, currentState) => {
         // );
         return false;
       }
+      break;
     case types.REMOVE:
       if (!currentState[modalName]?.isVisible) {
         // console.log(
@@ -47,6 +49,7 @@ const shouldDispatch = (modalName, dispatchType, currentState) => {
         // );
         return false;
       }
+      break;
   }
   return true;
 };

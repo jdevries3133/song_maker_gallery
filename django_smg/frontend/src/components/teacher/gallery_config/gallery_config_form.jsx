@@ -2,18 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import styled, {
-  Description as DefaultDescription,
-  H2,
-  P,
-  Form,
-  // Input,
-} from "Styles";
+import styled, { Description as DefaultDescription, H2, P, Form } from "Styles";
 
-import {
-  ConfigItem,
-  // ConfigItemSet,
-} from "Common/config_item";
+import { ConfigItem } from "Common/config_item";
 
 const Description = styled(DefaultDescription)`
   text-align: inherit;
@@ -32,16 +23,8 @@ export const GalleryConfigForm = ({
       {state.allowStudentSubmissions.checked &&
         state.isGalleryPublished.checked && (
           <P warn justify>
-            Warning! We do not advise making the gallery editable and viewable
-            by students at the same time. Last thing you want is a student
-            posting{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://musiclab.chromeexperiments.com/Song-Maker/song/6209714916950016"
-            >
-              this!
-            </a>
+            Warning! When galleries are editable and viewable, students can add
+            songs which their peers can see right away!
           </P>
         )}
       <div>
@@ -68,7 +51,8 @@ export const GalleryConfigForm = ({
           When you switch this off, the gallery goes into private mode. This is
           helpful if you want to withhold the gallery leading up to a release,
           or want to keep it in private mode while student submissions are
-          ongoing.
+          ongoing.{" "}
+          <Link to={`/gallery/${slug}/`}>Click here to view this gallery.</Link>
         </ConfigItem>
       </div>
     </Description>

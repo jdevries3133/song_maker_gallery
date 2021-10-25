@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Loading from "Common/loading";
 import GalleryBody from "./gal_body";
-
 import { getGallery } from "Actions/gallery";
 import { windowLocation } from "../../util/window";
+import { Description, FlexContainer } from "Common/styles";
 
 class Gallery extends Component {
   state = {
@@ -21,6 +22,23 @@ class Gallery extends Component {
   }
 
   render() {
+    if (!this.props.gallery.is_public) {
+      return (
+        <FlexContainer>
+          <Description>
+            <h1>Gallery is Private</h1>
+            {this.props.gallery.is_editable && (
+              <p>
+                But your teacher is still allowing students to submit songs!{" "}
+                <Link to={`/gallery/${this.state.slug}/submit-song/`}>
+                  Click here to add your song to the growing gallery!
+                </Link>
+              </p>
+            )}
+          </Description>
+        </FlexContainer>
+      );
+    }
     if (
       // no gallery has been loaded yet
       this.props.status === undefined ||

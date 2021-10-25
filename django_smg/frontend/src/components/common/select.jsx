@@ -5,6 +5,8 @@ import styled, { Label } from "Styles";
 
 const StyledSelect = styled.select`
   font-size: 1.2rem;
+  padding: 0.3rem;
+  margin: 0.3rem;
 `;
 
 /**

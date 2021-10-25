@@ -33,7 +33,7 @@ export const ListGalleries = (props) => {
 
   useEffect(() => {
     props.getUserGalleries(props.token);
-  }, []);
+  }, [props.deleteStatus]);
 
   const requestDelete = (ConfirmDeleteProps) => {
     dispatchModal("ConfirmDelete", {

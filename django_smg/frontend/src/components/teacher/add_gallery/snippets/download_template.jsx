@@ -11,7 +11,7 @@ const A = styled.a`
 `;
 
 export const DownloadTemplate = () => (
-  <A href="static/frontend/songmakergallery_upload_template.csv" download>
+  <A href="/static/frontend/songmakergallery_upload_template.csv" download>
     <Button>Download Template</Button>
   </A>
 );

@@ -3,7 +3,16 @@ import PropTypes from "prop-types";
 
 import { StagedGroup } from "./snippets";
 import { ErrorArray } from "Common/custom_error";
-import styled, { H2, H3, P, Input, Textarea, Button, Div } from "Styles";
+import styled, {
+  H2,
+  H3,
+  P,
+  Input,
+  Textarea,
+  Button,
+  Div,
+  Description,
+} from "Styles";
 
 import { SizeLimitCounter } from "./verify";
 
@@ -37,45 +46,47 @@ export const Stage = (props) => {
   return (
     <Div>
       {blanket}
-      <H2>Your Staged Gallery</H2>
-      <Div>
-        <H3>Gallery Name:</H3>
-        <Input
-          data-testid="titleInput"
-          placeholder="Name of your gallery here"
-          value={props.titleValue}
-          onChange={(e) => props.titleInput(e)}
-        />{" "}
-        <SizeLimitCounter
-          length={props.titleValue.length}
-          limit={TITLE_LENGTH_LIMIT}
-          warnLimit={TITLE_LENGTH_LIMIT - 10}
-          hideUntil={50}
-        />
-        <H3>Gallery Description:</H3>
-        <P>
-          You may use this default description, or change it to whatever you
-          prefer.
-        </P>
-        <Textarea
-          value={props.descriptionValue}
-          onChange={(e) => props.descriptionInput(e)}
-        />
-        <H3>Staged Goups</H3>
-        {props.groups.map((group) => (
-          <StagedGroup
-            key={group.join("") + Math.random().toString()}
-            unstageGroupHandler={props.unstageGroupHandler}
-            group={group}
+      <Description>
+        <H2>Your Staged Gallery</H2>
+        <Div>
+          <H3>Gallery Name:</H3>
+          <Input
+            data-testid="titleInput"
+            placeholder="Name of your gallery here"
+            value={props.titleValue}
+            onChange={(e) => props.titleInput(e)}
+          />{" "}
+          <SizeLimitCounter
+            length={props.titleValue.length}
+            limit={TITLE_LENGTH_LIMIT}
+            warnLimit={TITLE_LENGTH_LIMIT - 10}
+            hideUntil={50}
           />
-        ))}
-      </Div>
-      <LargeButton data-testid="submit" onClick={submitValidation}>
-        <P>Create Gallery</P>
-        <P>
-          (Or, add another group by uploading another <code>.csv</code> file.)
-        </P>
-      </LargeButton>
+          <H3>Gallery Description:</H3>
+          <P>
+            You may use this default description, or change it to whatever you
+            prefer.
+          </P>
+          <Textarea
+            value={props.descriptionValue}
+            onChange={(e) => props.descriptionInput(e)}
+          />
+          <H3>Staged Goups</H3>
+          {props.groups.map((group) => (
+            <StagedGroup
+              key={group.join("") + Math.random().toString()}
+              unstageGroupHandler={props.unstageGroupHandler}
+              group={group}
+            />
+          ))}
+        </Div>
+        <LargeButton data-testid="submit" onClick={submitValidation}>
+          <P>Create Gallery</P>
+          <P>
+            (Or, add another group by uploading another <code>.csv</code> file.)
+          </P>
+        </LargeButton>
+      </Description>
     </Div>
   );
 };
