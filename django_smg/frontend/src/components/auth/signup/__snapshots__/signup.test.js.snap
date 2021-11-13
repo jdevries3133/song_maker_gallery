@@ -32,6 +32,10 @@ exports[`<Signup /> matches snapshot 1`] = `
   background-color: white;
 }
 
+.c12:disabled {
+  background-color: #aaa;
+}
+
 .c6 {
   display: block;
   font-size: 1.17em;

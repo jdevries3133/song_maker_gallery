@@ -155,7 +155,7 @@ exports[`matches snapshot 1`] = `
         Approve Comment?
       </label>
       <input
-        className="styles__Button-dxKXky sc-eCApnc koopio kiZPtd"
+        className="styles__Button-dxKXky sc-eCApnc fSPxTB kiZPtd"
         id="approve"
         type="submit"
         value="Approve"
@@ -391,7 +391,7 @@ exports[`matches snapshot 1`] = `
         Approve Comment?
       </label>
       <input
-        className="styles__Button-dxKXky sc-eCApnc koopio kiZPtd"
+        className="styles__Button-dxKXky sc-eCApnc fSPxTB kiZPtd"
         id="approve"
         type="submit"
         value="Approve"
@@ -481,7 +481,7 @@ exports[`matches snapshot 1`] = `
         Approve Comment?
       </label>
       <input
-        className="styles__Button-dxKXky sc-eCApnc koopio kiZPtd"
+        className="styles__Button-dxKXky sc-eCApnc fSPxTB kiZPtd"
         id="approve"
         type="submit"
         value="Approve"

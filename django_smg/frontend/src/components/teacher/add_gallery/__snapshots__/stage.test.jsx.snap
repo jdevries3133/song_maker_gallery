@@ -6,7 +6,7 @@ exports[`stage matches snapshot 1`] = `
   padding: inherit;
 }
 
-.c1 {
+.c2 {
   display: inline-block;
   background-color: "#88ff00";
   font-weight: 400;
@@ -14,12 +14,12 @@ exports[`stage matches snapshot 1`] = `
   border-radius: 20px;
 }
 
-.c4 {
+.c5 {
   text-align: center;
   padding: 0 20px 0 20px;
 }
 
-.c8 {
+.c9 {
   display: inline-block;
   margin: auto;
   font-size: 1rem;
@@ -30,11 +30,15 @@ exports[`stage matches snapshot 1`] = `
   background-color: salmon;
 }
 
-.c8:hover {
+.c9:hover {
   background-color: white;
 }
 
-.c10 {
+.c9:disabled {
+  background-color: #aaa;
+}
+
+.c11 {
   display: inline-block;
   margin: auto;
   font-size: 1rem;
@@ -45,23 +49,27 @@ exports[`stage matches snapshot 1`] = `
   background-color: #f7943e;
 }
 
-.c10:hover {
+.c11:hover {
   background-color: white;
 }
 
-.c2 {
+.c11:disabled {
+  background-color: #aaa;
+}
+
+.c3 {
   max-width: 100%;
   font-size: 20px;
   padding: 10px;
   border-radius: 5px;
 }
 
-.c2[type="checkbox"] {
+.c3[type="checkbox"] {
   width: 30px;
   height: 30px;
 }
 
-.c5 {
+.c6 {
   font-family: Helvetica,Arial,sans-serif;
   font-size: 19px;
   line-height: 1.5;
@@ -72,167 +80,189 @@ exports[`stage matches snapshot 1`] = `
   border-radius: 5px;
 }
 
-.c7 {
+.c1 {
+  display: inline-block;
+  text-align: center;
+  margin: 3vw;
+  padding: 3vw;
+  font-size: 18px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0px 3px 8px rgb(100,100,100);
+}
+
+.c8 {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
-.c6 {
+.c7 {
   margin: auto;
   margin-top: 15px;
 }
 
-.c9 {
+.c10 {
   margin: auto;
   margin-top: 15px;
   text-align: center;
 }
 
-.c3 {
+.c4 {
   padding-left: "10px",  display:none;
 }
 
-.c11 {
+.c12 {
   padding: 50px;
   background-color: #ffc107;
   border: 3px solid black;
 }
 
 @media (max-width:400px) {
-  .c8 {
+  .c9 {
     padding: 10px;
   }
 }
 
 @media (max-width:350px) {
-  .c8 {
+  .c9 {
     padding: 5px;
   }
 }
 
 @media (max-width:400px) {
-  .c10 {
+  .c11 {
     padding: 10px;
   }
 }
 
 @media (max-width:350px) {
-  .c10 {
+  .c11 {
     padding: 5px;
+  }
+}
+
+@media (max-width:600px) {
+  .c1 {
+    font-size: 16px;
+    line-height: 1.5rem;
   }
 }
 
 <div
   className="c0"
 >
-  <h2
+  <div
     className="c1"
   >
-    Your Staged Gallery
-  </h2>
-  <div
-    className="c0"
-  >
-    <h3
-      className="styles__H3-kZzEYv"
-    >
-      Gallery Name:
-    </h3>
-    <input
+    <h2
       className="c2"
-      data-testid="titleInput"
-      onChange={[Function]}
-      placeholder="Name of your gallery here"
-      value="title"
-    />
-     
-    <span
-      className="c3"
-      data-testid="titleLenLimit"
     >
-      5
-      /
-      100
-    </span>
-    <h3
-      className="styles__H3-kZzEYv"
+      Your Staged Gallery
+    </h2>
+    <div
+      className="c0"
     >
-      Gallery Description:
-    </h3>
-    <p
-      className="c4"
-    >
-      You may use this default description, or change it to whatever you prefer.
-    </p>
-    <textarea
-      className="c5"
-      onChange={[Function]}
-      value="description"
-    />
-    <h3
-      className="styles__H3-kZzEYv"
-    >
-      Staged Goups
-    </h3>
-    <table
-      className="c6"
-    >
-      <tbody>
-        <tr>
-          <td>
-            <button
-              className="c7"
-              data-testid="sgToggleDropdown"
-              onClick={[Function]}
-            >
-              ◀
-            </button>
-          </td>
-          <td
-            style={
-              Object {
-                "fontSize": "24px",
+      <h3
+        className="styles__H3-kZzEYv"
+      >
+        Gallery Name:
+      </h3>
+      <input
+        className="c3"
+        data-testid="titleInput"
+        onChange={[Function]}
+        placeholder="Name of your gallery here"
+        value="title"
+      />
+       
+      <span
+        className="c4"
+        data-testid="titleLenLimit"
+      >
+        5
+        /
+        100
+      </span>
+      <h3
+        className="styles__H3-kZzEYv"
+      >
+        Gallery Description:
+      </h3>
+      <p
+        className="c5"
+      >
+        You may use this default description, or change it to whatever you prefer.
+      </p>
+      <textarea
+        className="c6"
+        onChange={[Function]}
+        value="description"
+      />
+      <h3
+        className="styles__H3-kZzEYv"
+      >
+        Staged Goups
+      </h3>
+      <table
+        className="c7"
+      >
+        <tbody>
+          <tr>
+            <td>
+              <button
+                className="c8"
+                data-testid="sgToggleDropdown"
+                onClick={[Function]}
+              >
+                ◀
+              </button>
+            </td>
+            <td
+              style={
+                Object {
+                  "fontSize": "24px",
+                }
               }
-            }
-          />
-          <td>
-            <button
-              className="c8"
-              color="salmon"
-              onClick={[Function]}
-            >
-              Unstage Group
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table
-      className="c9"
+            />
+            <td>
+              <button
+                className="c9"
+                color="salmon"
+                onClick={[Function]}
+              >
+                Unstage Group
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table
+        className="c10"
+      >
+        <tbody />
+      </table>
+    </div>
+    <button
+      className="c11 c12"
+      data-testid="submit"
+      onClick={[Function]}
     >
-      <tbody />
-    </table>
+      <p
+        className="c5"
+      >
+        Create Gallery
+      </p>
+      <p
+        className="c5"
+      >
+        (Or, add another group by uploading another 
+        <code>
+          .csv
+        </code>
+         file.)
+      </p>
+    </button>
   </div>
-  <button
-    className="c10 c11"
-    data-testid="submit"
-    onClick={[Function]}
-  >
-    <p
-      className="c4"
-    >
-      Create Gallery
-    </p>
-    <p
-      className="c4"
-    >
-      (Or, add another group by uploading another 
-      <code>
-        .csv
-      </code>
-       file.)
-    </p>
-  </button>
 </div>
 `;
