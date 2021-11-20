@@ -8,8 +8,8 @@
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "test": "jest",
-    "storybook": "echo \"storybook is being a vulnerability-ridden non-webpack-five\nsupporting complainer whose presence in this project is, at the moment,\nnot welcome. In lieu of storybook functioning, just close your eyes and imagine\nwe lived in a world where javascript dependencies could learn to play nice with\neach other\"",
-    "build-storybook": "echo \"storybook is being a vulnerability-ridden non-webpack-five\nsupporting complainer whose presence in this project is, at the moment,\nnot welcome. In lieu of storybook functioning, just close your eyes and imagine\nwe lived in a world where javascript dependencies could learn to play nice with\neach other\""
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "keywords": [],
   "author": "",
@@ -46,6 +46,12 @@
     "webpack-cli": "^4.7.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.3"
+    "@babel/core": "^7.14.3",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/builder-webpack5": "^6.3.12",
+    "@storybook/manager-webpack5": "^6.3.12",
+    "@storybook/react": "^6.3.12"
   }
 }
