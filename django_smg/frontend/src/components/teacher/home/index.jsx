@@ -11,12 +11,6 @@ import { StudentSubmitDescription } from "./long_descriptions/student_submit";
 import SpreadsheetImg from "Media/spreadsheet_md.jpg";
 import { ManualDescription } from "./long_descriptions/manual";
 
-import OverseeImg from "Media/monitor_students_md.jpg";
-import { SocialDescription } from "./long_descriptions/social";
-
-// TODO: this should not be doing so much snapping around. It should just
-// freely fit the parent container so that it can play nice with multiple
-// home page layouts.
 const CardContainer = styled.div`
   display: inline-flex;
   flex-direction: column;

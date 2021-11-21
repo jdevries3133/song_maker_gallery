@@ -53,6 +53,7 @@
     "@storybook/builder-webpack5": "^6.3.12",
     "@storybook/manager-webpack5": "^6.3.12",
     "@storybook/react": "^6.3.12",
+    "css-loader": "^3.6.0",
     "jest-mock-axios": "^4.4.1"
   }
 }

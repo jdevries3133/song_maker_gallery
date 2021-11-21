@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../store";
 
-import { Title } from "Common/set_page_title";
+import "../../static/frontend/global_styles.css";
 
+import { Title } from "Common/set_page_title";
 import { LandingPage } from "./landing_page";
 import PrivateRoute from "Common/private_route";
 import SignUp from "./auth/signup";

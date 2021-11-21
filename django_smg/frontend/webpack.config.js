@@ -20,6 +20,10 @@ module.exports = {
           publicPath: "/static/frontend/webpack_output",
         },
       },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
   resolve: {
