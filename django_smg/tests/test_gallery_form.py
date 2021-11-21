@@ -29,7 +29,7 @@ class TestGalleryForm(BaseCase):
 
         # button no longer appears
         def the_button_is_still_there() -> bool:
-            xp = '//input[@type="submit"]'
+            xp = '//input[@data-testid="submitHeaderForm"]'
             return bool(len(self.driver.find_elements_by_xpath(xp)))
 
         retries = 0

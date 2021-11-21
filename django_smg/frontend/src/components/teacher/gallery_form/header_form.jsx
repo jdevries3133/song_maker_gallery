@@ -102,7 +102,13 @@ const _HeaderForm = ({ gallery, token }) => {
           onChange={(e) => changeHandler("description", e.target.value)}
         />
         {netStat === STATES.ready && (
-          <Button block as="input" type="submit" value="Save" />
+          <Button
+            block
+            data-test-id="submitHeaderForm"
+            as="input"
+            type="submit"
+            value="Save"
+          />
         )}
         {netStat === STATES.pending && <LoadSpinner block dark />}
       </Description>
