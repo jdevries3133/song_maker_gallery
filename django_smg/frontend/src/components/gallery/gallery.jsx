@@ -22,12 +22,21 @@ class Gallery extends Component {
   }
 
   render() {
-    if (!this.props.gallery.is_public) {
+    if (this.props.status === 404) {
+      return (
+        <div>
+          <h1>Gallery Does Not Exist</h1>
+          <h2>There is no gallery named {this.state.slug.replace("-", " ")}</h2>
+        </div>
+      );
+    }
+
+    if (!this.props?.gallery?.is_public) {
       return (
         <FlexContainer>
           <Description>
             <h1>Gallery is Private</h1>
-            {this.props.gallery.is_editable && (
+            {this.props.gallery?.is_editable && (
               <p>
                 But your teacher is still allowing students to submit songs!{" "}
                 <Link to={`/gallery/${this.state.slug}/submit-song/`}>
@@ -47,35 +56,18 @@ class Gallery extends Component {
       (this.props.gallery && this.props.gallery.slug !== this.state.slug)
     ) {
       return <Loading dark />;
-    } else if (this.state.slug === "") {
-      return (
-        <div>
-          <h1>Invalid Gallery URL!</h1>
-        </div>
-      );
-    } else {
-      if (this.props.status != 200) {
-        return (
-          <div>
-            <h1>Gallery Does Not Exist</h1>
-            <h2>
-              There is no gallery named {this.state.slug.replace("-", " ")}
-            </h2>
-          </div>
-        );
-      } else {
-        return (
-          <div data-testid="mounted gallery body">
-            <GalleryBody
-              title={this.props.gallery.title}
-              description={this.props.gallery.description}
-              data={this.props.gallery}
-              button={this.state.button}
-            />
-          </div>
-        );
-      }
     }
+
+    return (
+      <div data-testid="mounted gallery body">
+        <GalleryBody
+          title={this.props.gallery.title}
+          description={this.props.gallery.description}
+          data={this.props.gallery}
+          button={this.state.button}
+        />
+      </div>
+    );
   }
 }
 

@@ -12,6 +12,8 @@ const galleryFound = () => (dispatch) => {
         title: "Test Gallery",
         slug: "test-gallery",
         description: "description",
+        is_public: true,
+        is_editable: false,
         song_groups: [],
       },
       status: 200,

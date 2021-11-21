@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { render, fireEvent, screen } from "@testing-library/react";
+import { act, waitFor, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { useLiveSongData } from "./use_live_song_data";
 
@@ -18,7 +18,7 @@ axios.post.mockImplementation(async (s) => {
  */
 const Fixture = () => {
   const [songId, setSongId] = useState("1234123412341234");
-  useLiveSongData(songId);
+  const data = useLiveSongData(songId);
   return (
     <div>
       <input
@@ -27,42 +27,26 @@ const Fixture = () => {
         value={songId}
         onChange={(e) => setSongId(e.target.value)}
       />
+      {JSON.stringify(data)}
     </div>
   );
 };
 
-/**
- * Utility function to change the songId assuming the above fixture is
- * rendered
- */
-const changeSongIdTo = (songId) => {
-  fireEvent.change(screen.getByTestId("changeSongId"), {
-    target: { value: songId },
-  });
-};
+axios.post.mockImplementation(async () => {
+  return { data: { example: "songData" } };
+});
 
 describe("useLiveSongData hook", () => {
-  beforeEach(() => render(<Fixture />));
+  beforeEach(() => act(async () => render(<Fixture />)));
   afterEach(() => axios.post.mockClear());
 
   it("fetches song data from api", async () => {
     expect(axios.post).toHaveBeenCalledWith("/api/gallery/song_data/", {
       songId: "1234123412341234",
     });
-  });
-  it("caches data to avoid excessive api hits", () => {
-    expect(axios.post).toHaveBeenCalledTimes(1);
-    // first change causes api hit
-    changeSongIdTo("1234567812345678");
-    expect(axios.post).toHaveBeenCalledWith("/api/gallery/song_data/", {
-      songId: "1234567812345678",
+    await waitFor(() => {
+      expect(screen.queryByText('{"example":"songData"}')).toBeVisible();
     });
-    // once for initial render, again on change
-    expect(axios.post).toHaveBeenCalledTimes(2);
-
-    // changing songId back should *not* cause an api hit, because datais
-    // in the cache
-    changeSongIdTo("1234123412341234");
-    expect(axios.post).toHaveBeenCalledTimes(2);
+    await new Promise((r) => setTimeout(() => r(), 50));
   });
 });
