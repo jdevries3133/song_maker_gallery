@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gallery', '0013_alter_song_student_name'),
+        ("gallery", "0013_alter_song_student_name"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='gallery',
-            name='is_editable',
+            model_name="gallery",
+            name="is_editable",
             field=models.BooleanField(default=False),
         ),
         migrations.AddField(
-            model_name='gallery',
-            name='is_public',
+            model_name="gallery",
+            name="is_public",
             field=models.BooleanField(default=True),
         ),
     ]

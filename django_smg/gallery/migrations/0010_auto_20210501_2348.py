@@ -7,18 +7,28 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gallery', '0009_auto_20210428_0213'),
+        ("gallery", "0009_auto_20210428_0213"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='song',
-            name='gallery',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='songs', to='gallery.gallery'),
+            model_name="song",
+            name="gallery",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="songs",
+                to="gallery.gallery",
+            ),
         ),
         migrations.AlterField(
-            model_name='song',
-            name='group',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='songs', to='gallery.songgroup'),
+            model_name="song",
+            name="group",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="songs",
+                to="gallery.songgroup",
+            ),
         ),
     ]

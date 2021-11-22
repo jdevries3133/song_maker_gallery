@@ -8,18 +8,18 @@ from .api import (
     SongGroupViewset,
     instant_song_data,
     gallery_settings,
-    StudentCreateSong
+    StudentCreateSong,
 )
 
 urlpatterns = [
-    path('', AuthGalleryViewset.as_view(), name="auth_gallery"),
-    path('public/<slug:slug>/', PublicGalleryViewset.as_view(), name="public_gallery"),
-    path('song_data/', instant_song_data, name='instant_song_data'),
-    path('settings/', gallery_settings, name='gallery_settings'),
-    path('create_song/', StudentCreateSong.as_view(), name='student_create_song'),
+    path("", AuthGalleryViewset.as_view(), name="auth_gallery"),
+    path("public/<slug:slug>/", PublicGalleryViewset.as_view(), name="public_gallery"),
+    path("song_data/", instant_song_data, name="instant_song_data"),
+    path("settings/", gallery_settings, name="gallery_settings"),
+    path("create_song/", StudentCreateSong.as_view(), name="student_create_song"),
 ]
 
 router = routers.SimpleRouter()
-router.register(r'song', SongViewset, 'song')
-router.register(r'song_group', SongGroupViewset, 'song_group')
+router.register(r"song", SongViewset, "song")
+router.register(r"song_group", SongGroupViewset, "song_group")
 urlpatterns += router.urls

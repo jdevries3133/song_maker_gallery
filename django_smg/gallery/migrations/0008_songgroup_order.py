@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gallery', '0007_song_order'),
+        ("gallery", "0007_song_order"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='songgroup',
-            name='order',
+            model_name="songgroup",
+            name="order",
             field=models.IntegerField(null=True),
         ),
     ]

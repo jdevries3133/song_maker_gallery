@@ -26,12 +26,10 @@ mock_data = {
 logger = logging.getLogger(__name__)
 
 
-
 def fetch_and_cache(*, songs: QuerySet):
     """
     Fetch and cache data for a currently uncached song.
     """
-
 
     def err_recover(song):
         """
@@ -42,7 +40,7 @@ def fetch_and_cache(*, songs: QuerySet):
         # Put placeholder data such that the song appears blank.
         for k, v in mock_data.items():
             setattr(song, k, v)
-        song.midi = b''
+        song.midi = b""
 
         # leaving this False means that we will try to fetch again next time
         song.is_cached = False
@@ -64,10 +62,11 @@ def fetch_and_cache(*, songs: QuerySet):
     # TODO: split song relations and song data into separate models so that
     # this data duplication is no longer necessary
     copies = {
-        copy.songId: copy for copy in Song.objects.filter(
-        songId__in=[s.songId for s in songs],
-        is_cached=True
-    )}
+        copy.songId: copy
+        for copy in Song.objects.filter(
+            songId__in=[s.songId for s in songs], is_cached=True
+        )
+    }
 
     for song in songs:
 
@@ -80,20 +79,20 @@ def fetch_and_cache(*, songs: QuerySet):
             # we already have this song in our database! Copy these attributes
             # from the duplicate to the new song.
             for key in [
-                'midi',
-                'is_cached',
-                'beats',
-                'bars',
-                'instrument',
-                'octaves',
-                'percussion',
-                'percussionNotes',
-                'rootNote',
-                'rootOctave',
-                'rootPitch',
-                'scale',
-                'subdivision',
-                'tempo',
+                "midi",
+                "is_cached",
+                "beats",
+                "bars",
+                "instrument",
+                "octaves",
+                "percussion",
+                "percussionNotes",
+                "rootNote",
+                "rootOctave",
+                "rootPitch",
+                "scale",
+                "subdivision",
+                "tempo",
             ]:
                 setattr(song, key, getattr(copies[song.songId], key))
             continue
@@ -101,29 +100,29 @@ def fetch_and_cache(*, songs: QuerySet):
         try:
             # fetch json
             uri = (
-                'https://musiclab.chromeexperiments.com'
-                f'/Song-Maker/data/{song.songId}'
+                "https://musiclab.chromeexperiments.com"
+                f"/Song-Maker/data/{song.songId}"
             )
             json_data = json_session.post(uri).json()
 
             # fetch midi
             uri = (
-                'https://storage.googleapis.com'
-                f'/song-maker-midifiles-prod/{song.songId}.mid'
+                "https://storage.googleapis.com"
+                f"/song-maker-midifiles-prod/{song.songId}.mid"
             )
             midi_bytes = midi_session.get(uri).content
         except ValueError:
             err_recover(song)
             logger.error(
-                f'API data not valid for {song.student_name}\'s song with '
-                f'songId: {song.songId}'
+                f"API data not valid for {song.student_name}'s song with "
+                f"songId: {song.songId}"
             )
             continue
         except IOError:
             err_recover(song)
             logger.error(
-                f'Could not fetch data for {song.student_name}\'s song '
-                f'(songId: {song.songId})'
+                f"Could not fetch data for {song.student_name}'s song "
+                f"(songId: {song.songId})"
             )
             continue
 
@@ -135,22 +134,25 @@ def fetch_and_cache(*, songs: QuerySet):
     # main loop over. Songs have been mutated; now, perform a single
     # bulk-update query.
     if needs_update:
-        Song.objects.bulk_update(songs, [  # type: ignore
-            'midi',
-            'is_cached',
-            'beats',
-            'bars',
-            'instrument',
-            'octaves',
-            'percussion',
-            'percussionNotes',
-            'rootNote',
-            'rootOctave',
-            'rootPitch',
-            'scale',
-            'subdivision',
-            'tempo',
-        ])
+        Song.objects.bulk_update(
+            songs,
+            [  # type: ignore
+                "midi",
+                "is_cached",
+                "beats",
+                "bars",
+                "instrument",
+                "octaves",
+                "percussion",
+                "percussionNotes",
+                "rootNote",
+                "rootOctave",
+                "rootPitch",
+                "scale",
+                "subdivision",
+                "tempo",
+            ],
+        )
 
     return songs
 
@@ -160,16 +162,12 @@ def normalize_student_name(name: str) -> str:
     Try our very best to store names as first name, last initial.
     """
     name = name.strip()  # thanks Wendy!
-    name_parts = [i for i in name.split(' ') if i]
+    name_parts = [i for i in name.split(" ") if i]
     if len(name_parts) > 1:
-        name = (
-            name_parts[0].title()
-            + ' '
-            + name_parts[-1][0].upper() + '.'
-        )
+        name = name_parts[0].title() + " " + name_parts[-1][0].upper() + "."
     else:
         if name_parts:
             name = name_parts[0]
         else:
-            name = ''
+            name = ""
     return name

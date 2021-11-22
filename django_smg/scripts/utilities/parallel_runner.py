@@ -33,6 +33,7 @@ class _Process:
     """
     Simple wrapper around subprocess.Popen
     """
+
     def __init__(self, command: list):
         self.command = command
         self.is_open = False
@@ -56,7 +57,7 @@ class _Process:
         self.process.wait()
         self.is_open = False
 
-    @ property
+    @property
     def is_finished(self):
         """
         Process is finished when the poll() method returns None.
@@ -72,8 +73,9 @@ class Runner:
     then terminate them all on SIGINT. Hard exit and print dangling process
     warning on SIGTERM
     """
+
     def __init__(self, arg):
-        if arg == '-h' or arg == '--help':
+        if arg == "-h" or arg == "--help":
             self._help()
             sys.exit()
         self.arg = arg
@@ -85,7 +87,7 @@ class Runner:
     def start(self):
         self.is_running = True
         for command in self.get_commands():
-            proc = _Process(command.split(' '))
+            proc = _Process(command.split(" "))
             proc.start()
             self.procs.append(proc)
         self._wait_for_exits()
@@ -99,29 +101,29 @@ class Runner:
     def stop(self):
         for proc in self.procs:
             proc.stop()
-            print(f'Terminated {proc.pid}')
+            print(f"Terminated {proc.pid}")
             self.is_running = False
         self.procs = []
         pass
 
     def exit(self, *_):
-        print('Exiting gracefully...')
+        print("Exiting gracefully...")
         if self.is_running:
             self.stop()
         sys.exit()
 
     def get_commands(self):
         commands = []
-        st = ''
+        st = ""
         for i, char in enumerate(self.arg):
             is_escaped = False
             if i:
-                is_escaped = self.arg[i-1] == '\\'
-            if char == ',' and not is_escaped:
+                is_escaped = self.arg[i - 1] == "\\"
+            if char == "," and not is_escaped:
                 commands.append(copy(st))
-                st = ''
-            elif char == ',' and is_escaped:
-                st = f'{st[:-1]},'
+                st = ""
+            elif char == "," and is_escaped:
+                st = f"{st[:-1]},"
             else:
                 st += char
         if st:
@@ -146,16 +148,17 @@ class Runner:
 
     def _hard_exit(self, *_):
         print(
-            'Hard exit has left the following processes dangling:',
-            '\n\t'.join([f'{p.pid}\t{p.command}' for p in self.procs])
+            "Hard exit has left the following processes dangling:",
+            "\n\t".join([f"{p.pid}\t{p.command}" for p in self.procs]),
         )
         sys.exit()
 
-    @ staticmethod
+    @staticmethod
     def _help():
         print(__doc__)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     try:
         Runner(sys.argv[1]).start()
     except IndexError:

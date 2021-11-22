@@ -9,28 +9,49 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('gallery', '0001_initial'),
+        ("gallery", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='gallery',
-            name='owner',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='gallery', related_query_name='galleries', to=settings.AUTH_USER_MODEL),
+            model_name="gallery",
+            name="owner",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="gallery",
+                related_query_name="galleries",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AlterField(
-            model_name='song',
-            name='gallery',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='song', related_query_name='songs', to='gallery.gallery'),
+            model_name="song",
+            name="gallery",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="song",
+                related_query_name="songs",
+                to="gallery.gallery",
+            ),
         ),
         migrations.AlterField(
-            model_name='song',
-            name='group',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='song', related_query_name='songs', to='gallery.songgroup'),
+            model_name="song",
+            name="group",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="song",
+                related_query_name="songs",
+                to="gallery.songgroup",
+            ),
         ),
         migrations.AlterField(
-            model_name='songgroup',
-            name='gallery',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='song_group', related_query_name='song_groups', to='gallery.gallery'),
+            model_name="songgroup",
+            name="gallery",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="song_group",
+                related_query_name="song_groups",
+                to="gallery.gallery",
+            ),
         ),
     ]

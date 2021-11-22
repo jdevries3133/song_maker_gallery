@@ -9,18 +9,25 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('gallery', '0011_auto_20210502_0023'),
+        ("gallery", "0011_auto_20210502_0023"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='song',
-            name='owner',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='songs', to=settings.AUTH_USER_MODEL),
+            model_name="song",
+            name="owner",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="songs",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AlterField(
-            model_name='song',
-            name='student_name',
-            field=models.CharField(max_length=100, null=True, verbose_name='Student Name'),
+            model_name="song",
+            name="student_name",
+            field=models.CharField(
+                max_length=100, null=True, verbose_name="Student Name"
+            ),
         ),
     ]

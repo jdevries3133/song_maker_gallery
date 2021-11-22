@@ -7,24 +7,28 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gallery', '0004_auto_20201229_2341'),
+        ("gallery", "0004_auto_20201229_2341"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='gallery',
-            name='created',
+            model_name="gallery",
+            name="created",
         ),
         migrations.AddField(
-            model_name='song',
-            name='created',
-            field=models.DateTimeField(auto_now_add=True, default=django.utils.timezone.now),
+            model_name="song",
+            name="created",
+            field=models.DateTimeField(
+                auto_now_add=True, default=django.utils.timezone.now
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='songgroup',
-            name='created',
-            field=models.DateTimeField(auto_now_add=True, default=django.utils.timezone.now),
+            model_name="songgroup",
+            name="created",
+            field=models.DateTimeField(
+                auto_now_add=True, default=django.utils.timezone.now
+            ),
             preserve_default=False,
         ),
     ]

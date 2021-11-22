@@ -23,17 +23,18 @@ class RegisterAPI(GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
-            userData = UserSerializer(
-                user, context=self.get_serializer_context()).data
+            userData = UserSerializer(user, context=self.get_serializer_context()).data
             token = AuthToken.objects.create(user)[1]
 
             logger.debug(userData)
             logger.debug(token)
 
-            return Response({
-                'user': userData,
-                'token': token,
-            })
+            return Response(
+                {
+                    "user": userData,
+                    "token": token,
+                }
+            )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -44,19 +45,21 @@ class LoginAPI(KnoxLoginView):
 
     def post(self, request):
         # allow user to authenticate with email
-        if User.objects.filter(email=request.data['username']):  # type: ignore
-            request.data['username'] = (
-                User.objects.filter(email=request.data['username'])[0].username  # type: ignore
-            )
+        if User.objects.filter(email=request.data["username"]):  # type: ignore
+            request.data["username"] = User.objects.filter(
+                email=request.data["username"]
+            )[
+                0
+            ].username  # type: ignore
         serializer = AuthTokenSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']  # type: ignore
+        user = serializer.validated_data["user"]  # type: ignore
         login(request, user)
         response = super().post(request, format=None)
 
         # TODO: move user_id insertion into a serializer
         if response.data:
-            response.data.setdefault('user_id', user.pk)
+            response.data.setdefault("user_id", user.pk)
         return response
 
     def get(self, request):
@@ -65,12 +68,14 @@ class LoginAPI(KnoxLoginView):
 
             # TODO: move user_id insertion into a serializer (same as above)
             if response.data:
-                response.data.setdefault('user_id', request.user.pk)
+                response.data.setdefault("user_id", request.user.pk)
             return response
-        return Response({
-            'message': (
-                'Must provide token for rotation or authenticate with '
-                'credentials via POST request to this endpoint'
-            )},
+        return Response(
+            {
+                "message": (
+                    "Must provide token for rotation or authenticate with "
+                    "credentials via POST request to this endpoint"
+                )
+            },
             status=status.HTTP_403_FORBIDDEN,
         )

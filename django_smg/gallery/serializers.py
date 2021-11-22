@@ -15,12 +15,12 @@ logger = logging.getLogger(__name__)
 
 ################################################################################
 
-            # Default serializers for Gallery, SongGroup, and Song entities
+# Default serializers for Gallery, SongGroup, and Song entities
 
 ################################################################################
 
-class SongOwner(serializers.CurrentUserDefault):
 
+class SongOwner(serializers.CurrentUserDefault):
     def __call__(self, serializer_filed):
         user = super().__call__(serializer_filed)
         if user.is_authenticated:
@@ -30,19 +30,30 @@ class SongOwner(serializers.CurrentUserDefault):
 class SongSerializer(serializers.ModelSerializer):
 
     owner = serializers.PrimaryKeyRelatedField(
-        allow_null=True,
-        read_only=True,
-        default=SongOwner()
+        allow_null=True, read_only=True, default=SongOwner()
     )
 
     class Meta:
         model = Song
         fields = (
-            'songId',           'student_name',     'order',        'bars',
-            'beats',            'instrument',       'octaves',      'percussion',
-            'percussionNotes',  'rootNote',         'rootOctave',   'rootPitch',
-            'scale',            'subdivision',      'tempo',        'midi',
-            'owner',            'group'
+            "songId",
+            "student_name",
+            "order",
+            "bars",
+            "beats",
+            "instrument",
+            "octaves",
+            "percussion",
+            "percussionNotes",
+            "rootNote",
+            "rootOctave",
+            "rootPitch",
+            "scale",
+            "subdivision",
+            "tempo",
+            "midi",
+            "owner",
+            "group",
         )
 
     def create(self, validated_data):
@@ -56,9 +67,9 @@ class SongSerializer(serializers.ModelSerializer):
         Must be 16 character numeric string.
         """
         if not value.isnumeric():
-            raise ValidationError('songId must be numeric')
+            raise ValidationError("songId must be numeric")
         if not len(value) == 16:
-            raise ValidationError('songId must be 16 characters in length')
+            raise ValidationError("songId must be 16 characters in length")
         return value
 
 
@@ -66,8 +77,7 @@ class SongGroupSerializer(serializers.ModelSerializer):
 
     songs = SongSerializer(many=True)
     owner = serializers.PrimaryKeyRelatedField(
-        read_only=True,
-        default=serializers.CurrentUserDefault()
+        read_only=True, default=serializers.CurrentUserDefault()
     )
 
     def to_representation(self, instance):
@@ -80,18 +90,17 @@ class SongGroupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SongGroup
-        fields = ('group_name', 'songs', 'owner', 'pk')
+        fields = ("group_name", "songs", "owner", "pk")
 
     def create(self, validated_data, **kw):
-        song_data = validated_data.pop('songs')
-        song_serializer = self.fields['songs']  # type: ignore
+        song_data = validated_data.pop("songs")
+        song_serializer = self.fields["songs"]  # type: ignore
         instance = SongGroup.objects.create(
-            owner=self.context['request'].user,
-            **validated_data
+            owner=self.context["request"].user, **validated_data
         )
         for each in song_data:
-            each['group'] = instance
-            each['gallery'] = instance.gallery
+            each["group"] = instance
+            each["gallery"] = instance.gallery
         song_serializer.create(song_data)
         return instance
 
@@ -103,13 +112,7 @@ class PrivatePublicGallerySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Gallery
-        fields = (
-            'pk',
-            'slug',
-            'is_public',
-            'is_editable'
-        )
-
+        fields = ("pk", "slug", "is_public", "is_editable")
 
 
 class GallerySerializer(serializers.ModelSerializer):
@@ -117,44 +120,42 @@ class GallerySerializer(serializers.ModelSerializer):
     song_groups = SongGroupSerializer(many=True)
     slug = serializers.CharField(max_length=50, required=False)
     owner = serializers.PrimaryKeyRelatedField(
-        read_only=True,
-        default=serializers.CurrentUserDefault()
+        read_only=True, default=serializers.CurrentUserDefault()
     )
 
     class Meta:
         model = Gallery
         fields = (
-            'pk',
-            'title',
-            'owner',
-            'description',
-            'slug',
-            'song_groups',
-            'is_public',
-            'is_editable'
+            "pk",
+            "title",
+            "owner",
+            "description",
+            "slug",
+            "song_groups",
+            "is_public",
+            "is_editable",
         )
 
     def create(self, validated_data):
-        groups_data = validated_data.pop('song_groups')
+        groups_data = validated_data.pop("song_groups")
         gallery = Gallery.objects.create(
-            owner=self.context['request'].user,
-            **validated_data
+            owner=self.context["request"].user, **validated_data
         )
         songs = []
         for group_data in groups_data:
-            songs_data = group_data.pop('songs')
+            songs_data = group_data.pop("songs")
             group = SongGroup.objects.create(
-                owner=self.context['request'].user,
-                gallery=gallery,
-                **group_data
+                owner=self.context["request"].user, gallery=gallery, **group_data
             )
             for song in songs_data:
-                songs.append(Song(
-                    owner=self.context['request'].user,
-                    group=group,
-                    gallery=gallery,
-                    **song
-                ))
+                songs.append(
+                    Song(
+                        owner=self.context["request"].user,
+                        group=group,
+                        gallery=gallery,
+                        **song,
+                    )
+                )
         Song.objects.bulk_create(songs)
         return gallery
 
@@ -172,39 +173,43 @@ class GallerySerializer(serializers.ModelSerializer):
             return
         seen = set()
         for group in value:
-            if (group_name := group.get('group_name')) is not None:
+            if (group_name := group.get("group_name")) is not None:
                 if group_name in seen:
                     raise ValidationError(
-                        f'Group names must be unique. The name {group_name} was '
-                        'repeated'
+                        f"Group names must be unique. The name {group_name} was "
+                        "repeated"
                     )
                 else:
                     seen.add(group_name)
         return value
 
-################################################################################
-
-            # Custom serializers, mainly for optimizing common operations
 
 ################################################################################
+
+# Custom serializers, mainly for optimizing common operations
+
+################################################################################
+
 
 class GalleryUpdateSerializer(serializers.ModelSerializer):
     owner = serializers.PrimaryKeyRelatedField(
         queryset=User.objects.all(),  # type: ignore
-        default=serializers.CurrentUserDefault()
+        default=serializers.CurrentUserDefault(),
     )
 
     slug = serializers.SlugField(read_only=True)
+
     class Meta:
         model = Gallery
-        fields = ('owner', 'pk', 'slug', 'title', 'description')
+        fields = ("owner", "pk", "slug", "title", "description")
+
 
 class GallerySummarySerializer(serializers.ModelSerializer):
     """
     This makes it possible to GET a gallery entity but delay fetching and
     caching if it is not necessary yet.
     """
+
     class Meta:
         model = Gallery
-        fields = ('pk', 'slug', 'title', 'description',
-                  'is_public', 'is_editable')
+        fields = ("pk", "slug", "title", "description", "is_public", "is_editable")

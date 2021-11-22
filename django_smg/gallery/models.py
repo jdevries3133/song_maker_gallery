@@ -8,7 +8,7 @@ from .managers import OrderManager, SlugManager
 class Gallery(models.Model):
     owner = models.ForeignKey(
         User,
-        related_name='galleries',
+        related_name="galleries",
         on_delete=models.CASCADE,
     )
     created = models.DateTimeField(auto_now_add=True)  # type: ignore
@@ -24,42 +24,37 @@ class Gallery(models.Model):
     is_editable = models.BooleanField(default=False)
 
     objects = SlugManager()
-    slug = models.SlugField(
-        max_length=50,
-        unique=True
-    )
+    slug = models.SlugField(max_length=50, unique=True)
 
     def __str__(self):
         return str(self.title)
 
     class Meta:
-        verbose_name = _('Gallery')
-        verbose_name_plural = _('Galleries')
+        verbose_name = _("Gallery")
+        verbose_name_plural = _("Galleries")
 
 
 class SongGroup(models.Model):
     """
     Songs in the gallery are visually grouped. This model defines the grouping.
     """
+
     created = models.DateTimeField(auto_now_add=True)  # type: ignore
     group_name = models.CharField(_("Group Name"), max_length=100)
 
     # relationships
     owner = models.ForeignKey(
         User,
-        related_name='song_groups',
+        related_name="song_groups",
         on_delete=models.CASCADE,
     )
     gallery = models.ForeignKey(
-        Gallery,
-        on_delete=models.CASCADE,
-        related_name='song_groups',
-        null=True
+        Gallery, on_delete=models.CASCADE, related_name="song_groups", null=True
     )
 
     # order of this SongGroup withing the Gallery
     order = models.IntegerField(null=True)
-    objects = OrderManager('gallery')
+    objects = OrderManager("gallery")
 
     def __str__(self):
         return str(self.group_name)
@@ -70,37 +65,25 @@ class Song(models.Model):
     A single song that is part of a gallery. Contains cached midi files and
     json objects from the Chrome Music Lab site.
     """
+
     created = models.DateTimeField(auto_now_add=True)  # type: ignore
     songId = models.CharField(_("Song ID"), max_length=20)
-    student_name = models.CharField(
-        _("Student Name"),
-        max_length=100,
-        default=''
-    )
+    student_name = models.CharField(_("Student Name"), max_length=100, default="")
 
     # relationships
     owner = models.ForeignKey(
-        User,
-        related_name='songs',
-        on_delete=models.CASCADE,
-        null=True
+        User, related_name="songs", on_delete=models.CASCADE, null=True
     )
     gallery = models.ForeignKey(
-        Gallery,
-        on_delete=models.CASCADE,
-        related_name='songs',
-        null=True
+        Gallery, on_delete=models.CASCADE, related_name="songs", null=True
     )
     group = models.ForeignKey(
-        SongGroup,
-        on_delete=models.CASCADE,
-        related_name='songs',
-        null=True
+        SongGroup, on_delete=models.CASCADE, related_name="songs", null=True
     )
 
     # order of this song withing the SongGroup
     order = models.IntegerField(null=True)
-    objects = OrderManager('group')
+    objects = OrderManager("group")
 
     # worker will respond to this field and update it when pulling down data
     # into cache.
@@ -123,4 +106,4 @@ class Song(models.Model):
     midi = models.BinaryField(null=True)
 
     def __str__(self):
-        return f'{self.student_name} ({self.songId})'
+        return f"{self.student_name} ({self.songId})"

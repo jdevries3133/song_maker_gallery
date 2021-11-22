@@ -18,7 +18,7 @@ class OrderManager(models.Manager):
     https://www.revsys.com/tidbits/keeping-django-model-objects-ordered/
     """
 
-    def __init__(self, foreign_field: str = ''):
+    def __init__(self, foreign_field: str = ""):
         """
         I manage the model with an order column. The ordered group is formed
         by combining my model and peers who are related by foreign key to a
@@ -43,20 +43,16 @@ class OrderManager(models.Manager):
                     order__lt=obj.order,
                     order__gte=new_order,
                     **{self.foreign_field: getattr(obj, self.foreign_field)}
-                ).exclude(
-                    pk=obj.pk
-                ).update(
-                    order=F('order') + 1,
+                ).exclude(pk=obj.pk).update(
+                    order=F("order") + 1,
                 )
             else:
                 qs.filter(
                     order__lte=new_order,
                     order__gt=obj.order,
                     **{self.foreign_field: getattr(obj, self.foreign_field)}
-                ).exclude(
-                    pk=obj.pk,
-                ).update(
-                    order=F('order') - 1,
+                ).exclude(pk=obj.pk,).update(
+                    order=F("order") - 1,
                 )
 
             obj.order = new_order
@@ -70,12 +66,10 @@ class OrderManager(models.Manager):
             # Get our current max order number
             results = self.filter(
                 **{self.foreign_field: getattr(instance, self.foreign_field)}
-            ).aggregate(
-                Max('order')
-            )
+            ).aggregate(Max("order"))
 
             # Increment and use it for our new object
-            current_order = results['order__max']
+            current_order = results["order__max"]
             if current_order is None:
                 current_order = -1
 
@@ -97,18 +91,17 @@ class OrderManager(models.Manager):
         # Now that we are grouped, we can order
         for group in related_groupings.values():
             for index, item in enumerate(group):
-                setattr(item, 'order', index)
+                setattr(item, "order", index)
         return super().bulk_create(objs, *a, **kw)
 
 
 class SlugCreationFailed(APIException):
     status_code = 500
-    default_detail = 'Server failed to create your gallery, please try again'
-    default_code = 'create_gallery_failed'
+    default_detail = "Server failed to create your gallery, please try again"
+    default_code = "create_gallery_failed"
 
 
 class SlugManager(models.Manager):
-
     def create(self, **kwargs):
         instance = self.model(**kwargs)
         try:
@@ -117,7 +110,7 @@ class SlugManager(models.Manager):
                 instance.slug = self.generate_slug(instance.title)
                 instance.save()
         except IntegrityError:
-            logger.exception('Slug generator failed. Aborting create')
+            logger.exception("Slug generator failed. Aborting create")
             raise SlugCreationFailed()
         return instance
 
@@ -129,25 +122,21 @@ class SlugManager(models.Manager):
         # processing into the db, make it atomic, and remove the need for
         # error handling in the create method.
         slug = slugify(title[:40])
-        outstr = ''
+        outstr = ""
         for i in slug:
-            if re.search(r'[a-zA-Z0-9\-]', i):
+            if re.search(r"[a-zA-Z0-9\-]", i):
                 outstr += i
         slug = outstr
 
         # slug is the slug we will try
         conflicting_urls = [
-            i.slug for i in self.get_queryset().filter(  # type: ignore
-                slug__contains=slug
-            )
+            i.slug
+            for i in self.get_queryset().filter(slug__contains=slug)  # type: ignore
         ]
         if conflicting_urls:
             append_int = 1
-            slug += '-' + str(append_int)
+            slug += "-" + str(append_int)
             while slug in conflicting_urls:
                 append_int += 1
-                slug = (
-                    slug[:-len(str(append_int - 1))]
-                    + str(append_int)
-                )
+                slug = slug[: -len(str(append_int - 1))] + str(append_int)
         return slug

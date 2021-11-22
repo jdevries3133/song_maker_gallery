@@ -9,37 +9,34 @@ from django.test import TransactionTestCase
 from ..models import Gallery, Song, SongGroup
 from ..managers import OrderManager, SlugCreationFailed, SlugManager
 
-class Base(TransactionTestCase):
 
+class Base(TransactionTestCase):
     def setUp(self):
-        self.user = User.objects.create(                        # type: ignore
-            username='testuser',
-            password='testpass',
+        self.user = User.objects.create(  # type: ignore
+            username="testuser",
+            password="testpass",
         )
-        self.gallery = Gallery.objects.create(                  # type: ignore
+        self.gallery = Gallery.objects.create(  # type: ignore
             owner=self.user,
-            title='Test Gallery',
-            description='Test description is here.',
+            title="Test Gallery",
+            description="Test description is here.",
         )
-        self.group = SongGroup.objects.create(                  # type: ignore
-            group_name='Test Group',
-            owner=self.user,
-            gallery=self.gallery
+        self.group = SongGroup.objects.create(  # type: ignore
+            group_name="Test Group", owner=self.user, gallery=self.gallery
         )
         self.songs = [
             Song.objects.create(
-                songId=f'{i}',
+                songId=f"{i}",
                 owner=self.user,
                 student_name=n,
                 gallery=self.gallery,
-                group=self.group
+                group=self.group,
             )
-            for i, n in enumerate(('Sally', 'Chris', 'Tom'))
+            for i, n in enumerate(("Sally", "Chris", "Tom"))
         ]
 
 
 class TestOrderManager(Base):
-
     def test_default_order_assignment(self):
         self.assertEqual(self.songs[0].order, 0)
         self.assertEqual(self.songs[1].order, 1)
@@ -49,10 +46,10 @@ class TestOrderManager(Base):
         obj = Song.objects.create(
             songId=10,
             owner=self.user,
-            student_name='Jake',
+            student_name="Jake",
             gallery=self.gallery,
             group=self.group,
-            order=3
+            order=3,
         )
         self.assertEqual(obj.order, 3)
 
@@ -60,13 +57,12 @@ class TestOrderManager(Base):
         obj = Song.objects.create(
             songId=10,
             owner=self.user,
-            student_name='Jake',
+            student_name="Jake",
             gallery=self.gallery,
             group=self.group,
-
             # order of 10 is brought down to three because that is the next
             # natural order
-            order=10
+            order=10,
         )
         self.assertEqual(obj.order, 3)
 
@@ -101,7 +97,7 @@ class TestOrderManager(Base):
         other_group = SongGroup.objects.create(
             gallery=self.gallery,
             owner=self.user,
-            group_name='Second Group',
+            group_name="Second Group",
         )
         songs = [
             # songs in original group (self.group)
@@ -109,24 +105,34 @@ class TestOrderManager(Base):
                 group=self.group,
                 gallery=self.gallery,
                 owner=self.user,
-                student_name=str(i),  # later, this shows if original order was maintained
-                songId='1234123412341234'
-            ) for i in range(10)
+                student_name=str(
+                    i
+                ),  # later, this shows if original order was maintained
+                songId="1234123412341234",
+            )
+            for i in range(10)
         ] + [
             # songs in the new group created first
             Song(
                 group=other_group,
                 gallery=self.gallery,
                 owner=self.user,
-                student_name=str(i),  # later, this shows if original order was maintained
-                songId='1234123412341234'
-            ) for i in range(10)
+                student_name=str(
+                    i
+                ),  # later, this shows if original order was maintained
+                songId="1234123412341234",
+            )
+            for i in range(10)
         ]
         result = Song.objects.bulk_create(songs)
 
         # filter the results back out
-        grp1 = sorted([r for r in result if r.group.pk == self.group.pk], key=lambda i: i.order)
-        grp2 = sorted([r for r in result if r.group.pk == other_group.pk], key=lambda i: i.order)
+        grp1 = sorted(
+            [r for r in result if r.group.pk == self.group.pk], key=lambda i: i.order
+        )
+        grp2 = sorted(
+            [r for r in result if r.group.pk == other_group.pk], key=lambda i: i.order
+        )
 
         self.assertEqual(len(grp1), 10)
         self.assertEqual(len(grp2), 10)
@@ -146,15 +152,14 @@ class TestOrderManager(Base):
 
 
 class TestSlugManager(Base):
-
     def setUp(self):
         self.user = User.objects.create_user(  # type: ignore
-            'jack', 'jack@jack.com', 'jackpassword'
+            "jack", "jack@jack.com", "jackpassword"
         )
         self.galleries = [
             Gallery.objects.create(
                 owner=self.user,
-                title='Test Gallery Name',
+                title="Test Gallery Name",
             )
             for _ in range(20)
         ]
@@ -163,18 +168,17 @@ class TestSlugManager(Base):
         return Gallery.objects.all()  # type: ignore
 
     def test_slug_created(self):
-        self.assertEqual(self.galleries[0].slug, 'test-gallery-name')
-
+        self.assertEqual(self.galleries[0].slug, "test-gallery-name")
 
     def test_slug_naming_conflict_avoidance(self):
         for obj in self.get_queryset():
-            self.assertEqual(obj.slug[:17], 'test-gallery-name')
+            self.assertEqual(obj.slug[:17], "test-gallery-name")
 
     def test_slug_does_not_mutate_on_update(self):
         for obj in self.get_queryset():
             # check that the url does not change on update
             original_url = obj.slug
-            obj.description = 'new description'
+            obj.description = "new description"
             obj.save()
             obj.refresh_from_db()
             new_url = obj.slug
@@ -192,12 +196,12 @@ class TestSlugManager(Base):
         - test-gallery-name2
         etc...
         """
-        sorted_ = self.get_queryset().order_by('created')
+        sorted_ = self.get_queryset().order_by("created")
         for i, gallery in enumerate(sorted_):
             if not i:  # no appended int yet
-                self.assertEqual(gallery.slug, 'test-gallery-name')
+                self.assertEqual(gallery.slug, "test-gallery-name")
                 continue
-            i = '-' + str(i)
+            i = "-" + str(i)
             # convert i to str expected at end of slug
             self.assertEqual(gallery.slug[17:], str(i))
 
@@ -208,22 +212,19 @@ class TestSlugManager(Base):
         """
         gal = Gallery.objects.create(  # type: ignore
             owner=self.user,
-            title=('Test Gallery Name' * 5),
+            title=("Test Gallery Name" * 5),
         )
-        self.assertEqual(
-            gal.slug,
-            'test-gallery-nametest-gallery-nametest-g'
-        )
+        self.assertEqual(gal.slug, "test-gallery-nametest-gallery-nametest-g")
 
-    @ patch.object(SlugManager, 'generate_slug')
-    @ patch('gallery.managers.logger')
+    @patch.object(SlugManager, "generate_slug")
+    @patch("gallery.managers.logger")
     def test_integrity_error_handled(self, mock_log, mock_slug):
         """
         Handle by logging and aborting by raising exception.
         """
-        mock_slug.return_value = 'always_same_slug'
+        mock_slug.return_value = "always_same_slug"
         gal = Gallery.objects.create(owner=self.user, title="", description="")
-        self.assertEqual(gal.slug, 'always_same_slug')
+        self.assertEqual(gal.slug, "always_same_slug")
         with self.assertRaises(SlugCreationFailed):
             gal1 = Gallery.objects.create(owner=self.user, title="", description="")
             mock_log.exception.assert_called()

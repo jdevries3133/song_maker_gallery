@@ -27,32 +27,26 @@ class TestGallerySerializer(GalleryTestCase):
     and rendering gallery views from the database.
     """
 
-    def setUp(self ):
+    def setUp(self):
         super().setUp()
         self._login_client()
         self.add_gallery()
 
     def test_gallery_single_gallery_exists(self):
-        gallery_set = Gallery.objects.filter(title='Test Title')  # type: ignore
+        gallery_set = Gallery.objects.filter(title="Test Title")  # type: ignore
         self.assertEqual(len(gallery_set), 1)
 
     def test_gallery_title_and_description(self):
-        gallery = Gallery.objects.get(slug='test-title')  # type: ignore
-        self.assertEqual(gallery.title, self.mock_api_data['title'])
-        self.assertEqual(
-            gallery.description,
-            self.mock_api_data['description']
-        )
+        gallery = Gallery.objects.get(slug="test-title")  # type: ignore
+        self.assertEqual(gallery.title, self.mock_api_data["title"])
+        self.assertEqual(gallery.description, self.mock_api_data["description"])
 
     def test_correct_number_of_Song_objects_are_created(self):
         """
         One Song created for each link in the group.
         """
         songs = Song.objects.all()  # type: ignore
-        self.assertEqual(
-            len(songs),
-            8
-        )
+        self.assertEqual(len(songs), 8)
 
     def test_correct_number_of_SongGroup_objects_are_created(self):
         """
@@ -60,10 +54,7 @@ class TestGallerySerializer(GalleryTestCase):
         objects to store each of the groupings of songs.
         """
         song_groups = SongGroup.objects.all()  # type: ignore
-        self.assertEqual(
-            len(song_groups),
-            2
-        )
+        self.assertEqual(len(song_groups), 2)
 
     def test_names_properly_processed(self):
         """
@@ -72,101 +63,85 @@ class TestGallerySerializer(GalleryTestCase):
         "Lilly G."
         """
         for song in Song.objects.all():  # type: ignore
-            self.assertIn(
-                song.student_name,
-                [
-                    'Mark J.',
-                    'Lilly G.'
-                ]
-            )
-            self.assertEqual(song.songId, '5676759593254912')
+            self.assertIn(song.student_name, ["Mark J.", "Lilly G."])
+            self.assertEqual(song.songId, "5676759593254912")
 
-    @ patch_fetch_and_cache
+    @patch_fetch_and_cache
     def test_render_method_num_queries(self):
         self.add_gallery()
         with self.assertNumQueries(8):
-            instance = Gallery.objects.get(slug='test-title')
+            instance = Gallery.objects.get(slug="test-title")
             GallerySerializer(instance).data
 
     def test_duplicate_group_names_are_invalid(self):
         song_data = [
-            {
-                'group_name': 'duplicate',
-                'songs': []
-            },
-            {
-                'group_name': 'duplicate',
-                'songs': []
-            }
+            {"group_name": "duplicate", "songs": []},
+            {"group_name": "duplicate", "songs": []},
         ]
         data = self.mock_api_data
-        data['song_groups'] = song_data
+        data["song_groups"] = song_data
         serializer = GallerySerializer(
-            data=data,
-            context={'request': SimpleNamespace(user=self.user)}
+            data=data, context={"request": SimpleNamespace(user=self.user)}
         )
         self.assertFalse(serializer.is_valid())
         self.assertEqual(
-            serializer.errors.get('song_groups')[0],
-            'Group names must be unique. The name duplicate was repeated'
+            serializer.errors.get("song_groups")[0],
+            "Group names must be unique. The name duplicate was repeated",
         )
 
     def test_validator_message_for_empty_link(self):
         data = self.mock_api_data
         try:
-            data['song_groups'][0]['songs'][0]['songId'] = ''  # type: ignore
+            data["song_groups"][0]["songs"][0]["songId"] = ""  # type: ignore
         except LookupError:  # aka KeyError or IndexError
-            self.fail('Lookup error in test setup')
+            self.fail("Lookup error in test setup")
         serializer = GallerySerializer(
-            data=data,
-            context={'request': SimpleNamespace(user=self.user)}
+            data=data, context={"request": SimpleNamespace(user=self.user)}
         )
         self.assertFalse(serializer.is_valid())
 
     def test_validator_message_for_empty_name(self):
         data = self.mock_api_data
         try:
-            data['song_groups'][0]['songs'][0]['student_name'] = ''  # type: ignore
+            data["song_groups"][0]["songs"][0]["student_name"] = ""  # type: ignore
         except LookupError:  # aka KeyError or IndexError
-            self.fail('Lookup error in test setup')
+            self.fail("Lookup error in test setup")
         serializer = GallerySerializer(
-            data=data,
-            context={'request': SimpleNamespace(user=self.user)}
+            data=data, context={"request": SimpleNamespace(user=self.user)}
         )
         self.assertFalse(serializer.is_valid())
 
     def test_validator_message_for_invalid_songId(self):
-
         def set_songId(value):
             data = self.mock_api_data
             try:
-                data['song_groups'][0]['songs'][0]['songId'] = value  # type: ignore
+                data["song_groups"][0]["songs"][0]["songId"] = value  # type: ignore
             except LookupError:  # aka KeyError or IndexError
-                self.fail('Lookup error in test setup')
+                self.fail("Lookup error in test setup")
             return data
 
         # wrong length
         serializer = GallerySerializer(
-            data=set_songId('1234'),
-            context={'request': SimpleNamespace(user=self.user)}
+            data=set_songId("1234"),
+            context={"request": SimpleNamespace(user=self.user)},
         )
         self.assertFalse(serializer.is_valid())
 
         # not numeric
         serializer = GallerySerializer(
-            data=set_songId('abcdabcdabcdabcd'),
-            context={'request': SimpleNamespace(user=self.user)}
+            data=set_songId("abcdabcdabcdabcd"),
+            context={"request": SimpleNamespace(user=self.user)},
         )
         self.assertFalse(serializer.is_valid())
 
         # not string
         serializer = GallerySerializer(
-            data=set_songId({'value': '1234123412341234'}),
-            context={'request': SimpleNamespace(user=self.user)}
+            data=set_songId({"value": "1234123412341234"}),
+            context={"request": SimpleNamespace(user=self.user)},
         )
         self.assertFalse(serializer.is_valid())
 
-    @ patch('gallery.serializers.fetch_and_cache')
+    @patch("gallery.serializers.fetch_and_cache")
     def test_song_data_caching_behavior(self, mock):
         """
         Cache as lazily as possible on first render only.
@@ -175,11 +150,11 @@ class TestGallerySerializer(GalleryTestCase):
         def fac_mock_implementation(*, songs):
             for s in songs:
                 s.is_cached = True
-            Song.objects.bulk_update(songs, ['is_cached'])
+            Song.objects.bulk_update(songs, ["is_cached"])
             return songs
 
         mock.side_effect = fac_mock_implementation
-        instance = Gallery.objects.get(slug='test-title')
+        instance = Gallery.objects.get(slug="test-title")
         ser = GallerySerializer(instance)
 
         # this call is what finally triggers something to happen in terms
@@ -189,32 +164,28 @@ class TestGallerySerializer(GalleryTestCase):
 
         # now, if we do the same thing again, it shouldn't call the method
         mock.reset_mock()
-        instance = Gallery.objects.get(slug='test-title')
+        instance = Gallery.objects.get(slug="test-title")
         ser = GallerySerializer(instance)
         ser.data
         mock.assert_not_called()
 
 
-
-
 class TestQueryCountLargeGallery(test.TestCase):
-
     def setUp(self):
         self.user = User.objects.create_user(  # type: ignore
-            username='jack',
-            email='jack@jack.com',
-            password='ghjlesdfr;aghruiao;'
+            username="jack", email="jack@jack.com", password="ghjlesdfr;aghruiao;"
         )
         with open(
-            Path(Path(__file__).parent,
-                 'mock_data',
-                 'gallery_post_request_data_example.json'
-            ), 'r'
+            Path(
+                Path(__file__).parent,
+                "mock_data",
+                "gallery_post_request_data_example.json",
+            ),
+            "r",
         ) as jsn:
             data = json.load(jsn)
         self.serializer = GallerySerializer(
-            data=data,
-            context={'request': SimpleNamespace(user=self.user)}
+            data=data, context={"request": SimpleNamespace(user=self.user)}
         )
         self.serializer.is_valid()
 
@@ -226,7 +197,7 @@ class TestQueryCountLargeGallery(test.TestCase):
             self.serializer.save()
         self.assertLess(query_count.final_queries, 40)
 
-    @ patch_fetch_and_cache
+    @patch_fetch_and_cache
     def test_num_queries_on_initial_render(self):
         """
         num_queries = num_songs + 2
@@ -236,7 +207,7 @@ class TestQueryCountLargeGallery(test.TestCase):
             self.serializer.data
         self.assertLess(query_count.final_queries, 20)
 
-    @ patch_fetch_and_cache
+    @patch_fetch_and_cache
     def test_num_queries_on_cached_render(self):
         """
         After caching has occuried, the .render() method will be less
