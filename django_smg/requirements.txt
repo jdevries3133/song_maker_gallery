@@ -6,7 +6,7 @@ cffi==1.14.4
 chardet==4.0.0
 coverage==5.5
 cryptography==3.3.2
-Django==3.2.4
+Django==3.2.9
 django-cors-headers==3.7.0
 django-rest-knox==4.1.0
 django-stubs-ext==0.2.0
@@ -34,7 +34,7 @@ pytz==2020.5
 requests==2.25.1
 selenium==3.141.0
 six==1.15.0
-sqlparse==0.4.1
+sqlparse==0.4.2
 tblib==1.7.0
 toml==0.10.2
 typed-ast==1.4.3
