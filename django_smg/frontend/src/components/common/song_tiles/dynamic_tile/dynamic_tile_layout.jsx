@@ -8,32 +8,42 @@ const OuterContainer = styled(Div)`
   display: inline-block;
   text-align: left;
 
-  &:nth-child(7n + 0):hover > * > * > svg {
+  &:nth-child(7n + 0):hover svg {
     background-color: ${TILE_COLORS[0]};
   }
 
-  &:nth-child(7n + 1):hover > * > * > svg {
+  &:nth-child(7n + 1):hover svg {
     background-color: ${TILE_COLORS[1]};
   }
 
-  &:nth-child(7n + 2):hover > * > * > svg {
+  &:nth-child(7n + 2):hover svg {
     background-color: ${TILE_COLORS[2]};
   }
 
-  &:nth-child(7n + 3):hover > * > * > svg {
+  &:nth-child(7n + 3):hover svg {
     background-color: ${TILE_COLORS[3]};
   }
 
-  &:nth-child(7n + 4):hover > * > * > svg {
+  &:nth-child(7n + 4):hover svg {
     background-color: ${TILE_COLORS[4]};
   }
 
-  &:nth-child(7n + 5):hover > * > * > svg {
+  &:nth-child(7n + 5):hover svg {
     background-color: ${TILE_COLORS[5]};
   }
 
-  &:nth-child(7n + 6):hover > * > * > svg {
+  &:nth-child(7n + 6):hover svg {
     background-color: ${TILE_COLORS[6]};
+  }
+
+  &:hover rect {
+    opacity: 0;
+    stroke: var(--purple);
+    stroke-width: 8px;
+    transition: 100ms;
+  }
+  &:hover text {
+    opacity: 100;
   }
 `;
 
@@ -41,15 +51,6 @@ const StyledSvg = styled.svg`
   border-radius: 10px;
   transition: 100ms;
 
-  &:hover > rect {
-      opacity: 0;
-      stroke: var(--purple);
-      stroke-width: 8px;
-      transition: 100ms;
-    }
-   &:hover > text {
-      opacity: 100;
-    }
   }
 `;
 
@@ -114,7 +115,7 @@ export const Layout = (props) => {
               x="50%"
               y="50%"
             >
-              {props.mobile ? "View Song" : props.song.name}
+              {props.mobile ? "View Song" : props.song.student_name}
             </StyledText>
             {rects}
           </StyledSvg>

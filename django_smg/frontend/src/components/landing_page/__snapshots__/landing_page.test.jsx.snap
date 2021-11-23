@@ -206,41 +206,35 @@ exports[`Landing page Matches snapshot 1`] = `
   text-align: left;
 }
 
-.c33:nth-child(7n + 0):hover > * > * > svg {
+.c33:nth-child(7n + 0):hover svg {
   background-color: #e33059;
 }
 
-.c33:nth-child(7n + 1):hover > * > * > svg {
+.c33:nth-child(7n + 1):hover svg {
   background-color: #f7943e;
 }
 
-.c33:nth-child(7n + 2):hover > * > * > svg {
+.c33:nth-child(7n + 2):hover svg {
   background-color: #ecd92a;
 }
 
-.c33:nth-child(7n + 3):hover > * > * > svg {
+.c33:nth-child(7n + 3):hover svg {
   background-color: #95c632;
 }
 
-.c33:nth-child(7n + 4):hover > * > * > svg {
+.c33:nth-child(7n + 4):hover svg {
   background-color: #12826d;
 }
 
-.c33:nth-child(7n + 5):hover > * > * > svg {
+.c33:nth-child(7n + 5):hover svg {
   background-color: #5b38cc;
 }
 
-.c33:nth-child(7n + 6):hover > * > * > svg {
+.c33:nth-child(7n + 6):hover svg {
   background-color: #ea57b2;
 }
 
-.c35 {
-  border-radius: 10px;
-  -webkit-transition: 100ms;
-  transition: 100ms;
-}
-
-.c35:hover > rect {
+.c33:hover rect {
   opacity: 0;
   stroke: var(--purple);
   stroke-width: 8px;
@@ -248,8 +242,14 @@ exports[`Landing page Matches snapshot 1`] = `
   transition: 100ms;
 }
 
-.c35:hover > text {
+.c33:hover text {
   opacity: 100;
+}
+
+.c35 {
+  border-radius: 10px;
+  -webkit-transition: 100ms;
+  transition: 100ms;
 }
 
 .c36 {
@@ -760,7 +760,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Arthur
+                </text>
               </svg>
             </a>
           </div>
@@ -789,7 +791,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Josiah
+                </text>
               </svg>
             </a>
           </div>
@@ -818,7 +822,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Gabriel
+                </text>
               </svg>
             </a>
           </div>
@@ -847,7 +853,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Sebastian
+                </text>
               </svg>
             </a>
           </div>
@@ -876,7 +884,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Elizabeth
+                </text>
               </svg>
             </a>
           </div>
@@ -905,7 +915,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Felix
+                </text>
               </svg>
             </a>
           </div>
@@ -934,7 +946,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Freya
+                </text>
               </svg>
             </a>
           </div>
@@ -963,7 +977,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ophelia
+                </text>
               </svg>
             </a>
           </div>
@@ -992,7 +1008,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Adalyn
+                </text>
               </svg>
             </a>
           </div>
@@ -1021,7 +1039,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Fiona
+                </text>
               </svg>
             </a>
           </div>
@@ -1050,7 +1070,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Charles
+                </text>
               </svg>
             </a>
           </div>
@@ -1079,7 +1101,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Harper P.
+                </text>
               </svg>
             </a>
           </div>
@@ -1108,7 +1132,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Brielle P.
+                </text>
               </svg>
             </a>
           </div>
@@ -1137,7 +1163,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Nathaniel 4.
+                </text>
               </svg>
             </a>
           </div>
@@ -1166,7 +1194,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Nadia
+                </text>
               </svg>
             </a>
           </div>
@@ -1195,7 +1225,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Milo
+                </text>
               </svg>
             </a>
           </div>
@@ -1224,7 +1256,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Genevieve
+                </text>
               </svg>
             </a>
           </div>
@@ -1253,7 +1287,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Emmett
+                </text>
               </svg>
             </a>
           </div>
@@ -1282,7 +1318,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Elizabeth
+                </text>
               </svg>
             </a>
           </div>
@@ -1311,7 +1349,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Wyatt
+                </text>
               </svg>
             </a>
           </div>
@@ -1365,7 +1405,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Mabel
+                </text>
               </svg>
             </a>
           </div>
@@ -1394,7 +1436,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Emmett
+                </text>
               </svg>
             </a>
           </div>
@@ -1423,7 +1467,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Margot
+                </text>
               </svg>
             </a>
           </div>
@@ -1452,7 +1498,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Levi
+                </text>
               </svg>
             </a>
           </div>
@@ -1481,7 +1529,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ada
+                </text>
               </svg>
             </a>
           </div>
@@ -1510,7 +1560,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Harper
+                </text>
               </svg>
             </a>
           </div>
@@ -1539,7 +1591,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Xander
+                </text>
               </svg>
             </a>
           </div>
@@ -1568,7 +1622,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Nathan
+                </text>
               </svg>
             </a>
           </div>
@@ -1597,7 +1653,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Aurelia
+                </text>
               </svg>
             </a>
           </div>
@@ -1626,7 +1684,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Mia
+                </text>
               </svg>
             </a>
           </div>
@@ -1655,7 +1715,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Aaron
+                </text>
               </svg>
             </a>
           </div>
@@ -1684,7 +1746,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ruby
+                </text>
               </svg>
             </a>
           </div>
@@ -1713,7 +1777,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ada
+                </text>
               </svg>
             </a>
           </div>
@@ -1742,7 +1808,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Apollo
+                </text>
               </svg>
             </a>
           </div>
@@ -1771,7 +1839,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Tobias
+                </text>
               </svg>
             </a>
           </div>
@@ -1800,7 +1870,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Felix
+                </text>
               </svg>
             </a>
           </div>
@@ -1829,7 +1901,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Samuel
+                </text>
               </svg>
             </a>
           </div>
@@ -1858,7 +1932,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ada
+                </text>
               </svg>
             </a>
           </div>
@@ -1887,7 +1963,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Naomi
+                </text>
               </svg>
             </a>
           </div>
@@ -1916,7 +1994,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Hannah
+                </text>
               </svg>
             </a>
           </div>
@@ -1970,7 +2050,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Callum
+                </text>
               </svg>
             </a>
           </div>
@@ -1999,7 +2081,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Freya
+                </text>
               </svg>
             </a>
           </div>
@@ -2028,7 +2112,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Theodore
+                </text>
               </svg>
             </a>
           </div>
@@ -2057,7 +2143,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Lincoln
+                </text>
               </svg>
             </a>
           </div>
@@ -2086,7 +2174,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Declan
+                </text>
               </svg>
             </a>
           </div>
@@ -2115,7 +2205,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Amara
+                </text>
               </svg>
             </a>
           </div>
@@ -2144,7 +2236,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Lucy
+                </text>
               </svg>
             </a>
           </div>
@@ -2173,7 +2267,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Natalie
+                </text>
               </svg>
             </a>
           </div>
@@ -2202,7 +2298,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ella
+                </text>
               </svg>
             </a>
           </div>
@@ -2231,7 +2329,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Nora
+                </text>
               </svg>
             </a>
           </div>
@@ -2260,7 +2360,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Luna
+                </text>
               </svg>
             </a>
           </div>
@@ -2289,7 +2391,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ezra
+                </text>
               </svg>
             </a>
           </div>
@@ -2318,7 +2422,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Jace
+                </text>
               </svg>
             </a>
           </div>
@@ -2347,7 +2453,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Mabel
+                </text>
               </svg>
             </a>
           </div>
@@ -2376,7 +2484,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Astrid
+                </text>
               </svg>
             </a>
           </div>
@@ -2405,7 +2515,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ava
+                </text>
               </svg>
             </a>
           </div>
@@ -2434,7 +2546,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Isaiah
+                </text>
               </svg>
             </a>
           </div>
@@ -2463,7 +2577,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Wren
+                </text>
               </svg>
             </a>
           </div>
@@ -2492,7 +2608,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Elizabeth
+                </text>
               </svg>
             </a>
           </div>
@@ -2521,7 +2639,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Atticus
+                </text>
               </svg>
             </a>
           </div>
@@ -2550,7 +2670,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Brooke
+                </text>
               </svg>
             </a>
           </div>
@@ -2604,7 +2726,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ezekiel
+                </text>
               </svg>
             </a>
           </div>
@@ -2633,7 +2757,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Rose
+                </text>
               </svg>
             </a>
           </div>
@@ -2662,7 +2788,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Audrey
+                </text>
               </svg>
             </a>
           </div>
@@ -2691,7 +2819,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Arlo
+                </text>
               </svg>
             </a>
           </div>
@@ -2720,7 +2850,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Brielle
+                </text>
               </svg>
             </a>
           </div>
@@ -2749,7 +2881,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Cora
+                </text>
               </svg>
             </a>
           </div>
@@ -2778,7 +2912,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Mila
+                </text>
               </svg>
             </a>
           </div>
@@ -2807,7 +2943,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Matthew
+                </text>
               </svg>
             </a>
           </div>
@@ -2836,7 +2974,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Esme
+                </text>
               </svg>
             </a>
           </div>
@@ -2865,7 +3005,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Dominic
+                </text>
               </svg>
             </a>
           </div>
@@ -2894,7 +3036,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Rose
+                </text>
               </svg>
             </a>
           </div>
@@ -2923,7 +3067,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Thea
+                </text>
               </svg>
             </a>
           </div>
@@ -2952,7 +3098,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Audrey
+                </text>
               </svg>
             </a>
           </div>
@@ -2981,7 +3129,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Isaiah
+                </text>
               </svg>
             </a>
           </div>
@@ -3010,7 +3160,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Gabriel
+                </text>
               </svg>
             </a>
           </div>
@@ -3039,7 +3191,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Silas
+                </text>
               </svg>
             </a>
           </div>
@@ -3068,7 +3222,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Michael
+                </text>
               </svg>
             </a>
           </div>
@@ -3097,7 +3253,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Xander
+                </text>
               </svg>
             </a>
           </div>
@@ -3126,7 +3284,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Genevieve
+                </text>
               </svg>
             </a>
           </div>
@@ -3155,7 +3315,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ivy
+                </text>
               </svg>
             </a>
           </div>
@@ -3209,7 +3371,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ruby
+                </text>
               </svg>
             </a>
           </div>
@@ -3238,7 +3402,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Claire
+                </text>
               </svg>
             </a>
           </div>
@@ -3267,7 +3433,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Zachary
+                </text>
               </svg>
             </a>
           </div>
@@ -3296,7 +3464,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Beau
+                </text>
               </svg>
             </a>
           </div>
@@ -3325,7 +3495,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Margot
+                </text>
               </svg>
             </a>
           </div>
@@ -3354,7 +3526,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Alice
+                </text>
               </svg>
             </a>
           </div>
@@ -3383,7 +3557,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Naomi
+                </text>
               </svg>
             </a>
           </div>
@@ -3412,7 +3588,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Madeline
+                </text>
               </svg>
             </a>
           </div>
@@ -3441,7 +3619,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Maeve
+                </text>
               </svg>
             </a>
           </div>
@@ -3470,7 +3650,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ronan
+                </text>
               </svg>
             </a>
           </div>
@@ -3499,7 +3681,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Isla
+                </text>
               </svg>
             </a>
           </div>
@@ -3528,7 +3712,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Fiona
+                </text>
               </svg>
             </a>
           </div>
@@ -3557,7 +3743,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Caleb
+                </text>
               </svg>
             </a>
           </div>
@@ -3586,7 +3774,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Anastasia
+                </text>
               </svg>
             </a>
           </div>
@@ -3615,7 +3805,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Oscar
+                </text>
               </svg>
             </a>
           </div>
@@ -3644,7 +3836,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Nora
+                </text>
               </svg>
             </a>
           </div>
@@ -3673,7 +3867,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Cole
+                </text>
               </svg>
             </a>
           </div>
@@ -3702,7 +3898,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Aurelia
+                </text>
               </svg>
             </a>
           </div>
@@ -3731,7 +3929,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Adeline
+                </text>
               </svg>
             </a>
           </div>
@@ -3760,7 +3960,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Daphne
+                </text>
               </svg>
             </a>
           </div>
@@ -3814,7 +4016,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Adam
+                </text>
               </svg>
             </a>
           </div>
@@ -3843,7 +4047,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ace
+                </text>
               </svg>
             </a>
           </div>
@@ -3872,7 +4078,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Elliott
+                </text>
               </svg>
             </a>
           </div>
@@ -3901,7 +4109,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Elizabeth
+                </text>
               </svg>
             </a>
           </div>
@@ -3930,7 +4140,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Emily
+                </text>
               </svg>
             </a>
           </div>
@@ -3959,7 +4171,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Gabriel
+                </text>
               </svg>
             </a>
           </div>
@@ -3988,7 +4202,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Henry
+                </text>
               </svg>
             </a>
           </div>
@@ -4017,7 +4233,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Willow
+                </text>
               </svg>
             </a>
           </div>
@@ -4046,7 +4264,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Aurelia
+                </text>
               </svg>
             </a>
           </div>
@@ -4075,7 +4295,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Isabelle
+                </text>
               </svg>
             </a>
           </div>
@@ -4104,7 +4326,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Adrian
+                </text>
               </svg>
             </a>
           </div>
@@ -4133,7 +4357,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Nolan
+                </text>
               </svg>
             </a>
           </div>
@@ -4162,7 +4388,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Fiona
+                </text>
               </svg>
             </a>
           </div>
@@ -4191,7 +4419,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Connor
+                </text>
               </svg>
             </a>
           </div>
@@ -4220,7 +4450,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Eliza
+                </text>
               </svg>
             </a>
           </div>
@@ -4249,7 +4481,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Eloise
+                </text>
               </svg>
             </a>
           </div>
@@ -4278,7 +4512,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ella
+                </text>
               </svg>
             </a>
           </div>
@@ -4307,7 +4543,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Apollo
+                </text>
               </svg>
             </a>
           </div>
@@ -4336,7 +4574,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Grace
+                </text>
               </svg>
             </a>
           </div>
@@ -4365,7 +4605,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Ruby
+                </text>
               </svg>
             </a>
           </div>
@@ -4394,7 +4636,9 @@ We, these childrens' music teachers, have had the pleasure of experiencing the b
                   textAnchor="middle"
                   x="50%"
                   y="50%"
-                />
+                >
+                  Brooke
+                </text>
               </svg>
             </a>
           </div>

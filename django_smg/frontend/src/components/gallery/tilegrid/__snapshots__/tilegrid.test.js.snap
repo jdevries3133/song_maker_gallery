@@ -19,41 +19,35 @@ exports[`tilegrid matches snapshot 1`] = `
   text-align: left;
 }
 
-.c6:nth-child(7n + 0):hover > * > * > svg {
+.c6:nth-child(7n + 0):hover svg {
   background-color: #e33059;
 }
 
-.c6:nth-child(7n + 1):hover > * > * > svg {
+.c6:nth-child(7n + 1):hover svg {
   background-color: #f7943e;
 }
 
-.c6:nth-child(7n + 2):hover > * > * > svg {
+.c6:nth-child(7n + 2):hover svg {
   background-color: #ecd92a;
 }
 
-.c6:nth-child(7n + 3):hover > * > * > svg {
+.c6:nth-child(7n + 3):hover svg {
   background-color: #95c632;
 }
 
-.c6:nth-child(7n + 4):hover > * > * > svg {
+.c6:nth-child(7n + 4):hover svg {
   background-color: #12826d;
 }
 
-.c6:nth-child(7n + 5):hover > * > * > svg {
+.c6:nth-child(7n + 5):hover svg {
   background-color: #5b38cc;
 }
 
-.c6:nth-child(7n + 6):hover > * > * > svg {
+.c6:nth-child(7n + 6):hover svg {
   background-color: #ea57b2;
 }
 
-.c8 {
-  border-radius: 10px;
-  -webkit-transition: 100ms;
-  transition: 100ms;
-}
-
-.c8:hover > rect {
+.c6:hover rect {
   opacity: 0;
   stroke: var(--purple);
   stroke-width: 8px;
@@ -61,8 +55,14 @@ exports[`tilegrid matches snapshot 1`] = `
   transition: 100ms;
 }
 
-.c8:hover > text {
+.c6:hover text {
   opacity: 100;
+}
+
+.c8 {
+  border-radius: 10px;
+  -webkit-transition: 100ms;
+  transition: 100ms;
 }
 
 .c9 {
@@ -213,7 +213,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Arthur
+            </text>
           </svg>
         </a>
       </div>
@@ -242,7 +244,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Josiah
+            </text>
           </svg>
         </a>
       </div>
@@ -271,7 +275,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Gabriel
+            </text>
           </svg>
         </a>
       </div>
@@ -300,7 +306,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Sebastian
+            </text>
           </svg>
         </a>
       </div>
@@ -329,7 +337,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Elizabeth
+            </text>
           </svg>
         </a>
       </div>
@@ -358,7 +368,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Felix
+            </text>
           </svg>
         </a>
       </div>
@@ -387,7 +399,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Freya
+            </text>
           </svg>
         </a>
       </div>
@@ -416,7 +430,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Ophelia
+            </text>
           </svg>
         </a>
       </div>
@@ -445,7 +461,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Adalyn
+            </text>
           </svg>
         </a>
       </div>
@@ -474,7 +492,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Fiona
+            </text>
           </svg>
         </a>
       </div>
@@ -503,7 +523,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Charles
+            </text>
           </svg>
         </a>
       </div>
@@ -532,7 +554,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Harper P.
+            </text>
           </svg>
         </a>
       </div>
@@ -561,7 +585,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Brielle P.
+            </text>
           </svg>
         </a>
       </div>
@@ -590,7 +616,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Nathaniel 4.
+            </text>
           </svg>
         </a>
       </div>
@@ -619,7 +647,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Nadia
+            </text>
           </svg>
         </a>
       </div>
@@ -648,7 +678,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Milo
+            </text>
           </svg>
         </a>
       </div>
@@ -677,7 +709,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Genevieve
+            </text>
           </svg>
         </a>
       </div>
@@ -706,7 +740,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Emmett
+            </text>
           </svg>
         </a>
       </div>
@@ -735,7 +771,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Elizabeth
+            </text>
           </svg>
         </a>
       </div>
@@ -764,7 +802,9 @@ exports[`tilegrid matches snapshot 1`] = `
               textAnchor="middle"
               x="50%"
               y="50%"
-            />
+            >
+              Wyatt
+            </text>
           </svg>
         </a>
       </div>
