@@ -38,9 +38,7 @@ describe("<Verify />", () => {
     expect(screen.getByTestId("verifyModalNoName")).toBeVisible();
     const namebtn = screen.getAllByTestId("nameColChoice")[0];
     expect(namebtn).toHaveTextContent("nome");
-    act(() => {
-      fireEvent.click(namebtn);
-    });
+    fireEvent.click(namebtn);
     await waitFor(() =>
       expect(screen.getByTestId("verifyModalNormal")).toBeVisible()
     );
@@ -52,9 +50,7 @@ describe("<Verify />", () => {
     });
     const linkbtn = screen.getAllByTestId("linkColChoice")[1];
     expect(linkbtn).toHaveTextContent("lonk");
-    act(() => {
-      fireEvent.click(linkbtn);
-    });
+    fireEvent.click(linkbtn);
     await waitFor(() =>
       expect(screen.getByTestId("verifyModalNormal")).toBeVisible()
     );

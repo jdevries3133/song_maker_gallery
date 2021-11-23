@@ -72,9 +72,7 @@ describe("stage", () => {
 
   it("prevents submission of title longer than 100 chars", async () => {
     const { getByTestId, getByText } = renderWithChars(101);
-    act(() => {
-      fireEvent.click(getByTestId("submit"));
-    });
+    fireEvent.click(getByTestId("submit"));
     expect(getByTestId("errorArray header")).toHaveTextContent(
       "Title Too Long"
     );
@@ -90,9 +88,7 @@ describe("stage", () => {
 
   it("calls confirmCreate for valid data", async () => {
     const { getByTestId } = render(<Stage {...mockStaged} />);
-    act(() => {
-      fireEvent.click(getByTestId("submit"));
-    });
+    fireEvent.click(getByTestId("submit"));
     expect(mockStaged.confirmCreate).toHaveBeenCalledTimes(1);
   });
 });

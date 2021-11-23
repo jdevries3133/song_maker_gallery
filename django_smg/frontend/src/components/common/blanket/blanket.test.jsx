@@ -39,9 +39,7 @@ describe("<Blanket />", () => {
 
   it("unmounts itself when close button is pressed", async () => {
     render(<Blanket onDismissed={onOk} />);
-    act(() => {
-      fireEvent.click(screen.getByTestId("dismissBlanketButton"));
-    });
+    fireEvent.click(screen.getByTestId("dismissBlanketButton"));
     await waitFor(() => {
       expect(screen.queryByTestId("blanket")).toBeNull();
       expect(onOk).toHaveBeenCalled();

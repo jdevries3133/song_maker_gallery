@@ -23,9 +23,7 @@ export const SAMPLE_GROUP = [
 describe("StagedGroup", () => {
   it("has dropdown that renders group member list", async () => {
     render(<StagedGroup group={SAMPLE_GROUP} />);
-    act(() => {
-      fireEvent.click(screen.getByTestId("sgToggleDropdown"));
-    });
+    fireEvent.click(screen.getByTestId("sgToggleDropdown"));
     await waitFor(() => {
       screen
         .queryAllByTestId("dropdownRow")

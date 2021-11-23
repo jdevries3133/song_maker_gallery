@@ -80,11 +80,9 @@ describe("login", () => {
         </Route>
       </Context>
     );
-    act(() => {
-      fireEvent.input(screen.getByTestId("usernameInput"), "username");
-      fireEvent.input(screen.getByTestId("passwordInput"), "password");
-      fireEvent.click(screen.getByTestId("loginSubmit"));
-    });
+    fireEvent.input(screen.getByTestId("usernameInput"), "username");
+    fireEvent.input(screen.getByTestId("passwordInput"), "password");
+    fireEvent.click(screen.getByTestId("loginSubmit"));
     expect(screen.queryByTestId("teacher")).toBeFalsy();
     expect(screen.getByText("Error")).toBeVisible();
     expect(
@@ -108,17 +106,13 @@ describe("login", () => {
         </Route>
       </Context>
     );
-    act(() => {
-      fireEvent.input(screen.getByTestId("usernameInput"), "username");
-      fireEvent.input(screen.getByTestId("passwordInput"), "password");
-      fireEvent.click(screen.getByTestId("loginSubmit"));
-    });
+    fireEvent.input(screen.getByTestId("usernameInput"), "username");
+    fireEvent.input(screen.getByTestId("passwordInput"), "password");
+    fireEvent.click(screen.getByTestId("loginSubmit"));
     await waitFor(() => {
       expect(screen.queryByTestId("dismissBlanketButton")).toBeVisible();
     });
-    act(() => {
-      fireEvent.click(screen.getByTestId("dismissBlanketButton"));
-    });
+    fireEvent.click(screen.getByTestId("dismissBlanketButton"));
     await waitFor(() => {
       expect(screen.queryByTestId("CustomError")).toBeNull();
     });
