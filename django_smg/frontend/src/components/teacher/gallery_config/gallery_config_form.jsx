@@ -8,6 +8,10 @@ import {ConfigItem} from "Common/config_item";
 
 const Description = styled(DefaultDescription)`
   text-align: inherit;
+
+  & p {
+    max-width: 60ch;
+  }
 `;
 
 export const GalleryConfigForm = ({
