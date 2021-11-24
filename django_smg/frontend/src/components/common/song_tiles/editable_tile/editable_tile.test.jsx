@@ -1,10 +1,14 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { render, fireEvent, waitFor, screen } from "@testing-library/react";
+import {render, fireEvent, waitFor, screen} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import "jest-styled-components";
+import axios from 'axios';
 
-import { EditableTile } from "./editable_tile";
+import {EditableTile} from "./editable_tile";
+
+jest.mock("axios");
+axios.get.mockResolvedValue({data: {}});
 
 const onSave = jest.fn();
 
@@ -36,10 +40,10 @@ describe("<EditableTile />", () => {
 
   it("doesn't show submit button without name", () => {
     fireEvent.change(screen.queryByTestId("linkInput"), {
-      target: { value: "different" },
+      target: {value: "different"},
     });
     fireEvent.change(screen.queryByTestId("nameInput"), {
-      target: { value: "" },
+      target: {value: ""},
     });
     expect(screen.queryByText("Please enter your name.")).toBeVisible();
     expect(onSave).toHaveBeenCalledTimes(0);
@@ -59,50 +63,50 @@ describe("<EditableTile />", () => {
   describe("link validation", () => {
     const changeTo = (link) => {
       fireEvent.change(screen.getByTestId("linkInput"), {
-        target: { value: link },
+        target: {value: link},
       });
     };
 
     const linkInput = () => screen.getByTestId("linkInput");
 
     it("validates domain", async () => {
-      expect(linkInput()).toHaveStyle({ border: "1px solid #ccc" });
+      expect(linkInput()).toHaveStyle({border: "1px solid #ccc"});
       changeTo(
         "https://musiclb.chromeexperiments.com/Song-Maker/song/6594803161104384"
       );
       await waitFor(() => {
         expect(screen.getByText("Link is not valid")).toBeVisible();
-        expect(linkInput()).toHaveStyle({ border: "2px solid #e41000" });
+        expect(linkInput()).toHaveStyle({border: "2px solid #e41000"});
       });
     });
     it("validates path", async () => {
-      expect(linkInput()).toHaveStyle({ border: "1px solid #ccc" });
+      expect(linkInput()).toHaveStyle({border: "1px solid #ccc"});
       changeTo(
         "https://musiclab.chromeexperiments.com/Song-Maker/embed/6594803161104384"
       );
       await waitFor(() => {
         expect(screen.getByText("Link is not valid")).toBeVisible();
-        expect(linkInput()).toHaveStyle({ border: "2px solid #e41000" });
+        expect(linkInput()).toHaveStyle({border: "2px solid #e41000"});
       });
     });
     it("validates id", async () => {
-      expect(linkInput()).toHaveStyle({ border: "1px solid #ccc" });
+      expect(linkInput()).toHaveStyle({border: "1px solid #ccc"});
       changeTo(
         "https://musiclab.chromeexperiments.com/Song-Maker/embed/6594a03161104384"
       );
       await waitFor(() => {
         expect(screen.getByText("Link is not valid")).toBeVisible();
-        expect(linkInput()).toHaveStyle({ border: "2px solid #e41000" });
+        expect(linkInput()).toHaveStyle({border: "2px solid #e41000"});
       });
     });
     it("trims whitespace", async () => {
-      expect(linkInput()).toHaveStyle({ border: "1px solid #ccc" });
+      expect(linkInput()).toHaveStyle({border: "1px solid #ccc"});
       changeTo(
         "    https://musiclab.chromeexperiments.com/Song-Maker/song/6594803161104384    "
       );
       await waitFor(() => {
         expect(screen.queryByText("Link is not valid")).toBeNull();
-        expect(linkInput()).toHaveStyle({ border: "1px solid #ccc" });
+        expect(linkInput()).toHaveStyle({border: "1px solid #ccc"});
       });
     });
   });

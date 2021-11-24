@@ -5,7 +5,7 @@
   "repository": "https://github.com:jdevries3133/song_maker_gallery",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development",
+    "dev": "webpack --mode development -d \"source-map\"",
     "build": "webpack --mode production",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
@@ -53,7 +53,6 @@
     "@storybook/builder-webpack5": "^6.3.12",
     "@storybook/manager-webpack5": "^6.3.12",
     "@storybook/react": "^6.3.12",
-    "css-loader": "^3.6.0",
-    "jest-mock-axios": "^4.4.1"
+    "css-loader": "^3.6.0"
   }
 }
