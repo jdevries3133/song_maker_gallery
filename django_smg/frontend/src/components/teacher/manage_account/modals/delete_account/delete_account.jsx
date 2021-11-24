@@ -65,8 +65,7 @@ export const DeleteAccount = ({ userId, deleteAccount }) => {
       <Warning>
         <HWarn>Warning!</HWarn>
         <P warn justify>
-          If you delete your account, all galleries,{" "}
-          <b>including all social gallery engagement data</b> will be deleted{" "}
+          If you delete your account, all galleries will be deleted{" "}
           <b>
             <i>PERMANENTLY</i>
           </b>
