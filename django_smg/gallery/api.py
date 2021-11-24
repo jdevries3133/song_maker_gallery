@@ -6,6 +6,7 @@ from rest_framework import permissions, status, viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Gallery, SongGroup
 from .serializers import (
@@ -83,6 +84,13 @@ class AuthGalleryViewset(APIView):
                     status=status.HTTP_404_NOT_FOUND,
                 )
         return Response({"message": "deleted"})
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def gallery(request, slug):
+    gal = Gallery.objects.get(owner=request.user, slug=slug)  # type: ignore
+    return Response(GallerySummarySerializer(gal).data)
 
 
 class PublicGalleryViewset(APIView):
