@@ -13,7 +13,8 @@ import styled, {
 
 import { LiveUpdatingTile } from "../live_updating_tile";
 
-const VALIDATION_REGEX = /^http(s)?:\/\/musiclab.chromeexperiments.com\/Song-Maker\/song\/\d{16}$/;
+const VALIDATION_REGEX =
+  /^http(s)?:\/\/musiclab.chromeexperiments.com\/Song-Maker\/song\/\d{16}$/;
 
 const Description = styled(DefaultDescription)`
   margin: 0;

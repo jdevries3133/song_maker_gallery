@@ -1,10 +1,10 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import styled, {Description as DefaultDescription, H2, P, Form} from "Styles";
+import styled, { Description as DefaultDescription, H2, P, Form } from "Styles";
 
-import {ConfigItem} from "Common/config_item";
+import { ConfigItem } from "Common/config_item";
 
 const Description = styled(DefaultDescription)`
   text-align: inherit;
@@ -35,9 +35,9 @@ export const GalleryConfigForm = ({
           id={state.allowStudentSubmissions.id}
           label="Allow Student Submissions"
           checked={state.allowStudentSubmissions.checked}
-          onChange={() => onCheckedHandler(state.allowStudentSubmissions.id)}
-            onCheckedHandler(state?.checkboxes.allowStudentSubmissions.id)
-          }
+          onChange={onCheckedHandler(
+            state?.checkboxes.allowStudentSubmissions.id
+          )}
         >
           Enable students to actively submit compositions{" "}
           {slug ? (

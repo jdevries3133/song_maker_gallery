@@ -30,26 +30,22 @@ const galleryNotFound = () => (dispatch) => {
   });
 };
 
-const galleryActionCustom = ({
-  title,
-  slug,
-  description,
-  songData,
-  statusCode,
-}) => (dispatch) => {
-  dispatch({
-    type: GET_GALLERY,
-    payload: {
-      gallery: {
-        title: "Test Gallery",
-        slug: "test-gallery",
-        description: "description",
-        song_groups: [],
+const galleryActionCustom =
+  ({ title, slug, description, songData, statusCode }) =>
+  (dispatch) => {
+    dispatch({
+      type: GET_GALLERY,
+      payload: {
+        gallery: {
+          title: "Test Gallery",
+          slug: "test-gallery",
+          description: "description",
+          song_groups: [],
+        },
+        status: 200,
       },
-      status: 200,
-    },
-  });
-};
+    });
+  };
 
 export const mockGetGallery = (result) => {
   switch (result) {
@@ -68,16 +64,18 @@ export const mockGetGallery = (result) => {
  * Auth action
  */
 
-export const loginAction = ({ token, is_success }) => (dispatch) => {
-  dispatch({
-    type: LOGIN,
-    payload: {
-      isAuthenticated: is_success,
-      authError: !is_success,
-      token: token,
-    },
-  });
-};
+export const loginAction =
+  ({ token, is_success }) =>
+  (dispatch) => {
+    dispatch({
+      type: LOGIN,
+      payload: {
+        isAuthenticated: is_success,
+        authError: !is_success,
+        token: token,
+      },
+    });
+  };
 
 export const logout = () => (dispatch) => {
   dispatch({

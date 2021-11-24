@@ -18,6 +18,5 @@ const Template = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   name: "Frankie",
-  link:
-    "https://musiclab.chromeexperiments.com/Song-Maker/song/6594803161104384",
+  link: "https://musiclab.chromeexperiments.com/Song-Maker/song/6594803161104384",
 };

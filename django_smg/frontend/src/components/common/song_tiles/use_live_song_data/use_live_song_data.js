@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-jest.mock('axios')
-axios.post.mockResolvedValue(() => {data: {}})
+jest.mock("axios");
+axios.post.mockResolvedValue(() => {
+  data: {
+  }
+});
 
 const isNumeric = (str) => {
   if (typeof str !== "string") return false; // we only process strings!
