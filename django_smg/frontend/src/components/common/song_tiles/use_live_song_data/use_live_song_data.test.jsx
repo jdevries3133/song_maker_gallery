@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { act, waitFor, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { useLiveSongData } from "./use_live_song_data";
+import axios from "axios";
 
 jest.mock("axios");
-axios.post.mockImplementation(async (s) => {
-  return {
-    data: { songId: s },
-  };
+axios.post.mockImplementation(async () => {
+  return { data: { example: "songData" } };
 });
 
 /**
@@ -32,12 +30,10 @@ const Fixture = () => {
   );
 };
 
-axios.post.mockImplementation(async () => {
-  return { data: { example: "songData" } };
-});
-
 describe("useLiveSongData hook", () => {
-  beforeEach(() => act(async () => render(<Fixture />)));
+  beforeEach(async () => {
+    await act(async () => render(<Fixture />));
+  });
   afterEach(() => axios.post.mockClear());
 
   it("fetches song data from api", async () => {

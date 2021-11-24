@@ -14,6 +14,7 @@ import { EditableTile } from "./editable_tile";
 
 jest.mock("axios");
 axios.get.mockResolvedValue({ data: {} });
+axios.post.mockResolvedValue({ data: {} });
 
 const onSave = jest.fn();
 
