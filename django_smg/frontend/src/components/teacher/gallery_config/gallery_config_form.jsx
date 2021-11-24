@@ -23,8 +23,8 @@ export const GalleryConfigForm = ({
   <Form onSubmit={(e) => e.preventDefault()}>
     <Description>
       <H2>Gallery Settings</H2>
-      {state.allowStudentSubmissions.checked &&
-        state.isGalleryPublished.checked && (
+      {state?.checkboxes.allowStudentSubmissions?.checked &&
+        state?.checkboxes.isGalleryPublished?.checked && (
           <P warn justify>
             Warning! When galleries are editable and viewable, students can add
             songs which their peers can see right away!
@@ -32,12 +32,12 @@ export const GalleryConfigForm = ({
         )}
       <div>
         <ConfigItem
-          id={state.allowStudentSubmissions.id}
+          id={state?.checkboxes.allowStudentSubmissions.id}
           label="Allow Student Submissions"
-          checked={state.allowStudentSubmissions.checked}
-          onChange={onCheckedHandler(
-            state?.checkboxes.allowStudentSubmissions.id
-          )}
+          checked={state?.checkboxes.allowStudentSubmissions?.checked}
+          onChange={() =>
+            onCheckedHandler(state?.checkboxes.allowStudentSubmissions.id)
+          }
         >
           Enable students to actively submit compositions{" "}
           {slug ? (
@@ -48,7 +48,7 @@ export const GalleryConfigForm = ({
         </ConfigItem>
 
         <ConfigItem
-          id={state.isGalleryPublished.id}
+          id={state?.checkboxes.isGalleryPublished.id}
           label="Gallery is Public"
           checked={state?.checkboxes.isGalleryPublished?.checked}
           onChange={() =>

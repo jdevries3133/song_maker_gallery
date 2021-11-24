@@ -53,21 +53,10 @@ const Input = styled.input`
 `;
 
 export const Switch = ({ checked = false, id, onChange, className }) => {
-  const [_checked, _setter] = useState(checked);
-  const toggleChecked = () => {
-    onChange && onChange(!_checked);
-    _setter(!_checked);
-  };
-
   return (
     <Container className={className}>
-      <Input
-        id={id}
-        type="checkbox"
-        checked={_checked}
-        onChange={toggleChecked}
-      />
-      <Slider onClick={toggleChecked} />
+      <Input id={id} type="checkbox" checked={checked} onChange={onChange} />
+      <Slider onClick={onChange} />
     </Container>
   );
 };

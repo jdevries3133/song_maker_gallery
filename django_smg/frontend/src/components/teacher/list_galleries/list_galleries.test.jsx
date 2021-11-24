@@ -1,5 +1,11 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import {
+  act,
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import "jest-styled-components";
 
@@ -33,7 +39,7 @@ const INITIAL_STATE = {
   auth: { token: "testtoken" },
 };
 
-beforeEach(() => {
+beforeEach(async () => {
   windowLocation.mockImplementation((attr) => {
     switch (attr) {
       case "origin":
@@ -43,11 +49,13 @@ beforeEach(() => {
     }
   });
 
-  render(
-    <TestContext initialState={INITIAL_STATE}>
-      <ListGalleries />
-    </TestContext>
-  );
+  act(() => {
+    render(
+      <TestContext initialState={INITIAL_STATE}>
+        <ListGalleries />
+      </TestContext>
+    );
+  });
 });
 
 afterEach(() => {
