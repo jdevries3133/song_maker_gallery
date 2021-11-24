@@ -1,9 +1,9 @@
-import React, {useReducer, useEffect} from "react";
-import {connect} from "react-redux";
+import React, { useReducer, useEffect } from "react";
+import { connect } from "react-redux";
 
-import {initState, configItemReducer, types} from "Common/config_item";
+import { initState, configItemReducer, types } from "Common/config_item";
 
-import {GalleryConfigForm} from "./gallery_config_form";
+import { GalleryConfigForm } from "./gallery_config_form";
 
 /**
  * Allow the user to configure their galleries.
@@ -13,7 +13,7 @@ import {GalleryConfigForm} from "./gallery_config_form";
  *  - Publish gallery (student submissions will be blocked)
  *
  */
-const _GalleryConfig = ({slug, token}) => {
+const _GalleryConfig = ({ slug, token }) => {
   const initialState = {
     slug,
     checkboxes: {

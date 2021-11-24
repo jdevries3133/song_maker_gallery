@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled, {
   H2,
@@ -10,7 +10,7 @@ import styled, {
   Form as DefaultForm,
 } from "Styles";
 
-import {Attestation} from "./attestation";
+import { Attestation } from "./attestation";
 
 const Form = styled(DefaultForm)`
   padding: 3vw;
@@ -42,7 +42,7 @@ const Warning = styled.div`
   border-radius: 20px;
 `;
 
-export const DeleteAccount = ({userId, deleteAccount}) => {
+export const DeleteAccount = ({ userId, deleteAccount }) => {
   // TODO: follow-up view to confirm action or report error
   const [showAttestWarning, setShowAttestWarning] = useState(false);
   const [attestation, setAttestation] = useState("");
