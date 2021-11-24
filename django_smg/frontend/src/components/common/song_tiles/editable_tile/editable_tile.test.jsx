@@ -1,6 +1,11 @@
 import React from "react";
-import renderer from "react-test-renderer";
-import {render, fireEvent, waitFor, screen} from "@testing-library/react";
+import {
+  act,
+  render,
+  fireEvent,
+  waitFor,
+  screen,
+} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import "jest-styled-components";
 import axios from 'axios';
@@ -12,32 +17,21 @@ axios.get.mockResolvedValue({data: {}});
 
 const onSave = jest.fn();
 
-beforeEach(() => {
-  render(
-    <EditableTile
-      name="Frank G."
-      link="https://musiclab.chromeexperiments.com/Song-Maker/song/6594803161104384"
-      onSave={onSave}
-    />
-  );
+beforeEach(async () => {
+  await act(async () => {
+    render(
+      <EditableTile
+        name="Frank G."
+        link="https://musiclab.chromeexperiments.com/Song-Maker/song/6594803161104384"
+        onSave={onSave}
+      />
+    );
+  });
 });
 
 afterEach(() => onSave.mockClear());
 
 describe("<EditableTile />", () => {
-  it("matches snapshot", () => {
-    expect(
-      renderer
-        .create(
-          <EditableTile
-            name="Frank G."
-            link="https://musiclab.chromeexperiments.com/Song-Maker/song/6594803161104384"
-          />
-        )
-        .toJSON()
-    ).toMatchSnapshot();
-  });
-
   it("doesn't show submit button without name", () => {
     fireEvent.change(screen.queryByTestId("linkInput"), {
       target: {value: "different"},

@@ -1,8 +1,8 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 jest.mock('axios')
-axios.post.mockResolvedValue(() => {data: {} })
+axios.post.mockResolvedValue(() => {data: {}})
 
 const isNumeric = (str) => {
   if (typeof str !== "string") return false; // we only process strings!
@@ -23,7 +23,7 @@ const fetchSongData = async (songId) => {
   axios.defaults.xsrfCookieName = "csrftoken";
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
   try {
-    return await axios.post("/api/gallery/song_data/", {songId});
+    return await axios.post("/api/gallery/song_data/", { songId });
   } catch (e) {
     console.log(`Error: ${e}`);
     return e;
@@ -35,7 +35,7 @@ export const useLiveSongData = (songId) => {
 
   useEffect(() => {
     if (validateSongId(songId)) {
-      fetchSongData(songId).then(({data}) => {
+      fetchSongData(songId).then(({ data }) => {
         setSongData(data);
       });
     }
