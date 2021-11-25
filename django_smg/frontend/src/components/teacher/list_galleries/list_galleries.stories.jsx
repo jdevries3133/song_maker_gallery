@@ -1,5 +1,4 @@
 import React from "react";
-import { Context as C } from "Common/storybook_util";
 import { ListGalleries } from "./index";
 
 export default {
@@ -7,11 +6,7 @@ export default {
   component: ListGalleries,
 };
 
-const Template = (args) => (
-  <C>
-    <ListGalleries {...args} />
-  </C>
-);
+const Template = (args) => <ListGalleries {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

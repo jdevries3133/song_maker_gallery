@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  act,
-  render,
-  fireEvent,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import Papa from "papaparse";
 import { Context as TestContext } from "Common/storybook_util";
 import "@testing-library/jest-dom";

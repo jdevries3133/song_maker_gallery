@@ -1,14 +1,8 @@
 import React from "react";
 
-import { Context as C } from "Common/storybook_util";
-
 import { ManageAccount } from "./manage_account";
 
-const Template = (args) => (
-  <C>
-    <ManageAccount {...args} />
-  </C>
-);
+const Template = (args) => <ManageAccount {...args} />;
 
 export default {
   title: "teacher/Manage Account",

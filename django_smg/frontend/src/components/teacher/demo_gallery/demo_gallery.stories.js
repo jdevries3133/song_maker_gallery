@@ -1,7 +1,5 @@
 import React from "react";
 
-import { Context } from "Common/storybook_util";
-
 import { DemoGallery } from "./demo_gallery";
 import testData from "Test/test_data";
 
@@ -10,10 +8,6 @@ export default {
   component: DemoGallery,
 };
 
-const Template = (args) => (
-  <Context>
-    <DemoGallery {...args} />
-  </Context>
-);
+const Template = (args) => <DemoGallery {...args} />;
 export const Default = Template.bind({});
 Default.args = { gallery: testData };
