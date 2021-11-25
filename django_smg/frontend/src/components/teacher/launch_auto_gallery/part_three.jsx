@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled, {
+  P,
+  H1,
   Description,
   Form,
   Input,
@@ -49,19 +51,6 @@ const GroupForm = ({
     </>
   );
 };
-
-const FlexContainer = styled.div`
-  display: inline-flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
-  background-color: #ddd;
-  padding: 0.5rem;
-  border-radius: 20px;
-  box-shadow: 0px 1px 2px rgb(100, 100, 100);
-`;
 
 /**
  * Set song groups
@@ -138,28 +127,35 @@ export const BreadCrumbThree = ({ onCrumbComplete }) => {
   };
 
   return (
-    <Form onSubmit={submitHandler}>
-      <Description>
-        {groups.map((g) => (
-          <GroupForm
-            id={g.id}
-            value={g.name}
-            onChange={(e) => updateGroup(g.id, e.target.value)}
-            onRemoveGroup={removeGroup}
-            showErrors={showErrors}
-            errors={validationErrors}
-            key={g.id}
-          />
-        ))}
-        <div>
-          <FlexContainer>
-            <Button type="button" onClick={addGroup}>
-              Add Group
-            </Button>
-            <Button>Submit</Button>
-          </FlexContainer>
-        </div>
-      </Description>
-    </Form>
+    <>
+      <H1>Input Group Names</H1>
+      <Form onSubmit={submitHandler}>
+        <Description>
+          <P>
+            Galleries are logically organized into groups. Depending on your use
+            case, that might be a homeroom, a section of the band, or whatever
+            other groupings make sense to you. Students will choose their group
+            from these names as they submit their songs.
+          </P>
+        </Description>
+        <Description>
+          {groups.map((g) => (
+            <GroupForm
+              id={g.id}
+              value={g.name}
+              onChange={(e) => updateGroup(g.id, e.target.value)}
+              onRemoveGroup={removeGroup}
+              showErrors={showErrors}
+              errors={validationErrors}
+              key={g.id}
+            />
+          ))}
+        </Description>
+        <Button color="#4cff4c" type="button" onClick={addGroup}>
+          Add Another Group
+        </Button>
+        <Button>Submit</Button>
+      </Form>
+    </>
   );
 };

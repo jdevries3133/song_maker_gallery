@@ -9,13 +9,17 @@ import { Button } from "Styles";
  */
 export const BreadCrumbTwo = ({ onCrumbComplete }) => {
   const initialState = {
-    allowStudentSubmissions: {
-      id: "allowStudentSubmissions",
-      checked: false,
-    },
-    isGalleryPublished: {
-      id: "isGalleryPublished",
-      checked: false,
+    checkboxes: {
+      allowStudentSubmissions: {
+        id: "allowStudentSubmissions",
+        enabled: true,
+        checked: true,
+      },
+      isGalleryPublished: {
+        id: "isGalleryPublished",
+        enabled: true,
+        checked: false,
+      },
     },
   };
   const [state, dispatch] = useReducer(configItemReducer, initialState);
@@ -29,9 +33,10 @@ export const BreadCrumbTwo = ({ onCrumbComplete }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    debugger;
     onCrumbComplete({
-      is_public: state.isGalleryPublished.checked,
-      is_editable: state.allowStudentSubmissions.checked,
+      is_public: state.checkboxes.isGalleryPublished.checked,
+      is_editable: state.checkboxes.allowStudentSubmissions.checked,
     });
   };
 
@@ -39,7 +44,7 @@ export const BreadCrumbTwo = ({ onCrumbComplete }) => {
     <GalleryConfigForm
       state={state}
       onCheckedHandler={checkedHandler}
-      onSubmitHandler={submitHandler}
+      onSubmit={submitHandler}
       renderExtraForm={<Button>Submit</Button>}
     />
   );

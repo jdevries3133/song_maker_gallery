@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import { H1 } from "Styles";
+
 import { BreadCrumbOne } from "./part_one";
 import { BreadCrumbTwo } from "./part_two";
 import { BreadCrumbThree } from "./part_three";
@@ -49,7 +51,7 @@ export const LaunchAutoGalleryForm = () => {
   }
   return (
     <>
-      <h1>Create New Gallery</h1>
+      <H1 small>Create New Gallery</H1>
       {formStep < FORM_STEPS.length ? (
         <Container>
           <div>{breadcrumbs}</div>

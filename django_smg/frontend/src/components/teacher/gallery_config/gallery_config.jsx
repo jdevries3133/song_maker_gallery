@@ -1,9 +1,29 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
+import store from "../../../store";
 
 import { initState, configItemReducer, types } from "Common/config_item";
 
 import { GalleryConfigForm } from "./gallery_config_form";
+
+/**
+ * Inline hook to get the gallery name from the backend.
+ */
+const useGalleryName = (slug) => {
+  const state = store.getState();
+  const [name, setName] = useState("...");
+  useEffect(() => {
+    axios.defaults.xsrfCookieName = "csrftoken";
+    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+    axios
+      .get(`/api/gallery/summary/${slug}/`, {
+        headers: { Authorization: `Token ${state.auth.token}` },
+      })
+      .then((res) => setName(`"${res.data.title}"`));
+  });
+  return name;
+};
 
 /**
  * Allow the user to configure their galleries.
@@ -27,6 +47,7 @@ const _GalleryConfig = ({ slug, token }) => {
   };
 
   const [state, dispatch] = useReducer(configItemReducer, initialState);
+  const galleryName = useGalleryName(slug);
 
   useEffect(() => {
     if (token) {
@@ -52,6 +73,7 @@ const _GalleryConfig = ({ slug, token }) => {
 
   return (
     <GalleryConfigForm
+      galleryName={galleryName}
       state={state}
       onCheckedHandler={checkedHandler}
       slug={slug}

@@ -28,13 +28,12 @@ const P = styled(DefaultP)`
 
 const Description = styled(DefaultDescription)`
   margin: 0;
-  max-width: max(50vw, 600px);
+  max-width: 900px;
 `;
 
 const Button = styled(DefaultButton)`
-  display: block;
-  height: 4rem;
-  width: 80%;
+  display: flex;
+  max-width: 15rem;
   box-shadow: 1px 4px 12px #999;
   margin: 1em auto;
 `;
@@ -48,10 +47,11 @@ const Div = styled(DefaultDiv)`
 `;
 
 const Grid = styled.div`
-  grid-column-gap: 2rem;
+  padding: 0 2rem;
+  gap: 2rem;
   @media (min-width: 600px) {
     display: grid;
-    grid-template-columns: 5% 60% 30% 5%;
+    grid-template-columns: 2% 76% 20% 2%;
     grid-template-rows: 20% 80%;
   }
 `;

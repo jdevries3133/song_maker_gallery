@@ -69,13 +69,13 @@ export const GalleryLaunchComplete = ({ galleryData }) => {
           <>
             <p>Gallery creation was successful</p>
             <p>
-              Share this link for your students to submit their songs, when link
+              Share this link for your students to submit their songs if link
               submission is turned on:
             </p>
             <Link to={`/gallery/${slug}/submit-song/`}>
               https://songmakergallery.com/gallery/{slug}/submit-song/
             </Link>
-            <p>View your gallery here, when the gallery is public:</p>
+            <p>View your gallery here, if the gallery is public:</p>
             <Link to={`/gallery/${slug}/`}>
               https://songmakergallery.com/gallery/{slug}/
             </Link>

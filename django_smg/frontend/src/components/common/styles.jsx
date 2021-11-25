@@ -46,8 +46,14 @@ export const GridItem = styled.div`
 export const H1 = styled.h1`
   text-align: center;
   padding-bottom: 1.5rem;
-  font-size: calc(4vw + 30px);
+  font-size: 3.5rem;
   line-height: calc(4vw + 30px);
+
+  ${(props) =>
+    props.small &&
+    css`
+      font-size: 3rem;
+    `}
 `;
 
 export const H2 = styled.h2`

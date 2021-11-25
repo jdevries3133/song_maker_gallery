@@ -36,6 +36,13 @@ class Gallery extends Component {
         <FlexContainer>
           <Description>
             <h1>Gallery is Private</h1>
+            <h3>
+              If you own this gallery, go to the{" "}
+              <Link to={`/teacher/${this.state.slug}/settings/`}>
+                teacher page
+              </Link>{" "}
+              to make it public.
+            </h3>
             {this.props.gallery?.is_editable && (
               <p>
                 But your teacher is still allowing students to submit songs!{" "}

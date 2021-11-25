@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { postGallery, getUserGalleries } from "Actions/user";
 import { logout } from "Actions/auth.action";
 import Papa from "papaparse";
+import styled from "Styles";
 
 import FileUploadForm from "./file_upload_form";
 import { Blankets } from "./snippets";
@@ -15,6 +16,11 @@ const DEFAULT_DESCRIPTION =
   "zeroes, but they are none the less as human and as meaningful as " +
   "always.\n\nPlease enjoy this showcase of our school's music lab " +
   "compositions. Our students' creativity truly knows no bounds!";
+
+const Container = styled.div`
+  max-width: 80ch;
+  margin: auto;
+`;
 
 class AddGallery extends Component {
   constructor(props) {
@@ -298,27 +304,29 @@ class AddGallery extends Component {
             onOk: this.successHandler,
           }}
         />
-        <FileUploadForm
-          firstGroupUploaded={this.state.stagedGroups.length === 1}
-          fileInputRef={this.state.fileInputRef}
-          clearFileHandler={this.resetFormHandler}
-          groupname={this.state.groupname}
-          groupNameChangeHandler={this.groupNameHandler}
-          uploadRequest={this.csvHandler}
-          warn={this.state.warn}
-          uploadedContent={this.state.uploadedContent}
-        />
-        {this.state.stagedGroups && this.state.stagedGroups.length > 0 ? (
-          <Stage
-            unstageGroupHandler={this.unstageGroupHandler}
-            groups={this.state.stagedGroups}
-            confirmCreate={this.inputConfirmation}
-            titleInput={this.titleInputHandler}
-            titleValue={this.state.titleValue}
-            descriptionInput={this.descriptionInputHandler}
-            descriptionValue={this.state.descriptionValue}
+        <Container>
+          <FileUploadForm
+            firstGroupUploaded={this.state.stagedGroups.length === 1}
+            fileInputRef={this.state.fileInputRef}
+            clearFileHandler={this.resetFormHandler}
+            groupname={this.state.groupname}
+            groupNameChangeHandler={this.groupNameHandler}
+            uploadRequest={this.csvHandler}
+            warn={this.state.warn}
+            uploadedContent={this.state.uploadedContent}
           />
-        ) : null}
+          {this.state.stagedGroups && this.state.stagedGroups.length > 0 ? (
+            <Stage
+              unstageGroupHandler={this.unstageGroupHandler}
+              groups={this.state.stagedGroups}
+              confirmCreate={this.inputConfirmation}
+              titleInput={this.titleInputHandler}
+              titleValue={this.state.titleValue}
+              descriptionInput={this.descriptionInputHandler}
+              descriptionValue={this.state.descriptionValue}
+            />
+          ) : null}
+        </Container>
       </>
     );
   }
