@@ -10,6 +10,8 @@ import "@testing-library/jest-dom/extend-expect";
 import "jest-styled-components";
 import axios from "axios";
 
+import { Context as C } from "Common/storybook_util";
+
 import { EditableTile } from "./editable_tile";
 
 jest.mock("axios");
@@ -21,11 +23,13 @@ const onSave = jest.fn();
 beforeEach(async () => {
   await act(async () => {
     render(
-      <EditableTile
-        name="Frank G."
-        link="https://musiclab.chromeexperiments.com/Song-Maker/song/6594803161104384"
-        onSave={onSave}
-      />
+      <C>
+        <EditableTile
+          name="Frank G."
+          link="https://musiclab.chromeexperiments.com/Song-Maker/song/6594803161104384"
+          onSave={onSave}
+        />
+      </C>
     );
   });
 });

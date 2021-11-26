@@ -9,7 +9,7 @@ exports[`Landing page Matches snapshot 1`] = `
 .c3 {
   text-align: center;
   padding-bottom: 1.5rem;
-  font-size: calc(4vw + 30px);
+  font-size: 3.5rem;
   line-height: calc(4vw + 30px);
 }
 
@@ -328,13 +328,15 @@ exports[`Landing page Matches snapshot 1`] = `
 
 .c15 {
   margin: 0;
-  max-width: max(50vw,600px);
+  max-width: 900px;
 }
 
 .c9 {
-  display: block;
-  height: 4rem;
-  width: 80%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 15rem;
   box-shadow: 1px 4px 12px #999;
   margin: 1em auto;
 }
@@ -349,7 +351,8 @@ exports[`Landing page Matches snapshot 1`] = `
 }
 
 .c5 {
-  grid-column-gap: 2rem;
+  padding: 0 2rem;
+  gap: 2rem;
 }
 
 .c1 {
@@ -489,7 +492,7 @@ exports[`Landing page Matches snapshot 1`] = `
 @media (min-width:600px) {
   .c5 {
     display: grid;
-    grid-template-columns: 5% 60% 30% 5%;
+    grid-template-columns: 2% 76% 20% 2%;
     grid-template-rows: 20% 80%;
   }
 }

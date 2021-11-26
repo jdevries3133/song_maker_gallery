@@ -54,19 +54,3 @@ class TestLoginApi(GalleryTestCase):
         )
         self.assertEqual(res.status_code, status.HTTP_403_FORBIDDEN)
 
-    def test_token_was_rotated_after_get_request(self):
-        self._login_client()
-        res = self.client.get(
-            "/api/auth/login/", HTTP_AUTHORIZATION=f"Token {self.token}", secure=True
-        )
-        new_token = res.json().get("token")
-        res = self.client.get("/api/gallery/", secure=True)
-
-        # old token fails
-        self.assertFalse(status.is_success(res.status_code))
-        res = self.client.get(
-            "/api/gallery/", HTTP_AUTHORIZATION=f"Token {new_token}", secure=True
-        )
-
-        # new token succeeds
-        self.assertTrue(status.is_success(res.status_code))
