@@ -4,15 +4,15 @@ server {
     location /favicon.ico {
         access_log off;
         log_not_found off;
-        alias /home/ubuntu/song_maker_gallery/django_smg/static_root/frontend/favicon.ico;
+        alias /home/jack/song_maker_gallery/django_smg/static_root/frontend/favicon.ico;
     }
     location ^~ /static/ {
-        alias /home/ubuntu/song_maker_gallery/django_smg/static_root/;
+        alias /home/jack/song_maker_gallery/django_smg/static_root/;
     }
 
     location / {
         include proxy_params;
-        proxy_pass http://unix:/home/ubuntu/song_maker_gallery/django_smg/run/gunicorn.sock;
+        proxy_pass http://unix:/home/jack/song_maker_gallery/django_smg/run/gunicorn.sock;
     }
 
     listen 443 ssl; # managed by Certbot
