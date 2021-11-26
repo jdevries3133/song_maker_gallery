@@ -45,27 +45,3 @@ to start developing.
 
 As you can see, there is even a setup script for an extra easy start, which I
 have tested on Mac and Ubuntu Linux.
-
-### Roadmap
-
-These are some major new features I'm implementing now or would like help with.
-
-**Submission Links**
-
-One of the pain points of using this site is that the teacher has to gather many
-links, and has to upload one spreadsheet for each group. I would like to make a
-submission link available to the teacher that they can share with their
-students. Students can submit their song links themselves, saving the teacher
-the work of gathering their students' work.
-
-See [#10](https://github.com/jdevries3133/song_maker_gallery/issues/10) if you
-are interested!
-
-**Student Response**
-
-"Responding," is a key tenet of music curricula. I would like to create an
-environment where students can respond to and critique each other's work while
-also being monitored by the teacher.
-
-See [#11](https://github.com/jdevries3133/song_maker_gallery/issues/11) if you
-are interested!

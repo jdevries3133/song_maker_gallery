@@ -1,3 +1,10 @@
+# 3.0.0
+
+- Ability to create automated galleries with student-uploaded content
+- Implementation of storybook. UI components are viewable at [https://stories.songmakergallery.com](https://stories.songmakergallery.com)
+- Performance updates to frontend, including optimization of song tile animation
+- Form for editing gallery after creation
+
 # 2.1.2
 
 - Configure email in production for real password reset functionality (#27)
