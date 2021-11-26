@@ -23,6 +23,12 @@ export const Div = styled.div`
   padding: ${(props) => props.padding || "inherit"};
 `;
 
+export const Center = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Grid = styled.div`
   justify-items: center;
   align-items: center;

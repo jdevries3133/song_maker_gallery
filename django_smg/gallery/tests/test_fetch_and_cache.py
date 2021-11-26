@@ -68,4 +68,4 @@ class TestFetchAndCache(GalleryTestCase):
             self.assertEqual(getattr(self.processed, k), v)
 
     def test_midi_data_is_saved(self):
-        self.assertEqual(self.EXPECT_MIDI, self.processed.midi)
+        self.assertEqual(self.EXPECT_MIDI, bytes(self.processed.midi))

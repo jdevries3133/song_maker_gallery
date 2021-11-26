@@ -36,6 +36,7 @@ class SongSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
         fields = (
+            "pk",
             "songId",
             "student_name",
             "order",
@@ -74,6 +75,9 @@ class SongSerializer(serializers.ModelSerializer):
 
 
 class SongGroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SongGroup
+        fields = ("group_name", "songs", "owner", "pk")
 
     songs = SongSerializer(many=True)
     owner = serializers.PrimaryKeyRelatedField(
@@ -88,11 +92,7 @@ class SongGroupSerializer(serializers.ModelSerializer):
             fetch_and_cache(songs=instance.songs.all())
         return super().to_representation(instance)
 
-    class Meta:
-        model = SongGroup
-        fields = ("group_name", "songs", "owner", "pk")
-
-    def create(self, validated_data, **kw):
+    def create(self, validated_data, **_):
         song_data = validated_data.pop("songs")
         song_serializer = self.fields["songs"]  # type: ignore
         instance = SongGroup.objects.create(
@@ -102,6 +102,21 @@ class SongGroupSerializer(serializers.ModelSerializer):
             each["group"] = instance
             each["gallery"] = instance.gallery
         song_serializer.create(song_data)
+        return instance
+
+    def update(self, instance, validated_data, **_):
+        song_data = validated_data.pop("songs")
+        for each in song_data:
+            each["group"] = instance.pk
+            each["gallery"] = instance.gallery.pk
+        serializer = SongSerializer(data=song_data, many=True, context=self.context)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        for k, v in validated_data.items():
+            setattr(instance, k, v)
+        instance.save()
+
         return instance
 
 

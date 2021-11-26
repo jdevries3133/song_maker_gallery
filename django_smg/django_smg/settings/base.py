@@ -58,8 +58,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "django_smg.urls"
 
-REST_FRAMEWORK = {"DEFAULT_AUTHENTICATION_CLASSES": ("knox.auth.TokenAuthentication",)}
-
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "knox.auth.TokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    )
+}
 # Explicitly name default primary key setting; silences warning.
 # https://dev.to/rubyflewtoo/upgrading-to-django-3-2-and-fixing-defaultautofield-warnings-518n
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"

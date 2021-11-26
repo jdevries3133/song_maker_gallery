@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import axios from "axios";
 
 import styled, { Description, Form, Input, Label } from "Styles";
 
@@ -19,8 +21,9 @@ const TileContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
 `;
 
-export const GroupForm = ({ group }) => {
-  const [groupStudents, setGroupStudents] = useState(group.songs);
+const _GroupForm = ({ group: inputGrp, token }) => {
+  const [group, setGroup] = useState(inputGrp);
+  const groupStudents = group.songs;
 
   /**
    * Swaps the position of two students in the group
@@ -28,10 +31,26 @@ export const GroupForm = ({ group }) => {
   const swap = (index1, index2) => {
     const tmp1 = groupStudents[index1];
     const tmp2 = groupStudents[index2];
-    const newGroupStudents = [...groupStudents];
-    newGroupStudents[index2] = tmp1;
-    newGroupStudents[index1] = tmp2;
-    setGroupStudents(newGroupStudents);
+    const newGroupSongs = [...groupStudents];
+    newGroupSongs[index2] = tmp1;
+    newGroupSongs[index1] = tmp2;
+
+    // assemble full entity
+    const newSongGroup = {
+      ...group,
+      songs: newGroupSongs,
+    };
+
+    axios.defaults.xsrfCookieName = "csrftoken";
+    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+    axios
+      .patch(`/api/gallery/song_group/${group.pk}/`, newSongGroup, {
+        headers: { Authorization: `Token ${token}` },
+      })
+      .then((res) => {
+        setGroup(res.data);
+      })
+      .catch((e) => console.error(e));
   };
 
   return (
@@ -41,17 +60,23 @@ export const GroupForm = ({ group }) => {
         <Input type="text" id="group name" defaultValue={group.group_name} />
       </Form>
       <TileContainer>
-        {groupStudents.map((song, i) => (
-          <DraggableTile
-            key={i + song.songId + Math.random()}
-            name={song.student_name}
-            songId={song.songId}
-            groupName={group.group_name}
-            swap={swap}
-            index={i}
-          />
-        ))}
+        {groupStudents &&
+          groupStudents.map((song, i) => (
+            <DraggableTile
+              key={i + song.songId + Math.random()}
+              song={song}
+              groupName={group.group_name}
+              swap={swap}
+              index={i}
+            />
+          ))}
       </TileContainer>
     </Description>
   );
 };
+
+const mapStateToProps = (state) => ({
+  token: state.auth.token,
+});
+
+export const GroupForm = connect(mapStateToProps)(_GroupForm);

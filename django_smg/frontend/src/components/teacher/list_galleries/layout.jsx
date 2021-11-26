@@ -39,6 +39,7 @@ const galleryViewHrefs = (slug) => {
   return {
     view: `/gallery/${slug}/`,
     addSong: `/gallery/${slug}/submit-song/`,
+    edit: `/teacher/${slug}/edit/`,
     settings: `/teacher/${slug}/settings/`,
   };
 };
@@ -49,7 +50,7 @@ const GalleryRows = ({ galleries, requestDelete }) => (
     {galleries.map((gallery, index) => {
       const paths = galleryViewHrefs(gallery.slug);
       return (
-        <Grid cols="3fr 2fr 2fr 2fr 2fr" key={index}>
+        <Grid cols="3fr repeat(5, 2fr)" key={index}>
           <GalleryName>
             <span>{gallery["title"].slice(0, 14)}</span>
             {gallery["title"].length < 14 ? null : <span>...</span>}
@@ -59,6 +60,11 @@ const GalleryRows = ({ galleries, requestDelete }) => (
               <Button data-testid="viewGalleryBtn" color="#00c4ff">
                 View
               </Button>
+            </Link>
+          </Item>
+          <Item>
+            <Link to={paths.edit}>
+              <Button>Edit</Button>
             </Link>
           </Item>
           <Item>

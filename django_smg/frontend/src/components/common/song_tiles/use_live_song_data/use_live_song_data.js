@@ -27,11 +27,18 @@ const fetchSongData = async (songId) => {
   }
 };
 
-export const useLiveSongData = (songId) => {
-  const [songData, setSongData] = useState(null);
+export const useLiveSongData = (songId, initialSong) => {
+  const [songData, setSongData] = useState(initialSong);
 
   useEffect(() => {
-    if (validateSongId(songId)) {
+    /**
+     * Only fetch if:
+     *
+     * a) there is no song data
+     * b) the song data is out of sync with the songId
+     * c) the songId is valid
+     */
+    if ((!songData || songData.songId !== songId) && validateSongId(songId)) {
       fetchSongData(songId).then(({ data }) => {
         setSongData(data);
       });

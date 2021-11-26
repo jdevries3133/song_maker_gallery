@@ -43,14 +43,14 @@ const Handle = styled.div`
   }
 `;
 
-export const DraggableTile = ({ name, songId, groupName, swap, index }) => {
+export const DraggableTile = ({ song, groupName, swap, index }) => {
   const { width } = useWidth(450);
   const [_, drag, dragPreview] = useDrag(() => ({
     type: "formGroup",
     item: {
       index,
       group: groupName,
-      song: songId,
+      song: song.songId,
     },
   }));
 
@@ -86,11 +86,12 @@ export const DraggableTile = ({ name, songId, groupName, swap, index }) => {
           )
         ) : (
           <EditableTile
-            name={name}
+            name={song.student_name}
             link={
               `https://musiclab.chromeexperiments.com` +
-              `/Song-Maker/song/${songId}`
+              `/Song-Maker/song/${song.songId}`
             }
+            initialSong={song}
           />
         )}
       </Div>

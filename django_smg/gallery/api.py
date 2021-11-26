@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Gallery, SongGroup
+from .models import Gallery, Song, SongGroup
 from .serializers import (
     GallerySerializer,
     GallerySummarySerializer,
@@ -86,7 +86,7 @@ class AuthGalleryViewset(APIView):
         return Response({"message": "deleted"})
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def gallery(request, slug):
     gal = Gallery.objects.get(owner=request.user, slug=slug)  # type: ignore
@@ -213,7 +213,7 @@ class SongViewset(viewsets.ModelViewSet):
     serializer_class = SongSerializer
 
     def get_queryset(self):
-        return self.request.user.songs.all()  # type: ignore
+        return Song.objects.all()
 
 
 class SongGroupViewset(viewsets.ModelViewSet):
@@ -223,3 +223,6 @@ class SongGroupViewset(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return self.request.user.song_groups.all()  # type: ignore
+
+    def get_serializer_context(self):
+        return {"request": self.request, **super().get_serializer_context()}

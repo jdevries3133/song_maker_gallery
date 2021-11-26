@@ -15,7 +15,7 @@ from .api import (
 urlpatterns = [
     path("", AuthGalleryViewset.as_view(), name="auth_gallery"),
     path("public/<slug:slug>/", PublicGalleryViewset.as_view(), name="public_gallery"),
-    path('summary/<slug:slug>/', gallery, name='gallery'),
+    path("summary/<slug:slug>/", gallery, name="gallery"),
     path("song_data/", instant_song_data, name="instant_song_data"),
     path("settings/", gallery_settings, name="gallery_settings"),
     path("create_song/", StudentCreateSong.as_view(), name="student_create_song"),

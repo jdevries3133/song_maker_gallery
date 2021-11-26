@@ -14,7 +14,7 @@ django_stubs_ext.monkeypatch()
 # instance in docker.
 #
 # When this is set to false, dbsqlite is used instead.
-USE_MYSQL = False
+USE_POSTGRES = True
 
 # see Python's logging levels for valid strings to use
 # https://docs.python.org/3/library/logging.html#logging-levels
@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ["localhost"]
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-if USE_MYSQL:
+if USE_POSTGRES:
     from .production import DATABASES
 else:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

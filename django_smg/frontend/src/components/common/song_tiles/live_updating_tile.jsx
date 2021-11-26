@@ -15,8 +15,8 @@ const S = styled.div`
  * a tile that updates every time the songId changes, including all the
  * caching functionality of useLiveSongData
  */
-export const LiveUpdatingTile = ({ songId, width }) => {
-  const song = useLiveSongData(songId);
+export const LiveUpdatingTile = ({ initialSong, songId, width }) => {
+  const song = useLiveSongData(songId, initialSong);
   return song ? (
     <S>
       <SongPreview song={song} width={width} />{" "}

@@ -6,7 +6,7 @@ import Loading from "Common/loading";
 import GalleryBody from "./gal_body";
 import { getGallery } from "Actions/gallery";
 import { windowLocation } from "../../util/window";
-import { Description, FlexContainer } from "Common/styles";
+import { Center, Description, FlexContainer } from "Common/styles";
 
 class Gallery extends Component {
   state = {
@@ -31,7 +31,7 @@ class Gallery extends Component {
       );
     }
 
-    if (!this.props?.gallery?.is_public) {
+    if (this.props?.gallery?.is_public === false) {
       return (
         <FlexContainer>
           <Description>
@@ -62,7 +62,11 @@ class Gallery extends Component {
       // navigated to
       (this.props.gallery && this.props.gallery.slug !== this.state.slug)
     ) {
-      return <Loading dark />;
+      return (
+        <Center>
+          <Loading dark />
+        </Center>
+      );
     }
 
     return (

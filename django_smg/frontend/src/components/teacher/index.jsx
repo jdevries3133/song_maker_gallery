@@ -5,7 +5,7 @@ import { Div } from "Styles";
 
 import AddGallery from "./add_gallery";
 import ListGalleries from "./list_galleries";
-import LogoutButton from "./header/logout_button";
+import { Nav } from "./header";
 import { Home } from "./home";
 import { GalleryFormPage } from "./gallery_form";
 import { DemoGalleryPage } from "./demo_gallery";
@@ -16,9 +16,9 @@ export default () => {
   const { path } = useRouteMatch();
   return (
     <Div>
+      <Nav />
       <Switch>
         <Route exact path={path}>
-          <LogoutButton />
           <Home />
           <ListGalleries />
         </Route>
