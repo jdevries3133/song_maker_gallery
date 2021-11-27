@@ -196,7 +196,7 @@ class TestSlugManager(Base):
         - test-gallery-name2
         etc...
         """
-        sorted_ = self.get_queryset().order_by("created")
+        sorted_ = self.get_queryset()
         for i, gallery in enumerate(sorted_):
             if not i:  # no appended int yet
                 self.assertEqual(gallery.slug, "test-gallery-name")

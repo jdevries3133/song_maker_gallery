@@ -29,7 +29,7 @@ class SongOwner(serializers.CurrentUserDefault):
 
 class SongSerializer(serializers.ModelSerializer):
 
-    pk = serializers.IntegerField(read_only=False)
+    pk = serializers.IntegerField(read_only=False, required=False)
     owner = serializers.PrimaryKeyRelatedField(
         allow_null=True, read_only=True, default=SongOwner()
     )
@@ -102,7 +102,7 @@ class SongGroupSerializer(serializers.ModelSerializer):
         model = SongGroup
         fields = ("group_name", "songs", "owner", "pk")
 
-    pk = serializers.IntegerField(read_only=False)
+    pk = serializers.IntegerField(read_only=False, required=False)
     songs = SongListSerializer()
     owner = serializers.PrimaryKeyRelatedField(
         read_only=True, default=serializers.CurrentUserDefault()
