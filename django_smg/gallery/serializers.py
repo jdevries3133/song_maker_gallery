@@ -29,6 +29,7 @@ class SongOwner(serializers.CurrentUserDefault):
 
 class SongSerializer(serializers.ModelSerializer):
 
+    pk = serializers.IntegerField(read_only=False)
     owner = serializers.PrimaryKeyRelatedField(
         allow_null=True, read_only=True, default=SongOwner()
     )
@@ -74,15 +75,44 @@ class SongSerializer(serializers.ModelSerializer):
         return value
 
 
+class SongListSerializer(serializers.ListSerializer):
+    child = SongSerializer()
+
+    def update(self, instances, validated_data):
+        instances_map = {i.pk: i for i in instances}
+        data_map = {i['pk'] : i for i in validated_data}
+        ret = []
+        for pk, song in data_map.items():
+            if pk in instances_map:
+                instance = instances_map[pk]
+                ret.append(self.child.update(instance, song))
+            else:
+                ret.append(self.child.create(song))
+
+        # items not included are deleted
+        for pk, item in instances_map.items():
+            if pk not in data_map:
+                item.delete()
+
+        return ret
+
+
 class SongGroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = SongGroup
         fields = ("group_name", "songs", "owner", "pk")
 
-    songs = SongSerializer(many=True)
+    pk = serializers.IntegerField(read_only=False)
+    songs = SongListSerializer()
     owner = serializers.PrimaryKeyRelatedField(
         read_only=True, default=serializers.CurrentUserDefault()
     )
+
+    def get_queryset(self):
+        # filter to songs in this group
+        return Song.objects.filter(
+            group=self.instance, owner=self.context["request"].user
+        )
 
     def to_representation(self, instance):
         """
@@ -90,7 +120,9 @@ class SongGroupSerializer(serializers.ModelSerializer):
         """
         if instance.songs.filter(is_cached=False).count() > 0:
             fetch_and_cache(songs=instance.songs.all())
-        return super().to_representation(instance)
+        representation = super().to_representation(instance)
+        representation['songs'].sort(key=lambda i: i['order'])
+        return representation
 
     def create(self, validated_data, **_):
         song_data = validated_data.pop("songs")
@@ -109,12 +141,14 @@ class SongGroupSerializer(serializers.ModelSerializer):
         for each in song_data:
             each["group"] = instance.pk
             each["gallery"] = instance.gallery.pk
-        serializer = SongSerializer(data=song_data, many=True, context=self.context)
+        serializer = SongListSerializer(
+            self.get_queryset(), data=song_data, context=self.context
+        )
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        for k, v in validated_data.items():
-            setattr(instance, k, v)
+        instance.group_name = validated_data.get('group_name', instance.group_name)
+        instance.owner = validated_data.get('owner', instance.owner)
         instance.save()
 
         return instance

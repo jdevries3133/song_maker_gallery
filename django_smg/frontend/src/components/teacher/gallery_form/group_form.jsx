@@ -29,22 +29,13 @@ const _GroupForm = ({ group: inputGrp, token }) => {
    * Swaps the position of two students in the group
    */
   const swap = (index1, index2) => {
-    const tmp1 = groupStudents[index1];
-    const tmp2 = groupStudents[index2];
-    const newGroupSongs = [...groupStudents];
-    newGroupSongs[index2] = tmp1;
-    newGroupSongs[index1] = tmp2;
-
-    // assemble full entity
-    const newSongGroup = {
-      ...group,
-      songs: newGroupSongs,
-    };
+    groupStudents[index1].order = index2;
+    groupStudents[index2].order = index1;
 
     axios.defaults.xsrfCookieName = "csrftoken";
     axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
     axios
-      .patch(`/api/gallery/song_group/${group.pk}/`, newSongGroup, {
+      .patch(`/api/gallery/song_group/${group.pk}/`, group, {
         headers: { Authorization: `Token ${token}` },
       })
       .then((res) => {

@@ -11,7 +11,6 @@ class Gallery(models.Model):
         related_name="galleries",
         on_delete=models.CASCADE,
     )
-    created = models.DateTimeField(auto_now_add=True)  # type: ignore
     title = models.CharField(
         max_length=100,
         null=False,
