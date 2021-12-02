@@ -1,6 +1,12 @@
 import re
+import sys
 
-new = input('Enter new version number: ')
+
+if len(sys.argv) == 2:
+    new = sys.argv[1]
+else:
+    new = input('Enter new version number: ')
+
 
 def change(path, regex, replacement):
     with open(path, 'r') as fl:
