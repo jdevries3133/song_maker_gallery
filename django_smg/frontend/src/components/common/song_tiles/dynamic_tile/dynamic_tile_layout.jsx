@@ -90,7 +90,7 @@ export const Layout = (props) => {
     <OuterContainer>
       {props.mobile ? (
         <div style={{ textAlign: "left" }}>
-          <StaticNameCard>{props.song.name}</StaticNameCard>
+          <StaticNameCard>{props.song.student_name}</StaticNameCard>
         </div>
       ) : null}
       <InnerContainer
