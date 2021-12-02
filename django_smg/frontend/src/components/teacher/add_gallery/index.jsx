@@ -11,11 +11,8 @@ import { Blankets } from "./snippets";
 import { Stage } from "./stage";
 
 const DEFAULT_DESCRIPTION =
-  "We will always find a way to share music. In lieu of the concert " +
-  "hall, our musical performances today are expressed in ones and " +
-  "zeroes, but they are none the less as human and as meaningful as " +
-  "always.\n\nPlease enjoy this showcase of our school's music lab " +
-  "compositions. Our students' creativity truly knows no bounds!";
+  "Enjoy this gallery of our students' beautiful compositions! As always, " +
+  "we are proud of their hard work, and forever astounded by their creativity.";
 
 const Container = styled.div`
   max-width: 80ch;

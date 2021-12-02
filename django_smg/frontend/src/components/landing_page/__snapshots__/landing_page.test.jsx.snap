@@ -691,9 +691,7 @@ exports[`Landing page Matches snapshot 1`] = `
       className="c14 c26"
     >
       <p>
-        This is an example of what one of our galleries look like. All that you need to do is upload a spreadsheet of students' names and links to their song maker creations, and the site does the rest. You can spin up a gallery just like this for your students in only a few minutes!
-Notice that the thumbnail images are not generic. Each student's actual composition is displayed on the website so that everyone in your school community can get a bird's eye view of the astounding creativity of our students.
-We, these childrens' music teachers, have had the pleasure of experiencing the boundless creativity that students have expressed through these difficult times through tools like the Song Maker; let's share that with our communities and celebrate the end of an unusual school year.
+        This is an example of what one of our galleries looks like. You can create a gallery by uploading spreadsheets of song links that you already have, or you can create a new gallery, where students can paste their links directly into this website. This site validates the links that students paste, and it also shows students a thumbnail of their song before they submit it, so you won't recieve incorrectly copied links anymore!
       </p>
       <p
         className="c17"
