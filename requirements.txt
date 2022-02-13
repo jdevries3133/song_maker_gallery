@@ -35,3 +35,4 @@ tomli==1.2.2
 typed-ast==1.4.3
 typing_extensions==4.0.0
 urllib3==1.26.5
+whitenoise==6.0.0

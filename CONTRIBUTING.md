@@ -55,7 +55,7 @@ The python runtime requires several environment variables:
 | `SECRET_KEY`          | Django secret, for password hashing, etc.      |
 | `POSTGRES_PASSWORD`   | credentials for PostgreSQL connection          |
 | `POSTGRES_USER`       | credentials for PostgreSQL connection          |
-| `POSTGRES_DB_NAME`    | PostgreSQL database name                       |
+| `POSTGRES_DB`         | PostgreSQL database name                       |
 | `POSTGRES_HOST`       | Host name or IP address for PostgreSQL cluster |
 | `EMAIL_HOST_USER`     | email username, hard coded for gmail           |
 | `EMAIL_HOST_PASSWORD` | email password, hard coded for gmail           |

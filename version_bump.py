@@ -20,21 +20,21 @@ with open('VERSION', 'w') as fl:
 
 # update index.html template
 change(
-    'django_smg/frontend/templates/frontend/index.html',
+    'frontend/templates/frontend/index.html',
     r'webpack_output/main_v(.*)\.js',
     f'webpack_output/main_v{new}.js',
 )
 
 # update package.json
 change(
-    'django_smg/frontend/package.json',
+    'frontend/package.json',
     r'"version": "(.*)",',
     f'"version": "{new}",'
 )
 
 # update webpack config
 change(
-    'django_smg/frontend/webpack.config.js',
+    'frontend/webpack.config.js',
     r'filename: "main_v(.*).js",',
     f'filename: "main_v{new}.js",',
 )
@@ -44,11 +44,4 @@ change(
     'infra.tf',
     r'song_maker_gallery:(.*)',
     f'song_maker_gallery:{new}'
-)
-
-# update Makefile
-change(
-    'Makefile',
-    r'TAG?=(.*)',
-    f'TAG={new}-dev'
 )

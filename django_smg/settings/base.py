@@ -1,9 +1,8 @@
 import os
-import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-DEBUG = True if os.getenv("DJANGO_DEBUG") == "1" else False
+DEBUG = True if os.getenv("DJANGO_DEBUG") is not None else False
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -12,22 +11,10 @@ if not DEBUG:
 else:
     from .development import *
 
-SKIP_FETCH_AND_CACHE = False  # speeds up unit tests significantly
-
-if not DEBUG and sys.platform == "linux":
-    # require https in production. The linux check is kinda hacky but
-    # prevents this from being set on my local machine when developing.
-    # obviously, that won't help if you develop on linux
-    SECURE_HSTS_SECONDS = 3600
-    SECURE_SSL_REDIRECT = True
-    SECURE_HSTS_PRELOAD = True
-    SESSION_COOKIE_SECURE = True
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    CSRF_COOKIE_SECURE = True
 
 ALLOWED_HOSTS = [
     "songmakergallery.com",
-    "localhost",
+    "127.0.0.1"
 ]
 
 if DEBUG:
@@ -50,6 +37,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -111,3 +99,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
+
+# I don't really get why this is ncessary; I don't think it should be.
+# see http://whitenoise.evans.io/en/stable/django.html?highlight=manifest_strict#WHITENOISE_MANIFEST_STRICT
+WHITENOISE_MANIFEST_STRICT = False
