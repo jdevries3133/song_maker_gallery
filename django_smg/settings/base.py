@@ -1,10 +1,12 @@
 import os
 import sys
 
-from .secret import SECRET_KEY
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 DEBUG = True if os.getenv("DJANGO_DEBUG") == "1" else False
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+
 if not DEBUG:
     from .production import *
 else:
