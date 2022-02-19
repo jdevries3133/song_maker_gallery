@@ -1,3 +1,12 @@
+# 3.1.2
+
+- various content changes since 3.0, making the wording of landing page, etc
+  less covid-centric
+- bug fixes
+- migration to yarn for frontend cli
+- addition of service interruption warning, while I work on my kubernetes
+  cluster at home
+
 # 3.0.0
 
 - Ability to create automated galleries with student-uploaded content
