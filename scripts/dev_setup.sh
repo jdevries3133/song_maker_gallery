@@ -38,13 +38,13 @@ python manage.py test
 
 echo "SMG SETUP: Installing javascript dependencies"
 cd frontend
-npm install
+yarn install
 
 echo "SMG SETUP: Running frontend test suite"
-npm run test
+yarn test
 
 echo "SMG SETUP: Building frontend"
-npm run build
+yarn build
 
 echo "SMG SETUP: Starting server"
 cd ..
@@ -54,4 +54,4 @@ echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 echo "!!!--------PLEASE RESTART YOUR TERMINAL TO APPLY ENVIRONMENT VARIABLES-------!!!"
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
-exec python manage.py runserver
+exec python scripts/start_site.py

@@ -5,4 +5,4 @@ source venv/bin/activate
 python3 manage.py test --parallel 2
 
 cd frontend
-npm run test
+yarn test

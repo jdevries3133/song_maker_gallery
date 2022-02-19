@@ -80,14 +80,14 @@ work.
 
 1. Change to the base directory for the frontend, where the `package.json` file
    lives: `<project_root>/django_smg/frontend`
-2. Install node modules: `npm install`.
+2. Install node modules: `yarn install`.
 
 # Workflows
 
 Now that you are all setup, depending on what you are doing, there are
 different ways for you to proceed.
 
-### `npm run storybook`
+### `yarn storybook`
 
 > **I am styling or laying out a react component in isolation.**
 
@@ -95,13 +95,13 @@ different ways for you to proceed.
 is a platform for developing UI components in isolation. Anytime you are
 working on laying out or styling a single component, this is the best way to
 do it. Storybook is already set up for this project, and quite easy to use. To
-get started, just run `npm run storybook` from
+get started, just run `yarn storybook` from
 `<project_root>/django_smg/frontend`. You don't even need to worry about
 spinning up the backend here, because you should just be using some mock data.
 [Read their docs](https://github.com/jdevries3133/song_maker_gallery/projects)
 for more details.
 
-### `npm run test` (and optionally) `-- --watch`
+### `yarn test` (and optionally) `--watch`
 
 > **I am developing the frontend or frontend unit tests**
 
