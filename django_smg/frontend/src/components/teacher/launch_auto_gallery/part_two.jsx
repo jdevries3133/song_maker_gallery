@@ -33,7 +33,6 @@ export const BreadCrumbTwo = ({ onCrumbComplete }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    debugger;
     onCrumbComplete({
       is_public: state.checkboxes.isGalleryPublished.checked,
       is_editable: state.checkboxes.allowStudentSubmissions.checked,
