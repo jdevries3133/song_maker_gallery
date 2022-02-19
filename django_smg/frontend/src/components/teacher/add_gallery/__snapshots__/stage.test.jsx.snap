@@ -164,7 +164,7 @@ exports[`stage matches snapshot 1`] = `
       className="c0"
     >
       <h3
-        className="styles__H3-kZzEYv"
+        className="styles__H3-kZrHww"
       >
         Gallery Name:
       </h3>
@@ -185,7 +185,7 @@ exports[`stage matches snapshot 1`] = `
         100
       </span>
       <h3
-        className="styles__H3-kZzEYv"
+        className="styles__H3-kZrHww"
       >
         Gallery Description:
       </h3>
@@ -200,7 +200,7 @@ exports[`stage matches snapshot 1`] = `
         value="description"
       />
       <h3
-        className="styles__H3-kZzEYv"
+        className="styles__H3-kZrHww"
       >
         Staged Goups
       </h3>
