@@ -10,7 +10,7 @@ frontend_dir = Path(Path(__file__).parents[1], "frontend").resolve()
 managepy_path = Path(Path(__file__).parents[1], "manage.py").resolve()
 
 runner_cmd = (
-    f"npm run dev --prefix {frontend_dir} -- --watch,"
+    f"yarn --cwd {frontend_dir} dev --watch,"
     f"{managepy_path} runserver 0.0.0.0:8000"
 )
 
