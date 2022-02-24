@@ -92,7 +92,7 @@ resource "kubernetes_ingress_v1" "app_ingress" {
   spec {
     ingress_class_name = "public"
     tls {
-      hosts = ["${var.app_name}.us"]
+      hosts = ["stories.songmakergallery.com"]
     }
     rule {
       host = "stories.songmakergallery.com"

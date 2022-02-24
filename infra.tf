@@ -39,7 +39,7 @@ module "basic-deployment" {
   version = "0.0.8"
 
   app_name  = "songmaker"
-  container = "jdevries3133/song_maker_gallery:3.1.5"
+  container = "jdevries3133/song_maker_gallery:3.1.6
   domain    = "songmakergallery.com"
 
   extra_env = {
