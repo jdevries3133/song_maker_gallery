@@ -13,16 +13,13 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 
-from .secret import PG_PASSWORD, PG_USER, PG_NAME
-from .config import PG_HOST
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": PG_NAME,
-        "USER": PG_USER,
-        "PASSWORD": PG_PASSWORD,
-        "HOST": PG_HOST,
+        "NAME": os.getenv('POSTGRES_DB'),
+        "USER": os.getenv('POSTGRES_USER'),
+        "PASSWORD": os.getenv('POSTGRES_PASSWORD'),
+        "HOST": os.getenv('POSTGRES_HOST')
     }
 }
 
@@ -37,22 +34,21 @@ LOGGING = {
         },
     },
     "handlers": {
-        "file_logger": {
+        "console_logger": {
             "level": 0,
-            "class": "logging.FileHandler",
-            "filename": os.path.join(BASE_DIR, "main.log"),
+            "class": "logging.StreamHandler",
             "formatter": "verbose",
         },
     },
     "root": {
-        "handlers": ["file_logger"],
-        "level": "ERROR",
+        "handlers": ["console_logger"],
+        "level": "INFO",
         "propagate": True,
     },
     "loggers": {
-        "file": {
-            "handlers": ["file_logger"],
-            "level": "ERROR",
+        "default": {
+            "handlers": ["console_logger"],
+            "level": "INFO",
             "propagate": True,
         },
     },

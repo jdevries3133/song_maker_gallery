@@ -1,4 +1,3 @@
-# ---- generated static files ----
 static_root
 webpack_output
 
@@ -27,7 +26,3 @@ db.sqlite3
 db.sqlite3-journal
 *.db
 *.log*
-
-
-# ---- terraform ----
-.terraform*

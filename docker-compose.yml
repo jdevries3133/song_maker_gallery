@@ -1,0 +1,21 @@
+# FOR DEVELOPMENT PURPOSES ONLY – see hard-coded database credentials!
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    links:
+      - db
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: app
+      POSTGRES_HOST: db
+      SECRET_KEY: whatever
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: app

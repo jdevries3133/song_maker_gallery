@@ -48,30 +48,17 @@ work.
 > The project's backend is a REST API built with the
 > [Django Rest Framework.](https://www.django-rest-framework.org/)
 
-1. Create the file `django_smg/django_smg/settings/secret.py`.
-2. Define the `SECRET_KEY` variable in this file. Set it to any string your
-   heart desires.
+The python runtime requires several environment variables:
 
-   - `SECRET_KEY`
-   - `MYSQL_PASSWORD`
-   - `MYSQL_USER`
-   - `MYSQL_NAME`
-   - `EMAIL_HOST_USER`
-   - `EMAIL_HOST_PASSWORD`
-
-3. Set the environment variable `DJANGO_DEBUG` to any non-zero value.
-   - Set to any truthy value: `true`, `1`, etc...
-   - This causes `DEBUG` to be set to `True` inside Django and causes project
-     to use sqlite, along with anything else in the development settings.
-4. `cd django_smg`
-5. Create a virtual environment: `python3 -m venv venv`.
-6. Activate the environment (`source venv/bin/activate` for unix/linux)
-7. Install dependencies: `pip install -r requirements.txt`
-8. Perform database migrations. Sqlite is used for development, so all you
-   need to do is run `python manage.py migrate`.
-9. Use manage.py to see if everything is ok: `python manage.py check`
-10. Run tests, make sure they all pass: `python manage.py test`
-    - See `manage.py` lines 20 & 21 where I override logging behavior if needed
+| Name                  | Description                                    |
+| --------------------- | ---------------------------------------------- |
+| `SECRET_KEY`          | Django secret, for password hashing, etc.      |
+| `POSTGRES_PASSWORD`   | credentials for PostgreSQL connection          |
+| `POSTGRES_USER`       | credentials for PostgreSQL connection          |
+| `POSTGRES_DB`         | PostgreSQL database name                       |
+| `POSTGRES_HOST`       | Host name or IP address for PostgreSQL cluster |
+| `EMAIL_HOST_USER`     | email username, hard coded for gmail           |
+| `EMAIL_HOST_PASSWORD` | email password, hard coded for gmail           |
 
 ### React / Frontend
 

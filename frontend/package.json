@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "3.1.2",
+  "version": "3.1.5",
   "description": "songmakergallery.com's frontend application.",
   "repository": "https://github.com:jdevries3133/song_maker_gallery",
   "main": "index.js",
