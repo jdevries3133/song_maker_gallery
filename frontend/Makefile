@@ -23,9 +23,9 @@
 
 
 DOCKER_ACCOUNT=jdevries3133
-CONTAINER_NAME=song_maker_gallery
+CONTAINER_NAME=song_maker_storybook
 
-TAG?=$(shell cat VERSION)
+TAG?=$(shell cat ../VERSION)
 
 # assuming the use of Docker hub, these constants need not be changed
 CONTAINER=$(DOCKER_ACCOUNT)/$(CONTAINER_NAME):$(TAG)
