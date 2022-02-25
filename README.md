@@ -48,8 +48,7 @@ content.**
 
 ### Created User Stories with Storybook UI
 
-The site's stories can be explored live at
-[stories.songmakergallery.com](https://stories.songmakergallery.com/)
+Components were developed with Storybook UI.
 
 ### Designed and Implemented Frontend Components
 
