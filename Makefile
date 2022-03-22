@@ -31,17 +31,6 @@ TAG?=$(shell git describe --tags)
 CONTAINER=$(DOCKER_ACCOUNT)/$(CONTAINER_NAME):$(TAG)
 
 
-push: clean build
+.PHONY: push
+push:
 	docker buildx build --platform linux/amd64 --push -t $(CONTAINER) .
-
-
-# this removes *all* images containing CONTAINER_NAME, so there can be
-# destructive side-effects
-clean:
-	# remove application container(s)
-	docker ps --all | grep $(CONTAINER_NAME) | cut -c 1-15 | xargs docker stop || /bin/true
-	docker ps --all | grep $(CONTAINER_NAME) | cut -c 1-15 | xargs docker rm || /bin/true
-
-
-# all rules are phony
-.PHONY: clean push build
