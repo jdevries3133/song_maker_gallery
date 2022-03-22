@@ -29,6 +29,10 @@ provider "helm" {
   }
 }
 
+data "external" "git_describe" {
+  program = ["sh", "scripts/git_describe.sh"]
+}
+
 resource "random_password" "django_secret" {
   length = 48
   special = true
@@ -39,7 +43,7 @@ module "basic-deployment" {
   version = "0.0.8"
 
   app_name  = "songmaker"
-  container = "jdevries3133/song_maker_gallery:3.1.5"
+  container = "jdevries3133/song_maker_gallery:${data.external.git_describe.result.output}"
   domain    = "songmakergallery.com"
 
   extra_env = {
