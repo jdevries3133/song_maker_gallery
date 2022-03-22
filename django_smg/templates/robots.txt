@@ -1,8 +1,7 @@
 User-Agent: *
 Allow: /
+
 Disallow: /api/*
-Disallow: /signup
-Disallow: /login
 Disallow: /teacher
 
 Sitemap: https://songmakergallery.com/sitemap.xml
