@@ -1,3 +1,12 @@
+# 3.2.0
+
+- switch to git tags for version tracking; abandon VERSION and version_bump.py
+- add tags for past versions
+- lots of dependency wrangling
+- repair development setup for containerization to support integration tests,
+  mounting source codes as volumes, etc.
+- revert migration to yarn because it was incomplete
+
 # 3.1.2
 
 - various content changes since 3.0, making the wording of landing page, etc
