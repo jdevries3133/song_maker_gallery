@@ -17,11 +17,9 @@ import Teacher from "./teacher";
 import { Footer } from "Common/footer";
 import { TosPage, PrivacyPage } from "./legal";
 import { NotFound } from "Common/error";
-import { ServiceInterruption } from "Common/service_interruption";
 
 const App = () => (
   <Provider store={store}>
-    <ServiceInterruption />
     <Router>
       <Switch>
         <Route exact path="/">

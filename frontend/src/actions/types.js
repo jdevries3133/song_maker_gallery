@@ -13,6 +13,3 @@ export const REGISTER = "REGISTER";
 export const CLEAR_ERROR = "CLEAR_ERROR";
 export const UPDATE = "UPDATE";
 export const DELETE = "DELETE";
-
-// service notice
-export const DISMISS_NOTIFICATION = "DISMISS_NOTIFICATION";
