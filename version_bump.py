@@ -14,9 +14,6 @@ def change(path, regex, replacement):
     with open(path, 'w') as fl:
         fl.write(re.sub(regex, replacement, data))
 
-# update VERSION tracker file at root
-with open('VERSION', 'w') as fl:
-    fl.write(new)
 
 # update index.html template
 change(
@@ -37,11 +34,4 @@ change(
     'frontend/webpack.config.js',
     r'filename: "main_v(.*).js",',
     f'filename: "main_v{new}.js",',
-)
-
-# update terraform IaC
-change(
-    'infra.tf',
-    r'song_maker_gallery:(.*)',
-    f'song_maker_gallery:{new}'
 )
