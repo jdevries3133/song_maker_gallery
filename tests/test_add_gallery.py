@@ -18,7 +18,7 @@ class TestManualForm(BaseCase):
         # attach csv to file input
         csv = str(
             Path(
-                Path(__file__).parents[2], "ui_testing_data", "test_group.csv"
+                Path(__file__).parents[1], "ui_testing_data", "test_group.csv"
             ).resolve()
         )
         self.first_el(el).send_keys(csv)

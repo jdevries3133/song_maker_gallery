@@ -3,4 +3,4 @@ import subprocess
 
 print("rebuilding frontend for integration tests")
 frontend_dir = Path(Path(__file__).parents[1], "frontend")
-subprocess.call(["yarn", "dev"], cwd=frontend_dir)
+subprocess.call(["npm", "run", "build"], cwd=frontend_dir)

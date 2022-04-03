@@ -17,6 +17,7 @@ services:
       - ./accounts:/app/accounts
       - ./django_smg:/app/django_smg
       - ./tests:/app/tests
+      - ./scripts:/app/scripts
     ports:
       - "8000:8000"
     links:
