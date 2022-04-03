@@ -162,5 +162,5 @@ class Runner:
         print(__doc__)
 
 if __name__ == '__main__':
-    cmd = "python3 manage.py runserver,yarn -cwd frontend dev"
+    cmd = "python3 manage.py runserver 0.0.0.0:8000,npm run --prefix frontend dev"
     Runner(cmd).start()

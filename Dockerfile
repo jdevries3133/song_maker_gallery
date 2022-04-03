@@ -39,16 +39,12 @@ COPY . .
 
 WORKDIR /app/frontend
 RUN npm run build
-# we don't need node_modules hanging around once we have the static build
-RUN rm -rf node_modules
 WORKDIR /app
 
 # if the SECRET_KEY is not definied, django management commands will not run
 ARG SECRET_KEY="any value"
 RUN python manage.py collectstatic --no-input
 
-
-ENTRYPOINT ["python", "scripts/develop.py"]
 
 FROM python:3.10-alpine as production
 

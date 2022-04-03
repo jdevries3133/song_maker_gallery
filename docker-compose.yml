@@ -2,7 +2,21 @@
 
 services:
   web:
-    build: .
+    build:
+      context: .
+      target: develop
+    entrypoint:
+      - python3
+      - scripts/develop.py
+    volumes:
+      # note: frontend django files are not mounted; they're just copied at build
+      # time since they almost never change. We do this so that `node_modules`
+      # inside the container are still used.
+      - ./frontend/src:/app/frontend/src
+      - ./gallery:/app/gallery
+      - ./accounts:/app/accounts
+      - ./django_smg:/app/django_smg
+      - ./tests:/app/tests
     ports:
       - "8000:8000"
     links:
@@ -13,6 +27,7 @@ services:
       POSTGRES_DB: app
       POSTGRES_HOST: db
       SECRET_KEY: whatever
+      DJANGO_DEBUG: 1
   db:
     image: postgres:14
     environment:
