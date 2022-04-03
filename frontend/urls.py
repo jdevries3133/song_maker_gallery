@@ -1,12 +1,11 @@
-from django.conf.urls import url
-from django.urls import path
+from django.urls import re_path
 from django.shortcuts import render
 
 
-def index(request, *args, **kwargs):
+def index(request, *_, **__):
     return render(request, "frontend/index.html")
 
 
 urlpatterns = [
-    url(r".*", index),
+    re_path(r".*", index),
 ]
