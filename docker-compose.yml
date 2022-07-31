@@ -9,15 +9,9 @@ services:
       - python3
       - scripts/develop.py
     volumes:
-      # note: frontend django files are not mounted; they're just copied at build
-      # time since they almost never change. We do this so that `node_modules`
-      # inside the container are still used.
-      - ./frontend/src:/app/frontend/src
-      - ./gallery:/app/gallery
-      - ./accounts:/app/accounts
-      - ./django_smg:/app/django_smg
-      - ./tests:/app/tests
-      - ./scripts:/app/scripts
+      - .:/app
+      - venv:/app/venv
+      - node_modules:/app/frontend/node_modules
     ports:
       - "8000:8000"
     links:
@@ -35,3 +29,10 @@ services:
       POSTGRES_USER: app
       POSTGRES_PASSWORD: app
       POSTGRES_DB: app
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:
+  venv:
+  node_modules:
