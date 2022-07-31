@@ -29,7 +29,6 @@ export const getTestCsv = (name) => {
     "..",
     "..",
     "..",
-    "..",
     "ui_testing_data"
   );
   return fs
