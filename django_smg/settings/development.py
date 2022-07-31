@@ -14,7 +14,7 @@ django_stubs_ext.monkeypatch()
 # instance in docker.
 #
 # When this is set to false, dbsqlite is used instead.
-USE_POSTGRES = True
+USE_POSTGRES = bool(os.getenv('USE_POSTGRES'))
 
 # see Python's logging levels for valid strings to use
 # https://docs.python.org/3/library/logging.html#logging-levels

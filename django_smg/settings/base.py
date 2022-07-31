@@ -17,6 +17,12 @@ ALLOWED_HOSTS = [
     "127.0.0.1"
 ]
 
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://songmakergallery.com",
+    "http://127.0.0.1"
+]
+
 if DEBUG:
     ALLOWED_HOSTS.append("*")
 

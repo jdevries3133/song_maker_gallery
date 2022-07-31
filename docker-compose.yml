@@ -17,6 +17,7 @@ services:
     links:
       - db
     environment:
+      USE_POSTGRES: 1
       POSTGRES_USER: app
       POSTGRES_PASSWORD: app
       POSTGRES_DB: app
