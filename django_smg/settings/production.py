@@ -1,9 +1,7 @@
 import os
 
 
-ALLOWED_HOSTS = ["songmakergallery.com"]
-if kube_host := os.getenv('KUBERNETES_SERVICE_HOST'):
-    ALLOWED_HOSTS.append(kube_host)
+ALLOWED_HOSTS = ["*"]
 
 CORS_ORIGIN_ALLOW_ALL = False
 
