@@ -2,6 +2,7 @@
 Test for the old manual-add gallery form
 """
 from pathlib import Path
+from time import sleep
 
 from .base_case import BaseCase
 from gallery.models import Gallery
@@ -26,12 +27,16 @@ class TestManualForm(BaseCase):
         # click through buttons with these ids
         ids = ["addSpreadsheetButton", "verifyGroupButton"]
         for i in ids:
+            self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+            sleep(0.5)
             self.first_el(self.await_data_testid(i)).click()
 
         # input gallery name
         self.first_el(self.await_data_testid("titleInput")).send_keys("galTitl")
 
         # submit
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        sleep(0.5)
         self.first_el(self.await_data_testid("submit")).click()
 
         # check that the url has a proper title-derived slug
