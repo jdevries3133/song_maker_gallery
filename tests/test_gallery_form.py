@@ -1,4 +1,5 @@
 import logging
+from time import sleep
 
 from .base_case import BaseCase
 
@@ -22,6 +23,10 @@ class TestGalleryForm(BaseCase):
         el = self.first_el(self.await_id("gallery description"))
         el.clear()
         el.send_keys("New description is here")
+
+        # scroll down 1/2 page to show the submit button
+        self.driver.execute_script("window.scrollTo(0,window.innerHeight / 2)")
+        sleep(0.5)
 
         # submit form
         self.first_el(self.await_xpath('//input[@type="submit"]')).click()
