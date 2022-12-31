@@ -1,16 +1,13 @@
 {
   "name": "frontend",
   "version": "3.2.2",
-  "version": "3.2.2",
   "description": "songmakergallery.com's frontend application.",
   "repository": "https://github.com:jdevries3133/song_maker_gallery",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development -d \"source-map\"",
     "build": "webpack --mode production",
-    "test": "jest",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -42,18 +39,13 @@
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
+    "style-loader": "^3.3.1",
     "styled-components": "^5.3.0",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
-    "@storybook/addon-actions": "^6.3.12",
-    "@storybook/addon-essentials": "^6.3.12",
-    "@storybook/addon-links": "^6.3.12",
-    "@storybook/builder-webpack5": "^6.3.12",
-    "@storybook/manager-webpack5": "^6.3.12",
-    "@storybook/react": "^6.3.12",
     "css-loader": "^3.6.0"
   }
 }
