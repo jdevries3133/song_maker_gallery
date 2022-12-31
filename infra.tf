@@ -40,7 +40,7 @@ resource "random_password" "django_secret" {
 
 module "basic-deployment" {
   source  = "jdevries3133/basic-deployment/kubernetes"
-  version = "1.0.0"
+  version = "1.0.5"
 
   app_name  = "songmaker"
   container = "jdevries3133/song_maker_gallery:${data.external.git_describe.result.output}"
