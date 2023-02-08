@@ -6,7 +6,7 @@ cffi==1.15.0
 chardet==4.0.0
 charset-normalizer==2.0.12
 click==8.1.2
-cryptography==36.0.2
+cryptography==39.0.1
 Django==4.0.7
 django-cors-headers==3.11.0
 django-rest-knox==4.2.0
