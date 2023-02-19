@@ -35,10 +35,20 @@ CONTAINER=$(DOCKER_ACCOUNT)/$(CONTAINER_NAME):$(TAG)
 push:
 	docker buildx build --platform linux/amd64 --push -t $(CONTAINER) .
 
-.PHONY: DEPLOY
-deploy: push
+
+.PHONY: deploy
+deploy:
 ifdef CI
 	terraform init
 endif
 	terraform apply -auto-approve
 
+
+.PHONY: dev
+dev:
+	docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build -d
+
+
+.PHONY: start
+start:
+	docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d

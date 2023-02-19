@@ -45,6 +45,8 @@ WORKDIR /app
 ARG SECRET_KEY="any value"
 RUN python manage.py collectstatic --no-input
 
+ENTRYPOINT [ "sh", "entrypoint_dev.sh" ]
+
 
 FROM python:3.10-alpine as production
 

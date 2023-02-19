@@ -1,0 +1,21 @@
+services:
+  web:
+    build:
+      context: .
+      target: develop
+    volumes:
+      - .:/app
+      - venv:/app/venv
+      - node_modules:/app/frontend/node_modules
+    entrypoint:
+      - sh
+      - -c
+      - "npm install --global concurrently; concurrently 'cd frontend && npm run dev' 'python3 manage.py migrate; python3 manage.py runserver 0.0.0.0:8000'"
+  db:
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:
+  venv:
+  node_modules:

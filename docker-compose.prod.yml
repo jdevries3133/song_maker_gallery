@@ -1,0 +1,7 @@
+services:
+  web:
+    ports:
+      - "8001:8000"
+  db:
+    volumes:
+      - /opt/smg_data:/var/lib/postgresql/data

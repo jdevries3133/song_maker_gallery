@@ -30,7 +30,7 @@ provider "helm" {
 }
 
 data "external" "git_describe" {
-  program = ["sh", "scripts/git_describe.sh"]
+  program = ["sh", "-c", "echo '{\"output\": \"'\"$(git describe --tags)\"'\"}'"]
 }
 
 resource "random_password" "django_secret" {

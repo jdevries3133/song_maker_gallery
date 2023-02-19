@@ -5,7 +5,7 @@
   "repository": "https://github.com:jdevries3133/song_maker_gallery",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development -d \"source-map\"",
+    "dev": "webpack --mode development -d \"source-map\" --watch",
     "build": "webpack --mode production",
     "test": "jest"
   },
@@ -36,7 +36,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-test-renderer": "^16.14.0",
-    "redux": "^4.1.0",
+    "redux": "4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "style-loader": "^3.3.1",
