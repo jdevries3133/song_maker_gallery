@@ -2,6 +2,8 @@
 
 # Production entrypoint.
 
+sleep 5
+
 python3 manage.py migrate --no-input
 
 exec python -m gunicorn \
