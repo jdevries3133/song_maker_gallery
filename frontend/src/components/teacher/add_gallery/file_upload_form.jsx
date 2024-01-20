@@ -13,7 +13,6 @@ import { HowToVideo } from "./snippets";
 import { Directions } from "./snippets";
 import { DownloadTemplate } from "./snippets";
 import { InvalidFiletype } from "./snippets";
-import { Donate } from "../../gallery/donate/";
 
 const Description = styled(DefaultDescription)`
   padding: 0;
@@ -85,14 +84,6 @@ const FileUploadForm = (props) => {
         </div>
         {props.warn ? <InvalidFiletype /> : null}
       </Container>
-      <div>
-        <h3>Donate and Share!</h3>
-        <P justify>
-          Please do share this tool with your colleagues, and consider chipping
-          in a few dollars to keep this site alive. We depend on your donations!
-        </P>
-        <Donate />
-      </div>
     </Description>
   );
 };

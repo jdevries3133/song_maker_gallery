@@ -26,6 +26,10 @@ const P = styled(DefaultP)`
     `}
 `;
 
+const SmallP = styled(DefaultP)`
+  font-size: 12px;
+`
+
 const Description = styled(DefaultDescription)`
   margin: 0;
   max-width: 900px;
@@ -110,6 +114,10 @@ export const LandingPageHeader = () => {
               We need a beautiful, simple, and easy way to share these
               compositions with as many people as possible!
             </P>
+            <SmallP italic>
+              Caveat: I am a software engineer now, but I was a music teacher
+              when I made this site!
+            </SmallP>
           </Description>
         </GridItem>
       </Grid>

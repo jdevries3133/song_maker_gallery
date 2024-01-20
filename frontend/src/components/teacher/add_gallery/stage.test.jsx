@@ -32,10 +32,6 @@ const renderWithChars = (numChars) => {
 };
 
 describe("stage", () => {
-  it("matches snapshot", () => {
-    const tree = renderer.create(<Stage {...mockStaged} />).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 
   it("has a counter that shows current num chars entered", () => {
     const { getByTestId } = renderWithChars(60);

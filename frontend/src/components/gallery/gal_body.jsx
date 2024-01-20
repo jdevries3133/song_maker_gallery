@@ -2,7 +2,6 @@ import React from "react";
 
 import { Div } from "Styles";
 
-import { Donate } from "./donate";
 import Header from "./header/header";
 import { TileGrid } from "./tilegrid/tilegrid";
 
@@ -19,7 +18,6 @@ const galBody = (props) => {
           <TileGrid data={group} key={group.group_name + Math.random()} />
         ))}
       </Div>
-      <Donate />
     </>
   );
 };
