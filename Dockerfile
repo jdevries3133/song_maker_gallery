@@ -30,7 +30,7 @@ RUN pip install -r requirements.txt
 WORKDIR /app/frontend
 COPY frontend/package.json .
 COPY frontend/package-lock.json .
-RUN npm install
+RUN npm ci
 
 
 # copy and setup whole app
