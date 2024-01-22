@@ -31,6 +31,6 @@ db.sqlite3-journal
 
 # ---- terraform ----
 .terraform*
-variables.tfvars
+*.tfvars
 
 .env
