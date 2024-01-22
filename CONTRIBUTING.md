@@ -120,42 +120,11 @@ cd django_smg  # now, you're in <project_root>/django_smg
 bash scripts/test_watch.sh [args]  # any args get forwarded into python3 manage.py tests [args]
 ```
 
-### `python3 django_smg/scripts/start_site.py`
-
-> **I want to run the whole site together similar to how it runs in production**
-
-This script runs the django development server and webpack in two separate
-subprocesses. Output from both is just merged and output directly, and when
-you terminate this script, it terminates these two child processes nicely
-before exiting.
-
-Unfortunately, we have no automated integration or end-to-end testing, so this
-is the only way to cobble things together, but that will probably change once
-I start getting to the integration phase of our Version 3 release. I just
-haven't decided which tools to use for that, so if you want to break the ice
-on that, I'm open to the discussion.
-
-### `bash scripts/tests.sh`
-
-> **I am about to make a commit or pull request**
-
-This runs all the tests we have in sequence, so always run it before making
-a commit and definitely before making a pull request! If someone can get this
-to run reliably in a github action, you'd be my hero!!!
-
-# Approaching the UI As a User
-
-Take a look at the csv file in the `ui_testing_data` folder. This is an example
-of what the user should upload for each group to make their gallery. This
-is currently the only way for the user to create a gallery, but more user
-friendly means for making galleries is on the feature roadmap
-([#10](https://github.com/jdevries3133/song_maker_gallery/issues/10)).
-
 # Code Style
 
 ## Python
 
-- Follow PEP8 (feel free to use autopep8 for autoformatting).
+- Follow PEP8
 - 80 chars per line.
 - Indent with 4 spaces.
 - Use type annotations when it makes sense to do so! Consider using a static
