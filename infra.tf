@@ -33,6 +33,11 @@ data "external" "git_describe" {
   program = ["sh", "-c", "echo '{\"output\": \"'\"$(git describe --tags)\"'\"}'"]
 }
 
+variable "smtp_email_password" {
+  type = string
+  sensitive = true
+}
+
 resource "random_password" "django_secret" {
   length = 48
   special = true
@@ -48,5 +53,7 @@ module "basic-deployment" {
 
   extra_env = {
     SECRET_KEY = random_password.django_secret.result
+    EMAIL_HOST_USER = "jdevries3133@gmail.com"
+    EMAIL_HOST_PASSWORD = var.smtp_email_password
   }
 }

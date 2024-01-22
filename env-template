@@ -6,3 +6,5 @@ POSTGRES_DB=songmaker
 POSTGRES_USER=me
 POSTGRES_PASSWORD=me
 POSTGRES_HOST=db
+EMAIL_HOST_USER='email@example.com'
+EMAIL_HOST_PASSWORD='supersecret'
