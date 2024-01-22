@@ -29,10 +29,13 @@ provider "helm" {
   }
 }
 
-data "external" "git_describe" {
-  program = ["sh", "-c", "echo '{\"output\": \"'\"$(git describe --tags)\"'\"}'"]
+data "external" "git_sha" {
+  program = [
+    "sh",
+    "-c",
+    "echo '{\"output\": \"'\"$(if [[ ! -z $GITLAB_SHA ]]; then echo $GITLAB_SHA; else git rev-parse HEAD; fi)\"'\"}'"
+  ]
 }
-
 variable "smtp_email_password" {
   type = string
   sensitive = true
@@ -48,7 +51,7 @@ module "basic-deployment" {
   version = "3.0.2"
 
   app_name  = "songmaker"
-  container = "jdevries3133/song_maker_gallery:${data.external.git_describe.result.output}"
+  container = "jdevries3133/song_maker_gallery:${data.external.git_sha.result.output}"
   domain    = "songmakergallery.com"
 
   extra_env = {
