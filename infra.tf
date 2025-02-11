@@ -36,6 +36,7 @@ data "external" "git_sha" {
     "echo '{\"output\": \"'\"$(if [[ ! -z $GITLAB_SHA ]]; then echo $GITLAB_SHA; else git rev-parse HEAD; fi)\"'\"}'"
   ]
 }
+
 variable "smtp_email_password" {
   type = string
   sensitive = true
@@ -48,7 +49,7 @@ resource "random_password" "django_secret" {
 
 module "basic-deployment" {
   source  = "jdevries3133/basic-deployment/kubernetes"
-  version = "3.0.2"
+  version = "3.2.0"
 
   app_name  = "songmaker"
   container = "jdevries3133/song_maker_gallery:${data.external.git_sha.result.output}"
