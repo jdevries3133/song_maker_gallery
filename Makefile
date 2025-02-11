@@ -52,3 +52,11 @@ dev:
 .PHONY: start
 start:
 	docker compose -f docker-compose.yml up -d
+
+.PHONY: backup-prod
+backup-prod:
+	kubectl exec \
+		-n songmaker \
+		pod/db-postgresql-0 \
+		-- /bin/sh -c 'pg_dump postgresql://songmaker:$$POSTGRES_PASSWORD@127.0.0.1:5432/songmaker' \
+		> ~/Desktop/songmaker_backups/backup-$(shell date '+%m-%d-%Y__%H:%M:%S').sql
