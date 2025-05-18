@@ -18,11 +18,21 @@ module.exports = {
         loader: "file-loader",
         options: {
           publicPath: "/static/frontend/webpack_output",
+          name: "[name].[ext]", // Keep original filename instead of content hash
         },
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              url: false, // This prevents css-loader from processing URLs
+              import: true,
+            }
+          }
+        ],
       },
     ],
   },
