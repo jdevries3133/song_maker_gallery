@@ -24,6 +24,7 @@
 
 DOCKER_ACCOUNT=jdevries3133
 CONTAINER_NAME=song_maker_gallery
+PROJECT_NAME=$(CONTAINER_NAME)
 
 TAG=$(shell git rev-parse HEAD)
 
@@ -59,4 +60,4 @@ backup-prod:
 		-n songmaker \
 		pod/db-postgresql-0 \
 		-- /bin/sh -c 'pg_dump postgresql://songmaker:$$POSTGRES_PASSWORD@127.0.0.1:5432/songmaker' \
-		> ~/Desktop/songmaker_backups/backup-$(shell date '+%m-%d-%Y__%H:%M:%S').sql
+		> ~/Desktop/db_backups/$(PROJECT_NAME)_backup-$(shell date '+%m-%d-%Y__%H:%M:%S').sql
